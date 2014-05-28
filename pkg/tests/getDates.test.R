@@ -3,7 +3,7 @@
 library(CDS)
 
 expect_error(getDates(TDate = as.Date("2014-04-15")))
-expect_error(getDates(TDate = as.Date("2014-04-15"), tenor="5Y", maturity = "l"))
+expect_error(getDates(TDate = as.Date("2014-04-15"), tenor = "5Y", maturity = as.Date("2016-06-20")))
 expect_error(getDates(TDate = as.Date("2014-04-15"), maturity = "not a date"))
 
 ## different dates for a CDS with a 10-year maturity
