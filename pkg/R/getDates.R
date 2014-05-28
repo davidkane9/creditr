@@ -13,16 +13,23 @@
 #' 
 
 getDates <- function(TDate, maturity = "5Y"){
-
-    ## check maturity. Has to be "6M" of "NY" where N is an integer
-    duration <- gsub("[[:digit:]]", "", maturity)
-    if (!(duration %in% c("M", "Y"))) stop ("Maturity must end with 'M' or 'Y'")
-    length <- as.numeric(gsub("[^[:digit:]]", "", maturity))
     
+  # stopifnot(is.null(maturity) | is.null(maturityDate))  
+  ## check maturity. Has to be "6M" of "NY" where N is an integer 
+  duration <- gsub("[[:digit:]]", "", maturity)  
+    if (!(duration %in% c("M", "Y"))) {
+      if (!(class(as.Date(maturity))=="Date")){
+        stop ("Maturity must end with 'M' or 'Y' or enter valid date ")
+      } else{
+        length <-  as.POSIXlt(maturity)$year - as.POSIXlt(TDate)$year
+      }
+    } else{
+      length <- as.numeric(gsub("[^[:digit:]]", "", maturity))
+    }
     ## TDate T
     dateWday <- as.POSIXlt(TDate)$wday
     if (!(dateWday %in% c(1:5))) stop("TDate must be a weekday")
-
+    
     ## stepinDate T + 1 bus day
     stepinDate <- .adjNextBusDay(TDate + 1)
 
