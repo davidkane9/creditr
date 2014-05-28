@@ -18,6 +18,7 @@
 
 getDates <- function(TDate, maturity = NULL, tenor = NULL){
 
+  stopif(is.null(maturity & is.null(tenor)))
   stopifnot(is.null(maturity) | is.null(tenor))
   
   if(!is.null(maturity)){
@@ -31,8 +32,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
     else{
       length <- as.numeric(gsub("[^[:digit:]]", "", maturity))
     }
-  }
-  
+  }  
 
     ## TDate T
     dateWday <- as.POSIXlt(TDate)$wday
@@ -55,11 +55,16 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
     firstcouponDate <- as.Date(.adjNextBusDay(firstcouponDate))
     
     ## endDate firstcouponDate + maturity. IMM dates. No adjustment.
-    endDate <- as.POSIXlt(firstcouponDate)
-    if (duration == "M"){
+    if(is.null(maturity)){
+      endDate <- as.POSIXlt(firstcouponDate)
+      if (duration == "M"){
         endDate$mon <- endDate$mon + length
-    } else {
-        endDate$year <- endDate$year + length
+      } else {
+          endDate$year <- endDate$year + length
+        }
+      }
+      else{
+        endDate <- maturity
     }
     endDate <- as.Date(endDate)
     
