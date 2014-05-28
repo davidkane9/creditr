@@ -16,6 +16,8 @@ truth <- data.frame(TDate = as.Date("2014-04-15"), stepinDate = as.Date("2014-04
            pencouponDate=as.Date("2019-03-20"), endDate = as.Date("2019-06-20"), 
            backstopDate = as.Date("2014-02-14"))
 
-result <- getDates(TDate = as.Date("2014-04-15"), tenor = "5Y")
+result.1 <- getDates(TDate = as.Date("2014-04-15"), tenor = "5Y")
 
-expect_that(result, is_identical_to(truth))
+expect_that(result.1, is_identical_to(truth))
+
+result.2 <- getDates(TDate = as.Date("2014-04-15"), maturity = "5Y") ## Fix this
