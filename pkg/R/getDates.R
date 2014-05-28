@@ -64,7 +64,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
       } else {
           endDate$year <- endDate$year + length
         }
-      # endDate <- as.Date(endDate)
+      endDate <- as.Date(endDate)
       }
       else{
         endDate <- maturity
