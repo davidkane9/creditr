@@ -1,4 +1,4 @@
 .Rhistory
 .RData
 .Rbuildignore
-.Rproj*
+*.Rproj*
