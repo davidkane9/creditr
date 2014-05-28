@@ -18,7 +18,6 @@
 
 getDates <- function(TDate, maturity = NULL, tenor = NULL){
 
-  stopif(is.null(maturity & is.null(tenor)))
   stopifnot(is.null(maturity) | is.null(tenor))
   
   if(!is.null(maturity)){
