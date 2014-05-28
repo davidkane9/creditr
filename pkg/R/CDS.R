@@ -128,7 +128,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                 payAccruedOnDefault = TRUE
                 ){
 
-    checkTDate <- testDate(TDate)
+    checkTDate <- checkDate(TDate)
     if (!is.na(checkTDate)) stop (checkTDate)
 
     if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(parSpread)))

@@ -1,7 +1,6 @@
 \name{impliedRecoveryRate}
 \alias{impliedRecoveryRate}
-\title{A function that calculates the implied recovery rate.
-}
+\title{A function that calculates the implied recovery rate.}
 \usage{
 impliedRecoveryRate(data, col.spread, col.pd, col.id, col.endDate, col.TDate)
 }
@@ -26,17 +25,19 @@ impliedRecoveryRate(data, col.spread, col.pd, col.id, col.endDate, col.TDate)
   rates}
 }
 \value{
-Implied recovery rate in percentage based on the general
+implied recovery rate in percentage based on the general
 approximation for a probability of default in the Bloomberg
 manual. The actual calculation uses a complicated
 bootstrapping process, so the results may be marginally
 different.
 }
-\description{Function that uses the ISDA model to calculate the implied
-recovery rate for cases in which we have a spread and a probability of
-default (pd). This takes a data frame of inputs and returns a vector
-of the same length. If we have a data frame like: id,spread,pd which we
-pass into a function, this then returns a vector of implied default
-rates. }
-
+\description{
+Function that uses the ISDA model to calculate the implied
+recovery rate for cases in which we have a spread and a
+probability of default (pd).  This takes a data frame of
+inputs and returns a vector of the same length. If we have
+a data frame like: id,spread,pd which we pass into a
+function, this then returns a vector of implied default
+rates.
+}
 
