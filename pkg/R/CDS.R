@@ -145,7 +145,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
     
     ratesDate <- baseDate
     effectiveDate <- as.Date(TDate)
-    cdsDates <- getDates(TDate = as.Date(TDate), maturity = maturity)
+    cdsDates <- getDates(TDate = as.Date(TDate), tenmaturity = maturity)
     if (is.null(valueDate)) valueDate <- cdsDates$valueDate
     if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
     if (is.null(startDate)) startDate <- cdsDates$startDate
