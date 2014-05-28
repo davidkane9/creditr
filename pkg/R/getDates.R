@@ -10,7 +10,7 @@
 #'   (second to last coupon date)
 #' @export
 #' @examples
-#' getDates(as.Date("2014-05-07"), maturity = "5Y")
+#' getDates(as.Date("2014-05-07"), tenor = "5Y", maturity = NULL)
 #' 
 
 ## maturity can only be a date.
@@ -69,6 +69,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
       else{
         endDate <- as.POSIXlt(firstcouponDate)  
         endDate$year <- endDate$year + as.POSIXlt(maturity)$year - as.POSIXlt(TDate)$year
+        endDate <- as.Date(endDate)
     }
     
     ## pencouponDate T + maturity - 1 accrual interval. adj to bus day

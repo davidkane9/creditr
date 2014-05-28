@@ -1,4 +1,5 @@
-## Test cases for the getDates function.
+## Test cases for the getDates function (using data from April 15, 2014 for Norske
+## Skogindustrier ASA).
 
 library(CDS)
 
@@ -20,4 +21,5 @@ result.1 <- getDates(TDate = as.Date("2014-04-15"), tenor = "5Y")
 
 expect_that(result.1, is_identical_to(truth))
 
-result.2 <- getDates(TDate = as.Date("2014-04-15"), maturity = "5Y") ## Fix this
+result.2 <- getDates(TDate = as.Date("2014-04-15"), maturity = "2014-04-15") 
+## expect_that(result.2, is_identical_to(truth))

@@ -114,7 +114,7 @@ spread <- function(TDate,
         payAccruedAtStart <- TRUE
     }
     
-    cdsDates <- getDates(TDate = as.Date(TDate), maturity = maturity)
+    cdsDates <- getDates(TDate = as.Date(TDate), tenor = maturity, maturity = NULL)
     if (is.null(valueDate)) valueDate <- cdsDates$valueDate
     if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
     if (is.null(startDate)) startDate <- cdsDates$startDate

@@ -2,13 +2,17 @@
 \alias{getDates}
 \title{The function gets relevant coupon dates for a CDS contract.}
 \usage{
-getDates(TDate, maturity = "5Y")
+getDates(TDate, maturity = NULL, tenor = NULL)
 }
 \arguments{
   \item{TDate}{the trade date}
 
-  \item{maturity}{maturity of the CDS contract. Default
-  "5Y".}
+  \item{maturity}{date of maturity of the CDS contract.
+  Default is NULL.}
+
+  \item{tenor}{character tenor of the CDS contract in
+  format like 5Y. Default is NULL. Must enter either
+  maturity or tenor, but not both.}
 }
 \value{
 a date frame with step-in date (T+1), value date (T+3
@@ -21,6 +25,6 @@ coupon date)
 The function gets relevant coupon dates for a CDS contract.
 }
 \examples{
-getDates(as.Date("2014-05-07"), maturity = "5Y")
+getDates(as.Date("2014-05-07"), tenor = "5Y", maturity = NULL)
 }
 

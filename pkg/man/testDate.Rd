@@ -1,6 +1,6 @@
 \name{testDate}
 \alias{testDate}
-\title{function for testing the date entered}
+\title{Function for testing the date entered}
 \usage{
 testDate(date)
 }
@@ -13,6 +13,6 @@ TRUE if date is valid, FALSE if date is in future, and
 wrong
 }
 \description{
-function for testing the date entered
+Function for testing the date entered
 }
 
