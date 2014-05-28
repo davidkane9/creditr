@@ -21,7 +21,7 @@ getRatesDf <- function(startDate, endDate, currency="USD"){
     getRates <- getRates(date = endDate)[[1]]
     rates <- as.numeric(levels(getRates$rate))
     expiry <- getRates$expiry
-    thisDate <- rep(date, length(rates))
+    thisDate <- rep(endDate, length(rates))
     thisCurrency <- rep(currency, length(rates))
     df <- data.frame(thisDate, currency, expiry, rates)
     yearRates <- rbind(yearRates, df)
