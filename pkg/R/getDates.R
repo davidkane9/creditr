@@ -18,7 +18,10 @@
 
 getDates <- function(TDate, maturity = NULL, tenor = NULL){
 
-  stopifnot(is.null(maturity) | is.null(tenor))
+  ## You must provide either a maturity or a tenor, but not both.
+  
+  stopifnot(! (is.null(maturity) & is.null(tenor)))
+  stopifnot(   is.null(maturity) | is.null(tenor))
   
   if(!is.null(maturity)){
     stopifnot(inherits(as.Date(maturity), "Date"))    
