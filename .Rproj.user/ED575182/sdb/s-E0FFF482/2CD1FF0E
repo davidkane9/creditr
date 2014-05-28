@@ -1,0 +1,17 @@
+{
+    "contents" : "#' function that takes a data frame of dates and returns a data frame with the \n#' yields for different maturities. Note year must be entered as YYYY-MM-DD.\n#' \n#' @param startDate date from when rate calculation starts\n#' @param endDate date when rate calculation ends\n#' @param currency for which rates are being calculated\n#' @return dataframe containing the rates from everyday between and including\n#' the start and end dates\n#' \ngetRatesDf <- function(startDate, endDate, currency=\"USD\"){\n  yearRates = NULL\n  endDate = as.Date(endDate)\n  startDate = as.Date(startDate)\n  # start & end date must be valid\n  expect_that(checkDate(startDate), prints_text(\"NA\"))\n  expect_that(checkDate(endDate), prints_text(\"NA\"))\n  # start date must be smaller than end date\n  expect_that(endDate>startDate, prints_text(\"TRUE\"))\n  # year = 1900 + as.POSIXlt(date)$year \n  while(endDate>startDate){\n    getRates <- getRates(date = endDate)[[1]]\n    rates <- as.numeric(levels(getRates$rate))\n    expiry <- getRates$expiry\n    thisDate <- rep(endDate, length(rates))\n    thisCurrency <- rep(currency, length(rates))\n    df <- data.frame(thisDate, currency, expiry, rates)\n    yearRates <- rbind(yearRates, df)\n    endDate <- endDate - 1\n    # year = 1900 + as.POSIXlt(date)$year\n  }  \n  return(yearRates)\n}\n\n\n",
+    "created" : 1401278157637.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1301685312",
+    "id" : "2CD1FF0E",
+    "lastKnownWriteTime" : 1401281784,
+    "path" : "~/Desktop/CDS7/CDS/pkg/R/getRatesDf.R",
+    "project_path" : "pkg/R/getRatesDf.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

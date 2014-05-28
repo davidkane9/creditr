@@ -1,0 +1,16 @@
+{
+    "contents" : "# test case for checkDate function\nlibrary(CDS)\nexpect_that(checkDate(\"2014-03-04\"), prints_text(\"NA\"))\nexpect_that(checkDate(\"2020-03-04\"), prints_text(\"Trade date should not be in the future\"))\nexpect_that(checkDate(\"1993-03-04\"), prints_text(\"Trade date too early!\"))\nexpect_that(checkDate(\"20140304\"), prints_text(\"Input date invalid\"))\n",
+    "created" : 1401277594903.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "180608089",
+    "id" : "B50B6563",
+    "lastKnownWriteTime" : 1401277794,
+    "path" : "~/Desktop/CDS7/CDS/pkg/tests/checkDate.test.R",
+    "project_path" : "pkg/tests/checkDate.test.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
