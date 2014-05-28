@@ -32,7 +32,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
         stop ("Maturity must end with 'M' or 'Y' or enter valid date ")      
     } 
     else{
-      length <- as.numeric(gsub("[^[:digit:]]", "", maturity))
+      length <- as.numeric(gsub("[^[:digit:]]", "", tenor))
     }
   }  
 
@@ -64,11 +64,11 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
       } else {
           endDate$year <- endDate$year + length
         }
+      # endDate <- as.Date(endDate)
       }
       else{
         endDate <- maturity
     }
-    endDate <- as.Date(endDate)
     
     ## pencouponDate T + maturity - 1 accrual interval. adj to bus day
     pencouponDate <- as.POSIXlt(endDate)
