@@ -1,31 +1,39 @@
 #' The function gets relevant coupon dates for a CDS contract.
 #' 
 #' @param TDate the trade date
-#' @param maturity maturity of the CDS contract. Default "5Y".
-#' @return a date frame with step-in date (T+1), value date (T+3
-#' business days), start date (accrual begin date), end date
-#' (maturity), backstop date (T-60 day look back from which
-#' 'protection' is effective), pen coupon date (second to last coupon
-#' date)
+#' @param maturity date of maturity of the CDS contract. Default is NULL.
+#' @param tenor character tenor of the CDS contract in format like 5Y. Default
+#'   is NULL. Must enter either maturity or tenor, but not both.
+#' @return a date frame with step-in date (T+1), value date (T+3 business days),
+#'   start date (accrual begin date), end date (maturity), backstop date (T-60 
+#'   day look back from which 'protection' is effective), pen coupon date 
+#'   (second to last coupon date)
 #' @export
 #' @examples
 #' getDates(as.Date("2014-05-07"), maturity = "5Y")
 #' 
 
-getDates <- function(TDate, maturity = "5Y"){
-    
-  # stopifnot(is.null(maturity) | is.null(maturityDate))  
-  ## check maturity. Has to be "6M" of "NY" where N is an integer 
-  duration <- gsub("[[:digit:]]", "", maturity)  
+## maturity can only be a date.
+
+
+getDates <- function(TDate, maturity = NULL, tenor = NULL){
+
+  stopifnot(is.null(maturity) | is.null(tenor))
+  
+  if(!is.null(maturity)){
+    stopifnot(inherits(as.Date(maturity), "Date"))    
+  }
+  else{
+    duration <- gsub("[[:digit:]]", "", tenor)  
     if (!(duration %in% c("M", "Y"))) {
-      if (!(class(as.Date(maturity))=="Date")){
-        stop ("Maturity must end with 'M' or 'Y' or enter valid date ")
-      } else{
-        length <-  as.POSIXlt(maturity)$year - as.POSIXlt(TDate)$year
-      }
-    } else{
+        stop ("Maturity must end with 'M' or 'Y' or enter valid date ")      
+    } 
+    else{
       length <- as.numeric(gsub("[^[:digit:]]", "", maturity))
     }
+  }
+  
+
     ## TDate T
     dateWday <- as.POSIXlt(TDate)$wday
     if (!(dateWday %in% c(1:5))) stop("TDate must be a weekday")
