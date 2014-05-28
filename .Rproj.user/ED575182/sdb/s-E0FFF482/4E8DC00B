@@ -1,10 +1,10 @@
 {
-    "contents" : "# test case for upfrontdf for one row of data\n\nX <- ()\ntruth1 <- c()\n\nupfront(currency = \"USD\",\n        TDate = as.Date(\"2014-01-14\"),\n        maturity = (as.Date(\"2019-01-14\") - as.Date(\"2014-01-14\"))/365,\n        dccCDS = \"ACT/360\",\n        freqCDS = \"Q\",\n        stubCDS = \"F\",\n        badDayConvCDS = \"F\",\n        calendar = \"None\",\n        parSpread = 32,\n        coupon = 100,\n        recoveryRate = 0.4,\n        isPriceClean = FALSE,\n        notional = 1e7)",
+    "contents" : "# test case for upfrontdf for one row of data\n\ndate = c(\"2014-01-14\")\nmaturity = c(\"2019-01-14\")\nnotional = c(1e7)\ncoupon = c(100)\ncurrency = c(\"USD\")\nspread = c(32)\n\nX <- data.frame(date, maturity, notional, coupon, currency, spread)\n\ntruth1 <- c()\n\nupfront(currency = \"USD\",\n        TDate = as.Date(\"2014-01-14\"),\n        maturity = (as.Date(\"2019-01-14\") - as.Date(\"2014-01-14\"))/365,\n        dccCDS = \"ACT/360\",\n        freqCDS = \"Q\",\n        stubCDS = \"F\",\n        badDayConvCDS = \"F\",\n        calendar = \"None\",\n        parSpread = 32,\n        coupon = 100,\n        recoveryRate = 0.4,\n        isPriceClean = FALSE,\n        notional = 1e7)",
     "created" : 1401283595071.000,
     "dirty" : true,
     "encoding" : "",
     "folds" : "",
-    "hash" : "214033076",
+    "hash" : "3271616989",
     "id" : "4E8DC00B",
     "lastKnownWriteTime" : -4611677239514234880,
     "path" : null,

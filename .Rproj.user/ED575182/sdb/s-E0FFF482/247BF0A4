@@ -1,10 +1,10 @@
 {
-    "contents" : "upfrontdf <- function(X, date.var = \"date\", spread.var = \"spread\", \n               currency.var = \"currency\", maturity.var = \"maturity\",\n               notional.var = \"notional\", coupon.var = \"coupon\"){\n  date.var <- as.Date(X$date.var)\n  spread.var <- X$spread.var\n  currency.var <- X$currency.var\n  maturity.var <- as.Date(X$maturity.var)\n  notional.var <- X$notional.var\n  for(i in 1: length(X[,1])){\n  upfront <- \n          c(upfront, upfront(currency = currency.var[i],\n          TDate = date.var[i],\n          maturity = X$maturity.var[i] - date.var[i],\n          dccCDS = \"ACT/360\",\n          freqCDS = \"Q\",\n          stubCDS = \"F\",\n          badDayConvCDS = \"F\",\n          calendar = \"None\",\n          parSpread = spread.var[i],\n          coupon = coupon.var[i],\n          recoveryRate = 0.4,\n          isPriceClean = FALSE,\n          notional = 1e7))\n  return(upfront)\n  }\n}",
+    "contents" : "upfrontdf <- function(x, date.var = \"date\", spread.var = \"spread\", \n               currency.var = \"currency\", maturity.var = \"maturity\",\n               notional.var = \"notional\", coupon.var = \"coupon\"){\n  for(i in 1: length(X[,1])){\n    date.var <- as.Date(X$date.var)[i]\n    spread.var <- X[spread.var][i]\n    currency.var <- X[currency.var][i]\n    maturity.var <- as.Date(X[maturity.var])[i]\n    notional.var <- X[notional.var][i]\n    upfront <- \n          c(upfront, upfront(currency = currency.var[i],\n          TDate = date.var[i],\n          maturity = X$maturity.var[i] - date.var[i],\n          dccCDS = \"ACT/360\",\n          freqCDS = \"Q\",\n          stubCDS = \"F\",\n          badDayConvCDS = \"F\",\n          calendar = \"None\",\n          parSpread = spread.var[i],\n          coupon = coupon.var[i],\n          recoveryRate = 0.4,\n          isPriceClean = FALSE,\n          notional = 1e7))\n  return(upfront)\n  }\n}",
     "created" : 1401216649249.000,
     "dirty" : true,
     "encoding" : "",
     "folds" : "",
-    "hash" : "3815337572",
+    "hash" : "624610342",
     "id" : "247BF0A4",
     "lastKnownWriteTime" : 176093659136,
     "path" : null,
