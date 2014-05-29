@@ -106,6 +106,5 @@ result2 <- upfront(baseDate = "2014-01-13",
                    isPriceClean = FALSE,
                    notional = 1e7)
 
-stopifnot(all.equal(result2, truth2))
 
 
