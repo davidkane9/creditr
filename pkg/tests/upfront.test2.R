@@ -3,7 +3,7 @@ library(CDS)
 
 #test case with upfront data from Ceasars Entertainment Corp for 2014-04-15.
 
-CaesarsEntCorp <- 5707438
+caesarsEntCorp <- 5707438
 
 result.1 <- upfront(currency = "USD",
                     TDate = "2014-04-15",
@@ -19,7 +19,7 @@ result.1 <- upfront(currency = "USD",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-expect_that(result.1, equals(result.1))
+expect_that(round(result.1, -3), equals(round(caesarsEntCorp, -3)))
 
 #test case with upfront data from Xerox Corporation for 2014-04-22. 
 
@@ -39,4 +39,4 @@ result.2 <- upfront(currency = "USD",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-expect_that(result.2, equals(xerox))
+expect_that(round(result.2, -1), equals(round(xerox, -1)))
