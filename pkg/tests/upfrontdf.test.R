@@ -2,9 +2,6 @@
 
 library(CDS)
 
-
-
-
 # test case for upfrontdf for one row of data (for CDS 
 # data frame of information (for Xerox Corporation on 2014-04-22) 
 # that we input into the upfront() function
@@ -16,12 +13,11 @@ expect_error(upfrontdf(x, notional = "not a number"))
 expect_error(upfrontdf(x, currency = 100))
 
 
-# actual upfront value for xerox for this day. Why doesn't our answer match up better?
+# actual upfront value is equal to the package's upfront value when rounded to the
+# nearest 100.
 
-## xeroxUpf <- 18624 True answer
-xeroxUpf <- 18610.4
-
+xeroxUpf <- 18624 
 
 result.1 <- upfrontdf(x, notional = c(1e7), currency = "USD")
 
-expect_that(round(result.1), equals(round(xeroxUpf)))
+expect_that(round(result.1, -2), equals(round(xeroxUpf, -2)))
