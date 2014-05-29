@@ -7,7 +7,10 @@ upfrontdf <- function(x, currency, notional,
     
   stopifnot(all(c(date.var, spread.var, coupon.var, maturity.var) %in% names(x)))
   stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
-  stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))  
+  stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
+  stopifnot(is.numeric(notional))
+  stopifnot(is.character(currency))
+  stopifnot(is.numeric(x[[coupon.var]]))
 
   upfront <- upfront(currency = currency,
                      TDate = x[[date.var]],
