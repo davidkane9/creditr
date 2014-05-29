@@ -1,3 +1,16 @@
+#' function that takes a dataframe of variables on CDSs to return a vector
+#' of upfront values
+#' 
+#' @param x dataframe containing variables date, spread, coupon and maturity
+#' @param currency of CDSs in the dataframe
+#' @param notional values of CDSs in the dataframe
+#' @param date.var name of the column containing dates
+#' @param spread.var name of the column containing spreads
+#' @param coupon.var name of the column containing the coupon rates
+#' @param maturity.var name of the column containing the maturity dates
+#' 
+#' @return vector of upfront values in the same order
+
 upfrontdf <- function(x, currency, notional,
                       date.var = "date", spread.var = "spread",
                         coupon.var = "coupon", maturity.var = "maturity"){
