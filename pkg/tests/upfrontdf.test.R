@@ -24,4 +24,4 @@ xeroxUpf <- 18610.4
 
 result.1 <- upfrontdf(x, notional = c(1e7), currency = "USD")
 
-## expect_that(round(result.1), equals(round(xeroxUpf)))
+expect_that(round(result.1), equals(round(xeroxUpf)))
