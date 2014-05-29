@@ -7,9 +7,9 @@ upfrontdf <- function(x, date.var = "date", spread.var = "spread",
     # maturity.var <- x[maturity.var]
     # notional.var <- x[notional.var]
     # currency.var <- x[currency.var]
-    # x <- data.frame(date.var, spread.var, coupon.var, maturity.var,
-                    notional.var, currency.var)
-    upfront <- NULL
+    # x <- data.frame(date.var, spread.var, coupon.var, maturity.var, notional.var, currency.var)
+
+  upfront <- NULL
     upfront <- c(upfront, upfront(currency = "USD",
                      TDate = x[[date.var]],
                      maturity = x[[maturity.var]],
