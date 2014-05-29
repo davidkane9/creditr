@@ -1,21 +1,17 @@
-# test case for upfrontdf for one row of data
+#  test cases for upfrontdf  
+
 library(CDS)
-X <- data.frame(date = c("2014-01-14"), maturity = c("2019-01-14"), 
+
+# test case for upfrontdf for one row of data (for CDS 
+# data frame of information (for Xerox Corporation on 2014-04-22) 
+# that we input into the upfront() function
+X <- data.frame(date = c("2014-04-22"), maturity = "5Y", 
                 notional = c(1e7), coupon = c(100), currency = c("USD"), 
-                spread = c(32))
+                spread = c(105.8))
 
-truth1 <- c()
+# actual upfront value for xerox for this day
+xeroxUpf <- 18624
 
-upfront(currency = "USD",
-        TDate = as.Date("2014-01-14"),
-        maturity = as.Date("2019-01-14"),
-        dccCDS = "ACT/360",
-        freqCDS = "Q",
-        stubCDS = "F",
-        badDayConvCDS = "F",
-        calendar = "None",
-        parSpread = X[spread.var],
-        coupon = 100,
-        recoveryRate = 0.4,
-        isPriceClean = FALSE,
-        notional = 1e7)
+result.1 <- upfrontdf(X)
+
+expect_that(round(result.2, -1), equals(round(xeroxUpf, -1)))
