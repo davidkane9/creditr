@@ -1,4 +1,4 @@
-## Upfront.test.R
+## Upfront.test.R ()
 
 library(CDS)
 ## truth1 <- upfront(TDate = "2014-01-14",
