@@ -25,19 +25,27 @@ upfrontdf <- function(x, currency, notional,
   stopifnot(is.character(currency))
   stopifnot(is.numeric(x[[coupon.var]]))
 
-  upfront <- upfront(currency = currency,
-                     TDate = x[[date.var]],
-                     maturity = "5Y", ## Should be x[[maturity.var]]
-                     dccCDS = "ACT/360",
-                     freqCDS = "Q",
-                     stubCDS = "F",
-                     badDayConvCDS = "F",
-                     calendar = "None",
-                     parSpread = x[[spread.var]],
-                     coupon = x[[coupon.var]],
-                     recoveryRate = 0.4,
-                     isPriceClean = FALSE,
-                     notional = notional)
+  ## Only works for data frames with one row now! And note the maturity hack!
+  
+  results <- as.numeric(rep(NA, nrow(x)))
+  
+  for(i in 1:nrow(x)){
     
-return(upfront)
+    results[i] <- upfront(currency = currency,
+                          TDate = x[i, date.var],
+                          maturity = "5Y", ## Should be x[[maturity.var]]
+                          dccCDS = "ACT/360",
+                          freqCDS = "Q",
+                          stubCDS = "F",
+                          badDayConvCDS = "F",
+                          calendar = "None",
+                          parSpread = x[i, spread.var],
+                          coupon = x[i, coupon.var],
+                          recoveryRate = 0.4,
+                          isPriceClean = FALSE,
+                          notional = notional)
+  }
+  
+  return(results)
+
 }
