@@ -6,7 +6,7 @@ library(CDS)
 # data frame of information (for Xerox Corporation on 2014-04-22) 
 # that we input into the upfront() function
 
-x <- data.frame(date = c("2014-04-22"), maturity = "5Y", 
+x <- data.frame(date = as.Date("2014-04-22"), maturity = as.Date("2019-06-20"), 
                 coupon = c(100), spread = c(105.8))
 
 # actual upfront value for xerox for this day. Why doesn't our answer match up better?
