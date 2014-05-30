@@ -101,7 +101,7 @@ upfront <- function(TDate,
                     payAccruedOnDefault = TRUE,
                     notional = 1e7){
   
-  ratesDate <- as.Date(baseDate)-1
+  ratesDate <- as.Date(baseDate)
   
   if(is.null(maturity)){
     cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)

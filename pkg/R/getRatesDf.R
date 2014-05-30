@@ -5,7 +5,10 @@
 #' @param endDate date when rate calculation ends
 #' @param currency for which rates are being calculated
 #' @return dataframe containing the rates from everyday between and including
-#' the start and end dates
+#' the start and end dates. Note: the date in the column does not refer to the
+#' rates of that day but the date on which the CDS is being priced. So the 
+#' corresponding rate is actually the rate of the previous day. Example: if the 
+#' column reads 2014-04-22, the corresponding rates are actually for 2014-04-21.
 #' 
 getRatesDf <- function(startDate, endDate, currency="USD"){
   yearRates = NULL
@@ -21,9 +24,9 @@ getRatesDf <- function(startDate, endDate, currency="USD"){
     getRates <- getRates(date = endDate)[[1]]
     rates <- as.numeric(levels(getRates$rate))
     expiry <- getRates$expiry
-    thisDate <- rep(endDate, length(rates))
+    date <- rep(endDate, length(rates))
     thisCurrency <- rep(currency, length(rates))
-    df <- data.frame(thisDate, currency, expiry, rates)
+    df <- data.frame(date, currency, expiry, rates)
     yearRates <- rbind(yearRates, df)
     endDate <- endDate - 1
     # year = 1900 + as.POSIXlt(date)$year
