@@ -8,7 +8,7 @@
 #' rate.
 #' @param rates is an array of numeric values indicating the rate of
 #' each instrument.
-#' @param expiries is an array of characters indicating the maturity
+#' @param expiries is an array of characters indicating the tenor
 #' of each instrument.
 #' @param mmDCC is the day count convention of the instruments.
 #' @param fixedSwapFreq is the frequency of the fixed rate of swap
@@ -28,11 +28,12 @@
 #' premium payments, i.e. the number of days in the first period (and
 #' thus the amount of the first premium payment) is counted from this
 #' date. aka accrual begin date.
-#' @param endDate aka maturity date. This is when the contract expires
+#' @param endDate aka tenor date. This is when the contract expires
 #' and protection ends. Any default after this date does not trigger a
 #' payment.
 #' @param stepinDate default is T + 1.
-#' @param maturity of the CDS contract.
+#' @param tenor of the CDS contract.
+#' @param maturity date
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
@@ -58,7 +59,7 @@
 #' 
 #' @examples
 #' upf <- upfront(baseDate = "2014-01-13", currency = "USD", TDate
-#' = "2014-01-14", maturity = "5Y", dccCDS = "ACT/360", freqCDS = "Q",
+#' = "2014-01-14", tenor = "5Y", dccCDS = "ACT/360", freqCDS = "Q",
 #' stubCDS = "F", badDayConvCDS = "F", calendar = "None", parSpread =
 #' 32, coupon = 100, recoveryRate = 0.4, isPriceClean = FALSE,
 #' notional = 1e7)
@@ -67,7 +68,7 @@
 upfront <- function(TDate,
                     baseDate = TDate,
                     currency = "USD",
-
+                    
                     types = NULL,
                     rates = NULL,
                     expiries = NULL,
@@ -84,7 +85,8 @@ upfront <- function(TDate,
                     startDate = NULL,
                     endDate = NULL,
                     stepinDate = NULL,
-                    maturity = "5Y",
+                    tenor = "5Y",
+                    maturity = NULL,
                     
                     dccCDS = "ACT/360",
                     freqCDS = "1Q",
@@ -98,75 +100,82 @@ upfront <- function(TDate,
                     isPriceClean = FALSE,
                     payAccruedOnDefault = TRUE,
                     notional = 1e7){
-
-    ratesDate <- baseDate
-    cdsDates <- getDates(TDate = as.Date(TDate), tenor = maturity, maturity=NULL)
-    if (is.null(valueDate)) valueDate <- cdsDates$valueDate
-    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate <- cdsDates$startDate
-    if (is.null(endDate)) endDate <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate <- cdsDates$stepinDate
-
-    baseDate <- .separateYMD(baseDate)
-    today <- .separateYMD(TDate)
-    valueDate <- .separateYMD(valueDate)
-    benchmarkDate <- .separateYMD(benchmarkDate)
-    startDate <- .separateYMD(startDate)
-    endDate <- .separateYMD(endDate)
-    stepinDate <- .separateYMD(stepinDate)
-
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
-    if ((is.null(types) | is.null(rates) | is.null(expiries))){
+  
+  ratesDate <- as.Date(baseDate)-1
+  
+  if(is.null(maturity)){
+    cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)
+  }
+  else if (is.null(maturity)==FALSE){
+    cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
+  }
+  
+  if (is.null(valueDate)) valueDate <- cdsDates$valueDate
+  if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
+  if (is.null(startDate)) startDate <- cdsDates$startDate
+  if (is.null(endDate)) endDate <- cdsDates$endDate
+  if (is.null(stepinDate)) stepinDate <- cdsDates$stepinDate
+  
+  baseDate <- .separateYMD(baseDate)
+  today <- .separateYMD(TDate)
+  valueDate <- .separateYMD(valueDate)
+  benchmarkDate <- .separateYMD(benchmarkDate)
+  startDate <- .separateYMD(startDate)
+  endDate <- .separateYMD(endDate)
+  stepinDate <- .separateYMD(stepinDate)
+  
+  stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
+  if ((is.null(types) | is.null(rates) | is.null(expiries))){
+    
+    ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
+    types = paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    rates = as.numeric(as.character(ratesInfo[[1]]$rate))
+    expiries = as.character(ratesInfo[[1]]$expiry)
+    mmDCC = as.character(ratesInfo[[2]]$mmDCC)
+    
+    fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq)
+    floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq)
+    fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC)
+    floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC)
+    badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention)
+    holidays = as.character(ratesInfo[[2]]$swapCalendars)
+  }
+  
+  .Call('calcUpfrontTest',
+        baseDate,
+        types,
+        rates,
+        expiries,
         
-        ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
-        types = paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates = as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries = as.character(ratesInfo[[1]]$expiry)
-        mmDCC = as.character(ratesInfo[[2]]$mmDCC)
+        mmDCC,
+        fixedSwapFreq,
+        floatSwapFreq,
+        fixedSwapDCC,
+        floatSwapDCC,
+        badDayConvZC,
+        holidays,
         
-        fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq)
-        floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention)
-        holidays = as.character(ratesInfo[[2]]$swapCalendars)
-    }
-
-    .Call('calcUpfrontTest',
-          baseDate,
-          types,
-          rates,
-          expiries,
-
-          mmDCC,
-          fixedSwapFreq,
-          floatSwapFreq,
-          fixedSwapDCC,
-          floatSwapDCC,
-          badDayConvZC,
-          holidays,
-          
-          today,
-          valueDate,
-          benchmarkDate,
-          startDate,
-          endDate,
-          stepinDate,
-          
-          dccCDS,
-          freqCDS,
-          stubCDS,
-          badDayConvCDS,
-          calendar,
-          
-          parSpread,
-          coupon,
-          recoveryRate,
-          isPriceClean,
-          payAccruedOnDefault,
-          notional,
-          PACKAGE = "CDS")
-
+        today,
+        valueDate,
+        benchmarkDate,
+        startDate,
+        endDate,
+        stepinDate,
+        
+        dccCDS,
+        freqCDS,
+        stubCDS,
+        badDayConvCDS,
+        calendar,
+        
+        parSpread,
+        coupon,
+        recoveryRate,
+        isPriceClean,
+        payAccruedOnDefault,
+        notional,
+        PACKAGE = "CDS")
+  
 }
 
 

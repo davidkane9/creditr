@@ -5,7 +5,9 @@
 #' Assume date and currency are in the same location.
 #' 
 #' @param date ideally a weekday. The rates for a trade date T are
-#' published on T-1 weekday.
+#' published on T-1 weekday.This date refers to the day on which we
+#' want the CDS to be priced, not the date for the interest rates as
+#' the interest rates will be used is the day before the trade date.
 #' @param currency the three-letter currency code. As of now, it works
 #' for USD, EUR, and JPY. The default is USD.
 #' 
@@ -27,7 +29,7 @@ getRates <- function(date = Sys.Date(), currency = "USD"){
 "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
     
     currency <- as.character(currency)
-    date <- as.Date(date) - 1
+    date <- as.Date(date)
 
     ## 0 is Sunday, 6 is Saturday
     dateWday <- as.POSIXlt(date)$wday
