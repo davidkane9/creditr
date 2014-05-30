@@ -305,7 +305,7 @@ result.12 <- upfront(baseDate = "2014-04-21",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-result.13 <- upfront(#baseDate = "2014-04-21",
+result.13 <- upfront(baseDate = "2014-04-22",
                    currency = "USD",
                    TDate = "2014-04-22",
                    tenor = "5Y",
