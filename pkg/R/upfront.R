@@ -107,7 +107,11 @@ upfront <- function(TDate,
     cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)
   }
   else if (is.null(maturity)==FALSE){
-    cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
+    if(maturity=="5Y"){
+      cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = maturity)
+    } else{
+      cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
+    }
   }
   
   if (is.null(valueDate)) valueDate <- cdsDates$valueDate

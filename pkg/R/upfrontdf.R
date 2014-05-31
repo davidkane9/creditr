@@ -25,6 +25,7 @@ upfrontdf <- function(x,
   stopifnot(all(c(date.var, spread.var, coupon.var, maturity.var) %in% names(x)))
   stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
   stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
+  ## stop if the relevant variables are not of the appropriate type 
   stopifnot(is.numeric(notional))
   stopifnot(is.character(currency))
   stopifnot(is.numeric(x[[coupon.var]]))
