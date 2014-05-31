@@ -1,25 +1,22 @@
-#' check rates function that makes sure the dates in data frame x
-#' being used by the upfrontdf function are also present in the
-#' rates data frame being entered into the upfrontdf function (if 
-#' it is not contained in the rates data frame, the upfrontdf
-#' function will be unable to return the upfront value)
-#' match with the rates on markit.com for that specific date.
+#' Function for testing the date entered
+#
+#' @param date date entered
+#' @return TRUE if date is valid, FALSE if date is in future, and 
+#' "Invalid date format. Must be YYYY-MM-DD" if format is wrong
 #' 
-#' @param x data frame which contains rates for a specific date 
-#' @param rates data frame which contains rates and dates
-#' @return vector containing true or false to indicate whether
-#' that specific trade date in X is contained in rates
-
-check.Rates.Dates <- function(x, rates){
-  dates1 <- x$date
-  dates2 <- unique(rates$date)
-  contained <- NULL
-  for (i in 1:length(dates1)){
-    if (dates1[i] %in% dates2){
-      contained = c(contained, TRUE)
-    } else{
-      contained = c(contained, FALSE)
-    }
+checkDate <- function(date){
+  date <- tryCatch(as.Date(date, format = "%Y-%m-%d"),
+                   error = function(e) {
+                       return("Input date invalid")
+                   })
+  today <- Sys.Date()
+  if (is.na(date)){
+      return("Input date invalid")
+  } else if (date > today){
+      return("Trade date should not be in the future")
+  } else if (as.numeric(format(date, "%Y")) < 1994){
+      return("Trade date too early!")
+  } else {
+      return(NA)
   }
-  return(contained)
-}
+} 

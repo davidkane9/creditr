@@ -13,10 +13,10 @@
 #' 
 #' @return vector of upfront values in the same order
 
-upfrontdf <- function(x,
+upfrontdf <- function(x, 
                       rates, 
-                      currency, 
-                      notional,
+                      currency = "USD", 
+                      notional = 1e7,
                       date.var = "date", 
                       spread.var = "spread",
                       coupon.var = "coupon", 
@@ -30,30 +30,55 @@ upfrontdf <- function(x,
   stopifnot(is.numeric(x[[coupon.var]]))
   ## stop if one of the dates in the X data frame does not have a corresponding
   ## interest rate curve in the rates data frame.
-  stopifnot(!(FALSE%in%check.Rates.Dates(X, rates))
+  stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
   
-  rates.dates <- rates[[rate, date%in%x$date]]
+  if(currency=="USD"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y",
+                 "25Y", "30Y")                      
+  } else if(currency=="EUR"){
+    expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
+                 "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")                        
+  } else if(currency=="GBP"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")                        
+  } else if(currency=="JPY"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")                        
+  } else if(currency=="CHF"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
+  } else if(currency=="CAD"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
+  } else if(currency=="AUD"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
+  } else if(currency=="NZD"){
+    expiries = c("1M", "2Y", "3Y", "6Y", "4Y", "5Y",
+                 "7Y", "10Y", "15Y")
+  } else if(currency=="SGD"){
+    expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
+                 "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
+  } else if(currency=="HKD"){
+    expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
+                 "7Y", "10Y", "12Y", "15Y")
+  }
   
-  results <- as.numeric(rep(NA, nrow(x)))
+  results <- NULL
   
-  for(i in 1:nrow(x)){
-    
-    results[i] <- upfront(currency = currency,
+  for(i in 1:nrow(x)){    
+    results <- c(results, 
+                 upfront( currency = currency,
                           TDate = x[i, date.var],
                           maturity = x[i, maturity.var],
-                          rates = c()
-                          dccCDS = "ACT/360",
-                          freqCDS = "Q",
-                          stubCDS = "F",
-                          badDayConvCDS = "F",
-                          calendar = "None",
+                          rates = rates[rates$date == as.Date(x[i, date.var]), c("rates")],
+                          expiries = expiries,
                           parSpread = x[i, spread.var],
                           coupon = x[i, coupon.var],
                           recoveryRate = 0.4,
                           isPriceClean = FALSE,
-                          notional = notional)
-  }
-  
+                          notional = notional))
+  }  
   return(results)
-
 }
