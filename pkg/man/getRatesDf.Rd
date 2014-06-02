@@ -14,7 +14,12 @@ getRatesDf(startDate, endDate, currency = "USD")
 }
 \value{
 dataframe containing the rates from everyday between and
-including the start and end dates
+including the start and end dates. Note: the date in the
+column does not refer to the rates of that day but the date
+on which the CDS is being priced. So the corresponding rate
+is actually the rate of the previous day. Example: if the
+column reads 2014-04-22, the corresponding rates are
+actually for 2014-04-21.
 }
 \description{
 function that takes a data frame of dates and returns a

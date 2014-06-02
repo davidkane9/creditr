@@ -85,7 +85,7 @@ upfront <- function(TDate,
                     startDate = NULL,
                     endDate = NULL,
                     stepinDate = NULL,
-                    tenor = "5Y",
+                    tenor = NULL,
                     maturity = NULL,
                     
                     dccCDS = "ACT/360",
@@ -103,15 +103,11 @@ upfront <- function(TDate,
   
   ratesDate <- as.Date(baseDate)
   
-  if(is.null(maturity)){
-    cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)
+  if(is.null(tenor)){
+    cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
   }
-  else if (is.null(maturity)==FALSE){
-    if(maturity=="5Y"){
-      cdsDates <- getDates(TDate = as.Date(TDate), tenor = "5Y", maturity = NULL)
-    } else{
-      cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
-    }
+  else if(is.null(maturity)){
+    cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)
   }
   
   if (is.null(valueDate)) valueDate <- cdsDates$valueDate

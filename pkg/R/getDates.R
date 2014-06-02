@@ -29,7 +29,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
   else{
     duration <- gsub("[[:digit:]]", "", tenor)  
     if (!(duration %in% c("M", "Y"))) {
-        stop ("Maturity must end with 'M' or 'Y' or enter valid date ")      
+        stop ("Tenor must end with 'M' or 'Y' or enter valid date ")      
     } 
     else{
       length <- as.numeric(gsub("[^[:digit:]]", "", tenor))

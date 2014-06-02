@@ -7,7 +7,7 @@ upfront(TDate, baseDate = TDate, currency = "USD", types = NULL,
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = "5Y",
+  endDate = NULL, stepinDate = NULL, tenor = NULL, maturity = NULL,
   dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread, coupon = 100,
   recoveryRate = 0.4, isPriceClean = FALSE, payAccruedOnDefault = TRUE,
@@ -30,7 +30,7 @@ upfront(TDate, baseDate = TDate, currency = "USD", types = NULL,
   rate of each instrument.}
 
   \item{expiries}{is an array of characters indicating the
-  maturity of each instrument.}
+  tenor of each instrument.}
 
   \item{mmDCC}{is the day count convention of the
   instruments.}
@@ -64,13 +64,15 @@ upfront(TDate, baseDate = TDate, currency = "USD", types = NULL,
   period (and thus the amount of the first premium payment)
   is counted from this date. aka accrual begin date.}
 
-  \item{endDate}{aka maturity date. This is when the
-  contract expires and protection ends. Any default after
-  this date does not trigger a payment.}
+  \item{endDate}{aka tenor date. This is when the contract
+  expires and protection ends. Any default after this date
+  does not trigger a payment.}
 
   \item{stepinDate}{default is T + 1.}
 
-  \item{maturity}{of the CDS contract.}
+  \item{tenor}{of the CDS contract.}
+
+  \item{maturity}{date}
 
   \item{dccCDS}{day count convention of the CDS. Default is
   ACT/360.}
@@ -115,7 +117,7 @@ Calculate dirty upfront payments from conventional spread
 }
 \examples{
 upf <- upfront(baseDate = "2014-01-13", currency = "USD", TDate
-= "2014-01-14", maturity = "5Y", dccCDS = "ACT/360", freqCDS = "Q",
+= "2014-01-14", tenor = "5Y", dccCDS = "ACT/360", freqCDS = "Q",
 stubCDS = "F", badDayConvCDS = "F", calendar = "None", parSpread =
 32, coupon = 100, recoveryRate = 0.4, isPriceClean = FALSE,
 notional = 1e7)
