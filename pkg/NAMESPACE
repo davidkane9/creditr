@@ -1,3 +1,4 @@
+## Not necessary for Linux or Mac, but fails installation if not present for Windows
 ## useDynLib(CDS)
 exportPattern("^[[:alpha:]]+")
 
