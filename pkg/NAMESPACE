@@ -1,5 +1,4 @@
-if (.Platform$OS.type == "windows")
-    useDynLib(CDS)
+useDynLib(CDS)
 
 exportPattern("^[[:alpha:]]+")
 

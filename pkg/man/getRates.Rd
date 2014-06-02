@@ -2,7 +2,7 @@
 \alias{getRates}
 \title{The function returns the deposits and swap rates for the day
 input. The day input should be a weekday. If not, go to the most
-recent weekday.}
+recent previous weekday.}
 \usage{
 getRates(date = Sys.Date(), currency = "USD")
 }

@@ -55,8 +55,8 @@ result.2 <- upfrontdf(X.2, rates.2)
 expect_that(round(result.2, -3), equals(round(truth.2, -3)))
 
 ## test cases with EUR as currency, using CDSs of:
-## 1. ElectroluxAB
-## 2. NorskeIndustrier
+## 1. NorskeIndustrier
+## 2. ElectroluxAB
 
 ## X.3 <- data.frame(date = c("2014-04-15", "2014-04-22"),  
 ##                  maturity = c("2019-06-20", "2019-06-20"), 

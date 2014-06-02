@@ -27,11 +27,11 @@
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
 
 
-\SweaveOpts{echo = TRUE, results = verbatim, keep.source = TRUE}
+
 \bibliographystyle{abbrvnat}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{CDS-concordance}
 \title{A Guide to the CDS Package}
 \author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, and Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}}
 \maketitle
@@ -137,20 +137,19 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to
 construct an object of a class \texttt{CDS}. Below we show an example
 of how to construct a CDS contract in the package.
 
-<<echo = F, results = hide>>=
-options(width = 100)
-@ 
 
-<<>>=
-library(CDS)
-cds1 <- CDS(entityName = "IBM",
-            RED = "49EB20",
-            TDate = "2014-04-15",
-            maturity = "5Y",
-            notional = 1e7,
-            coupon = 100,
-            parSpread = 50)
-@
+\begin{Schunk}
+\begin{Sinput}
+> library(CDS)
+> cds1 <- CDS(entityName = "IBM",
++             RED = "49EB20",
++             TDate = "2014-04-15",
++             maturity = "5Y",
++             notional = 1e7,
++             coupon = 100,
++             parSpread = 50)
+\end{Sinput}
+\end{Schunk}
 
 
 %% In the next draft, we should not have a clunky list of terms.
@@ -222,12 +221,14 @@ to use the package. As shown below, insofar as she inputs the same
 \texttt{TDate}, \texttt{parSpread}, and \texttt{maturity} information,
 the valuation of the contract will be the same.
 
-<<>>=
-cds2 <- CDS(TDate = "2014-04-15",
-            maturity = "5Y",
-            coupon = 100,
-            parSpread = 50)
-@ 
+\begin{Schunk}
+\begin{Sinput}
+> cds2 <- CDS(TDate = "2014-04-15",
++             maturity = "5Y",
++             coupon = 100,
++             parSpread = 50)
+\end{Sinput}
+\end{Schunk}
 
 
 Besides \texttt{parSpread}, a market paricipant can choose to specify
@@ -363,9 +364,19 @@ years. Its spread is set at 50 bps and the coupon, 100 bps. The
 notional amount is \$10 million. A user can call \texttt{summary} on a
 \texttt{cds1} to view essential information on the contract.
 
-<<>>=
-summary(cds1)
-@
+\begin{Schunk}
+\begin{Sinput}
+> summary(cds1)
+\end{Sinput}
+\begin{Soutput}
+Contract Type:                      SNAC   TDate:                     2014-04-15
+Entity Name:                         IBM   RED:                           49EB20
+Currency:                            USD   End Date:                  2019-06-20
+Spread:                               50   Coupon:                           100
+Upfront:                        -256,577   Spread DV01:                    5,086
+IR DV01:                           66.14   Rec Risk (1 pct):               90.03
+\end{Soutput}
+\end{Schunk}
 
 %% Biggest flaw of the current version of the paper is that you 
 %% do not walk the reader through this specific example. Having shown 
@@ -517,19 +528,26 @@ CDS contract when the spread of the contract increases by
 calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is
 \$25385.2.
 
-<<>>=
-cds1.CS10 <- CS10(cds1)
-cds1.CS10
-@ 
+\begin{Schunk}
+\begin{Sinput}
+> cds1.CS10 <- CS10(cds1)
+> cds1.CS10
+\end{Sinput}
+\begin{Soutput}
+[1] 25385.2
+\end{Soutput}
+\end{Schunk}
 
 A market participant can also update the \texttt{CDS} class objects she
 has constructed by calling the \texttt{update} method. It updates a
 \texttt{CDS} class object with a new spread, points upfront or upfront
 by specifiying the relevant input.
 
-<<>>=
-cds3 <- update(cds1, spread = 55)
-@ 
+\begin{Schunk}
+\begin{Sinput}
+> cds3 <- update(cds1, spread = 55)
+\end{Sinput}
+\end{Schunk}
 
 \texttt{cds3} is a new \texttt{CDS} class object with a spread of 55
 bps; all other specifications of the contract are the same as those in
@@ -541,9 +559,41 @@ Besides calling the \texttt{summary} method, one can type in the name
 of the \texttt{CDS} class object in the current \textbf{R} Session and
 obtain a full description of the CDS contract.
 
-<<>>=
-cds3
-@ 
+\begin{Schunk}
+\begin{Sinput}
+> cds3
+\end{Sinput}
+\begin{Soutput}
+CDS Contract 
+Contract Type:                      SNAC   Currency:                         USD
+Entity Name:                         IBM   RED:                           49EB20
+TDate:                        2014-04-15   End Date:                  2019-06-20
+Start Date:                   2014-03-20   Backstop Date:             2014-02-14
+1st Coupon:                   2014-06-20   Pen Coupon:                2019-03-20
+Day Cnt:                         ACT/360   Freq:                               Q
+
+Calculation 
+Value Date:                   2014-04-18   Price:                         102.24
+Spread:                               55   Pts Upfront:                  -0.0224
+Principal:                      -223,692   Spread DV01:                    5,064
+Accrual:                          -7,500   IR DV01:                        59.35
+Upfront:                        -231,192   Rec Risk (1 pct):               88.87
+Default Prob:                      0.047   Default Expo:               6,223,692
+
+Credit curve effective of 2014-04-15 
+ Term     Rate Term     Rate
+   1M 0.001517   7Y 0.022630
+   2M 0.001923   8Y 0.024580
+   3M 0.002287   9Y 0.026265
+   6M 0.003227  10Y 0.027590
+   1Y 0.005465  12Y 0.029715
+   2Y 0.005105  15Y 0.031820
+   3Y 0.009265  20Y 0.033635
+   4Y 0.013470  25Y 0.034420
+   5Y 0.017150  30Y 0.034780
+   6Y 0.020160              
+\end{Soutput}
+\end{Schunk}
 
 There are three parts of the output. The first part ``CDS Contract''
 provides basic information on the contract including ``Contract
@@ -591,24 +641,58 @@ calculation.
 Calling the function \texttt{getRates} also produces the rates used in
 building a curve for CDS valuation. 
 
-<<>>=
-cds3Rates <- getRates(date = "2014-04-15")
-@
+\begin{Schunk}
+\begin{Sinput}
+> cds3Rates <- getRates(date = "2014-04-15")
+\end{Sinput}
+\end{Schunk}
 
 The output consists of two list objects. The first list contains rates
 of various maturities. They are directly obtained from the Markit
 website based on the specifications \citep{rates}.
 
-<<echo = FALSE>>=
-cds3Rates[[1]]
-@ 
+\begin{Schunk}
+\begin{Soutput}
+   expiry matureDate     rate type
+1      1M 2014-05-19 0.001517    M
+2      2M 2014-06-17 0.001923    M
+3      3M 2014-07-17 0.002287    M
+4      6M 2014-10-17 0.003227    M
+5      1Y 2015-04-17 0.005465    M
+6      2Y 2016-04-17 0.005105    S
+7      3Y 2017-04-17 0.009265    S
+8      4Y 2018-04-17  0.01347    S
+9      5Y 2019-04-17  0.01715    S
+10     6Y 2020-04-17  0.02016    S
+11     7Y 2021-04-17  0.02263    S
+12     8Y 2022-04-17  0.02458    S
+13     9Y 2023-04-17 0.026265    S
+14    10Y 2024-04-17  0.02759    S
+15    12Y 2026-04-17 0.029715    S
+16    15Y 2029-04-17  0.03182    S
+17    20Y 2034-04-17 0.033635    S
+18    25Y 2039-04-17  0.03442    S
+19    30Y 2044-04-17  0.03478    S
+\end{Soutput}
+\end{Schunk}
 
 The second list reports the specific day count conventions and payment
 frequencies regarding the interest rate curve used. 
 
-<<echo = FALSE>>=
-t(cds3Rates[[2]])
-@ 
+\begin{Schunk}
+\begin{Soutput}
+                 text        
+effectiveDate    "2014-04-15"
+badDayConvention "M"         
+mmDCC            "ACT/360"   
+mmCalendars      "none"      
+fixedDCC         "30/360"    
+floatDCC         "ACT/360"   
+fixedFreq        "6M"        
+floatFreq        "3M"        
+swapCalendars    "none"      
+\end{Soutput}
+\end{Schunk}
 
 \section{PricingSources}
 \label{sec:PricingSources}
