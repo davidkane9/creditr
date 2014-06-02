@@ -1,4 +1,6 @@
-## useDynLib(CDS)
+if (.Platform$OS.type == "windows")
+    useDynLib(CDS)
+
 exportPattern("^[[:alpha:]]+")
 
 import(methods, Rcpp, RCurl, XML, testthat)
