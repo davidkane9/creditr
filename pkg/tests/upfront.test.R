@@ -7,8 +7,10 @@ library(CDS)
 ## test case to see if our function gives the same result as markit.com
 ## all cases use data from Xerox Corporation for 2014-04-22. 
 
-# actual upfront value from markit.com for Xerox Corporation for 2014-04-22.
-truth.1 <- 18624
+load("upfront.test.RData")
+
+## actual upfront value from markit.com for Xerox Corporation for 2014-04-22.
+## truth.1 <- 18624
 
 result.1 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -24,7 +26,7 @@ result.1 <- upfront(currency = "USD",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-# Note: test case passes when rounded to the nearest tenth
+## Note: test case passes when rounded to the nearest tenth
 expect_that(round(result.1, -1), equals(round(truth.1, -1)))
 
 ## In the following test cases we want to check if the result of changing
@@ -33,7 +35,7 @@ expect_that(round(result.1, -1), equals(round(truth.1, -1)))
 ## test case where spread is equal to the coupon 
 
 ## markit.com value
-truth.2 <- -9444
+## truth.2 <- -9444
 ## calculated value
 result.2 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -56,9 +58,9 @@ expect_that(round(result.2), equals(truth.2))
 
 ## Effect on upfront of an increase in coupon rate (by 100 basis points). 
 
-#actual value
-truth.3 <- -474734
-#calculated value
+## actual value
+## truth.3 <- -474734
+## calculated value
 result.3 <- upfront(baseDate = "2014-04-22",
                     currency = "USD",
                     TDate = "2014-04-22",
@@ -80,9 +82,9 @@ expect_that(round(result.3, -2), equals(round(truth.3, -2)))
 
 ## Effect on upfront of an decrease in coupon rate (by 50 basis points). 
 
-#actual value
-truth.4 <- 265301
-#calculated value
+## actual value
+## truth.4 <- 265301
+## calculated value
 result.4 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     tenor = "5Y",
@@ -104,7 +106,7 @@ expect_that(round(result.4, -2), equals(round(truth.4, -2)))
 ## Effect on upfront of a decrease in trade date (by one week)
 
 ## actual value
-truth.5 <- 20717
+## truth.5 <- 20717
 ## calculated value
 result.5 <- upfront(currency = "USD",
                     TDate = "2014-04-15",
@@ -127,7 +129,7 @@ expect_that(round(result.5, -1), equals(round(truth.5, -1)))
 ## Effect on upfront of an increase in the trade date (by one week)
 
 ## actual value
-truth.6 <- 16581
+## truth.6 <- 16581
 #calculated value
 result.6 <- upfront(currency = "USD",
                     TDate = "2014-04-29",
@@ -149,8 +151,8 @@ expect_that(round(result.6, -1), equals(round(truth.6, -1)))
 
 ## Effect on upfront of a decrease in the maturity date (by one quarter)
 
-#actual value when maturity is 2019-09-20 instead of 2019-06-20
-truth.7 <- 17387
+## actual value when maturity is 2019-09-20 instead of 2019-06-20
+## truth.7 <- 17387
 #calculated value
 result.7 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -171,9 +173,9 @@ expect_that(round(result.7, -1), equals(round(truth.7, -1)))
 
 ## Effect on upfront of an increase in the maturity date (by one quarter)
 
-#actual value
-truth.8 <- 19832
-#calculated value
+## actual value
+## truth.8 <- 19832
+## calculated value
 result.8 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-09-20",
@@ -193,9 +195,9 @@ expect_that(round(result.8, -1), equals(round(truth.8, -1)))
 
 ## Effect on upfront of an increase in spread (by 50 basis points)
 
-#actual value
-truth.9 <- 254969
-#calculated value
+## actual value
+## truth.9 <- 254969
+## calculated value
 result.9 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-06-20",
@@ -216,9 +218,9 @@ expect_that(round(result.9, -1), equals(round(truth.9, -1)))
 
 ## Effect on upfront of an decrease in spread (by 50 basis points)
 
-#actual value
-truth.10 <- -227905
-#calculated value
+## actual value
+## truth.10 <- -227905
+## calculated value
 result.10 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-06-20",
@@ -240,7 +242,7 @@ expect_that(round(result.10, -1), equals(round(truth.10, -1)))
 ## Effect on upfront when trade date = maturity date (September 20, 2013)
 
 ## actual value
-truth.11 <- 0
+## truth.11 <- 0
 ## calculated value
 ## result.11 <- upfront(currency = "USD",
 ##                    TDate = "2013-09-20",
@@ -310,8 +312,8 @@ result.13 <- upfront(baseDate = "2014-04-22",
 ## results are the same, as expected
 expect_that(round(result.12, -1), equals(round(result.13, -1)))
 
-## save(truth.1, truth.2, truth.3, truth.4, truth.5, truth.6, truth.7,
-## truth.8, truth.9, truth.10, truth.11, file="upfront.test.RData")
+## save(truth.1, truth.2, truth.3, truth.4, truth.5, truth.6, truth.7, 
+##     truth.8, truth.9, truth.10, truth.11, file="upfront.test.RData")
 
 ## test case to see an the effect on upfront when trade date = roll over date
 
