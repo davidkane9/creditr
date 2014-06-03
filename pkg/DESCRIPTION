@@ -16,7 +16,8 @@ Depends:
     Rcpp (>= 0.10.6),
     RCurl,
     XML,
-    testthat
+    testthat,
+    knitr
 Description: Tools for pricing credit default swaps.
 License: GPL (>= 2)
 LinkingTo: Rcpp
