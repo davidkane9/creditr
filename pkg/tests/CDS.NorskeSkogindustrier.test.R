@@ -3,7 +3,7 @@
 library(CDS)
 
 ## truth1 <- data.frame(TDate = as.Date("2014-04-15"),
-##                      maturity = "5Y",
+##                      tenor = "5Y",
 ##                      contract ="STEC",
 ##                      parSpread = round(2785.8889, digits=2),
 ##                      upfront = round(4412500, digits=-4),
@@ -26,8 +26,9 @@ library(CDS)
 ## save(truth1, file = "CDS.NorskeSkogindustrier.test.RData")
 
 load("CDS.NorskeSkogindustrier.test.RData")
+
 result1 <- CDS(TDate = "2014-04-15",
-               maturity = "5Y",
+               tenor = "5Y",
                contract ="STEC",
                parSpread = 2785.8889,
                currency = "EUR",
@@ -35,4 +36,6 @@ result1 <- CDS(TDate = "2014-04-15",
                recoveryRate = 0.40,
                isPriceClean = FALSE,
                notional = 1e7)
+
 stopifnot(all.equal(truth1, CDSdf(result1)))
+

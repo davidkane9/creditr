@@ -47,7 +47,8 @@ setOldClass(c("Date"))
 #' and protection ends. Any default after this date does not trigger a
 #' payment.
 #' @slot stepinDate default is T + 1.
-#' @slot maturity of the CDS contract.
+#' @slot maturity date of the CDS contract.
+#' @slot tenor of contract - "5Y", "3Y"
 #' @slot dccCDS day count convention of the CDS. Default is ACT/360.
 #' @slot freqCDS date interval of the CDS contract.
 #' @slot stubCDS is a character indicating the presence of a stub.
@@ -134,7 +135,8 @@ setClass("CDS",
              backstopDate = "Date",
              firstcouponDate = "Date",
              pencouponDate = "Date",
-             maturity = "character",
+             maturity = "Date",
+             tenor = "character",
              dccCDS = "character",
              freqCDS ="character",
              stubCDS ="character",
@@ -186,10 +188,11 @@ setClass("CDS",
              firstcouponDate = character(),
              pencouponDate = character(),
              maturity = character(),
+             tenor = character(),
              dccCDS = character(),
-             freqCDS =character(),
-             stubCDS =character(),
-             badDayConvCDS =character(),
+             freqCDS = character(),
+             stubCDS = character(),
+             badDayConvCDS = character(),
              calendar = character(),
              parSpread = numeric(),
              coupon = numeric(),

@@ -7,7 +7,7 @@
 #' @return a numeric indicating the CS10 of the contract.
 #' @examples
 #' # construct a CDS class object
-#' cds1 <- CDS(TDate = "2014-05-07", parSpread = 50, coupon = 100)
+#' cds1 <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100)
 #'
 #' # use CS10
 #' CS10(cds1)

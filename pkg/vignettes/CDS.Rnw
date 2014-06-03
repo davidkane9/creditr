@@ -146,7 +146,7 @@ library(CDS)
 cds1 <- CDS(entityName = "IBM",
             RED = "49EB20",
             TDate = "2014-04-15",
-            maturity = "5Y",
+            tenor = "5Y",
             notional = 1e7,
             coupon = 100,
             parSpread = 50)
@@ -224,7 +224,7 @@ the valuation of the contract will be the same.
 
 <<>>=
 cds2 <- CDS(TDate = "2014-04-15",
-            maturity = "5Y",
+            tenor = "5Y",
             coupon = 100,
             parSpread = 50)
 @ 
@@ -615,7 +615,6 @@ t(cds3Rates[[2]])
 
 We compared the results from our package with results from Bloomberg and Markit. Interestingly,
 the results from Markit and Bloomberg were not always identical. 
-
 
 \begin{figure}[ht!]
 \centering

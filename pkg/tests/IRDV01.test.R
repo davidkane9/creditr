@@ -1,37 +1,25 @@
-## calcDV01.test.R
+## IRDV01.test case for Xerox corportation on April 22, 2014
 library(CDS)
 
-## truth1 <- IRDV01(TDate = "2014-01-14",
-##                  currency = "USD",
-##                  maturity = "5Y",
-##                  dccCDS = "Act/360",
-##                  freqCDS = "1Q",
-##                  stubCDS = "F",
-##                  badDayConvCDS = "F",
-##                  calendar = "None",
-##                  parSpread = 32,
-##                  coupon = 100,
-##                  recoveryRate = 0.4,
-##                  notional = 1e7)
+
+## actual value 
+## truth1 <- -7.35
 
 ## save(truth1, file = "IRDV01.test.RData")
 
-
-
 load("IRDV01.test.RData")
 
-
-result1 <- IRDV01(TDate = "2014-01-14",
+result1 <- IRDV01(TDate = "2014-04-22",
                   currency = "USD",
-                  maturity = "5Y",
+                  tenor = "5Y",
                   dccCDS = "Act/360",
                   freqCDS = "1Q",
                   stubCDS = "F",
                   badDayConvCDS = "F",
                   calendar = "None",
-                  parSpread = 32,
+                  parSpread = 105.8,
                   coupon = 100,
                   recoveryRate = 0.4,
                   notional = 1e7)
 
-stopifnot(all.equal(result1, truth1))
+stopifnot(all.equal(round(result1, 2), truth1))

@@ -60,7 +60,7 @@
 #'@return returns data frame with relevant data from the CDS function
 CDSdf <- function(object){
   CDSdf <- data.frame(TDate = object@TDate,
-                      maturity = object@maturity,
+                      tenor = object@tenor,
                       contract = object@contract,
                       parSpread = round(object@parSpread, digits=2),
                       upfront = round(object@upfront, digits=-4),
