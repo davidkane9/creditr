@@ -26,7 +26,8 @@ result.1 <- upfront(currency = "USD",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-## Note: test case passes when rounded to the nearest tenth
+## Note: test case passes when rounded to the nearest tenth.
+## Difference of 3.39 (0.02094072 %) from actual value
 expect_that(round(result.1, -1), equals(round(truth.1, -1)))
 
 ## In the following test cases we want to check if the result of changing
@@ -53,6 +54,7 @@ result.2 <- upfront(currency = "USD",
 ## comparing the results with markit data
 ## Note: test case passes when the values are rounded off till the nearest whole
 ## number
+## difference of 0.444 from actual number
 expect_that(round(result.2), equals(truth.2))
 
 
@@ -77,6 +79,7 @@ result.3 <- upfront(baseDate = "2014-04-22",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
+## difference of $14 (0.00294902 %) from actual number
 expect_that(round(result.3, -2), equals(round(truth.3, -2)))
 
 
@@ -100,6 +103,7 @@ result.4 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
+## difference of $8.408048 (0.003169249 %) from actual number
 expect_that(round(result.4, -2), equals(round(truth.4, -2)))
 
 
@@ -123,6 +127,7 @@ result.5 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when rounded to the nearest 10
+## difference of $0.9439034 (0.004556178 %) from actual number
 expect_that(round(result.5, -1), equals(round(truth.5, -1)))
 
 
@@ -244,19 +249,20 @@ expect_that(round(result.10, -1), equals(round(truth.10, -1)))
 ## actual value
 ## truth.11 <- 0
 ## calculated value
-## result.11 <- upfront(currency = "USD",
-##                    TDate = "2013-09-20",
-##                    maturity = "2013-09-20",
-##                    dccCDS = "ACT/360",
-##                    freqCDS = "Q",
-##                    stubCDS = "F",
-##                    badDayConvCDS = "F",
-##                    calendar = "None",
-##                    parSpread = 105.8,
-##                    coupon = 100,
-##                    recoveryRate = 0.4,
-##                    isPriceClean = FALSE,
-##                    notional = 1e7)
+## 
+result.11 <- upfront(currency = "USD",
+                    TDate = "2013-09-19",
+                    maturity = "2013-09-20",
+                    dccCDS = "ACT/360",
+                    freqCDS = "Q",
+                    stubCDS = "F",
+                    badDayConvCDS = "F",
+                    calendar = "None",
+                    parSpread = 105.8,
+                    coupon = 100,
+                    recoveryRate = 0.4,
+                    isPriceClean = FALSE,
+                    notional = 1e7)
 
 # comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 1000

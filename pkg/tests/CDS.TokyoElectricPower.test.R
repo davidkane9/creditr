@@ -35,4 +35,31 @@ result1 <- CDS(TDate = "2014-04-15",
                recoveryRate = 0.35,
                isPriceClean = FALSE,
                notional = 1e7)
-stopifnot(all.equal(truth1, CDSdf(result1)))
+
+## comparing results with true values from Bloomberg
+## The results have to be rounded off as there are marginal differences
+## upfront difference of 9.537495e-04 %
+expect_that(round(truth1$upfront, -1), equals(round(result1@upfront, -1)))
+
+## IRDV01 difference of 3.988772e-02 %
+expect_that(round(truth1$IRDV01, 0), equals(round(result1@IRDV01, 0)))
+
+## Price difference of -5.048511e-05 %
+expect_that(truth1$price, equals(round(result1@price, 2)))
+
+## Principal difference of 9.436605e-04 %
+expect_that(round(truth1$principal, -3), equals(round(result1@principal, -3)))
+
+## Rec Risk 01 difference of -1.436737e+00 %
+expect_that(round(truth1$RecRisk01, -3), equals(round(result1@RecRisk01, -3)))
+
+## defaultexpo difference of -1.155340e-04 %
+expect_that(round(truth1$defaultExpo, -3), equals(round(result1@defaultExpo, -3)))
+
+## spreadDV01 difference of 1.040003e-03 %
+expect_that(round(truth1$spreadDV01), equals(round(result1@spreadDV01)))
+
+## ptsUpfront difference of 6.615757e-04 %
+expect_that(round(truth1$ptsUpfront, 2), equals(round(result1@ptsUpfront, 2)))
+expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))
+expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))

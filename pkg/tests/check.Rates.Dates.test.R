@@ -1,6 +1,6 @@
 ## test case for check.Rates.Dates
 library(CDS)
-##
+
 ## the datframe 'rates' below does not contain the dates for the CDSs in data frane X.
 ## we will therefore expect an error
 
