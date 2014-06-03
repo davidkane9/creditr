@@ -1,4 +1,4 @@
-# useDynLib(CDS)
+useDynLib(CDS)
 
 exportPattern("^[[:alpha:]]+")
 
