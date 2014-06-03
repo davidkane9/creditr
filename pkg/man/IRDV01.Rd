@@ -7,11 +7,11 @@ IRDV01(object = NULL, TDate, baseDate = TDate, currency = "USD",
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = "5Y",
+  endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
   dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread, coupon = 100,
   recoveryRate = 0.4, isPriceClean = FALSE, payAccruedOnDefault = TRUE,
-  notional = 1e+07)
+  notional = 10000000)
 }
 \arguments{
   \item{object}{is the \code{CDS} class object.}
@@ -72,7 +72,9 @@ IRDV01(object = NULL, TDate, baseDate = TDate, currency = "USD",
 
   \item{stepinDate}{default is T + 1.}
 
-  \item{maturity}{of the CDS contract.}
+  \item{maturity}{date of the CDS contract.}
+
+  \item{tenor}{of the CDS contract i.e. "5Y", "3Y" etc.}
 
   \item{dccCDS}{day count convention of the CDS. Default is
   ACT/360.}

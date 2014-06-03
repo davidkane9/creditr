@@ -3,7 +3,7 @@
 library(CDS)
 
 ## truth1 <- data.frame(TDate = as.Date("2014-04-22"),
-##                      maturity = "5Y",
+##                     tenor = "5Y",
 ##                     contract ="SNAC",
 ##                     parSpread = round(105.8, digits=1),
 ##                     upfront = round(18624, digits=-4),
@@ -27,7 +27,7 @@ library(CDS)
 
 load("CDS.Xerox.test.RData")
 result1 <- CDS(TDate = "2014-04-22",
-               maturity = "5Y", 
+               tenor = "5Y", 
                parSpread = 105.8,
                coupon = 100,
                recoveryRate = 0.4,

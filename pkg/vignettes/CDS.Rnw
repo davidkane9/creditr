@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+  \documentclass[a4paper]{article}
 \linespread{1.5}
 \usepackage[round]{natbib}
 \usepackage{amssymb, amsmath}
@@ -31,6 +31,7 @@
 \bibliographystyle{abbrvnat}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 \title{A Guide to the CDS Package}
 \author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, and Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}}
 \maketitle
@@ -145,7 +146,7 @@ library(CDS)
 cds1 <- CDS(entityName = "IBM",
             RED = "49EB20",
             TDate = "2014-04-15",
-            maturity = "5Y",
+            tenor = "5Y",
             notional = 1e7,
             coupon = 100,
             parSpread = 50)
@@ -223,7 +224,7 @@ the valuation of the contract will be the same.
 
 <<>>=
 cds2 <- CDS(TDate = "2014-04-15",
-            maturity = "5Y",
+            tenor = "5Y",
             coupon = 100,
             parSpread = 50)
 @ 
@@ -608,6 +609,39 @@ frequencies regarding the interest rate curve used.
 <<echo = FALSE>>=
 t(cds3Rates[[2]])
 @ 
+
+\section{PricingSources}
+\label{sec:PricingSources}
+
+We compared the results from our package with results from Bloomberg and Markit. Interestingly,
+the results from Markit and Bloomberg were not always identical. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=6in, , height=5in]{MarkitCDSAlcoa.png}
+\caption{CDS figures from Markit.com}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=6in, height=5in]{BloombergCDSAlcoa.png}
+\caption{CDS figures from Bloomberg}
+\end{figure}
+
+The interest rate results were identical, at least till the fourth decimal place.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=3in, height=4in]{MarkitIRJun2.png}
+\caption{Interest Rate figures from Markit.com}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=6in, height=4in]{BloombergIRJun2.png}
+\caption{Interest Rate figures from Bloomberg}
+\end{figure}
+
 
 \section{Conclusion}
 

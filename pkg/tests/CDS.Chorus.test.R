@@ -3,10 +3,10 @@
 library(CDS)
 
 ## truth1 <- data.frame(TDate = as.Date("2014-04-15"),
-##                      maturity = "5Y",
-##                     contract ="SNZC",
-##                      parSpread = round(243.28, digits=2),
-##                     upfront = round(650580, digits=-4),
+##                      tenor = "5Y",
+##                      contract ="SNZC",
+##                      parSpread = round(243.28, digits=4),
+##                      upfront = round(650580, digits=-4),
 ##                      IRDV01 = round(-169.33, digits=0),
 ##                      price = 93.42,
 ##                      principal = round(658080, digits=-3),
@@ -27,7 +27,7 @@ library(CDS)
 
 load("CDS.Chorus.test.RData")
 result1 <- CDS(TDate = "2014-04-15",
-               maturity = "5Y",
+               maturity = "2019-06-20",
                contract ="SNZC",
                parSpread = 243.28,
                currency = "USD",

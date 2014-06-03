@@ -67,7 +67,9 @@ payment.}
 
 \item{\code{stepinDate}}{default is T + 1.}
 
-\item{\code{maturity}}{of the CDS contract.}
+\item{\code{maturity}}{date of the CDS contract.}
+
+\item{\code{tenor}}{of contract - "5Y", "3Y"}
 
 \item{\code{dccCDS}}{day count convention of the CDS. Default is ACT/360.}
 

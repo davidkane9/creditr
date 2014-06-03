@@ -3,8 +3,9 @@
 \title{Function that takes a dataframe of variables on CDSs to return a vector
 of upfront values}
 \usage{
-upfrontdf(x, rates, currency = "USD", notional = 1e+07, date.var = "date",
-  spread.var = "spread", coupon.var = "coupon", maturity.var = "maturity")
+upfrontdf(x, rates, currency = "USD", notional = 10000000,
+  date.var = "date", spread.var = "spread", coupon.var = "coupon",
+  maturity.var = "maturity")
 }
 \arguments{
   \item{x}{dataframe containing variables date, spread,

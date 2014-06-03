@@ -7,10 +7,10 @@ spread(TDate, baseDate = TDate, currency = "USD", types = NULL,
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = "5Y",
+  endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
   dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
   calendar = "None", upfront = NULL, ptsUpfront = NULL, coupon = 100,
-  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 1e+07,
+  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 10000000,
   payAccruedOnDefault = TRUE)
 }
 \arguments{
@@ -70,7 +70,9 @@ spread(TDate, baseDate = TDate, currency = "USD", types = NULL,
 
   \item{stepinDate}{default is T + 1.}
 
-  \item{maturity}{of the CDS contract.}
+  \item{maturity}{date of the CDS contract.}
+
+  \item{tenor}{of the CDS contract}
 
   \item{dccCDS}{day count convention of the CDS. Default is
   ACT/360.}

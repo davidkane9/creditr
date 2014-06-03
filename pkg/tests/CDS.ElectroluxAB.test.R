@@ -2,11 +2,11 @@
 
 library(CDS)
 
-## truth1 <- data.frame(TDate = as.Date("2014-04-22"),
-##                      maturity = "5Y",
+## truth.1 <- data.frame(TDate = as.Date("2014-04-22"),
+##                      tenor = "5Y",
 ##                      contract ="STEC",
 ##                      parSpread = 99,
-##                      upfront = round(-14368, digits=-4),
+##                      upfront = round(-14368, -4),
 ##                      IRDV01 = round(1.29, digits=0),
 ##                      price = 100.05,
 ##                      principal = round(-4924, digits=-3),
@@ -23,11 +23,11 @@ library(CDS)
 ##                      defaultProb = round(0.0827, digits=2),
 ##                      notional = 1e7)
 
-## save(truth1, file = "CDS.ElectroluxAB.test.RData")
+## save(truth.1, file = "CDS.ElectroluxAB.test.RData")
 
 load("CDS.ElectroluxAB.test.RData")
-result1 <- CDS(TDate = "2014-04-22",
-               maturity = "5Y", 
+result.1 <- CDS(TDate = "2014-04-22",
+               tenor = "5Y", 
                parSpread = 99,
                contract ="STEC",
                currency="EUR",
@@ -35,4 +35,4 @@ result1 <- CDS(TDate = "2014-04-22",
                recoveryRate = 0.4,
                isPriceClean = FALSE,
                notional = 1e7)
-stopifnot(all.equal(truth1, CDSdf(result1)))
+stopifnot(all.equal(truth.1, CDSdf(result.1)))

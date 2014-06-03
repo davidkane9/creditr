@@ -9,11 +9,11 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = "5Y",
-  dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
-  calendar = "None", parSpread = NULL, coupon = 100, recoveryRate = 0.4,
-  upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
-  notional = 1e+07, payAccruedOnDefault = TRUE)
+  endDate = NULL, stepinDate = NULL, maturity = Sys.Date(),
+  tenor = NULL, dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F",
+  badDayConvCDS = "F", calendar = "None", parSpread = NULL,
+  coupon = 100, recoveryRate = 0.4, upfront = NULL, ptsUpfront = NULL,
+  isPriceClean = FALSE, notional = 10000000, payAccruedOnDefault = TRUE)
 }
 \arguments{
   \item{contract}{is the contract type, default SNAC}
@@ -81,7 +81,9 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
 
   \item{stepinDate}{default is T + 1.}
 
-  \item{maturity}{of the CDS contract.}
+  \item{maturity}{date of the CDS contract.}
+
+  \item{tenor}{of contract}
 
   \item{dccCDS}{day count convention of the CDS. Default is
   ACT/360.}
@@ -148,6 +150,6 @@ contract.
 \examples{
 # Build a simple CDS class object
 require(CDS)
-cds1 <- CDS(TDate = "2014-05-07", parSpread = 50, coupon = 100)
+cds1 <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100)
 }
 

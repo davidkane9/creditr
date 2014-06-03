@@ -3,7 +3,7 @@
 library(CDS)
 
 ## truth1 <- data.frame(TDate = as.Date("2014-04-15"),
-##                     maturity = "5Y",
+##                     tenor = "5Y",
 ##                     contract ="STEC",
 ##                     parSpread = round(250.00, digits=2),
 ##                     upfront = round(701502, digits=-4),
@@ -27,7 +27,7 @@ library(CDS)
 
 load("CDS.TokyoElectricPower.test.RData")
 result1 <- CDS(TDate = "2014-04-15",
-               maturity = "5Y",
+               tenor = "5Y",
                contract ="STEC",
                parSpread = 250,
                currency = "JPY",

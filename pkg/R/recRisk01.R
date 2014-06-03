@@ -35,7 +35,8 @@
 #' and protection ends. Any default after this date does not trigger a
 #' payment.
 #' @param stepinDate default is T + 1.
-#' @param maturity of the CDS contract.
+#' @param maturity date of the CDS contract.
+#' @param tenor of CDS contract
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
@@ -80,7 +81,8 @@ recRisk01 <- function(object = NULL,
                       startDate = NULL,
                       endDate = NULL,
                       stepinDate = NULL,
-                      maturity = "5Y",
+                      maturity = NULL,
+                      tenor = NULL,
                       
                       dccCDS = "ACT/360",
                       freqCDS = "1Q",

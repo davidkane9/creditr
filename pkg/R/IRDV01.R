@@ -34,7 +34,8 @@
 #' and protection ends. Any default after this date does not trigger a
 #' payment.
 #' @param stepinDate default is T + 1.
-#' @param maturity of the CDS contract.
+#' @param maturity date of the CDS contract.
+#' @param tenor of the CDS contract i.e. "5Y", "3Y" etc.
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
@@ -79,7 +80,8 @@ IRDV01 <- function(object = NULL,
                    startDate = NULL,
                    endDate = NULL,
                    stepinDate = NULL,
-                   maturity = "5Y",
+                   maturity = NULL,
+                   tenor = NULL,
                    
                    dccCDS = "ACT/360",
                    freqCDS = "1Q",
@@ -96,7 +98,14 @@ IRDV01 <- function(object = NULL,
                    ){
 
     ratesDate <- baseDate
-    cdsDates <- getDates(TDate = as.Date(TDate), tenor = maturity, maturity = NULL)
+    
+    if(is.null(maturity)){
+      cdsDates <- getDates(TDate = as.Date(TDate), tenor = tenor, maturity = NULL)
+    }
+    else if(is.null(tenor)){
+      cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+    }
+    
     if (is.null(valueDate)) valueDate <- cdsDates$valueDate
     if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
     if (is.null(startDate)) startDate <- cdsDates$startDate
