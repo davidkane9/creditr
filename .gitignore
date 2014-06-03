@@ -3,3 +3,7 @@
 .Rbuildignore
 *.Rproj*
 .Rproj.user
+pkg/vignettes/*.tex
+pkg/vignettes/*.log
+pkg/vignettes/*.gz
+pkg/vignettes/*.tex
