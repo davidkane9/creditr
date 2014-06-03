@@ -31,38 +31,48 @@ getRates <- function(date = Sys.Date(), currency = "USD"){
 "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
     
     currency <- as.character(currency)
+    ## CDS for TDate will use rates from TDate-1
     date <- as.Date(date) - 1
 
     ## 0 is Sunday, 6 is Saturday
     dateWday <- as.POSIXlt(date)$wday
-    ## change date to the most recent weekday if necessary
+    ## change date to the most recent weekday if necessary i.e. Friday if the day we
+    ## are pricing CDSs is Saturday, Sunday or Monday
     if (dateWday == 0){
         date <- date - 2
     } else if (dateWday == 6) {
         date <- date - 1
     }
     
+    ## convert date to numeric
     dateInt <- as.numeric(format(date, "%Y%m%d"))
+    ## markit rates URL
     ratesURL <- paste("https://www.markit.com/news/InterestRates_",
                       currency, "_", dateInt, ".zip", sep ="")
+    ## XML file from internet, which contains rates data
     xmlParsedIn <- .downloadRates(ratesURL)
-    
+    ## rates data extracted from XML file
     rates <- xmlSApply(xmlParsedIn, function(x) xmlSApply(x, xmlValue))
     
+    ## extracts the 'M' or 'Y' of the expiry and stores it in curevRates
     curveRates <- c(rates$deposits[names(rates$deposits) == "curvepoint"],
                     rates$swaps[names(rates$swaps) == "curvepoint"])
     
-    
+    ## split the numbers from the 'M' and 'Y'
     df <- do.call(rbind, strsplit(curveRates, split = "[MY]", perl = TRUE))
     rownames(df) <- NULL
     df <- cbind(df, "Y")
+    ## attacg M to money month rates
     df[1: (max(which(df[,1] == 1)) - 1), 3] <- "M"
     
+    ## data frame with Interest Rates, maturity, type, expiry
     ratesDf <- data.frame(expiry = paste(df[,1], df[,3], sep = ""),
                           matureDate = substring(df[,2], 0, 10),
                           rate = substring(df[,2], 11),
+    ## if maturity is 1Y, it is of type M                      
                           type = c(rep("M", sum(names(rates$deposits) == "curvepoint")),
                               rep("S", sum(names(rates$swaps) == "curvepoint"))))
+    ## data frame with data on day count etc.
     dccDf <- data.frame(effectiveDate = rates$effectiveasof[[1]],
                         badDayConvention = rates$baddayconvention,
                         mmDCC = rates$deposits[['daycountconvention']],

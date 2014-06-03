@@ -2,7 +2,7 @@
 #' contract.
 #' 
 #' @name CDS
-#'
+#' 
 #' @param contract is the contract type, default SNAC
 #' @param entityName is the name of the reference entity. Optional.
 #' @param RED alphanumeric code assigned to the reference entity. Optional.

@@ -7,7 +7,6 @@
 defaultProb <- function(parSpread, t, recoveryRate = 0.4){
     ## Bloomberg Approximation
     return(1 - exp(-parSpread/1e4*t/(1 - recoveryRate)))
-
 }
 
 
