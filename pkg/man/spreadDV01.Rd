@@ -11,7 +11,7 @@ spreadDV01(object = NULL, TDate, baseDate = TDate, currency = "USD",
   dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread, coupon = 100,
   recoveryRate = 0.4, isPriceClean = FALSE, payAccruedOnDefault = TRUE,
-  notional = 1e+07)
+  notional = 10000000)
 }
 \arguments{
   \item{object}{is the \code{CDS} class object.}

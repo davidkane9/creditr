@@ -3,7 +3,7 @@
 \title{Calculate the default exposure of a CDS contract based on the
 formula: Default Exposure: (1-Recovery Rate)*Notional - Principal}
 \usage{
-defaultExpo(recoveryRate = 0.4, notional = 1e+07, principal)
+defaultExpo(recoveryRate = 0.4, notional = 10000000, principal)
 }
 \arguments{
   \item{recoveryRate}{in decimal. Default is 0.4}

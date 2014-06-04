@@ -10,7 +10,7 @@ spread(TDate, baseDate = TDate, currency = "USD", types = NULL,
   endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
   dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
   calendar = "None", upfront = NULL, ptsUpfront = NULL, coupon = 100,
-  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 1e+07,
+  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 10000000,
   payAccruedOnDefault = TRUE)
 }
 \arguments{

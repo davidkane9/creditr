@@ -11,7 +11,7 @@ upfront(TDate, baseDate = TDate, currency = "USD", types = NULL,
   dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread, coupon = 100,
   recoveryRate = 0.4, isPriceClean = FALSE, payAccruedOnDefault = TRUE,
-  notional = 1e+07)
+  notional = 10000000)
 }
 \arguments{
   \item{TDate}{is when the trade is executed, denoted as
