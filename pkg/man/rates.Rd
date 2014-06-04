@@ -21,13 +21,12 @@ Historic Interest Rates
 Dataframe for a given currency with columns - expiry, date and rates.
 }
 \source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
+From Markit web page.
 }
 \references{
 Writing R Extensions
 }
 \examples{
 data(rates)
-## maybe str(rates) ; plot(rates) ...
 }
 \keyword{datasets}
