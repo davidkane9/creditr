@@ -34,7 +34,7 @@ upfrontdf(x, rates, currency = "USD", notional = 1e+07, date.var = "date",
   default is "maturity"/}
 }
 \value{
-vector of upfront values in the same order
+vector of upfront values (with accrual) in the same order
 }
 \description{
 Function that takes a dataframe of variables on CDSs to

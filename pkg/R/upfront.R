@@ -103,6 +103,8 @@ upfront <- function(TDate,
   
   ratesDate <- as.Date(baseDate)
   
+  ## if maturity date is not provided, we use tenor to obtain dates through getDates,
+  ## and vice versa.
   if(is.null(tenor)){
     cdsDates <- getDates(TDate = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
   }
@@ -110,12 +112,14 @@ upfront <- function(TDate,
     cdsDates <- getDates(TDate = as.Date(TDate), maturity = NULL, tenor = tenor)
   }
   
+  ## if these dates are not entered, they are extracted using getDates
   if (is.null(valueDate)) valueDate <- cdsDates$valueDate
   if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
   if (is.null(startDate)) startDate <- cdsDates$startDate
   if (is.null(endDate)) endDate <- cdsDates$endDate
   if (is.null(stepinDate)) stepinDate <- cdsDates$stepinDate
   
+  ## separate an input date into year, month, and day
   baseDate <- .separateYMD(baseDate)
   today <- .separateYMD(TDate)
   valueDate <- .separateYMD(valueDate)
@@ -124,15 +128,17 @@ upfront <- function(TDate,
   endDate <- .separateYMD(endDate)
   stepinDate <- .separateYMD(stepinDate)
   
+  ## stop if number of rates != number of expiries != length of types
   stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
+  ## if any of these three are null, we extract them using getRates
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
-    
+    ## interest rates contained in list 1 of ratesInfo
     ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
     types = paste(as.character(ratesInfo[[1]]$type), collapse = "")
     rates = as.numeric(as.character(ratesInfo[[1]]$rate))
     expiries = as.character(ratesInfo[[1]]$expiry)
     mmDCC = as.character(ratesInfo[[2]]$mmDCC)
-    
+    ## date convention standards etc. contained in list 2 of ratesInfo
     fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq)
     floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq)
     fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC)
@@ -141,6 +147,7 @@ upfront <- function(TDate,
     holidays = as.character(ratesInfo[[2]]$swapCalendars)
   }
   
+  ## pass arguments to C code to calculate upfront
   .Call('calcUpfrontTest',
         baseDate,
         types,

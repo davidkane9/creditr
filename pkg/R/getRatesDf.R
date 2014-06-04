@@ -22,7 +22,8 @@ getRatesDf <- function(startDate, endDate, currency="USD"){
   # year = 1900 + as.POSIXlt(date)$year 
   while(endDate>startDate){
     getRates <- getRates(date = endDate, currency=currency)[[1]]
-    rates <- as.numeric(levels(getRates$rate))
+    ## rates <- as.numeric(levels(getRates$rate))
+    rates <- as.numeric(as.character(getRates$rate))
     expiry <- getRates$expiry
     date <- rep(endDate, length(rates))
     thisCurrency <- rep(currency, length(rates))

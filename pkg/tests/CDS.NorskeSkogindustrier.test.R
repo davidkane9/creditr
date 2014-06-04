@@ -39,7 +39,7 @@ result1 <- CDS(TDate = "2014-04-15",
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
-## upfront difference of 0.0036618077 %
+## upfront difference of $162 or 0.0036618077 %
 expect_that(round(truth1$upfront, -3), equals(round(result1@upfront, -3)))
 
 ## IRDV01 difference of 0.0389509648 %
