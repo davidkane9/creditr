@@ -77,7 +77,19 @@ rates.3 <- getRatesDf("2014-04-14",
 truth.3 <- c(4412500, -14368)
 
 ## vector with 2 upfront values calculated using the upfrontdf() function
-result.3 <- upfrontdf(x.3, rates.3)
+result.3 <- upfrontdf(x.3, rates.3, currency="EUR")
 
 ## Note: test case passing only when rounded off to the nearest 100000
 expect_that(round(result.3, -5), equals(round(truth.3, -5)))
+
+## testing data frame with 10000 names
+x.4 <- data.frame(date = c(rep("2014-04-15", 5000), rep("2014-04-22", 5000)),  
+                  maturity = c(rep("2019-06-20", 5000), rep("2019-06-20", 5000)), 
+                  coupon = c(rep(500, 5000), rep(100, 5000)), 
+                  spread = c(rep(2785.8889, 5000), rep(99, 5000)))
+
+## x.4 <- read.delim(file.choose())
+## x = Sys.time()
+result.4 <- upfrontdf(x.4, rates.3, currency="EUR")
+## x-Sys.time()
+## took 34.14732 seconds to produce these results

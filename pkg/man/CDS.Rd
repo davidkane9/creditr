@@ -13,7 +13,7 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
   tenor = NULL, dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread = NULL,
   coupon = 100, recoveryRate = 0.4, upfront = NULL, ptsUpfront = NULL,
-  isPriceClean = FALSE, notional = 10000000, payAccruedOnDefault = TRUE)
+  isPriceClean = FALSE, notional = 1e+07, payAccruedOnDefault = TRUE)
 }
 \arguments{
   \item{contract}{is the contract type, default SNAC}
