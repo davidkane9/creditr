@@ -29,13 +29,3 @@ expect_that(CDS(TDate = "2014-01-14",
                 recoveryRate = 0.4,
                 isPriceClean = FALSE,
                 notional = 1e7), throws_error())
-
-## if both maturity date and tenor are provided, function must return an error
-expect_that(CDS(TDate = "2014-01-14",
-                tenor = "5Y",
-                maturity = "2019-06-20",
-                parSpread = 32,
-                coupon = 100,
-                recoveryRate = 0.4,
-                isPriceClean = FALSE,
-                notional = 1e7), throws_error())

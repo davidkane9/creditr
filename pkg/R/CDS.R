@@ -151,6 +151,10 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   else if(is.null(tenor)){
     cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
   }
+  ## if both are entered, we arbitrarily use one of them
+  else if(!(is.null(tenor) & is.null(maturity))==TRUE){
+    cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+  }
 
   
   ## if these dates are not entered, we extract that from cdsdates

@@ -49,11 +49,12 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/360" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="EUR"){
     expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
                  "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
                  "30Y")
-    types = "MMMMMMSSSSSSSSSSSSS"
+    types = "MMMMMSSSSSSSSSSSSSS"
     mmDCC = "ACT/360" 
     fixedSwapFreq = "1Y" 
     floatSwapFreq = "6M"
@@ -61,6 +62,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/360" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="GBP"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
@@ -73,6 +75,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="JPY"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
@@ -84,6 +87,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/360" 
     badDayConvZC = "M" 
     holidays = "TYO"
+    calendar = "TYO"
   } else if(currency=="CHF"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
@@ -96,6 +100,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/360" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="CAD"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
@@ -107,6 +112,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="AUD"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
@@ -118,6 +124,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="NZD"){
     expiries = c("1M", "2Y", "3Y", "6Y", "4Y", "5Y",
                  "7Y", "10Y", "15Y")
@@ -129,6 +136,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="SGD"){
     expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
                  "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
@@ -140,6 +148,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   } else if(currency=="HKD"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                  "7Y", "10Y", "12Y", "15Y")
@@ -151,6 +160,7 @@ upfrontdf <- function(x,
     floatSwapDCC = "ACT/365" 
     badDayConvZC = "M" 
     holidays = "None"
+    calendar = "None"
   }
   
   results <- NULL
@@ -174,6 +184,7 @@ upfrontdf <- function(x,
                          coupon = x[i, coupon.var],
                          recoveryRate = 0.4,
                          isPriceClean = FALSE,
+                         calendar = calendar,
                          notional = notional))
   }  
   return(results)
