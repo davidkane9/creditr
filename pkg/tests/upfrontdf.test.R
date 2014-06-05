@@ -88,7 +88,7 @@ x.4 <- data.frame(date = c(rep("2014-04-15", 5000), rep("2014-04-22", 5000)),
                   coupon = c(rep(500, 5000), rep(100, 5000)), 
                   spread = c(rep(2785.8889, 5000), rep(99, 5000)))
 
-## x.4 <- read.delim(file.choose())
+## 
 ## x = Sys.time()
 result.4 <- upfrontdf(x.4, rates.3, currency="EUR")
 ## x-Sys.time()
