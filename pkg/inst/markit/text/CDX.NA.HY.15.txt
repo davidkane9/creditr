@@ -1,0 +1,143 @@
+                                                                               CDX.NA.HY.15
+                                                                               Effective Date: 20th September 2010
+                                                                               Version 1. Annex Date: 27th September 2010
+                                                                               www.markit.com
+
+                                                                               Reference Obligation
+                          Reference Entity     Sector      CLIP      Coupon       Maturity     CUSIP / ISIN Weighting
+ 1   ADVANCED MICRO DEVICES, INC.               B,HB    007G93AC6     6.000%     1-May-15        007903AL1   1.000%
+ 2   AK Steel Corporation                        BB     0A169AAC6     7.625%     15-May-20    US001546AL46   1.000%
+ 3   Ally Financial Inc.                          B     0C205PAC5     6.750%      1-Dec-14       370425SL5   1.000%
+ 4   American Axle & Manufacturing, Inc.         HB     UU2679AA7     5.250%     11-Feb-14      02406PAE0    1.000%
+ 5   Amkor Technology, Inc.                      BB     0D47B7AC9     9.250%      1-Jun-16      031652AW0    1.000%
+ 6   AMR Corporation                             HB                   9.000%     15-Sep-16      001765AC0    1.000%
+ 7   ARAMARK Corporation                          B     03BD7HAC3     8.500%      1-Feb-15      038521AD2    1.000%
+ 8   ArvinMeritor, Inc.                          HB      0E7688AB0    8.125%     15-Sep-15      043353AC5    1.000%
+ 9   Avis Budget Car Rental, LLC                B,HB    058AEMAB1     7.750%     15-May-16       053773AF4   1.000%
+10   Beazer Homes USA, Inc.                      HB     07CABWAA5     6.500%     15-Nov-13      07556QAJ4    1.000%
+11   Belo Corp.                                   B      0I85ALAB0    7.750%      1-Jun-27      080555AE5    1.000%
+12   BOMBARDIER INC.                             BB     09GEC6AC1     8.000%     15-Nov-14      C10602AK3    1.000%
+13   Boyd Gaming Corporation                     HB      1B3634AA5    6.750%     15-Apr-14      103304BD2    1.000%
+14   BRUNSWICK CORPORATION                               1C8747AB6    7.125%      1-Aug-27      117043AG4    1.000%
+15   Chesapeake Energy Corporation              BB                    6.625%     15-Aug-20    US165167CF27   1.000%
+16   Clear Channel Communications, Inc.         HB      19C952AC2     6.875%     15-Jun-18      184502AD4    1.000%
+17   CMS Energy Corporation                     BB      137DHFAC0     6.875%     15-Dec-15       125896AZ3   1.000%
+18   Community Health Systems, Inc.              B      2C39CCAB6     8.875%      15-Jul-15     12543DAF7    1.000%
+19   Constellation Brands, Inc.                 BB      2D139VAB1     7.250%      1-Sep-16      21036PAD0    1.000%
+20   Cooper Tire & Rubber Company                B      237EB4AC8     7.625%     15-Mar-27      216831AB3    1.000%
+21   CSC Holdings, LLC                          BB      24BD6EAA1     7.625%      15-Jul-18     126304AK0    1.000%
+22   Dean Foods Company                          B      2G6597AA9     7.000%      1-Jun-16      242370AA2    1.000%
+23   Dillard's, Inc.                             B      2H946DAB5     7.130%      1-Aug-18      254067AH4    1.000%
+24   DISH DBS Corporation                       BB      279AFUAA7     6.625%      1-Oct-14      27876GAY4    1.000%
+25   Dole Food Company, Inc.                     B      27BC65AC1     7.875%      15-Jul-13     256605AD8    1.000%
+26   Domtar Corporation                         BB      27CCAEAC6     7.125%     15-Aug-15      257559AC8    1.000%
+27   Dynegy Holdings Inc.                        B      28E97RAC4     8.375%     1-May-16        26816LAT9   1.000%
+28   Eastman Kodak Company                              29EBA7AC7     7.250%     15-Nov-13      277461BD0    1.000%
+29   El Paso Corporation                        BB      2AB69RAE2     6.875%     15-Jun-14      28336LBM0    1.000%
+30   Energy Future Holdings Corp.               HB      2BB8E8AD4    10.875%      1-Nov-17      292680AC9    1.000%
+31   First Data Corporation                              34AIF9AD5    9.875%     24-Sep-15      319963AP9    1.000%
+32   FLEXTRONICS INTERNATIONAL LTD.             BB                    6.250%     15-Nov-14    US33938EAN76   1.000%
+33   Ford Motor Company                        B,HB     3H98A7AB3     6.500%      1-Aug-18      345370BX7    1.000%
+34   FOREST OIL CORPORATION                      B      37A69AAC0     7.250%     15-Jun-19       346091AZ4   1.000%
+35   Freescale Semiconductor, Inc.              HB      38BEFTAC2     8.875%     15-Dec-14      35687MAM9    1.000%
+36   FRONTIER COMMUNICATIONS CORPORATION        BB      38E96GAC8     9.000%     15-Aug-31       17453BAJ0   1.000%
+37   Gannett Co., Inc.                           B       39AB97AA6    6.375%      1-Apr-12      364725AC5    1.000%
+38   GEORGIA-PACIFIC LLC                        BB      3AA64GAA9     7.750%     15-Nov-29      373298BR8    1.000%
+39   Harrah's Operating Company, Inc.           HB       4F498HAF1    5.625%      1-Jun-15      413627AU4    1.000%
+40   HCA Inc.                                           4E452AAC0     6.375%     15-Jan-15      404119AP4    1.000%
+41   Host Hotels & Resorts, L.P.                BB       4I517NAA0    7.125%      1-Nov-13      44108EAS7    1.000%
+42   INTELSAT S.A.                                      LQ64AMAA4     6.500%      1-Nov-13      45820EAH5    1.000%
+43   International Lease Finance Corporation    BB      49EGB9AC9     5.875%     1-May-13       459745FG5    1.000%
+44   Iron Mountain Incorporated                  B      4A8ACTAA5     7.750%     15-Jan-15      462846AB2    1.000%
+45   iStar Financial Inc.                       HB       4J534VAB7    5.950%     15-Oct-13      45031UAZ4    1.000%
+46   K. Hovnanian Enterprises, Inc.             HB       4I66CGAB5    8.625%     15-Jan-17      442488BA9    1.000%
+47   KB Home                                     B      4CECCQAF5     6.250%     15-Jun-15      48666KAM1    1.000%
+48   Lennar Corporation                         BB      5H865CAC9     6.500%     15-Apr-16      526057AW4    1.000%
+49   Level 3 Communications, Inc.               HB      5H99BWAG2     9.000%     15-Oct-13      52729NBB5    1.000%
+50   Levi Strauss & Co.                         BB      579A9XAC1     8.875%      1-Apr-16      52736RAV4    1.000%
+51   Liberty Media LLC                          BB       5I378GAC8    3.125%     30-Mar-23       530718AF2   1.000%
+52   Limited Brands, Inc.                       BB      8GB68RAC8     6.900%      15-Jul-17     532716AM9    1.000%
+53   Liz Claiborne, Inc.                        HB      58CC52AB5     5.000%       8-Jul-13     U5391PAA5    1.000%
+54   Louisiana-Pacific Corporation              BB                   13.000%     15-Mar-17    US546347AE57   1.000%
+55   Macy's, Inc.                               BB      5AB77VAE0     7.450%      15-Jul-17     55616XAA5    1.000%
+56   Massey Energy Company                       B      5CD823AD1     6.875%     15-Dec-13      576203AH6    1.000%
+                                                                                                                            page 1 of 2
+                                                                                                                                                                                                 CDX.NA.HY.15
+                                                                                                                                                                                                 Effective Date: 20th September 2010
+                                                                                                                                                                                                 Version 1. Annex Date: 27th September 2010
+                                                                                                                                                                                                  www.markit.com
+
+
+                                                                                                                                                                                                  Reference Obligation
+                                         Reference Entity                                                           Sector                      CLIP                         Coupon                  Maturity     CUSIP / ISIN Weighting
+ 57   MBIA Inc.                                                                                                       BB                     5A788EAB6                        6.625%                 1-Oct-28      55262CAF7    1.000%
+ 58   MEDIACOM LLC                                                                                                     B                    UZDA8DAC1                         9.125%                15-Aug-19    US58445MAM47   1.000%
+ 59   MGM Resorts International                                                                                       HB                     5A831EAA5                        5.875%                27-Feb-14      552953AG6    1.000%
+ 60   Nalco Company                                                                                                   BB                    68BHDAAC5                         8.250%                15-May-17      629855AN7    1.000%
+ 61   NOVA CHEMICALS CORPORATION                                                                                       B                    6CFGE3AC9                         3.125%                15-Nov-13      66977WAH2    1.000%
+ 62   NRG Energy, Inc.                                                                                                BB                    68BCAEAB3                         7.250%                 1-Feb-14       629377AT9   1.000%
+ 63   Owens-Illinois, Inc.                                                                                            BB                    6F97DEAC6                         7.800%                15-May-18       690768BF2   1.000%
+ 64   PolyOne Corporation                                                                                            B,HB                   7A48GYAC2                         7.500%                15-Dec-15      37246WAC9    1.000%
+ 65   Pride International, Inc.                                                                                       BB                    7B5AC5AC1                         8.500%                15-Jun-19      74153QAG7    1.000%
+ 66   Qwest Capital Funding, Inc.                                                                                      B                    7BDA4HAC5                         7.750%                15-Feb-31       74913EAJ9   1.000%
+ 67   Radian Group Inc.                                                                                               HB                     7C5259AB9                        5.375%                15-Jun-15       750236AJ0   1.000%
+ 68   RadioShack Corporation                                                                                                                 7C547BAA0                        7.375%                15-May-11      750438AB9    1.000%
+ 69   Realogy Corporation                                                                                             HB                     7CB65JAB1                       10.500%                15-Apr-14      75605EAT7    1.000%
+ 70   Residential Capital, LLC                                                                                        HB                     7D725JAB3                        6.500%                17-Apr-13      76113BAR0    1.000%
+ 71   Rite Aid Corporation                                                                                            HB                    7DDEC9AB4                         7.700%                15-Feb-27       767754AJ3   1.000%
+ 72   ROYAL CARIBBEAN CRUISES LTD.                                                                                    BB                     7F8168AD8                        6.875%                 1-Dec-13      780153AP7    1.000%
+ 73   RRI Energy, Inc.                                                                                                 B                    7BDG8YAB3                         7.875%                15-Jun-17      74971XAC1    1.000%
+ 74   Sabre Holdings Corporation                                                                                      HB                    7FDE95AB1                         6.350%                15-Mar-16      785905AB6    1.000%
+ 75   Saks Incorporated                                                                                                B                    7GCAE3AC5                         2.000%                15-Mar-24      79377WAK4    1.000%
+ 76   Sanmina-SCI Corporation                                                                                        B,HB                    8I0997AC3                        8.125%                 1-Mar-16      800907AK3    1.000%
+ 77   Smithfield Foods, Inc.                                                                                                                8B546CAC6                         7.750%                  1-Jul-17     832248AQ1    1.000%
+ 78   SPRINT NEXTEL CORPORATION                                                                                        BB                   8D728NAC8                         6.000%                 1-Dec-16      852061AD2    1.000%
+ 79   Standard Pacific Corp.                                                                                            B                   U2D947AD2                         7.000%                15-Aug-15      85375CAT8    1.000%
+ 80   Starwood Hotels & Resorts Worldwide, Inc.                                                                        BB                   8DAE9AAC5                         6.750%                15-May-18      85590AAL8    1.000%
+ 81   SunGard Data Systems Inc.                                                                                         B                   8EDAAMAC0                        10.625%                15-May-15    US867363AN30   1.000%
+ 82   SUPERVALU INC.                                                                                                                        8EED89AD3                         8.000%                1-May-16        868536AT0   1.000%
+ 83   Temple-Inland Inc.                                                                                               BB                   8FGHEEAC3                         6.625%                15-Jan-18       879868AL1   1.000%
+ 84   TENET HEALTHCARE CORPORATION                                                                                                           8G836JAG0                        6.875%                15-Nov-31      88033GAV2    1.000%
+ 85   Tesoro Corporation                                                                                             BB                      8G976FAF0                        6.500%                 1-Jun-17       881609AT8   1.000%
+ 86   Textron Financial Corporation                                                                                  BB                      8GB4AIAD8                        5.125%                15-Aug-14      88319QG56    1.000%
+ 87   The AES Corporation                                                                                            BB                      0A143HAB4                        7.750%                 1-Mar-14      00130HBC8    1.000%
+ 88   The Goodyear Tire & Rubber Company                                                                              B                     3BA7A5AD6                         9.000%                  1-Jul-15     382550AU5    1.000%
+ 89   The Hertz Corporation                                                                                          BB                      46A844AC6                        8.875%                 1-Jan-14       428040BZ1   1.000%
+ 90   THE McCLATCHY COMPANY                                                                                          HB                     5CGDCHAB9                         5.750%                 1-Sep-17      499040AP8    1.000%
+ 91   The Neiman Marcus Group, Inc.                                                                                  HB                      6A4224AE3                        9.000%                15-Oct-15      640204AG8    1.000%
+ 92   THE NEW YORK TIMES COMPANY                                                                                      B                      6B5122AB2                        5.000%                15-Mar-15      650111AE7    1.000%
+ 93   TOYS "R" US, INC.                                                                                              HB                     8HB568AD0                         7.375%                15-Oct-18       892335AL4   1.000%
+ 94   TRW Automotive Inc.                                                                                           HB,BB                   8F98AQAC8                         7.250%                15-Mar-17      87264MAB5    1.000%
+ 95   Tyson Foods, Inc.                                                                                              BB                      9J26DDAE2                        6.600%                 1-Apr-16      902494AN3    1.000%
+ 96   Unisys Corporation                                                                                            B,HB                     999B35AE4                       12.500%                15-Jan-16       909214BL1   1.000%
+ 97   United Rentals (North America), Inc.                                                                            B                     U3A24CAF2                        10.875%                15-Jun-16      911365AV6    1.000%
+ 98   UNIVISION COMMUNICATIONS INC.                                                                                  HB                      9A5D96AB9                        9.750%                15-Mar-15      904201AA8    1.000%
+ 99   Weyerhaeuser Company                                                                                                                   9F837CAB6                        7.125%                 15-Jul-23     962166AS3    1.000%
+100   Windstream Corporation                                                                                           BB                   9GAB9XAB5                         7.875%                 1-Nov-17      97381WAJ3    1.000%
+
+
+      This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you may not (i)
+      extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the annex or the data contained herein in any other manner, including but not limited
+      to in furtherance of other trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group Limited on +44 (0)207 260 2345 or info@Markit.com. The senders and recipients of this data acknowledge and agree that
+      no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+
+
+
+      "Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in any respect in
+      the development or collection of the Services or any data or information contained therein)."
+
+
+      NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM THE USE OF
+      THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+      PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER PERSON OR ENTITY.
+
+
+      NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR OMISSIONS,
+      REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP LIMITED BE LIABLE FOR
+      ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF WHETHER SUCH DAMAGES COULD HAVE
+      BEEN FORESEEN OR PREVENTED.
+
+
+
+                                                                                                                                                                                                                                                                               page 2 of 2
+
