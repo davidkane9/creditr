@@ -1,0 +1,588 @@
+                                                                              SCHEDULE 1
+
+
+                                                          iTraxx® Europe Series 17                          Fixed Rate
+                                                          Roll Date: 20th March 2012                        Where Scheduled Termination Date is 20th June 2015           1.00%
+                                                          Version 1, Annex Date 19th March 2012             Where Scheduled Termination Date is 20th June 2017           1.00%
+                                                          www.markit.com                                    Where Scheduled Termination Date is 20th June 2019           1.00%
+                                                                                                            Where Scheduled Termination Date is 20th June 2022           1.00%
+                                                                      Reference Obligation
+                          Reference Entity                      ISIN          Maturity            Coupon          Sector                   Weighting                 CLIP
+Adecco S.A.                                                XS0425722922     28-Apr-2014            7.625%    Autos & Industrials            0.80%                 006DC9AE3
+Aktiebolaget Volvo                                         XS0302948319     31-May-2017            5.000%    Autos & Industrials            0.80%                9BAGDBAC6
+Akzo Nobel N.V.                                            XS0404765710     31-Jan-2014            7.750%    Autos & Industrials            0.80%                 0B11AIAC6
+ALSTOM                                                     FR0010801761     23-Sep-2014            4.000%    Autos & Industrials            0.80%                 0C3368AC5
+Anglo American plc                                         XS0358158052     17-Apr-2015            5.875%    Autos & Industrials            0.80%                037CDUAD2
+ATLANTIA S.P.A.                                            XS0193947271     09-Jun-2014            5.000%    Autos & Industrials            0.80%                 TT594FAA2
+BAE SYSTEMS PLC                                            GB0001272664     24-Nov-2014           10.750%    Autos & Industrials            0.80%                 05A75UAC5
+BASF SE                                                    DE000A0JRFB0     29-Jun-2016            4.500%    Autos & Industrials            0.80%                DD6837AC0
+Bayer Aktiengesellschaft                                   XS0255605239     23-May-2018            5.625%    Autos & Industrials            0.80%                 0H99A3AD9
+Bayerische Motoren Werke Aktiengesellschaft                XS0173501379     06-Aug-2018            5.000%    Autos & Industrials            0.80%                 0H99B7AC1
+BOUYGUES                                                   FR0010326975     24-May-2016            4.750%    Autos & Industrials            0.80%                FG25BNAB9
+COMPAGNIE DE SAINT-GOBAIN                                  FR0010094623     25-Apr-2014            5.000%    Autos & Industrials            0.80%                FG872CAB3
+Compagnie Financiere Michelin                              XS0424686573     24-Apr-2014            8.625%    Autos & Industrials            0.80%                 2C47IGAC2
+Daimler AG                                                 US233835AW75     15-Nov-2013            6.500%    Autos & Industrials            0.80%                DE7C9QAA4
+European Aeronautic Defence and Space Company EADS N.V.    XS0176914579     25-Sep-2018            5.500%    Autos & Industrials            0.80%                 FG8825AB6
+Glencore International AG                                  XS0270776411     11-Oct-2013            5.250%    Autos & Industrials            0.80%                 HK5754AC8
+Holcim Ltd                                                 XS0207037507     09-Dec-2014            4.375%    Autos & Industrials            0.80%                 477BB5AD8
+Koninklijke DSM N.V.                                       XS0235117891     10-Nov-2015            4.000%    Autos & Industrials            0.80%                NS517VAB7
+LANXESS Aktiengesellschaft                                 XS0423036663     09-Apr-2014            7.750%    Autos & Industrials            0.80%                 DI535DAB8
+Linde Aktiengesellschaft                                   XS0297700006     24-Apr-2023            5.875%    Autos & Industrials            0.80%                 DI537CAB8
+PostNL N.V.                                                NL0000117190     01-Jun-2015            3.875%    Autos & Industrials            0.80%                NU923FAA7
+RENTOKIL INITIAL PLC                                       XS0249085852     31-Mar-2016            5.750%    Autos & Industrials            0.80%                GNC59OAA5
+ROLLS-ROYCE PLC                                            XS0112487482     14-Jun-2016            7.375%    Autos & Industrials            0.80%                7ECCF9AD0
+SANOFI                                                     CH0035703070     21-Dec-2015            3.375%    Autos & Industrials            0.80%                 F8128FAB6
+Siemens Aktiengesellschaft                                 XS0369461644     11-Jun-2018            5.625%    Autos & Industrials            0.80%                8A87AGAC4
+Solvay                                                     BE0374557404     27-Jun-2018            4.625%    Autos & Industrials            0.80%                 8B787AAA2
+VALEO                                                      FR0011043124     11-May-2018            4.875%    Autos & Industrials            0.80%                9AAA47AD8
+VINCI                                                      FR0011164888     20-Feb-2017            4.125%    Autos & Industrials            0.80%                FKDFG6AC6
+VOLKSWAGEN AKTIENGESELLSCHAFT                              XS0168881760     22-May-2018            5.375%    Autos & Industrials            0.80%                9BAEC8AD7
+XSTRATA PLC                                                XS0305188533     13-Jun-2017            5.250%    Autos & Industrials            0.80%                GPHA8ZAC6
+Aktiebolaget Electrolux                                    XS0356539881     07-Apr-2016             Float       Consumers                   0.80%                0B11AHAD6
+BRITISH AMERICAN TOBACCO p.l.c.                            XS0352065584     12-Mar-2015            5.875%       Consumers                   0.80%                1C148CAD1
+CADBURY HOLDINGS LIMITED                                   USU12283AB03     01-Oct-2013            5.125%       Consumers                   0.80%                 GH8B7IAA5
+Carrefour                                                  FR0010394478     02-Nov-2016            4.375%       Consumers                   0.80%                FG4CAMAC3
+CASINO GUICHARD-PERRACHON                                  FR0010455626     10-Apr-2014            4.875%       Consumers                   0.80%                FG554OAC0
+COMPASS GROUP PLC                                          XS0100559037     08-Dec-2014            7.000%       Consumers                   0.80%                 2C48D6AB9
+DANONE                                                     FR0010612713     06-May-2015            5.500%       Consumers                   0.80%                 2F999ZAC4
+DIAGEO PLC                                                 US25243YAJ82     30-Sep-2016            5.500%       Consumers                   0.80%                 2H767TAC4
+EXPERIAN FINANCE PLC                                       XS0162820228     12-Dec-2013            5.625%       Consumers                   0.80%                GJ57CTAC9
+GROUPE AUCHAN                                              FR0010746008     15-Apr-2019            6.000%       Consumers                   0.80%                 FF4D97AC8
+Henkel AG & Co. KGaA                                       DE0006641962     10-Jun-2013            4.250%       Consumers                   0.80%                 467A5UAA0
+IMPERIAL TOBACCO GROUP PLC                                 XS0180407602     04-Dec-2018            6.250%       Consumers                   0.80%                 4J8456AC4
+JTI (UK) FINANCE PLC                                       XS0269190533     02-Apr-2014            4.500%       Consumers                   0.80%                 GL731FAB5
+KINGFISHER PLC                                             XS0178322474     15-Dec-2014            5.625%       Consumers                   0.80%                4DEC96AC8
+Koninklijke Ahold N.V.                                     US008685AB51     01-May-2029            6.875%       Consumers                   0.80%                 5F04ADAF1
+Koninklijke Philips Electronics N.V.                       US500472AB13     11-Mar-2018            5.750%       Consumers                   0.80%                 5F04B9AD4
+LVMH MOET HENNESSY LOUIS VUITTON                           FR0010754663     12-May-2014            4.375%       Consumers                   0.80%                 5F2685AE7
+MARKS AND SPENCER p.l.c.                                   XS0188430721     24-Mar-2014            5.625%       Consumers                   0.80%                GLDABFAD7
+METRO AG                                                   DE000A0XFCT5     05-Mar-2015            7.625%       Consumers                   0.80%                 DI8CFEAE6
+Nestle S.A.                                                CH0028644646     14-Feb-2018            2.625%       Consumers                   0.80%                 6A516FAC9
+NEXT PLC                                                   XS0630204351     26-Oct-2021            5.375%       Consumers                   0.80%                GMB517AB1
+PPR                                                        FR0010878991     08-Apr-2015            3.750%       Consumers                   0.80%                FMB84FAE9
+SABMILLER PLC                                              US78572MAA36     15-Aug-2033            6.625%       Consumers                   0.80%                7FDC9OAA6
+SAFEWAY LIMITED                                            XS0100362911     05-Aug-2014            6.500%       Consumers                   0.80%                GNEDEUAB4
+SODEXO                                                     XS0292924775     28-Mar-2014            4.500%       Consumers                   0.80%                FND50FAB1
+Suedzucker Aktiengesellschaft Mannheim/Ochsenfurt          XS0606202454     29-Mar-2018            4.125%       Consumers                   0.80%                 DLA9F9AB0
+Svenska Cellulosa Aktiebolaget SCA                         BE0119096775      15-Jul-2015           4.500%       Consumers                   0.80%                8EFEDFAB4
+TATE & LYLE PUBLIC LIMITED COMPANY                         XS0469026453     25-Nov-2019            6.750%       Consumers                   0.80%                8FDBC7AD4
+TESCO PLC                                                  XS0105244585     14-Dec-2029            6.000%       Consumers                   0.80%                8G96CCAC9
+Unilever N.V.                                              XS0230663196     29-Sep-2015            3.375%       Consumers                   0.80%                 994BFCAB7
+BP P.L.C.                                                  US10373QAA85     15-Jun-2018            4.200%         Energy                    0.80%                 05AB84AD9
+Centrica Plc                                               XS0388006552     19-Sep-2018            7.000%         Energy                    0.80%                 16B9CTAB4
+E.ON AG                                                    XS0148579153     29-May-2017            6.375%         Energy                    0.80%                 28EFF8AB5
+Electricite de France                                      XS0162990229     21-Feb-2033            5.625%         Energy                    0.80%                FHBD4HAC9
+EnBW Energie Baden-Wuerttemberg AG                         XS0271757832     19-Oct-2016            4.250%         Energy                    0.80%                DF796PAC9
+ENEL S.P.A.                                                XS0306644344     20-Jun-2017            5.250%         Energy                    0.80%                 2BB8B1AE0
+ENI S.P.A.                                                 XS0167456267     30-Apr-2013            4.625%         Energy                    0.80%                28EFBVAB8
+Fortum Oyj                                                 XS0180181447     19-Nov-2013            5.000%         Energy                    0.80%                XZBGF7AB4
+GAS NATURAL SDG, S.A.                                      XS0479542580     27-Jan-2020            4.500%         Energy                    0.80%                EJ9DCNAD5
+GDF SUEZ                                                   FR0000472334     19-Feb-2018            5.125%         Energy                    0.80%                 FJ69DEAA1
+IBERDROLA, S.A.                                            XS0222372178     22-Jun-2015            3.500%         Energy                    0.80%                EK77AVAD1
+NATIONAL GRID PLC                                          XS0170798325      02-Jul-2018           5.000%         Energy                    0.80%                GM9ACPAB1
+REPSOL YPF, S.A.                                           XS0202649934     08-Oct-2014            4.625%         Energy                    0.80%                 7D628ZAE9
+ROYAL DUTCH SHELL PLC                                      US822582AC66     22-Mar-2017            5.200%         Energy                    0.80%                GNDF9AAC8
+RWE Aktiengesellschaft                                     XS0162513211     14-Feb-2033            5.750%         Energy                    0.80%                7BDGCJAC9
+STATOIL ASA                                                US85771PAB85     17-Aug-2017            3.125%         Energy                    0.80%                RZC53WAB2
+TOTAL SA                                                   XS0410303647     28-Jan-2019            4.875%         Energy                    0.80%                 FK9A9IAD2
+UNITED UTILITIES PLC                                       US91311QAC96     15-Aug-2028            6.875%         Energy                    0.80%                 9A442RAC9
+Vattenfall Aktiebolag                                      XS0191154961     29-Apr-2024            5.375%         Energy                    0.80%                W5GGHNAG8
+VEOLIA ENVIRONNEMENT                                       FR0000474983     28-May-2018            5.375%         Energy                    0.80%                9BAD68AE4
+Aegon N.V.                                                 XS0207157743     08-Dec-2014            4.125%        Financials                 0.80%                007GB6AD4
+Allianz SE                                                 XS0275880267     23-Nov-2016            4.000%        Financials                 0.80%                DD359MAF3
+ASSICURAZIONI GENERALI - SOCIETA PER AZIONI                XS0218469962     06-May-2015            3.875%        Financials                 0.80%                 0E996BAD3
+AVIVA PLC                                                  XS0066877258     20-Jun-2016            9.500%        Financials                 0.80%                GG6EBTAD8
+AXA                                                        XS0130738213     18-Jun-2013            6.000%        Financials                 0.80%                 FF667MAA4
+BANCA MONTE DEI PASCHI DI SIENA S.P.A.                     XS0210918123     02-Feb-2015            3.875%        Financials                 0.80%                 TU29GIAF2
+BANCO BILBAO VIZCAYA ARGENTARIA, SOCIEDAD ANONIMA          XS0408528833     23-Jan-2014            4.875%        Financials                 0.80%                 EF2985AJ0
+BANCO SANTANDER, S.A.                                      XS0262892549     09-Aug-2013             Float        Financials                 0.80%                EFAGG9AC3
+BARCLAYS BANK PLC                                          XS0232785880     27-Oct-2015             Float        Financials                 0.80%                06DABKAE4
+BNP PARIBAS                                                XS0405664813     16-Jan-2014            4.250%        Financials                 0.80%                 05ABBFAI9
+COMMERZBANK Aktiengesellschaft                             DE000CZ302M3     16-Sep-2020            4.000%        Financials                 0.80%                2C27EGAG9
+CREDIT AGRICOLE SA                                         XS0315528850     10-Aug-2022            5.065%        Financials                 0.80%                FH49GGAG6
+Credit Suisse Group Ltd                                    XS0099472994      29-Jul-2019            Float        Financials                 0.80%                HK9FHLAD3
+DEUTSCHE BANK AKTIENGESELLSCHAFT                           DE000DB5S5U8     31-Aug-2017            5.125%        Financials                 0.80%                 2H6677AL3
+Hannover Rueckversicherung AG                                                                                    Financials                 0.80%
+HSBC BANK PLC                                              XS0526606537        15-Jan-2021        4.000%         Financials                 0.80%
+INTESA SANPAOLO SPA                                        XS0304508921        15-Jun-2017        4.750%         Financials                 0.80%                TYA56DAG3
+LLOYDS TSB BANK PLC                                        XS0550541691        20-Apr-2015        3.375%         Financials                 0.80%                GKB86OAF8
+                                                                                                                                SCHEDULE 1
+
+                                                                                                    iTraxx® Europe Series 17
+                                                                                                    Roll Date: 20th March 2012
+                                                                                                    Version 1, Annex Date 19th March 2012
+                                                                                                    www.markit.com
+
+                                                                                                                        Reference Obligation
+                               Reference Entity                                                               ISIN              Maturity                 Coupon                Sector                           Weighting                              CLIP
+Muenchener Rueckversicherungs-Gesellschaft Aktiengesellschaft in Muenchen                                                                                                     Financials                         0.80%
+SOCIETE GENERALE                                                                                      XS0354843533               28-Mar-2013             5.250%               Financials                         0.80%                            8B69APAE6
+Swiss Reinsurance Company Ltd                                                                         CH0012491335               29-Jun-2015             4.000%               Financials                         0.80%                           HOB65NAA7
+The Royal Bank of Scotland public limited company                                                     XS0235714804               06-Dec-2020             5.000%               Financials                         0.80%                           GNDEGIAC6
+UBS AG                                                                                                XS0359388690               18-Apr-2018             6.000%               Financials                         0.80%                           HPHB2JAG6
+UNICREDIT, SOCIETA PER AZIONI                                                                         XS0185030698               10-Feb-2014             4.375%               Financials                         0.80%                            T2F69ZAB5
+Zurich Insurance Company Ltd                                                                          XS0201168894               17-Sep-2014             4.500%               Financials                         0.80%                           HQHEFUAC8
+Bertelsmann AG                                                                                        XS0268583993               26-Sep-2016             4.750%                  TMT                             0.80%                            DE1088AD1
+BRITISH SKY BROADCASTING GROUP PLC                                                                    XS0301676861               21-May-2027             6.000%                  TMT                             0.80%                            1C2114AD1
+BRITISH TELECOMMUNICATIONS public limited company                                                     XS0097283096               07-Dec-2028             5.750%                  TMT                             0.80%                           GH6DA2AD8
+Deutsche Telekom AG                                                                                   DE000A0T5X07               20-Jan-2017             6.000%                  TMT                             0.80%                           2H66BCAB9
+FRANCE TELECOM                                                                                        XS0365094811               22-May-2018             5.625%                  TMT                             0.80%                            3I68EXAG2
+Koninklijke KPN N.V.                                                                                  US780641AH94               01-Oct-2030             8.375%                  TMT                             0.80%                            NR6BGIAC3
+PEARSON plc                                                                                           XS0102793642               27-Oct-2014             7.000%                  TMT                             0.80%                            7H5516AD7
+PUBLICIS GROUPE SA                                                                                    FR0010831974               31-Mar-2015             4.250%                  TMT                             0.80%                           FMD67CAD7
+REED ELSEVIER PLC                                                                                     XS0271070525               20-Oct-2016             5.625%                  TMT                             0.80%                           7CDA25AC1
+STMicroelectronics N.V.                                                                               XS0247802522               17-Mar-2013              Float                  TMT                             0.80%                            8E7113AC9
+TELECOM ITALIA SPA                                                                                    XS0184373925               29-Jan-2019             5.375%                  TMT                             0.80%                            T2B9EFAE5
+Telefonaktiebolaget L M Ericsson                                                                      XS0307504547               27-Jun-2017             5.375%                  TMT                             0.80%                           WY7EBJAD2
+TELEFONICA, S.A.                                                                                      XS0241946630               02-Feb-2016             4.375%                  TMT                             0.80%                           8FGCBAAC5
+Telekom Austria Aktiengesellschaft                                                                    XS0409318309               29-Jan-2016             6.375%                  TMT                             0.80%                           8FGD7TAB9
+TELENOR ASA                                                                                           XS0269252077               28-Mar-2014             4.500%                  TMT                             0.80%                           8FGD80AC9
+TeliaSonera Aktiebolag                                                                                XS0218734118               11-May-2015             4.125%                  TMT                             0.80%                           W5EDH9AC7
+VIVENDI                                                                                               FR0010369629               03-Oct-2013             4.500%                  TMT                             0.80%                           FOGGHNAB7
+VODAFONE GROUP PUBLIC LIMITED COMPANY                                                                 XS0169888558               04-Jun-2018             5.000%                  TMT                             0.80%                           9BADC3AD0
+Wolters Kluwer N.V.                                                                                   XS0181273342               27-Jan-2014             5.125%                  TMT                             0.80%                           9GEFFBAB3
+WPP 2005 LIMITED                                                                                      XS0294391684               04-Apr-2017             6.000%                  TMT                             0.80%                           GPGFFQAC8
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective
+predecessors and successors.
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you
+may not (i) extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other manner,
+including but not limited to in furtherance of trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com . The senders and recipients of this data
+acknowledge and agree that no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in
+any respect in the development or collection of the Services or any data or information contained therein)."
+
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM
+THE USE OF THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER
+PERSON OR ENTITY.
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR
+OMISSIONS, REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP
+LIMITED BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF
+WHETHER SUCH DAMAGES COULD HAVE BEEN FORESEEN OR PREVENTED.
+                                                                                                                                SCHEDULE 1
+                                                                                                iTraxx® Europe Crossover Series 17                               Fixed Rate
+                                                                                                Roll Date: 20th March 2012                                     Where Scheduled Termination Date is 20th June 2015                                           5.00%
+                                                                                                Version 1, Annex Date 19th March 2012                          Where Scheduled Termination Date is 20th June 2017                                           5.00%
+                                                                                                www.markit.com                                                 Where Scheduled Termination Date is 20th June 2019                                           5.00%
+                                                                                                                                                               Where Scheduled Termination Date is 20th June 2022                                           5.00%
+                                                                                                                             Reference Obligation
+                               Reference Entity                                                      ISIN                          Maturity                          Coupon                               Weighting                                 CLIP
+Alcatel Lucent                                                                                   FR0010070805                    07-Apr-2014                         6.375%                                2.00%                                FF1AAKAB8
+ArcelorMittal                                                                                    US03938LAF13                    01-Jun-2018                         6.125%                                2.00%                                 LL332JAB4
+ARDAGH PACKAGING FINANCE PUBLIC LIMITED COMPANY                                                  XS0547019777                    15-Oct-2020                         9.250%                                2.00%                                GG49CQAA2
+BRITISH AIRWAYS plc                                                                              XS0133582147                    23-Aug-2016                         8.750%                                2.00%                                1C145AAA4
+CABLE & WIRELESS LIMITED                                                                         XS0050504306                    25-Mar-2019                         8.625%                                2.00%                                GJ476RAA5
+CABLE & WIRELESS WORLDWIDE PLC                                                                   XS0468712863                    24-Nov-2014                         5.750%                                2.00%                                GH9BC7AA2
+CIR S.P.A. - COMPAGNIE INDUSTRIALI RIUNITE                                                       XS0207766170                    16-Dec-2024                         5.750%                                2.00%                                TVAHH8AB3
+CODERE FINANCE (LUXEMBOURG) S.A.                                                                 XS0222158767                    15-Jun-2015                         8.250%                                2.00%                                LM9E7LAA4
+Continental Aktiengesellschaft                                                                                                                                                                             2.00%
+ConvaTec Healthcare E S.A.                                                                       XS0568044555                      15-Dec-2018                       10.875%                               2.00%                                LMAFFHAA9
+Deutsche Lufthansa Aktiengesellschaft                                                           DE000A0JQA39                       06-May-2013                        4.625%                               2.00%                                2H66B7AC8
+DIXONS RETAIL PLC                                                                                XS0528872830                      03-Aug-2015                        8.750%                               2.00%                                 GI9F8TAB6
+EDP - Energias de Portugal, S.A.                                                                PTEDPSOM0010                       07-Dec-2014                        6.000%                               2.00%
+FIAT INDUSTRIAL S.P.A.                                                                           XS0604641034                      09-Mar-2018                        6.250%                               2.00%                                 TX6349AA9
+FIAT S.P.A.                                                                                      XS0305093311                      12-Jun-2017                        5.625%                               2.00%
+FINMECCANICA S.P.A.                                                                              XS0182242247                      12-Dec-2018                        5.750%                               2.00%                                 3E9829AB5
+JAGUAR LAND ROVER PLC                                                                            XS0627215378                      15-May-2018                        8.125%                               2.00%
+Grohe Holding GmbH                                                                               XS0200848041                      01-Oct-2014                        8.625%                               2.00%                               DFAE7AAA0
+HAVAS                                                                                            FR0010820217                      04-Nov-2014                        5.500%                               2.00%                               FJBDFFAC7
+HeidelbergCement AG                                                                             DE000A0TKUU3                       04-Jan-2018                        5.625%                               2.00%                               DG48ABAD6
+HELLENIC TELECOMMUNICATIONS ORGANISATION SOCIETE ANONYME                                         XS0275776283                      20-May-2016                        4.625%                               2.00%                               4G5657AC6
+INEOS GROUP HOLDINGS LIMITED                                                                     XS0242945367                      15-Feb-2016                        7.875%                               2.00%                               GKBGFLAC3
+ISS A/S                                                                                          XS0253470644                      15-May-2016                        8.875%                               2.00%                                KP558IAA7
+ITV PLC                                                                                          XS0269885785                      05-Jan-2017                        6.125%                               2.00%                               GKDHCEAD6
+Kabel BW Musketeer GmbH                                                                          XS0611238816                      15-Mar-2021                        9.500%                               2.00%
+Kabel Deutschland Vertrieb und Service GmbH                                                                                                                                                                2.00%
+LADBROKES PLC                                                                                    XS0491875562                      05-Mar-2017                       7.625%                                2.00%                               GL86AKAD2
+LAFARGE                                                                                          FR0010032730                      04-Dec-2013                       5.448%                                2.00%                                555DE7AB6
+MELIA HOTELS INTERNATIONAL, S.A.                                                                 XS0469533631                      18-Dec-2014                       5.000%                                2.00%                                ELA9CIAA4
+M-real Oyj                                                                                       XS0249583377                      01-Apr-2013                       7.250%                                2.00%                               X2AEDGAC3
+Nokia Oyj                                                                                        XS0411735482                      04-Feb-2019                       6.750%                                2.00%                               XD79FAAA9
+NORSKE SKOGINDUSTRIER ASA                                                                        XS0307552355                      26-Jun-2017                       7.000%                                2.00%                                RZ8039AB9
+NXP B.V.                                                                                         XS0298437087                      15-Oct-2015                       8.625%                                2.00%                               NTBEFLAC1
+ONO FINANCE II PUBLIC LIMITED COMPANY                                                            XS0584389448                       15-Jul-2019                     11.125%                                2.00%                               GMDC6QAB7
+PEUGEOT SA                                                                                       FR0010780452                       15-Jul-2014                      8.375%                                2.00%                               6FC9LGAB6
+Portugal Telecom International Finance B.V.                                                      XS0215828913                      24-Mar-2017                       4.375%                                2.00%                                NU811IAD0
+RALLYE                                                                                           FR0010815472                      04-Nov-2016                       7.625%                                2.00%                               FMDCAQAD9
+RENAULT                                                                                          FR0010025734                      04-Aug-2014                        Float                                2.00%                               7CEFDAAC6
+SOCIETE AIR FRANCE                                                                               FR0010185975                      01-Apr-2020                       2.750%                                2.00%                               FNC9BRAA8
+Stena Aktiebolag                                                                                 XS0285176458                      01-Feb-2017                       6.125%                                2.00%                               W4FCDXAA6
+Stora Enso Oyj                                                                                   XS0194948617                      23-Jun-2014                       5.125%                                2.00%                               8E831MAC2
+Sunrise Communications Holdings S.A.                                                             XS0548102531                      31-Dec-2018                       8.500%                                2.00%                               LTH98GAA1
+ThyssenKrupp AG                                                                                  XS0214238239                      18-Mar-2015                       4.375%                                2.00%                               DLBCG0AB0
+TUI AG                                                                                           XS0237431837                      10-Dec-2012                       5.125%                                2.00%                               DLCCCOAC9
+Unitymedia GmbH                                                                                  XS0468466056                      01-Dec-2019                       9.625%                                2.00%                                D8544NAA9
+UPC Holding B.V.                                                                                 XS0273428416                      01-Nov-2016                       8.000%                                2.00%                               NW945HAB1
+UPM-Kymmene Oyj                                                                                  US915436AE98                      01-Dec-2014                       5.625%                                2.00%                                9A6979AC1
+VIRGIN MEDIA FINANCE PLC                                                                         US92769VAA70                      15-Aug-2016                       9.500%                                2.00%                               GPCA8FAD3
+WENDEL                                                                                           XS0253989635                      26-May-2016                       4.875%                                2.00%                               FOHB91AB4
+Wind Acquisition Finance S.A.                                                                    XS0438150160                       15-Jul-2017                     11.750%                                2.00%                               LUGB7AAB6
+
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective
+predecessors and successors.
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license,
+you may not (i) extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other
+manner, including but not limited to in furtherance of trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com . The senders and recipients of
+this data acknowledge and agree that no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated
+in any respect in the development or collection of the Services or any data or information contained therein)."
+
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM
+THE USE OF THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR
+A PARTICULAR PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER
+PERSON OR ENTITY.
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR
+OMISSIONS, REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT
+GROUP LIMITED BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS
+OF WHETHER SUCH DAMAGES COULD HAVE BEEN FORESEEN OR PREVENTED.
+                                                                                                                             SCHEDULE 1
+
+
+                                                                                         iTraxx® Europe HiVol Series 17                                           Fixed Rate
+                                                                                         Roll Date: 20th March 2012                                               Where Scheduled Termination Date is 20th June 2015                                    1.00%
+                                                                                         Version 1, Annex Date 19th March 2012                                    Where Scheduled Termination Date is 20th June 2017                                    1.00%
+                                                                                         www.markit.com                                                           Where Scheduled Termination Date is 20th June 2019                                    1.00%
+                                                                                                                                                                  Where Scheduled Termination Date is 20th June 2022                                    1.00%
+
+                                                                                                                Reference Obligation
+                                 Reference Entity                                              ISIN                     Maturity                   Coupon                     Sector                               Weighting                      CLIP
+Adecco S.A.                                                                               XS0425722922                28-Apr-2014                  7.625%                Autos & Industrials                        3.34%                      006DC9AE3
+Aktiebolaget Volvo                                                                        XS0302948319               31-May-2017                   5.000%                Autos & Industrials                        3.34%                     9BAGDBAC6
+ALSTOM                                                                                    FR0010801761               23-Sep-2014                   4.000%                Autos & Industrials                        3.34%                      0C3368AC5
+ATLANTIA S.P.A.                                                                           XS0193947271                09-Jun-2014                  5.000%                Autos & Industrials                        3.34%                      TT594FAA2
+BAE SYSTEMS PLC                                                                           GB0001272664               24-Nov-2014                   10.750%               Autos & Industrials                        3.34%                      05A75UAC5
+Carrefour                                                                                 FR0010394478               02-Nov-2016                   4.375%                   Consumers                               3.34%                     FG4CAMAC3
+CASINO GUICHARD-PERRACHON                                                                 FR0010455626                10-Apr-2014                  4.875%                   Consumers                               3.34%                     FG554OAC0
+COMPAGNIE DE SAINT-GOBAIN                                                                 FR0010094623                25-Apr-2014                  5.000%                Autos & Industrials                        3.34%                     FG872CAB3
+Compagnie Financiere Michelin                                                             XS0424686573                24-Apr-2014                  8.625%                Autos & Industrials                        3.34%                      2C47IGAC2
+ENEL S.P.A.                                                                               XS0306644344                20-Jun-2017                  5.250%                     Energy                                3.34%                      2BB8B1AE0
+ENI S.P.A.                                                                                XS0167456267                30-Apr-2013                  4.625%                     Energy                                3.33%                      28EFBVAB8
+European Aeronautic Defence and Space Company EADS N.V.                                   XS0176914579               25-Sep-2018                   5.500%                Autos & Industrials                        3.33%                      FG8825AB6
+GAS NATURAL SDG, S.A.                                                                     XS0479542580                27-Jan-2020                  4.500%                     Energy                                3.33%                     EJ9DCNAD5
+Glencore International AG                                                                 XS0270776411                11-Oct-2013                  5.250%                Autos & Industrials                        3.33%                      HK5754AC8
+Holcim Ltd                                                                                XS0207037507               09-Dec-2014                   4.375%                Autos & Industrials                        3.33%                      477BB5AD8
+IBERDROLA, S.A.                                                                           XS0222372178                22-Jun-2015                  3.500%                     Energy                                3.33%                     EK77AVAD1
+MARKS AND SPENCER p.l.c.                                                                  XS0188430721                24-Mar-2014                  5.625%                   Consumers                               3.33%                     GLDABFAD7
+METRO AG                                                                                  DE000A0XFCT5                05-Mar-2015                  7.625%                   Consumers                               3.33%                      DI8CFEAE6
+PostNL N.V.                                                                               NL0000117190                01-Jun-2015                  3.875%                Autos & Industrials                        3.33%                      NU923FAA7
+PPR                                                                                       FR0010878991                08-Apr-2015                  3.750%                   Consumers                               3.33%                     FMB84FAE9
+RENTOKIL INITIAL PLC                                                                      XS0249085852                31-Mar-2016                  5.750%                Autos & Industrials                        3.33%                     GNC59OAA5
+REPSOL YPF, S.A.                                                                          XS0202649934                08-Oct-2014                  4.625%                     Energy                                3.33%                      7D628ZAE9
+TELECOM ITALIA SPA                                                                        XS0184373925                29-Jan-2019                  5.375%                      TMT                                  3.33%                      T2B9EFAE5
+Telefonaktiebolaget L M Ericsson                                                          XS0307504547                27-Jun-2017                  5.375%                      TMT                                  3.33%                     WY7EBJAD2
+TELEFONICA, S.A.                                                                          XS0241946630                02-Feb-2016                  4.375%                      TMT                                  3.33%                     8FGCBAAC5
+Telekom Austria Aktiengesellschaft                                                        XS0409318309                29-Jan-2016                  6.375%                      TMT                                  3.33%                     8FGD7TAB9
+VALEO                                                                                     FR0011043124               11-May-2018                   4.875%                Autos & Industrials                        3.33%                      9AAA47AD8
+VEOLIA ENVIRONNEMENT                                                                      FR0000474983               28-May-2018                   5.375%                     Energy                                3.33%                      9BAD68AE4
+VIVENDI                                                                                   FR0010369629                03-Oct-2013                  4.500%                      TMT                                  3.33%                     FOGGHNAB7
+XSTRATA PLC                                                                               XS0305188533                13-Jun-2017                  5.250%                Autos & Industrials                        3.33%                     GPHA8ZAC6
+
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective
+predecessors and successors.
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you
+may not (i) extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other
+manner, including but not limited to in furtherance of trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com. The senders and recipients of this
+data acknowledge and agree that no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in
+any respect in the development or collection of the Services or any data or information contained therein)."
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM
+THE USE OF THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR
+A PARTICULAR PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER
+PERSON OR ENTITY.
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR
+                                                                                               SCHEDULE 1
+OMISSIONS, REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT
+GROUP LIMITED BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS
+OF WHETHER SUCH DAMAGES COULD HAVE BEEN FORESEEN OR PREVENTED.
+                                                                                      SCHEDULE 1
+
+                                                          iTraxx® Europe Non-Financial Series 17       Fixed Rate
+                                                          Roll Date: 20th March 2012                   Where Scheduled Termination Date is 20th June 2017                 1.00%
+                                                          Version 1, Annex Date 19th March 2012        Where Scheduled Termination Date is 20th June 2022                 1.00%
+                                                          www.markit.com
+
+                                                                            Reference Obligation
+                       Reference Entity                               ISIN                 Maturity      Coupon                 Sector                  Weighting       CLIP
+Adecco S.A.                                                       XS0425722922           28-Apr-2014     7.625%            Autos & Industrials           1.00%      006DC9AE3
+Aktiebolaget Volvo                                                XS0302948319          31-May-2017      5.000%            Autos & Industrials           1.00%      9BAGDBAC6
+Akzo Nobel N.V.                                                   XS0404765710           31-Jan-2014     7.750%            Autos & Industrials           1.00%       0B11AIAC6
+ALSTOM                                                            FR0010801761           23-Sep-2014     4.000%            Autos & Industrials           1.00%       0C3368AC5
+Anglo American plc                                                XS0358158052           17-Apr-2015     5.875%            Autos & Industrials           1.00%      037CDUAD2
+ATLANTIA S.P.A.                                                   XS0193947271           09-Jun-2014     5.000%            Autos & Industrials           1.00%       TT594FAA2
+BAE SYSTEMS PLC                                                   GB0001272664          24-Nov-2014      10.750%           Autos & Industrials           1.00%      05A75UAC5
+BASF SE                                                           DE000A0JRFB0           29-Jun-2016     4.500%            Autos & Industrials           1.00%      DD6837AC0
+Bayer Aktiengesellschaft                                          XS0255605239          23-May-2018      5.625%            Autos & Industrials           1.00%      0H99A3AD9
+Bayerische Motoren Werke Aktiengesellschaft                       XS0173501379           06-Aug-2018     5.000%            Autos & Industrials           1.00%      0H99B7AC1
+BOUYGUES                                                          FR0010326975          24-May-2016      4.750%            Autos & Industrials           1.00%      FG25BNAB9
+COMPAGNIE DE SAINT-GOBAIN                                         FR0010094623           25-Apr-2014     5.000%            Autos & Industrials           1.00%      FG872CAB3
+Compagnie Financiere Michelin                                     XS0424686573           24-Apr-2014     8.625%            Autos & Industrials           1.00%       2C47IGAC2
+Daimler AG                                                        US233835AW75          15-Nov-2013      6.500%            Autos & Industrials           1.00%      DE7C9QAA4
+European Aeronautic Defence and Space Company EADS N.V.           XS0176914579           25-Sep-2018     5.500%            Autos & Industrials           1.00%      FG8825AB6
+Glencore International AG                                         XS0270776411           11-Oct-2013     5.250%            Autos & Industrials           1.00%      HK5754AC8
+Holcim Ltd                                                        XS0207037507          09-Dec-2014      4.375%            Autos & Industrials           1.00%       477BB5AD8
+Koninklijke DSM N.V.                                              XS0235117891          10-Nov-2015      4.000%            Autos & Industrials           1.00%      NS517VAB7
+LANXESS Aktiengesellschaft                                        XS0423036663           09-Apr-2014     7.750%            Autos & Industrials           1.00%       DI535DAB8
+Linde Aktiengesellschaft                                          XS0297700006           24-Apr-2023     5.875%            Autos & Industrials           1.00%       DI537CAB8
+PostNL N.V.                                                       NL0000117190           01-Jun-2015     3.875%            Autos & Industrials           1.00%      NU923FAA7
+RENTOKIL INITIAL PLC                                              XS0249085852           31-Mar-2016     5.750%            Autos & Industrials           1.00%      GNC59OAA5
+ROLLS-ROYCE PLC                                                   XS0112487482           14-Jun-2016     7.375%            Autos & Industrials           1.00%      7ECCF9AD0
+SANOFI                                                            CH0035703070          21-Dec-2015      3.375%            Autos & Industrials           1.00%       F8128FAB6
+Siemens Aktiengesellschaft                                        XS0369461644           11-Jun-2018     5.625%            Autos & Industrials           1.00%      8A87AGAC4
+Solvay                                                            BE0374557404           27-Jun-2018     4.625%            Autos & Industrials           1.00%       8B787AAA2
+VALEO                                                             FR0011043124          11-May-2018      4.875%            Autos & Industrials           1.00%      9AAA47AD8
+VINCI                                                             FR0011164888           20-Feb-2017     4.125%            Autos & Industrials           1.00%      FKDFG6AC6
+VOLKSWAGEN AKTIENGESELLSCHAFT                                     XS0168881760          22-May-2018      5.375%            Autos & Industrials           1.00%      9BAEC8AD7
+XSTRATA PLC                                                       XS0305188533           13-Jun-2017     5.250%            Autos & Industrials           1.00%      GPHA8ZAC6
+Aktiebolaget Electrolux                                           XS0356539881           07-Apr-2016       Float              Consumers                  1.00%      0B11AHAD6
+BRITISH AMERICAN TOBACCO p.l.c.                                   XS0352065584           12-Mar-2015     5.875%               Consumers                  1.00%      1C148CAD1
+CADBURY HOLDINGS LIMITED                                          USU12283AB03           01-Oct-2013     5.125%               Consumers                  1.00%       GH8B7IAA5
+Carrefour                                                         FR0010394478          02-Nov-2016      4.375%               Consumers                  1.00%      FG4CAMAC3
+CASINO GUICHARD-PERRACHON                                         FR0010455626           10-Apr-2014     4.875%               Consumers                  1.00%      FG554OAC0
+COMPASS GROUP PLC                                                 XS0100559037          08-Dec-2014      7.000%               Consumers                  1.00%      2C48D6AB9
+DANONE                                                            FR0010612713          06-May-2015      5.500%               Consumers                  1.00%       2F999ZAC4
+DIAGEO PLC                                                        US25243YAJ82           30-Sep-2016     5.500%               Consumers                  1.00%       2H767TAC4
+EXPERIAN FINANCE PLC                                              XS0162820228          12-Dec-2013      5.625%               Consumers                  1.00%      GJ57CTAC9
+GROUPE AUCHAN                                                     FR0010746008           15-Apr-2019     6.000%               Consumers                  1.00%      FF4D97AC8
+Henkel AG & Co. KGaA                                              DE0006641962           10-Jun-2013     4.250%               Consumers                  1.00%       467A5UAA0
+IMPERIAL TOBACCO GROUP PLC                                        XS0180407602          04-Dec-2018      6.250%               Consumers                  1.00%       4J8456AC4
+JTI (UK) FINANCE PLC                                              XS0269190533           02-Apr-2014     4.500%               Consumers                  1.00%      GL731FAB5
+KINGFISHER PLC                                                    XS0178322474          15-Dec-2014      5.625%               Consumers                  1.00%      4DEC96AC8
+Koninklijke Ahold N.V.                                            US008685AB51          01-May-2029      6.875%               Consumers                  1.00%      5F04ADAF1
+Koninklijke Philips Electronics N.V.                              US500472AB13           11-Mar-2018     5.750%               Consumers                  1.00%       5F04B9AD4
+LVMH MOET HENNESSY LOUIS VUITTON                                  FR0010754663          12-May-2014      4.375%               Consumers                  1.00%       5F2685AE7
+MARKS AND SPENCER p.l.c.                                          XS0188430721           24-Mar-2014     5.625%               Consumers                  1.00%      GLDABFAD7
+METRO AG                                                          DE000A0XFCT5           05-Mar-2015     7.625%               Consumers                  1.00%       DI8CFEAE6
+Nestle S.A.                                                       CH0028644646           14-Feb-2018     2.625%               Consumers                  1.00%       6A516FAC9
+NEXT PLC                                                          XS0630204351           26-Oct-2021     5.375%               Consumers                  1.00%      GMB517AB1
+PPR                                                               FR0010878991           08-Apr-2015     3.750%               Consumers                  1.00%      FMB84FAE9
+SABMILLER PLC                                                     US78572MAA36           15-Aug-2033     6.625%               Consumers                  1.00%      7FDC9OAA6
+SAFEWAY LIMITED                                                   XS0100362911           05-Aug-2014     6.500%               Consumers                  1.00%      GNEDEUAB4
+SODEXO                                                            XS0292924775           28-Mar-2014     4.500%               Consumers                  1.00%      FND50FAB1
+Suedzucker Aktiengesellschaft Mannheim/Ochsenfurt                 XS0606202454           29-Mar-2018     4.125%               Consumers                  1.00%      DLA9F9AB0
+Svenska Cellulosa Aktiebolaget SCA                                BE0119096775           15-Jul-2015     4.500%               Consumers                  1.00%      8EFEDFAB4
+TATE & LYLE PUBLIC LIMITED COMPANY                                XS0469026453          25-Nov-2019      6.750%               Consumers                  1.00%      8FDBC7AD4
+TESCO PLC                                                         XS0105244585          14-Dec-2029      6.000%               Consumers                  1.00%      8G96CCAC9
+Unilever N.V.                                                     XS0230663196           29-Sep-2015     3.375%               Consumers                  1.00%      994BFCAB7
+BP P.L.C.                                                         US10373QAA85           15-Jun-2018     4.200%                 Energy                   1.00%       05AB84AD9
+Centrica Plc                                                      XS0388006552           19-Sep-2018     7.000%                 Energy                   1.00%      16B9CTAB4
+E.ON AG                                                           XS0148579153          29-May-2017      6.375%                 Energy                   1.00%       28EFF8AB5
+Electricite de France                                             XS0162990229           21-Feb-2033     5.625%                 Energy                   1.00%      FHBD4HAC9
+EnBW Energie Baden-Wuerttemberg AG                                XS0271757832           19-Oct-2016     4.250%                 Energy                   1.00%      DF796PAC9
+ENEL S.P.A.                                                       XS0306644344           20-Jun-2017     5.250%                 Energy                   1.00%      2BB8B1AE0
+ENI S.P.A.                                                        XS0167456267           30-Apr-2013     4.625%                 Energy                   1.00%      28EFBVAB8
+Fortum Oyj                                                        XS0180181447          19-Nov-2013      5.000%                 Energy                   1.00%      XZBGF7AB4
+GAS NATURAL SDG, S.A.                                             XS0479542580           27-Jan-2020     4.500%                 Energy                   1.00%      EJ9DCNAD5
+GDF SUEZ                                                          FR0000472334           19-Feb-2018     5.125%                 Energy                   1.00%      FJ69DEAA1
+IBERDROLA, S.A.                                                   XS0222372178           22-Jun-2015     3.500%                 Energy                   1.00%      EK77AVAD1
+                                                                                                                                SCHEDULE 1
+
+
+
+                                                                                          iTraxx® Europe Non-Financial Series 17
+                                                                                          Roll Date: 20th March 2012
+                                                                                          Version 1, Annex Date 19th March 2012
+                                                                                          www.markit.com
+
+
+                                                                                                               Reference Obligation
+                                 Reference Entity                                                        ISIN                 Maturity                         Coupon                          Sector                          Weighting                CLIP
+NATIONAL GRID PLC                                                                                    XS0170798325           02-Jul-2018                        5.000%                          Energy                           1.00%               GM9ACPAB1
+REPSOL YPF, S.A.                                                                                     XS0202649934           08-Oct-2014                        4.625%                          Energy                           1.00%                7D628ZAE9
+ROYAL DUTCH SHELL PLC                                                                                US822582AC66           22-Mar-2017                        5.200%                          Energy                           1.00%               GNDF9AAC8
+RWE Aktiengesellschaft                                                                               XS0162513211           14-Feb-2033                        5.750%                          Energy                           1.00%               7BDGCJAC9
+STATOIL ASA                                                                                          US85771PAB85           17-Aug-2017                        3.125%                          Energy                           1.00%               RZC53WAB2
+TOTAL SA                                                                                             XS0410303647           28-Jan-2019                        4.875%                          Energy                           1.00%                FK9A9IAD2
+UNITED UTILITIES PLC                                                                                 US91311QAC96           15-Aug-2028                        6.875%                          Energy                           1.00%                9A442RAC9
+Vattenfall Aktiebolag                                                                                XS0191154961           29-Apr-2024                        5.375%                          Energy                           1.00%               W5GGHNAG8
+VEOLIA ENVIRONNEMENT                                                                                 FR0000474983          28-May-2018                         5.375%                          Energy                           1.00%                9BAD68AE4
+Bertelsmann AG                                                                                       XS0268583993           26-Sep-2016                        4.750%                           TMT                             1.00%                DE1088AD1
+BRITISH SKY BROADCASTING GROUP PLC                                                                   XS0301676861          21-May-2027                         6.000%                           TMT                             1.00%                1C2114AD1
+BRITISH TELECOMMUNICATIONS public limited company                                                    XS0097283096          07-Dec-2028                         5.750%                           TMT                             1.00%               GH6DA2AD8
+Deutsche Telekom AG                                                                                  DE000A0T5X07           20-Jan-2017                        6.000%                           TMT                             1.00%                2H66BCAB9
+FRANCE TELECOM                                                                                       XS0365094811          22-May-2018                         5.625%                           TMT                             1.00%                3I68EXAG2
+Koninklijke KPN N.V.                                                                                 US780641AH94           01-Oct-2030                        8.375%                           TMT                             1.00%                NR6BGIAC3
+PEARSON plc                                                                                          XS0102793642           27-Oct-2014                        7.000%                           TMT                             1.00%                7H5516AD7
+PUBLICIS GROUPE SA                                                                                   FR0010831974           31-Mar-2015                        4.250%                           TMT                             1.00%               FMD67CAD7
+REED ELSEVIER PLC                                                                                    XS0271070525           20-Oct-2016                        5.625%                           TMT                             1.00%               7CDA25AC1
+STMicroelectronics N.V.                                                                              XS0247802522           17-Mar-2013                         Float                           TMT                             1.00%                8E7113AC9
+TELECOM ITALIA SPA                                                                                   XS0184373925           29-Jan-2019                        5.375%                           TMT                             1.00%                T2B9EFAE5
+Telefonaktiebolaget L M Ericsson                                                                     XS0307504547           27-Jun-2017                        5.375%                           TMT                             1.00%               WY7EBJAD2
+TELEFONICA, S.A.                                                                                     XS0241946630           02-Feb-2016                        4.375%                           TMT                             1.00%               8FGCBAAC5
+Telekom Austria Aktiengesellschaft                                                                   XS0409318309           29-Jan-2016                        6.375%                           TMT                             1.00%               8FGD7TAB9
+TELENOR ASA                                                                                          XS0269252077           28-Mar-2014                        4.500%                           TMT                             1.00%               8FGD80AC9
+TeliaSonera Aktiebolag                                                                               XS0218734118          11-May-2015                         4.125%                           TMT                             1.00%               W5EDH9AC7
+VIVENDI                                                                                              FR0010369629           03-Oct-2013                        4.500%                           TMT                             1.00%               FOGGHNAB7
+VODAFONE GROUP PUBLIC LIMITED COMPANY                                                                XS0169888558           04-Jun-2018                        5.000%                           TMT                             1.00%               9BADC3AD0
+Wolters Kluwer N.V.                                                                                  XS0181273342           27-Jan-2014                        5.125%                           TMT                             1.00%               9GEFFBAB3
+WPP 2005 LIMITED                                                                                     XS0294391684           04-Apr-2017                        6.000%                           TMT                             1.00%               GPGFFQAC8
+
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective
+predecessors and successors.
+
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you
+may not (i) extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other manner,
+including but not limited to in furtherance of trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com . The senders and recipients of this data
+acknowledge and agree that no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in
+any respect in the development or collection of the Services or any data or information contained therein)."
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM
+THE USE OF THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER PERSON
+OR ENTITY.
+
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR
+OMISSIONS, REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP
+LIMITED BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF
+WHETHER SUCH DAMAGES COULD HAVE BEEN FORESEEN OR PREVENTED.
+                                                                                                                                 SCHEDULE 1
+
+
+
+                                                                                                             iTraxx® Europe Senior Financials Series 17                           Fixed Rate
+                                                                                                             Roll Date: 20th March 2012                                           Where Scheduled Termination Date is 20th June 2017                                  1.00%
+                                                                                                             Version 1, Annex Date 19th March 2012                                Where Scheduled Termination Date is 20th June 2022                                  1.00%
+                                                                                                             www.markit.com
+
+
+                                                                                                                                     Reference Obligation
+                                           Reference Entity                                                                     ISIN                  Maturity                        Coupon               Sector                    Weighting                  CLIP
+Aegon N.V.                                                                                                                 XS0207157743             8-Dec-2014                        4.125%           Financial Senior               4.00%                 007GB6AD4
+Allianz SE                                                                                                                 XS0275880267             23-Nov-2016                       4.000%           Financial Senior               4.00%                 DD359MAF3
+ASSICURAZIONI GENERALI - SOCIETA PER AZIONI                                                                                XS0218469962             6-May-2015                        3.875%           Financial Senior               4.00%                 0E996BAD3
+AVIVA PLC                                                                                                                  XS0066877258             20-Jun-2016                       9.500%           Financial Senior               4.00%                 GG6EBTAD8
+AXA                                                                                                                        XS0130738213             18-Jun-2013                       6.000%           Financial Senior               4.00%                 FF667MAA4
+BANCA MONTE DEI PASCHI DI SIENA S.P.A.                                                                                     XS0210918123              2-Feb-2015                       3.875%           Financial Senior               4.00%                  TU29GIAF2
+BANCO BILBAO VIZCAYA ARGENTARIA, SOCIEDAD ANONIMA                                                                          XS0408528833             23-Jan-2014                       4.875%           Financial Senior               4.00%                  EF2985AJ0
+BANCO SANTANDER, S.A.                                                                                                      XS0262892549             9-Aug-2013                         Float           Financial Senior               4.00%                 EFAGG9AC3
+BARCLAYS BANK PLC                                                                                                          XS0232785880             27-Oct-2015                        Float           Financial Senior               4.00%                 06DABKAE4
+BNP PARIBAS                                                                                                                XS0405664813             16-Jan-2014                       4.250%           Financial Senior               4.00%                  05ABBFAI9
+COMMERZBANK Aktiengesellschaft                                                                                             DE000CZ302M3             16-Sep-2020                       4.000%           Financial Senior               4.00%                 2C27EGAG9
+CREDIT AGRICOLE SA                                                                                                         XS0315528850             10-Aug-2022                       5.065%           Financial Senior               4.00%                 FH49GGAG6
+Credit Suisse Group Ltd                                                                                                    XS0099472994             29-Jul-2019                        Float           Financial Senior               4.00%                 HK9FHLAD3
+DEUTSCHE BANK AKTIENGESELLSCHAFT                                                                                           DE000DB5S5U8             31-Aug-2017                       5.125%           Financial Senior               4.00%                  2H6677AL3
+Hannover Rueckversicherung AG                                                                                                                                                                          Financial Senior               4.00%
+HSBC BANK PLC                                                                                                               XS0526606537                        15-Jan-2021            4.000%          Financial Senior               4.00%
+INTESA SANPAOLO SPA                                                                                                         XS0304508921                        15-Jun-2017            4.750%          Financial Senior               4.00%                 TYA56DAG3
+LLOYDS TSB BANK PLC                                                                                                         XS0550541691                        20-Apr-2015            3.375%          Financial Senior               4.00%                 GKB86OAF8
+Muenchener Rueckversicherungs-Gesellschaft Aktiengesellschaft in Muenchen                                                                                                                              Financial Senior               4.00%
+SOCIETE GENERALE                                                                                                            XS0354843533                        28-Mar-2013            5.250%          Financial Senior               4.00%                 8B69APAE6
+Swiss Reinsurance Company Ltd                                                                                               CH0012491335                        29-Jun-2015            4.000%          Financial Senior               4.00%                 HOB65NAA7
+The Royal Bank of Scotland public limited company                                                                           XS0235714804                        6-Dec-2020             5.000%          Financial Senior               4.00%                 GNDEGIAC6
+UBS AG                                                                                                                      XS0359388690                        18-Apr-2018            6.000%          Financial Senior               4.00%                 HPHB2JAG6
+UNICREDIT, SOCIETA PER AZIONI                                                                                               XS0185030698                        10-Feb-2014            4.375%          Financial Senior               4.00%                  T2F69ZAB5
+Zurich Insurance Company Ltd                                                                                                XS0201168894                        17-Sep-2014            4.500%          Financial Senior               4.00%                 HQHEFUAC8
+
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective predecessors
+and successors.
+
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you may not
+(i) extract the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other manner, including but
+not limited to in furtherance of trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com. The senders and recipients of this data acknowledge and agree
+that no duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in any
+respect in the development or collection of the Services or any data or information contained therein)."
+
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM THE
+USE OF THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER PERSON
+OR ENTITY.
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY SCHEDULE
+                                                                                                BE LIABLE1 TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR
+OMISSIONS, REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP
+LIMITED BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF WHETHER
+SUCH DAMAGES COULD HAVE BEEN FORESEEN OR PREVENTED.
+                                                                                                           iTraxx® Europe Sub Financials Series 17                                    Fixed Rate
+                                                                                                           Roll Date: 20th March 2012                                                 Where Scheduled Termination Date is 20th June 2017                                               5.00%
+                                                                                                           Version 1, Annex Date 19th March 2012                                      Where Scheduled Termination Date is 20th June 2022                                               5.00%
+                                                                                                           www.markit.com
+
+
+                                                                                                                                      Reference Obligation
+                                 Reference Entity                                                                               ISIN                    Maturity                           Coupon                        Sector                              Weighting           CLIP
+Aegon N.V.                                                                                                                  US007924AD52              15-Aug-2006                          8.000%              European Subordinated Insurer                  4.00%           007GB6AC6
+Allianz SE                                                                                                                  XS0148887564              31-May-2022                          6.125%              European Subordinated Insurer                  4.00%           DD359MAE6
+ASSICURAZIONI GENERALI - SOCIETA PER AZIONI                                                                                 XS0802638642               10-Jul-2042                         10.125%             European Subordinated Insurer                  4.00%           0E996BAE1
+AVIVA PLC                                                                                                                   XS0138717953              14-Nov-2021                          5.750%              European Subordinated Insurer                  4.00%           GG6EBTAB2
+AXA                                                                                                                         XS0122028904              15-Dec-2020                          7.125%              European Subordinated Insurer                  4.00%           FF667MAC0
+BANCA MONTE DEI PASCHI DI SIENA S.P.A.                                                                                      XS0540544912              09-Sep-2020                          5.600%                     Financial Sub                           4.00%            TU29GIAI6
+BANCO BILBAO VIZCAYA ARGENTARIA, SOCIEDAD ANONIMA                                                                           ES0213211099              20-Oct-2019                          4.375%                     Financial Sub                           4.00%            EF2985AF8
+BANCO SANTANDER, S.A.                                                                                                       XS0201169439              30-Sep-2019                          4.500%                     Financial Sub                           4.00%           EFAGG9AD1
+BARCLAYS BANK PLC                                                                                                           XS0187033864              04-Mar-2019                          4.500%                     Financial Sub                           4.00%           06DABKAF1
+BNP PARIBAS                                                                                                                 XS0320303943              07-Sep-2017                          5.431%                     Financial Sub                           4.00%           05ABBFAK4
+COMMERZBANK Aktiengesellschaft                                                                                             DE000CB59FV0               30-Sep-2014                          6.250%                     Financial Sub                           4.00%           2C27EGAE4
+CREDIT AGRICOLE SA                                                                                                          XS0550466469              19-Apr-2021                          3.900%                     Financial Sub                           4.00%           FH49GGAH4
+Credit Suisse Group Ltd                                                                                                     XS0130171159              07-Jun-2013                          6.375%                     Financial Sub                           4.00%           HK9FHLAC5
+DEUTSCHE BANK AKTIENGESELLSCHAFT                                                                                           DE000DB5DCW6               24-Jun-2020                          5.000%                     Financial Sub                           4.00%
+Hannover Rueckversicherung AG                                                                                               XS0187043079              26-Feb-2024                          5.750%              European Subordinated Insurer                  4.00%           DG316OAB3
+HSBC BANK PLC                                                                                                               XS0592005770              11-Feb-2021                          0.000%                     Financial Sub                           4.00%            4I75AUAF8
+INTESA SANPAOLO SPA                                                                                                         XS0243399556              20-Feb-2018                          0.000%                     Financial Sub                           4.00%           TYA56DAF5
+LLOYDS TSB BANK PLC                                                                                                         XS0145620281               08-Jul-2014                         5.875%                     Financial Sub                           4.00%           GKB86OAC5
+Muenchener Rueckversicherungs-Gesellschaft Aktiengesellschaft in Muenchen                                                   XS0166965797              21-Jun-2023                          6.750%              European Subordinated Insurer                  4.00%           687DNGAC5
+SOCIETE GENERALE                                                                                                            XS0110673950              27-Apr-2015                          6.625%                     Financial Sub                           4.00%           8B69APAA4
+Swiss Reinsurance Company Ltd                                                                                               XS0138467401              21-Nov-2021                          3.250%              European Subordinated Insurer                  4.00%           HOB65NAB5
+The Royal Bank of Scotland public limited company                                                                           XS0356705219              09-Apr-2018                          6.934%                     Financial Sub                           4.00%           GNDEGIAE2
+UBS AG                                                                                                                     US87083KAM45               15-Jun-2017                          7.375%                     Financial Sub                           4.00%           HPHB2JAH4
+UNICREDIT, SOCIETA PER AZIONI                                                                                               XS0200676160              22-Sep-2019                          4.500%                     Financial Sub                           4.00%            T2F69ZAA7
+Zurich Insurance Company Ltd                                                                                                XS0177601811              02-Oct-2023                          5.750%              European Subordinated Insurer                  4.00%           HQHEFUAB0
+
+October 30, 2013: The EMEA Credit Derivatives Determinations Committee determined that the obligation with ISIN number XS0802638642 is a Substitute Reference Obligation in respect of the Reference Obligation
+with ISIN number XS0114165276, for the purposes of CDS trades with Assicurazioni Generali S.p.A. as a Reference Entity.
+
+
+
+
+Nothing in the following statements shall act in any way to amend, override or otherwise prejudice the rights and obligations under any present or future license from (i) iBoxx Limited, (ii) TRAC-X LLC, (iii) Markit Group Limited or their respective predecessors and successors.
+
+
+This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you may not (i) extract the data
+contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the index or the data contained herein in any other manner, including but not limited to in furtherance of trade
+confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group on +44 (0)1727 734265 or info@Markit.com. The senders and recipients of this data acknowledge and agree that no duty of care is owed to them or to any other
+users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
+"Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in any respect in the
+development or collection of the Services or any data or information contained therein)."
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM THE USE OF THIS
+DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE. BY
+USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER PERSON OR ENTITY.
+
+
+NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENT OR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR OMISSIONS,
+REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP LIMITED BE LIABLE FOR ANY
+INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF WHETHER SUCH DAMAGES COULD HAVE BEEN
+FORESEEN OR PREVENTED.
+
