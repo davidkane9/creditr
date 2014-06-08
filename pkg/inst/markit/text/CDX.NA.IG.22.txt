@@ -11,7 +11,6 @@
  5   Altria Group, Inc.                                CONS      0C4291AD6    MO 9.7 10Nov18                          02209SAD5       0.008
  6   AMERICAN ELECTRIC POWER COMPANY, INC.             ENRG      027A8AAD8    AEP 1.65 15Dec17                        025537AF8       0.008
  7   American Express Company                           FIN      027D97AE6    AXP 7 19Mar18                           025816AY5       0 008
-                                                                                                                                      0.008
  8   American International Group, Inc.                 FIN      028EFBAC1    AIG 6.25 01May36 Struc                  026874AZ0       0.008
  9   Amgen Inc.                                        CONS      0D4278AD1    AMGN 2.5 15Nov16                        031162BL3       0.008
 10   ANADARKO PETROLEUM CORPORATION                    ENRG      0A3576AF0    APC 6.95 15Jun19                        032511BF3       0.008
@@ -23,10 +22,8 @@
 16   Avon Products, Inc.                            CONS, HVOL   0F9733AB9    AVP 6.5 01Mar19                         054303AW2       0.008
 17   BARRICK GOLD CORPORATION                       INDU, HVOL   06DG91AF3    ABX 5.8 15Nov34                         067901AA6       0.008
 18   Baxter International Inc.                         CONS      0H8994AA6    BAX 6.625 15Feb28                       071813AM1       0.008
-19   Beam Inc
-            Inc.                                       CONS      07AAA3AD6    BEAMINC 1  1.875
-                                                                                            875 15May17               073730AD5       0 008
-                                                                                                                                      0.008
+19   Beam Inc                                          CONS      07AAA3AD6    BEAMINC 1.875 15May17
+073730AD5       0 008
 20   Berkshire Hathaway Inc.                            FIN      08CAD7AD0    BRK 1.9 31Jan17                         084670BD9       0.008
 21   Block Financial LLC                             FIN, HVOL   09C9BKAC6    HRB-Fllc 5.5 01Nov22 Struc              093662AE4       0.008
 22   Boeing Capital Corporation                        INDU      09G715AE6    BA-CapCorp Frn 15Sep23 Float            09700WEG4       0.008
@@ -38,9 +35,7 @@
 28   CARNIVAL CORPORATION                              CONS      1F79BDAD1    CCL 6.65 15Jan28                        143658AH5       0.008
 29   Caterpillar Inc.                                  INDU      15DA35AF4    CAT 1.5 26Jun17                         149123BZ3       0.008
 30   CBS Corporation                                    TMT      136CDCAB6    CBSCOR 4.625 15May18                    925524AU4       0.008
-31   Comcast Corporation                                TMT      2C033NAC6    CMCSA 6  6.5
-                                                                                         5 15Jan17 BondCall           20030NAP6       0.008
-                                                                                                                                      0 008
+31   Comcast Corporation                                TMT      2C033NAC6    CMCSA 6.5 15Jan17 BondCall           20030NAP6       0.008
 32   Computer Sciences Corporation                   TMT, HVOL   2C5899AD3    CSC (4) 6.5 15Mar18                     205363AL8       0.008
 33   ConAgra Foods, Inc.                               CONS      225DGFAB6    CAG 7 01Oct28                           205887AR3       0.008
 34   ConocoPhillips                                    ENRG      228A7HAD1    COP (3) 5.9 15Oct32                     20825CAF1       0.008
@@ -52,9 +47,7 @@
 40   Devon Energy Corporation                          ENRG      2H68GVAC6    DVN 7.95 15Apr32                        251799AA0       0.008
 41   DIRECTV Holdings LLC                            TMT, HVOL   2H99EYAE3    DTV-Hldgs 5 01Mar21                     25459HBA2       0.008
 42   Dominion Resources, Inc.                          ENRG      27CBAFAF8    D 6.4 15Jun18                           25746UBE8       0.008
-43   Duke Energy Carolinas
-                     Carolinas, LLC                    ENRG      28A85GAC6    DUKECO 6.16 1 01Jun37                   26442CAA2       0 008
-                                                                                                                                      0.008
+43   Duke Energy Carolinas, LLC                        ENRG      28A85GAC6    DUKECO 6.16 1 01Jun37                   26442CAA2       0.008
 44   E. I. du Pont de Nemours and Company              INDU      2I9887AC3    DD 5.25 15Dec16 BondCall                263534BQ1       0.008
 45   Eastman Chemical Company                          INDU      29EB75AB7    EMN 7.6 01Feb27                         277432AD2       0.008
 46   ERP Operating Limited Partnership                  FIN      28EGCEAB3    EQR-ERPOperLP 5.75 15Jun17              26884AAX1       0.008
@@ -66,12 +59,7 @@
 52   General Electric Capital Corporation               FIN      39FF84AD4    GE-CapCorp 5.625 15Sep17                36962G3H5       0.008
 53   General Mills, Inc.                               CONS      3A7367AD2    GIS 5.7 15Feb17 BondCall                370334BB9       0.008
 54   Genworth Holdings, Inc.                         FIN, HVOL   3A978MAB0    GENWHOL 6.515 22May18                   37247DAK2       0.008
-55   HALLIBURTON COMPANY                               ENRG      4E6837AD6    HAL E S
-                                                                              HAL-EnSvcs     8.75
-                                                                                             8 75 15F
-                                                                                                  15Feb21
-                                                                                                      b21             406216AH4       0.008
-                                                                                                                                      0 008
+55   HALLIBURTON COMPANY                               ENRG      4E6837AD6    HAL-EnSvcs 8.75 15Feb21      406216AH4       0.008
 56   Hewlett-Packard Company                         TMT, HVOL   46AA59AC9    HPQ 5.4 01Mar17 BondCall                428236AM5       0.008
 57   Honeywell International Inc.                      INDU      47BD67AD1    HON 5.7 15Mar36 BondCall                438516AR7       0.008
 58   Ingersoll-Rand Company                            INDU      49BEECAA1    IR-NJ 9 15Aug21                         456866AG7       0.008
@@ -83,13 +71,7 @@
 64   Lockheed Martin Corporation                       INDU      58CHB3AD1    LMT 4.25 15Nov19                        539830AT6       0.008
 65   Loews Corporation                                  FIN      5J4466AE2    LTR 6 01Feb35                           540424AP3       0.008
 66   Lowe's Companies, Inc.                            CONS      59CEC7AB0    LOW 5.4 15Oct16 BondCall                548661CK1       0.008
-67   M.D.C.
-     MDC H    Holdings,
-                 ldi    I
-                        Inc.                        INDU HVOL
-                                                    INDU,        5A78DDAB2    MDC 5.625    01F b20
-                                                                                    5 625 01Feb20                     US552676AP38    0.008
-                                                                                                                                      0 008
+67   M.D.C. Holdings, Inc.                        INDU HVOL      5A78DDAB2    MDC 5.625 01Feb20                     US552676AP38    0.008
 68   Macy's, Inc.                                      CONS      5AB77VAE0    M (3) 7.45 15Jul17                      55616XAA5       0.008
 69   MARRIOTT INTERNATIONAL, INC.                      CONS      5C8A93AF0    MAR 3 01Mar19                           571903AJ2       0.008
 70   MARSH & McLENNAN COMPANIES, INC.                   FIN      5C88BCAA3    MMC 5.875 01Aug33                       571748AK8       0.008
@@ -104,14 +86,8 @@
  72   McKesson Corporation                                                                         CONS                UZDD52AA6                   MCK 7.65 01Mar27                                              581557AM7                   0.008
  73   MeadWestvaco Corporation                                                                  INDU, HVOL             5DB667AD2                   MWV 7.95 15Feb31                                              961548AY0                   0.008
  74   MetLife, Inc.                                                                                 FIN                5EA6BXAD8                   MET 4.75 08Feb21                                              59156RAX6                   0.008
- 75   Mondelez
-      M d l International,
-                  I t   ti    l Inc.
-                                I                                                                  CONS                669B27AB6                   MONDINT 6.5
-                                                                                                                                                             6 5 11A
-                                                                                                                                                                 11Aug17
-                                                                                                                                                                       17                                        50075NAS3                   0.008
-                                                                                                                                                                                                                                             0 008
+ 75   Mondelez International, Inc.                                                                 CONS                669B27AB6                   MONDINT 6.5 11Aug17                                           50075NAS3 
+0.008
  76   Motorola Solutions, Inc.                                                                      TMT                6I209OAB7                   MOTSOL 6 15Nov17                                              620076AZ2                   0.008
  77   Nabors Industries, Inc.                                                                   ENRG, HVOL             68BEBEAC6                   NBR-Inc (3) 6.15 15Feb18                                      629568AQ9                   0.008
  78   National Rural Utilities Cooperative Finance Corporation                                     ENRG                69AB75AC5                   NRUC 8 01Mar32                                                637432CT0                   0.008
@@ -123,14 +99,8 @@
  84   Omnicom Group Inc.                                                                            TMT                6E9AAAAD1                   OMC 4.45 15Aug20                                              682134AC5                   0.008
  85   Pfizer Inc.                                                                                  CONS                7I8789AA1                   PFE 4.65 01Mar18                                              717081AQ6                   0.008
  86   Pitney Bowes Inc.                                                                          TMT, HVOL             7J68BGAC5                   PBI 6.25 15Mar19                                              724479AH3                   0.008
- 87   Quest
-      Q      Di
-             Diagnostics
-                      i Incorporated
-                           I         d                                                          CONS,
-                                                                                                CONS HVOL              7BCB7PAB5                   DGX 6.95  01J l37
-                                                                                                                                                        6 95 01Jul37                                             74834LAN0                   0.008
-                                                                                                                                                                                                                                             0 008
+ 87   Quest Diagnostics Incorporated                                                             CONS, HVOL              7BCB7PAB5                   DGX 6.95 01Jul37                                              74834LAN0                   
+0.008
  88   Raytheon Company                                                                             INDU                7CA622AD8                   RTN 7.2 15Aug27                                               755111AF8                   0.008
  89   Reynolds American Inc.                                                                       CONS                7D7884AF1                   RAI 3.25 01Nov22                                              761713AX4                   0.008
  90   Ryder System, Inc.                                                                           INDU                7FB89DAE3                   R 5.85 01Nov16 BondCall                                       78355HJK6                   0.008
@@ -169,27 +139,3 @@
 123   XEROX CORPORATION                                                                          TMT, HVOL             9HC533AE0                   XRX 6.35 15May18                                              984121BW2                   0.008
 124   XLIT Ltd.                                                                                     FIN                GPHABPAA8                   XLITLTD 6.25 15May27                                          98372PAK4                   0.008
 125   YUM! Brands, Inc.                                                                            CONS                9HGCDHAB5                   YUM 6.25 15Mar18                                              988498AC5                   0.008
-
-
-
-
-      This annex, and the data contained herein, is the proprietary property of Markit Group Limited and may be used only for informational purposes in connection with the confirmation of this index trade. Unless you are in possession of a valid license, you may not (i) extract
-      the data contained in the annex, (ii) copy, share, sell, distribute, redistribute, or otherwise make available to any other party this annex, or the data contained herein, or (iii) use the annex or the data contained herein in any other manner, including but not limited to in
-      furtherance of other trade confirmations or for other internal or external business purposes. To obtain a license, please contact Markit Group Limited on +44 (0 ) 207 260 2345 or info@Markit.com. The senders and recipients of this data acknowledge and agree that no
-      duty of care is owed to them or to any other users by any Data Provider, and that use of the data creates no lawyer-client relationship between the user and/or any other user, and any Data Provider.
-      "Data Provider" means those persons who developed, compiled, prepared, revised, selected and arranged the Services (including without limitation certain information sources, professional advisors and other persons or entities that have participated in any respect in
-      the development or collection of the Services or any data or information contained therein)."
-
-
-      NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY DATA PROVIDER OR OTHER PERSON OR ENTITY MAKES ANY WARRANTY, EXPRESS OR IMPLIED, AS TO RESULTS TO BE ATTAINED BY SUBSCRIBER OR OTHERS FROM THE USE OF
-      THIS DOCUMENT, AND THERE ARE NO EXPRESS OR IMPLIED WARRANTIES OF CONDITION OF QUALITY OR ANY EXPRESS OR IMPLIED WARRANTY OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE
-      OR USE. BY USE OF THIS DOCUMENT, YOU ACKNOWLEDGE THAT YOU HAVE NOT RELIED UPON ANY WARRANTY, GUARANTY OR REPRESENTATION MADE BY MARKIT GROUP LIMITED OR ANY OTHER PERSON OR ENTITY.
-
-
-
-
-      NEITHER MARKIT GROUP LIMITED, ITS AFFILIATES NOR ANY OTHER PERSON OR ENTITY SHALL IN ANY WAY BE LIABLE TO THE USER OF THIS DOCUMENTOR ANY CLIENT OF SUCH USER FOR ANY INACCURACIES, ERRORS OR OMISSIONS,
-      REGARDLESS OF CAUSE, IN THE INFORMATION AVAILABLE ON THIS DOCUMENT OR FOR ANY DAMAGES (WHETHER DIRECT OR INDIRECT) RESULTING THEREFROM. UNDER NO CIRCUMSTANCES WILL MARKIT GROUP LIMITED BE LIABLE FOR
-      ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR LOST PROFITS DAMAGES WITH RESPECT TO THE USE OF THIS DOCUMENT OR THE INFORMATION AVAILABLE HEREIN, REGARDLESS OF WHETHER SUCH DAMAGES COULD HAVE BEEN
-      FORESEEN OR PREVENTED.
-
