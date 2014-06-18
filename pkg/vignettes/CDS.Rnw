@@ -64,6 +64,7 @@ Let's assume that this particular bond did default. As such, the hedge fund ende
 [debt waterfall re: recovery rate]
 
 
+(old version):
 A Credit Default Swap (CDS) is an agreement between two
 counterparties in which the buyer pays a fixed periodic coupon to the
 seller in exchange for protection in the case of a credit event. The
