@@ -33,7 +33,7 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \title{A Guide to the CDS Package}
-\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, and Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}}
+\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, and Skylar Smith\thanks\href{mailto:sws2@williams.edu}{sws2@williams.edu}}
 \maketitle
 
 %%\VignetteIndexEntry{Using the CDS package}
@@ -45,6 +45,24 @@
 \section{Introduction}
 
 %% 1 paragraph
+
+A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular among bondholders, investors, and companies. To exemplify the advantages to this economic tool, consider the following scenario.
+
+Let's say that there exists a portfolio manager (that is, a person who manages mupltiple investments of several forms) who owns a \textbf{bond}--an agreement in which individuals and institutions lend money to companies and governments with the expectation that the debt is repaid at a specified date in the future. The manager's confidence in the credit worthiness of the company that issued the bond is beginning to waiver--in other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that as a result, he will lose the money he lent. His concern could be due to a number of reasons: perhaps the company's credit rating recently decreased, or perhaps [give another example]. Either way, he wants to feel more secure about his investment. 
+
+While the portfolio manager could just sell his bond and do away with any risk of losing money, he is reluctant to do so because that transcation may be too expensive or too cumbersome. Here is where a CDS comes in. A CDS is an agreement between two
+\textbf{counterparties}, or opposing groups, in which the buyer--in this case, the portfolio manager--pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, confiscation of assets, and even effects of wars.
+
+So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager could opt to buy protection in the form of a CDS, which would allow him or her to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
+
+In our example, let's say that this third party is a hedge fund. So, the portfolio manager sends a periodic fee to a hedge fund manager, and in return, the hedge fund manager offers to pay a much larger sum to the portfolio manager in the case of default. That way, the portfolio manager can pass on the bond's credit risk while keeping the bond in his or her possession, and the hedge fund can receive a fee and possibly not have to pay anything--thus making a profit--in return if the bond does not default. 
+
+If this hedge fund agrees to become a \textbf{protection seller} in this agreement, the fund probably believes that the company from which the portfolio manager buys the bond is actually somewhat credit-worthy, and will probably not default on its bonds for the duration of the CDS. If that happens, the hedge fund can walk away with the money from the periodic fees, and doesn't have to pay anything in return. If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds--as the manager will end up with a net loss of money otherwise.
+
+Let's assume that this particular bond did default. As such, the hedge fund ended up having to compensate the portfolio manager for his or her loss in assets. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's recovery rate. The \textbf{recovery rate} is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, 
+
+[debt waterfall re: recovery rate]
+
 
 A Credit Default Swap (CDS) is an agreement between two
 counterparties in which the buyer pays a fixed periodic coupon to the
@@ -105,13 +123,7 @@ event triggers the settlement under a CDS contract. Possible credit
 events include banruptcy and debt restructing. The exact definition
 varies among CDS contracts.\\
 
-For example, let's say that there is a portfolio manager who owns a bond--a bond that is part of the CDX IG. While the portfolio manager's confidence in the credit worthiness of company is beginning to waiver--perhaps due to a decrease in the credit rating of the comany, or governmental confiscation of assets--he or she is reluctant to sell this bond because that transaction may be too expensive or too cumbersome to carry out. In this case, the manager does not have to choose between carrying the bond's credit risk--the risk that the company will deafult on its bonds--and completing a transcation that would unecessarily cost him or her time or money. The manager can instead opt to buy protection in the form of a Credit Default Swap (CDS), which would allow him or her to transfer the credit risk to a third party for a fee. 
 
-In our example, let's say that this third party is a hedge fund. So, the portfolio manager sends a periodic fee to a hedge fund manager, and in return, the hedge fund manager offers to pay a much larger sum to the portfolio manager in the case of a credit event--in this case, a default on the bond. That way, the portfolio manager can pass on the bond's credit while keeping the bond in his or her possession, and the hedge fund can receive a fee and possibly not have to pay anything in return if the bond does not default. 
-
-If this hedge fund agrees to become a protection seller in this agreement, the fund probably believes that the company from which the portfolio manager buys the bond is actually somewhat credit-worthy, and will probably not default on its bonds for the duration of the CDS. If that happens, the hedge fund can walk away with the money from the periodic fees, and doesn't have to pay anything in return. If the portfolio manager agrees to become the protection buyer in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds--as the manager will end up with a net loss money otherwise.
-
-Let's assume that this particular bond did default. As such, the hedge fund did end up having to compensate the portfolio manager for his or her loss in assets. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened.
 
 %% Start with a bond portfolio manager who owns a specific bond,
 %% something that is a reference obligation for a member of CDX IG. 
