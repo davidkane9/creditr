@@ -59,16 +59,9 @@ In our example, let's say that this third party is a hedge fund. So, the portfol
 
 If this hedge fund agrees to become a \textbf{protection seller} in this agreement, the fund probably believes that the company from which the portfolio manager buys the bond is actually somewhat credit-worthy, and will probably not default on its bonds for the duration of the CDS. If that happens, the hedge fund can walk away with the money from the periodic fees, and doesn't have to pay anything in return. If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds--as the manager will end up with a net loss of money otherwise.
 
-Let's assume that this particular bond did default. As such, the hedge fund ended up having to compensate the portfolio manager for his or her loss in assets. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's recovery rate. The \textbf{recovery rate} is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, 
+Let's assume that this particular bond did default. As such, the hedge fund ended up having to compensate the portfolio manager for his or her loss in assets. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's recovery rate. The \textbf{recovery rate} is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever is remaining in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's debt is paid out before its stock, and both stock and debt can be labeled as "senior" and "junior," with with the former taking priority over the latter.
 
-[debt waterfall re: recovery rate]
-
-
-(old version):
-A Credit Default Swap (CDS) is an agreement between two
-counterparties in which the buyer pays a fixed periodic coupon to the
-seller in exchange for protection in the case of a credit event. The
-International Swaps and Derivatives Association (ISDA) has created a
+The International Swaps and Derivatives Association (ISDA) has created a
 set of standard terms for CDS contracts, the so-called ``Standard
 Model.'' This allows market participants to calculate cash settlement
 from conventional spread quotations, convert between conventional
@@ -76,6 +69,8 @@ spread and upfront payments, and build the spread curve of a CDS. The
 \textbf{CDS} package implements the Standard Model, allowing users to
 value credit default swaps and calculate various risk measures
 associated with these instruments.
+
+
 
 %% Are the "standard terms for CDS contracts" really the same thing as the 
 %% Standard Model? I am not so sure. I think that the standard terms are 
@@ -111,20 +106,20 @@ related to a single-name, or corporate, credit default swaps.
 %% the bond that is the reference obligation. Cite the Markit webpage.
 %% Leave nothing out.
 
-A single-name CDS contract provides a transfer of credit risk between
-two parties. The buyer of a CDS contract (protection buyer) transfers
-the credit risk to the CDS seller (protection seller) by paying a
-series of coupons until the contract terminates. In other words, the
-protection buyer is short credit by selling the credit risk of an
-underlying bond to the protection seller. As shown in Figure
-\ref{fig:cashFlow}, the buyer pays a stream of coupon payments, called
+%% (Old Version)
+%% A single-name CDS contract provides a transfer of credit risk between
+%% two parties. The buyer of a CDS contract (protection buyer) transfers
+%% the credit risk to the CDS seller (protection seller) by paying a
+%% series of coupons until the contract terminates. In other words, the
+%% protection buyer is short credit by selling the credit risk of an
+%% underlying bond to the protection seller. 
+
+As shown in Figure \ref{fig:cashFlow}, the buyer pays a stream of coupon payments, called
 the premium leg, in order to receive a one-time, contingent payment,
 called the protection leg, in the case of a credit event. A credit
 event triggers the settlement under a CDS contract. Possible credit
 events include banruptcy and debt restructing. The exact definition
 varies among CDS contracts.\\
-
-
 
 %% Start with a bond portfolio manager who owns a specific bond,
 %% something that is a reference obligation for a member of CDX IG. 
