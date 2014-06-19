@@ -46,7 +46,7 @@
 
 %% 1 paragraph
 
-A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular among bondholders, investors, and companies. To exemplify the advantages to this economic tool, consider the following scenario.
+A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular among bondholders, investors, and companies. To exemplify the advantages to this economic tool, consider the following scenario:
 
 Let's say that there exists a portfolio manager (that is, a person who manages mupltiple investments of several forms) who owns a \textbf{bond}--an agreement in which individuals and institutions lend money to companies and governments with the expectation that the debt is repaid at a specified date in the future. The manager's confidence in the credit worthiness of the company that issued the bond is beginning to waiver--in other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that as a result, he will lose the money he lent. His concern could be due to a number of reasons: perhaps the company's credit rating recently decreased, or perhaps [give another example]. Either way, he wants to feel more secure about his investment. 
 
