@@ -46,13 +46,30 @@
 
 %% 1 paragraph
 
-A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular for the past two decades among banks, security houses, hedge funds, insurance companies, corporates, mutual funds, and pension funds; in other words, a CDS is a tool used by many different companies and institutions. To exemplify the advantages and mechanics of this economic tool, consider the following scenario:
+A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become quite popular among a wide variety of financial institutions, such as pensions funds, hedge funds, investment banks et al. 
 
-Let's say that there exists a portfolio manager who possesses a certain amount of \textbf{assets}, or money, that he can invest. This portfolio manager decides to buy a \textbf{bond}--an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date--from Company A with a one-year \textbf{ maturity date}. So, in five years, Company A is expected to return the same sum of money that the portfolio manager lent. Company A also agrees to pay monthly \textbf{interest} to the portfolio manager at fixed dates described in the CDS that both parties signed. However, six months after buying the bond, the manager's confidence in the credit worthiness of Company A begins to waiver. In other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that he will therefore lose the money he lent. His concern could be due to a number of reasons: perhaps the company's \textbf{credit rating}, as defined by rating agencies, recently decreased, or perhaps the company just recently merged. Either way, the manager wants to feel more secure about his investment. 
+CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan including Blythe Masters.\citep{cdsOrigins, blythe} The CDS market started to develop soon afterwards as banks used CDS contracts to hedge the credit exposures on their balance sheets. Many different types of CDS have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to a single-name, or corporate, credit default swaps.
 
-While the portfolio manager could just sell his bond and do away with worrying about the bond's credit risk, he is reluctant to do so because that transcation is too expensive, or maybe just too cumbersome. 
+%% add more about what this vignette will talk about and relate it to the package
 
-Here is where a CDS comes in. 
+
+%% By the way, I am thinking that a good target journal for this piece may be
+%% The Journal of Statistical Software. If so, we can/should make this much
+%% longer than it currently is, including getting a lot of the details correct,
+%% which is why I am adding these notes(!!).
+
+\section{CDS Mechanics}
+\label{sec:CDSMechanics}
+
+To exemplify the advantages and mechanics of  a CDS as a hedging tool, consider the following scenario:
+Let's say that there exists a portfolio manager who possesses a certain amount of \textbf{assets}, or money, that he can invest. This portfolio manager decides to buy a \textbf{bond}--an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date--from Company A with a one-year \textbf{ maturity date}. So, in five years, Company A is expected to return the same sum of money that the portfolio manager lent. Company A also agrees to pay monthly \textbf{interest} to the portfolio manager at fixed dates described in the CDS that both parties signed. However, six months after buying the bond, the manager's confidence in the credit worthiness of Company A begins to waiver. In other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that he will therefore lose the money he lent. Risks associated with the company's \textbf{credit rating}, as defined by rating agencies, or some other factor that may affect the company's credit risk, may encourage the manager to hedge his position and reduce his portfolio's exposure. Either way, the manager wants to feel more secure about his investment. To do this, the manager could adopt more convenitional techniques such as shorting of bonds or bond futures, holding put options. The portfolio manager could just sell his bond and do away with worrying about the bond's credit risk, he is reluctant to do so because that transcation is too expensive, or maybe just too cumbersome. 
+
+
+%% talk about drawbacks of these alternatives.
+
+%% choose CDSs over shorting of bonds as there are liquidity constraints involvded with shorting of bonds.
+
+This is where the CDS seems like an attractive alternative. 
 
 A CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events.
 
@@ -65,17 +82,6 @@ When the hedge fund agrees to this agreement, or when any \textbf{protection sel
 If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds, as the manager will end up with a net loss of money otherwise.
 
 Let's assume that this particular bond did default. As such, the hedge fund ultimately had to compensate the portfolio manager for his loss in invesment. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever remains in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's \textbf{debt} (bonds, bank loans, etc.) is paid out before its stock, and both stock and debt can be further categorized as "senior" and "junior", with with the former taking priority over the latter.
-
-
-
-
-%% By the way, I am thinking that a good target journal for this piece may be
-%% The Journal of Statistical Software. If so, we can/should make this much
-%% longer than it currently is, including getting a lot of the details correct,
-%% which is why I am adding these notes.
-
-\section{CDS Basics}
-\label{sec:CDSBasics}
 
 %% what's a CDS
 
@@ -96,15 +102,6 @@ associated with these instruments.
 %% proceedures and so on. I think that the Standard Model just refers to the
 %% math. But perhaps this is too confusing a distinction (and I might be 
 %% wrong), so leave it for the next version.
-
-CDSs originated in the late 1980s and was popularized by a team at
-J.P. Morgan including Blythe Masters.\citep{cdsOrigins,
-  blythe} The CDS market started to develop soon afterwards as banks
-used CDS contracts to hedge the credit exposures on their balance
-sheets. Many different types of CDS have since emerged including
-basket default swaps (BDSs), index CDSs, credit-linked notes, et
-cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations
-related to a single-name, or corporate, credit default swaps.
 
 %% mechanics of a single-name CDS contract
 
