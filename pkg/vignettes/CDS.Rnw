@@ -71,7 +71,9 @@ Let's say that there exists a portfolio manager who possesses a certain amount o
 
 This is where the CDS seems like an attractive alternative. 
 
-A CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events.
+As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond.  
+
+A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events.
 
 So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager can opt to buy protection in the form of a CDS, which would allow him to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
 
@@ -110,9 +112,7 @@ associated with these instruments.
 %% the bond that is the reference obligation. Cite the Markit webpage.
 %% Leave nothing out.
 
-As shown in Figure \ref{fig:cashFlow}, the buyer pays a stream of coupon payments, called
-the premium leg, in order to receive a one-time, contingent payment,
-called the protection leg, in the case of a credit event. A credit
+ A credit
 event triggers the settlement under a CDS contract. Possible credit
 events include banruptcy and debt restructing. The exact definition
 varies among CDS contracts.
