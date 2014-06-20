@@ -33,7 +33,7 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \title{A Guide to the CDS Package}
-\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, and Skylar Smith\thanks\href{mailto:sws2@williams.edu}{sws2@williams.edu}}
+\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, and Skylar Smith\thanks{\href{mailto:sws2@williams.edu}{sws2@williams.edu}}}
 \maketitle
 
 %%\VignetteIndexEntry{Using the CDS package}
@@ -46,12 +46,15 @@
 
 %% 1 paragraph
 
-A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular among bondholders, investors, and companies. To exemplify the advantages to this economic tool, consider the following scenario:
+A \textbf{Credit Default Swap} (CDS) is type of credit derivative that has become increasingly popular for the past two decades among banks, security houses, hedge funds, insurance companies, corporates, mutual funds, and pension funds; in other words, a CDS is a tool used by many different companies and institutions. To exemplify the advantages and mechanics of this economic tool, consider the following scenario:
 
-Let's say that there exists a portfolio manager (that is, a person who manages mupltiple investments of several forms) who owns a \textbf{bond}--an agreement in which individuals and institutions lend money to companies and governments with the expectation that the debt is repaid at a specified date in the future. The manager's confidence in the credit worthiness of the company that issued the bond is beginning to waiver--in other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that as a result, he will lose the money he lent. His concern could be due to a number of reasons: perhaps the company's credit rating recently decreased, or perhaps [give another example]. Either way, he wants to feel more secure about his investment. 
+Let's say that there exists a portfolio manager who possesses a certain amount of \textbf{assets}, or money, that he can invest. This portfolio manager decides to buy a \textbf{bond}--an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date--from Company A with a one-year \textbf{ maturity date}. So, in five years, Company A is expected to return the same sum of money that the portfolio manager lent. Company A also agrees to pay monthly \textbf{interest} to the portfolio manager on fixed dates described in the contract that both parties signed. However, six months after buying the bond, the manager's confidence in the credit worthiness of Company A begins to waiver--in other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that he will therefore lose the money he lent. His concern could be due to a number of reasons: perhaps the company's \textbf{credit rating}, as defined by rating agencies, such as S&P or Moody's, recently decreased, or perhaps the company just recently merged. Either way, the manager wants to feel more secure about his investment. 
 
-While the portfolio manager could just sell his bond and do away with any risk of losing money, he is reluctant to do so because that transcation may be too expensive or too cumbersome. Here is where a CDS comes in. A CDS is an agreement between two
-\textbf{counterparties}, or opposing groups, in which the buyer--in this case, the portfolio manager--pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, confiscation of assets, and even effects of wars.
+While the portfolio manager could just sell his bond and do away with worrying about the bond's credit risk, he is reluctant to do so because that transcation is too expensive--or maybe just too cumbersome. 
+
+Here is where a CDS comes in. 
+
+A CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer--in this case, the portfolio manager--pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, confiscation of assets, and even effects of wars.
 
 So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager could opt to buy protection in the form of a CDS, which would allow him or her to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
 
@@ -69,8 +72,6 @@ spread and upfront payments, and build the spread curve of a CDS. The
 \textbf{CDS} package implements the Standard Model, allowing users to
 value credit default swaps and calculate various risk measures
 associated with these instruments.
-
-
 
 %% Are the "standard terms for CDS contracts" really the same thing as the 
 %% Standard Model? I am not so sure. I think that the standard terms are 
