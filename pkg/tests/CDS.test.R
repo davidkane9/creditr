@@ -1,7 +1,6 @@
 ## CDS.R test case
 
 library(CDS)
-
 ## truth1 <- CDS(TDate = "2014-01-14",
 ##               tenor = "5Y",
 ##               parSpread = 32,
