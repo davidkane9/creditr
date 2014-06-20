@@ -149,8 +149,17 @@ value credit default swaps and calculate various risk measures associated with t
 \label{sec:CDSTerminology}
 
 
+%% In the next draft, we should not have a clunky list of terms.
+%% Better to introduce the terms, bolding them the first time
+%% they appear, in a discussion of a specific CDS. 
 
-%% Bloomberg screenshot 
+Figure 2 below displays data on the CDS of Alcoa Inc on June 02, 2014 from Bloomberg. The two most commonly used sources for CDS related data are Bloomberg and Markit. In the screenshot below, we can see many of the key variables that are used in a CDS contract between two counterparties. In this section we will describe these variables and how they matter to our portfolio manager when she evaluates a CDS. :\footnote{Some of the
+  definitions come from \textit{Credit Derivatives Glossary}
+  \citep{glossary}, \textit{Standard Corporate CDS Handbook}
+  \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
+  \textit{The Pricing and Risk Management of Credit Default Swaps,
+    with a Focus on the ISDA Model} \citep{openGamma}.}
+
 
 \begin{figure}[H]
 \centering
@@ -158,16 +167,7 @@ value credit default swaps and calculate various risk measures associated with t
 \caption{CDS figures from Bloomberg for Alcoa Inc on June 02, 2014}
 \end{figure}
 
-%% In the next draft, we should not have a clunky list of terms.
-%% Better to introduce the terms, bolding them the first time
-%% they appear, in a discussion of a specific CDS. 
 
-Figure 2 above displays data on the CDS of Alcoa Inc on June 02, 2014 from Bloomberg. We can see many of the key variables that are used in a CDS contract between two counterparties:\footnote{Some of the
-  definitions come from \textit{Credit Derivatives Glossary}
-  \citep{glossary}, \textit{Standard Corporate CDS Handbook}
-  \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
-  \textit{The Pricing and Risk Management of Credit Default Swaps,
-    with a Focus on the ISDA Model} \citep{openGamma}.}
 \begin{description}
 \item[Reference Entity] refers to the legal entity which is the
   subject of a CDS contract. \texttt{entityName} in the \texttt{CDS}
@@ -232,6 +232,8 @@ refer to points upfront (in \%), and upfront payment (in dollar
 amount) of a CDS contract, respectively. One of the three arguments
 has to be specified in order to construct the \texttt{CDS} class
 object.
+
+%% Bloomberg screenshot 
 
 
 \section{The ISDA Standard Model}
