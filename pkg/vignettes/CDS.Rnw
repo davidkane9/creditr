@@ -54,15 +54,33 @@ While the portfolio manager could just sell his bond and do away with worrying a
 
 Here is where a CDS comes in. 
 
-A CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer--in this case, the portfolio manager--pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, confiscation of assets, and even effects of wars.
+A CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer--in this case, the portfolio manager--pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events.
 
-So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager could opt to buy protection in the form of a CDS, which would allow him or her to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
+So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager can opt to buy protection in the form of a CDS, which would allow him to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
 
-In our example, let's say that this third party is a hedge fund. So, the portfolio manager sends a periodic fee to a hedge fund manager, and in return, the hedge fund manager offers to pay a much larger sum to the portfolio manager in the case of default. That way, the portfolio manager can pass on the bond's credit risk while keeping the bond in his or her possession, and the hedge fund can receive a fee and possibly not have to pay anything--thus making a profit--in return if the bond does not default. 
+In our example, let's say that this third party is a hedge fund. So, the portfolio manager sends a periodic fee to a hedge fund, and in return, the hedge fund offers to pay a much larger sum to the portfolio manager in the case of company A's default. That way, the portfolio manager can pass on the bond's associated credit risk while still keeping the bond within his possession, and the hedge fund can receive a fee and possibly not have to pay anything in return--thus making a profit--if company A does not default. 
 
-If this hedge fund agrees to become a \textbf{protection seller} in this agreement, the fund probably believes that the company from which the portfolio manager buys the bond is actually somewhat credit-worthy, and will probably not default on its bonds for the duration of the CDS. If that happens, the hedge fund can walk away with the money from the periodic fees, and doesn't have to pay anything in return. If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds--as the manager will end up with a net loss of money otherwise.
+When the hedge fund agrees to this agreement, or when any \textbf{protection seller} offers to bear credit risk for a fee, that protection seller probably believes that the company or institution who borrowed money is somewhat credit-worthy, and will probably not go bankrupt and default. In our case, the hedge fund probably disagrees with the portfolio manager, and believes that company A will not default--otherwise (if the hedge fund believed that company A \emph{will} default), there would be no advantage to striking this kind of deal, as the hedge would more likely have a net loss of money than not! If company A does not default, the hedge fund can walk away with the money from the periodic fees and doesn't have to pay anything in return. 
 
-Let's assume that this particular bond did default. As such, the hedge fund ended up having to compensate the portfolio manager for his or her loss in assets. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's recovery rate. The \textbf{recovery rate} is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever is remaining in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's debt is paid out before its stock, and both stock and debt can be labeled as "senior" and "junior," with with the former taking priority over the latter.
+If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds--as the manager will end up with a net loss of money otherwise.
+
+Let's assume that this particular bond did default. As such, the hedge fund ultimately had to compensate the portfolio manager for his loss in invesment. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever remains in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's \textbf{debt}--bonds, bank loans, etc.--is paid out before its stock, and both stock and debt can be further categorized as "senior" and "junior", with with the former taking priority over the latter.
+
+Now that we've
+
+
+
+%% By the way, I am thinking that a good target journal for this piece may be
+%% The Journal of Statistical Software. If so, we can/should make this much
+%% longer than it currently is, including getting a lot of the details correct,
+%% which is why I am adding these notes.
+
+\section{CDS Basics}
+\label{sec:CDSBasics}
+
+%% what's a CDS
+
+A CDS is a simple and popular form of credit derivative. As described before, a single-name CDS contract provides a transfer of credit risk between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is short credit by selling the credit risk of an underlying bond to the protection seller. 
 
 The International Swaps and Derivatives Association (ISDA) has created a
 set of standard terms for CDS contracts, the so-called ``Standard
@@ -80,18 +98,7 @@ associated with these instruments.
 %% math. But perhaps this is too confusing a distinction (and I might be 
 %% wrong), so leave it for the next version.
 
-%% By the way, I am thinking that a good target journal for this piece may be
-%% The Journal of Statistical Software. If so, we can/should make this much
-%% longer than it currently is, including getting a lot of the details correct,
-%% which is why I am adding these notes.
-
-\section{CDS Basics}
-\label{sec:CDSBasics}
-
-%% what's a CDS
-
-A CDS is a simple and popular form of credit derivative. It was
-originated in the late 1980s and was popularized by a team at
+CDSs originated in the late 1980s and was popularized by a team at
 J.P. Morgan including Blythe Masters.\citep{cdsOrigins,
   blythe} The CDS market started to develop soon afterwards as banks
 used CDS contracts to hedge the credit exposures on their balance
@@ -106,14 +113,6 @@ related to a single-name, or corporate, credit default swaps.
 %% (with a name, termination date and so on) and give the details of
 %% the bond that is the reference obligation. Cite the Markit webpage.
 %% Leave nothing out.
-
-%% (Old Version)
-%% A single-name CDS contract provides a transfer of credit risk between
-%% two parties. The buyer of a CDS contract (protection buyer) transfers
-%% the credit risk to the CDS seller (protection seller) by paying a
-%% series of coupons until the contract terminates. In other words, the
-%% protection buyer is short credit by selling the credit risk of an
-%% underlying bond to the protection seller. 
 
 As shown in Figure \ref{fig:cashFlow}, the buyer pays a stream of coupon payments, called
 the premium leg, in order to receive a one-time, contingent payment,
