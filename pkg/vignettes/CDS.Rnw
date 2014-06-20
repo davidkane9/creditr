@@ -15,6 +15,7 @@
 \usepackage{url}
 \usepackage{breakurl}
 \usepackage[utf8]{inputenc}
+\usepackage{float}
 
 \newcommand{\ts}{\textsuperscript}
 \newcommand\bc{\begin{center}}
@@ -61,8 +62,8 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \section{CDS Mechanics}
 \label{sec:CDSMechanics}
 
-To exemplify the advantages and mechanics of  a CDS as a hedging tool, consider the following scenario:
-Let's say that there exists a portfolio manager who possesses a certain amount of \textbf{assets}, or money, that he can invest. This portfolio manager decides to buy a \textbf{bond}--an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date--from Company A with a one-year \textbf{ maturity date}. So, in five years, Company A is expected to return the same sum of money that the portfolio manager lent. Company A also agrees to pay monthly \textbf{interest} to the portfolio manager at fixed dates described in the CDS that both parties signed. However, six months after buying the bond, the manager's confidence in the credit worthiness of Company A begins to waiver. In other words, the manager is worried that the company will \textbf{default} on its bonds (become unable to repay its debts to its bondholders) and that he will therefore lose the money he lent. Risks associated with the company's \textbf{credit rating}, as defined by rating agencies, or some other factor that may affect the company's credit risk, may encourage the manager to hedge his position and reduce his portfolio's exposure. Either way, the manager wants to feel more secure about his investment. To do this, the manager could adopt more convenitional techniques such as shorting of bonds or bond futures, holding put options. The portfolio manager could just sell his bond and do away with worrying about the bond's credit risk, he is reluctant to do so because that transcation is too expensive, or maybe just too cumbersome. 
+To understand the advantages and mechanics of a CDS as a hedging tool, consider the following example:
+Let's say that there exists a portfolio manager of a pension fund who has to allocate the money of clients in a manner that earns a steady return by putting their investments at a large risk. This portfolio manager decides to buy a large amount of bonds of, say, Alcoa Inc. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date--in this case, five years from now. Therefore, Alcoa Inc. is expected to return the same sum of money plus a fixed \textbf{interest} semi-annually to the portfolio manager. However, six months after buying the bond, the manager's confidence in the credit worthiness of Alcoa Inc. begins to waiver. In other words, the manager is worried that the company will \textbf{default} and fail to meet its debt obligations. Risks associated with the company's \textbf{credit rating}, as defined by rating agencies, or some other indicator of the company's credit risk may encourage the manager to hedge her position and reduce her portfolio's exposure. Either way, the manager wants to feel more secure about her investment. To do this, the manager could adopt more convenitional techniques such as shorting of bonds, bond futures, or holding put options on those bonds. Although the portfolio manager could just sell her bond and do away with worrying about the bond's credit risk, she is reluctant to do so because that transcation is too expensive, or maybe just too cumbersome. 
 
 
 %% talk about drawbacks of these alternatives.
@@ -71,69 +72,15 @@ Let's say that there exists a portfolio manager who possesses a certain amount o
 
 This is where the CDS seems like an attractive alternative. 
 
-As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond.  
+As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events. 
 
-A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract, however, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events.
+Let's say that this third party is a hedge fund. The portfolio manager sends a periodic fee to a hedge fund, and in return, the hedge fund offers to pay a pre-determined amount in the case of Alcoa Inc.'s default, over a fixed period of time. That way, the portfolio manager can pass on the bond's associated credit risk while still keeping the bond within her possession, and the hedge fund can receive a fee and possibly not have to pay anything in return (thus making a profit) if Alcoa Inc. does not default. If the portfolio manager is the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds, as the manager will end up with a net loss of money otherwise. The manager can protect his portfolio from credit events at a substantially lower cost by transferring the credit risk to a third party who is willing to accept the risk for a fee. 
 
-So, in this case, the manager does not have to choose between carrying the bond's credit risk and completing a transcation that would unecessarily cost him time or money. Instead, the manager can opt to buy protection in the form of a CDS, which would allow him to effectively transfer the credit risk to a third party who is willing to accept that risk for a fee. 
+%% refer to a specific bond like Boeing Capital or General Electric 
 
-In our example, let's say that this third party is a hedge fund. So, the portfolio manager sends a periodic fee to a hedge fund, and in return, the hedge fund offers to pay a much larger sum to the portfolio manager in the case of company A's default. That way, the portfolio manager can pass on the bond's associated credit risk while still keeping the bond within his possession, and the hedge fund can receive a fee and possibly not have to pay anything in return (thus making a profit) if company A does not default. 
+When the hedge fund agrees to this agreement, or when any \textbf{protection seller} offers to bear credit risk for a fee, that protection seller probably believes that the company or institution that borrowed money is more credit-worthy than the portfolio manager perceives it to be, and that it probably will not default on its debt payments. If Alcoa Inc. does not default, the hedge fund walks away with the coupon payment with no loss to it. 
 
-When the hedge fund agrees to this agreement, or when any \textbf{protection seller} offers to bear credit risk for a fee, that protection seller probably believes that the company or institution who borrowed money is somewhat credit-worthy, and will probably not go bankrupt and default. In our case, the hedge fund probably disagrees with the portfolio manager, and believes that company A will not default--otherwise (if the hedge fund believed that company A \emph{will} default), there would be no advantage to striking this kind of deal, as the hedge fund would more likely have a net loss of money than not! If company A does not default, the hedge fund can walk away with the money from the periodic fees and doesn't have to pay anything in return. 
-
-If the portfolio manager agrees to become the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds, as the manager will end up with a net loss of money otherwise.
-
-Let's assume that this particular bond did default. As such, the hedge fund ultimately had to compensate the portfolio manager for his loss in invesment. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever remains in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's \textbf{debt} (bonds, bank loans, etc.) is paid out before its stock, and both stock and debt can be further categorized as "senior" and "junior", with with the former taking priority over the latter.
-
-%% what's a CDS
-
-A CDS is a simple and popular form of credit derivative. As described before, a single-name CDS contract provides a transfer of credit risk between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is short credit by selling the credit risk of an underlying bond to the protection seller. 
-
-The International Swaps and Derivatives Association (ISDA) has created a
-set of standard terms for CDS contracts, the so-called ``Standard
-Model.'' This allows market participants to calculate cash settlement
-from conventional spread quotations, convert between conventional
-spread and upfront payments, and build the spread curve of a CDS. The
-\textbf{CDS} package implements the Standard Model, allowing users to
-value credit default swaps and calculate various risk measures
-associated with these instruments.
-
-%% Are the "standard terms for CDS contracts" really the same thing as the 
-%% Standard Model? I am not so sure. I think that the standard terms are 
-%% things like XR and MM, strict definitions for credit events, auction
-%% proceedures and so on. I think that the Standard Model just refers to the
-%% math. But perhaps this is too confusing a distinction (and I might be 
-%% wrong), so leave it for the next version.
-
-%% mechanics of a single-name CDS contract
-
-%% Might be good to expand this with a specific example. Use a real CDS
-%% (with a name, termination date and so on) and give the details of
-%% the bond that is the reference obligation. Cite the Markit webpage.
-%% Leave nothing out.
-
- A credit
-event triggers the settlement under a CDS contract. Possible credit
-events include banruptcy and debt restructing. The exact definition
-varies among CDS contracts.
-
-%% Start with a bond portfolio manager who owns a specific bond,
-%% something that is a reference obligation for a member of CDX IG. 
-%% That PM is concerned about the credit worthiness of the company,
-%% at least over the next year or two. But selling the bond is too
-%% expensive or annoying. So, he can buy some CDS protection on 
-%% the bond. And so on. Describe all the cash flows, both from his
-%% point of view, and the point of view of the hedge fund that sells
-%% the protection. Better yet, have the exercise occur in the past,
-%% but use a bond that actually defaulted. Then we can talk about the
-%% auction, recovery rate and so on.
-
-%% Define XR and MM in the next version.
-
-%% Might add some more details. Or, better, use one of the images from
-%% Barclays or Bloomberg, citing them of course.
-
-\begin{figure}
+\begin{figure}[H]
   \caption{\label{fig:cashFlow} Mechanics of a CDS contract}
 \begin{center}
 \begin{tikzpicture}[
@@ -156,32 +103,66 @@ squarednode/.style={rectangle, draw=black!60, fill=none, thick,
 \end{center}
 \end{figure}
 
-In the \textbf{CDS} package, we call the function \texttt{CDS} to
-construct an object of a class \texttt{CDS}. Below we show an example
-of how to construct a CDS contract in the package.
 
-<<echo = F, results = hide>>=
-options(width = 100)
-@ 
+Let's assume that this particular bond did default. As such, the hedge fund ultimately had to compensate the portfolio manager for her loss in invesment. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever remains in the company's assets is paid out according to a \textbf{debt waterfall}. For example, a company's \textbf{debt} (bonds, bank loans, etc.) is paid out before its stock, and both stock and debt can be further categorized as "senior" and "junior", with with the former taking priority over the latter.
 
-<<>>=
-library(CDS)
-cds1 <- CDS(entityName = "IBM",
-            RED = "49EB20",
-            TDate = "2014-04-15",
-            tenor = "5Y",
-            notional = 1e7,
-            coupon = 100,
-            parSpread = 50)
-@
+%% what's a CDS
 
+The example described above is a single-name CDS contract, where the transfer of credit risk is taking place between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is short credit by selling the credit risk of an underlying bond to the protection seller. 
+
+The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
+Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
+spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
+value credit default swaps and calculate various risk measures associated with these instruments.
+
+%% Are the "standard terms for CDS contracts" really the same thing as the 
+%% Standard Model? I am not so sure. I think that the standard terms are 
+%% things like XR and MM, strict definitions for credit events, auction
+%% proceedures and so on. I think that the Standard Model just refers to the
+%% math. But perhaps this is too confusing a distinction (and I might be 
+%% wrong), so leave it for the next version.
+
+%% mechanics of a single-name CDS contract
+
+%% Might be good to expand this with a specific example. Use a real CDS
+%% (with a name, termination date and so on) and give the details of
+%% the bond that is the reference obligation. Cite the Markit webpage.
+%% Leave nothing out.
+
+%% Start with a bond portfolio manager who owns a specific bond,
+%% something that is a reference obligation for a member of CDX IG. 
+%% That PM is concerned about the credit worthiness of the company,
+%% at least over the next year or two. But selling the bond is too
+%% expensive or annoying. So, he can buy some CDS protection on 
+%% the bond. And so on. Describe all the cash flows, both from his
+%% point of view, and the point of view of the hedge fund that sells
+%% the protection. Better yet, have the exercise occur in the past,
+%% but use a bond that actually defaulted. Then we can talk about the
+%% auction, recovery rate and so on.
+
+%% Define XR and MM in the next version.
+
+%% Might add some more details. Or, better, use one of the images from
+%% Barclays or Bloomberg, citing them of course.
+
+\section{CDS Terminology}
+\label{sec:CDSTerminology}
+
+
+
+%% Bloomberg screenshot 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6in, , height=4.5in]{images/BloombergCDSAlcoa.png}
+\caption{CDS figures from Bloomberg for Alcoa Inc on June 02, 2014}
+\end{figure}
 
 %% In the next draft, we should not have a clunky list of terms.
 %% Better to introduce the terms, bolding them the first time
 %% they appear, in a discussion of a specific CDS. 
 
-As shown in the example, a CDS contract between two counterparties
-typically specifies the following key terms:\footnote{Some of the
+Figure 2 above displays data on the CDS of Alcoa Inc on June 02, 2014 from Bloomberg. We can see many of the key variables that are used in a CDS contract between two counterparties:\footnote{Some of the
   definitions come from \textit{Credit Derivatives Glossary}
   \citep{glossary}, \textit{Standard Corporate CDS Handbook}
   \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
@@ -235,6 +216,7 @@ to use the package. As shown below, insofar as she inputs the same
 the valuation of the contract will be the same.
 
 <<>>=
+library(CDS)
 cds2 <- CDS(TDate = "2014-04-15",
             tenor = "5Y",
             coupon = 100,
@@ -355,6 +337,26 @@ conventions below for interpolation of the entire USD yield curve:
 
 
 \section{Using the CDS package}
+
+In the \textbf{CDS} package, we call the function \texttt{CDS} to
+construct an object of a class \texttt{CDS}. Below we show an example
+of how to construct a CDS contract in the package.
+
+<<echo = F, results = hide>>=
+options(width = 100)
+@ 
+
+<<>>=
+library(CDS)
+cds1 <- CDS(entityName = "IBM",
+            RED = "49EB20",
+            TDate = "2014-04-15",
+            tenor = "5Y",
+            notional = 1e7,
+            coupon = 100,
+            parSpread = 50)
+@
+
 
 Currently, a market participant can conduct CDS-related calculations
 by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the
