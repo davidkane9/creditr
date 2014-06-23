@@ -46,7 +46,16 @@
 \section{Introduction}
 
 %% 1 paragraph
-Over the past three decades, \textbf{credit derivatives} have been increasingly common as tools that pass \textbf{credit risk} to investors willing to accept that risk at a certain premium. Credit risk, to put it simply, is the risk that a borrower will default on a loan. In the modern financial world, there are many types of credit derivatives such as Collaterized Debt Obligations (CDOs) or Collaterized Loan Obligations (CLOs). In this vignette, we will focus on \textbf{Credit Default Swaps} (CDS), a type of credit derivative that has become quite popular among a wide variety of financial institutions, such as pensions funds, hedge funds, investment banks et al. We will explain the mechanics of how this financial product works, and also show how our \textbf{CDS} package can be used to manipulate and calcuate relevant information associated with them.    
+Over the past three decades, \textbf{credit derivatives} have been increasingly common as tools that pass \textbf{credit risk} to investors willing to accept that risk at a certain premium. Credit risk, to put it simply, is the risk that a borrower will default on a loan. In the modern financial world, there are many types of credit derivatives such as Collaterized Debt Obligations (CDOs) or Collaterized Loan Obligations (CLOs). In this vignette, we will focus on \textbf{Credit Default Swaps} (CDS), a type of credit derivative that has become quite popular among a wide variety of financial institutions, such as pensions funds, hedge funds, investment banks et al (see \ref{fig:CDSnotional}). We will explain the mechanics of how this financial product works, and also show how our \textbf{CDS} package can be used to manipulate and calcuate relevant information associated with them.    
+
+%% will need latest figures for CDS notional outstanding
+
+\begin{figure}[H]
+\label{fig:CDSnotional}
+\centering
+\includegraphics[width=5in, height=4in]{images/CDSnotional.png}
+\caption{CDS notional outstanding from 1997-2009}
+\end{figure}
 
 CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan including Blythe Masters.\citep{cdsOrigins, blythe} The CDS market started to develop soon afterwards as banks used CDS contracts to hedge the credit exposures on their balance sheets. Many different types of CDS have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to a single-name, or corporate, credit default swaps.
 
@@ -61,63 +70,81 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \section{CDS Mechanics}
 \label{sec:CDSMechanics}
 
-To understand the mechanics of a CDS as a hedging tool, consider the following example.
-Let's say that there exists a portfolio manager of a pension fund who has to allocate the money of her clients in a manner that earns a steady return without putting their investments at a large risk. This portfolio manager decides to buy a large amount of bonds of a company that has a low credit risk or probability of default. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. In the case of a company's liquidation, bondholders are compensated before the company's shareholders. Bonds can be further categorized as "senior" and "junior". Typically, senior bonds have the greatest seniority in the issuer's capital structure, and are the first to be repaid in the case of a liquidation. Since our portfolio manager is risk averse, she chooses to buy the senior debt of a company that has a sound business model and a low probability of default or is, in other words, creditworthy. Such bonds are classified as \textbf{Investment Grade}. The creditworthiness of a company is often represented by the \textbf{credit rating} given to it by rating agencies such as Standard \& Poor's (S\&P) or Moody's. We will not go into the details of how these ratings are determined but only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's. Let's say our portfolio manager purchases bonds of AT \& T Inc., with a maturity of five years and a coupon rate of (TBD). AT \& T Inc. has a credit rating of (TBD) from S\&P.
+\subsection{Why CDSs?}
+\label{sec:whyCDSs}
+
+To understand the benefits of CDSs as hedging tools, consider the following example.
+Let's say that there exists a portfolio manager of a pension fund who has to allocate the money of her clients in a manner that earns a steady return without putting their investments at a large risk. This portfolio manager decides to buy a large amount of bonds of a company that has a low credit risk or probability of default. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. In the case of a company's liquidation, bondholders are compensated before the company's shareholders. Bonds can be further categorized as "senior" and "junior". Typically, senior bonds have the greatest seniority in the issuer's capital structure, and are the first to be repaid in the case of a liquidation. Since our portfolio manager is risk averse, she chooses to buy the senior debt of a company that has a sound business model and a low probability of default or is, in other words, creditworthy. Such bonds are classified as \textbf{Investment Grade}. The creditworthiness of a company is often represented by the \textbf{credit rating} given to it by rating agencies such as Standard \& Poor's (S\&P) or Moody's. We will not go into the details of how these ratings are determined but only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's. Let's say our portfolio manager purchases bonds of Alcoa Inc., with a maturity of five years and a coupon rate of (TBD). Alcoa Inc. has a credit rating of (TBD) from S\&P.
+
+%% Have to check the credit rating of Alcoa Inc. and coupon rate on some class of debt that we want to use as an example
 
 %% Should we add this or is too elementary? 
-%%--in this case, five years from now. Therefore, AT \& T Inc.. is expected to return the same sum of money plus a fixed \textbf{interest} semi-annually to the portfolio manager. 
+%%--in this case, five years from now. Therefore, Alcoa Inc.. is expected to return the same sum of money plus a fixed \textbf{interest} semi-annually to the portfolio manager. 
 
-However, six months after making the trade, the manager's confidence in the credit worthiness of AT \& T Inc. begins to waiver. In other words, the manager is worried that the company will default and fail to meet its debt obligations. The company's credit rating, as defined by rating agencies, or some other indicator of the company's credit risk may encourage the manager to hedge her position and reduce her portfolio's exposure. She could simply sell the bonds but that may be a premature move or even unprofitable. Instead, she could take a position that allows her to profit from an increase in credit risk, by purchasing a financial product whose value rises with a drop in the bond's intrinsic value. Some convenitional techniques to this are shorting of bonds or bond futures, or holding put options on those bonds. 
+However, six months after making the trade, the manager's confidence in the credit worthiness of Alcoa begins to waiver. In other words, the manager is worried about some \textbf{credit event} related to the company. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract. However, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events. The company's credit rating or some other indicator of the company's credit risk may incentivize the manager to hedge her position and reduce her portfolio's exposure. She could simply sell the bonds but that may be premature or even unprofitable. Instead, she could take a position that allows her to profit from an increase in credit risk, by purchasing a financial product whose value rises with a drop in the bond's intrinsic value. One convenitional techniques to do this is shorting of bonds. Shorting is the process of borrowing and selling a security, with obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future.  However, there are several issues associated with this method. It is difficult to short securities that are not liquid. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio pf \$100 million, which is a substantial opportunity cost.    
 
 
 %% talk about drawbacks of these alternatives.
 
 %% choose CDSs over shorting of bonds as there are liquidity constraints involvded with shorting of bonds.
 
-This is where the CDS seems like an attractive alternative. 
+\subsection{CDS Basics}
+\label{CDSbasics}
 
-As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection in the case of a \textbf{credit event} associated with the buyer's bond. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract. However, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events. 
+CDSs were invented in order to resolve the issues with hedging against risk described above. 
 
-Let's say that this third party is a hedge fund. The portfolio manager sends a periodic fee to the hedge fund, and in return, the hedge fund offers to pay a pre-determined amount in the case of AT \& T's default, over a period of five years. That way, the portfolio manager can pass on the bond's associated credit risk while still keeping the bond within her possession, and the hedge fund can receive a fee and possibly not have to pay anything in return (thus making a profit) if AT \& T Inc.. does not default. If the portfolio manager is the \textbf{protection buyer} in this type of agreement, however, then this manager probably believes that there is a substantial chance that the company will default on its bonds, as the manager will end up with a net loss of money otherwise. The manager can protect his portfolio from credit events at a substantially lower cost by transferring the credit risk to a third party who is willing to accept the risk for a fee. 
-
-%% refer to a specific bond like Boeing Capital or General Electric 
-
-When the hedge fund agrees to this agreement, or when any \textbf{protection seller} offers to bear credit risk for a fee, that protection seller probably believes that the company or institution that borrowed money is more credit-worthy than the portfolio manager perceives it to be, and that it probably will not default on its debt payments. If AT \& T Inc.. does not default, the hedge fund walks away with the coupon payment with no loss to it. 
+As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a fixed periodic coupon or what is known as the \textbf{deal spread} to the seller in exchange for protection in the case of a credit event associated with the buyer's bond.   
 
 \begin{figure}[H]
-  \caption{\label{fig:cashFlow} Mechanics of a CDS contract}
-\begin{center}
-\begin{tikzpicture}[
-squarednode/.style={rectangle, draw=black!60, fill=none, thick, 
-  minimum height =12mm, minimum width = 35mm},
-]
-  \tikzset{mylabel/.style = {text centered}
-  }
-
-\vspace{2cm}
-    \node [squarednode](A) at (0,0) {Protection Buyer};
-    \node [squarednode](B) at (7,0) {Protection Seller};
-
-    \draw[transform canvas={yshift=3mm},-stealth, thick] (A) -- (B);
-    \draw[transform canvas={yshift=-3mm},-stealth, thick] (B) -- (A);
-    \node[mylabel] at (3.5, 0.9) {Premium Leg};
-    \node[mylabel] at (3.5, -0.9) {Protection Leg};
-    
-\end{tikzpicture} 
-\end{center}
+\label{fig:cashFlow}
+\centering
+\includegraphics[width=4in, height=1in]{images/CDSmechanics.png}
+\caption{Cash flows in a single name CDS contract}
 \end{figure}
 
+In our example, the portfolio manager is the \textbf{protection buyer}. Let's say that the \textbf{protection seller} is a hedge fund. The hedge fund sells the portfolio manager protection for \$10 million of ``senior" debt; this amount is known as the \textbf{notional amount}. In return, she has to pay the hedge fund a coupon rate of over 1\% or 100 basis points on this notional amount annually, which is \$100000, for a period of 5 years. These payments are made quarterly, so she would have to 0.25\% every quarter until the maturity date.   
 
-Let's assume that this particular bond did default. As such, the hedge fund ultimately had to compensate the portfolio manager for her loss in the invesment. The exact amount or type of compensation would have been defined in the original CDS agreement, but for our purposes, let's assume that the compensation is equal to the total value of the bond minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankrupcty and is forced to default on its debt, whatever remains in the company's assets is paid out according to the firm's capital structure. 
+In the case of a default, the hedge fund would have to pay a compensation equal to the notional minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankruptcy and is forced to default on its debt, whatever remains in the company's assets is paid out according to the firm's capital structure. This transaction allows the portfolio manager to pass on the bond's associated credit risk while still keeping the bond within her possession. The hedge fund can receive a fee and walk away with no losses if Alcoa Inc. does not default. 
 
 %% what's a CDS
 
-The example described above is a single-name CDS contract, where the transfer of credit risk is taking place between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is short credit by selling the credit risk of an underlying bond to the protection seller. 
+The example described above is a single-name CDS contract, where the transfer of credit risk is taking place between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is \textbf{short credit} by selling the credit risk of an underlying bond to the protection seller. What is clear is that there is no involvement of the Alcoa in the transaction; it is only taking place between the two counterparties.
 
-The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
-Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
-spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
-value credit default swaps and calculate various risk measures associated with these instruments.
+
+\subsection{More on CDS Cash Flows}
+\label{CDSCashFlows}
+
+Although the cash flows involved in a CDS seem pretty simple in figure \ref{cashflow}, the mechanics of a CDS are a bit more complex. To understand this, let us look at the actual CDS data of Alcoa Inc. from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, about which we will discuss extensively in a later section.}. Figure \ref{CDSalcoa} below displays many different variables such as RED code, Reference Entity et al. on the CDS of Alcoa Inc. for June 02, 2014.   
+
+\begin{figure}[H]
+\label{fig:CDSalcoa}
+\centering
+\includegraphics[width=5in, height=3.8in]{images/BloombergCDSAlcoa.png}
+\caption{CDS figures from Bloomberg}
+\end{figure}
+
+Some of these variables seem rather straighforward. \textbf{Reference entity} refers to the name of the company on whose debt we are creating a Credit Default Swap, in this case Alcoa Inc. The \textbf{RED (Reference Entity Database) Code} is an alphanumeric code used to refer to that specific company. Each entity/seniority pair has a unique 6 digit RED
+code. Each deliverable bond has a 9 digit RED code, the first 6 digits of which matches the 6 digit code of the associated entity/seniority. Of the variables in this figure, we must pay attention to certain key terms:
+
+1. \textbf{Reference Entity}
+2. \textbf{tenor} or \textbf{maturity}: length of the contract, which in this case is five years.
+3. \textbf{}
+
+
+
+\begin{figure}[H]
+\label{fig:CDSalcoa}
+\centering
+\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
+\caption{CDS cash flows when there is no credit event}
+\end{figure}
+
+\begin{figure}[H]
+\label{fig:CDSalcoa}
+\centering
+\includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
+\caption{CDS cash flows when there is a credit event}
+\end{figure}
 
 %% Are the "standard terms for CDS contracts" really the same thing as the 
 %% Standard Model? I am not so sure. I think that the standard terms are 
@@ -155,28 +182,25 @@ value credit default swaps and calculate various risk measures associated with t
 
 %% In the next draft, we should not have a clunky list of terms.
 %% Better to introduce the terms, bolding them the first time
-%% they appear, in a discussion of a specific CDS. 
+%% they appear, in a discussion of a specific CDS.  
 
-Figure 2 below displays data on the CDS of AT \& T Inc. on June 02, 2014 from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, about which we will discuss extensively in a later section.}. In the screenshot below, we can see many of the key variables that are used in a CDS contract between two counterparties, and which our portfolio manager would have to consider purchasing protection on her bond portfolio. In this section we will describe what these variables and how they matter in  evaluating a CDS\footnote{Some of the
+This is a gloassary CDS terminology that is are necessary in determining the pricing and cash flows associated with CDSs\footnote{Some of the
   definitions come from \textit{Credit Derivatives Glossary}
   \citep{glossary}, \textit{Standard Corporate CDS Handbook}
   \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
   \textit{The Pricing and Risk Management of Credit Default Swaps,
     with a Focus on the ISDA Model} \citep{openGamma}.}:
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=6in, , height=4.5in]{images/BloombergCDSAlcoa.png}
-\caption{CDS figures from Bloomberg for AT \& T Inc. on June 02, 2014}
-\end{figure}
-
+%% currently this displays the figure of Alcoa but we will change it to Alcoa Inc. as it is a name that people are more familiar with. 
 
 \begin{description}
 \item[Reference Entity] refers to the legal entity which is the
-  subject of a CDS contract. \texttt{entityName} in the \texttt{CDS}
-  function takes the name of the legal entity and is ``IBM'' in
-  \texttt{cds1}.
+  subject of a CDS contract, in this case Alcoa Inc. 
+  
+  %%\texttt{entityName} in the \texttt{CDS}
+  %%function takes the name of the legal entity and is ``Alcoa Inc.'' in
+  %%\texttt{cds1}.
+  
 \item [RED] is a Markit product. It stands for Reference Entity
   Database. Each entity/seniority pair has a unique 6 digit RED
   code. Each deliverable bond has a 9 digit RED code, the first 6
@@ -184,11 +208,11 @@ Figure 2 below displays data on the CDS of AT \& T Inc. on June 02, 2014 from Bl
   entity/seniority. Each entity also has a ``preferred reference
   obligation'' that is the default reference obligation for CDS
   trades. A user can input either the six-digit RED code or the
-  nine-digit RED pair code. The input ``49EB20'' is the six-digit RED
-  code for ``IBM''.
+  nine-digit RED pair code. The input ``014B98'' is the six-digit RED
+  code for ``Alcoa Inc.''.
 \item [Trade Date] or \textbf{TDate} as shown in the argument of the
   \texttt{CDS} function indicates the trade date of the CDS contract
-  and is April 15, 2014 in \texttt{cds1}.
+  and is June 02, 2014 in \texttt{cds1}.
 \item[Maturity] refers to the fixed date on which a CDS contract
   terminates. However, speaking colloquially, it can also be the
   length of time remaining until that date. This length is also called
@@ -211,7 +235,7 @@ Figure 2 below displays data on the CDS of AT \& T Inc. on June 02, 2014 from Bl
 \end{description}
 
 
-Here the user enters the CDS contract with ``IBM'' as the underlying
+Here the user enters the CDS contract with ``Alcoa Inc.'' as the underlying
 entity and sets the spread at 50 bps and the coupon at 100
 bps. However, the valuation of a CDS contract requires neither the
 entity name or the RED Code. She does not have to know the information
@@ -243,6 +267,11 @@ object.
 \section{The ISDA Standard Model}
 \label{sec:isda}
 %% the origins of the ISDA standard model. Next version: Talk about Europe?
+
+The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
+Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
+spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
+value credit default swaps and calculate various risk measures associated with these instruments.
 
 In April 2009 in North America, ISDA introduced a series of mandatory
 modifications to the CDS contract known as the ``Big Bang Protocol.''
@@ -341,6 +370,34 @@ conventions below for interpolation of the entire USD yield curve:
 \end{itemize}
 
 
+\section{CDS Indices}
+\label{sec:CDSIndices}
+
+Holding a portfolio of a disproportionate number of bonds of just 
+Alcoa Inc.. is naturally a risky idea. In the real world, most successful 
+portfolio managers prefer to distribute their risk by holding a 
+portfolio with hundreds, if not thousands, of different positions. 
+Instead of holding a 100 million USD of Alcoa Inc.. bonds, let's say 
+our portfolio manager decides to reduce her risk by holding bonds of 
+100 different Investment Grade companies. These could include This is known as 
+\textbf{diversification}. Although, this strategy reduces 
+her exposure to the credit risk of any particular company, she hasn't 
+reduced her exposure to factors that might affect a the credit 
+risk of a wide variety of assets simulatenously, 
+such as interest rate risk or political risk. A single-name 
+Credit Default Swap will only protect her from the credit risk of 
+a single company. Fortunately, in the modern financial world, she 
+has the option of purchasing multi-name CDSs or CDS indices which
+contain a basket of CDSs.
+ 
+Moreover, if our portfolio manager has a higher risk appetite and
+wants to earn a higher return for her investors, she may invest
+a portion of her portfolio in bonds that have a lower credit rating
+but provide a higher yield. There CDS indice indices for this tranche 
+as well, such as CDX.NA.HY.
+ 
+%% provide a history of iTraxx and CDX 
+ 
 
 \section{Using the CDS package}
 \label{CDSpkg}
@@ -355,7 +412,7 @@ options(width = 100)
 
 <<>>=
 library(CDS)
-cds1 <- CDS(entityName = "IBM",
+cds1 <- CDS(entityName = "Alcoa Inc.",
             RED = "49EB20",
             TDate = "2014-04-15",
             tenor = "5Y",
@@ -411,7 +468,7 @@ summary(cds1)
 In the summary output, it shows that the type of the CDS contract is
 ``SNAC''. \texttt{TDate} refers to the trade date and is April 15,
 2014. \texttt{entityName} refers to the entity name of the CDS
-contract and is ``IBM''. The \texttt{RED} code is ``48EB20'' as
+contract and is ``Alcoa Inc.''. The \texttt{RED} code is ``48EB20'' as
 specified by the user. \texttt{spread} shows that the quoted spread
 for the contract is 50 bps and the coupon is 100 bps as shown in the
 \texttt{coupon} field. \texttt{upfront} indicates the dirty upfront
@@ -641,13 +698,13 @@ the results from Markit and Bloomberg were not always identical.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=4.5in, , height=3in]{images/MarkitCDSAlcoa.png}
+\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
 \caption{CDS figures from Markit.com}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=4in, height=3in]{images/BloombergCDSAlcoa.png}
+\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
 \caption{CDS figures from Bloomberg}
 \end{figure}
 
@@ -655,45 +712,17 @@ The interest rate results were identical, at least till the fourth decimal place
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3.5in, height=5in]{images/MarkitIRJun2.png}
+\includegraphics[width=2.2in, height=4.5in]{images/MarkitIRJun2.png}
 \caption{Interest Rate figures from Markit.com}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=4.5in, height=3in]{images/BloombergIRJun2.png}
+\includegraphics[width=3.5in, height=3in]{images/BloombergIRJun2.png}
 \caption{Interest Rate figures from Bloomberg}
 \end{figure}
 
 
-\section{CDS Indices}
-\label{sec:CDSIndices}
-
-Holding a portfolio of a disproportionate number of bonds of just 
-AT \& T Inc.. is naturally a risky idea. In the real world, most successful 
-portfolio managers prefer to distribute their risk by holding a 
-portfolio with hundreds, if not thousands, of different positions. 
-Instead of holding a 100 million USD of AT \& T Inc.. bonds, let's say 
-our portfolio manager decides to reduce her risk by holding bonds of 
-100 different Investment Grade companies. These could include This is known as 
-\textbf{diversification}. Although, this strategy reduces 
-her exposure to the credit risk of any particular company, she hasn't 
-reduced her exposure to factors that might affect a the credit 
-risk of a wide variety of assets simulatenously, 
-such as interest rate risk or political risk. A single-name 
-Credit Default Swap will only protect her from the credit risk of 
-a single company. Fortunately, in the modern financial world, she 
-has the option of purchasing multi-name CDSs or CDS indices which
-contain a basket of CDSs.
- 
-Moreover, if our portfolio manager has a higher risk appetite and
-wants to earn a higher return for her investors, she may invest
-a portion of her portfolio in bonds that have a lower credit rating
-but provide a higher yield. In today's market, these would be companies
-like
- 
-%% provide a history of iTraxx and CDX 
- 
 
 \section{Conclusion}
 
@@ -716,5 +745,29 @@ for valuing credit default swaps.
 
 
 \end{document}
+
+%%\begin{figure}[H]
+%%  \caption{\label{fig:cashFlow} Mechanics of a CDS contract}
+%%\begin{center}
+%%\begin{tikzpicture}[
+%%squarednode/.style={rectangle, draw=black!60, fill=none, thick, 
+%%  minimum height =12mm, minimum width = 35mm},
+%%]
+%%  \tikzset{mylabel/.style = {text centered}
+%%  }
+
+%%\vspace{2cm}
+  %%  \node [squarednode](A) at (0,0) {Protection Buyer};
+    %%\node [squarednode](B) at (7,0) {Protection Seller};
+
+    %%\draw[transform canvas={yshift=3mm},-stealth, thick] (A) -- (B);
+    %%\draw[transform canvas={yshift=-3mm},-stealth, thick] (B) -- (A);
+    %%\node[mylabel] at (3.5, 0.9) {Premium Leg};
+    %%\node[mylabel] at (3.5, -0.9) {Protection Leg};
+    
+%%\end{tikzpicture} 
+%%\end{center}
+%%\end{figure}
+
 
 
