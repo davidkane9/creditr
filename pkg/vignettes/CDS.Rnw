@@ -50,7 +50,7 @@ Over the past three decades, \textbf{credit derivatives} have become increasingl
 \begin{figure}[H]
 \label{fig:CDSnotional}
 \centering
-\includegraphics[width=4.7in, height=3.2in]{images/CDSnotional2.png}
+\includegraphics[width=4.7in, height=3.2in]{images/CDSnotional.png}
 \caption{CDS notional outstanding from 1997-2009.}
 \end{figure}
 
@@ -119,10 +119,11 @@ In the case of default, the hedge fund would have to pay a compensation equal to
 
 Our example above can be described as a single-name CDS contract, in which the transfer of credit risk takes place between two parties. The protection buyer of a CDS contract transfers the credit risk to the CDS protection seller by paying a series of coupons until the contract terminates. In other words, the protection buyer is \textbf{short credit} by selling the credit risk of an underlying bond to the protection seller. Note that there is no involvement of the Alcoa Inc. in the transaction; this exchange only takes place between the two counterparties.
 
-\subsection{More on CDS Cash Flows}
+\subsection{More on CDS Cash Flows and terminology}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let us look at the actual CDS data of Alcoa Inc. from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, which we will discuss extensively in a later section.}. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED code, Reference Entity et al. on the CDS of Alcoa Inc. for June 02, 2014.   
+Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let us look at the actual CDS data of Alcoa Inc. from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, which we will discuss extensively in a later section.}. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED code, Reference Entity et al. on the CDS of Alcoa Inc. for June 02, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives. 
+Let us go into more detail about what these variables are the exactly the cash flow works and what variables our portfolio manager has to consider.   
 
 %% Need to put \ref{} in the footnote to refer to the later section.
 
@@ -133,26 +134,27 @@ Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:
 \caption{CDS figures from Bloomberg}
 \end{figure}
 
-Some of these variables seem rather straighforward. \textbf{Reference Entity} refers to the name of the company from which the protection buyer in the CDS contract has purchased a bond. In our example, the Reference Entity is Alcoa Inc. The \textbf{RED (Reference Entity Database) Code} is an alphanumeric code that refers to a specific company. Each entity/seniority pair has a unique six-digit RED
-code. Each deliverable bond has a nine-digit RED code, where the first six digits match the six-digit code of the associated entity/seniority. Of the variables in this figure, we must pay attention to certain key terms:
+Some of these variables seem rather straighforward. \textbf{Reference Entity} refers to the name of the company for which protection has been bought, which, in this case, is Alcoa Inc. \textbf{Maturity} refers to the \textbf{tenor} or length of the contract. Bloomberg provides the length of the contract or the equivalent maturity date. \textbf{Debt type}, labelled as `Senior', refers to the seniority of the debt.  The \textbf{notional amount} is printed as `10' or \$10 million `USD' (US Dollars). The `MM' between the amount and the currency refers to the type of restructuring of the contract. `MM' stands for 'Modified Modified' Restructuring.   
 
-%% Need to work on paragraph above.
+%% Explain MM
 
-1. \textbf{Reference Entity}
-2. \textbf{tenor} or \textbf{maturity}: length of the contract, which in this case is five years.
-3. \textbf{}
+The two terms in this figure that are essential to understanding the cash flow are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bp). In section \ref{CDSbasics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties would agree on the coupon level before the trade, and as the market moved, this tradable coupon would vary. In this type of a contract, the present value of the contract (the current worth of a future sum of money) would be zero. 
+
+In April 2009 in North America, and June 2009 in Europe, CDS contracts were standardized such that dealers would have to quote fixed coupons of 100bp or 500bp in North America, or 25bp, 100bp, 500bp or 1000bp in Europe. The \textbf{Coupon} printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp or 1\% of the notional. However, the dealers may not feel that this is the fair premium for protection. The hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bp, and not 100bp. This fair premium rate is the \textbf{Trd Sprd} in the figure above, labelled as 160. 
+
+Naturally, if the hedge fund believes that the fair premium should be 160bp, it would like to compensated for receiving just 100bp in advance. The portfolio manager would have to make what is known as an \textbf{Upfront Payment}, labelled as \textbf{Cash Amount} in Figure \ref{fig:CDSalcoa}. With the information for Alcoa given in the figure, this amount is  Therefore, the total payments made by the portfolio manager over the life of the contract would look like Figure \ref{fig:CDSnoevent}.
 
 %% Need to re-format lines here.
 
 \begin{figure}[H]
-\label{fig:CDSalcoa}
+\label{fig:CDSnoevent}
 \centering
 \includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
 \caption{CDS cash flows when there is no credit event.}
 \end{figure}
 
 \begin{figure}[H]
-\label{fig:CDSalcoa}
+\label{fig:CDScreditevent}
 \centering
 \includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
 \caption{CDS cash flows when there is a credit event.}
@@ -411,6 +413,39 @@ but provide a higher yield. She may consider investing in a tranche of CDS indic
  
 %% provide a history of iTraxx and CDX 
  
+\section{Pricing Sources}
+\label{sec:PricingSources}
+
+We compared the results from our package with results from Bloomberg and Markit. Interestingly,
+the results from Markit and Bloomberg were not always identical. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
+\caption{CDS figures from Markit.com}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
+\caption{CDS figures from Bloomberg}
+\end{figure}
+
+The interest rate results were identical, at least until the fourth decimal place.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.2in, height=4.5in]{images/MarkitIRJun2.png}
+\caption{Interest Rate figures from Markit.com}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.5in, height=3in]{images/BloombergIRJun2.png}
+\caption{Interest Rate figures from Bloomberg}
+\end{figure}
+
+
 \section{Using the CDS package}
 \label{CDSpkg}
 
@@ -703,42 +738,6 @@ frequencies regarding the interest rate curve used.
 <<echo = FALSE>>=
 t(cds3Rates[[2]])
 @ 
-
-
-\section{Pricing Sources}
-\label{sec:PricingSources}
-
-
-We compared the results from our package with results from Bloomberg and Markit. Interestingly,
-the results from Markit and Bloomberg were not always identical. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
-\caption{CDS figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
-\caption{CDS figures from Bloomberg}
-\end{figure}
-
-The interest rate results were identical, at least until the fourth decimal place.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.2in, height=4.5in]{images/MarkitIRJun2.png}
-\caption{Interest Rate figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=3.5in, height=3in]{images/BloombergIRJun2.png}
-\caption{Interest Rate figures from Bloomberg}
-\end{figure}
-
-
 
 \section{Conclusion}
 
