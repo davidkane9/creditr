@@ -27,7 +27,6 @@
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
 
-
 \SweaveOpts{echo = TRUE, results = verbatim, keep.source = TRUE}
 \bibliographystyle{abbrvnat}
 
@@ -37,16 +36,14 @@
 \author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, and Skylar Smith\thanks{\href{mailto:sws2@williams.edu}{sws2@williams.edu}}}
 \maketitle
 
-%%\VignetteIndexEntry{Using the CDS package}
-%%\VignetteDepends{CDS}
-
 \setkeys{Gin}{width=0.95\textwidth}
-
 
 \section{Introduction}
 
 %% 1 paragraph
-Over the past three decades, \textbf{credit derivatives} have been increasingly common as tools that pass \textbf{credit risk} to investors willing to accept that risk at a certain premium. Credit risk, to put it simply, is the risk that a borrower will default on a loan. In the modern financial world, there are many types of credit derivatives such as Collaterized Debt Obligations (CDOs) or Collaterized Loan Obligations (CLOs). In this vignette, we will focus on \textbf{Credit Default Swaps} (CDS), a type of credit derivative that has become quite popular among a wide variety of financial institutions, such as pensions funds, hedge funds, investment banks et al (see \ref{fig:CDSnotional}). We will explain the mechanics of how this financial product works, and also show how our \textbf{CDS} package can be used to manipulate and calcuate relevant information associated with them.    
+Over the past three decades, \textbf{credit derivatives} have become increasingly common tools for finanical institutions that wish to pass on \textbf{credit risk} to investors who accept that risk for a premium, or fee. To put it simply, credit risk is the possibility that a borrower will default on his or her loan. In the modern financial world, there are many types of credit derivatives. including collaterized debt obligations (CDOs) and collaterized loan obligations (CLOs). In this vignette, we will focus on \textbf{credit default swaps} (CDSs), a type of credit derivative that has become quite popular among pensions funds, hedge funds, and investment banks, among other financial institutions (see Figure \ref{fig:CDSnotional}). We will explain the mechanics of this financial product and show how our \textbf{CDS} package can be used to manipulate and calcuate relevant information associated with CDSs. 
+
+%% Still need to define premium.
 
 %% will need latest figures for CDS notional outstanding
 
@@ -57,10 +54,13 @@ Over the past three decades, \textbf{credit derivatives} have been increasingly 
 \caption{CDS notional outstanding from 1997-2009}
 \end{figure}
 
-CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan including Blythe Masters.\citep{cdsOrigins, blythe} The CDS market started to develop soon afterwards as banks used CDS contracts to hedge the credit exposures on their balance sheets. Many different types of CDS have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to a single-name, or corporate, credit default swaps.
+%% Need better caption.
+
+CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan including Blythe Masters \citep{cdsOrigins, blythe}. The CDS market started to develop soon afterwards as banks used CDS contracts to hedge their credit exposures on balance sheets. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
+
+%% Need to better define single-name CDSs.
 
 %% add more about what this vignette will talk about and relate it to the package
-
 
 %% By the way, I am thinking that a good target journal for this piece may be
 %% The Journal of Statistical Software. If so, we can/should make this much
@@ -73,27 +73,32 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \subsection{Why CDSs?}
 \label{sec:whyCDSs}
 
-To understand the benefits of CDSs as hedging tools, consider the following example.
-Let's say that there exists a portfolio manager of a pension fund who has to allocate the money of her clients in a manner that earns a steady return without putting their investments at a large risk. This portfolio manager decides to buy a large amount of bonds of a company that has a low credit risk or probability of default. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. In the case of a company's liquidation, bondholders are compensated before the company's shareholders. Bonds can be further categorized as "senior" and "junior". Typically, senior bonds have the greatest seniority in the issuer's capital structure, and are the first to be repaid in the case of a liquidation. Since our portfolio manager is risk averse, she chooses to buy the senior debt of a company that has a sound business model and a low probability of default or is, in other words, creditworthy. Such bonds are classified as \textbf{Investment Grade}. The creditworthiness of a company is often represented by the \textbf{credit rating} given to it by rating agencies such as Standard \& Poor's (S\&P) or Moody's. We will not go into the details of how these ratings are determined but only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's. Let's say our portfolio manager purchases bonds of Alcoa Inc., with a maturity of five years and a coupon rate of (TBD). Alcoa Inc. has a credit rating of (TBD) from S\&P.
+To understand the benefits of CDSs as hedging tools, consider the following example: let's say that a pension fund portfolio manager has to allocate her clients' money (a total sum of \$100 million) so that these investments earn a steady return without putting them at a large risk. Therefore, this portfolio manager decides to buy several bonds from a company that has a low credit risk---say, Alcoa Inc. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. In the case of a company's default, bondholders are compensated before the company's shareholders. Bonds can be further categorized as "senior" and "junior". As the term suggests, senior bonds usually have the greatest seniority in the issuer's capital structure and are the first to be repaid in the case of default. 
+
+Since our portfolio manager is risk-averse, she chooses to buy senior debt from Alcoa Inc. because she believes it to have a sound business model and a low probability of default. In other words, she considers Alcoa Inc. to be creditworthy. Such low-risk bonds are classified as \textbf{Investment Grade (IG)}. The creditworthiness of a company is often represented by the \textbf{credit rating} determined by rating agencies such as Standard \& Poor's (S\&P) or Moody's. We will not go into the details of how these ratings are determined; we will only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's. Let's say that our portfolio manager's bonds have a maturity of five years and a coupon rate of (TBD). Alcoa Inc. has a credit rating of (TBD) from S\&P.
 
 %% Have to check the credit rating of Alcoa Inc. and coupon rate on some class of debt that we want to use as an example
 
-%% Should we add this or is too elementary? 
-%%--in this case, five years from now. Therefore, Alcoa Inc.. is expected to return the same sum of money plus a fixed \textbf{interest} semi-annually to the portfolio manager. 
+%% Still have to define terms and better explain concepts such as pension fund portfolio manager, credit risk, default, bondholders vs. shareholders, probability of default, maturity, and coupon rate for the inexperienced reader.
 
-However, six months after making the trade, the manager's confidence in the credit worthiness of Alcoa begins to waiver. In other words, the manager is worried about some \textbf{credit event} related to the company. A credit event is a term that encompasses the risk of a company's bankruptcy and resulting default; depending on the CDS contract. However, a credit event can be expanded to include failure to pay out debt within a certain amount of time, substantial decrease in credit rating, and confiscation of assets, among other events. The company's credit rating or some other indicator of the company's credit risk may incentivize the manager to hedge her position and reduce her portfolio's exposure. She could simply sell the bonds but that may be premature or even unprofitable. Instead, she could take a position that allows her to profit from an increase in credit risk, by purchasing a financial product whose value rises with a drop in the bond's intrinsic value. One convenitional techniques to do this is shorting of bonds. Shorting is the process of borrowing and selling a security, with obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future.  However, there are several issues associated with this method. It is difficult to short securities that are not liquid. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio pf \$100 million, which is a substantial opportunity cost.    
+However, six months after the manager bought the bonds, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. In other words, the manager is worried about some \textbf{credit event} related to the company. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can be expanded to include failure to pay out debt within a certain amount of time, a substantial decrease in credit rating and the confiscation of assets, among other events. The company's credit rating or some other indicator of the company's credit risk may incentivize the manager to hedge her position and reduce her portfolio's exposure. 
 
+Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could purchase a financial product that has a value that rises with a drop in the bonds' intrinsic value. In other words, she could take a position that allows her to profit from increased credit risk. 
 
-%% talk about drawbacks of these alternatives.
+One convenitional technique of doing this is shorting bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future. However, there are several issues associated with this method. It is difficult to short securities that are not liquid. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio of \$100 million, which is a substantial opportunity cost.    
 
-%% choose CDSs over shorting of bonds as there are liquidity constraints involvded with shorting of bonds.
+%% Still have to define terms and better explain concepts such as bankruptcy, hedging, exposure, security, and liquidity for the inexperienced reader.
+
+%% Talk about drawbacks of these alternatives.
+
+%% Explain why the portfolio manager eventually chooses CDSs over shorting of bonds (because of the liquidity constraints involvded with shorting of bonds).
 
 \subsection{CDS Basics}
 \label{CDSbasics}
 
-CDSs were invented in order to resolve the issues with hedging against risk described above. 
+CDSs were invented in order to resolve the issues that accompany hedging against risk (as described in \ref{Why CDSs?}). 
 
-As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a fixed periodic coupon or what is known as the \textbf{deal spread} to the seller in exchange for protection in the case of a credit event associated with the buyer's bond.   
+As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a fixed periodic coupon, also known as the \textbf{deal spread}, to the seller in exchange for protection against a credit event associated with the buyer's bond.   
 
 \begin{figure}[H]
 \label{fig:cashFlow}
@@ -102,19 +107,20 @@ As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf
 \caption{Cash flows in a single name CDS contract}
 \end{figure}
 
-In our example, the portfolio manager is the \textbf{protection buyer}. Let's say that the \textbf{protection seller} is a hedge fund. The hedge fund sells the portfolio manager protection for \$10 million of ``senior" debt; this amount is known as the \textbf{notional amount}. In return, she has to pay the hedge fund a coupon rate of over 1\% or 100 basis points on this notional amount annually, which is \$100000, for a period of 5 years. These payments are made quarterly, so she would have to 0.25\% every quarter until the maturity date.   
+In our example, the portfolio manager is the \textbf{protection buyer}. Let's say that the \textbf{protection seller} is a hedge fund. The hedge fund sells protection to the portfolio manager for \$10 million of ``senior" debt, an amont known as the \textbf{notional amount}. In return, she has to pay the hedge fund an annual coupon rate of over 1\%, or 100 basis points, for a period of five years. These \$100000 payments are made quarterly, so she would have to pay 0.25\% every quarter until the maturity date.   
 
-In the case of a default, the hedge fund would have to pay a compensation equal to the notional minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after a credit event has happened. When a company goes into bankruptcy and is forced to default on its debt, whatever remains in the company's assets is paid out according to the firm's capital structure. This transaction allows the portfolio manager to pass on the bond's associated credit risk while still keeping the bond within her possession. The hedge fund can receive a fee and walk away with no losses if Alcoa Inc. does not default. 
+In the case of default, the hedge fund would have to pay a compensation equal to the notional amount minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after default. When a company goes into bankruptcy and is forced to default on its debt, whatever remains in the company's assets is paid out according to the firm's capital structure. This transaction allows the portfolio manager to do away with the bonds' associated credit risk while still keeping the bonds within her possession. If Alcoa Inc. does not default, the hedge fund can receive a fee and walk away without any losses.
 
-%% what's a CDS
+%% Still have to define hedge fund (loosely/briefly) and more directly define the firm's capital structure in the preceding paragraphs so that the readers is absolutely clear that we are referring to the "senior", "junior" classifications described above.
 
-The example described above is a single-name CDS contract, where the transfer of credit risk is taking place between two parties. The buyer of a CDS contract (protection buyer) transfers the credit risk to the CDS seller (protection seller) by paying a series of coupons until the contract terminates. In other words, the protection buyer is \textbf{short credit} by selling the credit risk of an underlying bond to the protection seller. What is clear is that there is no involvement of the Alcoa in the transaction; it is only taking place between the two counterparties.
-
+Our example above can be described as a single-name CDS contract, in which the transfer of credit risk takes place between two parties. The protection buyer of a CDS contract transfers the credit risk to the CDS protection seller by paying a series of coupons until the contract terminates. In other words, the protection buyer is \textbf{short credit} by selling the credit risk of an underlying bond to the protection seller. Note that there is no involvement of the Alcoa Inc. in the transaction; this exchange only takes place between the two counterparties.
 
 \subsection{More on CDS Cash Flows}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in figure \ref{cashflow}, the mechanics of a CDS are a bit more complex. To understand this, let us look at the actual CDS data of Alcoa Inc. from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, about which we will discuss extensively in a later section.}. Figure \ref{CDSalcoa} below displays many different variables such as RED code, Reference Entity et al. on the CDS of Alcoa Inc. for June 02, 2014.   
+Although the cash flows involved in a CDS seem pretty simple in figure \ref{cashflow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let us look at the actual CDS data of Alcoa Inc. from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, which we will discuss extensively in a later section.}. Figure \ref{CDSalcoa} below displays many different variables such as RED code, Reference Entity et al. on the CDS of Alcoa Inc. for June 02, 2014.   
+
+%% Need to put \ref{} in the footnote to refer to the later section.
 
 \begin{figure}[H]
 \label{fig:CDSalcoa}
@@ -123,14 +129,14 @@ Although the cash flows involved in a CDS seem pretty simple in figure \ref{cash
 \caption{CDS figures from Bloomberg}
 \end{figure}
 
-Some of these variables seem rather straighforward. \textbf{Reference entity} refers to the name of the company on whose debt we are creating a Credit Default Swap, in this case Alcoa Inc. The \textbf{RED (Reference Entity Database) Code} is an alphanumeric code used to refer to that specific company. Each entity/seniority pair has a unique 6 digit RED
+Some of these variables seem rather straighforward. \textbf{Reference Entity} refers to the name of the company from which the protection buyer in the CDS contract has purchased a bond. In our example, the Reference Entity is Alcoa Inc. The \textbf{RED (Reference Entity Database) Code} is an alphanumeric code that refers to a specific company. Each entity/seniority pair has a unique 6 digit RED
 code. Each deliverable bond has a 9 digit RED code, the first 6 digits of which matches the 6 digit code of the associated entity/seniority. Of the variables in this figure, we must pay attention to certain key terms:
+
+%% Need to work on paragraph above.
 
 1. \textbf{Reference Entity}
 2. \textbf{tenor} or \textbf{maturity}: length of the contract, which in this case is five years.
 3. \textbf{}
-
-
 
 \begin{figure}[H]
 \label{fig:CDSalcoa}
@@ -171,6 +177,8 @@ code. Each deliverable bond has a 9 digit RED code, the first 6 digits of which 
 %% but use a bond that actually defaulted. Then we can talk about the
 %% auction, recovery rate and so on.
 
+%% What is an auction?
+
 %% Define XR and MM in the next version.
 
 %% Might add some more details. Or, better, use one of the images from
@@ -184,7 +192,7 @@ code. Each deliverable bond has a 9 digit RED code, the first 6 digits of which 
 %% Better to introduce the terms, bolding them the first time
 %% they appear, in a discussion of a specific CDS.  
 
-This is a gloassary CDS terminology that is are necessary in determining the pricing and cash flows associated with CDSs\footnote{Some of the
+This is a glossary for CDS terminology that is necessary for determining the pricing and cash flows associated with CDSs\footnote{Some of the
   definitions come from \textit{Credit Derivatives Glossary}
   \citep{glossary}, \textit{Standard Corporate CDS Handbook}
   \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
