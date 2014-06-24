@@ -57,7 +57,7 @@ Over the past three decades, \textbf{credit derivatives} have become increasingl
 
 %% Need better caption.
 
-CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. The CDS market started to develop soon afterwards as banks used CDS contracts to hedge their credit exposures on balance sheets. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
+CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. The CDS markets have grown exponentially over the past decade as financial institutions are increasingly using them to hedge against credit risk that they may have exposure to. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
 
 %% Need to better define single-name CDSs.
 
