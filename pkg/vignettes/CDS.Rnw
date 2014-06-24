@@ -67,8 +67,8 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 %% longer than it currently is, including getting a lot of the details correct,
 %% which is why I am adding these notes(!!).
 
-\section{CDS Mechanics}
-\label{sec:CDSMechanics}
+\section{CDS Basics}
+\label{sec:CDSBasics}
 
 \subsection{Why CDSs?}
 \label{sec:whyCDSs}
@@ -93,12 +93,12 @@ One convenitional technique of doing this is shorting bonds. Shorting is the pro
 
 %% Explain why the portfolio manager eventually chooses CDSs over shorting of bonds (because of the liquidity constraints involvded with shorting of bonds).
 
-\subsection{CDS Basics}
-\label{CDSbasics}
+\subsection{CDS Mechanics}
+\label{CDSMechanics}
 
-CDSs were invented in order to resolve the issues that accompany hedging against risk (as described in Section \ref{sec:whyCDSs}). 
+CDSs were invented in order to resolve these issues associated with hedging against risk (as described in Section \ref{sec:whyCDSs}). 
 
-As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a fixed periodic coupon, also known as the \textbf{deal spread}, to the seller in exchange for protection against a credit event associated with the buyer's bond.   
+As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection against a credit event associated with the buyer's bond.   
 
 \begin{figure}[H]
 \label{fig:cashFlow}
@@ -107,7 +107,7 @@ As shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf
 \caption{Cash flows in a single name CDS contract.}
 \end{figure}
 
-In our example, the portfolio manager is the \textbf{protection buyer}. Let's say that the \textbf{protection seller} is a hedge fund. The hedge fund sells protection to the portfolio manager for \$10 million of senior debt, an amount known as the \textbf{notional amount}. In return, she has to pay the hedge fund an annual coupon rate of over 1\%, or 100 basis points, for a period of five years. These \$100,000 payments are made quarterly, so she would have to pay 0.25\% every quarter until the maturity date.   
+In our example, the portfolio manager is the \textbf{protection buyer}. Let's say that the \textbf{protection seller} is a hedge fund. The hedge fund sells protection to the portfolio manager for \$10 million of senior debt. This amount known as the \textbf{notional amount}. In return, she has to pay the hedge fund an annual coupon rate of over 1\%, or 100 basis points, for a period of five years. These \$100,000 payments are made quarterly, so she would have to pay 0.25\% every quarter until the maturity date.   
 
 In the case of default, the hedge fund would have to pay a compensation equal to the notional amount minus the company's \textbf{recovery rate}. The recovery rate is defined as the amount that the company is able to give back to its debt holders after default. When a company goes into bankruptcy and is forced to default on its debt, whatever remains in the company's assets is paid out according to the firm's capital structure. This transaction protects the portfolio from the bonds' associated credit risk without having to sell them. The hedge fund, on the other hand, receives a fee and walks away without any losses if there is no credit event.
 
@@ -115,11 +115,10 @@ In the case of default, the hedge fund would have to pay a compensation equal to
 
 Our example above can be described as a single-name CDS contract, in which the transfer of credit risk takes place between two parties. The protection buyer of a CDS contract transfers the credit risk to the CDS protection seller by paying a series of coupons until the contract terminates. In other words, the protection buyer is \textbf{short credit} by selling the credit risk of an underlying bond to the protection seller. Note that there is no involvement of the Alcoa Inc. in the transaction; this exchange only takes place between the two counterparties.
 
-\subsection{More on CDS Terminology and Cash Flows}
+\section{CDS Terminology and Cash Flows}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data from Bloomberg\footnote{The two most commonly used sources for CDS related data are Bloomberg and Markit, which we will discuss extensively in a later section.} for Alcoa Inc. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa Inc. for June 02, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDSs. 
-Let us go into more detail about what these variables are and how exactly the cash flow works.
+Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data for Alcoa Inc., from Bloomberg. Bloomberg and Markit are the two most commonly used sources for CDS related data; we will discuss these extensively in a later section. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa Inc. for June 02, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDSs.
 
 %% Need to put \ref{} in the footnote to refer to the later section.
 
@@ -130,19 +129,21 @@ Let us go into more detail about what these variables are and how exactly the ca
 \caption{CDS figures from Bloomberg}
 \end{figure}
 
-Some of these variables seem rather straightforward. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. Bloomberg provides the length of the contract or the equivalent maturity date. The maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. So if the portfolio manager purchases a CDS with a 5-year tenor for Alcoa Inc., on June 02, 2014, it's maturity date will be on roll date after June 02, 2019, which is -- June 20, 2019. 
+Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have a maturity of five years. The Bloomberg screenshot displays the length of the contract, as well as the equivalent maturity date. So the maturity date for the CDS of Alcoa on June 02, 2014 is June 20, 2019. This seems odd since we would expect it to be on June 02, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 02, 2019, which is -- June 20, 2019. 
 
-\textbf{Debt type}, labeled as 'Senior', refers to the seniority of the debt.  The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring.   
+We can also note the label \textbf{Debt type}, marked as 'Senior'. Clearly, this refers to the seniority of the debt.  The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring.   
 
 %% Explain MM
 
 The two terms in this figure that are essential for understanding the cash flow are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSbasics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the present value of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon with the hedge fund, which would then vary as the company's credit risk varied. 
 
-In April 2009 in North America, and June 2009 in Europe, CDS contracts were standardized such that dealers would have to quote fixed coupons of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe. The \textbf{Coupon} printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. The hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{Trade Spread} (or just \textbf{Spread}), labeled as 160 in the figure above. 
+%% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
 
-Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps in advance. The portfolio manager would have to make what is known as an \textbf{Upfront Payment}, labeled as \textbf{Cash Amount} in Figure \ref{fig:CDSalcoa}. With the information for Alcoa given in the figure, this amount is \$258478. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}. We can  
+%% Explain why this change was made.
 
-%% Need to re-format lines here.
+In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the ``Big Bang Protocol.'' Under the new rules, coupon rates were standardized in North America, and even in Europe from June 2009. Dealers would now have to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe. The \textbf{Coupon} printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{Trade Spread} (or \textbf{Par Spread}, or just \textbf{Spread}), labeled as 160 in the figure above. 
+
+Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps. As a result, the portfolio manager would have to make what is known as an \textbf{Upfront Payment}  at the trade inception. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}.
 
 \begin{figure}[H]
 \label{fig:CDSnoevent}
@@ -151,7 +152,7 @@ Naturally, if the hedge fund believes that the fair premium should be 160bps, it
 \caption{CDS cash flows when there is no credit event.}
 \end{figure}
 
-If, however, there is a credit event, the cash flow would look like \ref{fig:CDScreditevent}.
+If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
 
 \begin{figure}[H]
 \label{fig:CDScreditevent}
@@ -159,6 +160,16 @@ If, however, there is a credit event, the cash flow would look like \ref{fig:CDS
 \includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
 \caption{CDS cash flows when there is a credit event.}
 \end{figure}
+
+The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 02, 2014, the \textbf{Accrual Begin Date} is, by default, March 20, 2014. Now if the Accrual Begin Date is 75 days before the Trade Date, the portfolio manager would not want to pay interest for the 75 days she has not received protection for.  
+
+
+We must note that we are dividing 75 by 360 instead of 365 in the above calculation. This is to do with the \textbf{Day Count Convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360 or Actual/360. 
+
+If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfront payment, we get the \textbf{Dirty Upfront} or \textbf{Cash Settlement Amount}. With the information for Alcoa given in the Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$258478. \textbf{Clean upfront}, on the other hand, is the dirty upfront less any accrued interest payment, and is also called the \textbf{Principal}. In this case, it is \$279311.
+
+%% Need to re-format lines here.
+
 
 %% Are the "standard terms for CDS contracts" really the same thing as the 
 %% Standard Model? I am not so sure. I think that the standard terms are 
@@ -290,12 +301,6 @@ The International Swaps and Derivatives Association (ISDA) has created a set of 
 Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
 spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
 value credit default swaps and calculate various risk measures associated with these instruments.
-
-In April 2009 in North America, ISDA introduced a series of mandatory
-modifications to the CDS contract known as the ``Big Bang Protocol.''
-Among these changes were the standardization rules on the first
-accrual dates, fixed coupon rates (100 bps or 500 bps), and the
-recovery rate (40\%).
 
 %% specifications of the ISDA standard CDS contract
 
