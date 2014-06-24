@@ -72,7 +72,7 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \section{Credit Risk associated with Fixed Income}
 \label{sec:Bonds}
 
-CDSs are used in order to hedge against the \textbf{credit risk} associated with \textbf{bonds or fixed income}. Before we understand CDSs work, we must understand the mechanics of a standard coupon bond, and the risk associated with them.
+CDSs are used in order to hedge against the \textbf{credit risk} associated with \textbf{bonds or fixed income}. Before we understand how CDSs work, we must understand the mechanics of a standard coupon bond, and the risk associated with them.
 
 \subsection{Bond Mechanics}
 \label{sec:BondMechanics}
@@ -179,7 +179,7 @@ Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:
 \subsection{Entity-Specific Variables}
 \label{sec:EntitySpecVars}
 
-Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the CDS. Moreover, the \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. 
+Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the CDS, which is `AA' for Alcoa Inc. Moreover, the \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. 
 
 The \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED code that matches the first six digits of the nine-digit RED pair code. Each entity also has a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED code or the nine-digit RED pair code. The input ``014B98'' is the six-digit RED code for ``Alcoa Inc.''. 
 
