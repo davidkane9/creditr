@@ -220,18 +220,21 @@ As we can see, the Upfront and Points Upfront values are positive, since the spr
 \label{fig:MarkitAlcoa}
 \centering
 \includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
-\caption{CDS cash flows for Alcoa Inc. when Spread is 60bp and and Coupon is 100bp. These have been calculated using the calculator provided by Markit\footnote{The Markit CDS Calculator is available
-  at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.}
+\caption{CDS cash flows for Alcoa Inc. when Spread is 60bp and and Coupon is 100bp. These have been calculated using the calculator provided by Markit}
+
+%\footnote{The Markit CDS Calculator is available
+ % at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}}.}
+
 \end{figure}
 
-\subsection{Cash Flows when a Credit Event does Occur}
+\subsection{Protection Leg}
 \label{sec:CashFlows2}
 
 %% Section incomplete
 %% Over here we'll use a bond that actually defaulted.
 
 So far we have only discussed the stream of payments for a contract in which a credit event does not occur
-If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
+\textbf{Protection leg} refers to the  If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
 
 \begin{figure}[H]
 \label{fig:CDScreditevent}
