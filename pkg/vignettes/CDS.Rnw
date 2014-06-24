@@ -82,14 +82,10 @@ Consider the following example: let's say that there exists a pension fund manag
 
 A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. Since the bond pays a regular interest to the bondholder, it is also termed as \textbf{fixed income}. A major advantage of holding bonds over shares (equity) is that a company's bondholders are compensated before its shareholders in the case of liquidiation. Furthermore, bonds can be categorized as "senior" or "junior" (there exist many other classifications, but we'll stick to these two for now). As the terms suggest, senior bonds usually have the greatest seniority in the issuer's capital structure and are repaid before junior bonds in the case of default.
 
-
-\subsection{Bond Pricing}
-\label{sec:BondPricing}
+\subsection{Credit Risk Associated with Bonds}
+\label{sec:RiskBonds}
 
 To understand the different variables used to determine cash flows and bond pricing, let's look at actual data from a bond of Alcoa Inc. debt that has a maturity date five years from now. This data comes from Bloomberg, one of the most widely used financial data sources.
-
-%% Citing images from Barclays and Bloomberg.
-%% Bloomberg screenshot
 
 \begin{figure}[H]
 \label{fig:AlcoaBond}
@@ -98,24 +94,32 @@ To understand the different variables used to determine cash flows and bond pric
 \caption{Bloomberg Senior Bonds for Alcoa Inc., maturing on February 23, 2019.}
 \end{figure}
 
-Looking at the top of Figure \ref{fig:AlcoaBond}, we see that these bonds have a \textbf{coupon} of 5.72\% and a \textbf{price} of \$112.063, and a \textbf{spread} of (will fill in later). When a company first issues bonds, [NEED TO FINISH SENTENCE].
+When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as the \textbf{credit risk}. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P), Moody's and Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
 
-The key variables regarding bond pricing are as follows:\par
-\noindent
-\textbf{Principal}: the sum that will be returned to the investor when the bond reaches its maturity date. For example, if we own a bond of Alcoa Inc. for \$100 on the day it was issued, we will be paid a balloon payment of \$100 when it matures. This is, of course, in addition to the interest payments. \par
-\noindent
-\textbf{Coupon}: payments made by the company to the bondholder. This is a fixed amount and is usually paid semi-annually. \par
-\noindent
-\textbf{Spread}: the fair interest payment for owning the bond. Although the coupon is a fixed variable, this could vary based on different factors. \par
-\noindent
-\textbf{Maturity}: length of the bond's life. This will tell us how many coupon payments must be made until the bond's maturity.
-
-\subsection{Credit Risk Associated with Bonds}
-\label{sec:RiskBonds}
-
-When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as the \textbf{credit risk}. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P),Moody's and Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
+\begin{figure}[H]
+\label{fig:RatingsList}
+\centering
+\includegraphics[width=4in, height=2.4in]{images/RatingsList.png}
+\caption{Credit Rating Classifications from S\&P and Moody's.}
+\end{figure}
 
 A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Another important term associated with credit risk is a \textbf{credit event}. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events.
+
+\subsubsection{Risk-free Bonds}
+\label{sec:RiskFreeBonds}
+
+Bonds issues by the US Government are generally considered to be \textbf{risk-free}, as the probability of the US government not meeting its debt obligations is almost negligible. Even bonds issued by Japan (Japanese Government Bonds) and Britain (Gilts) are considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for pricing of corporate bonds or even the bonds of other governments.
+
+Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier than US treasury bonds, as explained in Section \ref{sec:RiskFreeBonds}. A rational investor would want a riskier bond to pay a higher interest rate than a US treasury, or else it wouldn't make sense for her to take on extra risk when she could get the same interest payment at no risk at all. She wants the expected return of a corporate bond to be the same as the expected return of a risk-free bond. Therefore, the minimum amount the risky bond would have to pay over the risk-free asset, for the expected return to be equivalent, is known as the \textbf{risk premium}. So the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced. 
+
+\subsection{Bond Pricing}
+\label{sec:BondPricing}
+%% Citing images from Barclays and Bloomberg.
+%% Bloomberg screenshot
+
+If we look at the top of Figure \ref{fig:AlcoaBond}, we see that these bonds have a \textbf{coupon} of 5.72\% and a \textbf{price} of \$112.063. But when Alcoa first issued bonds and sold them to investors on April 02, 2007 (\textbf{Announcement Date} in the figure), it was essentially borrowing \$100 (\textbf{Principal} of one bond) with the agreement that it would pay a fixed 2.86\% (half of 5.72\%) semi-annually for a twelve-year period, at the end of which it would also return the Principal of \$100.   
+
+%% Source: \url{http://www.investopedia.com/articles/03/102203.asp}. Accessed: June 24, 2014}
 
 %% Still have to define terms and better explain concepts such as pension fund portfolio manager, credit risk, default, bondholders vs. shareholders, probability of default, maturity, and coupon rate for the inexperienced reader.
 
@@ -184,7 +188,7 @@ We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this
 \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have maturities of five years. The Bloomberg screenshot displays the length of the contract, as well as the implied maturity date. Interestingly, the maturity date for the CDS of Alcoa Inc. on June 02, 2014 is June 20, 2019. This seems odd since we would expect it to be on June 02, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 02, 2019, which is June 20, 2019. Also note that this contract is of the type \textbf{SNAC} or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDSs are supposed to trade. In European markets, CDSs belong to the \textbf{STEC} category, or Standard European Contract.
 
 
-\subsection{Cash flows in the Absence of a Credit Event}
+\subsection{Premium Leg}
 \label{sec:CashFlows1}
 
 
@@ -194,7 +198,7 @@ The two essential terms in Figure \ref{fig:CDSalcoa} are \textbf{Trd Sprd} (Trad
 
 %% Explain why this change was made.
 
-In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the "Big Bang Protocol." Under the new rules, coupon rates were standardized in North America in Europe from June 2009 on. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{Trade Spread} (or \textbf{Par Spread}, or just \textbf{Spread}), labeled as 160 in the figure above. 
+In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the ``Big Bang Protocol``. Under the new rules, coupon rates were standardized in North America in Europe from June 2009 on. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bps, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{trade spread} (or \textbf{par spread}, or just \textbf{spread}), labeled as 160 in the figure above. 
 
 Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps. As a result, the portfolio manager would have to make what is known as an \textbf{Upfront Payment}  at the trade inception. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}.
 
@@ -207,6 +211,12 @@ Naturally, if the hedge fund believes that the fair premium should be 160bps, it
 
 
 The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 02, 2014, the \textbf{Accrual Begin Date} is, by default, March 20, 2014. Now if the Accrual Begin Date is 75 days before the Trade Date, the portfolio manager would not want to pay interest for the 75 days she has not received protection for.  
+
+\begin{equation}
+ \begin{aligned}
+  {\rm Accrued = \frac{75}{360}*\frac{1}{100}*10000000 = 20,833}
+    \end{aligned}
+\end{equation}
 
 We must note that we are dividing 75 by 360 instead of 365 in the above calculation. This has to do with the \textbf{Day Count Convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360, or Actual/360. 
 
@@ -240,6 +250,8 @@ So far we have only discussed the stream of payments for a contract in which a c
 \caption{CDS cash flows when there is a credit event.}
 \end{figure}
 
+%% What is an auction?
+%% Explain MM and XR
 
 %% I am not so sure. I think that the standard terms are 
 %% things like XR and MM, strict definitions for credit events, auction
@@ -260,9 +272,7 @@ So far we have only discussed the stream of payments for a contract in which a c
 %% but use a bond that actually defaulted. Then we can talk about the
 %% auction, recovery rate and so on.
 
-%% What is an auction?
 
-%% Define XR and MM in the next version.
 
 
 \section{CDS Pricing}
@@ -274,7 +284,6 @@ The ISDA has created the "Standard Model," which allows market participants to c
 
 In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
 
-%% Explain MM
 
 The ISDA also standardizes the interest rates used by the Standard
 Model in valuing a CDS contract. There are two types of rates used in
