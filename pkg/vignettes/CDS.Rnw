@@ -58,8 +58,6 @@ Over the past three decades, \textbf{credit derivatives} have become increasingl
 
 CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. The CDS market started to develop soon afterwards as banks used CDS contracts to hedge their credit exposures on balance sheets. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
 
-%% NEED TO DELETE AND RE-PHRASE SECOND SENTENCE IN PARAGRAPH. This sentence is way too similar to a sentence in Barclay's Primer. We cannot use it, and we must change it. 
-
 %% Need to better define single-name CDSs.
 
 %% add more about what this vignette will talk about and relate it to the package
@@ -114,8 +112,6 @@ The key variables to note in order to understand the pricing of a bond are:\par
 When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as \textbf{credit risk}. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P), Moody's or Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
 
 A risk-averse investor, like our portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk, like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk, such as Alcoa Inc., is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Another important term assoi A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events
-
- \textbf{credit event}
 
 %% Have to check the credit rating of Alcoa Inc. and coupon rate on some class of debt that we want to use as an example
 
@@ -286,6 +282,57 @@ If, however, there is a credit event, the cash flow would look like Figure \ref{
 
 In this section we will discuss the methods and formulas used for calculating certain information related to CDSs, and the assumptions involved in doing so.
 
+The ISDA also standardizes the interest rates used by the Standard
+Model in valuing a CDS contract. There are two types of rates used in
+valuing a USD denominated CDS contract: cash rates and swap
+rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They
+are provided by the British Bankers' Association (BBA). Swap rates are
+of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years,
+and are provided by ICAP \citep{rates}. The Standard Model follows the
+conventions below for interpolation of the entire USD yield curve:
+\begin{itemize}
+\item The day count convention (DCC) for money market instruments and
+  floating legs of the swaps is \textbf{ACT/360}.
+\item DCC for floating legs of the swaps is \textbf{30/360}.
+\item Payment frequency for fixed legs of the swaps is 6 months.
+\item Payment frequency for floating legs of the swaps is 3
+  months.\footnote{See
+    \url{http://www.fincad.com/derivatives-resources/wiki/swap-pricing.aspx}
+    for details on floating and fixed legs calculation.}
+\item A business day calendar of weekdays (Monday to Friday) is
+  assumed. Saturdays and Sundays will be the only non-business days.
+\item If a date falls on a non-business day, the convention used for
+  adjusting coupon payment dates is \textbf{M} (Modified Following).
+\end{itemize}
+
+\item[Recovery Rate] is the estimated percentage of par value that
+  bondholders will receive after a credit event. It is commonly
+  reported in percentage of notional value. CDS contracts for corporate bonds
+  assume a 40\% recovery rate for valuation purposes. 
+
+The Standard Model allows market participants to convert between
+the par spread and the upfront payment, and compute the cash
+settlement amount for a standard contract. A few key assumptions and
+definitions used when valuing a Standard CDS contract are the
+following:\footnote{Please refer to \url{http://bit.ly/1kg5qPw} for
+  more infrmation on the ISDA standard CDS model assumptions.}
+
+%% cds converter specification pdf original
+%% url. http://www.cdsmodel.com/assets/cds-model/docs/ISDA\%20Standard\%20CDS\%20Contract\%20Converter\%20Specification\%20-\%20Sept\%204,\%202009.pdf}
+
+\begin{description}
+\item[Trade Date (T)] means 11:59pm on the trade date.
+\item[Days of Protection] is the number of days
+  from Maturity Date to Trade Date.
+\item[Mark-to-market (MTM)] represents the contract value to the
+  protection buyer. It is computed by discounting the expected
+  protection leg and premium leg cashflows to T.
+\item[Accrued Premium] is the premium that has accrued from accrual
+  begin date to T where both dates are inclusive.
+\end{description}
+
+%% http://www.cdsmodel.com/assets/cds-model/docs/Interest%20Rate%20Curve%20Specification%20-%20All%20Currencies%20%28Updated%20May%202013%29.pdf
+
 \section{CDS Indices}
 \label{sec:CDSIndices}
 
@@ -357,168 +404,41 @@ The interest rate results were identical, at least until the fourth decimal plac
 \section{Glossary of CDS terminology}
 \label{sec:CDSTerminology}
 
-
-%% In the next draft, we should not have a clunky list of terms.
-%% Better to introduce the terms, bolding them the first time
-%% they appear, in a discussion of a specific CDS.  
-
-Here is a glossary of CDS terminology necessary for determining the pricing and cash flows associated with CDSs\footnote{Some of the
-  definitions come from \textit{Credit Derivatives Glossary}
-  \citep{glossary}, \textit{Standard Corporate CDS Handbook}
-  \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
-  \textit{The Pricing and Risk Management of Credit Default Swaps,
-    with a Focus on the ISDA Model} \citep{openGamma}.}:
-
 %% currently this displays the figure of Alcoa but we will change it to Alcoa Inc. as it is a name that people are more familiar with. 
 
-\begin{description}
-\item[Reference Entity] refers to the legal entity that is the
-  subject of a CDS contract (Alcoa Inc., in our example).  
+%%\begin{description}
+%%\item[Reference Entity] refers to the legal entity that is the
+%%  subject of a CDS contract (Alcoa Inc., in our example).  
   
-  %%\texttt{entityName} in the \texttt{CDS}
-  %%function takes the name of the legal entity and is ``Alcoa Inc.'' in
+%% what is cds1??
+  
+%%\item[Spread] is quoted in basis points per year. If, instead of using
+  %%a fixed coupon and exchanging upfront fees, the buyer and seller of
+  %%protection were to agree on a variable coupon, then the spread would be
+  %%the coupon size that they agree on. It is quoted as 50 bps in
   %%\texttt{cds1}.
-  
-\item [RED] is a Markit product that stands for Reference Entity
-  Database. Each entity/seniority pair has a unique six-digit RED
-  code that matches the first six digits of the nine-digit RED pair code. 
-  Each entity also has a ``preferred reference obligation,'' which is the 
-  default reference obligation for CDS
-  trades. A user can input either the six-digit RED code or the
-  nine-digit RED pair code. The input ``014B98'' is the six-digit RED
-  code for ``Alcoa Inc.''.
-\item [Trade Date] indicates the trade date of the CDS contract, as shown in the argument of the
-  \texttt{CDS} function. In our exmaple, the trade date is
-  June 02, 2014 in \texttt{cds1}.
-  
-  %% what is cds1??
-  
-\item[Maturity] refers to the fixed date on which a CDS contract
-  terminates. However, colloquially speaking, it can also represent the
-  length of time remaining until that date. This length is also called
-  the \textbf{tenor} of a CDS contract. The most commonly traded CDSs
-  have maturities of five years. The protection buyer continues to make payments to
-  the protection seller until the maturity of the contract or the
-  occurrence of a credit event. The maturity is five years in
-  \texttt{cds1}.
-\item[Notional] is the amount of the underlying asset on which the
-  payments are based. It is \$10 million in \texttt{cds1}.
-\item[Coupon] is quoted in basis points (bps). It specifies the payment
-  amount from the protection buyer to the seller on an annual
-  basis. Coupons are paid quarterly. This contract has a coupon of 100
-  bps.
-\item[Spread] is quoted in basis points per year. If, instead of using
-  a fixed coupon and exchanging upfront fees, the buyer and seller of
-  protection were to agree on a variable coupon, then the spread would be
-  the coupon size that they agree on. It is quoted as 50 bps in
-  \texttt{cds1}.
-\end{description}
+%%\end{description}
 
 An ISDA standard CDS contract specifies the following:\footnote{Refer
   to the \textit{ISDA Standard CDS Converter Specification} for
   details.}
 \begin{description}
-\item[Trade Date] refers to the date of the trade.
-\item[Maturity] is the length of the contract. The most commonly traded
-  contracts have a maturity of 5 years.
-\item[Maturity Date] falls on one of the four dates (Mar/Jun/Sep/Dec
-  20th) in a year. One can add the maturity of the contract to the
-  trade date; the next available date among those four dates is the
-  maturity date.
 \item[Backstop Date] is the date from which protection is
   provided,
   \begin{center}
     Backstop Date = T - 60 Calender Days.
   \end{center}
-\item[Notional Amount] is in millions.
-\item[Standard Coupon] is either 100 or 500 bps per
-  year for CDS contracts in North America.
   %% , and 25, 100, 500 or 1000 bps in Europe.
-\item[Recovery Rate] is the estimated percentage of par value that
-  bondholders will receive after a credit event. It is commonly
-  reported in percentage of notional value. CDS contracts for corporate bonds
-  assume a 40\% recovery rate for valuation purposes. 
+
 \item[Par Spread] is the spread value which makes the present value
-  of a CDS contract zero. It is quoted in basis points.  
-\item[Upfront Payment] is quoted in the currency amount. Since a
-  standard contract is traded with fixed coupons, upfront payment is
-  introduced to reconcile the difference in contract value due to the
-  difference between the fixed coupon and the par
-  spread. There are two types of upfront, dirty and clean. Dirty
-  upfront (\textbf{Cash Settlement Amount}) refers to the market
-  value of a CDS contract. Clean upfront is dirty upfront less any
-  accrued interest payment, and is also called the \textbf{Principal}.
-\item[Points Upfront], or simply \textbf{points}, are quoted as a
-  percentage of the notional amount. They represent the upfront
-  payment excluding the accrual payment. High yield CDS contracts
-  are often quoted in points upfront. The protection buyer pays the
-  upfront payment if points upfront are positive, and the buyer is
-  paid by the seller if the points are negative.
+  of a CDS contract zero. It is quoted in basis points. 
 \end{description}
-
-The Standard Model allows market participants to convert between
-the par spread and the upfront payment, and compute the cash
-settlement amount for a standard contract. A few key assumptions and
-definitions used when valuing a Standard CDS contract are the
-following:\footnote{Please refer to \url{http://bit.ly/1kg5qPw} for
-  more infrmation on the ISDA standard CDS model assumptions.}
-
-%% cds converter specification pdf original
-%% url. http://www.cdsmodel.com/assets/cds-model/docs/ISDA\%20Standard\%20CDS\%20Contract\%20Converter\%20Specification\%20-\%20Sept\%204,\%202009.pdf}
-
-\begin{description}
-\item[Trade Date (T)] means 11:59pm on the trade date.
-\item[Days of Protection] is the number of days
-  from Maturity Date to Trade Date.
-\item[Mark-to-market (MTM)] represents the contract value to the
-  protection buyer. It is computed by discounting the expected
-  protection leg and premium leg cashflows to T.
-\item[Accrued Premium] is the premium that has accrued from accrual
-  begin date to T where both dates are inclusive.
-\end{description}
-
-%% http://www.cdsmodel.com/assets/cds-model/docs/Interest%20Rate%20Curve%20Specification%20-%20All%20Currencies%20%28Updated%20May%202013%29.pdf
-
-The ISDA also standardizes the interest rates used by the Standard
-Model in valuing a CDS contract. There are two types of rates used in
-valuing a USD denominated CDS contract: cash rates and swap
-rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They
-are provided by the British Bankers' Association (BBA). Swap rates are
-of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years,
-and are provided by ICAP \citep{rates}. The Standard Model follows the
-conventions below for interpolation of the entire USD yield curve:
-\begin{itemize}
-\item The day count convention (DCC) for money market instruments and
-  floating legs of the swaps is \textbf{ACT/360}.
-\item DCC for floating legs of the swaps is \textbf{30/360}.
-\item Payment frequency for fixed legs of the swaps is 6 months.
-\item Payment frequency for floating legs of the swaps is 3
-  months.\footnote{See
-    \url{http://www.fincad.com/derivatives-resources/wiki/swap-pricing.aspx}
-    for details on floating and fixed legs calculation.}
-\item A business day calendar of weekdays (Monday to Friday) is
-  assumed. Saturdays and Sundays will be the only non-business days.
-\item If a date falls on a non-business day, the convention used for
-  adjusting coupon payment dates is \textbf{M} (Modified Following).
-\end{itemize}
-
-Besides \texttt{parSpread}, a market paricipant can choose to specify
-either \texttt{ptsUpfront} or \texttt{upfront} to construct a
-\texttt{CDS} class object.\footnote{See Section \ref{sec:isda} for
-  definitions on both terms.} \texttt{ptsUpfront} or \texttt{upfront}
-refer to points upfront (in \%), and upfront payment (in dollar
-amount) of a CDS contract, respectively. One of the three arguments
-has to be specified in order to construct the \texttt{CDS} class
-object.
 
 
 \section{Using the CDS package}
 \label{CDSpkg}
 
-The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
-Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
-spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
-value credit default swaps and calculate various risk measures associated with these instruments.
+The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments.
 
 In the \textbf{CDS} package, we call the function \texttt{CDS} to
 construct an object of a class \texttt{CDS}. Below we show an example
@@ -546,6 +466,15 @@ Reference Entity or the RED Code. She does not have to know that information
 to use the \textbf{CDS} package. As shown below, as long as she inputs the same
 \texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
 the valuation of the contract will be the same.
+
+Besides \texttt{parSpread}, a market paricipant can choose to specify
+either \texttt{ptsUpfront} or \texttt{upfront} to construct a
+\texttt{CDS} class object.\footnote{See Section \ref{sec:isda} for
+  definitions on both terms.} \texttt{ptsUpfront} or \texttt{upfront}
+refer to points upfront (in \%), and upfront payment (in dollar
+amount) of a CDS contract, respectively. One of the three arguments
+has to be specified in order to construct the \texttt{CDS} class
+object.
 
 Currently, a market participant can conduct CDS-related calculations
 by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the
