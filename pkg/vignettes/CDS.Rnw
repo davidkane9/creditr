@@ -100,11 +100,11 @@ The key variables to note in order to understand the pricing of a bond are:\par
 \noindent
 \textbf{Principal}: is the sum that will be returned to the investor when the bond reaches its maturity date. So if we own a bond of Alcoa Inc. for \$100 on the day it was issued, we will be paid a balloon payment of \$100 when it matures. This is, of course, in addition to the interest payments. \par
 \noindent
-\textbf{Coupon}: Payments made by the company to the bondholder. This is a fixed amount and is usually paid semi-annually. \par
+\textbf{Coupon}: payments made by the company to the bondholder. This is a fixed amount and is usually paid semi-annually. \par
 \noindent
-\textbf{Spread}: \par
+\textbf{Spread}: the fair interest payment for owning the bond. Although the coupon is a fixed variable, this could vary based on different factors. \par
 \noindent
-\textbf{Maturity}:length of the bond's life. This will tell us how many coupon payments must be made until the bonds maturity.
+\textbf{Maturity}: length of the bond's life. This will tell us how many coupon payments must be made until the bonds maturity.
 
 \subsection{Credit Risk Associated with Bonds}
 \label{sec:RiskBonds}
