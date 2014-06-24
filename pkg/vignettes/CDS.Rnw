@@ -58,6 +58,8 @@ Over the past three decades, \textbf{credit derivatives} have become increasingl
 
 CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. The CDS market started to develop soon afterwards as banks used CDS contracts to hedge their credit exposures on balance sheets. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, et cetera \citep{jk}. In the \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
 
+%% NEED TO DELETE AND RE-PHRASE SECOND SENTENCE IN PARAGRAPH. This sentence is way too similar to a sentence in Barclay's Primer. We cannot use it, and we must change it. 
+
 %% Need to better define single-name CDSs.
 
 %% add more about what this vignette will talk about and relate it to the package
