@@ -67,23 +67,63 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 %% longer than it currently is, including getting a lot of the details correct,
 %% which is why I am adding these notes(!!).
 
+
+
+\section{Credit Risk associated with Fixed Income}
+\label{sec:Bonds}
+
+CDSs are used in order to hedge against the \textbf{credit risk} associated with \textbf{bonds or fixed income}. Before we understand CDSs work, we must understand the mechanics of a standard coupon bond, and the risk associated with them.
+
+\subsection{Bond Mechanics}
+\label{sec:BondMechanics}
+
+Let's say that there is a manager of a pension fund who has to allocate her clients' money (a total sum of \$100 million). Pension funds are, for the most part, risk averse investors who want to minimize the possibility of making a loss, even if that results in a lower return on their investment. Pension funds also have to constantly return money to their clients so they want to purchase assets that pay a regular interest to the owner. They also want to invest in assets that are \textbf{liquid} i.e. whose sale does not affect their price. In such a scenario, coupon bonds seem like an attractive investment. 
+
+A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. Since the bonds pays a regular interest to the bondholder, it is also termed as \textbf{fixed income}. A major advantage of holding bonds over shares (equity) is that in the case of a liquidiation, a company's bondholders are compensated before the shareholders. Furthermore, bonds can be categorized as "senior" or "junior" (there exist many other classifications, but we'll stick to these two for now). As the terms suggest, senior bonds usually have the greatest seniority in the issuer's capital structure and in the case of default, are repaid before junior bonds.
+
+\subsection{Bond Pricing}
+\label{sec:BondPricing}
+
+To understand the different variables used in determining the cash flows and pricing of a bond, let's take data of an actual bond maturing five years from now, of a company called Alcoa Inc. This data is from a source called Bloomberg, one of the most widely used sources of financial data
+
+\begin{figure}[H]
+\label{fig:AlcoaBond}
+\centering
+\includegraphics[width=5in, height=4in]{images/AlcoaBond.png}
+\caption{Bloomberg Senior Bonds for Alcoa Inc., maturing on February 23, 2019}
+\end{figure}
+
+If we look at the top of Figure \ref{fig:AlcoaBond}, we can see that these bonds have a \textbf{Coupon} of 5.72\% and a \textbf{price} of \$112.063. 
+The third number is the \textbf{spread}. When a company first issues bonds, 
+
+The key variables to note in order to understand the pricing of a bond are:\par
+\noindent
+\textbf{Principal}: is the sum that will be returned to the investor when the bond reaches its maturity date. So if we own a bond of Alcoa Inc. for \$100 on the day it was issued, we will be paid a balloon payment of \$100 when it matures. This is, of course, in addition to the interest payments. \par
+\noindent
+\textbf{Coupon}: Payments made by the company to the bondholder. This is a fixed amount and is usually paid semi-annually. \par
+\noindent
+\textbf{Spread}: \par
+\noindent
+\textbf{Maturity}:length of the bond's life. This will tell us how many coupon payments must be made until the bonds maturity.
+
+\subsection{Credit Risk Associated with Bonds}
+\label{sec:RiskBonds}
+
+When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as \textbf{credit risk}. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P), Moody's or Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
+
+A risk-averse investor, like our portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk, like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk, such as Alcoa Inc., is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG).  
+
+%% Have to check the credit rating of Alcoa Inc. and coupon rate on some class of debt that we want to use as an example
+
+%% Still have to define terms and better explain concepts such as pension fund portfolio manager, credit risk, default, bondholders vs. shareholders, probability of default, maturity, and coupon rate for the inexperienced reader.
+
 \section{CDS Basics}
 \label{sec:CDSBasics}
 
 \subsection{Why CDSs?}
 \label{sec:whyCDSs}
 
-To understand the benefits of CDSs as hedging tools, consider the following example: 
-
-Let's say that there is a manage of a pension fund who has to allocate her clients' money (a total sum of \$100 million) such that it earns a steady return without taking . Therefore, this portfolio manager decides to buy several bonds from a company that has a low \textbf{credit risk}---say, Alcoa Inc. A \textbf{bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. The advantage of holding bonds instead of equity or stock is that bondholders are compensated before shareholders. Furthermore, both bonds can be categorized as "senior" or "junior" (there exist many other classifications, but we'll stick to these two for now). As the terms suggest, senior bonds usually have the greatest seniority in the issuer's capital structure and in the case of default, are repaid before junior bonds. 
-
-Since our portfolio manager is risk averse, she purchases senior bonds of Alcoa Inc., which she believes will not \textbf{default} on its debt. A company with a low credit risk, such as Alcoa Inc., is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P) or Moody's. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's. Let's say that our portfolio manager's bonds have a maturity of five years and a coupon rate of (TBD). Alcoa Inc. has a credit rating of (TBD) from S\&P.
-
-%% Have to check the credit rating of Alcoa Inc. and coupon rate on some class of debt that we want to use as an example
-
-%% Still have to define terms and better explain concepts such as pension fund portfolio manager, credit risk, default, bondholders vs. shareholders, probability of default, maturity, and coupon rate for the inexperienced reader.
-
-However, six months after the manager bought the bonds, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. In other words, the manager is worried about some \textbf{credit event} related to the company. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events. Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
+Let's assume that our portfolio manager buys \$10 millions dollars of senior Alcoa Inc. bonds maturing 5 years from now. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. In other words, the manager is worried about some \textbf{credit event} related to the company. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events. Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
 
 One convenitional technique of doing this is shorting bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future. However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio of \$100 million, which is a substantial opportunity cost.    
 
@@ -131,15 +171,21 @@ Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:
 \label{fig:CDSalcoa}
 \centering
 \includegraphics[width=5in, height=3.8in]{images/BloombergCDSAlcoa.png}
-\caption{CDS figures from Bloomberg}
+\caption{CDS figures from Bloomberg for Alcoa Inc. Note that this \textbf{REF Obligation} (Reference Obligation) matches the ISIN in Figure \ref{fig:AlcoaBond}}
 \end{figure}
 
 \subsection{Entity-Specific Variables}
 \label{sec:EntitySpecVars}
 
-Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have a maturity of five years. The Bloomberg screenshot displays the length of the contract, as well as the equivalent maturity date. So the maturity date for the CDS of Alcoa on June 02, 2014 is June 20, 2019. This seems odd since we would expect it to be on June 02, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 02, 2019, which is -- June 20, 2019. 
+Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the CDS. Moreover, the \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. 
 
-We can also note the label \textbf{Debt type}, marked as 'Senior'. Clearly, this refers to the seniority of the debt.  The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring (explained further in Section \ref{sec:CashFlows2}).   
+The \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED code that matches the first six digits of the nine-digit RED pair code. Each entity also has a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED code or the nine-digit RED pair code. The input ``014B98'' is the six-digit RED code for ``Alcoa Inc.''. 
+
+We can also note the label \textbf{Debt type}, marked as 'Senior'. Clearly, this refers to the seniority of the debt. The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring (explained further in Section \ref{sec:CashFlows2}). The \textbf{REF Obligation} (Reference Obligation) is the reference for the bond to which this CDS is tied. Since our portfolio manager is purchasing protection on the same bonds she purchased before, this \textbf{REF Obligation} (Reference Obligation) matches the ISIN in Figure \ref{fig:AlcoaBond}.  
+
+\textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have a maturity of five years. The Bloomberg screenshot displays the length of the contract, as well as the implied maturity date. Interestingly, the maturity date for the CDS of Alcoa on June 02, 2014 is June 20, 2019. This seems odd since we would expect it to be on June 02, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 02, 2019, which is -- June 20, 2019. Also note that this contract is of the type \textbf{SNAC} or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDSs are supposed to trade.
+
+
 
 %% Explain MM
 \subsection{Cash flows in the Absence of a Credit Event}
@@ -152,7 +198,7 @@ The two terms in Figure \ref{fig:CDSalcoa} that are essential for understanding 
 
 %% Explain why this change was made.
 
-In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the ``Big Bang Protocol.'' Under the new rules, coupon rates were standardized in North America, and even in Europe from June 2009. Dealers would now have to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe. The \textbf{Coupon} printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{Trade Spread} (or \textbf{Par Spread}, or just \textbf{Spread}), labeled as 160 in the figure above. 
+In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the ``Big Bang Protocol.'' Under the new rules, coupon rates were standardized in North America, and even in Europe from June 2009. Dealers would now have to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe. The coupon is also paid quarterly on one of the four roll dates. The \textbf{Coupon} printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bp or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{Trade Spread} (or \textbf{Par Spread}, or just \textbf{Spread}), labeled as 160 in the figure above. 
 
 Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps. As a result, the portfolio manager would have to make what is known as an \textbf{Upfront Payment}  at the trade inception. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}.
 
