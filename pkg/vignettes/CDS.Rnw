@@ -118,7 +118,12 @@ Our example above can be described as a single-name CDS contract, in which the t
 \section{CDS Terminology and Cash Flows}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data for Alcoa Inc., from Bloomberg. Bloomberg and Markit are the two most commonly used sources for CDS related data; we will discuss these extensively in a later section. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa Inc. for June 02, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDSs.
+Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data for Alcoa Inc., from Bloomberg. Bloomberg and Markit are the two most commonly used sources for CDS related data; we will discuss these extensively in a later section. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa Inc. for June 02, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDSs. Let us understand what these variables are and how they are important for understanding the cash flow\footnote{Some of the
+  definitions come from \textit{Credit Derivatives Glossary}
+  \citep{glossary}, \textit{Standard Corporate CDS Handbook}
+  \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
+  \textit{The Pricing and Risk Management of Credit Default Swaps,
+    with a Focus on the ISDA Model} \citep{openGamma}.}.
 
 %% Need to put \ref{} in the footnote to refer to the later section.
 
@@ -129,13 +134,19 @@ Although the cash flows involved in a CDS seem pretty simple in figure \ref{fig:
 \caption{CDS figures from Bloomberg}
 \end{figure}
 
+\subsection{Entity-Specific Variables}
+\label{sec:EntitySpecVars}
+
 Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. \textbf{Trade Date} is the date on which we are making the trade -- June 02, 2014. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have a maturity of five years. The Bloomberg screenshot displays the length of the contract, as well as the equivalent maturity date. So the maturity date for the CDS of Alcoa on June 02, 2014 is June 20, 2019. This seems odd since we would expect it to be on June 02, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 02, 2019, which is -- June 20, 2019. 
 
-We can also note the label \textbf{Debt type}, marked as 'Senior'. Clearly, this refers to the seniority of the debt.  The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring.   
+We can also note the label \textbf{Debt type}, marked as 'Senior'. Clearly, this refers to the seniority of the debt.  The \textbf{notional amount} is printed as '10' or \$10 million USD (US Dollars). The 'MM' between the amount and the currency refers to the type of restructuring of the contract---in this case, 'Modified Modified' Restructuring (explained further in Section \ref{sec:CashFlows2}).   
 
 %% Explain MM
+\subsection{Cash flows in the Absence of a Credit Event}
+\label{sec:CashFlows1}
 
-The two terms in this figure that are essential for understanding the cash flow are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSbasics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the present value of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon with the hedge fund, which would then vary as the company's credit risk varied. 
+
+The two terms in Figure \ref{fig:CDSalcoa} that are essential for understanding the cash flow are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the present value of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon with the hedge fund, which would then vary as the company's credit risk varied. 
 
 %% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
 
@@ -152,6 +163,30 @@ Naturally, if the hedge fund believes that the fair premium should be 160bps, it
 \caption{CDS cash flows when there is no credit event.}
 \end{figure}
 
+
+The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 02, 2014, the \textbf{Accrual Begin Date} is, by default, March 20, 2014. Now if the Accrual Begin Date is 75 days before the Trade Date, the portfolio manager would not want to pay interest for the 75 days she has not received protection for.  
+
+
+We must note that we are dividing 75 by 360 instead of 365 in the above calculation. This is to do with the \textbf{Day Count Convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360 or Actual/360. 
+
+If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfront payment, we get the \textbf{Dirty Upfront} or \textbf{Cash Settlement Amount}. With the information for Alcoa given in the Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$258478. \textbf{Clean Upfront}, on the other hand, is the dirty upfront less any accrued interest payment, and is also called the \textbf{Principal}. In this case, it is \$279311. Moreover, we can also note a variable called \textbf{Pts Upf} in Figure \ref{fig:CDSalcoa}. This is the \textbf{Points Upfront}, or simply \textbf{points}, which is the Clean Upfront experessed as a percentage of the notional amount. 
+
+As we can see, the Upfront and Points Upfront values are positive in this case, since the Spread of the CDS is higher than the fixed Coupon rate. If instead, the portfolio manager and hedge fund agree that the fair premium should be 60 points, the Upfront value would be negative i.e. the hedge fund would pay the portfolio manager a compensation for receiving a Coupon higher than the fair premium or spread. The cash flows would then look like the values in Figure \ref{fig:MarkitAlcoa}. The clean and dirty value are now both negative. 
+
+\begin{figure}[H]
+\label{fig:MarkitAlcoa}
+\centering
+\includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
+\caption{CDS cash flows for Alcoa Inc. when Spread is 60bp and and Coupon is 100bp. These have been calculated using the calculator provided by Markit at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}}
+\end{figure}
+
+\subsection{Cash Flows when a Credit Event does Occur}
+\label{sec:CashFlows2}
+
+%% Section incomplete
+%% Over here we'll use a bond that actually defaulted.
+
+So far we have only discussed the stream of payments for a contract in which a credit event does not occur
 If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
 
 \begin{figure}[H]
@@ -160,15 +195,6 @@ If, however, there is a credit event, the cash flow would look like Figure \ref{
 \includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
 \caption{CDS cash flows when there is a credit event.}
 \end{figure}
-
-The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 02, 2014, the \textbf{Accrual Begin Date} is, by default, March 20, 2014. Now if the Accrual Begin Date is 75 days before the Trade Date, the portfolio manager would not want to pay interest for the 75 days she has not received protection for.  
-
-
-We must note that we are dividing 75 by 360 instead of 365 in the above calculation. This is to do with the \textbf{Day Count Convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360 or Actual/360. 
-
-If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfront payment, we get the \textbf{Dirty Upfront} or \textbf{Cash Settlement Amount}. With the information for Alcoa given in the Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$258478. \textbf{Clean upfront}, on the other hand, is the dirty upfront less any accrued interest payment, and is also called the \textbf{Principal}. In this case, it is \$279311.
-
-%% Need to re-format lines here.
 
 
 %% Are the "standard terms for CDS contracts" really the same thing as the 
@@ -203,7 +229,82 @@ If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfr
 %% Might add some more details. Or, better, use one of the images from
 %% Barclays or Bloomberg, citing them of course.
 
-\section{CDS Terminology}
+%% Bloomberg screenshot
+
+\section{CDS Pricing}
+\label{sec:CDSpricing}
+
+In this section we will discuss the methods and formulas used for calculating certain information related to CDSs, and the assumptions involved in doing so.
+
+\section{CDS Indices}
+\label{sec:CDSIndices}
+
+Holding a portfolio of a disproportionate number of Alcoa Inc. bonds is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful 
+portfolio managers prefer to distribute their risk by holding a 
+portfolio with hundreds, if not thousands, of different positions. 
+Instead of holding a 100 million USD of Alcoa Inc. bonds, let's say 
+our portfolio manager decides to take less risk by holding bonds of 
+100 different Investment Grade companies. This is known as 
+\textbf{diversification}. Although this strategy reduces 
+her exposure to the credit risk of any particular company, she hasn't 
+reduced her exposure to factors that might affect a wide variety of assets simulatenously, 
+such as interest rate risk or political risk. Fortunately, in the modern financial world, she 
+has the option of purchasing multi-name CDSs, or CDS indices, which
+contain a basket of CDSs.
+ 
+Moreover, if our portfolio manager has a high-risk appetite and
+wants to earn a higher return for her investors, she may invest
+a portion of her portfolio in bonds that have a lower credit rating
+but provide a higher yield. She may consider investing in a tranche of CDS indices known as CDX.NA.HY.
+ 
+ 
+%% Add screenshot with data from one of the indices
+
+%% provide a history of iTraxx and CDX 
+ 
+\section{Pricing Sources}
+\label{sec:PricingSources}
+
+%% section incomplete
+
+Bloomberg and Markit are the most widely used sources for data related to pricing of CDSs. We compared the results from our package with results from Bloomberg and Markit. Interestingly,
+the results from Markit and Bloomberg were not always identical. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
+\caption{CDS figures from Markit.com}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
+\caption{CDS figures from Bloomberg}
+\end{figure}
+
+The interest rate results were identical, at least until the fourth decimal place.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.6in, height=4.2in]{images/MarkitIRJun2.png}
+\caption{Interest Rate figures from Markit.com}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.2in, height=2.7in]{images/BloombergIRJun2.png}
+\caption{Interest Rate figures from Bloomberg}
+\end{figure}
+
+
+
+%% the origins of the ISDA standard model. Next version: Talk about Europe?
+
+%% specifications of the ISDA standard CDS contract
+
+%% Maybe will have to delete this list.
+
+\section{Glossary of CDS terminology}
 \label{sec:CDSTerminology}
 
 
@@ -262,49 +363,6 @@ Here is a glossary of CDS terminology necessary for determining the pricing and 
   the coupon size that they agree on. It is quoted as 50 bps in
   \texttt{cds1}.
 \end{description}
-
-
-Here the user enters the CDS contract with "Alcoa Inc." as the underlying
-entity and sets the spread at 50 bps and the coupon at 100
-bps. However, the valuation of a CDS contract requires neither the
-Reference Entity or the RED Code. She does not have to know that information
-to use the \textbf{CDS} package. As shown below, as long as she inputs the same
-\texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
-the valuation of the contract will be the same.
-
-<<>>=
-library(CDS)
-cds2 <- CDS(TDate = "2014-04-15",
-            tenor = "5Y",
-            coupon = 100,
-            parSpread = 50)
-@ 
-
-
-Besides \texttt{parSpread}, a market paricipant can choose to specify
-either \texttt{ptsUpfront} or \texttt{upfront} to construct a
-\texttt{CDS} class object.\footnote{See Section \ref{sec:isda} for
-  definitions on both terms.} \texttt{ptsUpfront} or \texttt{upfront}
-refer to points upfront (in \%), and upfront payment (in dollar
-amount) of a CDS contract, respectively. One of the three arguments
-has to be specified in order to construct the \texttt{CDS} class
-object.
-
-%% Bloomberg screenshot 
-
-
-\section{The ISDA Standard Model}
-\label{sec:isda}
-%% the origins of the ISDA standard model. Next version: Talk about Europe?
-
-The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
-Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
-spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
-value credit default swaps and calculate various risk measures associated with these instruments.
-
-%% specifications of the ISDA standard CDS contract
-
-%% Maybe will have to delete this list.
 
 An ISDA standard CDS contract specifies the following:\footnote{Refer
   to the \textit{ISDA Standard CDS Converter Specification} for
@@ -394,65 +452,23 @@ conventions below for interpolation of the entire USD yield curve:
   adjusting coupon payment dates is \textbf{M} (Modified Following).
 \end{itemize}
 
-
-\section{CDS Indices}
-\label{sec:CDSIndices}
-
-Holding a portfolio of a disproportionate number of Alcoa Inc. bonds is naturally a risky idea. In the real world, most successful 
-portfolio managers prefer to distribute their risk by holding a 
-portfolio with hundreds, if not thousands, of different positions. 
-Instead of holding a 100 million USD of Alcoa Inc. bonds, let's say 
-our portfolio manager decides to reduce her risk by holding bonds of 
-100 different Investment Grade companies. This is known as 
-\textbf{diversification}. Although this strategy reduces 
-her exposure to the credit risk of any particular company, she hasn't 
-reduced her exposure to factors that might affect a wide variety of assets simulatenously, 
-such as interest rate risk or political risk. Fortunately, in the modern financial world, she 
-has the option of purchasing multi-name CDSs, or CDS indices, which
-contain a basket of CDSs.
- 
-Moreover, if our portfolio manager has a high-risk appetite and
-wants to earn a higher return for her investors, she may invest
-a portion of her portfolio in bonds that have a lower credit rating
-but provide a higher yield. She may consider investing in a tranche of CDS indices known as CDX.NA.HY.
- 
-%% provide a history of iTraxx and CDX 
- 
-\section{Pricing Sources}
-\label{sec:PricingSources}
-
-We compared the results from our package with results from Bloomberg and Markit. Interestingly,
-the results from Markit and Bloomberg were not always identical. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
-\caption{CDS figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
-\caption{CDS figures from Bloomberg}
-\end{figure}
-
-The interest rate results were identical, at least until the fourth decimal place.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.2in, height=4.5in]{images/MarkitIRJun2.png}
-\caption{Interest Rate figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=3.5in, height=3in]{images/BloombergIRJun2.png}
-\caption{Interest Rate figures from Bloomberg}
-\end{figure}
+Besides \texttt{parSpread}, a market paricipant can choose to specify
+either \texttt{ptsUpfront} or \texttt{upfront} to construct a
+\texttt{CDS} class object.\footnote{See Section \ref{sec:isda} for
+  definitions on both terms.} \texttt{ptsUpfront} or \texttt{upfront}
+refer to points upfront (in \%), and upfront payment (in dollar
+amount) of a CDS contract, respectively. One of the three arguments
+has to be specified in order to construct the \texttt{CDS} class
+object.
 
 
 \section{Using the CDS package}
 \label{CDSpkg}
+
+The International Swaps and Derivatives Association (ISDA) has created a set of standard terms for CDS contracts, the so-called ``Standard
+Model.'' This allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional
+spread and upfront payments, and build the spread curve of a CDS. The \textbf{CDS} package implements the Standard Model, allowing users to
+value credit default swaps and calculate various risk measures associated with these instruments.
 
 In the \textbf{CDS} package, we call the function \texttt{CDS} to
 construct an object of a class \texttt{CDS}. Below we show an example
@@ -473,6 +489,13 @@ cds1 <- CDS(entityName = "Alcoa Inc.",
             parSpread = 50)
 @
 
+Here the user enters the CDS contract with "Alcoa Inc." as the underlying
+entity and sets the spread at 50 bps and the coupon at 100
+bps. However, the valuation of a CDS contract requires neither the
+Reference Entity or the RED Code. She does not have to know that information
+to use the \textbf{CDS} package. As shown below, as long as she inputs the same
+\texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
+the valuation of the contract will be the same.
 
 Currently, a market participant can conduct CDS-related calculations
 by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the
