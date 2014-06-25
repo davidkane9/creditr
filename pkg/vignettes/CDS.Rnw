@@ -73,28 +73,30 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \section{Fixed Income Securities and Credit Risk}
 \label{sec:Bonds}
 
-CDSs are used in order to hedge against the \textbf{credit risk} associated with \textbf{bonds or fixed income}. Before we understand how CDSs work, we must understand the mechanics of a standard coupon bond, and its associated risks.
+CDSs are used in order to hedge against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Before we understand how CDSs work, we must understand the mechanics of a standard coupon bond, and its associated risks.
 
 \subsection{Bond Mechanics}
 \label{sec:BondMechanics}
 
-Consider the following example: let's say that there exists a pension fund manager who has to allocate her clients' money (a total sum of \$100 million). For the most part, pension funds comprise risk-averse investors who seek to minimize the possibility of a loss, even if that ultimately creates a lower return on an investment. Pension funds also have to constantly return money to their clients so the clients want to purchase assets that pay a regular interest to the owner. Pension funds also want to invest in assets that are \textbf{liquid} i.e. whose sales do not affect their prices. In such a scenario, coupon bonds seem like an attractive investment. 
+Consider the following example: let's say that there exists a pension fund manager who has to allocate her clients' money (a total sum of \$100 million). Pension funds are usually risk-averse investors who seek to minimize the possibility of a loss, even if that ultimately creates a lower return on an investment. Pension funds also have to constantly return money to their clients, so ideally they want to hold assets that pay a regular interest to the owner. Pension funds also want to invest in assets that are \textbf{liquid} i.e. whose sales do not affect their prices. In such a scenario, coupon bonds seem like an attractive investment.
 
-A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus interest, at a future date. Since the bond pays a regular interest to the bondholder, it is also termed as \textbf{fixed income}. A major advantage of holding bonds over shares (equity) is that a company's bondholders are compensated before its shareholders in the case of liquidiation. Furthermore, bonds can be categorized as "senior" or "junior" (there exist many other classifications, but we'll stick to these two for now). As the terms suggest, senior bonds usually have the greatest seniority in the issuer's capital structure and are repaid before junior bonds in the case of default.
+%% explain liquid asset
 
-\subsection{Credit Risk Associated with Bonds}
-\label{sec:RiskBonds}
+A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus period \textbf{coupon payments}, at a future date. Since the bond pays a regular interest to the bondholder, it is also termed as \textbf{fixed income}. A major advantage of holding bonds over shares (equity) is that a company's bondholders are compensated before its shareholders in the case of liquidiation. Furthermore, bonds can be categorized as "senior" or "junior"; there exist many other classifications, but we'll stick to these two for now. As the terms suggest, senior bonds usually have the greatest seniority in the issuer's capital structure and are repaid before junior bonds in the case of default.
 
-To understand the different variables used to determine cash flows and bond pricing, let's look at actual data from a bond of Alcoa Inc. debt that has a maturity date five years from now. This data comes from Bloomberg, one of the most widely used financial data sources.
+To understand the different variables used to determine cash flows and bond pricing, let's look at actual data for a bond of Alcoa Inc., that has a maturity date five years from now. This data has been retrieved from Bloomberg, one of the most widely used sources of financial data.
 
 \begin{figure}[H]
 \label{fig:AlcoaBond}
 \centering
 \includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg Senior Bonds for Alcoa Inc., maturing on February 23, 2019.}
+\caption{Bloomberg data for Senior Bonds of Alcoa Inc., maturing on February 23, 2019. This figure displays some essential information that a potential investor would neet to consider such as name, industry, seniority (rank), coupon, maturity, coupon payment dates and credit ratings. }
 \end{figure}
 
-When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as the \textbf{credit risk}. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P), Moody's and Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
+\subsection{Credit Risk Associated with Bonds}
+\label{sec:RiskBonds}
+
+If we look at the right of Figure \ref{fig:AlcoaBond}, under `Bond Ratings', we can certain symbols provided by organizations such as Moody's, S\&P and Fitch. These symbols are known as \textbf{credit ratings} and are indicators of a company's \textbf{credit risk}. When a company like Alcoa Inc. issues bonds, there is always the possibility that it may not be able to meet its debt obligations. The risk that a company will be unable to meet its debt obligations is known as the credit risk. The creditworthiness of a company is often represented by the \textbf{credit rating}---a score determined by rating agencies such as Standard \& Poor's (S\&P), Moody's and Fitch. We will not go into the details of how these ratings are determined; we only note that an Investment Grade bond has a rating of BBB- or higher from S\&P or Baa3 or higher from Moody's.
 
 \begin{figure}[H]
 \label{fig:RatingsList}
@@ -103,14 +105,16 @@ When a company like Alcoa Inc. issues bonds, there is always the possibility tha
 \caption{Credit rating classifications from Moody's for long-term debt obligations.}
 \end{figure}
 
-A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Another important term associated with credit risk is a \textbf{credit event}. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events.
+A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Bonds that have a rating below this are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds.  
+
+Another important term associated with credit risk is a \textbf{credit event}. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events. In a later section, we will see the exact events that constitute a credit event.
 
 \subsubsection{Risk-free Bonds}
 \label{sec:RiskFreeBonds}
 
-Bonds issues by the US Government are generally considered to be \textbf{risk-free}, as the probability of the US government not meeting its debt obligations is almost negligible. Even bonds issued by Japan (Japanese Government Bonds) and Britain (Gilts) are considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for pricing of corporate bonds or even the bonds of other governments.
+Bonds issues by the US Government (known as \text{Treasuries}) are generally considered to be \textbf{risk-free}, as the probability of the US government not meeting its debt obligations is almost negligible. Even bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for pricing of corporate bonds or even the bonds of other governments.
 
-Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier than US treasury bonds, as explained in Section \ref{sec:RiskFreeBonds}. A rational investor would want a riskier bond to pay a higher interest rate than a US treasury, or else it wouldn't make sense for her to take on extra risk when she could get the same interest payment at no risk at all. She wants the expected return of a corporate bond to be the same as the expected return of a risk-free bond. Therefore, the minimum amount the risky bond would have to pay over the risk-free asset, for the expected return to be equivalent, is known as the \textbf{risk premium}. So the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced. 
+Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier than US treasury bonds. A rational investor would want a riskier bond to pay a higher interest rate than a US treasury, or else it wouldn't make sense for her to take on extra risk when she could get the same interest payment at no risk at all. She wants the expected return of a corporate bond to be the same as the expected return of a risk-free bond. Therefore, the minimum amount the risky bond would have to pay over the risk-free asset, for the expected return to be equivalent, is known as the \textbf{risk premium}. So the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced. 
 
 \subsection{Bond Pricing}
 \label{sec:BondPricing}
@@ -124,7 +128,7 @@ Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier t
 
 \subsubsection{Present Value of Bonds}
 
-A bond's price is essentially the sum of the present value of its cash flow i.e. the sum of the present value of coupon payments and principal. Basically, we have to pretend as though we are investing the coupon payment and principal for a certain time period. So if our discount rate is 5\% semi-annual (2.5\% paid every six months), the present value of the first coupon of \$25,000 is 25000/1.025, of the second coupon is \$25000/1.025 and so on. The present value of the bond is, therefore,
+A bond's price is essentially the sum of the present value of its cash flows i.e. the sum of the present value of coupon payments and principal. Basically, we have to pretend as though we are investing the coupon payment and principal for different time period. So if our discount rate is 5\% semi-annual (2.5\% paid every six months), the present value of the first coupon of \$25,000 is 25000/1.025, of the second coupon is \$25000/1.025 and so on. The present value of the bond is, therefore,
 
 \begin{equation}
  \begin{aligned}
@@ -132,11 +136,11 @@ A bond's price is essentially the sum of the present value of its cash flow i.e.
     \end{aligned}
 \end{equation}
 
-`M' is the principal payment. `C' refers to the coupon payment of \$25000. `i' is the discount rate of 5\% in the above equation; it is also called the \textbf{yield to maturity(YTM)} or just \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
+`M' is the principal payment and `C' refers to the coupon payment of \$25000. `i' is the discount rate and is also called the \textbf{yield to maturity(YTM)} or just \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
 
 In the case of Alcoa Inc., if we look at the top of Figure \ref{fig:AlcoaBond}, we see that bonds for Alcoa Inc. on June 24 2014 have a \textbf{coupon} of 5.72\%, a \textbf{price} of \$112.063 and a \textbf{yield} of 2.928\%. The \textbf{Cpn Freq} is quoted as `S/A' which stands for `semi-annually'. So if our pension fund manager were to purchase Alcoa Inc. bonds that have a principal of \$10 million dollars and that pay a coupon of \$286,000 semi-annually, it would cost her \$11,206,300. If we substitute i in the above equation with 0.014514, `C' with \$2.86, M with \$100 and n with 10 we would get the bond price quoted in the Bloomberg screenshot, of \$112.063.  
 
-When our portfolio manager has to purchase a bond, she has to determine what yield is a fair discount rate for that specific bond. The factors affecting the yield would be the risk-free rate, explained earlier, or the credit health of the company, determined partly by the credit rating. Clearly, if we look at the equation above or even think of it intuitively, the bond yield has an inverse relationship with its price.
+When our portfolio manager has to purchase a bond, she has to determine what yield is a fair discount rate for that specific bond. The factors affecting the yield would be the risk-free rate, as explained earlier, and the credit health of the company, represented partly by the credit rating. Clearly, if we look at the equation above or even think of it intuitively, the bond yield has an inverse relationship with its price.
 
 %But when Alcoa first issued bonds and sold them to investors on April 02, 2007 (\textbf{Announcement Date} in the figure), it was essentially borrowing \$100 (\textbf{Principal} of one bond) with the agreement that it would pay a fixed 2.86\% (half of 5.72\%) semi-annually for a twelve-year period, at the end of which it would also return the Principal of \$100.   
 
@@ -151,7 +155,7 @@ When our portfolio manager has to purchase a bond, she has to determine what yie
 \subsection{CDSs as Hedging Tools}
 \label{sec:whyCDSs}
 
-Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 millions, and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
+Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 millions, and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
 
 One convenitional technique of doing this is \textbf{shorting} bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future. However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio of \$100 million, which is a substantial opportunity cost.    
 
