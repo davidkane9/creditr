@@ -117,7 +117,24 @@ Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier t
 %% Citing images from Barclays and Bloomberg.
 %% Bloomberg screenshot
 
-If we look at the top of Figure \ref{fig:AlcoaBond}, we see that these bonds have a \textbf{coupon} of 5.72\% and a \textbf{price} of \$112.063. But when Alcoa first issued bonds and sold them to investors on April 02, 2007 (\textbf{Announcement Date} in the figure), it was essentially borrowing \$100 (\textbf{Principal} of one bond) with the agreement that it would pay a fixed 2.86\% (half of 5.72\%) semi-annually for a twelve-year period, at the end of which it would also return the Principal of \$100.   
+\subsubsection{Present Value (PV)}
+\label{sec:PresentValue}
+
+\textbf{present value} refers to the current value of a future payment. What this means is that, say if you have \$1 million today, it is worth more to you today than it is 10 years from now. This is because \$1 million, if invested in, say, risk-free savings account paying earning 5\% a year (compounded semi-annually), will amount to \$1.63 million. So the present value of \$1.63 million ten years from now is \$1 million. The 5\% interest rate that we are using to discount the future value is known as the \textbf{discount rate}.      
+
+\subsubsection{Present Value of Bonds}
+
+A bond's price is essentially the sum of the present value of its cash flow i.e. the sum of the present value of coupon payments and principal. Basically, we have to pretend as though we are investing the coupon payment and principal for a certain time period. So if our discount rate is 5\% semi-annual (2.5\% paid every six months), the present value of the first coupon of \$25,000 is 25000/1.025, of the second coupon is \$25000/1.025 and so on. The present value of the bond is, therefore,
+
+
+`C' refers to the coupon payment of \$25000. `i' is the discount rate of 5\% in the above equation; it is also called the \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
+
+In the case of Alcoa Inc., if we look at the top of Figure \ref{fig:AlcoaBond}, we see that bonds for Alcoa Inc. on June 24 2014 have a \textbf{coupon} of 5.72\%, a \textbf{price} of \$112.063 and a \textbf{yield} of 2.928\%. So if our pension fund manager were to purchase Alcoa Inc. bonds that have a principal of \$10 million dollars and that pay a coupon of \$286,000 semi-annually, it would cost her \$11206300. If we substitute i in the above equation with 0.014514, we would get the bond price quoted in the Bloomberg screenshot.  
+
+
+When our portfolio manager has to purchase a bond, she has to determine what yield is a fair discount rate for that specific bond. The factors affecting the yield would be the risk-free rate, explained earlier, or the credit health of the company. Clearly, if we look at the equation above or even think of it intuitively, the bond yield has an inverse relationship with its price.
+
+%But when Alcoa first issued bonds and sold them to investors on April 02, 2007 (\textbf{Announcement Date} in the figure), it was essentially borrowing \$100 (\textbf{Principal} of one bond) with the agreement that it would pay a fixed 2.86\% (half of 5.72\%) semi-annually for a twelve-year period, at the end of which it would also return the Principal of \$100.   
 
 %% Source: \url{http://www.investopedia.com/articles/03/102203.asp}. Accessed: June 24, 2014}
 
