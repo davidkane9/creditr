@@ -120,23 +120,28 @@ Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier t
 \subsubsection{Present Value (PV)}
 \label{sec:PresentValue}
 
-\textbf{present value} refers to the current value of a future payment. What this means is that, say if you have \$1 million today, it is worth more to you today than it is 10 years from now. This is because \$1 million, if invested in, say, risk-free savings account paying earning 5\% a year (compounded semi-annually), will amount to \$1.63 million. So the present value of \$1.63 million ten years from now is \$1 million. The 5\% interest rate that we are using to discount the future value is known as the \textbf{discount rate}.      
+\textbf{Present value} refers to the current value of a future payment. What this means is that, say if you have \$1 million today, it is worth more to you today than it is 10 years from now. This is because \$1 million, if invested in, say, risk-free savings account paying earning 5\% a year (compounded semi-annually), will amount to \$1.63 million. So the present value of \$1.63 million ten years from now is \$1 million. The 5\% interest rate that we are using to discount the future value is known as the \textbf{discount rate}.      
 
 \subsubsection{Present Value of Bonds}
 
 A bond's price is essentially the sum of the present value of its cash flow i.e. the sum of the present value of coupon payments and principal. Basically, we have to pretend as though we are investing the coupon payment and principal for a certain time period. So if our discount rate is 5\% semi-annual (2.5\% paid every six months), the present value of the first coupon of \$25,000 is 25000/1.025, of the second coupon is \$25000/1.025 and so on. The present value of the bond is, therefore,
 
+\begin{equation}
+ \begin{aligned}
+  {\rm Price = C*\frac{1-\frac{1}{(1+i)^n}}{i} + \frac{M}{(1+i)^n}}
+    \end{aligned}
+\end{equation}
 
-`C' refers to the coupon payment of \$25000. `i' is the discount rate of 5\% in the above equation; it is also called the \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
+`M' is the principal payment. `C' refers to the coupon payment of \$25000. `i' is the discount rate of 5\% in the above equation; it is also called the \textbf{yield to maturity(YTM)} or just \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
 
-In the case of Alcoa Inc., if we look at the top of Figure \ref{fig:AlcoaBond}, we see that bonds for Alcoa Inc. on June 24 2014 have a \textbf{coupon} of 5.72\%, a \textbf{price} of \$112.063 and a \textbf{yield} of 2.928\%. So if our pension fund manager were to purchase Alcoa Inc. bonds that have a principal of \$10 million dollars and that pay a coupon of \$286,000 semi-annually, it would cost her \$11206300. If we substitute i in the above equation with 0.014514, we would get the bond price quoted in the Bloomberg screenshot.  
+In the case of Alcoa Inc., if we look at the top of Figure \ref{fig:AlcoaBond}, we see that bonds for Alcoa Inc. on June 24 2014 have a \textbf{coupon} of 5.72\%, a \textbf{price} of \$112.063 and a \textbf{yield} of 2.928\%. The \textbf{Cpn Freq} is quoted as `S/A' which stands for `semi-annually'. So if our pension fund manager were to purchase Alcoa Inc. bonds that have a principal of \$10 million dollars and that pay a coupon of \$286,000 semi-annually, it would cost her \$11,206,300. If we substitute i in the above equation with 0.014514, `C' with \$2.86, M with \$100 and n with 10 we would get the bond price quoted in the Bloomberg screenshot, of \$112.063.  
 
-
-When our portfolio manager has to purchase a bond, she has to determine what yield is a fair discount rate for that specific bond. The factors affecting the yield would be the risk-free rate, explained earlier, or the credit health of the company. Clearly, if we look at the equation above or even think of it intuitively, the bond yield has an inverse relationship with its price.
+When our portfolio manager has to purchase a bond, she has to determine what yield is a fair discount rate for that specific bond. The factors affecting the yield would be the risk-free rate, explained earlier, or the credit health of the company, determined partly by the credit rating. Clearly, if we look at the equation above or even think of it intuitively, the bond yield has an inverse relationship with its price.
 
 %But when Alcoa first issued bonds and sold them to investors on April 02, 2007 (\textbf{Announcement Date} in the figure), it was essentially borrowing \$100 (\textbf{Principal} of one bond) with the agreement that it would pay a fixed 2.86\% (half of 5.72\%) semi-annually for a twelve-year period, at the end of which it would also return the Principal of \$100.   
 
 %% Source: \url{http://www.investopedia.com/articles/03/102203.asp}. Accessed: June 24, 2014}
+%% https://www.moodys.com/sites/products/AboutMoodysRatingsAttachments/MoodysRatingsSymbolsand%20Definitions.pdf
 
 %% Still have to define terms and better explain concepts such as pension fund portfolio manager, credit risk, default, bondholders vs. shareholders, probability of default, maturity, and coupon rate for the inexperienced reader.
 
@@ -231,13 +236,13 @@ The ISDA protocol, since April 2009, specifies that all premium payments, by def
 
 \begin{equation}
  \begin{aligned}
-  {\rm Accrued = \frac{75}{360}*\frac{1}{100}*10000000 = 20,833}
+  {\rm Accrued = \frac{75}{360}*\frac{1}{100}*\$10000000 = \$20,833}
     \end{aligned}
 \end{equation}
 
 We must note that we are dividing 75 by 360 instead of 365 in the above calculation. This has to do with the \textbf{Day Count Convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360, or Actual/360. 
 
-If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfront payment, we get the \textbf{Dirty Upfront} or \textbf{Cash Settlement Amount}. With the information for Alcoa Inc. given in the Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$25,8478. \textbf{Clean Upfront}, on the other hand, is the dirty upfront minus any accrued interest payment, and is also called the \textbf{Principal}. In this case, it is \$27,9311. Moreover, we can also note a variable called \textbf{Pts Upf} in Figure \ref{fig:CDSalcoa}. This is the \textbf{Points Upfront}, or simply \textbf{points}, which is the clean upfront expressed as a percentage of the notional amount. 
+If we subtract the \textbf{Accrued Interest} over the past 75 days from the upfront payment, we get the \textbf{Dirty Upfront} or \textbf{Cash Settlement Amount}. With the information for Alcoa Inc. given in the Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$258,478. \textbf{Clean Upfront}, on the other hand, is the dirty upfront minus any accrued interest payment, and is also called the \textbf{Principal}. In this case, it is \$27,9311. Moreover, we can also note a variable called \textbf{Pts Upf} in Figure \ref{fig:CDSalcoa}. This is the \textbf{Points Upfront}, or simply \textbf{points}, which is the clean upfront expressed as a percentage of the notional amount. 
 
 As we can see, the upfront and points upfront values are positive, since the spread of the CDS is higher than the fixed coupon rate. If instead, the portfolio manager and hedge fund agree that the fair premium should be 60bps, the upfront value would be negative i.e. the hedge fund would pay the portfolio manager a compensation for receiving a coupon higher than the fair premium or spread. The cash flows would then look like the values in Figure \ref{fig:MarkitAlcoa}. The clean and dirty values are now both negative. 
 
