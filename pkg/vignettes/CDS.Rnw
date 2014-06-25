@@ -99,8 +99,8 @@ When a company like Alcoa Inc. issues bonds, there is always the possibility tha
 \begin{figure}[H]
 \label{fig:RatingsList}
 \centering
-\includegraphics[width=4in, height=2.4in]{images/RatingsList.png}
-\caption{Credit Rating Classifications from S\&P and Moody's.}
+\includegraphics[width=4.3in, height=2.8in]{images/MoodysRatings.png}
+\caption{Credit rating classifications from Moody's.}
 \end{figure}
 
 A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Another important term associated with credit risk is a \textbf{credit event}. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events.
