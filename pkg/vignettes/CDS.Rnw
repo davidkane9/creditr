@@ -349,15 +349,6 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \item $B(t_i) =$ day count fraction at $t_i$.
 \end{itemize}
 
-\subsubsection{Using PV01 to calculate Upfront Payments and Other Variables}
-
-We can thus calculate the principal amount (clean upfront payment)
-paid from the protection buyer to the seller using the following
-formula:
-\begin{center}
-  Principal Amount = (Par Spread - Coupon) $\times$ PV01.
-\end{center}
-
 %In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
 
 \subsubsection{Interest Rate Curves used in Pricing CDSs}
@@ -396,6 +387,7 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
   assume a 40\% recovery rate for valuation purposes. 
 \end{itemize}
 
+
 \subsubsection{Mark-to-Market Calculations}
 \label{sec:MarkToMarket}
 
@@ -403,6 +395,16 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
 
 \begin{center}
     CDS mark-to-market = T - 60 Calender Days.
+\end{center}
+
+
+\subsubsection{Principal Amount (Clean Upfront)}
+
+We can thus calculate the principal amount (clean upfront payment)
+paid from the protection buyer to the seller using the following
+formula:
+\begin{center}
+  Principal Amount = (Par Spread - Coupon) $\times$ PV01.
 \end{center}
 
 The Standard Model allows market participants to convert between
@@ -463,9 +465,9 @@ always be positive for a protection buyer since he or she is short credit,
 and a rising spread is a sign of credit deterioration. Starting with
 PV01 and taking the derivative with respect to the spread gives us:
 \begin{eqnarray}
-  PV \& = \& (S - C) * PV01 \nonumber \\
-  DV01 \& = \& \frac{\partial PV}{\partial S} \nonumber \\
-  \& = \& PV01 + (S - C) \frac{\partial PV01}{\partial S},\nonumber
+  PV = (S - C) * PV01 \nonumber \\
+  DV01 = \frac{\partial PV}{\partial S} \nonumber \\
+  = PV01 + (S - C) \frac{\partial PV01}{\partial S},\nonumber
 \end{eqnarray}
 where $S$ is the spread of the contract and $C$ is the coupon.
 
