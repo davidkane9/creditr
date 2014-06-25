@@ -120,7 +120,7 @@ Another important term associated with credit risk is a \textbf{credit event}. A
 \subsection{Risk-free Bonds}
 \label{sec:RiskFreeBonds}
 
-Bonds issues by the U.S. Government (known as \text{Treasury Bonds}) are generally considered to be \textbf{risk-free}, since the probability of the U.S. Government failing to meet its debt obligations is almost negligible. Bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are also considered to be risk-free, among others. Therefore, the interest paid by sovereign bonds is an important benchmark for the pricing of corporate bonds or even the bonds of other governments.
+Bonds issues by the U.S. Government (known as \text{Treasury Bonds}) are generally considered to be \textbf{risk-free}, since the probability of the U.S. Government failing to meet its debt obligations is almost negligible. Bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are also considered to be risk-free, among others. Therefore, the interest paid by sovereign bonds is an important benchmark for the pricing of corporate bonds or even the bonds of other governments. 
 
 Bonds from Alcoa Inc., or any corporation for that matter, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher interest rate than a U.S. treasury bond, or else it wouldn't make sense for her to take on extra risk when she could get the same interest payment at no risk at all. She wants the expected return of a corporate bond to be the same as the expected return of a risk-free bond. Therefore, the minimum amount that the risky bond would have to pay over the risk-free asset, for the expected return to be equivalent, is known as the \textbf{risk premium}. So the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced. 
 
@@ -227,10 +227,11 @@ We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this
 \subsection{Premium Leg}
 \label{sec:CashFlows1}
 
-
-The two essential terms in Figure \ref{fig:CDSalcoa} are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the \textbf{present value} of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon---which would then vary as the company's credit risk varied---with the hedge fund. 
+The stream of cash flows from the protection buyer to the seller, when there is no default, is known as the \textbf{premium leg}. To understand the premium leg, we must look at the \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon} in Figure \ref{fig:CDSalcoa}. In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon---which would then vary as the company's credit risk varied---with the hedge fund. 
 
 %% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
+
+%In this type of contract, the \textbf{present value} of the contract (the current worth of a future sum of money) would be zero. 
 
 %% Explain why this change was made.
 %% The problem with a system like the one described above is that . 
@@ -278,7 +279,7 @@ As we can see, the upfront and points upfront values are positive, since the spr
 %% Section incomplete
 %% Over here we'll use a bond that actually defaulted.
 
-So far we have only discussed the stream of payments for a contract in which a credit event does not occur. The stream of payments that would be have to be made in the case of a credit event is known as the \textbf{Protection leg}. If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
+So far we have only discussed the stream of payments for a contract in which a credit event does not occur. The stream of payments that would be have to be made in the case of a credit event is known as the \textbf{protection leg} or \textbf{contingent leg}. If, however, there is a credit event, the cash flow would look like Figure \ref{fig:CDScreditevent}. 
 
 \begin{figure}[H]
 \label{fig:CDScreditevent}
@@ -321,23 +322,61 @@ Another problem that we face is determining what constitutes a default. Often co
 \section{CDS Pricing}
 \label{sec:CDSpricing}
 
-In this section we will discuss the methods and formulas used for calculating certain information related to CDSs, and the assumptions involved in doing so.
+The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. In this section we will lay out the assumptions made by the standard model, and explain the methods and formulas used to calculate certain information related to CDSs.
 
-The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
+\subsection{Present Value of CDSs}
+\label{sec:PVCDSs}
+
+In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its cash flows. This concept applies in the pricing of CDSs as well. To understand this, let us return to the example of the portfolio manager who wants to purchase protection from a hedge fund for her bonds of Alcoa Inc. We've probably understood by now that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the present value of the extra cash flows that will be made on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bp, the upfront value paid by the portfolio manager to the hedge fund is the present value of the extra 60bps payments made quarterly (15 bp per quarter) over a period of five years. 
+
+Therefore, par spread is the spread value which makes the present value of a CDS contract zero.
+
+\subsubsection{PV01 or Present Value 01}
+\label{sec:PV01}
+
+At this point it is important to understand \textbf{PV01} or \textbf{present value 01}. PV01 is the present value of a stream of 1 basis point payments at each CDS coupon date. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}.
+
+Analytically, PV01 can be calculated by
+
+\begin{displaymath}
+PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+\end{displaymath}
+\begin{itemize}
+\item $i =$ coupon index,
+\item $t_i =$ coupon date,
+\item $Df(f_i) =$ discount factor until $t_i$,
+\item $S(t_i) =$ survival probability until $t_i$,
+\item $B(t_i) =$ day count fraction at $t_i$.
+\end{itemize}
+
+\subsubsection{Using PV01 to calculate Upfront Payments and Other Variables}
+
+We can thus calculate the principal amount (clean upfront payment)
+paid from the protection buyer to the seller using the following
+formula:
+\begin{center}
+  Principal Amount = (Par Spread - Coupon) $\times$ PV01.
+\end{center}
 
 %In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
 
 \subsubsection{Interest Rate Curves used in Pricing CDSs}
 \label{sec:SwapCurves}
 
-The ISDA also standardizes the interest rates used by the Standard
-Model in valuing a CDS contract. There are two types of rates used in
-valuing a USD-denominated CDS contract: cash rates and swap
-rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They
-are provided by the British Bankers' Association (BBA). Swap rates are
-of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years,
-and are provided by ICAP \citep{rates}. The Standard Model follows the
-conventions below for interpolation of the entire USD yield curve:
+The risk free rates are an essential component in the pricing of CDSs. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds, at 8pm UTC, June 23 2014.    
+
+\begin{figure}[H]
+\label{fig:YieldCurve}
+\centering
+\includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
+\caption{Treasury Rates with day count conventions on June 23 2014, at 8pm UTC.}
+\end{figure}
+
+Bond yields are directly proportional to the maturity of the bond. This is because the risk of default for a government, or any other entity, is higher over a long period than over a short one. The risk that a government may default on its debt over 30 years is higher than the risk that it defaults in six months. In rare cases, the short-term yields are higher than long term yields; this can often be a sign of a recession. If, for a given date, we plot the maturities of different bonds on the x-axis and their corresponding yields on the y-axis, we get the \textbf{interest rate curve}.  
+
+In calculating the price of a CDS we use the yield curve of the previous day, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, for those in GBP we will use UK Government bond yields and so on.  
+
+The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They are provided by the British Bankers' Association (BBA). Swap rates are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
 \item The day count convention (DCC) for money market instruments and
   the floating legs of the swaps is \textbf{ACT/360}.
@@ -357,12 +396,21 @@ conventions below for interpolation of the entire USD yield curve:
   assume a 40\% recovery rate for valuation purposes. 
 \end{itemize}
 
+\subsubsection{Mark-to-Market Calculations}
+\label{sec:MarkToMarket}
+
+\textbf{Mark-to-market (MTM)} represents the contract value to the protection buyer. The Standard Model assumes that it is computed by discounting the expected protection leg and premium leg cashflows to the trade date. For the buyer of protection
+
+\begin{center}
+    CDS mark-to-market = T - 60 Calender Days.
+\end{center}
+
 The Standard Model allows market participants to convert between
 the par spread and the upfront payment, and compute the cash
 settlement amount for a standard contract. A few key assumptions and
 definitions used when valuing a Standard CDS contract are the
-following:\footnote{Please refer to \url{http://bit.ly/1kg5qPw} for
-  more infrmation on the ISDA standard CDS model assumptions.}
+following\footnote{Please refer to \url{http://bit.ly/1kg5qPw} for
+  more infrmation on the ISDA standard CDS model assumptions.}:
 
 %% cds converter specification pdf original
 %% url. http://www.cdsmodel.com/assets/cds-model/docs/ISDA\%20Standard\%20CDS\%20Contract\%20Converter\%20Specification\%20-\%20Sept\%204,\%202009.pdf}
@@ -371,9 +419,6 @@ following:\footnote{Please refer to \url{http://bit.ly/1kg5qPw} for
 \item[Trade Date (T)] means 11:59pm on the trade date.
 \item[Days of Protection] is the number of days
   from Maturity Date to Trade Date.
-\item[Mark-to-market (MTM)] represents the contract value to the
-  protection buyer. It is computed by discounting the expected
-  protection leg and premium leg cashflows to T.
 \item[Accrued Premium] is the premium that has accrued from accrual
   begin date to T where both dates are inclusive.
 \end{description}
@@ -400,35 +445,11 @@ An ISDA standard CDS contract specifies the following:\footnote{Refer
   \end{center}
   %% , and 25, 100, 500 or 1000 bps in Europe.
 
-\item[Par Spread] is the spread value which makes the present value
-  of a CDS contract zero. It is quoted in basis points. 
 \end{description}
 
-\textbf{PV01}, an essential
-component to the mark-to-market calculation of a CDS contract. PV01 is
-the present value of a stream of 1 basis point payments at each CDS
-coupon date. It is sometimes referred to as the \textbf{CDS duration}
-or \textbf{risky duration}.
 
-Analytically, PV01 can be calculated by
-\begin{displaymath}
-PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-\end{displaymath}
-where 
-\begin{itemize}
-\item $i =$ coupon index,
-\item $t_i =$ coupon date,
-\item $Df(f_i) =$ discount factor until $t_i$,
-\item $S(t_i) =$ survival probability until $t_i$,
-\item $B(t_i) =$ day count fraction at $t_i$.
-\end{itemize}
 
-We can thus calculate the principal amount (clean upfront payment)
-paid from the protection buyer to the seller using the following
-formula:
-\begin{center}
-  Principal Amount = (Par Spread - Coupon) $\times$ PV01.
-\end{center}
+
 
 Using the concept of PV01, we show the calculation of the main risks
 (exposures) of a CDS position, \textbf{Spread DV01}. Spread DV01
