@@ -100,7 +100,7 @@ When a company like Alcoa Inc. issues bonds, there is always the possibility tha
 \label{fig:RatingsList}
 \centering
 \includegraphics[width=4.3in, height=2.8in]{images/MoodysRatings.png}
-\caption{Credit rating classifications from Moody's.}
+\caption{Credit rating classifications from Moody's for long-term debt obligations.}
 \end{figure}
 
 A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P and Ba1 from Moody's. A company with a low credit risk is considered to be \textbf{credit worthy} and its bonds are classified as \textbf{Investment Grade} (IG). Another important term associated with credit risk is a \textbf{credit event}. A credit event can signify the risk of a company's bankruptcy and resulting default, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade or the confiscation of assets, among other events.
@@ -120,7 +120,7 @@ Bonds of Alcoa Inc., or any corporation for that matter, are generally riskier t
 \subsubsection{Present Value (PV)}
 \label{sec:PresentValue}
 
-\textbf{Present value} refers to the current value of a future payment. What this means is that, say if you have \$1 million today, it is worth more to you today than it is 10 years from now. This is because \$1 million, if invested in, say, risk-free savings account paying earning 5\% a year (compounded semi-annually), will amount to \$1.63 million. So the present value of \$1.63 million ten years from now is \$1 million. The 5\% interest rate that we are using to discount the future value is known as the \textbf{discount rate}.      
+\textbf{Present value} refers to the current value of a future payment. What this means is that, say if you have \$1 million today, it is worth more to you today than \$1 million 10 years from now. This is because \$1 million, if invested in, say, a risk-free asset earning 5\% a year (compounded semi-annually), will amount to \$1.63 million. So the present value of \$1.63 million ten years from now is \$1 million. The 5\% interest rate that we are using to discount the future value is known as the \textbf{discount rate}.      
 
 \subsubsection{Present Value of Bonds}
 
@@ -151,7 +151,7 @@ When our portfolio manager has to purchase a bond, she has to determine what yie
 \subsection{CDSs as Hedging Tools}
 \label{sec:whyCDSs}
 
-Let's assume that our portfolio manager buys \$10 millions dollars of senior Alcoa Inc. bonds that will mature five years from now. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
+Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 millions, and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds; however, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk.
 
 One convenitional technique of doing this is \textbf{shorting} bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future. However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio of \$100 million, which is a substantial opportunity cost.    
 
@@ -214,11 +214,12 @@ We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this
 \label{sec:CashFlows1}
 
 
-The two essential terms in Figure \ref{fig:CDSalcoa} are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the \textbf{present value} of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon---which would then vary as the company's credit risk varied---with the hedge fund.
+The two essential terms in Figure \ref{fig:CDSalcoa} are \textbf{Trd Sprd} (Trade Spread) and \textbf{Coupon}, both given in basis points (bps). In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. In this type of contract, the \textbf{present value} of the contract (the current worth of a future sum of money) would be zero. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon---which would then vary as the company's credit risk varied---with the hedge fund. 
 
 %% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
 
 %% Explain why this change was made.
+%% The problem with a system like the one described above is that . 
 
 In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the ``Big Bang Protocol``. Under the new rules, coupon rates were standardized in North America in Europe from June 2009 on. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bps, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{trade spread} (or \textbf{par spread}, or just \textbf{spread}), labeled as 160 in the figure above. 
 
@@ -272,6 +273,12 @@ So far we have only discussed the stream of payments for a contract in which a c
 \caption{CDS cash flows when there is a credit event.}
 \end{figure}
 
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. In the event of a default, there are two ways this transaction could take place. The first is a \textbf{physical settlement} where the buyer will actually deliver the defaulted bonds to seller and the seller will then pay the face value of those bonds. The disadvantage of this is that in the case of a default the buyers of protection who do not own those bonds will have to find the bonds to deliver to the seller and this may artificially drive up the price of the bonds. This is especially the case when there are a large number of outstanding CDS contract. 
+
+The alternative to physical settlements is a \textbf{cash settlement}, in which the seller simply pays the buyer the notional amount*(1-recovery rate). Clearly, determining a recovery rate is a problem. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt. 
+
+Another problem that we face is determining what constitutes a default. Often companies \textbf{restructure} their debt instead of declaring for bankruptcy. In debt restructuring, companies basically renegotiate the terms of their debt. In some CDS contracts, restructuring does not constitute a default. In Figure {fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as `MM'. This stands for `Modified Modified' restructuring and implies that debt restructuring does constitute a default for this contract. So if Alcoa Inc. decides to restructure this specific debt, the portfolio manager will have to be paid by the hedge fund.
+
 %% What is an auction?
 %% Explain MM and XR
 
@@ -304,8 +311,10 @@ In this section we will discuss the methods and formulas used for calculating ce
 
 The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
 
-In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
+%In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
 
+\subsubsection{Interest Rate Curves used in Pricing CDSs}
+\label{sec:SwapCurves}
 
 The ISDA also standardizes the interest rates used by the Standard
 Model in valuing a CDS contract. There are two types of rates used in
