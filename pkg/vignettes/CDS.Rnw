@@ -78,7 +78,7 @@ CDSs are used in order to hedge against the \textbf{credit risk} associated with
 \subsection{Bond Mechanics}
 \label{sec:BondMechanics}
 
-Consider the following example: let's say that there exists a pension fund manager who has to allocate her clients' money (a total sum of \$100 million dollars). Pension funds are usually risk-averse investors who seek to minimize their losses, even if that ultimately creates lower returns on their investments. Pension funds also have to constantly return money to their clients, so ideally they want to hold assets that pay regular interests to the owner. Pension funds also want to invest in assets that are \textbf{liquid} i.e. whose sales do not affect their prices. In such a scenario, coupon bonds seem like an attractive investment.
+Consider the following example: let's say that there exists a pension fund manager who has to allocate her clients' money (a total sum of \$10 million dollars). Pension funds are usually risk-averse investors who seek to minimize their losses, even if that ultimately creates lower returns on their investments. Pension funds also have to constantly return money to their clients, so ideally they want to hold assets that pay regular interests to the owner. Pension funds also want to invest in assets that are \textbf{liquid} i.e. whose sales do not affect their prices. In such a scenario, coupon bonds seem like an attractive investment.
 
 %% explain liquid asset
 
@@ -167,7 +167,7 @@ When our portfolio manager has to purchase a bond, she has to determine what a f
 \label{sec:whyCDSs}
 
 Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 millions, and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk. \textbf{Hedging} is a process that allows you to profit from both a rise and a drop in an asset's value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited and one position offsets the losses from the other. So if the asset in question is a bond one position is to be \textbf{long} in which you simply own the bond and profit when its price increases (or yield drops). The opposite position is to be \textbf{short} bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future.  
-It is a convenitional technique of hedging against credit risk is \textbf{shorting} of bonds.  However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$100 million to hedge her entire portfolio of \$100 million, which is a substantial opportunity cost.    
+It is a convenitional technique of hedging against credit risk is \textbf{shorting} of bonds.  However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$10 million to hedge her entire portfolio of \$10 million, which is a substantial opportunity cost.    
 
 %% Still have to define terms and better explain concepts such as bankruptcy, hedging, exposure, security, and liquidity for the inexperienced reader.
 
@@ -288,11 +288,22 @@ So far we have only discussed the stream of payments for a contract in which a c
 \caption{CDS cash flows when there is a credit event.}
 \end{figure}
 
-When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. In the event of a default, there are two ways this transaction could take place. The first is a \textbf{physical settlement} where the buyer will actually deliver the defaulted bonds to seller and the seller will then pay the face value of those bonds. The disadvantage of this is that in the case of a default the buyers of protection who do not own those bonds will have to find the bonds to deliver to the seller and this may artificially drive up the price of the bonds. This is especially the case when there are a large number of outstanding CDS contract. 
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as \textbf{backstop date}. Before the ``Big Bang'' Protocol, this date used to be one day \textit{after} the trade date. The advantage of the new system is that if there is a delay in the credit event becoming known, the two dealers have sufficient time to process the information. 
 
-The alternative to physical settlements is a \textbf{cash settlement}, in which the seller simply pays the buyer the notional amount*(1-recovery rate). Clearly, determining a recovery rate is a problem. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt. 
+% cite http://developers.opengamma.com/quantitative-research/Pricing-and-Risk-Management-of-Credit-Default-Swaps-OpenGamma.pdf
 
-Another problem that we face is determining what constitutes a default. Often companies \textbf{restructure} their debt instead of declaring for bankruptcy. In debt restructuring, companies basically renegotiate the terms of their debt. In some CDS contracts, restructuring does not constitute a default. In Figure {fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as `MM'. This stands for `Modified Modified' restructuring and implies that debt restructuring does constitute a default for this contract. So if Alcoa Inc. decides to restructure this specific debt, the portfolio manager will have to be paid by the hedge fund.
+\subsubsection{Types of Settlements in the Case of a Default}
+\label{sec:SettlementType}
+
+In the event of a default, there are two ways this transaction could take place. The first is a \textbf{physical settlement} where the buyer will actually deliver the defaulted bonds to seller and the seller will then pay the face value of those bonds. The disadvantage of this is that in the case of a default the buyers of protection who do not own those bonds will have to find the bonds to deliver to the seller and this may artificially drive up the price of the bonds. This is especially the case when there are a large number of outstanding CDS contract. 
+
+The alternative to physical settlements is a \textbf{cash settlement}, in which the seller simply pays the buyer the notional amount*(1-recovery rate). Clearly, determining a recovery rate is a problem. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
+
+\subsubsection{What Constitutes a Default?}
+\label{sec:DafaultType}
+
+%cite bloomber manual here
+Another problem that we face is determining what constitutes a default. A default does not have to be outright bankruptcy. Often companies \textbf{restructure} their debt instead of declaring for bankruptcy. In debt restructuring, companies basically renegotiate the terms of their debt. In some CDS contracts, restructuring does not constitute a default. In Figure {fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as `MM'. This stands for `Modified Modified' restructuring and implies that debt restructuring does constitute a default for this contract. So if Alcoa Inc. decides to restructure this specific debt, the portfolio manager will have to be paid by the hedge fund.
 
 %% What is an auction?
 %% Explain MM and XR
@@ -334,9 +345,7 @@ Therefore, par spread is the spread value which makes the present value of a CDS
 \subsubsection{PV01 or Present Value 01}
 \label{sec:PV01}
 
-At this point it is important to understand \textbf{PV01} or \textbf{present value 01}. PV01 is the present value of a stream of 1 basis point payments at each CDS coupon date. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}.
-
-Analytically, PV01 can be calculated by
+At this point it is important to understand \textbf{PV01} or \textbf{present value 01} since it used to calculate the cash flows and risk measures of a CDS. PV01 is the present value of a stream of 1 basis point payments at each CDS coupon date. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
 \begin{displaymath}
 PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
@@ -351,21 +360,21 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 
 %In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
 
-\subsubsection{Interest Rate Curves used in Pricing CDSs}
-\label{sec:SwapCurves}
+\subsubsection{Swap Curve or Risk-Free Curve}
+\label{sec:SwapCurve}
 
-The risk free rates are an essential component in the pricing of CDSs. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds, at 8pm UTC, June 23 2014.    
+The risk free rates are an essential component in the pricing of CDSs. They are used to determine the present value of future cash flows and to calculate the probability of default (explained later). If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds, at 8pm UTC, June 23 2014.     
 
 \begin{figure}[H]
 \label{fig:YieldCurve}
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Treasury Rates with day count conventions on June 23 2014, at 8pm UTC.}
+\caption{Risk-free rates with their day count conventions on June 23 2014, at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014.}
 \end{figure}
 
-Bond yields are directly proportional to the maturity of the bond. This is because the risk of default for a government, or any other entity, is higher over a long period than over a short one. The risk that a government may default on its debt over 30 years is higher than the risk that it defaults in six months. In rare cases, the short-term yields are higher than long term yields; this can often be a sign of a recession. If, for a given date, we plot the maturities of different bonds on the x-axis and their corresponding yields on the y-axis, we get the \textbf{interest rate curve}.  
+Bond yields are directly proportional to the maturity of the bond. This is because the risk of default for a government, or any other entity, is higher over a long period than over a short one. The risk that a government may default on its debt over 30 years is higher than the risk that it defaults in six months. In rare cases, the short-term yields are higher than long term yields; this can often be a sign of a recession. If, for a given date, we plot the maturities of different bonds on the x-axis and their corresponding yields on the y-axis, we get the \textbf{Swap Curve}.  
 
-In calculating the price of a CDS we use the yield curve of the previous day, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, for those in GBP we will use UK Government bond yields and so on.  
+In calculating the price of a CDS we use the yield curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, for those in GBP we will use UK Government bond yields and so on.  
 
 The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They are provided by the British Bankers' Association (BBA). Swap rates are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
@@ -381,7 +390,7 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
   assumed. Saturdays and Sundays will be the only non-business days.
 \item If a date falls on a non-business day, the convention used for
   adjusting coupon payment dates is \textbf{M} (Modified Following).
-\item[Recovery Rate] is the estimated percentage of par value that
+\item Recovery Rate is the estimated percentage of par value that
   bondholders will receive after a credit event. It is commonly
   reported in percentage of notional value. CDS contracts for corporate bonds
   assume a 40\% recovery rate for valuation purposes. 
@@ -449,9 +458,13 @@ An ISDA standard CDS contract specifies the following:\footnote{Refer
 
 \end{description}
 
+\subsection{Risk Measures}
+\label{sec:RiskMeasures}
 
+The PV01 can be used to compute certain risk measures related to interest rates, spread and the default probability.
 
-
+\subsubsection{Spread DV01}
+\label{sec:spreadDV01}
 
 Using the concept of PV01, we show the calculation of the main risks
 (exposures) of a CDS position, \textbf{Spread DV01}. Spread DV01
@@ -472,9 +485,12 @@ PV01 and taking the derivative with respect to the spread gives us:
 where $S$ is the spread of the contract and $C$ is the coupon.
 
 Both DV01 and PV01 are measured in dollars and are equal if the spread
-equals the coupon. The Spread DV01 of \texttt{cds1} is \$5,086.
+equals the coupon.
 
-\textbf{IR DV01} is the change in value of a CDS contract for a 1 bp
+\subsubsection{IRDV01 or Interest Rate Dollar Value 01}
+\label{sec:IRDV01}
+
+The \textbf{IR DV01} is the change in value of a CDS contract for a 1 bp
 parallel increase in the interest rate curve. IR DV01 is, typically, a
 much smaller dollar value than Spread DV01 because moves in overall
 interest rates have a much smaller effect on the value of a CDS
@@ -489,14 +505,20 @@ contract and is calculated by
   \end{aligned}
 \end{equation}
 
-"Default Prob" refers to the default probability which is the
+\subsubsection{Default Probability or Probability of Default (PD)}
+\label{sec:DefaultProb}
+
+\textbf{Default Probability} refers to the default probability which is the
 estimated probability of default for each maturity by a given time. It
 can be approximated by
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
 where $r$ is the spread, $t$ is the time to maturity, and $R$ is the
-recovery rate. The default probability for \texttt{cds3} is 4.7\%.
+recovery rate.
+
+\subsubsection{Default Exposure}
+\label{sec:DefaultExpo}
 
 "Default Expo" refers to the expoure to the default of a CDS
 contract based on the formula below.
@@ -509,7 +531,7 @@ contract based on the formula below.
 \label{sec:CDSIndices}
 
 Holding a portfolio of a disproportionate number of Alcoa Inc. bonds is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
-Instead of holding a 100 million USD of Alcoa Inc. bonds, let's say our portfolio manager decides to take less risk by holding bonds of 100 different Investment Grade companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs.
+Instead of holding a 10 million USD of Alcoa Inc. bonds, let's say our portfolio manager decides to take less risk by holding bonds of 100 different Investment Grade companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs.
  
 Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may consider investing in a tranche of CDS indices known as CDX.NA.HY. These index products trade in high volumes and are very liquid.
  
