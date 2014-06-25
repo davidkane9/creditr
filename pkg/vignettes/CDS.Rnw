@@ -90,7 +90,7 @@ To understand the different variables used to determine cash flows and bond pric
 \begin{figure}[H]
 \label{fig:AlcoaBond}
 \centering
-\includegraphics[width=5in, height=4in]{images/AlcoaBond.png}
+\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
 \caption{Bloomberg Senior Bonds for Alcoa Inc., maturing on February 23, 2019.}
 \end{figure}
 
