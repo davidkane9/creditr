@@ -102,7 +102,21 @@ To understand the different variables used to determine cash flows and bond pric
 
 Bonds issues by the U.S. Government (known as \text{treasury bonds}) are generally considered to be \textbf{risk-free} since the probability of the U.S. Government failing to meet its debt obligations is almost negligible. Bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are also considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for the pricing of corporate bonds or even the bonds of other governments.
 
-Bonds from Alcoa Inc., or any corporation, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher interest rate than a U.S. reasury bond, since otherwise she could get the same interest payment at no risk at all. She would want the expected return of a corporate bond to be the same as the expected return of a risk-free bond. For this to be the case, the riskier bond would have to pay more than the risk-free asset, and the amount to which the riskier bond's expected profit exceeds that of a risk-free bond is known as the \textbf{risk premium}. So, the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced. 
+Bonds from Alcoa Inc., or any corporation, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher interest rate than a U.S. reasury bond, since otherwise she could get the same interest payment at no risk at all. She would want the expected return of a corporate bond to be the same as the expected return of a risk-free bond. For this to be the case, the riskier bond would have to pay more than the risk-free asset, and the amount to which the riskier bond's expected profit exceeds that of a risk-free bond is known as the \textbf{risk premium}. So, the interest premium that an investor would want from a bond would change as the risk-free rate changes. It is important to understand the intuition behind this before we explain how bonds are priced.
+
+\subsubsection{Swap Curve or Risk-free curve}
+\label{sec:SwapCurve}
+
+Bond yields are directly proportional to the maturity of the bond. This is because the risk of default for a government, or any other entity, is higher over a long period than over a short one. The risk that a government may default on its debt over 30 years is higher than the risk that it defaults in six months. In rare cases, the short-term yields are higher than long term yields; this can often be a sign of a recession. If, for a given date, we plot the maturities of different bonds on the x-axis and their corresponding yields on the y-axis, we get the \textbf{Swap Curve}.
+
+\begin{figure}[H]
+\label{fig:YieldCurve}
+\centering
+\includegraphics[width=4.3in, height=3in]{images/DynYieldCurve.png}
+\caption{Treasury Yield Curve for June 23, 2014. We can see the yields are higher for debt obligations with a longer maturity}
+\end{figure}  
+
+%http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx
 
 \subsection{Bond Pricing}
 \label{sec:BondPricing}
@@ -171,11 +185,12 @@ Another important term associated with credit risk is a \textbf{credit event}. A
 \section{CDS Basics}
 \label{sec:CDSBasics}
 
-\subsection{CDSs as Hedging Tools}
+\subsection{Why CDSs?}
 \label{sec:whyCDSs}
 
-Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 million and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk. \textbf{Hedging} is a process that allows you to profit from both a rise and a drop in an asset's value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited and one position offsets the losses from the other. When the asset in question is a bond, one has the options to be \textbf{long} in which you simply own the bond and profit when its price increases (or yield drops). The opposite position is to be \textbf{short} bonds. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future.  
-It is a convenitional technique of hedging against credit risk is \textbf{shorting} of bonds.  However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$10 million to hedge her entire portfolio of \$10 million, which is a substantial opportunity cost.    
+Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 million and with a maturity of five years. Six months after the she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk. This is known as \textbf{Hedging}, a process that allows you to profit from both a rise and a drop in an asset's value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited and one position offsets the losses from the other. 
+
+When the asset in question is a bond, one option is to be \textbf{long}, a position in which you simply own the bond and profit when its price increases (or yield drops). The opposite position is to be \textbf{short}. Shorting is the process of borrowing and selling a security with the obligation to repurchase it in the future and return it to the lender. Clearly, this is profitable if the value of the security drops by the time it is repurchased in the future. It is a convenitional technique of hedging against credit risk. However, there are several issues associated with this method. It is difficult to short bonds that are not \textbf{liquid}. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$10 million to hedge her entire portfolio of \$10 million, which is a substantial opportunity cost.    
 
 %% Still have to define terms and better explain concepts such as bankruptcy, hedging, exposure, security, and liquidity for the inexperienced reader.
 
@@ -364,17 +379,17 @@ The Standard Model assumes that the mark-to-market value is computed by discount
 \subsection{Present Value of CDSs}
 \label{sec:PVCDSs}
 
-In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its future cash flows. This concept applies in the pricing of CDSs as well. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the present value of the extra cash flows that will be made on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. 
+In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its future cash flows. This concept applies in the pricing of CDSs as well. 
 
-\subsubsection{Present Value of the Premium Leg}
-\label{sec:PVPremiumLeg}
+We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the present value of the extra cash flows that will be made on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years.
 
-The present value of the premium leg is the present value of future coupon payments
+The present value of a CDS is essentially the difference between the present value of the premium leg and protection leg.
 
-\subsubsection{Present Value of the Protection Leg}
-\label{sec:PVProtectionLeg}
+\begin{center}
+PV(CDS) = PV(Protection) - PV(Premium)
+\end{center}
 
-The present value of the protection leg is the present value of an expected contingent payment.
+In order to go into the details of how each of these legs are priced, we must first understand the present value of a stream of 1 basis points, also known as PV01.
 
 
 
@@ -400,20 +415,16 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment.Before go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon 360 or 365, depending on the day count convention of that CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation.
 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
-\label{sec:SwapCurve}
+\label{sec:DiscountFactor}
 
-The risk free rates are the discount factor used in the calculation of PV01. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds, at 8pm UTC, June 23 2014.     
+The risk free rates are the discount factor used in the calculation of PV01. In calculating the price of a CDS we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, for those in GBP we will use UK Government bond yields and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds, at 8pm UTC, June 23 2014, which will be used for pricing the CDS of Alcoa Inc.     
 
 \begin{figure}[H]
-\label{fig:YieldCurve}
+\label{fig:AlcoaRates}
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
 \caption{Risk-free rates with their day count conventions on June 23 2014, at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014.}
-\end{figure}
-
-Bond yields are directly proportional to the maturity of the bond. This is because the risk of default for a government, or any other entity, is higher over a long period than over a short one. The risk that a government may default on its debt over 30 years is higher than the risk that it defaults in six months. In rare cases, the short-term yields are higher than long term yields; this can often be a sign of a recession. If, for a given date, we plot the maturities of different bonds on the x-axis and their corresponding yields on the y-axis, we get the \textbf{Swap Curve}.  
-
-In calculating the price of a CDS we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, for those in GBP we will use UK Government bond yields and so on.  
+\end{figure} 
 
 The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They are provided by the British Bankers' Association (BBA). Swap rates are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
@@ -444,13 +455,43 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
 \subsubsection{Survivial Probability}
 \label{sec:survivalProb}
 
-\subsection{Principal Amount (Clean Upfront)}
+The probability that the firm will default between two time periods.
+
+\begin{displaymath}
+PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\;\mathrm{d}t, \nonumber\\
+\end{displaymath}
+
+\subsection{PV of the two legs}
+\label{sec:PVlegs}
+
+Now that we understand PV01 and the different components that are used to calculate it, we can understand how the present value of the protection and premium legs are calculated.
+
+\subsubsection{Present Value of the Premium Leg}
+\label{sec:PVPremiumLeg}
+
+The present value of the premium leg is the present value of future coupon payments. It is simply coupon payment mutliplied by the PV01
+
+\begin{displaymath}
+PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+\end{displaymath}
+
+\subsubsection{Present Value of the Protection Leg}
+\label{sec:PVProtectionLeg}
+
+The present value of the protection leg is the present value of an expected contingent payment.
+
+\begin{displaymath}
+PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
+\end{displaymath}
+
+\subsubsection{Principal Amount (Clean Upfront)}
 \label{sec:cleanUpfront}
 
 Now that we understand the intuition and the mathematics behind the formula for PV01, we can use it to calculate the principal amount (clean upfront payment) paid from the protection buyer to the seller using the following
 formula:
+
 \begin{center}
-  Principal Amount = (Par Spread - Coupon) $\times$ PV01.
+  Principal Amount = PV(Protection) - PV(Premium) = (Par Spread - Coupon) $\times$ PV01
 \end{center}
 
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
@@ -472,22 +513,17 @@ The PV01 can be used to compute certain risk measures related to interest rates,
 \subsubsection{Spread DV01}
 \label{sec:spreadDV01}
 
-Using the concept of PV01, we show the calculation of the main risks
-(exposures) of a CDS position, \textbf{Spread DV01}. Spread DV01
-reflects the risk duration of a CDS trade, also known as \textbf{Sprd
-  DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, and just
+Using the concept of PV01, we show the calculation of the main risks (exposures) of a CDS position, \textbf{Spread DV01}. Spread DV01 reflects the risk duration of a CDS trade, also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, and just
 \textbf{DV01}. 
 
-It measures the sensitivity of a CDS contract mark-to-market to a
-parallel shift in the term structure of the par spread. DV01 should
-always be positive for a protection buyer since he or she is short credit,
-and a rising spread is a sign of credit deterioration. Starting with
-PV01 and taking the derivative with respect to the spread gives us:
+It measures the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. DV01 should always be positive for a protection buyer since he or she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
+
 \begin{eqnarray}
   PV = (S - C) * PV01 \nonumber \\
   DV01 = \frac{\partial PV}{\partial S} \nonumber \\
   = PV01 + (S - C) \frac{\partial PV01}{\partial S},\nonumber
 \end{eqnarray}
+
 where $S$ is the spread of the contract and $C$ is the coupon.
 
 Both DV01 and PV01 are measured in dollars and are equal if the spread
@@ -496,17 +532,13 @@ equals the coupon.
 \subsubsection{IRDV01 or Interest Rate Dollar Value 01}
 \label{sec:IRDV01}
 
-The \textbf{IR DV01} is the change in value of a CDS contract for a 1 bp
-parallel increase in the interest rate curve. IR DV01 is, typically, a
-much smaller dollar value than Spread DV01 because moves in overall
-interest rates have a much smaller effect on the value of a CDS
-contract than does a move in the CDS spread itself. 
+The \textbf{IR DV01} is the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
 
 \texttt{Price} refers to the clean dollar price of the
 contract and is calculated by
 \begin{equation}
   \begin{aligned}
-    {\rm Price} \& =  (1 - {\rm Principal} / {\rm Notional})*100  \nonumber \\
+    {\rm Price} =  (1 - {\rm Principal} / {\rm Notional})*100  \nonumber \\
     \& =  100 - \text{Points Upfront}. \nonumber
   \end{aligned}
 \end{equation}
@@ -514,20 +546,17 @@ contract and is calculated by
 \subsubsection{Default Probability or Probability of Default (PD)}
 \label{sec:DefaultProb}
 
-\textbf{Default Probability} refers to the default probability which is the
-estimated probability of default for each maturity by a given time. It
-can be approximated by
+\textbf{Default Probability} refers to the default probability which is the estimated probability of default for each maturity by a given time. It can be approximated by
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the
-recovery rate.
+where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate.
 
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
 
-"Default Expo" refers to the expoure to the default of a CDS
-contract based on the formula below.
+"Default Expo" refers to the expoure to the default of a CDS contract based on the formula below.
+
 \begin{equation}
   \text{Default Exposure} = (1 - \text{Recovery Rate})*\text{Notional}
   - \text{Principal}. \nonumber
