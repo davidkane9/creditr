@@ -391,7 +391,7 @@ Let's say our portfolio manager wants to sell her CDS contract, for whatever rea
 
 Clearly if she is expected to receive more than she expects to pay, the value of the contract will be positive. So if the fair spreads for this CDS contract rise, the market value of her CDS will increase. If Alcoa's credit risk increases and the fair spreads actually rise, she will be in a \textbf{mark-to-market profit}. If on the other hand, the credit risk and fair spreads drop, she would be in a \textbf{mark-to-market loss}.
 
-The Standard Model assumes that the mark-to-market value is computed by discounting the expected protection leg and premium leg cashflows to the trade date. What this basically means is that the price of a CDS is the sum of the present value of the premium leg and protection leg. 
+The Standard Model assumes that the mark-to-market value is computed by discounting the expected protection leg and premium leg cashflows to the trade date. What this basically means is that the price of a CDS is the difference in the present value of the premium leg and protection leg. 
 
 \subsection{Present Value of CDSs}
 \label{sec:PVCDSs}
@@ -402,16 +402,16 @@ In Section \ref{sec:BondPricing} we explained the concept of \textbf{present val
 PV(CDS) = PV(Protection) - PV(Premium)
 \end{center}
 
-We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the present value of the extra cash flows that will be made on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years.
+Using the above equation, we can intuitively understand how the upfront value is calculated. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. 
 
-In order to go into the details of how each of these legs are priced, we must first understand the present value of a stream of 1 basis points, also known as PV01.
+This upfront value is the present value of the extra cash flows that will be made hypothetically, on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say expected present value what we imply is that there is a chance is hypothetical payment will never have to be made, since the company might default then and the protection seller may have to make the contingent payment. We have to account for that probability in calculating the present value of those payments.
 
 %Therefore, par spread is the spread value which makes the present value of a CDS contract zero.
 
 \subsubsection{Present Value 01 (PV01) and its determinants}
 \label{sec:PV01}
 
-At this point it is important to understand \textbf{PV01} or \textbf{present value 01} since it used to calculate the cash flows and risk measures of a CDS. PV01 is the present value of a stream of 1 basis point payments at each CDS coupon date. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
+In order to go into the details of how each of how we calculate the PV of the different pricing legs and arrive at the simplified equation for the present value of a CDS above, we must first understand the present value of a stream of 1 basis points, also known as  \textbf{PV01}. The PV01 is used to calculate the cash flows and risk measures of a CDS. PV01 is the present value of a stream of 1 basis point payments at each CDS coupon date. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
 \begin{displaymath}
 PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
@@ -479,7 +479,7 @@ Now that we understand PV01 and the different components that are used to calcul
 \subsubsection{Present Value of the Premium Leg}
 \label{sec:PVPremiumLeg}
 
-The present value of the premium leg is the present value of future coupon payments. It is simply coupon payment mutliplied by the PV01
+The present value of the premium leg is the present value of future coupon payments. It is simply the coupon payment mutliplied by the PV01
 
 \begin{displaymath}
 PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
@@ -536,9 +536,7 @@ It measures the sensitivity of a CDS contract mark-to-market to a parallel shift
   = PV01 + (S - C) \frac{\partial PV01}{\partial S},\nonumber
 \end{eqnarray}
 
-where $S$ is the spread of the contract and $C$ is the coupon.
-
-Both DV01 and PV01 are measured in dollars and are equal if the spread
+where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread
 equals the coupon.
 
 \subsubsection{IRDV01 or Interest Rate Dollar Value 01}
@@ -546,16 +544,16 @@ equals the coupon.
 
 The \textbf{IR DV01} is the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
 
-\texttt{Price} refers to the clean dollar price of the
-contract and is calculated by
+\subsubsection{Price}
+
+\textbf{Price} refers to the clean dollar price of the contract. The price of this Alcoa CDS is 97.13, less than 100. A CDS will have a price less than 100 if the points upfront are positive; that is, the CDS buyer needs to pay money to obtain protection because he promises to pay a coupon of, say, 100 even if the spread is 160. This is analogous to a bond investor paying less than the face value of a bond because current interest rates are higher than the coupon rate on the bond. It can be calculated by
+
 \begin{equation}
   \begin{aligned}
     {\rm Price} =  (1 - {\rm Principal} / {\rm Notional})*100  \nonumber \\
     \& =  100 - \text{Points Upfront}. \nonumber
   \end{aligned}
 \end{equation}
-
-The price of this Alcoa CDS is 97.13, less than 100. A CDS will have a price less than 100 if the points upfront are positive; that is, the CDS buyer needs to pay money to obtain protection because he promises to pay a coupon of, say, 100 even if the spread is 160. This is analogous to a bond investor paying less than the face value of a bond because current interest rates are higher than the coupon rate on the bond. T
 
 \subsubsection{Default Probability or Probability of Default (PD)}
 \label{sec:DefaultProb}
