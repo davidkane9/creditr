@@ -1,0 +1,54 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Fixed Income Securities and Credit Risk}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Bond Basics}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Risk-free Bonds}{5}{subsection.2.2}
+\contentsline {subsubsection}{Swap Curve or Risk-free curve}{5}{section*.2}
+\contentsline {subsection}{\numberline {2.3}Bond Pricing}{6}{subsection.2.3}
+\contentsline {subsubsection}{Present Value (PV)}{6}{section*.3}
+\contentsline {subsubsection}{Present Value of Bonds}{6}{section*.4}
+\contentsline {subsection}{\numberline {2.4}Credit Risk Associated with Bonds}{7}{subsection.2.4}
+\contentsline {section}{\numberline {3}CDS Basics}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Why CDSs?}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}CDS Mechanics}{8}{subsection.3.2}
+\contentsline {section}{\numberline {4}CDS Terminology and Cash Flows}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Entity-Specific Variables}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Premium Leg}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Protection Leg}{13}{subsection.4.3}
+\contentsline {subsubsection}{Types of Settlements in the Case of a Default}{14}{section*.5}
+\contentsline {subsubsection}{What Constitutes a Default?}{14}{section*.6}
+\contentsline {subsubsection}{Counterparty Risk}{14}{section*.7}
+\contentsline {subsection}{\numberline {4.4}CDS Indices}{14}{subsection.4.4}
+\contentsline {section}{\numberline {5}CDS Pricing}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Mark-to-Market Calculations}{15}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Present Value of CDSs}{15}{subsection.5.2}
+\contentsline {subsubsection}{Present Value 01 (PV01) and its determinants}{16}{section*.8}
+\contentsline {subsubsection}{Discount factor: Using the Swap Curve or Risk-Free Curve}{17}{section*.9}
+\contentsline {subsubsection}{Survivial Probability}{18}{section*.10}
+\contentsline {subsubsection}{Present Value of the Premium Leg}{18}{section*.11}
+\contentsline {subsubsection}{Present Value of the Protection Leg}{18}{section*.12}
+\contentsline {subsubsection}{Principal Amount (Clean Upfront)}{19}{section*.13}
+\contentsline {subsection}{\numberline {5.3}Risk Measures of a Standard CDS Contract}{19}{subsection.5.3}
+\contentsline {subsubsection}{Spread DV01}{19}{section*.14}
+\contentsline {subsubsection}{IRDV01 or Interest Rate Dollar Value 01}{19}{section*.15}
+\contentsline {subsubsection}{Default Probability or Probability of Default (PD)}{20}{section*.16}
+\contentsline {subsubsection}{Default Exposure}{20}{section*.17}
+\contentsline {section}{\numberline {6}Pricing Sources}{20}{section.6}
+\contentsline {section}{\numberline {7}Using the CDS package}{23}{section.7}
+\contentsline {subsection}{\numberline {7.1}CDS Class}{23}{subsection.7.1}
+\contentsline {subsubsection}{Default Settings of the CDS Contract}{23}{section*.18}
+\contentsline {subsection}{\numberline {7.2}Generic Methods}{24}{subsection.7.2}
+\contentsline {subsubsection}{summary Method}{24}{section*.19}
+\contentsline {subsubsection}{update method}{25}{section*.20}
+\contentsline {subsubsection}{show method}{25}{section*.21}
+\contentsline {subsection}{\numberline {7.3}CDS Pricing Related Functions}{26}{subsection.7.3}
+\contentsline {subsubsection}{CS 10}{26}{section*.22}
+\contentsline {subsubsection}{getRates function}{26}{section*.23}
+\contentsline {subsection}{\numberline {7.4}Risk-related Functions}{28}{subsection.7.4}
+\contentsline {subsubsection}{recRisk01}{28}{section*.24}
+\contentsline {subsubsection}{IRDV01}{28}{section*.25}
+\contentsline {subsubsection}{spreadDV01}{28}{section*.26}
+\contentsline {subsubsection}{defaultExpo}{28}{section*.27}
+\contentsline {subsubsection}{defaultProb}{28}{section*.28}
+\contentsline {subsubsection}{impliedRecoveryRate}{28}{section*.29}
+\contentsline {section}{\numberline {8}Conclusion}{28}{section.8}
+\contentsline {section}{Bibliography}{29}{section*.30}
