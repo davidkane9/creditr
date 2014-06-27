@@ -18,35 +18,36 @@
 \contentsline {subsubsection}{What Constitutes a Default?}{15}{section*.6}
 \contentsline {subsubsection}{Counterparty Risk}{15}{section*.7}
 \contentsline {subsection}{\numberline {4.4}CDS Indices}{15}{subsection.4.4}
-\contentsline {section}{\numberline {5}CDS Pricing}{15}{section.5}
+\contentsline {section}{\numberline {5}CDS Pricing}{16}{section.5}
 \contentsline {subsection}{\numberline {5.1}Present Value of CDSs}{16}{subsection.5.1}
 \contentsline {subsubsection}{Present Value of the Net Expected Cash Flows}{17}{section*.8}
-\contentsline {subsubsection}{Discount factor: Using the Swap Curve or Risk-Free Curve}{17}{section*.9}
-\contentsline {subsubsection}{Credit Triangle}{19}{section*.10}
-\contentsline {subsubsection}{Price}{19}{section*.11}
-\contentsline {subsubsection}{Present Value 01 (PV01)}{19}{section*.12}
+\contentsline {subsubsection}{Survival Probability Curve or Hazard Rates Curve}{17}{section*.9}
+\contentsline {subsubsection}{Discount factor: Using the Swap Curve or Risk-Free Curve}{18}{section*.10}
+\contentsline {subsubsection}{Credit Triangle}{19}{section*.11}
+\contentsline {subsubsection}{Price}{19}{section*.12}
+\contentsline {subsubsection}{Present Value 01 (PV01)}{20}{section*.13}
 \contentsline {subsection}{\numberline {5.2}Risk Measures of a Standard CDS Contract}{20}{subsection.5.2}
-\contentsline {subsubsection}{Spread DV01}{20}{section*.13}
-\contentsline {subsubsection}{IRDV01 or Interest Rate Dollar Value 01}{20}{section*.14}
-\contentsline {subsubsection}{Default Probability or Probability of Default (PD)}{21}{section*.15}
-\contentsline {subsubsection}{Default Exposure}{21}{section*.16}
+\contentsline {subsubsection}{Spread DV01}{20}{section*.14}
+\contentsline {subsubsection}{IRDV01 or Interest Rate Dollar Value 01}{21}{section*.15}
+\contentsline {subsubsection}{Default Probability or Probability of Default (PD)}{21}{section*.16}
+\contentsline {subsubsection}{Default Exposure}{21}{section*.17}
 \contentsline {subsection}{\numberline {5.3}Risk-Neutral Pricing}{21}{subsection.5.3}
 \contentsline {section}{\numberline {6}Pricing Sources}{21}{section.6}
 \contentsline {section}{\numberline {7}Using the CDS package}{24}{section.7}
 \contentsline {subsection}{\numberline {7.1}CDS Class}{24}{subsection.7.1}
-\contentsline {subsubsection}{Default Settings of the CDS Contract}{24}{section*.17}
+\contentsline {subsubsection}{Default Settings of the CDS Contract}{24}{section*.18}
 \contentsline {subsection}{\numberline {7.2}Generic Methods}{25}{subsection.7.2}
-\contentsline {subsubsection}{summary Method}{25}{section*.18}
-\contentsline {subsubsection}{update method}{26}{section*.19}
-\contentsline {subsubsection}{show method}{26}{section*.20}
+\contentsline {subsubsection}{summary Method}{25}{section*.19}
+\contentsline {subsubsection}{update method}{26}{section*.20}
+\contentsline {subsubsection}{show method}{26}{section*.21}
 \contentsline {subsection}{\numberline {7.3}CDS Pricing Related Functions}{27}{subsection.7.3}
-\contentsline {subsubsection}{CS 10}{27}{section*.21}
-\contentsline {subsubsection}{getRates function}{27}{section*.22}
+\contentsline {subsubsection}{CS 10}{27}{section*.22}
+\contentsline {subsubsection}{getRates function}{27}{section*.23}
 \contentsline {subsection}{\numberline {7.4}Risk-related Functions}{28}{subsection.7.4}
-\contentsline {subsubsection}{recRisk01}{28}{section*.23}
-\contentsline {subsubsection}{IRDV01}{29}{section*.24}
-\contentsline {subsubsection}{spreadDV01}{29}{section*.25}
-\contentsline {subsubsection}{defaultExpo}{29}{section*.26}
-\contentsline {subsubsection}{defaultProb}{29}{section*.27}
+\contentsline {subsubsection}{recRisk01}{28}{section*.24}
+\contentsline {subsubsection}{IRDV01}{29}{section*.25}
+\contentsline {subsubsection}{spreadDV01}{29}{section*.26}
+\contentsline {subsubsection}{defaultExpo}{29}{section*.27}
+\contentsline {subsubsection}{defaultProb}{29}{section*.28}
 \contentsline {section}{\numberline {8}Conclusion}{29}{section.8}
-\contentsline {section}{Bibliography}{30}{section*.28}
+\contentsline {section}{Bibliography}{30}{section*.29}

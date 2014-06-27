@@ -350,7 +350,7 @@ Holding a disproportionate number of Alcoa Inc. bonds in a portfolio is naturall
 
 Instead of holding a \$10 million of Alcoa Inc. bonds, let's say our portfolio manager decides to take less risk by holding bonds of 100 different Investment Grade companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs.
  
-Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may consider investing in a tranche of CDS indices known as CDX.NA.HY. These index products trade in high volumes and are very liquid.
+Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices known as CDX.NA.HY which specifically offer protection on high yield bonds of 100 different companies. These index products trade in high volumes and are very liquid. In this vignette we only discuss the pricing mechanisms of single-name CDSs and do not delve into the more complex world of multi-name CDSs, but it is important to understand their relevance as most CDS contracts are on companies in these indices.
 
 %% What is an auction?
 %% Explain MM and XR
@@ -399,14 +399,16 @@ The Standard Model assumes that the mark-to-market value is computed by discount
 PV(CDS) = PV(Protection) - PV(Premium)
 \end{center}
 
-Using the above equation, we can intuitively understand how the upfront value is calculated. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the expected present value of the extra cash flows that will be made hypothetically, on top of the standard coupon payments. So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{net expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say \textit{expected} present value, it implies that there is a chance that this hypothetical payment will never have to be made, since the company might default, and  then the protection seller may have to make the contingent payment. We have to account for that probability in calculating the expected present value of those payments.
+Using the above equation, we can intuitively understand how the upfront value is calculated. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the expected present value of the extra cash flows that will be made hypothetically, on top of the standard coupon payments. 
 
-When an upfront payment is made, the transaction simply implies that the expected present value of the protection and premium legs are not equal. In the all-running contracts before the "Big Bang Protocol," where the coupon could be set at any level the consent of the two parties, the premium leg would naturally equal the protection leg and the present value of the contract would be zero. But when the coupon is fixed and when the fair spread is not equal to the coupon, the expected present values of the two legs would not be the same and an upfront payment would have to be made as compensation. The upfront value essentially equates the premium leg and the protection leg. Let us see how the expected present values of these legs are determined.   
+So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{net expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say \textit{expected} present value, it implies that there is a chance that this hypothetical payment will never have to be made, since the company might default, and then the protection seller may have to make the contingent payment. We have to account for that probability in calculating the present value of those payments.
+
+When an upfront payment is made, the transaction simply implies that the expected present value of the protection and premium legs are not equal. In the all-running contracts before the "Big Bang Protocol," where the coupon could be set at any level that the two parties agreed to, the premium leg would naturally equal the protection leg and the present value of the contract would be zero. But when the coupon is fixed and when the fair spread is not equal to the coupon, the expected present values of the two legs would not be the same and an upfront payment would have to be made as compensation. The upfront value essentially equates the premium leg and the protection leg. Let us see how the expected present values of these legs are calculated.   
 
 \subsubsection{Present Value of the Net Expected Cash Flows}
 \label{sec:PVPremiumLeg}
 
-The premium leg is the present value of the stream of payments made by by the protection buyer to the protection seller. Here we have to account for the \textbf{survival probability}---the conditional probability that the reference entity survives until a given time period. We will use a term structure of survival probabilities to weight each of the contingent premium payments. 
+As mentioned before, the premium leg is the present value of the stream of payments made by by the protection buyer to the protection seller. Here we have to account for the \textbf{survival probability}---the conditional probability that the reference entity survives until a given time period. We will use a term structure of survival probabilities to weight each of the contingent premium payments. 
 
 Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
 
@@ -424,12 +426,23 @@ PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
 
 %% Add image for CDS curve for Alcoa Inc.
 
-The term structure of survival probability and default probability together form the term structure of \textbf{hazard rates}. To calculate the hazard rates, we need a \textbf{CDS curve}. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how the hazard rates are determined but simply note that they are used in calculating the present value of the two legs and the upfront payment. The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract. 
+\subsubsection{Survival Probability Curve or Hazard Rates Curve}
+\label{sec:survivalProbCurve}
+
+The survival probability function can be equated with \textbf{hazard rates} function given below,
+
+%\begin{displaymath}
+%PV(Protection) =  \e^-\int_0^t h(t)dt\), \nonumber\\
+%\end{displaymath}
+
+This \textbf{Hazard Rate function} is piecewise constant. To calculate the hazard rates, we need a \textbf{CDS curve}. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.  
 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
 \label{sec:discountfactor}
 
 The risk free curve is the discount factor used in the calculation of the present value of CDSs. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa Inc.
+
+The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
 %% Are we using the yields of zero-coupon bonds or coupon bonds?
 
@@ -438,7 +451,7 @@ The risk free curve is the discount factor used in the calculation of the presen
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014.}
+\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. }
 \label{fig:AlcoaRates}
 \end{figure} 
 
@@ -472,10 +485,10 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
 
 \subsubsection{Credit Triangle}
 
-The probability of default, recovery rate and spread form a credit triangle as if we have two of them, we can use it to calulate the third:
+The probability of default, recovery rate and spread form a credit triangle such that if we have two of them, we can use it to calulate the third:
 
 \begin{center}
-  Hazard Rate = Premium/(1 - Recovery Rate)
+  Hazard Rate = Spread/(1 - Recovery Rate)
 \end{center}
 
 For a constant premium, higher recovery rates imply a high default probability.
@@ -771,7 +784,7 @@ cds1
 @
 
 \subsection{CDS Pricing Related Functions}
-\label{sec:CDSpricing}
+\label{sec:CDSpricingFunctions}
 
 \subsubsection{CS 10}
 \label{sec:CS10}
