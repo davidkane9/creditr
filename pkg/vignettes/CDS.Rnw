@@ -348,9 +348,11 @@ When a counterparty such as the hedge fund sells protection on a bond, there is 
 
 Holding a disproportionate number of Alcoa Inc. bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
 
-Instead of holding a \$10 million of Alcoa Inc. bonds, let's say our portfolio manager decides to take less risk by holding bonds of 100 different Investment Grade companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs.
+Instead of holding a \$10 million of Alcoa Inc. bonds, let's say our portfolio manager decides to take less risk by holding bonds of 100 different Investment Grade companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs. The two most common indices are CDX and iTraxx, which represent North American CDSs and European CDSs respectively.
  
-Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices known as CDX.NA.HY which specifically offer protection on high yield bonds of 100 different companies. These index products trade in high volumes and are very liquid. In this vignette we only discuss the pricing mechanisms of single-name CDSs and do not delve into the more complex world of multi-name CDSs, but it is important to understand their relevance as most CDS contracts are on companies in these indices.
+Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices known as CDX.NA.HY which specifically offer protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDSs based on sectors such as automobiles or consumer goods, if an investor wants to specifically concentrate on an industry. 
+
+These index products trade in high volumes and are very liquid. In this vignette we only discuss the pricing mechanisms of single-name CDSs and do not delve into the more complex world of multi-name CDSs, but it is important to understand their relevance as most CDS contracts are on companies in these indices.
 
 %% What is an auction?
 %% Explain MM and XR
@@ -382,7 +384,9 @@ Moreover, if our portfolio manager has a high-risk appetite and wants to earn a 
 
 The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. In this section we will lay out the assumptions made by the Standard Model, and explain the methods and formulas used to calculate certain information related to CDSs.
 
-\subsection{Present Value of CDSs}
+There are several ways of calculating the price of a CDS such as hedge-based valuation or bond-yield based pricing. We will apply the \textbf{Discounted-Cash Flow Pricing} or \textbf{Risk-Neutral Valuation}, where the present value of the CDS is equal to the expected value of its discounted future cash flows. This model assumes that the probability of default is risk-neutral. Let us see how this is determined. 
+
+\subsection{Discounted-Cash Flow Pricing or Risk-Neutral Valuation}
 \label{sec:PVCDSs}
 
 Let's say our portfolio manager wants to sell her CDS contract for whatever reason. Finding the market value of a CDS contract for the protection buyer is known as \textbf{Marking-to-market (MTM)} and the value is known as the \textbf{mark-to-market} value. Theoretically, the value of this CDS (of Alcoa Inc.) for the portfolio manager is:
@@ -426,21 +430,25 @@ PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
 
 %% Add image for CDS curve for Alcoa Inc.
 
-\subsubsection{Survival Probability Curve or Hazard Rates Curve}
+\subsubsection{Survival Probability Curve and Risk Neutral Probability}
 \label{sec:survivalProbCurve}
 
-The survival probability function can be equated with \textbf{hazard rates} function given below,
+The survival probability function can be equated with \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
+
+\begin{displaymath}
+S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
+\end{displaymath}
 
 %\begin{displaymath}
 %PV(Protection) =  \e^-\int_0^t h(t)dt\), \nonumber\\
 %\end{displaymath}
 
-This \textbf{Hazard Rate function} is piecewise constant. To calculate the hazard rates, we need a \textbf{CDS curve}. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.  
+This \textbf{Hazard Rate function} is piecewise constant. What this means is that the function varies across a scale but remains constant between two points. To calculate the hazard rates, we need a \textbf{CDS curve}. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.  
 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
 \label{sec:discountfactor}
 
-The risk free curve is the discount factor used in the calculation of the present value of CDSs. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa Inc.
+In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDSs. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa Inc.
 
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
@@ -451,11 +459,11 @@ The Standard Model allows market participants to convert between the par spread 
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. }
+\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
 \label{fig:AlcoaRates}
 \end{figure} 
 
-The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. They are provided by the British Bankers' Association (BBA). Swap rates are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
+The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
 \item The day count convention (DCC) for money market instruments and
   the floating legs of the swaps is \textbf{ACT/360}.
