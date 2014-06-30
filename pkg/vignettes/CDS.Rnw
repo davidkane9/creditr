@@ -433,17 +433,32 @@ PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
 \subsubsection{Survival Probability Curve and Risk Neutral Probability}
 \label{sec:survivalProbCurve}
 
-The survival probability function can be equated with \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
+The survival probability is used to determine the expected cash flow of a CDS contract. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
 
 \begin{displaymath}
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \end{displaymath}
 
+There are several assumptions made here:
+\begin{itemize}
+\item The risk-free rate and credit risk are not correlated
+\item Counterparty risk is not considered
+\item 
+\end{itemize}
 %\begin{displaymath}
 %PV(Protection) =  \e^-\int_0^t h(t)dt\), \nonumber\\
 %\end{displaymath}
 
-This \textbf{Hazard Rate function} is piecewise constant. What this means is that the function varies across a scale but remains constant between two points. To calculate the hazard rates, we need a \textbf{CDS curve}. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.  
+This \textbf{Hazard Rate function} is piecewise constant. What this means is that the function varies across a scale but remains constant between two points. 
+
+To calculate the hazard rates, we need a \textbf{CDS curve} or the \textbf{term structure} of CDS rates. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=4in, height=3in]{images/CDScurve.png}
+\caption{Term-structure of CDS rates for Alcoa on June 24, 2014}
+\label{fig:CDScurveAlcoa}
+\end{figure} 
 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
 \label{sec:discountfactor}
