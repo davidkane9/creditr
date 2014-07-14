@@ -48,20 +48,11 @@
 
 
 %% 1 paragraph
-Over the past three decades, \textbf{credit derivatives} have become increasingly common tools for finanical institutions that wish to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. To put it simply, credit risk is the possibility that a borrower will \textbf{default} on his or her loan, or not pay it back. In the modern financial world, there are many types of credit derivatives, including collaterized debt obligations (CDOs) and collaterized loan obligations (CLOs). In this vignette, we will focus on \textbf{credit default swaps} (CDSs), a type of credit derivative that has become quite popular (see Figure \ref{fig:CDSnotional}) among pension funds, hedge funds, and investment banks, among other financial institutions. We will explain the mechanics of this financial product and show how this \textbf{CDS} package can be used to manipulate and calcuate relevant CDS information. 
+Over the past three decades, \textbf{credit derivatives} have become increasingly common tools for finanical institutions that wish to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. To put it simply, credit risk is the possibility that a borrower will \textbf{default} on her loan, or not pay it back. There are many types of credit derivatives, including collaterized debt obligations (CDOs) and collaterized loan obligations (CLOs). In this paper, we will focus on \textbf{credit default swaps} (CDS), a type of credit derivative that has become quite popular among pension funds, hedge funds, and investment banks, among other financial institutions. We will explain the mechanics of this financial product and show how this \textbf{CDS} package can be used to manipulate and calcuate relevant CDS information. 
 
-%% Need to change this image because it has two bars for 2006... not necessarily a correct, accurate, or reliable graph.
+CDS originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. Many different types of CDS have since emerged including basket default swaps (BDSs), index CDS, credit-linked notes, etc. \citep{jk}. In this \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=4.7in, height=3.2in]{images/CDSnotional.png}
-\caption{CDS notional outstanding from 1997-2009. Clearly, this graph depicts an overall increase in the notional amount---the asset from which the credit risk originates.}
-\label{fig:CDSnotional}
-\end{figure}
-
-CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan that included Blythe Masters \citep{cdsOrigins, blythe}. The CDS markets have grown exponentially over the past decade as financial institutions used CDSs to hedge against credit risk exposure. Many different types of CDSs have since emerged including basket default swaps (BDSs), index CDSs, credit-linked notes, etc. \citep{jk}. In this \textbf{CDS} package, we focus on calculations related to single-name, or corporate, credit default swaps.
-
-%% Need to better define single-name CDSs.
+%% Need to better define single-name CDS.
 
 %% add more about what this vignette will talk about and relate it to the package
 
@@ -75,21 +66,21 @@ CDSs originated in the late 1980s and were popularized by a team at J.P. Morgan 
 \section{Fixed Income Securities and Credit Risk}
 \label{sec:Bonds}
 
-CDSs are used for the purpose of hedging against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Before we approach understanding how CDSs work, we must understand the mechanics of a standard coupon bond and its associated risks.
+CDS are used for the purpose of hedging against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Before we approach understanding how CDS work, we must understand the mechanics of a standard coupon bond and its associated risks.
 
 \subsection{Bond Basics}
 \label{sec:BondMechanics}
 
 Consider the following example: let's say that there exists a portfolio manager who has to allocate her clients' money (a total sum of \$10 million). This particular manager is a risk-averse investor who seeks to minimize her losses, even if that ultimately creates lower returns on investments. She also wants to invest in assets that are \textbf{liquid} i.e. assets that are easily retrievable or can be easily converted into cash. In such a scenario, coupon bonds seem like an attractive investment.
 
-A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus periodic \textbf{coupon payments}, at a future date. Since the bond pays a regular interest to the bondholder, it can also be termed as \textbf{fixed income}. A major advantage of holding bonds over shares (which are also known as equity) is that bondholders are compensated before shareholders in the case of liquidiation (such as a default). If a company or other reference entity defaults on its debt and goes bankrupt, the remaining assets associated with the company are gathered and distrubited among bondholders and shareholders according to the issuer's capital structure (another terms for the hierarchy of investors). Bonds can be further categorized as "senior" and "junior," so although bondholders will be compensated first, those with a greater seniority ("senior" bonds) will be compensated before those with a lesser seniority ("junior" bonds). The amount of assets remaining after default and bankruptcy is known as the \textbf{recovery rate}. 
+A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus periodic \textbf{coupon payments}, at a future date. A major advantage of holding bonds over shares (which are also known as equity) is that bondholders are compensated before shareholders in the case of liquidiation (such as a default). If a company or other reference entity defaults on its debt and goes bankrupt, the remaining assets associated with the company are gathered and distrubited among bondholders and shareholders according to the issuer's capital structure (another terms for the hierarchy of investors). Bonds can be further categorized as "senior" and "junior," so although bondholders will be compensated first, those with a greater seniority ("senior" bonds) will be compensated before those with a lesser seniority ("junior" bonds). The amount of assets remaining after default and bankruptcy is known as the \textbf{recovery rate}. 
 
-To understand the different variables used to determine cash flows and bond pricing, let's look at actual data for an Alcoa Inc. bond that will mature, or be paid out, five years from now (since the data descibes a bond that was initiated seven years ago). This data has been retrieved from Bloomberg, one of the most widely used sources of financial data.
+To understand the different variables used to determine cash flows and bond pricing, let's look at actual data for an Alcoa bond that will mature, or be paid out, five years from now (since the data descibes a bond that was initiated seven years ago). 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa Inc. bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
+\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
 \label{fig:AlcoaBond}
 \end{figure}
 
@@ -98,16 +89,14 @@ To understand the different variables used to determine cash flows and bond pric
 
 A bond has many kinds of risks associated with it such as interest rate risk, inflation risk or liquidity risk. For our purposes, we will concentrate on credit risk.
 
-If we look to the right of Figure \ref{fig:AlcoaBond}, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. When a company like Alcoa Inc. issues bonds, there is always a possibility that it may not be able to meet its debt obligations. That possibility, or risk, is known as the credit risk. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
+If we look to the right of Figure \ref{fig:AlcoaBond}, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. When a company like Alcoa issues bonds, there is always a possibility that it may not be able to meet its debt obligations. That possibility, or risk, is known as the credit risk. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
 
-Credit risk can further be described as the risk that a \textbf{credit event} will ensue. A credit event can signify the risk of a company's default and resulting bankruptcy, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade and the confiscation of assets, among other events.
-
-A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa Inc., which has a rating of BBB- from S\&P, BB+ from Fitch and Ba1 from Moody's. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this vignette. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Such companies, at least from the viewpoint of the rating agencies, have low credit risks. Bonds that are rated below the IG benchmark are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds, and have a higher yield than IG bonds. We can see a complete list of classifications from Moody's and S\&P in Figure \ref{fig:RatingsList}:
+A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa, which has a rating of BBB- from S\&P, BB+ from Fitch and Ba1 from Moody's. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this vignette. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Such companies, at least from the viewpoint of the rating agencies, have low credit risks. Bonds that are rated below the IG benchmark are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds, and have a higher yield than IG bonds. We can see a complete list of classifications from Moody's and S\&P in Figure \ref{fig:RatingsList}:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3in]{images/Ratings.jpeg}
-\caption{Credit rating classifications from S\&P, Fitch and Moody's for long-term debt obligations. Even though S\&P and Fitch have the same credit rating scale, note how the rating determined by S\&P and the rating determined by Fitch for Alcoa Inc. bonds in Figure \ref{fig:AlcoaBond} are \emph{different}, which implies that the two rating agencies use different measurements to determine a credit rating. Herein lies the value of having three different ratings agencies that can provide three different ratings: if, for example, a company can be classified as IG across \emph{all three} ratings---which are all not determined by the exact same combination of metrics---then one can be more confident in the fact that the bond or the company actually is of IG quality.}
+\caption{Credit rating classifications from S\&P, Fitch and Moody's for long-term debt obligations. Even though S\&P and Fitch have the same credit rating scale, note how the rating determined by S\&P and the rating determined by Fitch for Alcoa bonds in Figure \ref{fig:AlcoaBond} are \emph{different}, which implies that the two rating agencies use different measurements to determine a credit rating. Herein lies the value of having three different ratings agencies that can provide three different ratings: if, for example, a company can be classified as IG across \emph{all three} ratings---which are all not determined by the exact same combination of metrics---then one can be more confident in the fact that the bond or the company actually is of IG quality.}
 \label{fig:RatingsList}
 \end{figure} 
 
@@ -119,7 +108,7 @@ A risk-averse investor, like our pension fund portfolio manager, would naturally
 
 Bonds issues by the U.S. Government (known as \text{treasury bonds}) are generally considered to be \textbf{risk-free} since the probability of the U.S. Government failing to meet its debt obligations is almost negligible. Bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are also considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for the pricing of corporate bonds or even the bonds of other governments.
 
-Bonds from Alcoa Inc., or any corporation, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher coupon rate than a U.S. treasury bond since otherwise she could get the same interest payment at no risk at all. In other words, she would want the expected return of a corporate bond to be the same as the expected return of a risk-free bond. For this to be the case, the riskier bond would have to pay more interest than the risk-free asset in order to compensate for the added risk. The amount to which the riskier bond's interest exceeds that of a risk-free bond is known as the \textbf{risk premium}. So, the interest that an investor would want from a bond would change as the risk-free coupon rate changes. It is important to understand the intuition behind this before learning how bonds are priced.
+Bonds from Alcoa, or any corporation, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher coupon rate than a U.S. treasury bond since otherwise she could get the same interest payment at no risk at all. In other words, she would want the expected return of a corporate bond to be the same as the expected return of a risk-free bond. For this to be the case, the riskier bond would have to pay more interest than the risk-free asset in order to compensate for the added risk. The amount to which the riskier bond's interest exceeds that of a risk-free bond is known as the \textbf{risk premium}. So, the interest that an investor would want from a bond would change as the risk-free coupon rate changes. It is important to understand the intuition behind this before learning how bonds are priced.
 
 \subsubsection{Swap Curve or Risk-free Curve}
 \label{sec:SwapCurve}
@@ -157,17 +146,17 @@ Applying this concept to bond pricing, we can say that a bond's price is essenti
 
 "M" represents the principal payment and "C" refers to the coupon payment of \$25,000. The variable, "i", is the discount rate and is also called the \textbf{yield to maturity (YTM)} or just \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
 
-If we look at the top of Figure \ref{fig:AlcoaBond}, we see that a bond with a face value of \$100 for Alcoa Inc. on June 24, 2014 has a coupon rate of 5.72\%, a price of \$112.063 and a yield of 2.928\%. As we can see, the bond price is greater than the bond's face value---the amount that Alcoa Inc. will return to the bondholder when the contract ends---because the bondholder is receiving 5.72\% interest, which is larger than the coupon rate of a treasury bond or other risk-free bond. The \textbf{Cpn Freq} (Coupon Frequency) is quoted as "S/A" which stands for "semi-annually." So, if our portfolio manager were to purchase Alcoa Inc. bonds that have a principal of \$10 million and that pay a coupon of \$286,000 semi-annually, it would cost her \$11,206,300. If we substitute "i" in the above equation with 0.014514 (the discount rate for a five-year bond), "C" with \$2.86, "M" with \$100 and "n" (the number of coupon payments) with 10, we would get the bond price quoted in the Bloomberg screenshot in Figure \ref{fig:AlcoaBond}: \$112.063.  
+If we look at the top of Figure \ref{fig:AlcoaBond}, we see that a bond with a face value of \$100 for Alcoa on June 24, 2014 has a coupon rate of 5.72\%, a price of \$112.063 and a yield of 2.928\%. As we can see, the bond price is greater than the bond's face value---the amount that Alcoa will return to the bondholder when the contract ends---because the bondholder is receiving 5.72\% interest, which is larger than the coupon rate of a treasury bond or other risk-free bond. The \textbf{Cpn Freq} (Coupon Frequency) is quoted as "S/A" which stands for "semi-annually." So, if our portfolio manager were to purchase Alcoa bonds that have a principal of \$10 million and that pay a coupon of \$286,000 semi-annually, it would cost her \$11,206,300. If we substitute "i" in the above equation with 0.014514 (the discount rate for a five-year bond), "C" with \$2.86, "M" with \$100 and "n" (the number of coupon payments) with 10, we would get the bond price quoted in the Bloomberg screenshot in Figure \ref{fig:AlcoaBond}: \$112.063.  
 
 When our portfolio manager has to purchase a bond, she has to determine what a fair yield, or discount rate, for that specific bond would look like. The factors affecting the yield include the risk-free rate, as explained earlier, and the credit health of the company, represented partly by the credit rating. If we look at the equation above or even think of these concepts intuitively, we can see that the bond yield has an inverse relationship with its price. If there is a fixed coupon rate, and an investor wants a higher bond yield, the only way to keep the same coupon rate and increase the yield is the lower the bond price---and decrease what the investor has to pay---accordingly. Moreover, the difference between the yield of a bond and the yield of a risk-free bond of the same maturity is a common measurement of the company's credit risk.
 
 \section{CDS Basics}
 \label{sec:CDSBasics}
 
-\subsection{Why CDSs?}
-\label{sec:whyCDSs}
+\subsection{Why CDS?}
+\label{sec:whyCDS}
 
-Let's assume that our portfolio manager buys bonds of Alcoa Inc. with a face value of \$10 million and with a maturity of five years. However, six months after she makes this trade, her confidence in the creditworthiness of Alcoa Inc. begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk. Hedging is a process that allows someone to profit from both a rise and a drop in an asset's value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited, and one position offsets the losses from the other. 
+Let's assume that our portfolio manager buys bonds of Alcoa with a face value of \$10 million and with a maturity of five years. However, six months after she makes this trade, her confidence in the creditworthiness of Alcoa begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could \textbf{hedge} her position by purchasing a financial product whose value rises with a drop in the bonds' value. In other words, she could take a position that allows her to \emph{profit} from increased credit risk. Hedging is a process that allows someone to profit from both a rise and a drop in an asset's value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited, and one position offsets the losses from the other. 
 
 When the asset in question is a bond, one option is to be \textbf{long}, a position in which you simply own the bond and profit when its price increases (or yield drops). The opposite position is to be \textbf{short}. Shorting is the process of borrowing security (i.e. purchasing it), immediately selling the security to other investors, and then buying it back from the investors and returning it to the lender. Clearly, this is profitable if the value of the security drops by the time the lender repurchases the security in the future. It is a convenitional technique of hedging against credit risk. However, there are several issues associated with this method. It is difficult to short bonds that are not liquid. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend \$10 million to hedge her entire portfolio of \$10 million, which is a substantial opportunity cost. Therefore, it makes sense for her to seek out an alternate method of reducing her credit risk.
 
@@ -183,7 +172,7 @@ Let's say that an insurance company charges \$1,000 for one year of life insuran
 
 Is this a fair deal? In other words, is the expected value of the insurance agreement for both parties---the insurance company and the buyer's family---equal? This would be the case if the buyer's expected payment (i.e. the premuim amount of \$1,000) is equal to the insurance company's expected payment: (the probability of the buyer's death)*(the payment in case of death: \$100,000). So, to answering this question, we must determine a value for the probability of the portfolio manager's death. In this example, if both parties believe that the probability of the buyer's death is 1\%, then this is a fair agreeement; the expected payments for each party are equal. 
 
-Now, this goal of this vignette is not to explain life insurance; however, it is useful to consider and understand the example above, as CDSs work in similar ways. Instead of buying insurance against death, let's say that our portfolio manager wants to buy insurance against the bankruptcy of a company---say, Alcoa Inc. She owns \$100,000 worth of Alcoa Inc. bonds, and she is concerned that the company may go bankrupt and default on her bonds in the next year. So, she enters a CDS agreement with an investment bank---say, J.P. Morgan. If Alcoa Inc. goes bankrupt and defaults on its bonds, J.P. Morgan agrees to pay the buyer the value of her Alcoa Inc. bonds (\$100,000)---an amount known as the \textbf{notional amount}. In exchange for this protection, the buyer agrees to pay a \textbf{coupon} (similar to the premium in the example above) of \%1, or 100 basis points (bps), of the notional amount (so, \$1,000) to J.P. Morgan. This agreement is valid for one year. In summary, as shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties}, or opposing groups, in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection against a credit event associated with the buyer's bond. 
+Now, this goal of this vignette is not to explain life insurance; however, it is useful to consider and understand the example above, as CDS work in similar ways. Instead of buying insurance against death, let's say that our portfolio manager wants to buy insurance against the bankruptcy of a company---say, Alcoa She owns \$100,000 worth of Alcoa bonds, and she is concerned that the company may go bankrupt and default on her bonds in the next year. So, she enters a CDS agreement with an investment bank---say, J.P. Morgan. If Alcoa goes bankrupt and defaults on its bonds, J.P. Morgan agrees to pay the buyer the value of her Alcoa bonds (\$100,000)---an amount known as the \textbf{notional amount}. In exchange for this protection, the buyer agrees to pay a \textbf{coupon} (similar to the premium in the example above) of \%1, or 100 basis points (bps), of the notional amount (so, \$1,000) to J.P. Morgan. This agreement is valid for one year. In summary, as shown in Figure \ref{fig:cashFlow}, a CDS is an agreement between two \textbf{counterparties} in which the buyer (in this case, the portfolio manager) pays a \textbf{fixed periodic coupon} to the seller in exchange for protection against a credit event associated with the buyer's bond. 
 
 \begin{figure}[H]
 \centering
@@ -199,11 +188,11 @@ Note that in case of default, J.P. Morgan would have to pay a compensation equal
 \subsubsection{Upfront payment}
 \label{sec:Upfront}
 
-However, what if the chances of Alcoa Inc. defaulting is \emph{not} 1\%---what if it's 0.5\%? Clearly, this is no longer a fair deal. The protection buyer's expected payment at the end of the year will be greater than J.P. Morgan's expected payment since the probability of default (and thus the probility that J.P. Morgan will have to pay out any money at all) is less than the example above. A simple solution to this issue would be to lower the protection buyer's coupon to 0.5\% (or \$500).
+However, what if the chances of Alcoa defaulting is \emph{not} 1\%---what if it's 0.5\%? Clearly, this is no longer a fair deal. The protection buyer's expected payment at the end of the year will be greater than J.P. Morgan's expected payment since the probability of default (and thus the probility that J.P. Morgan will have to pay out any money at all) is less than the example above. A simple solution to this issue would be to lower the protection buyer's coupon to 0.5\% (or \$500).
 
-However, let's say that the CDS markit is regulated---that is, regulations require that CDS agreements only trade at a standard coupon of 1\%. If the probability of Alcoa Inc.'s default is less 1\%, how do we modify the CDS agreement to once again make it a fair trade for both parties?
+However, let's say that the CDS markit is regulated---that is, regulations require that CDS agreements only trade at a standard coupon of 1\%. If the probability of Alcoa's default is less 1\%, how do we modify the CDS agreement to once again make it a fair trade for both parties?
 
-The answer lies in an \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1). If the probability of Alcoa Inc.'s default is 0.5\%, then J.P. Morgan has to compensate the protection buyer for paying a coupon of 1\% instead of a coupon of 0.5\%. Since the difference between the protection buyer's fair payment of \$500 (at 0.5\%) and the payment she has to make due to regulations (\$1,000 at 1\%) is \$500, J.P. Morgan's upfront payment to the protection buyer should be \$500. That way, the two parties can trade according to CDS regulations and still create a fair deal in which the expected payments from each party are equal. Let's assume that both the upfront payment and the coupon payment are made at the same time: on January 1, the first day of the one-year contract. In this case, since the portfolio manager would have to pay J.P. Morgan \$1,000, and J.P. Morgan would have to pay the buyer \$500, the two parties can just agree to have one equivalent cash flow: the protection buyer paying \$500 to J.P. Morgan.
+The answer lies in an \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1). If the probability of Alcoa's default is 0.5\%, then J.P. Morgan has to compensate the protection buyer for paying a coupon of 1\% instead of a coupon of 0.5\%. Since the difference between the protection buyer's fair payment of \$500 (at 0.5\%) and the payment she has to make due to regulations (\$1,000 at 1\%) is \$500, J.P. Morgan's upfront payment to the protection buyer should be \$500. That way, the two parties can trade according to CDS regulations and still create a fair deal in which the expected payments from each party are equal. Let's assume that both the upfront payment and the coupon payment are made at the same time: on January 1, the first day of the one-year contract. In this case, since the portfolio manager would have to pay J.P. Morgan \$1,000, and J.P. Morgan would have to pay the buyer \$500, the two parties can just agree to have one equivalent cash flow: the protection buyer paying \$500 to J.P. Morgan.
 
 \subsubsection{Discount Rate}
 \label{sec:DiscountRate}
@@ -234,21 +223,25 @@ The portfolio manager does not want (and understandably does not have the obliga
 \subsubsection{Two-Period Case}
 \label{sec:TwoPeriod}
 
-Up until now, we have described various aspects of a CDS agreement that has one coupon payment on December 31. However, most CDSs include more than one coupon payment. Let's explore an agreement in which there are two coupon payments in during a two-year contract: one on December 31 of the first year and one on December 31 of the second year. For this case, let's assume that the interest rate (and thus the discount rate) is 0\% and the probability of default is constant for both years of the contract. If the standardized coupon is still 1\% (so the buyer will make two \$1,000 coupon payments), the notional amount is still \$100,000, and the probability of default is 1\%, then this is still a fair deal, and no upfront payment is required. In this example, however, let's say that the probability default is actually \%1.5, and the standardized coupon is still \%1. What would be an appropriate upfront payment for this type of contract?
+Up until now, we have described various aspects of a CDS agreement that has one coupon payment on December 31. However, most CDS include more than one coupon payment. Let's explore an agreement in which there are two coupon payments in during a two-year contract: one on December 31 of the first year and one on December 31 of the second year. For this case, let's assume that the interest rate (and thus the discount rate) is 0\% and the probability of default is constant for both years of the contract. If the standardized coupon is still 1\% (so the buyer will make two \$1,000 coupon payments), the notional amount is still \$100,000, and the probability of default is 1\%, then this is still a fair deal, and no upfront payment is required. In this example, however, let's say that the probability default is actually \%1.5, and the standardized coupon is still \%1. What would be an appropriate upfront payment for this type of contract?
 
 In this case, it is the protection buyer that has to pay the upfront payment. The amount of money that J.P. Morgan expects to pay increases as the probability of default increases, whereas the coupon is set at \$1,000 and does not change. Thus, the portfolio manager will have to pay the difference between the coupon that would merit a "fair deal" with a \%1.5 default probability (\$1,500) and the standardized coupon (\$1,000) \emph{for each year}. The upfront payment would then be (2)*(\$500) = \$1,000. Note, again, that this is assuming an interest rate of 0\%. 
 
-For this scenario, there are three basic ways in which the CDS agreement may unfold. Alcoa Inc. could default during the first year, Alcoa Inc. could default during the second year, or Alcoa Inc. could just not default during the two-year contract. 
+For this scenario, there are three basic ways in which the CDS agreement may unfold. Alcoa could default during the first year, Alcoa could default during the second year, or Alcoa could just not default during the two-year contract. 
 
-If the probability of default changes from year one to year two, then this can make our calculation of the upfront payment a bit more complex. If, for example, the probability of default during year one is 1\%, and the probability of default during year two is 2\%, then the expected payment from J.P. Morgan to the  
+If the probability of default changes from year one to year two, then this can make our calculation of the upfront payment a bit more complex. If, for example, the probability of default during year one is 1\%, and the probability of default during year two is 2\%, then the expected payment from J.P. Morgan to the portfolio manager would be ()
+
 %% Explain how this changes the calculation.
 
 %% Explain if interest rates are changing.
 
+%% Explain this: 
+%% Credit risk can further be described as the risk that a \textbf{credit event} will ensue. A credit event can signify the risk of a company's default and resulting bankruptcy, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade and the confiscation of assets, among other events.
+
 \section{CDS Terminology and Cash Flows}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in Figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data from Bloomberg for Alcoa Inc. Bloomberg and Markit are the two most commonly used sources for CDS related data; we will discuss these sources extensively in a later section. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa Inc. for June 24, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDSs. Let's understand what these variables are and how they are important for understanding the cash flow\footnote{Some of the
+Although the cash flows involved in a CDS seem pretty simple in Figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, let's look at actual CDS data from Bloomberg for Alcoa. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa for June 24, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDS. Let's understand what these variables are and how they are important for understanding the cash flow\footnote{Some of the
   definitions come from \textit{Credit Derivatives Glossary}
   \citep{glossary}, \textit{Standard Corporate CDS Handbook}
   \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
@@ -260,20 +253,20 @@ Although the cash flows involved in a CDS seem pretty simple in Figure \ref{fig:
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{CDS figures from Bloomberg for Alcoa Inc. Note that this \textbf{REF Obligation} (Reference Obligation) matches the ISIN in Figure \ref{fig:AlcoaBond}.}
+\caption{CDS figures from Bloomberg for Alcoa Note that this \textbf{REF Obligation} (Reference Obligation) matches the ISIN in Figure \ref{fig:AlcoaBond}.}
 \label{fig:CDSalcoa}
 \end{figure}
 
 \subsection{Entity-Specific Variables}
 \label{sec:EntitySpecVars}
 
-Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa Inc., in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the Reference Entity, which is "AA" for Alcoa Inc. Moreover, the \textbf{Trade Date} is the date on which we are making the trade: June 24, 2014. 
+Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the Reference Entity, which is "AA" for Alcoa Moreover, the \textbf{Trade Date} is the date on which we are making the trade: June 24, 2014. 
 
-The \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa Inc."
+The \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa"
 
-We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this refers to the seniority of the debt. The \textbf{notional amount} is printed as "10" or \$10 million USD (US Dollars). The "MM" between the amount and the currency refers to the type of restructuring of the contract---in this case, "Modified Modified" restructuring (explained further in Section \ref{sec:CashFlows2}). The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS. Since our portfolio manager is purchasing protection on the bonds she previously purchased, this \textbf{REF Obligation} matches the ISIN in Figure \ref{fig:AlcoaBond}.  
+We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this refers to the seniority of the debt. The \textbf{notional amount} is printed as "10" or \$10 million USD (US Dollars). The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS. Since our portfolio manager is purchasing protection on the bonds she previously purchased, this \textbf{REF Obligation} matches the ISIN in Figure \ref{fig:AlcoaBond}.  
 
-\textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have maturities of five years. The Bloomberg screenshot displays the length of the contract, as well as the implied maturity date. Interestingly, the maturity date for the CDS of Alcoa Inc. on June 24, 2014 is September 20, 2019. This might seem odd since we would expect it to be on June 24, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 24, 2019, which is September 20, 2019. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDSs are supposed to trade. In European markets, CDSs belong to the \textbf{STEC} category, or Standard European Contract.
+\textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have maturities of five years. The Bloomberg screenshot displays the length of the contract, as well as the implied maturity date. Interestingly, the maturity date for the CDS of Alcoa on June 24, 2014 is September 20, 2019. This might seem odd since we would expect it to be on June 24, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 24, 2019, which is September 20, 2019. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
 
 \subsection{Premium Leg}
@@ -288,7 +281,7 @@ The stream of cash flows from the protection buyer to the seller, when there is 
 %% Explain why this change was made.
 %% The problem with a system like the one described above is that . 
 
-In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the "Big Bang" protocol. Under the new rules, coupon rates were standardized in North America and Europe starting June 2009. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa Inc., which is 100bps, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{trade spread} (or \textbf{par spread}, or just \textbf{spread}), labeled as 160 in the figure above. 
+In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the "Big Bang" protocol. Under the new rules, coupon rates were standardized in North America and Europe starting June 2009. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa, which is 100bps, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{trade spread} (or \textbf{par spread}, or just \textbf{spread}), labeled as 160 in the figure above. 
 
 Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps. As a result, the portfolio manager would have to make what is known as an \textbf{upfront payment} at the trade inception. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}.
 
@@ -317,7 +310,7 @@ As we can see, the upfront and points upfront values are positive, since the spr
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
-\caption{CDS cash flows for Alcoa Inc. when spread is equal to 60bps and the coupon is equal to 100bps. These have been calculated using the calculator provided by Markit.}
+\caption{CDS cash flows for Alcoa when spread is equal to 60bps and the coupon is equal to 100bps. These have been calculated using the calculator provided by Markit.}
 \label{fig:MarkitAlcoa}
 
 %\footnote{The Markit CDS Calculator is available
@@ -355,7 +348,7 @@ The alternative to a physical settlement is a \textbf{cash settlement}, in which
 \label{sec:DafaultType}
 
 %cite bloomber manual here
-Another issue that we have to face when creating CDSs is the definition of "default." A default does not always have to be outright bankruptcy. Often companies \textbf{restructure} their debt---or renegotiate the terms of their debt---instead of declaring for bankruptcy, and in some CDS contracts, restructuring does not constitute a default. In Figure \ref{fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as "MM." This stands for "Modified Modified" restructuring and implies that debt restructuring does in fact constitute a default. So, if Alcoa Inc. decides to restructure this specific debt, the hedge will have to pay the protection leg to the portfolio manager.
+Another issue that we have to face when creating CDS is the definition of "default." A default does not always have to be outright bankruptcy. Often companies \textbf{restructure} their debt---or renegotiate the terms of their debt---instead of declaring for bankruptcy, and in some CDS contracts, restructuring does not constitute a default. In Figure \ref{fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as "MM." This stands for "Modified Modified" restructuring and implies that debt restructuring does in fact constitute a default. So, if Alcoa decides to restructure this specific debt, the hedge will have to pay the protection leg to the portfolio manager.
 
 \subsubsection{Counterparty Risk}
 \label{sec:CounterpartyRisk}
@@ -365,13 +358,13 @@ When a counterparty such as the hedge fund sells protection on a bond, there is 
 \subsection{CDS Indices}
 \label{sec:CDSIndices}
 
-Holding a disproportionate number of Alcoa Inc. bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
+Holding a disproportionate number of Alcoa bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
 
-Instead of holding Alcoa Inc. bonds with a face value of \$10 million, let's say our portfolio manager decides to take on less risk by holding bonds of 100 different IG companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDSs, or CDS indices, which contain a basket of CDSs. The two most common indices are CDX and iTraxx, which represent North American CDSs and European CDSs, respectively.
+Instead of holding Alcoa bonds with a face value of \$10 million, let's say our portfolio manager decides to take on less risk by holding bonds of 100 different IG companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDS, or CDS indices, which contain a basket of CDS. The two most common indices are CDX and iTraxx, which represent North American CDS and European CDS, respectively.
  
-Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDSs based on sectors such as automobiles or consumer goods.
+Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDS based on sectors such as automobiles or consumer goods.
 
-These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDSs and do not delve into the more complex world of multi-name CDSs. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
+These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDS and do not delve into the more complex world of multi-name CDS. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
 
 %% What is an auction?
 %% Explain MM and XR
@@ -401,14 +394,14 @@ These index products trade in high volumes and are very liquid. In this vignette
 \section{CDS Pricing}
 \label{sec:CDSpricing}
 
-The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. In this section we will lay out the assumptions made by the Standard Model, and explain the methods and formulas used to calculate certain information related to CDSs.
+The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. In this section we will lay out the assumptions made by the Standard Model, and explain the methods and formulas used to calculate certain information related to CDS.
 
 There are several ways of calculating the price of a CDS such as hedge-based valuation or bond-yield-based pricing. We will apply the \textbf{discounted-cash flow pricing} or \textbf{risk-neutral valuation}, where the present value of the CDS is equal to the expected value of its discounted future cash flows. This model assumes that the probability of default is risk-neutral. 
 
 \subsection{Discounted-Cash Flow Pricing or Risk-Neutral Valuation}
-\label{sec:PVCDSs}
+\label{sec:PVCDS}
 
-Let's say our portfolio manager wants to sell her CDS contract for whatever reason. Finding the market value of a CDS contract for the protection buyer is known as \textbf{Marking-to-market (MTM)} and the value is known as the \textbf{mark-to-market} value. Theoretically, the value of this CDS (of Alcoa Inc.) for the portfolio manager is:
+Let's say our portfolio manager wants to sell her CDS contract for whatever reason. Finding the market value of a CDS contract for the protection buyer is known as \textbf{Marking-to-market (MTM)} and the value is known as the \textbf{mark-to-market} value. Theoretically, the value of this CDS (of Alcoa) for the portfolio manager is:
 
 \begin{center}
  [Money she expects to receive] --- [Money she expects to pay]
@@ -416,7 +409,7 @@ Let's say our portfolio manager wants to sell her CDS contract for whatever reas
 
 Clearly, if she expects to receive more than she expects to pay, the value of the contract will be positive. So, if the fair spread for this CDS contract rises and Alcoa's credit risk increases, the market value of her CDS will increase and she will be in a \textbf{mark-to-market profit}. If, on the other hand, the credit risk and fair spread drop, she would have a \textbf{mark-to-market loss}. 
 
-The Standard Model assumes that the mark-to-market value is computed by discounting the expected protection leg and premium leg cashflows from the trade date until the maturity date. In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its future cash flows. This concept applies to the pricing of CDSs as well. If we are looking at the value of a CDS from the protection buyer's perspective, the premium leg has a negative value and the protection leg has a positive value. So it is equivalent to saying that, 
+The Standard Model assumes that the mark-to-market value is computed by discounting the expected protection leg and premium leg cashflows from the trade date until the maturity date. In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its future cash flows. This concept applies to the pricing of CDS as well. If we are looking at the value of a CDS from the protection buyer's perspective, the premium leg has a negative value and the protection leg has a positive value. So it is equivalent to saying that, 
 
 \begin{center}
 PV(CDS) = PV(Protection) - PV(Premium)
@@ -424,7 +417,7 @@ PV(CDS) = PV(Protection) - PV(Premium)
 
 Using the above equation, we can intuitively understand how the upfront value is calculated. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the expected present value of the extra cash flows that will be made hypothetically, on top of the standard coupon payments. 
 
-So if we have a five-year contract for the CDS of Alcoa Inc., in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{net expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say \textit{expected} present value, it implies that there is a chance that this hypothetical payment will never have to be made, since the company might default, and then the protection seller may have to make the contingent payment. We have to account for that probability in calculating the present value of those payments.
+So if we have a five-year contract for the CDS of Alcoa, in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{net expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say \textit{expected} present value, it implies that there is a chance that this hypothetical payment will never have to be made, since the company might default, and then the protection seller may have to make the contingent payment. We have to account for that probability in calculating the present value of those payments.
 
 When an upfront payment is made, the transaction simply implies that the expected present value of the protection and premium legs are not equal. In the all-running contracts before the "Big Bang Protocol," where the coupon could be set at any level that the two parties agreed to, the premium leg would naturally equal the protection leg and the present value of the contract would be zero. But when the coupon is fixed and when the fair spread is not equal to the coupon, the expected present values of the two legs would not be the same and an upfront payment would have to be made as compensation. The upfront value essentially equates the premium leg and the protection leg. Let us see how the expected present values of these legs are calculated.   
 
@@ -447,7 +440,7 @@ PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
 
 %% Add equations for survival probability curves
 
-%% Add image for CDS curve for Alcoa Inc.
+%% Add image for CDS curve for Alcoa
 
 \subsubsection{Survival Probability Curve and Risk Neutral Probability}
 \label{sec:survivalProbCurve}
@@ -482,7 +475,7 @@ To calculate the hazard rates, we need a \textbf{CDS curve} or the \textbf{term 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
 \label{sec:discountfactor}
 
-In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDSs. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDSs denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa Inc.
+In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
 
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
@@ -493,7 +486,7 @@ The Standard Model allows market participants to convert between the par spread 
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa Inc. on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
+\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
 \label{fig:AlcoaRates}
 \end{figure} 
 
@@ -643,7 +636,7 @@ where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery ra
 
 %% section incomplete
 
-Bloomberg and Markit are the most widely used sources for data related to pricing of CDSs. We compared the results from our package with results from Bloomberg and Markit. Interestingly,
+Bloomberg and Markit are the most widely used sources for data related to pricing of CDS. We compared the results from our package with results from Bloomberg and Markit. Interestingly,
 the results from Markit and Bloomberg were not always identical. 
 
 \begin{figure}[H]
@@ -694,7 +687,7 @@ options(width = 100)
 
 <<>>=
 library(CDS)
-cds1 <- CDS(entityName = "Alcoa Inc.",
+cds1 <- CDS(entityName = "Alcoa",
             RED = "49EB20",
             TDate = "2014-06-24",
             tenor = "5Y",
@@ -703,7 +696,7 @@ cds1 <- CDS(entityName = "Alcoa Inc.",
             parSpread = 160)
 @
 
-Here the user enters the CDS contract with "Alcoa Inc." as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity or the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
+Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity or the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
 the valuation of the contract will be the same.
 
 Besides \texttt{parSpread}, a market paricipant can choose to specify either \texttt{ptsUpfront} or \texttt{upfront} to construct a \texttt{CDS} class object.\footnote{See Section \ref{sec:CashFlows1} for definitions on both terms.} One of the three arguments has to be specified in order to construct the \texttt{CDS} class object.
@@ -794,7 +787,7 @@ A user can call \texttt{summary} on a \texttt{cds1} to view essential informatio
 summary(cds1)
 @
 
-In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{entityName} in the package) refers to the entity name of the CDS contract and is "Alcoa Inc.". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
+In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{entityName} in the package) refers to the entity name of the CDS contract and is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
 \texttt{coupon} field. \texttt{upfront} indicates the dirty upfront payment in dollars or the cash settlement amount. 
 
 The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. In \texttt{cds1},the IR DV01 is \$66.14. \textbf{Recovery Risk 01} or \texttt{Rec Risk
