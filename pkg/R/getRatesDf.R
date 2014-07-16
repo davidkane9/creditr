@@ -21,15 +21,20 @@ getRatesDf <- function(startDate, endDate, currency="USD"){
   expect_that(endDate>startDate, prints_text("TRUE"))
   # year = 1900 + as.POSIXlt(date)$year 
   while(endDate>startDate){
-    getRates <- getRates(date = endDate, currency=currency)[[1]]
-    ## rates <- as.numeric(levels(getRates$rate))
-    rates <- as.numeric(as.character(getRates$rate))
-    expiry <- getRates$expiry
-    date <- rep(endDate, length(rates))
-    thisCurrency <- rep(currency, length(rates))
-    df <- data.frame(date, currency, expiry, rates)
-    yearRates <- rbind(yearRates, df)
-    endDate <- endDate - 1
+    Rates <- try(getRates(date = endDate, currency=currency)[[1]])
+    if(is(Rates, "try-error")){
+      getRates <- NULL
+      endDate <- endDate - 1 
+    } else {
+      getRates <- Rates
+      rates <- as.numeric(as.character(getRates$rate))
+      expiry <- getRates$expiry
+      date <- rep(endDate, length(rates))
+      thisCurrency <- rep(currency, length(rates))
+      df <- data.frame(date, currency, expiry, rates)
+      yearRates <- rbind(yearRates, df)
+      endDate <- endDate - 1      
+    }
     # year = 1900 + as.POSIXlt(date)$year
   }  
   return(yearRates)

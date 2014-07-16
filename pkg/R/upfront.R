@@ -66,7 +66,7 @@
 #' 
 
 upfront <- function(TDate,
-                    baseDate = TDate,
+                    baseDate = as.Date(TDate) + 2,
                     currency = "USD",
                     
                     types = NULL,
@@ -101,7 +101,10 @@ upfront <- function(TDate,
                     payAccruedOnDefault = TRUE,
                     notional = 1e7){
   
-  ratesDate <- as.Date(baseDate)
+  if(currency=="JPY"){
+    baseDate = .adjNextBusDay(as.Date(TDate) + 2)
+  }
+  ratesDate <- as.Date(TDate)
   
   ## if maturity date is not provided, we use tenor to obtain dates through getDates,
   ## and vice versa.

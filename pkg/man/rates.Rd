@@ -1,5 +1,5 @@
-\name{rates}
-\alias{rates}
+\name{Rates}
+\alias{Rates, rates}
 \docType{data}
 \title{
 Interest Rates Dataset
@@ -7,7 +7,7 @@ Interest Rates Dataset
 \description{
 Historic Interest Rates
 }
-\usage{data(rates)}
+\usage{data(Rates)}
 \format{
   A data frame with 551 observations on the following 4 variables.
   \describe{

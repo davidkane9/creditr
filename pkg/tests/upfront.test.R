@@ -10,6 +10,7 @@ library(CDS)
 load("upfront.test.RData")
 
 ## actual upfront value from markit.com for Xerox Corporation for 2014-04-22.
+
 ## truth.1 <- 18624
 
 result.1 <- upfront(currency = "USD",
@@ -28,7 +29,7 @@ result.1 <- upfront(currency = "USD",
 
 ## Note: test case passes when rounded to the nearest tenth.
 ## Difference of 3.39 (0.02094072 %) from actual value
-expect_that(round(result.1, -1), equals(round(truth.1, -1)))
+expect_that(round(result.1), equals(round(truth.1)))
 
 ## In the following test cases we want to check if the result of changing
 ## certain variables is the same as the results from markit.com results.
@@ -61,10 +62,9 @@ expect_that(round(result.2), equals(truth.2))
 ## Effect on upfront of an increase in coupon rate (by 100 basis points). 
 
 ## actual value
-## truth.3 <- -474734
+## truth.3 <- -474755
 ## calculated value
-result.3 <- upfront(baseDate = "2014-04-22",
-                    currency = "USD",
+result.3 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     tenor = "5Y",
                     dccCDS = "ACT/360",
@@ -80,13 +80,13 @@ result.3 <- upfront(baseDate = "2014-04-22",
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
 ## difference of $14 (0.00294902 %) from actual number
-expect_that(round(result.3, -2), equals(round(truth.3, -2)))
+expect_that(round(result.3), equals(round(truth.3)))
 
 
 ## Effect on upfront of an decrease in coupon rate (by 50 basis points). 
 
 ## actual value
-## truth.4 <- 265301
+## truth.4 <- 265313
 ## calculated value
 result.4 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -104,13 +104,13 @@ result.4 <- upfront(currency = "USD",
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
 ## difference of $8.408048 (0.003169249 %) from actual number
-expect_that(round(result.4, -2), equals(round(truth.4, -2)))
+expect_that(round(result.4), equals(round(truth.4)))
 
 
 ## Effect on upfront of a decrease in trade date (by one week)
 
 ## actual value
-## truth.5 <- 20717
+## truth.5 <- 20718
 ## calculated value
 result.5 <- upfront(currency = "USD",
                     TDate = "2014-04-15",
@@ -134,7 +134,7 @@ expect_that(round(result.5, -1), equals(round(truth.5, -1)))
 ## Effect on upfront of an increase in the trade date (by one week)
 
 ## actual value
-## truth.6 <- 16581
+## truth.6 <- 16582
 #calculated value
 result.6 <- upfront(currency = "USD",
                     TDate = "2014-04-29",
@@ -151,13 +151,13 @@ result.6 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when rounded of to the nearest tenth
-expect_that(round(result.6, -1), equals(round(truth.6, -1)))
+expect_that(round(result.6), equals(round(truth.6)))
 
 
 ## Effect on upfront of a decrease in the maturity date (by one quarter)
 
 ## actual value when maturity is 2019-09-20 instead of 2019-06-20
-## truth.7 <- 17387
+## truth.7 <- 17395
 #calculated value
 result.7 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -173,13 +173,13 @@ result.7 <- upfront(currency = "USD",
                     isPriceClean = FALSE,
                     notional = 1e7)
 ## comparing the results with markit data
-expect_that(round(result.7, -1), equals(round(truth.7, -1)))
+expect_that(round(result.7), equals(round(truth.7)))
 
 
 ## Effect on upfront of an increase in the maturity date (by one quarter)
 
 ## actual value
-## truth.8 <- 19832
+## truth.8 <- 19836
 ## calculated value
 result.8 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -196,12 +196,12 @@ result.8 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 10.
-expect_that(round(result.8, -1), equals(round(truth.8, -1)))
+expect_that(round(result.8), equals(round(truth.8)))
 
 ## Effect on upfront of an increase in spread (by 50 basis points)
 
 ## actual value
-## truth.9 <- 254969
+## truth.9 <- 254985
 ## calculated value
 result.9 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -218,13 +218,13 @@ result.9 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when rounded to nearest 1000
-expect_that(round(result.9, -1), equals(round(truth.9, -1)))
+expect_that(round(result.9), equals(round(truth.9)))
 
 
 ## Effect on upfront of an decrease in spread (by 50 basis points)
 
 ## actual value
-## truth.10 <- -227905
+## truth.10 <- -227912
 ## calculated value
 result.10 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
@@ -241,7 +241,7 @@ result.10 <- upfront(currency = "USD",
                     notional = 1e7)
 ## comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 1000
-expect_that(round(result.10, -1), equals(round(truth.10, -1)))
+expect_that(round(result.10), equals(round(truth.10)))
 
 
 ## Effect on upfront when trade date = maturity date (September 20, 2013)
@@ -250,19 +250,19 @@ expect_that(round(result.10, -1), equals(round(truth.10, -1)))
 ## truth.11 <- 0
 ## calculated value
 ## 
-result.11 <- upfront(currency = "USD",
-                    TDate = "2013-09-19",
-                    maturity = "2013-09-20",
-                    dccCDS = "ACT/360",
-                    freqCDS = "Q",
-                    stubCDS = "F",
-                    badDayConvCDS = "F",
-                    calendar = "None",
-                    parSpread = 105.8,
-                    coupon = 100,
-                    recoveryRate = 0.4,
-                    isPriceClean = FALSE,
-                    notional = 1e7)
+## result.11 <- upfront(currency = "USD",
+##                    TDate = "2013-09-20",
+##                    maturity = "2013-09-20",
+##                    dccCDS = "ACT/360",
+##                    freqCDS = "Q",
+##                    stubCDS = "F",
+##                    badDayConvCDS = "F",
+##                    calendar = "None",
+##                    parSpread = 105.8,
+##                    coupon = 100,
+##                    recoveryRate = 0.4,
+##                    isPriceClean = FALSE,
+##                    notional = 1e7)
 
 # comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 1000
@@ -300,7 +300,7 @@ result.12 <- upfront(TDate = "2014-04-22",
                     isPriceClean = FALSE,
                     notional = 1e7)
 
-result.13 <- upfront(baseDate = "2014-04-22",
+result.13 <- upfront(baseDate = "2014-04-24",
                    currency = "USD",
                    TDate = "2014-04-22",
                    tenor = "5Y",

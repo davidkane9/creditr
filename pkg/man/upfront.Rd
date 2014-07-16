@@ -3,8 +3,8 @@
 \alias{upfront}
 \title{Calculate dirty upfront payments from conventional spread}
 \usage{
-upfront(TDate, baseDate = TDate, currency = "USD", types = NULL,
-  rates = NULL, expiries = NULL, mmDCC = "ACT/360",
+upfront(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
+  types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,

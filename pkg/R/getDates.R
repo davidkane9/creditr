@@ -41,7 +41,7 @@ getDates <- function(TDate, maturity = NULL, tenor = NULL){
     if (!(dateWday %in% c(1:5))) stop("TDate must be a weekday")
     
     ## stepinDate T + 1 bus day
-    stepinDate <- .adjNextBusDay(TDate + 1)
+    stepinDate <- TDate + 1
 
     ## valueDate T + 3 bus day
     valueDate <- stepinDate
