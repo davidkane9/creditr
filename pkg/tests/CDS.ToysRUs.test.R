@@ -29,6 +29,7 @@ load("CDS.ToysRUs.test.RData")
 result1 <- CDS(TDate = "2014-04-15",
                tenor = "5Y",
                contract="SNAC",
+               #ptsUpfront = .3275,
                parSpread = 1737.7289,
                currency = "USD",
                coupon = 500,
