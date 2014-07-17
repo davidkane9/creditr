@@ -92,7 +92,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                 TDate = Sys.Date(), ## Default is the current date
                 
                 ## IR curve
-                baseDate = TDate,
+                baseDate = TDate + 2,
                 currency = "USD",
                 types = NULL,
                 rates = NULL,
@@ -138,9 +138,19 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(parSpread)))
     stop("Please input spread, upfront or pts upfront")
   
+  ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+  if(currency=="JPY"){        
+    baseDate = .adjNextBusDay(as.Date(TDate) + 2)
+    JPY.holidays <- as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d")
+    ## if base date is one of the Japanese holidays we add another business day to it
+    if(baseDate %in% JPY.holidays){
+      baseDate = .adjNextBusDay(as.Date(TDate) + 1)
+    }
+  }
   ## rates Date is the date for which interest rates will be calculated. getRates 
   ## function will return the rates of the previous day
-  ratesDate <- baseDate
+  ratesDate <- as.Date(TDate)
+  
   effectiveDate <- as.Date(TDate)  
   
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using

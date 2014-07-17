@@ -70,7 +70,7 @@
 #' 
 
 spread <- function(TDate,
-                   baseDate = TDate,
+                   baseDate = TDate + 2,
                    currency = "USD",
 
                    types = NULL,
@@ -109,7 +109,17 @@ spread <- function(TDate,
     if (is.null(upfront) & is.null(ptsUpfront))
         stop("Please input upfront or pts upfront")
     
-    ratesDate <- baseDate
+    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    if(currency=="JPY"){        
+      baseDate = .adjNextBusDay(as.Date(TDate) + 2)
+      JPY.holidays <- as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d")
+      ## if base date is one of the Japanese holidays we add another business day to it
+      if(baseDate %in% JPY.holidays){
+        baseDate = .adjNextBusDay(as.Date(TDate) + 1)
+      }
+    }
+    ratesDate <- as.Date(TDate)
+    
     if (is.null(ptsUpfront)) {
         ptsUpfront <- upfront / notional
     } else {

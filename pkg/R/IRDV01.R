@@ -61,7 +61,7 @@
 
 IRDV01 <- function(object = NULL,
                    TDate,
-                   baseDate = TDate,
+                   baseDate = TDate + 2,
                    currency = "USD",
                    
                    types = NULL,
@@ -97,7 +97,16 @@ IRDV01 <- function(object = NULL,
                    notional = 1e7
                    ){
 
-    ratesDate <- baseDate
+    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    if(currency=="JPY"){        
+      baseDate = .adjNextBusDay(as.Date(TDate) + 2)
+      JPY.holidays <- as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d")
+      ## if base date is one of the Japanese holidays we add another business day to it
+      if(baseDate %in% JPY.holidays){
+        baseDate = .adjNextBusDay(as.Date(TDate) + 1)
+      }
+    }
+    ratesDate <- as.Date(TDate)
     
     ## if maturity date is not provided, we use tenor to obtain dates through getDates,
     ## and vice versa.
