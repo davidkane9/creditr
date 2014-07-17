@@ -22,4 +22,4 @@ result1 <- IRDV01(TDate = "2014-04-22",
                   recoveryRate = 0.4,
                   notional = 1e7)
 
-stopifnot(all.equal(round(result1, 2), truth1))
+stopifnot(all.equal(round(result1), round(truth1)))

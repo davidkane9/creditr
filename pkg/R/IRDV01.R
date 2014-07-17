@@ -100,7 +100,7 @@ IRDV01 <- function(object = NULL,
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     if(currency=="JPY"){        
       baseDate = .adjNextBusDay(as.Date(TDate) + 2)
-      JPY.holidays <- as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d")
+      JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
       ## if base date is one of the Japanese holidays we add another business day to it
       if(baseDate %in% JPY.holidays){
         baseDate = .adjNextBusDay(as.Date(TDate) + 1)

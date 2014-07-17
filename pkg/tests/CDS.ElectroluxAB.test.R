@@ -37,29 +37,22 @@ result.1 <- CDS(TDate = "2014-04-22",
                notional = 1e7)
 
 ## comparing results with true values from Bloomberg
-## The results have to be rounded off as there are marginal differences
-## upfront difference of $0.04 or -2.573779e-04 %
-expect_that(round(truth.1$upfront, -3), equals(round(result.1@upfront, -3)))
+## The results have to be rounded off as there are marginal differences 
+## since Markit and Bloomberg round their results off to the nearest dollar
+expect_that(round(truth.1$upfront), equals(round(result.1@upfront)))
 
-## IRDV01 difference of -6.680686e-01 %
 expect_that(round(truth.1$IRDV01, 1), equals(round(result.1@IRDV01, 1)))
 
-## Price difference of 7.636928e-04 %
 expect_that(truth.1$price, equals(round(result.1@price, 2)))
 
-## Principal difference of 8.275069e-03 %
-expect_that(round(truth.1$principal, -3), equals(round(result.1@principal, -3)))
+expect_that(round(truth.1$principal), equals(round(result.1@principal)))
 
-## Rec Risk 01 difference of -1.629083e+00 %
-expect_that(round(truth.1$RecRisk01, -2), equals(round(result.1@RecRisk01, -2)))
+expect_that(round(truth.1$RecRisk01, 1), equals(round(result.1@RecRisk01, 1)))
 
-## defaultexpo difference of 6.785504e-06 %
-expect_that(round(truth.1$defaultExpo, -3), equals(round(result.1@defaultExpo, -3)))
+expect_that(round(truth.1$defaultExpo), equals(round(result.1@defaultExpo)))
 
-## spreadDV01 difference of 6.853558e-03 %
 expect_that(round(truth.1$spreadDV01), equals(round(result.1@spreadDV01)))
 
-## ptsUpfront difference of 6.244326e-03 %
 expect_that(round(truth.1$ptsUpfront, 4), equals(round(result.1@ptsUpfront, 4)))
 expect_that(as.character(truth.1$freqCDS), equals(result.1@freqCDS))
 expect_that(as.character(truth.1$freqCDS), equals(result.1@freqCDS))

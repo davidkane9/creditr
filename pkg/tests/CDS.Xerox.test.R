@@ -36,28 +36,21 @@ result1 <- CDS(TDate = "2014-04-22",
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
-## upfront difference of $2
-expect_that(round(truth1$upfront, -1), equals(round(result1@upfront, -1)))
 
-## IRDV01 difference of -0.01
+expect_that(round(truth1$upfront), equals(round(result1@upfront)))
+
 expect_that(round(truth1$IRDV01, 1), equals(round(result1@IRDV01, 1)))
 
-## Price difference of 6.624187e-06
 expect_that(truth1$price, equals(round(result1@price, 2)))
 
-## Principal difference of 1.94
-expect_that(round(truth1$principal, -1), equals(round(result1@principal, -1)))
+expect_that(round(truth1$principal), equals(round(result1@principal)))
 
-## Rec Risk 01 difference of 0.3329356
 expect_that(round(truth1$RecRisk01), equals(round(result1@RecRisk01)))
 
-## defaultexpo difference of 2
-expect_that(round(truth1$defaultExpo, -1), equals(round(result1@defaultExpo, -1)))
+expect_that(round(truth1$defaultExpo), equals(round(result1@defaultExpo)))
 
-## spreadDV01 difference of 0.367436
-expect_that(round(truth1$spreadDV01), equals(round(result1@spreadDV01)))
+expect_that(round(truth1$spreadDV01, 2), equals(round(result1@spreadDV01, 2)))
 
-## ptsUpfront difference of -6.605595e-06
 expect_that(round(truth1$ptsUpfront, 4), equals(round(result1@ptsUpfront, 4)))
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))

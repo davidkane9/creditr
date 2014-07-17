@@ -3,7 +3,7 @@
 library(CDS)
 ## truth1 <- CDS(TDate = "2014-01-14",
 ##               tenor = "5Y",
-##               parSpread = 32,
+##             parSpread = 32,
 ##               coupon = 100,
 ##               recoveryRate = 0.4,
 ##               isPriceClean = FALSE,
