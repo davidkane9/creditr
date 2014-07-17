@@ -56,19 +56,19 @@ CDS originated in the late 1980s and were popularized by a team at J.P. Morgan t
 \subsection{An Example: Property Insurance}
 \label{sec:PropInsurance}
 
-In order to understand this type of exchange, let's first talk about a simpler from of purchasing protection: property insurance. 
+In order to understand CDS, let's first talk about a simpler form of purchasing protection: property insurance. 
 
-Suppose that person owns a \$100,000 house and wants to buy property insurance for the whole house for one year, from January 1 to December 31. For such a purchase, an insurance company charges a fee of \$1,000. Call this \$1,000 the premium. In exchange for this premium payment, the insurance company agrees to monetarily compensate for any property damage for the next year. 
+Suppose that person owns a house worth \$100,000 and wants to buy property insurance on the house for one year, from January 1 to December 31. For this one-year coverage, an insurance company charges a fee of \$1,000. Call this \$1,000 the premium. In exchange for the premium payment, the insurance company agrees to monetarily compensate the house owner for any property damage in the next year. For example, if a house fire occurs, then the insurance company pays \$100,000 to the house owner. If damage does not occur, then the insurance company pockets the \$1,000 premium payment and doesn't have to pay anything in return. 
 
-%% For example, if a house fire occurs during that year; then, the insurance company is obligation to pay \$100,000 to the insurance buyer. Otherwise, the insurance company doesn't have to pay anything.
+For our scenario, let's assume that the house owner pays the \$1,000 premium on January 1, the beginning of the coverage period. In the case where the property is damaged, let's also assume that the insurance company pays the \$100,000 compensational amount on December 31, the end of coverage period. For this example, the interest rate (discussed in section BLANK) is 0\%.
 
-Let's say that the insurance buyer has to pay the premium (\$1,000) at the beginning of the coverage period, January 1. Let's also assume that, in this case of property damage, the insurance company pays out the compensational amount at the end of the year (Decemeber 31) and interest rates are 0\%. Examining the agreement's cash flows, we can see that the insurance buyer pays a \$1,000 premium on January 1 for property insurance for that year, and if, for example, a house fire occurs during that year, the insurance company pays the buyer a compensational amount of \$100,000 on December 31. Note that if there is no property damage that year, then the insurance company pockets the \$1,000 premium payment and doesn't have to pay anything in return. 
+The cash flows for this insurance agreement depend on a probability: the probability of property damage. Since cash flows are indicative of the "winner" in the agreement---the person or company that acquires a net gain of money at the expense of the other person or company---both the house owner and the insurance company would want to know this probability, and use it to determine the \textbf{expected cash flows} of the agreement. 
 
-As such, before making this deal, both parties would want to consider the probability of property damage for that year. If, for example, the house owner was extremely confident that the house would not be damaged, and thus believed the probability of damage to essentially be 0\%, then he would not want to make this deal. The only cash flow between the two parties would be the \$1,000 premium payment out of \emph{his} pocket for the one-year coverage! Similarly, if the insurance company thought it was extremely likely that the house would get damaged---maybe it's near a body of water and it's hurricane season---then the insurance company would probably not want to make this deal. In that case, the compensational payment would greatly outweigh the premuim payment, and the insurance company would lose money.
+If, for example, the house owner was extremely confident that the house would not be damaged, and thus believed the probability of damage to essentially be 0\%, then he would not want to make this deal. The only cash flow between the two parties would be the \$1,000 premium payment out of \emph{his} pocket for the one-year coverage! Similarly, if the insurance company thought it was extremely likely that the house would get damaged---maybe it's near a body of water that frequently floods waterfront properties---then the insurance company would probably not want to make this deal. In that case, the insurance company has to make a \$100,000 compensational payment that greatly outweighs the premuim payment that it receives, and thus the company loses money.
 
-In such a scenario, what probability of property damage would make both parties agree to this deal? In other words, what probability of damage would render the \textbf{expected cash flows} for both parties equal? 
+Clearly, the value of the probability of damage largely affects whether or not each party agrees to this insurance agreement. This begs the question: what probability of damage would make both parties agree? In other words, what probability would make this agreement a fair deal where the expected cash flows for both parties are equal?
 
-To answer this question, we need to first determine the amount that each party expects to pay. The insurance buyer expects to pay a \$1,000 premium on January 1, regardless of whether damage occurs or not. The insurance company's payment of \$100,000 is contingent upon property damage; otherwise, it's \$0. Thus, if "P" is the probability of damage, we can say the following: 
+To answer this question, we need to first lay out the payment that each party expects to make. The house owner expects to pay a \$1,000 premium on January 1, regardless of whether or not damage occurs. The insurance company's compensational payment, however, is contingent upon property damage; with damage, it would be \$100,000, but without damage, it would be \$0. Thus, if "P" represents the probability of property damage, we can say the following: 
 
 \begin{equation}
  \begin{aligned}
@@ -80,7 +80,7 @@ To determine the "fair" probability of damage at which both parties would agree 
  
 \begin{equation}
  \begin{aligned}
-   {\rm Insurance\hspace{3pt}buyer's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flow = Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flow}
+   {\rm House\hspace{3pt}owner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flow = Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flow}
     \end{aligned}
 \end{equation}
 \begin{equation}
@@ -89,7 +89,7 @@ To determine the "fair" probability of damage at which both parties would agree 
     \end{aligned}
 \end{equation}
 
-As we can see, the insurance buyer expects to pay the \$1,000 premium and potentially receive the \$100,000 (based on the probability of damage) and the insurance company expects to receive \$1,000 premium and potentially pay the \$100,000 compensation payment. Solving for "P", we get:
+As we can see, the house owner expects to pay the \$1,000 premium and potentially receive the \$100,000 (based on the probability of damage), and the insurance company expects to receive \$1,000 premium and potentially pay the \$100,000 compensation payment (based on the probability of damage). Simplifying Equation 3, we get:
 
 \begin{equation}
  \begin{aligned}
@@ -102,13 +102,13 @@ As we can see, the insurance buyer expects to pay the \$1,000 premium and potent
     \end{aligned}
 \end{equation}
 
-Thus, we can see that if "P" is .01, or 1\%, then this would be considered a fair deal for both parties; the expected cash flows are equal.
+Solving for "P", we get .01, or 1\%. Therefore, if the probability of damage is equal to 1\%, then the expected cash flows for the house owner and for insurance company would be equal, and this deal would be considered fair. 
 
-Note that the above calculations assume that the compensational amount paid in case of damage is always equal to the monetary amount the buyer bought insurance for. However, what if, say, a house fire occured and only damaged half of the house? Then, our example insurance company would not have to pay the full value of \$100,000.
+Note that in the above insurance agreement, we assumed that any property damage merited the full compensational payment of \$100,000. However, what if a house fire occured and only damaged half the house? In that case, it would not make sense for the compensational payment to be \$100,000; instead, the insurance company should compensate only for the damaged section of the house by paying \$50,000.
 
-So, when the two parties---the insurance buyer and the insurance company---initiate the insurance agreement, they need to agree on what kind of damage merits the payment of the full \$100,000, and what doesn't. They would also have to come to a consensus on the definition of "property damage," and how to measure it (how does the insurance company know that there has actually been a fire?). Clearly, this highlights the importance of a contract that specifies the terms of the agreement.
+Given this, when the two parties initiate the insurance agreement, they need to agree on what kind of damage merits the full payment of \$100,000, and what doesn't. They would also need to agree on their definition of "property damage," and how to measure it. Clearly, this highlights the importance of a contract that specifies the terms of the agreement.
 
-Note also that, even though the house is worth \$100,000, the insurance buyer could choose to buy insurance for only half the house---so only \$50,000 worth of the house. 
+Also note that in the above insurance agreement, the house owner bought insurance for the whole house, worth a total of \$100,000. However, this need not be the case; the house owner could very well purchase insurance for half of the house, worth \$50,000. If a house fire were to occur under \emph{that} purchase, then the insurance company would have to pay a compensational amount of \$50,000---not \$100,000.
 
 \subsection{Simple One-Period Case}
 \label{sec:OnePeriod}
@@ -365,7 +365,6 @@ In our simple, two-period CDS example, there are three basic ways in which the C
 
 If the probability of default changes from year one to year two, then this can make our calculation of the upfront payment a bit more complex. If, for example, the probability of default during year one is 2\%, and the probability of default during year two is 4\%, then the expected payment from J.P. Morgan to the portfolio manager would be the expected payments for year one averaged with the expected payment for year two \emph{assuming} \emph{Alcoa} \emph{doesn't} \emph{default} \emph{during} \emph{year} \emph{one}. See calculation below:
 
-\newline
 ----- Stop Here. --------
 \newline
 %% Note sure about this.
