@@ -1,7 +1,7 @@
 #' Calculate conventional spread from upfront
 #' 
 #' @param TDate is when the trade is executed, denoted as T.
-#' @param baseDate is the start date for the IR curve. Default is TDate. 
+#' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
 #' used for the yield curve. 'M' means money market rate; 'S' is swap
@@ -70,7 +70,7 @@
 #' 
 
 spread <- function(TDate,
-                   baseDate = TDate + 2,
+                   baseDate = as.Date(TDate) + 2,
                    currency = "USD",
 
                    types = NULL,

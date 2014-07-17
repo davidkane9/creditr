@@ -17,7 +17,7 @@ upfront(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
 \arguments{
 \item{TDate}{is when the trade is executed, denoted as T.}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate.}
+\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.}
 
 \item{currency}{in which CDS is denominated.}
 

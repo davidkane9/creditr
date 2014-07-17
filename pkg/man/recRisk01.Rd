@@ -4,13 +4,13 @@
 \title{Calculate the amount of change in upfront when there is a 1%
 increase in recovery rate.}
 \usage{
-recRisk01(object = NULL, TDate, baseDate = TDate, currency = "USD",
-  types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
-  fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
-  floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
-  valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
-  dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
+recRisk01(object = NULL, TDate, baseDate = as.Date(TDate) + 2,
+  currency = "USD", types = NULL, rates = NULL, expiries = NULL,
+  mmDCC = "ACT/360", fixedSwapFreq = "6M", floatSwapFreq = "3M",
+  fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", badDayConvZC = "M",
+  holidays = "None", valueDate = NULL, benchmarkDate = NULL,
+  startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
+  tenor = NULL, dccCDS = "ACT/360", freqCDS = "1Q", stubCDS = "F",
   badDayConvCDS = "F", calendar = "None", parSpread, coupon = 100,
   recoveryRate = 0.4, isPriceClean = FALSE, payAccruedOnDefault = TRUE,
   notional = 1e+07)
@@ -19,7 +19,7 @@ recRisk01(object = NULL, TDate, baseDate = TDate, currency = "USD",
 \item{object}{is the \code{CDS} class object.}
 
 \item{TDate}{is when the trade is executed, denoted as T. Default
-is \code{Sys.Date}.}
+is \code{Sys.Date}  + 2 weekdays.}
 
 \item{baseDate}{is the start date for the IR curve. Default is TDate.}
 

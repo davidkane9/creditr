@@ -8,7 +8,7 @@
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
 #' @param TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
-#' @param baseDate is the start date for the IR curve. Default is TDate. 
+#' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
 #' used for the yield curve. 'M' means money market rate; 'S' is swap
@@ -92,7 +92,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                 TDate = Sys.Date(), ## Default is the current date
                 
                 ## IR curve
-                baseDate = TDate + 2,
+                baseDate = as.Date(TDate) + 2,
                 currency = "USD",
                 types = NULL,
                 rates = NULL,

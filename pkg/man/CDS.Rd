@@ -5,8 +5,8 @@
 contract.}
 \usage{
 CDS(contract = "SNAC", entityName = NULL, RED = NULL,
-  TDate = Sys.Date(), baseDate = TDate, currency = "USD", types = NULL,
-  rates = NULL, expiries = NULL, mmDCC = "ACT/360",
+  TDate = Sys.Date(), baseDate = as.Date(TDate) + 2, currency = "USD",
+  types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
@@ -26,7 +26,7 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
 \item{TDate}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate.}
+\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.}
 
 \item{currency}{in which CDS is denominated.}
 

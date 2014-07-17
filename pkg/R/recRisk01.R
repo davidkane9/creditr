@@ -3,7 +3,7 @@
 #'
 #' @param object is the \code{CDS} class object.
 #' @param TDate is when the trade is executed, denoted as T. Default
-#' is \code{Sys.Date}.
+#' is \code{Sys.Date}  + 2 weekdays.
 #' @param baseDate is the start date for the IR curve. Default is TDate. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
@@ -62,7 +62,7 @@
 
 recRisk01 <- function(object = NULL,
                       TDate,
-                      baseDate = TDate + 2,
+                      baseDate = as.Date(TDate) + 2,
                       currency = "USD",
 
                       types = NULL,
