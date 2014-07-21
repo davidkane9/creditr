@@ -101,7 +101,20 @@ upfront <- function(TDate,
                     payAccruedOnDefault = TRUE,
                     notional = 1e7){
   
-  ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+  TDate = as.Date(TDate)
+  
+  if(as.POSIXlt(TDate)$wday==5){
+   baseDate <- .adjNextBusDay(TDate+4)
+  } else if(as.POSIXlt(TDate)$wday==0){
+   baseDate <- .adjNextBusDay(TDate+3)
+  } else {
+   baseDate <- .adjNextBusDay(TDate+2)
+  }
+  
+  ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
+  
+  
+  
   if(currency=="JPY"){        
     baseDate = .adjNextBusDay(as.Date(TDate) + 2)
     JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))

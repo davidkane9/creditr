@@ -250,19 +250,14 @@ expect_that(round(result.10), equals(round(truth.10)))
 ## truth.11 <- 0
 ## calculated value
 ## 
-## result.11 <- upfront(currency = "USD",
-##                    TDate = "2013-09-20",
-##                    maturity = "2013-09-20",
-##                    dccCDS = "ACT/360",
-##                    freqCDS = "Q",
-##                    stubCDS = "F",
-##                    badDayConvCDS = "F",
-##                    calendar = "None",
-##                    parSpread = 105.8,
-##                    coupon = 100,
-##                    recoveryRate = 0.4,
-##                    isPriceClean = FALSE,
-##                    notional = 1e7)
+result.11 <- upfront(currency = "USD",
+                  TDate = "2013-09-20",
+                    maturity = "2013-09-20",
+                    parSpread = 105.8,
+                    coupon = 100,
+                    recoveryRate = 0.4,
+                    isPriceClean = FALSE,
+                    notional = 1e7)
 
 # comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 1000
