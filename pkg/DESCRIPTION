@@ -10,6 +10,8 @@ Authors@R: c(person("Heidi", "Chen", role = c("aut"),
     email = "yang.lu2014@gmail.com"),
     person("Kanishka", "Malik", role = "aut",
     email = "kanishkamalik@gmail.com"))
+    person("Smith", "Skylar", role = c("aut"),
+    email = "sws2@williams.edu")
 Depends:
     grid,
     R (>= 2.10),methods,
