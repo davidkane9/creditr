@@ -1,12 +1,12 @@
 #' function to calculate spread using the probability of default, time and recovery rate
 #' 
-#' @param R recovery rate
-#' @param PD probability of default
-#' @param t time
-#' @return spread
+#' @param R recovery rate in decimals
+#' @param PD probability of default in decimals
+#' @param time in years
+#' @return spread in basis points
 
 
-pd.spread <- function(R = 0.4, PD, t){
-  spread = 10000*(R-1)*log(1-PD)/t
+pd.spread <- function(PD, time, Recovery = 0.4){
+  spread = 1e4*(Recovery-1)*log(1-PD)/time
   return(spread)
 }
