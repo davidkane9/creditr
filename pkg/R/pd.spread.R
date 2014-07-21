@@ -1,6 +1,6 @@
 #' function to calculate spread using the probability of default, time and recovery rate
 #' 
-#' @param R recovery rate in decimals
+#' @param Recovery rate in decimals
 #' @param PD probability of default in decimals
 #' @param tenor in years
 #' @param TDate trade date. By default is the current date
