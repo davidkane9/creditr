@@ -1375,6 +1375,8 @@ cds1.CS10
 \subsubsection{getRates function}
 \label{sec:getRatesFunction}
 
+This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
+
 <<>>=
 cds3Rates <- getRates(date = "2014-06-24")
 @
@@ -1397,6 +1399,9 @@ t(cds3Rates[[2]])
 
 \subsubsection{recRisk01}
 
+Function to calculate the increase in the upfront value when the recovery rate increase by one percentage point.
+
+
 <<echo = FALSE>>=
 recRisk01(TDate = "2014-06-24",
           currency = "USD",
@@ -1408,6 +1413,8 @@ recRisk01(TDate = "2014-06-24",
 @ 
 
 \subsubsection{IRDV01}
+
+Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
 <<echo = FALSE>>=
         IRDV01(TDate = "2014-04-22",
@@ -1422,6 +1429,8 @@ recRisk01(TDate = "2014-06-24",
 
 \subsubsection{spreadDV01}
 
+Function to calculate the increase in the upfront value when the spread increase by one basis point.
+
 <<echo = FALSE>>=
 spreadDV01(TDate = "2014-04-22",
            currency = "USD",
@@ -1435,12 +1444,16 @@ spreadDV01(TDate = "2014-04-22",
 
 \subsubsection{defaultExpo}
 
+Function to calculate the default exposure.
+
 <<echo = FALSE>>=
 defaultExpo(principal = 279311)
 @
 
 
 \subsubsection{defaultProb}
+
+Probability of default calculated using the function provided in the Bloomberg manual.
 
 <<echo = FALSE>>=
 defaultProb(parSpread = 160, t = 5, recoveryRate = 0.4)
