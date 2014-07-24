@@ -458,7 +458,7 @@ Note that accrued coupon only becomes relevant when the contract does not initia
 \subsubsection{Non-standard Coupon}
 \label{sec:nonStandardCoupon}
 
-In all of our CDS examples, we have assumed a coupon of 1\%. We have done so because we have been working with the same basic numerical figures: a risk-neutral probability of default of 1\%, or 100 basis points (bps), and a notional amount of \$100,000:
+In all of our CDS examples, we have assumed a coupon of 1\%. We have done so because we have been working with the same basic numerical figures: a risk-neutral probability of default of 1\% and a notional amount of \$100,000:
 
 \begin{equation}
  \begin{aligned}
@@ -466,7 +466,7 @@ In all of our CDS examples, we have assumed a coupon of 1\%. We have done so bec
     \end{aligned}
 \end{equation}
 
-In other words, we have been considered cases in which the portfolio manager believes the probability of default to be at least 1\%, and JPM believes the probability of default to be at most 1\%. 
+In other words, we have been considering cases in which the portfolio manager believes the probability of default to be at least 1\%, and JPM believes the probability of default to be at most 1\%. 
 
 What if, however, the portfolio manager actually thought that the probability of default was 3\%, and JPM thought it was 4\%? The portfolio manager would want to make CDS agreements with risk-neutral probabilities of default of 3\% or greater because if it's greater then she is paying the same coupon for a higher probability that she'll receive \$100,000. JPM would want to make CDS agreements with risk-neutral probabilities of default of 4\% or smaller because if it's smaller then JPM is receiving the same coupon for a smaller probability that it'll have to pay \$100,000. The range of possible risk-neutral probabilities at which they would agree is 3\% to 4\%. Say they decide on 3\%.
 
@@ -478,22 +478,22 @@ In such a case, the expected cash flows would only be equal if the coupon paymen
     \end{aligned}
 \end{equation}
 
-In fact, that is a simplified example of how protection buyers and sellers determined the coupon payments before April, 2009. Traders could theoretically enter CDS agreements with any coupon---say, 72 bps or 163 bps---because there were not any market conventions for coupon values. Each CDS had a specific \textbf{spread}---in this context, a specific coupon---that equated the two expected cash flows in the CDS. If a person was interested in buying CDS protection, she and the protection seller would refer to different CDS agreements by simply quoting the corresponding coupons.
+In fact, that is a simplified example of how protection buyers and sellers determined coupon payments before April, 2009. Traders could theoretically enter CDS agreements with any coupon---say, .72\% or 1.63\%---because there were not any market conventions for coupon values. Each CDS had a specific \textbf{spread}---in this context, a specific coupon---that equated the two expected cash flows in the CDS. If a person was interested in buying CDS protection, she and the protection seller would refer to different CDS agreements by simply quoting the corresponding coupons.
 
-One issue with this system was is that traders could not easily trade CDS, since each CDS had a specific coupon.
-For example, investment banks like JPM will often buy protection for one CDS and sell protection for another so as to offset each deal and \textbf{hedge} its risk. However, this becomes difficult to do if the CDS agreements have different coupons and thus different expected cash flows.
+One issue with this system was that traders could not easily trade CDS, since each CDS had a specific coupon.
+For example, investment banks like JPM often buy protection for one CDS and sell protection for another so as to offset each deal and \textbf{hedge} its risk. However, this became difficult to do when the CDS agreements had different coupons and thus different expected cash flows.
 
 So, in 2009, a regulatory organization known as the International Swaps and Derivates Association (ISDA) 
-introduced new CDS market conventions in North America which required buyers and seller to trade at coupons of 100 bps or 500 bps. Since then, the spread of a CDS no longer signifies the coupon at which the CDS is traded; instead, the spread is the coupon that the CDS \emph{would} be traded at in a market without standardized coupons---or the coupon that the CDs would be traded at before 2009. In order to account for the discrepancy between the spread and the standardized coupon at which a CDS must trade, protection buyers and sellers use \textbf{upfront payments}, discussed in the next section.
+introduced new CDS market conventions in North America which required buyers and sellers to trade at coupons of 100 bps or 500 bps. Since then, the spread of a CDS no longer signifies the coupon at which the CDS is traded; instead, the spread is the coupon that the CDS \emph{would} be traded at in a market without standardized coupons---or the coupon that the CDS would have been traded at before 2009. In order to account for the discrepancy between the spread and the standardized coupon at which a CDS must trade, protection buyers and sellers use \textbf{upfront payments}, discussed in the next section.
 
 \subsubsection{Upfront payment}
 \label{sec:Upfront}
 
-As mentioned in the previous section, an \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1)---compensates for the difference between the spread that both parties \emph{want} to trade at and the standardized coupon that they \emph{have} to trade at. Suppose that, like in the previous example, both parties want to trade at a coupon of 3\%. Clearly, they have to trade at a coupon of 1\% or 5\%---assume they choose 1\%. They will only make a deal that acts \emph{as if} they traded at a couon of 3\%. In other words, they will only agree to a deal that has an upfront payment that allows both parties to act \emph{as if} they were trading at a coupon of 3\%. 
+An \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1)---compensates for the difference between the spread that both parties \emph{want} to trade at and the standardized coupon that they \emph{have} to trade at. Suppose that, like in the previous example, both parties want to trade at a coupon of 3\%. Clearly, they have to trade at a coupon of 1\% or 5\%---assume they choose 1\%. They will only make a deal that acts \emph{as if} they traded at a coupon of 3\%. 
 
 Consider that both parties agree to the deal. How do we determine the value of the upfront payment?
 
-First review the expected cash flows we had in the previous section with a coupon of 3\%:
+First, review the expected cash flows we had in the previous section with a coupon of 3\%:
 
 \begin{equation}
  \begin{aligned}
@@ -501,7 +501,7 @@ First review the expected cash flows we had in the previous section with a coupo
     \end{aligned}
 \end{equation}
 
-Since the difference between the protection buyer's desired coupon payment (\$3,000 at 3\%) and the payment she has to make due to CDS market convention (\$1,000 at 1\%) is \$2,000, the portfolio manager's upfront payment to JPM should be \$2,000. The best way of thinking about an upfront payment is to consider the difference in expected cash flows between the two parties. Since the portfolio manager's expected cash flow is larger than that of JPM, the upfront payment ("U") is negative on the left side of the equation (the portfolio manager's expected cash flow) and positive on the other side (JPM's expected cash flow) so as to equate the two sides. (As before, "C" designates the coupon payment, "P" is the probability of default, and "V" is the notional value.)
+Since the difference between the protection buyer's desired coupon payment (\$3,000 at 3\%) and the payment she has to make due to CDS market convention (\$1,000 at 1\%) is \$2,000, the portfolio manager's upfront payment to JPM should be \$2,000. The best way of thinking about an upfront payment is to consider the difference in expected cash flows between the two parties. Since the portfolio manager's expected cash flow is larger than that of JPM, the upfront payment ("U") is negative on the left side of the equation (the portfolio manager's expected cash flow) and positive on the other side (JPM's expected cash flow) so as to equate the two sides. (As before, "C" designates the coupon payment, "P" is the risk-neutral probability of default, and "V" is the notional value.)
 
 \begin{equation}
  \begin{aligned}
@@ -538,15 +538,15 @@ Simplifying:
     \end{aligned}
 \end{equation}
 
-This verifies that the correct upfront payment in this scenario is \$2,000.
-
-If we want to keep the risk-neutral probability of default ("P") at 3\%, and we want to have a coupon of 1\% (so, \$1,000), the upfront payment needs to account for the difference between a \$3,000 coupon payment and a \$1,000 coupon payment; in other words, the upfront payment needs to be \$2,000, from the portfolio manager to JPM.
+This verifies that the correct upfront payment in this scenario is \$2,000. 
 
 That way, with an upfront payment, the two parties can trade with a coupon of 1\% and a risk-neutral probability of default of 3\%. On January 1, the portfolio manager would pay \$2,000 of the upfront payment to JPM and the \$1,000 coupon payment to JPM.
 
+%% If we want to keep the risk-neutral probability of default ("P") at 3\%, and we want to have a coupon of 1\% (so, \$1,000), the upfront payment needs to account for the difference between a \$3,000 coupon payment and a \$1,000 coupon payment; in other words, the upfront payment needs to be \$2,000, from the portfolio manager to JPM.
+
 %% Consider how the value of the upfront payment changes as the contract matures: (???)
 
-(Ignore the following table for now.)
+(Dave: Ignore the following table for now.)
 
 \begin{table}[H]
 \centering
@@ -562,14 +562,14 @@ Date & Upfront Payment \\
    \hline
 \end{tabular}
 }
-\end{table}[H]
+\end{table}
 
-Note that in Equation \ref{eqn:Upfront}, "C" and "V" are known or pre-determined values, since "C" is standardized by the ISDA, and "V" is agreed upon by the protection buyer and seller. As such, "P" and "U" can be considered the unknowns; you need to know the value of "P" to determine the value of "U", and vice versa.
+Note that in Equation \ref{eqn:Upfront}, "C" and "V" are known or pre-determined values, since "C" is standardized by the ISDA and "V" is agreed upon by the protection buyer and seller. As such, "P" and "U" can be considered the unknown variables; one needs to know the value of "P" to determine the value of "U", and vice versa.
 
 \subsubsection{One-Period Summary}
 \label{sec:Sum}
 
-We have introduced a simple one-period CDS between a portfolio manager and a JPM broker and explored four complications that affect the expected cash flows: interest rate, recovery rate, upfront payment, and accrued coupon.
+We have introduced a simple one-period CDS between a portfolio manager and JPM, and we have explored five complications that affect the expected cash flows: interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment.
 
 In a real-world scenario, we'd have to look at \emph{all} these factors at the same time, and come up with a way to model cash flows that take all factors into account.
 
