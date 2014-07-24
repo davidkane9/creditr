@@ -44,23 +44,17 @@
 \newpage
 
 \begin{abstract}
-
-This paper will walk the reader through the basics of Credit Defaults Swaps (CDS) by beginning with a simplified example of property insurance and progressing to increasingly complicated cases of one-period, two-period, and n-period CDS examples. After a thorough explanation of each case, this paper introduces Markit and Bloomberg as two sources of financial data that can take several CDS attributes (such as those discussed in earlier sections) as inputs to determine CDS pricing. In other worlds, we introduce the reader will to fundamental CDS concepts and then explore how to apply these concepts to pricing in the CDS market. The paper then relates this information to the CDS package and demonstrates how to use it for the purpose of CDS pricing. 
-
+This paper explains the basics of Credit Defaults Swaps (CDS) by beginning with a simplified example of property insurance and progressing to increasingly complicated examples of a one-period CDS, two-period CDS, and n-period CDS. These examples consider cases in which two parties have agreed to a particular CDS; based on the agreement, we, as outside observers, are able to infer different attributes about that CDS. Following these examples, the paper introduces Markit and Bloomberg as two sources of financial data that take the CDS attributes discussed in the previous section as inputs to determine CDS pricing. In other words, the paper discusses fundamental CDS concepts and then explores how to apply these concepts to pricing in the CDS market. After the reader can understand basic CDS pricing calculations and concepts, the paper explores the CDS package---a program written in R that allows users to calculate information regarding a specific CDS. 
 \end{abstract}
-%% Need to add an abstract here.
 
 \section{Introduction}
 \label{sec:Introduction}
 
-This paper aims to explain the mechanics of Credit Default Swaps (CDS), a type of \textbf{credit derivative} that allows finanical institutions to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. The paper introduces simplied CDS examples in which a portfolio manager passes on risk to a broker from J.P. Morgan. These simplified examples explore a one-period CDS, a two-period CDS, and an n-period CDS and gradually introduce complexities that slowly complicate the simplified examples. In this way, a reader with minimal previous knowledge of CDS can understand fundamental CDS concepts. 
+This paper aims to explain the mechanics of Credit Default Swaps (CDS), a type of \textbf{credit derivative} that allows finanical institutions to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. In other words, a CDS allows one party to purchase protection on a certain investment from another party. The paper introduces simplied CDS examples in which a portfolio manager passes on risk to J.P. Morgan in a one-period CDS, a two-period CDS, and an n-period CDS. With each example, we gradually introduce complications that alter pricing calculations. We make several assumptions, some of which we account for in later calculations, and some of which we maintain throughout the paper. A reader with minimal previous knowledge of CDS should be able to understand these fundamental CDS concepts. 
 
-Once the reader understands how CDS works and the basics of CDS pricing, we can look at data from Bloomberg and Markit that applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make.
+Once the reader understands how CDS work and the basic concepts of CDS pricing, we look at data from Bloomberg and Markit that applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make.
 
-Finally, once the reader has seen how to apply concepts to price CDS in the CDS market, we introduce the CDS package, which helps the user calculate relevant CDS information when trying to price CDS.
-
-
-%% that allows finanical institutions to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. To put it simply, credit risk is the possibility that a borrower will \textbf{default} on her loan, or not pay it back. In this paper, we will focus on \textbf{credit default swaps} (CDS), a type of credit derivative that has become quite popular among pension funds, hedge funds, and investment banks, among other financial institutions. We will explain the mechanics of this financial product and show how this \textbf{CDS} package can be used to manipulate and calcuate relevant CDS information. CDS originated in the late 1980s and were popularized by a team at JPM that included Blythe Masters \citep{cdsOrigins, blythe}. 
+Finally, once the reader has seen how to apply these concepts to pricing in the CDS market, we introduce the CDS package, which allows users to calculate information regarding a particular CDS.
 
 \section{CDS Basics}
 \label{sec:CDSBasics}
@@ -74,7 +68,7 @@ Suppose that a homeowner wants to purchase \$100,000 worth of property insurance
 
 In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate (discussed in Section \ref{sec:InterestRate}) is 0\%.
 
-The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ("P" refers to the homeowner's prediction of probability of property damage.)
+The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ("P" refers to the homeowner's prediction of probability of the property damage.)
 
 \begin{equation}
  \begin{aligned}
@@ -83,7 +77,7 @@ The \textbf{expected cash flows} for the agreement depend on the probability of 
     \label{eqn:homeownerECF}
 \end{equation}
 
-Since the insurance company will receive the \$1,000 premium and will potentially pay \$100,000---if the house gets damaged---the insurance company's expected cash flows are as follows. ("P" refers to the insurance company's prediction of probability of property damage.)
+Since the insurance company will receive the \$1,000 premium and will potentially pay \$100,000---if the house gets damaged---the insurance company's expected cash flows are as follows. ("P" refers to the insurance company's prediction of the probability of property damage.)
 
 \begin{equation}
  \begin{aligned}
@@ -216,47 +210,42 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract. Specifically, consider what happend to risk-neutral probability of default (or risk-neutral "P"), the value of the contract, and the profits \& losses (P \& L) of both the Citadel portfolio manager and JPM from January 1 to December 31. We'll first consider a case in which Alcoa does not default during the simple one-period CDS.
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract. Specifically, consider what happens to risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PNL) of both the Citadel portfolio manager and JPM from January 1 to December 31. Assume that Alcoa does not default during that year.
 
-We can think of the "value of the contract" as what a prospective protection buyer would pay to receive the CDS protection for the rest of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager to replace her as the protection buyer in the CDS agreement. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and recieves \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500.
+We can think of the mark-to-market value of a CDS contract as what a prospective buyer would pay to receive the CDS protection for the rest of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and recieves \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
-The P \& L that we are measuring in Table \ref{table.1} is the daily P \& L; that is, the change in market value of the CDS contract. Instead of considering the exact cash flows, we are measuring what, for example, JPM is earning each day that passes. Even though JPM receives the \$1,000 coupon payment on January 1, it \emph{earns} this payment day by day in small increments over the course of the year. 
+We can consider the spread to be a value equal to the coupon in this particular CDS. While we talk about coupons in terms of percentages---in this case, 1\%---spreads are measured in basis points (bps). For example, 1\% is equal to 100 bps.
 
-Here we measure the above mentioned variables as the contract matures:
+PNL represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the PNL of, for example, JPM in this CDS is to consider the fraction of the coupon payment that it \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but PNL instead considers what JPM earns each day that it provides protection during that year.
+
+Here is a table that considers what happens to the above-mentioned variables as the contract matures from January 1 to December 31.
 
 \begin{table}[H]
 \centering
 {\footnotesize
-\begin{tabular}{lllllll}
+\begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Value of contract & P \& L (Citadel) & P \& L (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & P \& L (Citadel) & P \& L (JPM) \\ 
   \hline
-  January 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & \$0 & \$0 \\ 
-  March 31 & \$0 & \$0 & .75\% & \$750 & -\$250 & \$250 \\ 
-  June 30 & \$0 & \$0 & .50\% & \$500 & -\$500 & \$500 \\ 
-  December 31 & \$0 & \$0 & 0\% & \$0 & -\$1,000 & \$1,000 \\
+  January 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
+  March 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
+  June 30 & \$0 & \$0 & .50\% & \$500 & 50 bps & -\$500 & \$500 \\ 
+  December 31 & \$0 & \$0 & 0\% & \$0 & 0 bps & -\$1,000 & \$1,000 \\
    \hline
 \end{tabular}
 }
 
-\caption{This table measures how the cash flows for each party, the risk-neutral value of "P", the value of the contract, and the P \& L for each party change as the simple one-period CDS matures. Since this table reflects the changes in those variables in the case where the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment that the Citadel portfolio manager pays to JPM on January 1. The risk-neutral value of "P" decreases from 1\% to 0\% as the contract matures, a process we will discuss in detail in this section. Similarly, the value of the contract decreases from \$1,000 to \$0 from January 1 to December 31. Note that as JPM profits from providing protection coverage, the portfolio manager loses. On January 1, the P \& L of both parties is 0.} 
+\caption{This table measures how the cash flows for each party, the risk-neutral value of "P", the value of the contract, and the P \& L for each party change as the simple one-period CDS matures. Since this table reflects the changes in those variables in the case where the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment that the Citadel portfolio manager pays to JPM on January 1. The risk-neutral value of "P" decreases from 1\% to 0\% as the contract matures, a process we will discuss in detail in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage, the portfolio manager loses. On January 1, the P \& L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
 As we can see in Table \ref{table.1}, the risk-neutral "P" decreases from 1\% on January 1 to 0\% on December 31. On June 30, the risk-neutral "P" had dropped to .5\% because only half of a year remained during which Alcoa could default during the contract. This serves as an example of how there is a direct relationship between risk-neutral probability of default and contract duration. Note that we are referring to the risk-neutral probability of default \emph{within} \emph{the} \emph{context} \emph{of} \emph{this} \emph{specific} \emph{CDS}. 
 
-%% Note how the value of the contract decreases as the contract matures. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}.
+In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. In Table \ref{table.1}, we observe that the spread decreases from 100 bps to 0 bps---a reflection of the fact that, at the end of the contract, JPM has earned the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
 
-In our simple one-period case, the coupon is 1\%. Another way of expressing this is saying that the spread---equivalent to the coupon, for now---is 100 bps (where 100 bps equals 1\%, 200 bps equals 2\%, etc.). Say that the CDS is traded---given to another protection buyer and protection seller---on March 31, one fourth through the one-year contract. In such a case, the new protection buyer and seller would trade the CDS at a spread of 75 bps, since the seller is only proviving coverage for 3/4 of a year, and thus the new spread need only be 3/4 of the original spread. This serves as an example of how the value of the spread drops from 100 bps on January 1 to 0 bps on December 31. 
+%% Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
 
-This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
-
-Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
-
-The way in which the value of the upfront payment drops over the life of the CDS contract can be called the \textbf{pull to par}.
-
-%% Not sure if this is all right.
-
+%% The way in which the value of the upfront payment drops over the life of the CDS contract can be called the \textbf{pull to par}.
 
 \subsubsection{Simple One-Period Case Complications}
 \label{OnePeriodComp}
@@ -387,23 +376,23 @@ In order to determine this sum, we need to calculate the fraction of the coupon 
 
 In order to determine the accrued coupon, we multiply the coupon (1\%) by the notional amount (\$100,000) to get the coupon payment (\$1,000), and then we multiply the coupon payment by the fraction of the year that the portfolio manager did not receive coverage for---in this case, 90/360 or one fourth. 
 
-Note that we are dividing 90 by 360 instead of 365 in the above calculation. This particular CDS contract can be said to have a 30/360 \textbf{day count convention}, which means that the accrued coupon calculations are based on the assumptions that there are 30 days in a month and 360 days in a year. For example, if we are trying to find the number of days between date one, M_{1}/D_{1}/Y_{1}, and date two, M_{2}/D_{2}/Y_{2}, using the 30/360 convention, we use the following formula with exceptions listed below:
+Note that we are dividing 90 by 360 instead of 365 in the above calculation. This particular CDS contract can be said to have a 30/360 \textbf{day count convention}, which means that the accrued coupon calculations are based on the assumptions that there are 30 days in a month and 360 days in a year. For example, if we are trying to find the number of days between date one, $D_1$/$D_1$/$Y_1$, and date two, $M_2$/$D_2$/$Y_2$, using the 30/360 convention, we use the following formula with exceptions listed below:
 
 \begin{equation}
  \begin{aligned}
-  {\rm Number of days = 360 * (Y_{2} - Y_{1}) + 30 * (M_{2} - M_{1}) + (D_{2} - D_{2})}
+  {\rm Number of days = 360 * (Y_{2} - Y_{1}) + 30 * (M_{2} - M_{1}) + (D_{2} - D_{1})}
     \end{aligned}
 \end{equation}
 
 Exceptions:
 
-1. If D_{1} is 31, assume that D_{1} is 30.
+1. If $D_1$ is 31, assume that $D_1$ is 30.
 
-2. If D_{2} is 31 and D_{1} is 30 or 31, assume that D_{2} is 30.
+2. If $D_2$ is 31 and $D_1$ is 30 or 31, assume that $D_2$ is 30.
 
-3. If M_{1} is 2, and D_{1} is 28 (not in a leap year) or 29, assume that D_{1} is 30.
+3. If $D_1$ is 2, and $D_1$ is 28 (not in a leap year) or 29, assume that $D_1$ is 30.
 
-For example, according to this convention, if the simple one-period CDS agreement was initiated on February 28 (during a non-leap year), then we would calculate the number of days between 01/01/Y_{a} and 02/28/Y_{a} (where Y_{a} is some year) to be 59, since we consider February 28 to be the last day in a 30-day month (according to expcetion 3 above):
+For example, according to this convention, if the simple one-period CDS agreement was initiated on February 28 (during a non-leap year), then we would calculate the number of days between 01/01/$Y_a$ and 02/28/$Y_a$ (where $Y_a$ is some year) to be 59, since we consider February 28 to be the last day in a 30-day month (according to expcetion 3 above):
 
 \begin{equation}
  \begin{aligned}
@@ -411,7 +400,7 @@ For example, according to this convention, if the simple one-period CDS agreemen
     \end{aligned}
 \end{equation}
 
-If a CDS agreement was initiated on October 31, and it was a leap year, we would calculate the number of days in between 01/01/Y_{a} and 10/31/Y_{a} (where Y_{a} is some year) to be 300:
+If a CDS agreement was initiated on October 31, and it was a leap year, we would calculate the number of days in between 01/01/$Y_a$ and 10/31/$Y_a$ (where $Y_a$ is some year) to be 300:
 
 \begin{equation}
  \begin{aligned}
@@ -455,6 +444,7 @@ Contract Start Date & Accrued Coupon \\
    \hline
 \end{tabular}
 }
+\end{table}[H]
 
 %% INCLUDE ACCRUED SWAP IN NEXT SECTION!!!!!!
 
@@ -567,6 +557,7 @@ Date & Upfront Payment \\
    \hline
 \end{tabular}
 }
+\end{table}[H]
 
 Note that in Equation \ref{eqn:Upfront}, "C" and "V" are known or pre-determined values, since "C" is standardized by the ISDA, and "V" is agreed upon by the protection buyer and seller. As such, "P" and "U" can be considered the unknowns; you need to know the value of "P" to determine the value of "U", and vice versa.
 
@@ -978,15 +969,15 @@ As mentioned before, the premium leg is the present value of the stream of payme
 
 Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
 
-\begin{displaymath}
-PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-\end{displaymath}
+%% \begin{displaymath}
+%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+%% \end{displaymath}
 
 The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
 
-\begin{displaymath}
-PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
-\end{displaymath}
+%% \begin{displaymath}
+%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
+%% \end{displaymath}
 
 %% Add equations for survival probability curves
 
@@ -997,9 +988,9 @@ PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
 
 The survival probability is used to determine the expected cash flow of a CDS contract. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
 
-\begin{displaymath}
-S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
-\end{displaymath}
+%% \begin{displaymath}
+%% S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
+%% \end{displaymath}
 
 There are several assumptions made here:
 \begin{itemize}
@@ -1097,7 +1088,7 @@ For a constant premium, higher recovery rates imply a high default probability.
 The PV01 is the present value of a stream of 1 basis points. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
 \begin{displaymath}
-PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+%% PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \end{displaymath}
 \begin{itemize}
 \item $i =$ coupon index,
