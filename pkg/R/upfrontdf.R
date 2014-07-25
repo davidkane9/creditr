@@ -48,18 +48,21 @@ upfrontdf <- function(x,
   stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
   
   ## subset out the rates of the relevant currency
-  rates <- rates[rates$currency==currency,]
+  
+  rates <- rates[rates$currency == currency,]
   
   ## subset out the rates data frame to only include the dates between the oldest and
   ## latest date in the 'x' data frame.
+  
   min.date <- min(as.Date(x[[date.var]]))
   max.date <- max(as.Date(x[[date.var]]))
   
-  rates = rates[rates$date>=min.date & rates$date<=max.date,]
+  rates <- rates[rates$date >= min.date & rates$date <= max.date,]
   
   ## change expiries depending on currency
   ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
   ## getRates would download the data from the internet
+
   if(currency=="USD"){
     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y",
                  "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
@@ -208,6 +211,7 @@ upfrontdf <- function(x,
                          isPriceClean = FALSE,
                          calendar = calendar,
                          notional = notional))
-  }  
+  } 
+  
   return(results)
 }

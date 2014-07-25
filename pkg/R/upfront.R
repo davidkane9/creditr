@@ -1,4 +1,4 @@
-#' Calculate dirty upfront payments from conventional spread
+#' \code{upfront} calculates dirty upfront payments from conventional spread.
 #'
 #' @param TDate is when the trade is executed, denoted as T. 
 #' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
@@ -63,7 +63,6 @@
 #' stubCDS = "F", badDayConvCDS = "F", calendar = "None", parSpread =
 #' 32, coupon = 100, recoveryRate = 0.4, isPriceClean = FALSE,
 #' notional = 1e7)
-#' 
 
 upfront <- function(TDate,
                     baseDate = as.Date(TDate) + 2,
@@ -181,6 +180,7 @@ upfront <- function(TDate,
   }
   
   ## pass arguments to C code to calculate upfront
+
   .Call('calcUpfrontTest',
         baseDate,
         types,
@@ -214,8 +214,5 @@ upfront <- function(TDate,
         isPriceClean,
         payAccruedOnDefault,
         notional,
-        PACKAGE = "CDS")
-  
+        PACKAGE = "CDS")  
 }
-
-
