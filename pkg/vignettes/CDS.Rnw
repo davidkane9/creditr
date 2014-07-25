@@ -433,23 +433,26 @@ What do these expected cash flows imply about "P", the risk-neutral probability 
 
 Therefore, the risk-neutral probability of default in this CDS is .75\%. Note that this is different than that of the simple one-period CDS (1\%). Note that in Table \ref{table.1}, we observed that the risk-neutral probability of default decreases as the contract matures. 
 
-Consider how the accrued coupon changes as the start date of the contract changes:
+In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS over the life of the contract. Recall that we defined the mark-to-market value as the coupon that a prospective buyer would pay at a given time to own the protection for the remainder of the CDS. We could similarly measure the value of the accrued coupon over the life of the contract---or the accrued coupon value that JPM would have to pay a prospective buyer if she bought the protection from the portfolio manager at a given time in the contract. Consider the table below:
 
 \begin{table}[H]
 \centering
 {\footnotesize
-\begin{tabular}{ll}
+\begin{tabular}{lllll}
   \hline
-Contract Start Date & Accrued Coupon \\ 
+Date & Mark-to-market & PNL (Citadel) & PNL (JPM) & Accrued Coupon \\ 
   \hline
-  January 1 & \$0\\ 
-  March 31 & \$250\\ 
-  June 30 & \$500\\ 
-  December 31 & \$1,000\\
+  Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
+  Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
+  Jun 30 & \$500 & -\$500 & \$500 & \$500\\ 
+  Dec 31 & \$0 & -\$1,000 & \$1,000 & \$1,000\\
    \hline
 \end{tabular}
 }
+\caption{This table measures the mark-to-market value, the PNL for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's PNL is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
 \end{table}
+
+As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
 
 %% INCLUDE ACCRUED SWAP IN NEXT SECTION!!!!!!
 
@@ -542,27 +545,60 @@ This verifies that the correct upfront payment in this scenario is \$2,000.
 
 That way, with an upfront payment, the two parties can trade with a coupon of 1\% and a risk-neutral probability of default of 3\%. On January 1, the portfolio manager would pay \$2,000 of the upfront payment to JPM and the \$1,000 coupon payment to JPM.
 
-%% If we want to keep the risk-neutral probability of default ("P") at 3\%, and we want to have a coupon of 1\% (so, \$1,000), the upfront payment needs to account for the difference between a \$3,000 coupon payment and a \$1,000 coupon payment; in other words, the upfront payment needs to be \$2,000, from the portfolio manager to JPM.
-
-%% Consider how the value of the upfront payment changes as the contract matures: (???)
-
-(Dave: Ignore the following table for now.)
+In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS such as the risk-neutral "P" and the mark-to-market value over the life of the contract. Recall that we defined the mark-to-market value as the coupon that a prospective buyer would pay at a given time to own the protection for the remainder of the CDS. We could similarly measure the value of the upfront payment over the life of the contract---or the upfront payment that a prospective buyer would have to pay at a given time to own the protection for the remainder of the CDS. Consider the table below:
 
 \begin{table}[H]
 \centering
 {\footnotesize
-\begin{tabular}{lllllll}
+\begin{tabular}{llll}
   \hline
-Date & Upfront Payment \\ 
+Date & Risk-neutral "P" & Mark-to-market & Upfront Payment \\ 
   \hline
-  January 1 & \$2,000  \\ 
-  March 31 & \$1,500 \\ 
-  June 30 & \$1,000 \\ 
-  December 31 & \$0 \\
+  Jan 1 & 3\% & \$1,000 & \$2,000  \\ 
+  Mar 31 & 2.25\% & \$750 & \$1,500 \\ 
+  Jun 30 & 1.5\% & \$500 & \$1,000 \\ 
+  Dec 31 & 0\% & \$0 & \$0 \\
    \hline
 \end{tabular}
 }
+\caption{As the contract matures from January 1 to December 31, the value of the upfront payment (in a CDS where the coupon is 1\%, the notional amount is \$100,000, and the risk-neutral probability of default is 3\%) decreases from \$2,000 to \$0. Note that the true mark-to-market value of the CDS on, say June 30, would actually be the value in the mark-to-market column \emph{plus} the value in the upfront payment column---becasue that is the total amount that the prospective protection buyer would have to pay to own the protection. However, for clarity, in this table we will view the values in the mark-to-market column as values that represent the coupon the prospective buyer would have to pay.}
+\label{tbl:upfrontValue}
 \end{table}
+
+Earlier, we calculated the upfront payment using the following equation:
+
+\begin{equation}
+ \begin{aligned}
+   {\rm Premium\hspace{3pt}leg = Protection\hspace{3pt}leg}
+    \end{aligned}
+\label{eqn:Upfront}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm -\hspace{3pt}U - C + (P * V) = U + C - (P * V)}
+    \end{aligned}
+\label{eqn:Upfront}
+\end{equation}
+
+We can verify that the upfront payment values in Table \ref{tbl:upfrontValue} are correct by inputting the risk-neutral probability of default as "P" and by inputting the mark-to-market value as "C". For example, take June 30 (where, according to Table \ref{tbl:upfrontValue}, the risk-neutral "P" is 1.5\% and the mark-to-market value is \$500.)
+
+\begin{equation}
+ \begin{aligned}
+   {\rm -\hspace{3pt}U - \$500 + (.0015 * \$100,000) = \hspace{3pt}U + \$500 - (.0015 * \$100,000)}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm (2 * \$1,500) = (2 * \$500) + (2 * U)}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm \$1,500 - \$500 = U}
+    \end{aligned}
+\end{equation}
+
+As such, on June 30, the value of the upfront payment is \$1,000---which is what Table \ref{tbl:upfrontValue} indicates, as well.
 
 Note that in Equation \ref{eqn:Upfront}, "C" and "V" are known or pre-determined values, since "C" is standardized by the ISDA and "V" is agreed upon by the protection buyer and seller. As such, "P" and "U" can be considered the unknown variables; one needs to know the value of "P" to determine the value of "U", and vice versa.
 
