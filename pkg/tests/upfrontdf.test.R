@@ -3,7 +3,7 @@
 library(CDS)
 
 ## retrieve interest rates from Rates data frame
-data(rates, package = "CDS")
+data(Rates, package = "CDS")
 
 rates = rates
 
@@ -74,7 +74,8 @@ expect_that(round(result.3, -4), equals(round(truth.3, -4)))
 x.4 <- data.frame(date = c(rep("2014-04-15", 10000), rep("2014-04-22", 10000)),  
                   maturity = c(rep("2019-06-20", 10000), rep("2019-06-20", 10000)), 
                   coupon = c(rep(500, 10000), rep(100, 10000)), 
-                  spread = c(rep(2785.8889, 10000), rep(99, 10000)))
+                  spread = c(rep(2785.8889, 10000), rep(99, 10000)),
+                  currency = c(rep("EUR", 10000), rep("EUR", 10000)))
 
-result.4 <- upfrontdf(x.4, rates, currency="EUR")
+result.4 <- upfrontdf(x.4, rates, tenor = "tenor")
 expect_that(result.4, equals(c(rep(4412560.33, 10000), rep(-14368.42, 10000))))
