@@ -644,7 +644,22 @@ two coupon payments: one on January 1 of year one and one on January 1 of year t
 
 Consider that both parties agree to this deal. 
 
-The risk-neutral probability of default---the default that the deal implies both parties are willing to compromise on---can be calculated by equating the expected cash flows. Note that we are using Equation \ref{eqn:SimpleOnePeriod}, like in our calculations for the simple one-period CDS. ("C" stands for coupon payment, "P" is the probability of default, and "V" represents the notional value.)
+The risk-neutral probability of default---the default that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows for year one of the CDS contract:
+
+\begin{equation}
+ \begin{aligned}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P * {\$100,000})}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P * {\$100,000})}
+    \end{aligned}
+\end{equation}
+
+The expected cash flows for the portfolio manager and for JPM are the same for year two. 
+
+In order to find the risk-neutral probability of default for each year, we must equate the expected cash flows:
 
 \begin{equation}
  \begin{aligned}
@@ -652,36 +667,49 @@ The risk-neutral probability of default---the default that the deal implies both
     \end{aligned}
 \label{eqn:SimpleTwoPeriod}
 \end{equation}
-
 \begin{equation}
  \begin{aligned}
-  {\rm - (\$1,000 + \$1,000) + (P * \$100,000) = (\$1,000 + \$1,000) - (P * \$100,000)} 
+  {\rm - \$1,000 + (P * \$100,000) = \$1,000 - (P * \$100,000)} 
     \end{aligned}
 \end{equation}
-
-\begin{equation}
- \begin{aligned}
-   {\rm P * {\$100,000}  = \$2,000}
-    \end{aligned}
-\end{equation}
-
-Note that the risk-neutral probability of default in the simple one-period CDS was 1\%. The only reason that this probability is different is that the portfolio manager's coupon payment in the two-period case is double that of the one-period case.
-
-Recall that we discussed in Section \ref{sec:OnePeriodOverTime} how the probability of default within the context of a CDS decreases to 0\% as the contract matures. This CDS is no exception. After one year of the contract, the probability of default over the second year is 1\%---not 2\%. As such, the cash flows for the second year of the contract is as follows:
-
-\begin{equation}
- \begin{aligned}
-  {\rm - (\$1,000) + (P * \$100,000) = (\$1,000) - (P * \$100,000)} 
-    \end{aligned}
-\end{equation}
-
 \begin{equation}
  \begin{aligned}
    {\rm P * {\$100,000}  = \$1,000}
     \end{aligned}
 \end{equation}
 
-As we concluded, the probability of default, "P", for the second year of the contract is 1\%. Note that the cash flows for the first year of the contract are the same.
+Thus, the risk-neutral probability of default for year one (or for year two, since the expected cash flows are the same) is 1\%. 
+
+Now that we have considered the expected cash flows and risk-neutral probability of default for each year, we may want consider what those values for both years combined. What are the overall expected cash flows and the overall risk-neutral "P"?
+
+\begin{equation}
+ \begin{aligned}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -(\hspace{3pt}\$1,000 + \$1,000) + (P * {\$100,000})}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}(\$1,000 + \$1,000) - (P * {\$100,000})}
+    \end{aligned}
+\end{equation}
+
+In order to find the risk-neutral probability of default for both years combined, we need to equate the two expected cash flows:
+
+\begin{equation}
+ \begin{aligned}
+  {\rm - (\$1,000 + \$1,000) + (P * \$100,000) = (\$1,000 + \$1,000) - (P * \$100,000)} 
+    \end{aligned}
+    \label{eqn:twoPeriod}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm P * {\$100,000}  = \$2,000}
+    \end{aligned}
+\end{equation}
+
+The risk-neutral probability of default for the two-year contract is 2\%. Note that the risk-neutral probability of default in the simple one-period CDS was 1\%. The only reason that this probability is different is because the portfolio manager's coupon payment in the two-period case is double that of the one-period case.
+
+Recall how we discussed in Section \ref{sec:OnePeriodOverTime} that the probability of default within the context of a CDS decreases to 0\% as the contract matures. Based on our calculations above, we can verify this relationship; sfter one year of the two-year contract, the probability of default has decreased from 2\% at the beginning of the contract to 1\% midway through the contract.
 
 We will call the above CDS example the simple two-period CDS.
 
@@ -693,41 +721,84 @@ Since this is a simplified example, we have excluded aspects of the CDS market t
 
 2. When calculating the probability of default during each year of the simple two-period CDS, we essentially assumed that we can just add probabilities: a probability of default of 1\% during year one and a probability of default of 1\% during year two equals a probability of default of 2\% over the two years. This is clearly not exactly the case.
  
-%% Should we get into pricing here?
+%% These are not the only complications... need to add more here.
 
 \subsubsection{Non-constant Probability of Default}
 
 In the simple two-period CDS, the overall probability of default is 2\%. Since we conveniently assumed that the probability of default was constant over the two-year contract, each year had a probability of default of 1\%. What if the overall probability of default was still 2\%, but the probability of default is not constant---what if it's 2\% the first year and 0\% the second year?
 
-In such a case, the cash flows for year one are as follows:
-
-------------- Stop Here. -----------------
-
+In such a case, the expected cash flows for year one (where "P" = 2\%) are as follows:
 
 \begin{equation}
  \begin{aligned}
-   {\rm - (\$1,000 + \$1,000) + (P * \$100,000) = (\$1,000 + \$1,000) - (P * \$100,000)}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ((P = 2\%) * {\$100,000})}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ((P = 2\%) * {\$100,000})}
     \end{aligned}
 \end{equation}
 
+Note that these expected cash flows are \emph{not} be equal. We will address this fact soon.
 
-In our simple, two-period CDS example, there are three basic ways in which the CDS agreement may unfold. Alcoa could default during the first year, Alcoa could default during the second year, or Alcoa could just not default during the two-year contract. 
+Now consider the expected cash flows for year two (where "P" = 0\%):
 
-If the two parties believe that the probability of default will change from year one to year two, then they will have to create a deal that has a corresponding upfront payment. If, for example, they believe the probability of default to be 2\% during year one, and 4\% during year two, then the expected payment from JPM to the portfolio manager would be the expected payments for year one averaged with the expected payment for year two \emph{assuming} \emph{Alcoa} \emph{doesn't} \emph{default} \emph{during} \emph{year} \emph{one}. See calculation below:
+\begin{equation}
+ \begin{aligned}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ((P = 0\%) * {\$100,000})}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ((P = 0\%) * {\$100,000})}
+    \end{aligned}
+\end{equation}
 
-\subsubsection{ISDA conventions}
-\label{sec:ISDA}
+Clearly, the expected cash flows for the portfolio manager and JPM during year one are not equal, and the expected cash flows for the portfolio manager and JPM during year two are not equal, either.
 
+However, note that in year one, JPM's expected cash flows are \$1,000 greater than that of JPM, and in year two, JPM's expected cash flows are \$1,000 less than that of JPM. As such, the overall expected cash flows (which are the same as Equation \ref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
 
+What it's reversed: what if the risk-neutral probability of default for year one is 0\% and that of year two is 2\%?
+
+%% Need to finish this section
+
+\subsubsection{Non-constant interest rate}
+\label{sec:nonConstantInterestRate}
+
+%% Need to introduce a two-period example with a non-zero (but constant) interest rate.
+
+%% Then introduce a two-period example with a non-zero and non-constant interest rate.
 
 \subsubsection{Two-Period Case Over Time}
+
+Consider what happens to variables such as the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PNL of both parties as the two-year contract matures.
+
+\begin{table}[H]
+\centering
+{\footnotesize
+\begin{tabular}{llllllll}
+  \hline
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PNL (Citadel) & PNL (JPM) \\ 
+  \hline
+  Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
+  Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
+  Jun 30, $Y_a$ & \$0 & \$0 & 1.50\% & \$500 & 150 bps & -\$500 & \$500 \\ 
+  Jan 1, $Y_b$ & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & -\$1,000 & \$1,000 \\ 
+  Mar 31, $Y_b$ & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$1,250 & \$1,250 \\ 
+  Jun 30, $Y_b$ & \$0 & \$0 & .50\% & \$500 & 50 bps & -\$1,500 & \$1,500 \\ 
+  Dec 31, $Y_b$ & \$0 & \$0 & 0\% & \$0 & 0 bps & -\$2,000 & \$1,000 \\
+   \hline
+\end{tabular}
+}
+\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PNL of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
+\end{table}
 
 Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
 
 The way in which the value of the upfront payment drops over the life of the CDS contract can be called the \textbf{pull to par}.
 
-%% Explain this: 
-%% Credit risk can further be described as the risk that a \textbf{credit event} will ensue. A credit event can signify the risk of a company's default and resulting bankruptcy, but the term can also expand to include failure to pay out debt within a certain amount of time, a credit downgrade and the confiscation of assets, among other events.
+%% Need to find correct definition for this. Maybe mention in "One-period over time" section instead?
 
 \section{Fixed Income Securities and Credit Risk}
 \label{sec:Bonds}
