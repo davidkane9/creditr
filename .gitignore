@@ -8,3 +8,4 @@ pkg/vignettes/*.log
 pkg/vignettes/*.gz
 pkg/vignettes/*.tex
 pkg/src/*so
+pkg/src/*.o
