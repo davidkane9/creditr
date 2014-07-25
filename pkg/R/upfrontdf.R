@@ -3,8 +3,12 @@
 #' the same currency.
 #' 
 #' @param x dataframe containing variables date, spread, coupon and maturity
-#' @param rates dataframe containing dates and rates for those dates
-#' @param currency of CDSs in the dataframe. By default is USD.
+#' @param rates dataframe containing dates and rates for those dates. Note that the
+#' date column over here refers to the date for which the adjacent interest rate curve
+#' would apply. So if it says "2014-07-25", the interest rate curve is from "2014-07-24".
+#' @param currency of CDSs in the dataframe. By default is USD. Note that at a time, we
+#' can only provide CDS data of a single currency.
+#' @param notional values of CDSs in the dataframe,. By defualt is 10 million 
 #' @param notional values of CDSs in the dataframe,. By defualt is 10 million
 #' @param date.var name of the column containing dates. By default is "date"
 #' @param spread.var name of the column containing spreads. By default is
@@ -25,17 +29,33 @@ upfrontdf <- function(x,
                       spread.var = "spread",
                       coupon.var = "coupon", 
                       maturity.var = "maturity"){
-    
+  
+  ## stop if not the relevant variables are not contained in x
+  
   stopifnot(all(c(date.var, spread.var, coupon.var, maturity.var) %in% names(x)))
-  stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
-  stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
+  
   ## stop if the relevant variables are not of the appropriate type 
+  
+  stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
+  stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))  
   stopifnot(is.numeric(notional))
   stopifnot(is.character(currency))
   stopifnot(is.numeric(x[[coupon.var]]))
+  
   ## stop if one of the dates in the X data frame does not have a corresponding
   ## interest rate curve in the rates data frame.
+  
   stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
+  
+  ## subset out the rates of the relevant currency
+  rates <- rates[rates$currency==currency,]
+  
+  ## subset out the rates data frame to only include the dates between the oldest and
+  ## latest date in the 'x' data frame.
+  min.date <- min(as.Date(x[[date.var]]))
+  max.date <- max(as.Date(x[[date.var]]))
+  
+  rates = rates[rates$date>=min.date & rates$date<=max.date,]
   
   ## change expiries depending on currency
   ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
