@@ -1,21 +1,22 @@
-#' Function that takes a dataframe of variables on CDSs to return a vector of
-#' upfront values. Note that all CDS in the data frame must be denominated in
+#' \code{upfrontdf} takes a dataframe of variables on CDSs to return a vector of
+#' upfront values. Note that all CDS in the data frame must be denominated in 
 #' the same currency.
 #' 
-#' @param x dataframe containing variables date, spread, coupon and maturity
-#' @param rates dataframe containing dates and rates for those dates. Note that the
-#' date column over here refers to the date for which the adjacent interest rate curve
-#' would apply. So if it says "2014-07-25", the interest rate curve is from "2014-07-24".
-#' @param currency of CDSs in the dataframe. By default is USD. Note that at a time, we
-#' can only provide CDS data of a single currency.
-#' @param notional values of CDSs in the dataframe,. By defualt is 10 million 
-#' @param notional values of CDSs in the dataframe,. By defualt is 10 million
+#' @param x dataframe containing variables date.var, spread.var, coupon.var and
+#'   maturity.var.
+#' @param rates dataframe containing dates and rates for those dates. Note that 
+#'   the date column over here refers to the date for which the adjacent 
+#'   interest rate curve would apply. So if it says "2014-07-25", the interest 
+#'   rate curve is from "2014-07-24".
+#' @param currency of CDSs in the dataframe. By default is USD. Note that at a 
+#'   time, we can only provide CDS data of a single currency.
+#' @param notional values of CDSs in the dataframe. Defualt is 10 million.
 #' @param date.var name of the column containing dates. By default is "date"
-#' @param spread.var name of the column containing spreads. By default is
+#' @param spread.var name of the column containing spreads. By default is 
 #'   "spread".
-#' @param coupon.var name of the column containing the coupon rates. By default
+#' @param coupon.var name of the column containing the coupon rates. By default 
 #'   is "coupon"
-#' @param maturity.var name of the column containing the maturity dates (note:
+#' @param maturity.var name of the column containing the maturity dates (note: 
 #'   this is different from tenor i.e. it is a proper date like "2019-06-20" and
 #'   not "5Y"). By default is "maturity"/
 #'   
