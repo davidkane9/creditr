@@ -1,6 +1,6 @@
 \name{upfront}
 \alias{upfront}
-\title{Calculate dirty upfront payments from conventional spread}
+\title{\code{upfront} calculates dirty upfront payments from conventional spread.}
 \usage{
 upfront(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
   types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
@@ -113,7 +113,8 @@ a numeric indicating the amount of upfront payments from a
 protection buyer's perspective.
 }
 \description{
-Calculate dirty upfront payments from conventional spread
+\code{upfront} calculates dirty upfront payments from
+conventional spread.
 }
 \examples{
 upf <- upfront(baseDate = "2014-01-13", currency = "USD", TDate
