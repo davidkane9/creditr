@@ -1,18 +1,20 @@
-#' Function that takes a dataframe of variables on CDSs to return a vector
-#' of upfront values
+#' Function that takes a dataframe of variables on CDSs to return a vector of
+#' upfront values. Note that all CDS in the data frame must be denominated in
+#' the same currency.
 #' 
 #' @param x dataframe containing variables date, spread, coupon and maturity
 #' @param rates dataframe containing dates and rates for those dates
 #' @param currency of CDSs in the dataframe. By default is USD.
-#' @param notional values of CDSs in the dataframe,. By defualt is 10 million 
+#' @param notional values of CDSs in the dataframe,. By defualt is 10 million
 #' @param date.var name of the column containing dates. By default is "date"
-#' @param spread.var name of the column containing spreads. By default is "spread".
-#' @param coupon.var name of the column containing the coupon rates. By default is
-#' "coupon"
-#' @param maturity.var name of the column containing the maturity dates (note: this
-#' is different from tenor i.e. it is a proper date like "2019-06-20" and not "5Y").
-#' By default is "maturity"/
-#' 
+#' @param spread.var name of the column containing spreads. By default is
+#'   "spread".
+#' @param coupon.var name of the column containing the coupon rates. By default
+#'   is "coupon"
+#' @param maturity.var name of the column containing the maturity dates (note:
+#'   this is different from tenor i.e. it is a proper date like "2019-06-20" and
+#'   not "5Y"). By default is "maturity"/
+#'   
 #' @return vector of upfront values (with accrual) in the same order
 
 upfrontdf <- function(x, 
