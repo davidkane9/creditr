@@ -5,7 +5,7 @@
 upfront values. Note that all CDS in the data frame must be denominated in
 the same currency.}
 \usage{
-upfrontdf(x, rates, currency.var = "currency", notional = 1e+07,
+upfrontdf(x, rates, currency.var = "currency", notional = 10000000,
   date.var = "date", spread.var = "spread", coupon.var = "coupon",
   tenor.var = "tenor", maturity.var = "maturity", isPriceClean = FALSE)
 }
