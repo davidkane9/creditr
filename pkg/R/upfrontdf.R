@@ -47,7 +47,9 @@ upfrontdf <- function(x,
   ## stop if the relevant variables are not of the appropriate type 
   
   stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
-  stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
+  if(!is.null(x[[maturity.var]])){
+    stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
+  }
   stopifnot(inherits(as.character(x[[currency.var]]), "character"))
   stopifnot(is.numeric(notional))
   stopifnot(is.character(currency))
@@ -57,10 +59,6 @@ upfrontdf <- function(x,
   ## interest rate curve in the rates data frame.
   
   stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
-  
-  ## subset out the rates of the relevant currency
-  
-  rates <- rates[rates$currency == currency,]
   
   ## subset out the rates data frame to only include the dates between the oldest and
   ## latest date in the 'x' data frame.
@@ -73,6 +71,10 @@ upfrontdf <- function(x,
   results <- NULL
   
   for(i in 1:nrow(x)){
+    
+    ## subset out the rates of the relevant currency
+    
+    #rates <- rates[rates$currency == x[i, currency.var],]
     
     ## change expiries depending on currency
     ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
@@ -94,7 +96,7 @@ upfrontdf <- function(x,
       expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
                    "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
                    "30Y")
-      types = "MMMMMSSSSSSSSSSSSSS"
+      types = "MMMMMMSSSSSSSSSSSSS"
       mmDCC = "ACT/360" 
       fixedSwapFreq = "1Y" 
       floatSwapFreq = "6M"
@@ -204,7 +206,7 @@ upfrontdf <- function(x,
     }
     
     ## if tenor is just a number i.e. written as just 5, then we turn it to the string "5Y"
-    if(!is.null(x[[tenor.var]])) {
+    if(!is.null(x[[tenor.var]])) {  ## if tenor is provided
       x[i, tenor.var] = as.character(x[i, tenor.var])      
       if(!grepl("Y", x[i, tenor.var])){
         x[i, tenor.var] <- paste(x[i, tenor.var], "Y", sep="")
@@ -222,9 +224,9 @@ upfrontdf <- function(x,
     
     results <- c(results, 
                  upfront(TDate = x[i, date.var],
-                         currency = currency,                    
+                         currency = x[i, currency.var],                    
                          types = types,
-                         rates = rates[rates$date == as.Date(x[i, date.var]), c("rates")],
+                         rates = rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])],
                          expiries = expiries,                    
                          mmDCC = as.character(mmDCC),                    
                          fixedSwapFreq = as.character(fixedSwapFreq),
