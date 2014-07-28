@@ -7,5 +7,6 @@ pkg/vignettes/*.tex
 pkg/vignettes/*.log
 pkg/vignettes/*.gz
 pkg/vignettes/*.tex
+pkg/vignettes/*.toc
 pkg/src/*so
 pkg/src/*.o
