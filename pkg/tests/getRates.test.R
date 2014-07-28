@@ -21,8 +21,11 @@ library(CDS)
 ##             0.034420,
 ##             0.034780)
 ## save(truth1, file = "getRates.test.RData")
+
 load("getRates.test.RData")
+
 #rates column from the package's getRates function
+
 rates <- getRates(date = "2014-04-15")[[1]]
 rates <- as.numeric(levels(rates$rate))
 stopifnot(all.equal(truth1, rates))

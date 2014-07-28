@@ -45,10 +45,12 @@ result.1 <- spread(TDate = "2014-04-22",
                   payAccruedOnDefault = TRUE)
 
 ## test passes when results are rounded off to the second decimal place
+
 stopifnot(all.equal(round(result.1, 2), round(truth.1, 1)))
 
 
 ## results when we don't enter the rates manually are less accurate 
+
 result.2 <- spread(TDate = "2014-04-22",
                   baseDate = "2014-04-22",
                   currency = "USD",

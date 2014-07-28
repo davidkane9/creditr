@@ -24,6 +24,7 @@ rates <- rates
 ##                  currency = c(rep("EUR", 10000), rep("EUR", 10000)))
 
 ## save(x.1, x.2, file = "upfrontdf.test.RData")
+
 load("upfrontdf.test.RData")
 
 ## match the results from upfrontdf.R with the actual result. Note that there was a marginal difference

@@ -6,7 +6,7 @@
 #' 
 testDate <- function(date){
   date <- tryCatch(as.Date(date, format = "%Y-%m-%d"),
-                   error = function(e) {
+                   error <- function(e) {
                        return("Invalid date format. Must be YYYY-MM-DD")
                    })
   today <- Sys.Date()

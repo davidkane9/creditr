@@ -25,6 +25,7 @@ result1 <- CDS(TDate = "2014-01-14",
 stopifnot(all.equal(truth1, result1))
 
 ## if neither maturity date nor tenor are provided, function must return an error
+
 expect_that(CDS(TDate = "2014-01-14",
                 parSpread = 32,
                 coupon = 100,

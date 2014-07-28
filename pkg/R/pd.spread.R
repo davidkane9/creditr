@@ -9,7 +9,7 @@
 
 
 pd.spread <- function(PD, tenor, TDate = Sys.Date(), Recovery = 0.4){
-  time = as.numeric((getDates(TDate = as.Date(TDate), tenor = tenor)$endDate)-as.Date(TDate))/360
-  spread = 1e4*(Recovery-1)*log(1-PD)/time
+  time <- as.numeric((getDates(TDate = as.Date(TDate), tenor = tenor)$endDate)-as.Date(TDate))/360
+  spread <- 1e4*(Recovery-1)*log(1-PD)/time
   return(spread)
 }

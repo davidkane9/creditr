@@ -16,7 +16,11 @@ library(CDS)
 ## save(object, oldUpf, newUpf, file="update.test.RData")
 
 load("update.test.RData")
+
 ## new upfront values of update function
+
 result <- update(object, spread = 155.8)@upfront
+
 ## comparing new upfront values of update function with new upfront values from markit.com
+
 expect_that(round(result, -1), equals(round(newUpf, -1)))

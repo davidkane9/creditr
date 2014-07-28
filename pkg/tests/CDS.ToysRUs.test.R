@@ -54,7 +54,6 @@ expect_that(round(truth1$defaultExpo), equals(round(result1@defaultExpo)))
 
 expect_that(round(truth1$spreadDV01), equals(round(result1@spreadDV01)))
 
-## ptsUpfront difference of 0.005309456 %
 expect_that(round(truth1$ptsUpfront), equals(round(result1@ptsUpfront)))
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))

@@ -16,7 +16,7 @@
 
 CS10 <- function(object){
     
-    new = upfront(TDate = object@TDate,
+    new <- upfront(TDate = object@TDate,
                   parSpread = object@parSpread * 1.1,
                   recoveryRate = object@recoveryRate,
                   notional = object@notional,
@@ -42,7 +42,7 @@ setMethod("CS10",
           signature(object = "CDS"),
           function(object){
               
-              new = upfront(TDate = object@TDate,
+              new <- upfront(TDate = object@TDate,
                             parSpread = object@parSpread * 1.1,
                             recoveryRate = object@recoveryRate,
                             maturity = object@endDate,

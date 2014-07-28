@@ -16,9 +16,9 @@ check.Rates.Dates <- function(x, rates){
   contained <- NULL
   for (i in 1:length(dates1)){
     if (as.Date(dates1[i]) %in% dates2){
-      contained = c(contained, TRUE)
+      contained <- c(contained, TRUE)
     } else{
-      contained = c(contained, FALSE)
+      contained <- c(contained, FALSE)
     }
   }
   return(contained)

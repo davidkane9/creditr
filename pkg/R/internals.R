@@ -6,7 +6,9 @@
 #' \code{d}.
 #' 
 .separateYMD <- function(d){
+    
     ## valueDate format valueDate = "2008-02-01"
+    
     dateYear <- as.numeric(format(as.Date(d), "%Y"))
     dateMonth <- as.numeric(format(as.Date(d), "%m"))
     dateDay <- as.numeric(format(as.Date(d), "%d"))
@@ -25,11 +27,14 @@
 .downloadRates <- function(URL, verbose = FALSE){ 
     tf <- tempfile()
     td <- tempdir()
+    
     ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
+    
     tmp <- .zipdown(URL, tf)
     files <- unzip(tf , exdir = td)
     
     ## the 2nd file of the unzipped directory contains the rates info
+    
     doc <- xmlTreeParse(files[grep(".xml", files)], getDTD = F)
     r <- xmlRoot(doc)
     return(r)
@@ -44,7 +49,9 @@
 .adjNextBusDay <- function(date){
     
     dateWday <- as.POSIXlt(date)$wday
+    
     ## change date to the most recent weekday if necessary
+    
     if (dateWday == 0){
         date <- date + 1
     } else if (dateWday == 6) {
@@ -66,6 +73,7 @@
 
     ## get the remainder X after dividing it by 3 and then move back X
     ## month
+    
     if (date$mon %in% c(2, 5, 8, 11)){
         if (date$mday < 20)
             date$mon <- date$mon - 3
@@ -130,8 +138,8 @@
 
 
 .zipdown <- function(url, file){
-    f = CFILE(file, mode="wb")
-    a = curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
+    f <- CFILE(file, mode="wb")
+    a <- curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
         verbose = FALSE)
     close(f)
     return(a)

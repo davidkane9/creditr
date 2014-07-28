@@ -15,7 +15,10 @@ library(CDS)
 ##                      currency = "EUR")
 
 ## save(X, rates, file = "check.Rates.Dates.test.RData")
+
 load("check.Rates.Dates.test.RData")
 result <- check.Rates.Dates(X, rates)
+
 ## false is contained in the vector returned by the function
+
 stopifnot(FALSE %in% result)

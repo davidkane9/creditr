@@ -11,15 +11,21 @@
 #' column reads 2014-04-22, the corresponding rates are actually for 2014-04-21.
 #' 
 getRatesDf <- function(startDate, endDate, currency="USD"){
-  yearRates = NULL
-  endDate = as.Date(endDate)
-  startDate = as.Date(startDate)
+  yearRates <- NULL
+  endDate <- as.Date(endDate)
+  startDate <- as.Date(startDate)
+  
   # start & end date must be valid
+  
   expect_that(checkDate(startDate), prints_text("NA"))
   expect_that(checkDate(endDate), prints_text("NA"))
+  
   # start date must be smaller than end date
+  
   expect_that(endDate>startDate, prints_text("TRUE"))
+  
   # year = 1900 + as.POSIXlt(date)$year 
+  
   while(endDate>startDate){
     Rates <- try(getRates(date = endDate, currency=currency)[[1]])
     if(is(Rates, "try-error")){
@@ -35,7 +41,9 @@ getRatesDf <- function(startDate, endDate, currency="USD"){
       yearRates <- rbind(yearRates, df)
       endDate <- endDate - 1      
     }
+    
     # year = 1900 + as.POSIXlt(date)$year
+    
   }  
   return(yearRates)
 }

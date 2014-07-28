@@ -29,6 +29,7 @@ result.1 <- upfront(currency = "USD",
 
 ## Note: test case passes when rounded to the nearest tenth.
 ## Difference of 3.39 (0.02094072 %) from actual value
+
 expect_that(round(result.1), equals(round(truth.1)))
 
 ## In the following test cases we want to check if the result of changing
@@ -39,6 +40,7 @@ expect_that(round(result.1), equals(round(truth.1)))
 ## markit.com value
 ## truth.2 <- -9444
 ## calculated value
+
 result.2 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-06-20",
@@ -64,6 +66,7 @@ expect_that(round(result.2), equals(truth.2))
 ## actual value
 ## truth.3 <- -474755
 ## calculated value
+
 result.3 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     tenor = "5Y",
@@ -77,9 +80,11 @@ result.3 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
 ## difference of $14 (0.00294902 %) from actual number
+
 expect_that(round(result.3), equals(round(truth.3)))
 
 
@@ -88,6 +93,7 @@ expect_that(round(result.3), equals(round(truth.3)))
 ## actual value
 ## truth.4 <- 265313
 ## calculated value
+
 result.4 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     tenor = "5Y",
@@ -104,6 +110,7 @@ result.4 <- upfront(currency = "USD",
 ## comparing the results with markit data
 ## Note: test case passes when results are rounded off the nearest 100
 ## difference of $8.408048 (0.003169249 %) from actual number
+
 expect_that(round(result.4), equals(round(truth.4)))
 
 
@@ -112,6 +119,7 @@ expect_that(round(result.4), equals(round(truth.4)))
 ## actual value
 ## truth.5 <- 20718
 ## calculated value
+
 result.5 <- upfront(currency = "USD",
                     TDate = "2014-04-15",
                     tenor = "5Y",
@@ -125,9 +133,11 @@ result.5 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when rounded to the nearest 10
 ## difference of $0.9439034 (0.004556178 %) from actual number
+
 expect_that(round(result.5, -1), equals(round(truth.5, -1)))
 
 
@@ -136,6 +146,7 @@ expect_that(round(result.5, -1), equals(round(truth.5, -1)))
 ## actual value
 ## truth.6 <- 16582
 #calculated value
+
 result.6 <- upfront(currency = "USD",
                     TDate = "2014-04-29",
                     tenor = "5Y",
@@ -149,8 +160,10 @@ result.6 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when rounded of to the nearest tenth
+
 expect_that(round(result.6), equals(round(truth.6)))
 
 
@@ -159,6 +172,7 @@ expect_that(round(result.6), equals(round(truth.6)))
 ## actual value when maturity is 2019-09-20 instead of 2019-06-20
 ## truth.7 <- 17395
 #calculated value
+
 result.7 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-03-20",
@@ -172,7 +186,9 @@ result.7 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
+
 expect_that(round(result.7), equals(round(truth.7)))
 
 
@@ -181,6 +197,7 @@ expect_that(round(result.7), equals(round(truth.7)))
 ## actual value
 ## truth.8 <- 19836
 ## calculated value
+
 result.8 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-09-20",
@@ -194,8 +211,10 @@ result.8 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 10.
+
 expect_that(round(result.8), equals(round(truth.8)))
 
 ## Effect on upfront of an increase in spread (by 50 basis points)
@@ -203,6 +222,7 @@ expect_that(round(result.8), equals(round(truth.8)))
 ## actual value
 ## truth.9 <- 254985
 ## calculated value
+
 result.9 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-06-20",
@@ -216,8 +236,10 @@ result.9 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when rounded to nearest 1000
+
 expect_that(round(result.9), equals(round(truth.9)))
 
 
@@ -226,6 +248,7 @@ expect_that(round(result.9), equals(round(truth.9)))
 ## actual value
 ## truth.10 <- -227912
 ## calculated value
+
 result.10 <- upfront(currency = "USD",
                     TDate = "2014-04-22",
                     maturity = "2019-06-20",
@@ -239,8 +262,10 @@ result.10 <- upfront(currency = "USD",
                     recoveryRate = 0.4,
                     isPriceClean = FALSE,
                     notional = 1e7)
+
 ## comparing the results with markit data
 ## Note: test case passes when rounded off to the nearest 1000
+
 expect_that(round(result.10), equals(round(truth.10)))
 
 
@@ -250,6 +275,7 @@ expect_that(round(result.10), equals(round(truth.10)))
 ## truth.11 <- 0
 ## calculated value
 ## 
+
 result.11 <- upfront(currency = "USD",
                   TDate = "2013-09-20",
                     maturity = "2013-09-20",
@@ -311,6 +337,7 @@ result.13 <- upfront(baseDate = "2014-04-24",
                    notional = 1e7)
 
 ## results are the same, as expected
+
 expect_that(round(result.12, -1), equals(round(result.13, -1)))
 
 ## save(truth.1, truth.2, truth.3, truth.4, truth.5, truth.6, truth.7, 

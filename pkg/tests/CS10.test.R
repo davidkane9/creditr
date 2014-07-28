@@ -1,4 +1,5 @@
 ## test case for CS10, for CDS of Xerox corporation
+
 library(CDS)
 CS10(CDS(TDate = "2014-04-22",
          tenor = "5Y", 

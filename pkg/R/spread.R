@@ -110,12 +110,15 @@ spread <- function(TDate,
         stop("Please input upfront or pts upfront")
     
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    
     if(currency=="JPY"){        
-      baseDate = .adjNextBusDay(as.Date(TDate) + 2)
+      baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
       JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
+      
       ## if base date is one of the Japanese holidays we add another business day to it
+      
       if(baseDate %in% JPY.holidays){
-        baseDate = .adjNextBusDay(as.Date(TDate) + 1)
+        baseDate <- .adjNextBusDay(as.Date(TDate) + 1)
       }
     }
     ratesDate <- as.Date(TDate)
@@ -151,17 +154,17 @@ spread <- function(TDate,
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
         
         ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
-        types = paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates = as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries = as.character(ratesInfo[[1]]$expiry)
-        mmDCC = as.character(ratesInfo[[2]]$mmDCC)
+        types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+        rates <- as.numeric(as.character(ratesInfo[[1]]$rate))
+        expiries <- as.character(ratesInfo[[1]]$expiry)
+        mmDCC <- as.character(ratesInfo[[2]]$mmDCC)
         
-        fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq)
-        floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention)
-        holidays = as.character(ratesInfo[[2]]$swapCalendars)
+        fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
+        floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
+        fixedSwapDCC <- as.character(ratesInfo[[2]]$fixedDCC)
+        floatSwapDCC <- as.character(ratesInfo[[2]]$floatDCC)
+        badDayConvZC <- as.character(ratesInfo[[2]]$badDayConvention)
+        holidays <- as.character(ratesInfo[[2]]$swapCalendars)
     }
 
     

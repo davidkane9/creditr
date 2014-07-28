@@ -4,11 +4,16 @@
 library(CDS)
 
 ## Should return an error when no tenor or maturity date is given
+
 expect_error(getDates(TDate = as.Date("2014-04-15")))
+
 ## Should return an error when both tenor and maturity date are given; only one
 ## should be entered
+
 expect_error(getDates(TDate = as.Date("2014-04-15"), tenor = "5Y", maturity = as.Date("2016-06-20")))
+
 ## Should return an error when maturity is not of type date
+
 expect_error(getDates(TDate = as.Date("2014-04-15"), maturity = "not a date"))
 
 ## different dates for a CDS with a 10-year maturity
@@ -22,6 +27,7 @@ expect_error(getDates(TDate = as.Date("2014-04-15"), maturity = "not a date"))
 ##           backstopDate = as.Date("2014-02-14"))
 
 ## save(truth, file="getDates.test.RData")
+
 load("getDates.test.RData")
 
 result.1 <- getDates(TDate = as.Date("2014-04-15"), tenor = "5Y")

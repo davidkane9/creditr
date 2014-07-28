@@ -22,4 +22,5 @@ result1 <- spreadDV01(TDate = "2014-04-22",
                       notional = 1e7)
 
 ## test case passes when results are rounded to the nearest whole number
+
 stopifnot(all.equal(round(result1, 0), round(truth1, 0)))

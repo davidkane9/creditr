@@ -38,7 +38,7 @@ result.1 <- CDS(TDate = "2014-04-22",
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences 
-## since Markit and Bloomberg round their results off to the nearest dollar
+
 expect_that(round(truth.1$upfront), equals(round(result.1@upfront)))
 
 expect_that(round(truth.1$IRDV01, 1), equals(round(result.1@IRDV01, 1)))

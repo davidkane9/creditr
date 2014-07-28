@@ -16,6 +16,9 @@ library(CDS)
 ## df <- data.frame(ids, pd, spread, TDate, endDate)
 
 ## save(df, file = "impRecoveryRate.test.RData")
+
 load("impRecoveryRate.test.RData")
+
 # 3 is the column number for spread and 2 is the column number for pd, 1 for id
+
 impliedRecoveryRate(df, 3, 2, 1, 5, 4)
