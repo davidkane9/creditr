@@ -2,6 +2,8 @@
 
 library(CDS)
 
+data(rates)
+
 ## truth1 <- data.frame(TDate = as.Date("2014-04-15"),
 ##              tenor = "5Y",
 ##              contract ="SNAC",
@@ -27,14 +29,38 @@ library(CDS)
 
 load("CDS.CaesarsEntCorp.test.RData")
 
-result1 <- CDS(TDate = "2014-04-15",
-               tenor = "5Y",
-               parSpread = 12354.529,
-               currency = "USD",
-               coupon = 500,
-               recoveryRate = 0.40,
-               isPriceClean = FALSE,
-               notional = 1e7)
+## rates from the relevant date
+
+rates.20140415 <- rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]
+expiries.20140415 <- rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]
+
+result1 <-  CDS(TDate = "2014-04-15",
+        currency = "USD",                    
+        types = "MMMMMSSSSSSSS",
+        rates = rates.20140415,
+        expiries = expiries.20140415,                    
+        mmDCC = "Act/360",                    
+        fixedSwapFreq = "6M",
+        floatSwapFreq = "6M",
+        fixedSwapDCC = "30/360",
+        floatSwapDCC = "30/360",
+        badDayConvZC = 'M',
+        holidays = 'None',                   
+        valueDate = "2014-04-18",
+        startDate = "2014-03-20",
+        endDate = "2019-06-20",
+        stepinDate = "2014-04-16",
+        maturity = "2019-06-20",                    
+        dccCDS = "Act/360",
+        freqCDS = "Q",
+        stubCDS = "f/s",
+        badDayConvCDS = "F",
+        calendar = "None",
+        parSpread = 12354.529,
+        coupon = 500,
+        recoveryRate = 0.4,
+        isPriceClean = FALSE,
+        notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
