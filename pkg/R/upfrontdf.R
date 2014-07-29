@@ -38,6 +38,9 @@ upfrontdf <- function(x,
   
   
   ## You must provide either a maturity or a tenor, but not both.
+  if(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))){
+    x[[maturity.var]] <- NULL
+  }
   
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
@@ -59,7 +62,7 @@ upfrontdf <- function(x,
   ## stop if one of the dates in the X data frame does not have a corresponding
   ## interest rate curve in the rates data frame.
   
-  stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
+  #stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
   
   ## subset out the rates data frame to only include the dates between the oldest and
   ## latest date in the 'x' data frame.
