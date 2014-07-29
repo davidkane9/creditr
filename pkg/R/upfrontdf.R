@@ -38,9 +38,9 @@ upfrontdf <- function(x,
   
   
   ## You must provide either a maturity or a tenor, but not both.
-  if(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))){
-    x[[maturity.var]] <- NULL
-  }
+  #if(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))){
+   # x[[maturity.var]] <- NULL
+  #}
   
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
