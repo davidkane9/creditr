@@ -7,7 +7,8 @@ the same currency.}
 \usage{
 upfrontdf(x, rates, currency.var = "currency", notional = 1e+07,
   date.var = "date", spread.var = "spread", coupon.var = "coupon",
-  tenor.var = "tenor", maturity.var = "maturity", isPriceClean = FALSE)
+  tenor.var = "tenor", maturity.var = "maturity",
+  recovery.var = "recovery", isPriceClean = FALSE)
 }
 \arguments{
 \item{x}{dataframe containing variables date.var, spread.var, coupon.var and
@@ -29,6 +30,9 @@ rate curve is from "2014-07-24".}
 
 \item{coupon.var}{name of the column containing the coupon rates. By default
 is "coupon"}
+
+\item{recovery.var}{name of the column containing the recovery rates. By default
+is "recovery"}
 
 \item{maturity.var}{name of the column containing the maturity dates (note:
 this is different from tenor i.e. it is a proper date like "2019-06-20" and

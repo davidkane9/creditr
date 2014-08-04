@@ -1,4 +1,4 @@
-#' \code{upfront} calculates dirty upfront payments from conventional spread.
+  #' \code{upfront} calculates dirty upfront payments from conventional spread.
 #'
 #' @param TDate is when the trade is executed, denoted as T. 
 #' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
@@ -113,12 +113,11 @@ upfront <- function(TDate,
   ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
     
   if(currency == "JPY"){        
-    baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
+   baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
     JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
     
     ## if base date is one of the Japanese holidays we add another business day
     ## to it
-    
     if(baseDate %in% JPY.holidays){
       baseDate <- .adjNextBusDay(as.Date(TDate) + 1)
     }
@@ -161,22 +160,23 @@ upfront <- function(TDate,
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
   
-    ## interest rates contained in list 1 of ratesInfo
+    ratesInfo <- getRates(date = ratesDate, currency = currency)
+    effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
     
-    ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
-    types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    rates <- as.numeric(as.character(ratesInfo[[1]]$rate))
-    expiries <- as.character(ratesInfo[[1]]$expiry)
-    mmDCC <- as.character(ratesInfo[[2]]$mmDCC)
+    ## extract relevant variables like mmDCC, expiries from the getRates function 
+    ## if they are not entered
     
-    ## date convention standards etc. contained in list 2 of ratesInfo
+    if (is.null(types)) types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    if (is.null(rates)) rates <- as.numeric(as.character(ratesInfo[[1]]$rate))
+    if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
+    if (is.null(mmDCC)) mmDCC <- as.character(ratesInfo[[2]]$mmDCC)
     
-    fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-    floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-    fixedSwapDCC <- as.character(ratesInfo[[2]]$fixedDCC)
-    floatSwapDCC <- as.character(ratesInfo[[2]]$floatDCC)
-    badDayConvZC <- as.character(ratesInfo[[2]]$badDayConvention)
-    holidays <- as.character(ratesInfo[[2]]$swapCalendars)
+    if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
+    if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
+    if (is.null(fixedSwapDCC)) fixedSwapDCC <- as.character(ratesInfo[[2]]$fixedDCC)
+    if (is.null(floatSwapDCC)) floatSwapDCC <- as.character(ratesInfo[[2]]$floatDCC)
+    if (is.null(badDayConvZC)) badDayConvZC <- as.character(ratesInfo[[2]]$badDayConvention)
+    if (is.null(holidays)) holidays <- as.character(ratesInfo[[2]]$swapCalendars)
   }
   
   ## pass arguments to C code to calculate upfront

@@ -1,4 +1,4 @@
-#' The function returns the deposits and swap rates for the day
+  #' The function returns the deposits and swap rates for the day
 #' input. The day input should be a weekday. If not, go to the most
 #' recent previous weekday.
 #'

@@ -15,6 +15,8 @@
 #' "spread".
 #' @param coupon.var name of the column containing the coupon rates. By default 
 #' is "coupon"
+#' @param recovery.var name of the column containing the recovery rates. By default 
+#' is "recovery"
 #' @param maturity.var name of the column containing the maturity dates (note: 
 #' this is different from tenor i.e. it is a proper date like "2019-06-20" and
 #' not "5Y"). By default is "maturity".
@@ -34,6 +36,7 @@ upfrontdf <- function(x,
                       coupon.var = "coupon",
                       tenor.var = "tenor",
                       maturity.var = "maturity",
+                      recovery.var = "recovery",
                       isPriceClean = FALSE){
   
   
@@ -72,7 +75,7 @@ upfrontdf <- function(x,
   
   rates <- rates[rates$date >= min.date & rates$date <= max.date,]
   
-  results <- NULL
+  results <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
@@ -130,8 +133,8 @@ upfrontdf <- function(x,
       fixedSwapDCC <- "ACT/365" 
       floatSwapDCC <- "ACT/360" 
       badDayConvZC <- "M" 
-      holidays <- "TYO"
-      calendar <- "TYO"
+      holidays <- "None"
+      calendar <- "None"
     } else if(x[i, currency.var]=="CHF"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
@@ -218,14 +221,7 @@ upfrontdf <- function(x,
       tenor <- NULL
     }
     
-    if(is.null(x[[maturity.var]])){
-      maturity <- NULL
-    } else {
-      maturity <- x[i, maturity.var]
-    }
-    
-    results <- c(results, 
-                 upfront(TDate = x[i, date.var],
+    results[i] <- upfront(TDate = x[i, date.var],
                          currency = x[i, currency.var],                    
                          types = types,
                          rates = rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])],
@@ -237,14 +233,14 @@ upfrontdf <- function(x,
                          floatSwapDCC = as.character(floatSwapDCC),
                          badDayConvZC = as.character(badDayConvZC),
                          holidays = as.character(holidays),                   
-                         maturity = maturity,
+                         maturity = x[i, maturity.var],
                          tenor = tenor,
                          parSpread = x[i, spread.var],
                          coupon = x[i, coupon.var],
-                         recoveryRate = 0.4,
+                         recoveryRate = x[i, recovery.var],
                          isPriceClean = isPriceClean,
                          calendar = calendar,
-                         notional = notional))
+                         notional = notional)
   } 
   
   return(results)

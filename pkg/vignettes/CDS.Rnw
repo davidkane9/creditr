@@ -31,6 +31,8 @@
 \SweaveOpts{echo = TRUE, results = verbatim, keep.source = TRUE}
 \bibliographystyle{abbrvnat}
 
+%%\VignetteIndexEntry{Credit Default Swaps with R}
+
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \title{Credit Default Swaps with R}

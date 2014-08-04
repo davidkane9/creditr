@@ -273,6 +273,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
     ## if parSpread is given, calculate principal and accrual
     
     cds@parSpread <- parSpread
+    
     cds@principal <- upfront(TDate,
                              baseDate = baseDate,
                              currency = currency,
