@@ -82,14 +82,14 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds1 <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100) 
+#' cds <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100) 
 #' 
 
-CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
+CDS <- function(contract = "SNAC", 
                 entityName = NULL,
                 RED = NULL,
                 
-                TDate = Sys.Date(), ## Default is the current date
+                TDate = Sys.Date(),
                 
                 ## IR curve dates
                 
@@ -144,9 +144,9 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   
   ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
   
-  if(currency=="JPY"){        
+  if(currency == "JPY"){        
     baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
-    JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
+    data(JPY.holidays, package = "CDS")
     
     ## if base date is one of the Japanese holidays we add another business day to it
     
@@ -165,7 +165,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## getDates function. Results are stored in cdsdates
   
-  if(is.null(maturity) | maturity==Sys.Date()){
+  if(is.null(maturity) | maturity == Sys.Date()){
     cdsDates <- getDates(TDate = as.Date(TDate), tenor = tenor, maturity = NULL)
   }
   else if(is.null(tenor)){
@@ -181,11 +181,11 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   
   ## if these dates are not entered, we extract that from cdsdates
   
-  if (is.null(valueDate)) valueDate <- cdsDates$valueDate
+  if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
   if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-  if (is.null(startDate)) startDate <- cdsDates$startDate
-  if (is.null(endDate)) endDate <- cdsDates$endDate
-  if (is.null(stepinDate)) stepinDate <- cdsDates$stepinDate
+  if (is.null(startDate)) startDate         <- cdsDates$startDate
+  if (is.null(endDate)) endDate             <- cdsDates$endDate
+  if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
   
   ## stop if the number of interest rates is not the same as number of expiries
   
@@ -196,23 +196,23 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-    ratesInfo <- getRates(date = ratesDate, currency = currency)
+    ratesInfo     <- getRates(date = ratesDate, currency = currency)
     effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
     
     ## extract relevant variables like mmDCC, expiries from the getRates function 
     ## if they are not entered
     
-    if (is.null(types)) types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    if (is.null(rates)) rates <- as.numeric(as.character(ratesInfo[[1]]$rate))
+    if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
     if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
-    if (is.null(mmDCC)) mmDCC <- as.character(ratesInfo[[2]]$mmDCC)
+    if (is.null(mmDCC)) mmDCC       <- as.character(ratesInfo[[2]]$mmDCC)
     
     if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
     if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-    if (is.null(fixedSwapDCC)) fixedSwapDCC <- as.character(ratesInfo[[2]]$fixedDCC)
-    if (is.null(floatSwapDCC)) floatSwapDCC <- as.character(ratesInfo[[2]]$floatDCC)
-    if (is.null(badDayConvZC)) badDayConvZC <- as.character(ratesInfo[[2]]$badDayConvention)
-    if (is.null(holidays)) holidays <- as.character(ratesInfo[[2]]$swapCalendars)
+    if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(ratesInfo[[2]]$fixedDCC)
+    if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(ratesInfo[[2]]$floatDCC)
+    if (is.null(badDayConvZC)) badDayConvZC   <- as.character(ratesInfo[[2]]$badDayConvention)
+    if (is.null(holidays)) holidays           <- as.character(ratesInfo[[2]]$swapCalendars)
   }
   
   ## if entity name and/or RED code is not provided, we set it as NA
@@ -268,11 +268,13 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
              payAccruedOnDefault = payAccruedOnDefault
   )
   
+  ## if parSpread is given, calculate principal and accrual
+  
   if (!is.null(parSpread)){
     
-    ## if parSpread is given, calculate principal and accrual
-    
     cds@parSpread <- parSpread
+    
+    ## clean upfront or principal
     
     cds@principal <- upfront(TDate,
                              baseDate = baseDate,
@@ -308,7 +310,13 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                              TRUE,
                              payAccruedOnDefault,
                              notional)
+    
+    ## ptsUpfront
+    
     cds@ptsUpfront <- cds@principal / notional
+    
+    ## dirty upfront
+    
     cds@upfront <- upfront(TDate,
                            baseDate = baseDate,
                            currency = currency,
@@ -379,9 +387,12 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                             payAccruedAtStart = isPriceClean,
                             notional,
                             payAccruedOnDefault)
+    
+    ## calculate principal or clean upfront using ptsUpfront
+    
     cds@principal <- notional * ptsUpfront
     
-    ## calculate upfront
+    ## calculate  dirty upfront
     
     cds@upfront <- upfront(TDate,
                            baseDate,
@@ -421,8 +432,13 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   
   else {        
     if (isPriceClean == TRUE) {
+      
       cds@principal <- upfront
+      
       cds@ptsUpfront <- upfront / notional
+      
+      ## calculate parSpread if only clean upfront (principal) and ptsUpfront are provided
+      
       cds@parSpread <- spread(TDate = TDate,
                               baseDate = baseDate,
                               currency = currency,
@@ -455,6 +471,9 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                               payAccruedAtStart = TRUE,
                               payAccruedOnDefault = payAccruedOnDefault,
                               notional = notional)
+      
+      ## dirty upfront
+      
       cds@upfront <- upfront(TDate = TDate,
                              baseDate = baseDate,
                              currency = currency,
@@ -493,6 +512,9 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
       ## dirty upfront
       
       cds@upfront <- upfront
+      
+      ## par Spread
+      
       cds@parSpread <- spread(TDate = TDate,
                               baseDate = baseDate,
                               currency = currency,
@@ -559,6 +581,9 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
                                isPriceClean = TRUE,
                                payAccruedOnDefault,
                                notional)
+      
+      ## ptsUpfront
+      
       cds@ptsUpfront <- cds@principal / notional
     }
   }
@@ -567,7 +592,7 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
   
   cds@accrual <- cds@upfront - cds@principal
   
-  ## if tenor is NULL
+  ## if tenor is NULL, we determine the tenor using the maturity date
   
    if (is.null(tenor)) {
     md <- .mondf(TDate, maturity)
@@ -578,19 +603,21 @@ CDS <- function(contract = "SNAC", ## CDS contract type, default SNAC
     }
   }
   
+  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using getDates.
+  
   if(is.null(maturity)){
     cds@maturity = endDate
   }
   
-  cds@spreadDV01 <- spreadDV01(cds)
-  cds@IRDV01 <- IRDV01(cds) 
-  cds@RecRisk01 <- recRisk01(cds)
+  cds@spreadDV01  <- spreadDV01(cds)
+  cds@IRDV01      <- IRDV01(cds) 
+  cds@RecRisk01   <- recRisk01(cds)
   cds@defaultProb <- defaultProb(parSpread = cds@parSpread,
                                  t = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
                                  recoveryRate = recoveryRate)
   cds@defaultExpo <- defaultExpo(recoveryRate, notional, cds@principal)
-  cds@price <- price(cds@principal, notional)
+  cds@price       <- price(cds@principal, notional)
   
   ## return object with all the calculated data
   

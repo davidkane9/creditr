@@ -1,4 +1,4 @@
-#' check rates function that makes sure the dates in data frame x
+#' Function that makes sure the dates in data frame x
 #' being used by the upfrontdf function are also present in the
 #' rates data frame being entered into the upfrontdf function (if 
 #' it is not contained in the rates data frame, the upfrontdf
@@ -10,12 +10,12 @@
 #' @return vector containing true or false to indicate whether
 #' that specific trade date in X is contained in rates
 
-check.Rates.Dates <- function(x, rates){
-  dates1 <- x$date
-  dates2 <- unique(rates$date)
+check.rates.dates <- function(x, rates){
+  dates.1 <- x$date
+  dates.2 <- unique(rates$date)
   contained <- NULL
   for (i in 1:length(dates1)){
-    if (as.Date(dates1[i]) %in% dates2){
+    if (as.Date(dates.1[i]) %in% dates.2){
       contained <- c(contained, TRUE)
     } else{
       contained <- c(contained, FALSE)

@@ -1,14 +1,3 @@
-# \code{Date-class} predefined in R
-# @name Date, Date-class
-# @aliases Date, Date-class
-# @docType class
-# @rdname Date
-# @export
-# 
-
-# setOldClass(c("Date"))
-
-
 #' Class definition for the \code{CDS-Class}
 #'
 #' @slot contract is the contract type, default SNAC
