@@ -5,7 +5,7 @@
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
 
-.separateYMD <- function(d){
+.separate.YMD <- function(d){
     
     ## valueDate format valueDate = "2008-02-01"
     
@@ -16,7 +16,7 @@
 }
 
 
-#' download the rates zip file from a given URL. Unzip and parse the
+#' \code{.download.rates} downloads the rates zip file from a given URL. Unzip and parse the
 #' XML
 #'
 #' @param URL is the link containing the rates.
@@ -24,7 +24,7 @@
 #'
 #' @return a xml file crawled from the \code{URL}.
 
-.downloadRates <- function(URL, verbose = FALSE){ 
+.download.rates <- function(URL, verbose = FALSE){ 
     tf <- tempfile()
     td <- tempdir()
     
@@ -41,12 +41,12 @@
 }
 
 
-#' get the next business day following 5D bus day convention.
+#' \code{.adj.next.bus.day} gets the next business day following 5 day business day convention.
 #'
 #' @param date of \code{Date} class.
 #' @return Date adjusted to the following business day
 
-.adjNextBusDay <- function(date){
+.adj.next.bus.day <- function(date){
     
     dateWday <- as.POSIXlt(date)$wday
     
@@ -61,13 +61,13 @@
 }
 
 
-#' Get the first accrual date. If it's a weekend, adjust to the
+#' \code{.get.first.accrual.date} gets the first accrual date. If it's a weekend, adjust to the
 #' following weekday. March/Jun/Sept/Dec 20th
 #'
 #' @param TDate of \code{Date} class
 #' @return a \code{Date} class object
 
-.getFirstAccrualDate <- function(TDate){
+.get.first.accrual.date <- function(TDate){
 
     date <- as.POSIXlt(TDate)
 
@@ -81,26 +81,26 @@
         date$mon <- date$mon - (as.numeric(format(date, "%m")) %% 3)
     }
     date$mday <- 20
-    accrualDate <- .adjNextBusDay(as.Date(as.POSIXct(date)))
+    accrualDate <- .adj.next.bus.day(as.Date(as.POSIXct(date)))
 
     return(accrualDate)
 }
 
-#' check the length of the input
+#' \code{.check.length} checkS the length of the input
 #'
 #' @param dat is a string
 #' @return a numeric indicating the length of the input string.
 
-.checkLength <- function(dat){
+.check.length <- function(dat){
     return(nchar(as.character(dat)))
 }
 
-#' check if argument is not a character and coerce it to character
+#' \code{.coerce.to.char} checks if argument is not a character and coerce it to character
 ##
 #' @param x input into the function
 #' @return true if it is a character 
 
-.coercetoChar <- function(x) {
+.coerce.to.char <- function(x) {
   if(class(x)!="character"){
     return(as.character(x))
   }

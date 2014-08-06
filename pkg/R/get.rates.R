@@ -60,7 +60,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
 
     ## XML file from internet, which contains rates data
 
-    xmlParsedIn <- .downloadRates(ratesURL)
+    xmlParsedIn <- .download.rates(ratesURL)
 
     ## rates data extracted from XML file
 

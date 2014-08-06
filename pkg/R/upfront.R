@@ -107,24 +107,24 @@ upfront <- function(TDate,
   TDate <- as.Date(TDate)
   
   if(as.POSIXlt(TDate)$wday==5){
-   baseDate <- .adjNextBusDay(TDate+4)
+   baseDate <- .adj.next.bus.day(TDate+4)
   } else if(as.POSIXlt(TDate)$wday==0){
-   baseDate <- .adjNextBusDay(TDate+3)
+   baseDate <- .adj.next.bus.day(TDate+3)
   } else {
-   baseDate <- .adjNextBusDay(TDate+2)
+   baseDate <- .adj.next.bus.day(TDate+2)
   }
   
   ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
     
   if(currency == "JPY"){        
-   baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
+   baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
     
    JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
     
     ## if base date is one of the Japanese holidays we add another business day
     ## to it
     if(baseDate %in% JPY.holidays){
-      baseDate <- .adjNextBusDay(as.Date(TDate) + 1)
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
     }
   }
   ratesDate <- as.Date(TDate)
@@ -149,13 +149,13 @@ upfront <- function(TDate,
   
   ## separate an input date into year, month, and day
   
-  baseDate      <- .separateYMD(baseDate)
-  today         <- .separateYMD(TDate)
-  valueDate     <- .separateYMD(valueDate)
-  benchmarkDate <- .separateYMD(benchmarkDate)
-  startDate     <- .separateYMD(startDate)
-  endDate       <- .separateYMD(endDate)
-  stepinDate    <- .separateYMD(stepinDate)
+  baseDate      <- .separate.YMD(baseDate)
+  today         <- .separate.YMD(TDate)
+  valueDate     <- .separate.YMD(valueDate)
+  benchmarkDate <- .separate.YMD(benchmarkDate)
+  startDate     <- .separate.YMD(startDate)
+  endDate       <- .separate.YMD(endDate)
+  stepinDate    <- .separate.YMD(stepinDate)
   
   ## stop if number of rates != number of expiries != length of types
   

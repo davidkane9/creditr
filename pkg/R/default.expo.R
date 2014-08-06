@@ -6,8 +6,7 @@
 #' is 10MM.
 #' @param principal is the principal from the CDS contract.
 #' @return a numeric indicating the amount in the event of a default
-#' the following day.
-#' 
+#' the following day. 
 
 default.expo <- function(recoveryRate = 0.4,
                         notional = 1e7,

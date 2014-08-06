@@ -44,18 +44,18 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
     ## valueDate is T + 3 business day
   
     valueDate <- stepinDate
-    for (i in 1:2){valueDate <- .adjNextBusDay(valueDate + 1)}
+    for (i in 1:2){valueDate <- .adj.next.bus.day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
   
-    startDate <- .getFirstAccrualDate(date)
+    startDate <- .get.first.accrual.date(date)
 
     ## firstcouponDate the next IMM date approx after
     ## startDate. adjust to bus day
   
     firstcouponDate     <- as.POSIXlt(startDate)
     firstcouponDate$mon <- firstcouponDate$mon + 3
-    firstcouponDate     <- as.Date(.adjNextBusDay(firstcouponDate))
+    firstcouponDate     <- as.Date(.adj.next.bus.day(firstcouponDate))
     
     ## endDate firstcouponDate + maturity. IMM dates. No adjustment.
   
@@ -80,7 +80,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
   
     pencouponDate     <- as.POSIXlt(endDate)
     pencouponDate$mon <- pencouponDate$mon - 3
-    pencouponDate     <- as.Date(.adjNextBusDay(pencouponDate))
+    pencouponDate     <- as.Date(.adj.next.bus.day(pencouponDate))
     
     ## backstopDate is T - 60
   

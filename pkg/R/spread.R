@@ -142,13 +142,13 @@ spread <- function(TDate,
     if (is.null(endDate)) endDate             <- cdsDates$endDate
     if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
 
-    baseDate      <- .separateYMD(baseDate)
-    today         <- .separateYMD(TDate)
-    valueDate     <- .separateYMD(valueDate)
-    benchmarkDate <- .separateYMD(benchmarkDate)
-    startDate     <- .separateYMD(startDate)
-    endDate       <- .separateYMD(endDate)
-    stepinDate    <- .separateYMD(stepinDate)
+    baseDate      <- .separate.YMD(baseDate)
+    today         <- .separate.YMD(TDate)
+    valueDate     <- .separate.YMD(valueDate)
+    benchmarkDate <- .separate.YMD(benchmarkDate)
+    startDate     <- .separate.YMD(startDate)
+    endDate       <- .separate.YMD(endDate)
+    stepinDate    <- .separate.YMD(stepinDate)
 
     stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
     if ((is.null(types) | is.null(rates) | is.null(expiries))){

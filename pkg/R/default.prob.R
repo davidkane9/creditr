@@ -1,9 +1,10 @@
-#' Approximate the default probability at time t given the parSpread
+#' \code{default.prob} approximates the default probability at time t given the parSpread
 #'
 #' @param parSpread in bps
 #' @param t in years
 #' @param recoveryRate in decimal. Default is 0.4.
-#' 
+#' @return default probability in decimals
+
 default.prob <- function(parSpread, t, recoveryRate = 0.4){
     
     ## Bloomberg Approximation

@@ -3,7 +3,7 @@
 #' @param date date entered
 #' @return TRUE if date is valid, FALSE if date is in future, and 
 #' "Invalid date format. Must be YYYY-MM-DD" if format is wrong
-#' 
+
 check.date <- function(date){
   
   ## try to convert date to class date. Return false if it is not in the correct format

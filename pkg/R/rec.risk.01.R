@@ -104,14 +104,14 @@ rec.risk.01 <- function(object = NULL,
     
     if(currency == "JPY"){        
       
-      baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
       
       JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
       
       ## if base date is one of the Japanese holidays we add another business day to it
       
       if(baseDate %in% JPY.holidays){
-        baseDate <- .adjNextBusDay(as.Date(TDate) + 1)
+        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
       }
     }
     ratesDate <- as.Date(TDate)
@@ -132,13 +132,13 @@ rec.risk.01 <- function(object = NULL,
     if (is.null(endDate)) endDate             <- cdsDates$endDate
     if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
 
-    baseDate      <- .separateYMD(baseDate)
-    today         <- .separateYMD(TDate)
-    valueDate     <- .separateYMD(valueDate)
-    benchmarkDate <- .separateYMD(benchmarkDate)
-    startDate     <- .separateYMD(startDate)
-    endDate       <- .separateYMD(endDate)
-    stepinDate    <- .separateYMD(stepinDate)
+    baseDate      <- .separate.YMD(baseDate)
+    today         <- .separate.YMD(TDate)
+    valueDate     <- .separate.YMD(valueDate)
+    benchmarkDate <- .separate.YMD(benchmarkDate)
+    startDate     <- .separate.YMD(startDate)
+    endDate       <- .separate.YMD(endDate)
+    stepinDate    <- .separate.YMD(stepinDate)
 
     stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
@@ -248,13 +248,13 @@ rec.risk.01 <- function(object = NULL,
 setMethod("rec.risk.01",
           signature(object = "CDS"),
           function(object){
-              baseDate      <- .separateYMD(object@baseDate)
-              today         <- .separateYMD(object@TDate)
-              valueDate     <- .separateYMD(object@valueDate)
-              benchmarkDate <- .separateYMD(object@benchmarkDate)
-              startDate     <- .separateYMD(object@startDate)
-              endDate       <- .separateYMD(object@endDate)
-              stepinDate    <- .separateYMD(object@stepinDate)
+              baseDate      <- .separate.YMD(object@baseDate)
+              today         <- .separate.YMD(object@TDate)
+              valueDate     <- .separate.YMD(object@valueDate)
+              benchmarkDate <- .separate.YMD(object@benchmarkDate)
+              startDate     <- .separate.YMD(object@startDate)
+              endDate       <- .separate.YMD(object@endDate)
+              stepinDate    <- .separate.YMD(object@stepinDate)
 
               
               upfront.new <- .Call('calcUpfrontTest',
