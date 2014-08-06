@@ -1239,7 +1239,7 @@ We can use the formula above for PV01 to calculate the principal amount (clean u
 The PV01 can be used to compute certain risk measures related to interest rates, spread and the default probability.
 
 \subsubsection{Spread DV01}
-\label{sec:spreadDV01}
+\label{sec:spread.DV.01}
 
 Using the concept of PV01, we show the calculation of the main risks (exposures) of a CDS position, \textbf{Spread DV01}. Spread DV01 reflects the risk duration of a CDS trade, also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, and just
 \textbf{DV01}. 
@@ -1464,7 +1464,7 @@ cds3 <- update(cds1, spread = 55)
 
 \texttt{cds3} is a new \texttt{CDS} class object with a spread of 55 bps; all other specifications of the contract are the same as those in \texttt{cds1} since it is updated from \texttt{cds1}. One can also specify \texttt{upfront} (in dollar amount) or \texttt{ptsUpfront} (in bps) in the \texttt{update} method.
 
-There are three parts of the output. The first part "CDS Contract" provides basic information on the contract including "Contract Type", "Currency", "Reference Name" (called Entity Name in the package), "RED", "Trade Date", various dates related to the contract, and the day count conventions for \texttt{cds3}. The last part of the output reports the interest rates used in the calculation. The second part of the output contains relevant risks measures of \texttt{cds3}. Calling the function \texttt{getRates} also produces the rates used in building a curve for CDS valuation. 
+There are three parts of the output. The first part "CDS Contract" provides basic information on the contract including "Contract Type", "Currency", "Reference Name" (called Entity Name in the package), "RED", "Trade Date", various dates related to the contract, and the day count conventions for \texttt{cds3}. The last part of the output reports the interest rates used in the calculation. The second part of the output contains relevant risks measures of \texttt{cds3}. Calling the function \texttt{get.rates} also produces the rates used in building a curve for CDS valuation. 
 
 \subsubsection{show method}
 \label{sec:showMethod}
@@ -1486,16 +1486,16 @@ cds1.CS10 <- CS10(cds1)
 cds1.CS10
 @ 
 
-\subsubsection{getRates function}
-\label{sec:getRatesFunction}
+\subsubsection{get.rates function}
+\label{sec:get.ratesFunction}
 
 This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
 
 <<>>=
-cds3Rates <- getRates(date = "2014-06-24")
+cds3Rates <- get.rates(date = "2014-06-24")
 @
 
-The output from the getRates function below consists of two list objects. The first list contains rates of various maturities. They are directly obtained from the Markit website based on the specifications \citep{rates}.
+The output from the get.rates function below consists of two list objects. The first list contains rates of various maturities. They are directly obtained from the Markit website based on the specifications \citep{rates}.
 
 
 <<echo = FALSE>>=
@@ -1511,15 +1511,15 @@ t(cds3Rates[[2]])
 \subsection{Risk-related Functions}
 \label{sec:riskFunctions}
 
-\subsubsection{recRisk01}
+\subsubsection{rec.risk.01}
 
 Function to calculate the increase in the upfront value when the recovery rate increase by one percentage point.
 
 
 <<echo = FALSE>>=
-recRisk01(TDate = "2014-06-24",
+rec.risk.01(TDate = "2014-06-24",
           currency = "USD",
-          maturity = "5Y",
+          tenor = "5Y",
           parSpread = 160,
           coupon = 100,
           recoveryRate = 0.4,
@@ -1531,7 +1531,7 @@ recRisk01(TDate = "2014-06-24",
 Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
 <<echo = FALSE>>=
-        IRDV01(TDate = "2014-04-22",
+        IR.DV.01(TDate = "2014-04-22",
                   currency = "USD",
                   tenor = "5Y",
                   parSpread = 160,
@@ -1541,12 +1541,12 @@ Function to calculate the increase in the upfront value when the interest rate o
 @
 
 
-\subsubsection{spreadDV01}
+\subsubsection{spread.DV.01}
 
 Function to calculate the increase in the upfront value when the spread increase by one basis point.
 
 <<echo = FALSE>>=
-spreadDV01(TDate = "2014-04-22",
+spread.DV.01(TDate = "2014-04-22",
            currency = "USD",
            tenor = "5Y",
            parSpread = 160,
@@ -1561,7 +1561,7 @@ spreadDV01(TDate = "2014-04-22",
 Function to calculate the default exposure.
 
 <<echo = FALSE>>=
-defaultExpo(principal = 279311)
+default.expo(principal = 279311)
 @
 
 
@@ -1570,7 +1570,7 @@ defaultExpo(principal = 279311)
 Probability of default calculated using the function provided in the Bloomberg manual.
 
 <<echo = FALSE>>=
-defaultProb(parSpread = 160, t = 5, recoveryRate = 0.4)
+default.prob(parSpread = 160, t = 5, recoveryRate = 0.4)
 @
 
 \section{Conclusion}

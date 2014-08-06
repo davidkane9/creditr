@@ -8,7 +8,8 @@
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
 #' @param TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
-#' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
+#' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays.
+#' Format must be YYYY-MM-DD. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
 #' used for the yield curve. 'M' means money market rate; 'S' is swap
@@ -40,7 +41,7 @@
 #' payment.
 #' @param stepinDate default is T + 1.
 #' @param maturity date of the CDS contract.
-#' @param tenor of contract
+#' @param tenor of contract. By default is set as "5Y"
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
@@ -82,7 +83,7 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100) 
+#' cds <- CDS(TDate = "2014-05-07", tenor = "5Y", parSpread = 50, coupon = 100) 
 #' 
 
 CDS <- function(contract = "SNAC", 
@@ -113,7 +114,7 @@ CDS <- function(contract = "SNAC",
                 startDate = NULL,
                 endDate = NULL,
                 stepinDate = NULL,
-                maturity = Sys.Date(),
+                maturity = NULL,
                 tenor = NULL,
                 
                 dccCDS = "ACT/360",
@@ -132,10 +133,9 @@ CDS <- function(contract = "SNAC",
                 payAccruedOnDefault = TRUE
 ){
   
-  ## check if date is valid
+  ## stop if date is invalid
   
-  checkTDate <- checkDate(TDate)
-  if (!is.na(checkTDate)) stop (checkTDate)
+  stopifnot(check.date(TDate))
   
   ## if none of the three are entered
   
@@ -155,7 +155,7 @@ CDS <- function(contract = "SNAC",
     }
   }
   
-  ## rates Date is the date for which interest rates will be calculated. getRates 
+  ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
   ratesDate <- as.Date(TDate)
@@ -163,19 +163,19 @@ CDS <- function(contract = "SNAC",
   effectiveDate <- as.Date(TDate)  
   
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
-  ## getDates function. Results are stored in cdsdates
+  ## get.date function. Results are stored in cdsdates
   
-  if(is.null(maturity) | maturity == Sys.Date()){
-    cdsDates <- getDates(TDate = as.Date(TDate), tenor = tenor, maturity = NULL)
+  if(is.null(maturity)){
+    cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
   }
   else if(is.null(tenor)){
-    cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+    cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
   }
   
   ## if both are entered, we arbitrarily use one of them
   
-  else if(!(is.null(tenor) & is.null(maturity))==TRUE){
-    cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+  else if((!is.null(tenor) & !is.null(maturity))){
+    cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
   }
 
   
@@ -186,20 +186,21 @@ CDS <- function(contract = "SNAC",
   if (is.null(startDate)) startDate         <- cdsDates$startDate
   if (is.null(endDate)) endDate             <- cdsDates$endDate
   if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
+  if (is.null(maturity)) maturity           <- cdsDates$endDate
   
   ## stop if the number of interest rates is not the same as number of expiries
   
   stopifnot(all.equal(length(rates), length(expiries), nchar(types)))  
   
-  ## if the rates are not entered, we extract them using getRates, and store them
+  ## if the rates are not entered, we extract them using get.rates, and store them
   ## in ratesinfo 
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-    ratesInfo     <- getRates(date = ratesDate, currency = currency)
+    ratesInfo     <- get.rates(date = ratesDate, currency = currency)
     effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
     
-    ## extract relevant variables like mmDCC, expiries from the getRates function 
+    ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
     
     if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
@@ -603,20 +604,20 @@ CDS <- function(contract = "SNAC",
     }
   }
   
-  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using getDates.
+  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using get.date.
   
   if(is.null(maturity)){
     cds@maturity = endDate
   }
   
-  cds@spreadDV01  <- spreadDV01(cds)
-  cds@IRDV01      <- IRDV01(cds) 
-  cds@RecRisk01   <- recRisk01(cds)
-  cds@defaultProb <- defaultProb(parSpread = cds@parSpread,
+  cds@spreadDV01  <- spread.DV.01(cds)
+  cds@IRDV01      <- IR.DV.01(cds) 
+  cds@RecRisk01   <- rec.risk.01(cds)
+  cds@defaultProb <- default.prob(parSpread = cds@parSpread,
                                  t = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
                                  recoveryRate = recoveryRate)
-  cds@defaultExpo <- defaultExpo(recoveryRate, notional, cds@principal)
+  cds@defaultExpo <- default.expo(recoveryRate, notional, cds@principal)
   cds@price       <- price(cds@principal, notional)
   
   ## return object with all the calculated data
@@ -624,4 +625,3 @@ CDS <- function(contract = "SNAC",
   return(cds)
   
 }
-

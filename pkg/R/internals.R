@@ -4,7 +4,7 @@
 #' @param d is an input date.
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
-#' 
+
 .separateYMD <- function(d){
     
     ## valueDate format valueDate = "2008-02-01"
@@ -23,7 +23,7 @@
 #' @param verbose option. Default \code{FALSE}.
 #'
 #' @return a xml file crawled from the \code{URL}.
-#' 
+
 .downloadRates <- function(URL, verbose = FALSE){ 
     tf <- tempfile()
     td <- tempdir()
@@ -90,6 +90,7 @@
 #'
 #' @param dat is a string
 #' @return a numeric indicating the length of the input string.
+
 .checkLength <- function(dat){
     return(nchar(as.character(dat)))
 }
@@ -98,7 +99,7 @@
 ##
 #' @param x input into the function
 #' @return true if it is a character 
-#' 
+
 .coercetoChar <- function(x) {
   if(class(x)!="character"){
     return(as.character(x))
@@ -111,6 +112,7 @@
 
 #' month difference
 #' @param d date 
+ 
 .monnb <- function(d) {
     lt <- as.POSIXlt(as.Date(d, origin="1900-01-01"))
     lt$year*12 + lt$mon
@@ -121,7 +123,7 @@
 #' @param d1 date 1
 #' @param d2 date 2
 #' @return month difference as a difference between two monnb's
-#' 
+ 
 .mondf <- function(d1, d2) { .monnb(d2) - .monnb(d1) }
 
 

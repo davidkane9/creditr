@@ -14,7 +14,7 @@ check.rates.dates <- function(x, rates){
   dates.1 <- x$date
   dates.2 <- unique(rates$date)
   contained <- NULL
-  for (i in 1:length(dates1)){
+  for (i in 1:length(dates.1)){
     if (as.Date(dates.1[i]) %in% dates.2){
       contained <- c(contained, TRUE)
     } else{

@@ -2,7 +2,7 @@
 
 library(CDS)
 
-truth1 <- CDS(TDate = "2014-01-14",
+truth.1 <- CDS(TDate = "2014-01-14",
                tenor = "5Y",
                parSpread = 32,
                coupon = 100,
@@ -14,7 +14,7 @@ truth1 <- CDS(TDate = "2014-01-14",
 
 ## load("CDS.test.RData")
 
-result1 <- CDS(TDate = "2014-01-14",
+result.1 <- CDS(TDate = "2014-01-14",
                tenor = "5Y",
                parSpread = 32,
                coupon = 100,
@@ -22,7 +22,7 @@ result1 <- CDS(TDate = "2014-01-14",
                isPriceClean = FALSE,
                notional = 1e7)
 
-stopifnot(all.equal(truth1, result1))
+stopifnot(all.equal(truth.1, result.1))
 
 ## if neither maturity date nor tenor are provided, function must return an error
 
