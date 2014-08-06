@@ -1,4 +1,4 @@
-#' update spread or ptsUpfront or upfront based on a new CDS class object.
+#' \code{update} spread or ptsUpfront or upfront based on a new CDS class object.
 #'
 #' @param object is a \code{CDS} class object.
 #' @param upfront is the new upfront payment amount.
@@ -17,7 +17,6 @@
 #'
 #' ## update
 #' update(cds1, spread = 55)
-#' 
 
 setMethod("update",
           signature(object = "CDS"),
