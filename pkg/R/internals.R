@@ -5,7 +5,7 @@
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
 #' 
-.separateYMD <- function(d){
+.separate.YMD <- function(d){
   ## valueDate format valueDate = "2008-02-01"
   dateYear <- as.numeric(format(as.Date(d), "%Y"))
   dateMonth <- as.numeric(format(as.Date(d), "%m"))
@@ -22,7 +22,7 @@
 #'
 #' @return a xml file crawled from the \code{URL}.
 #' 
-.downloadRates <- function(URL, verbose = FALSE){ 
+.download.rates <- function(URL, verbose = FALSE){ 
   tf <- tempfile()
   td <- tempdir()
   ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
@@ -44,7 +44,7 @@
 #' @param date of \code{Date} class.
 #' @return Date adjusted to the following business day
 
-.adjNextBusDay <- function(date){
+.adj.next.bus.day <- function(date){
   
   dateWday <- as.POSIXlt(date)$wday
   ## change date to the most recent weekday if necessary
@@ -63,7 +63,7 @@
 #' @param TDate of \code{Date} class
 #' @return a \code{Date} class object
 
-.getFirstAccrualDate <- function(TDate){
+.get.first.accrual.date <- function(TDate){
   
   date <- as.POSIXlt(TDate)
   
@@ -76,7 +76,7 @@
     date$mon <- date$mon - (as.numeric(format(date, "%m")) %% 3)
   }
   date$mday <- 20
-  accrualDate <- .adjNextBusDay(as.Date(as.POSIXct(date)))
+  accrualDate <- .adj.next.bus.day(as.Date(as.POSIXct(date)))
   
   return(accrualDate)
 }
@@ -85,7 +85,7 @@
 #'
 #' @param dat is a string
 #' @return a numeric indicating the length of the input string.
-.checkLength <- function(dat){
+.check.length <- function(dat){
   return(nchar(as.character(dat)))
 }
 
@@ -94,7 +94,7 @@
 #' @param x input into the function
 #' @return true if it is a character 
 #' 
-.coercetoChar <- function(x) {
+.coerce.to.char <- function(x) {
   if(class(x)!="character"){
     return(as.character(x))
   }
