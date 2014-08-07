@@ -4,11 +4,7 @@
 \title{\code{default.expo} to calculate the default exposure of a CDS contract based on the
 formula: Default Exposure: (1-Recovery Rate)*Notional - Principal}
 \usage{
-<<<<<<< HEAD:pkg/man/defaultExpo.Rd
-defaultExpo(recoveryRate = 0.4, notional = 10000000, principal)
-=======
-default.expo(recoveryRate = 0.4, notional = 1e+07, principal)
->>>>>>> e401d0df7eb96bb0e12a5c838a70b8ac67383b22:pkg/man/default.expo.Rd
+default.expo(recoveryRate = 0.4, notional = 10000000, principal)
 }
 \arguments{
 \item{recoveryRate}{in decimal. Default is 0.4}
