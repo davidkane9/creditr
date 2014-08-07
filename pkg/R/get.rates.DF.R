@@ -13,35 +13,38 @@
  
 get.rates.DF <- function(start, end, currency = "USD"){
 
-  yearRates <- NULL
-  endDate <- as.Date(endDate)
-  startDate <- as.Date(startDate)
-  
-  # start & end date must be valid
+  stopifnot(inherits(start, "Date"))
+  stopifnot(inherits(end, "Date"))
+
+  ## start & end date must be valid
   
   stopifnot(check.date(start))
   stopifnot(check.date(end))
     
-  # start date must be smaller than end date
+  ## start date must be smaller than end date
   
-  stopifnot(endDate <= startDate)
+  stopifnot(end > start)
   
-  while(endDate>startDate){
-    Rates <- try(get.rates(date = endDate, currency=currency)[[1]])
+  ## Our loop will just append to x each time through.
+  
+  x <- NULL
+  
+  while(end > start){
+    Rates <- try(get.rates(date = end, currency=currency)[[1]])
     if(is(Rates, "try-error")){
       getRates <- NULL
-      endDate <- endDate - 1 
+      end <- end - 1 
     } else {
       getRates <- Rates
       rates <- as.numeric(as.character(getRates$rate))
       expiry <- getRates$expiry
-      date <- rep(endDate, length(rates))
+      date <- rep(end, length(rates))
       thisCurrency <- rep(currency, length(rates))
       df <- data.frame(date, currency, expiry, rates)
-      yearRates <- rbind(yearRates, df)
-      endDate <- endDate - 1      
+      x <- rbind(x, df)
+      end <- end - 1      
     }    
   }  
   
-  return(yearRates)
+  return(x)
 }
