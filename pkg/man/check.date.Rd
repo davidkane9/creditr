@@ -8,7 +8,7 @@ check.date(date)
 check.date(date)
 }
 \arguments{
-\item{date}{date entered}
+\item{date}{entered}
 
 \item{date}{date entered}
 }

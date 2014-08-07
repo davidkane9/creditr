@@ -1,6 +1,6 @@
 #' \code{check.date} for testing if the date entered is valid
 #
-#' @param date date entered
+#' @param date entered
 #' @return TRUE if date is valid, FALSE if date is in future, and 
 #' "Invalid date format. Must be YYYY-MM-DD" if format is wrong
 
