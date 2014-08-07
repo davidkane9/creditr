@@ -13,12 +13,12 @@ Class definition for the \code{CDS-Class}
 \describe{
 \item{\code{contract}}{is the contract type, default SNAC}
 
-\item{\code{entityName}}{is the name of the reference entity. Optional.}
+\item{\code{entityName}}{is the name of the reference entity (Optional)}
 
-\item{\code{RED}}{alphanumeric code assigned to the reference entity. Optional.}
+\item{\code{RED}}{alphanumeric code assigned to the reference entity (Optional)}
 
 \item{\code{TDate}}{is when the trade is executed, denoted as T. Default
-is \code{Sys.Date}.}
+is today's date.}
 
 \item{\code{baseDate}}{is the start date for the IR curve. Default is TDate.}
 
@@ -68,7 +68,8 @@ payment.}
 
 \item{\code{stepinDate}}{default is T + 1.}
 
-\item{\code{maturity}}{date of the CDS contract.}
+\item{\code{maturity}}{date of the CDS contract. Note that we must provide
+either tenor or maturity but not both.}
 
 \item{\code{tenor}}{of contract - "5Y", "3Y"}
 
@@ -104,7 +105,7 @@ to the protection seller in the event of a default. Default is
 
 \item{\code{principal}}{is the dirty \code{upfront} less the \code{accrual}.}
 
-\item{\code{accrual}}{is the accrued interest payment.#'}
+\item{\code{accrual}}{is the accrued interest payment.}
 
 \item{\code{upfront}}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

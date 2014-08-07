@@ -8,7 +8,7 @@ bus.days.offset(fromDate, offset, holidays = NULL)
 \arguments{
 \item{fromDate}{starting date}
 
-\item{offset}{function}
+\item{offset}{function.}
 
 \item{holidays}{holidays is an input for holiday files to adjust to
 business day counting. Default is \code{None}.}
