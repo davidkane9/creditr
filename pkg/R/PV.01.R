@@ -11,21 +11,6 @@
 #' 
 #' @return Vector containing the PV01 values using the formula: 
 #' (principal/notional)*(10000/(parSpread-coupon))
-#' 
-#' @example
-#' # creating x data frame with 100 rows. Note that the column names are different from
-#' # what they are set by default
-#' 
-#' x <- data.frame(cleanUpfront = rep(163000, 100),
-#'                 parSpread = rep(65, 100),
-#'                 couponRate = rep(100, 100),
-#'                 notionalAmount = rep(1e7, 100))
-#' 
-#' # we feed the data frame 'x' into PV.01 and provide the column 
-#' # names of the respective variables as they are defined in 'x'
-#' 
-#' PV.01(x, principal.var = "cleanUpfront", parSpread.var = "parSpread",
-#' coupon.var = "couponRate", notional.var = "notionalAmount")
 
 PV.01 <- function(x, 
                   principal.var = "principal", 
