@@ -311,7 +311,7 @@ CDS <- function(contract = "SNAC",
                              payAccruedOnDefault,
                              notional)
     
-    ## ptsUpfront
+    ## points upfront
     
     cds@ptsUpfront <- cds@principal / notional
     
@@ -352,6 +352,9 @@ CDS <- function(contract = "SNAC",
                            payAccruedOnDefault,
                            notional)
   } else if (!is.null(ptsUpfront)){
+    
+    ## points upfront
+    
     cds@ptsUpfront <- ptsUpfront
     
     ## calculate par spread if not provided
@@ -428,12 +431,16 @@ CDS <- function(contract = "SNAC",
     
   } 
   
-  ## if pts upfront and parspread are both provided
+  ## if pts upfront and parspread are both provided, then we have to calculate the spread
   
   else {        
     if (isPriceClean == TRUE) {
       
+      ## principal or clean upfront
+      
       cds@principal <- upfront
+      
+      ## points upfront
       
       cds@ptsUpfront <- upfront / notional
       
@@ -608,6 +615,8 @@ CDS <- function(contract = "SNAC",
   if(is.null(maturity)){
     cds@maturity = endDate
   }
+  
+  ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
   
   cds@spreadDV01  <- spread.DV.01(cds)
   cds@IRDV01      <- IR.DV.01(cds) 
