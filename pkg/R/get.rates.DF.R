@@ -29,22 +29,36 @@ get.rates.DF <- function(start, end, currency = "USD"){
   
   x <- NULL
   
+  ## keep 
+  
   while(end > start){
+    
+    ## use get.rates with the end date and keep reducing it by 1 day
+    ## store this data in Rates
+      
     Rates <- try(get.rates(date = end, currency=currency)[[1]])
-    if(is(Rates, "try-error")){
-      getRates <- NULL
-      end <- end - 1 
-    } else {
-      getRates <- Rates
-      rates <- as.numeric(as.character(getRates$rate))
-      expiry <- getRates$expiry
-      date <- rep(end, length(rates))
-      thisCurrency <- rep(currency, length(rates))
-      df <- data.frame(date, currency, expiry, rates)
-      x <- rbind(x, df)
-      end <- end - 1      
-    }    
-  }  
+    
+    ## we use try so that if there is a date where rates are unavailable,
+    ## it doesn't stop the function. 
+      
+      if(is(Rates, "try-error")){
+        end <- end - 1 
+      } else {
+        getRates <- Rates
+        
+        ## extract relevant columns from Rates
+        
+        rates <- as.numeric(as.character(getRates$rate))
+        expiry <- getRates$expiry
+        date <- rep(end, length(rates))
+        thisCurrency <- rep(currency, length(rates))
+        
+        ## append all the data from the different dates where rates are available
+        
+        x <- rbind(x, data.frame(date, currency, expiry, rates))
+        end <- end - 1      
+      }    
+    }  
   
   return(x)
 }
