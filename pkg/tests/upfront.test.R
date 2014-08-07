@@ -520,3 +520,20 @@ expect_that(round(result.12, -1), equals(round(result.13, -1)))
 
 ## test case to see upfront payment when trade date is one day away from 
 ## maturity date
+
+## test for different Japanese dates
+
+result.13 <- upfront(TDate = "2009-03-18",
+                    maturity = "2014-03-20",
+                    currency = "JPY",
+                    parSpread = 105.8,
+                    coupon = 100,
+                    recoveryRate = 0.35,
+                    isPriceClean = FALSE,
+                    notional = 1e7)
+
+truth.13 <- 3487
+
+expect_that(round(result.13, -1), equals(round(result.13, -1)))
+
+

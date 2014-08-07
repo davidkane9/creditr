@@ -37,14 +37,14 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
     dateWday <- as.POSIXlt(date)$wday
     if (!(dateWday %in% c(1:5))) stop("date must be a weekday")
     
-    ## stepinDate is T + 1 business day
+    ## stepinDate is T + 1 day
   
     stepinDate <- date + 1
 
-    ## valueDate is T + 3 business day
+    ## valueDate is T + 3 business day 
   
-    valueDate <- stepinDate
-    for (i in 1:2){valueDate <- .adj.next.bus.day(valueDate + 1)}
+    valueDate <- date
+    for (i in 1:3){valueDate <- .adj.next.bus.day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
   
@@ -60,7 +60,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
     ## endDate firstcouponDate + maturity. IMM dates. No adjustment.
   
     if(is.null(maturity)){
-      endDate <- as.POSIXlt(firstcouponDate)
+      endDate <- as.POSIXlt(date)
       if (duration == "M"){
         endDate$mon <- endDate$mon + length
       } else {
@@ -68,12 +68,8 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
         }
       endDate <- as.Date(endDate)
       }
-      else{
-        
-        ## endDate <- as.POSIXlt(firstcouponDate)  
-        ## endDate$year <- endDate$year + (as.POSIXlt(maturity)$year - as.POSIXlt(date)$year)
-        
-        endDate <- as.Date(maturity)
+    else{
+      endDate <- as.Date(maturity)
     }
     
     ## pencouponDate T + maturity - 1 accrual interval. adj to bus day
