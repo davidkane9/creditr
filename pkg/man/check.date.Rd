@@ -4,24 +4,15 @@
 \title{\code{check.date} for testing if the date entered is valid}
 \usage{
 check.date(date)
-
-check.date(date)
 }
 \arguments{
 \item{date}{entered}
-
-\item{date}{date entered}
 }
 \value{
-TRUE if date is valid, FALSE if date is in future, and
-"Invalid date format. Must be YYYY-MM-DD" if format is wrong
-
 TRUE if date is valid, FALSE if date is in future, and
 "Invalid date format. Must be YYYY-MM-DD" if format is wrong
 }
 \description{
 \code{check.date} for testing if the date entered is valid
-
-\code{check.date} for testing whether the trade date is valid
 }
 
