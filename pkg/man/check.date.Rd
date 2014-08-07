@@ -4,8 +4,6 @@
 \title{\code{check.date} for testing if the date entered is valid}
 \usage{
 check.date(date)
-
-check.date(date)
 }
 \arguments{
 \item{date}{entered}

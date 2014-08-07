@@ -19,14 +19,8 @@ Interest rates for USD, EUR, GBP, and JPY from 2003-01-02 till 2014-07-16.
     \item{\code{rates}}{a numeric vector}
   }
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
 \source{
 \url{https://www.markit.com/}
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
 data(rates)
