@@ -8,5 +8,8 @@ pkg/vignettes/*.log
 pkg/vignettes/*.gz
 pkg/vignettes/*.tex
 pkg/vignettes/*.toc
+pkg/vignettes/*.aux
+pkg/vignettes/*.bib
+pkg/vignettes/*.pdf
 pkg/src/*so
 pkg/src/*.o
