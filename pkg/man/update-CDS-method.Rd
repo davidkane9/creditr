@@ -2,7 +2,7 @@
 \docType{methods}
 \name{update,CDS-method}
 \alias{update,CDS-method}
-\title{update spread or ptsUpfront or upfront based on a new CDS class object.}
+\title{\code{update} spread or ptsUpfront or upfront based on a new CDS class object.}
 \usage{
 \S4method{update}{CDS}(object, upfront = NULL, isPriceClean = FALSE,
   ptsUpfront = NULL, spread = NULL, ...)
@@ -26,7 +26,7 @@ upfront.}
 a \code{CDS} class object
 }
 \description{
-update spread or ptsUpfront or upfront based on a new CDS class object.
+\code{update} spread or ptsUpfront or upfront based on a new CDS class object.
 }
 \examples{
 ## build a CDS class object

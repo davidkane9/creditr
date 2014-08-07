@@ -10,11 +10,11 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = Sys.Date(),
-  tenor = NULL, dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F",
-  badDayConvCDS = "F", calendar = "None", parSpread = NULL,
-  coupon = 100, recoveryRate = 0.4, upfront = NULL, ptsUpfront = NULL,
-  isPriceClean = FALSE, notional = 10000000, payAccruedOnDefault = TRUE)
+  endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
+  dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
+  calendar = "None", parSpread = NULL, coupon = 100, recoveryRate = 0.4,
+  upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
+  notional = 10000000, payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{contract}{is the contract type, default SNAC}
@@ -26,7 +26,8 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
 \item{TDate}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.}
+\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
+Format must be YYYY-MM-DD.}
 
 \item{currency}{in which CDS is denominated.}
 
@@ -76,7 +77,7 @@ payment.}
 
 \item{maturity}{date of the CDS contract.}
 
-\item{tenor}{of contract}
+\item{tenor}{of contract. By default is set as "5Y"}
 
 \item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
 
@@ -135,6 +136,6 @@ contract.
 \examples{
 # Build a simple CDS class object
 require(CDS)
-cds1 <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100)
+cds <- CDS(TDate = "2014-05-07", tenor = "5Y", parSpread = 50, coupon = 100)
 }
 
