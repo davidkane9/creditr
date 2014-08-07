@@ -1,5 +1,7 @@
 \name{rates}
 \alias{rates}
+\alias{rates.this}
+\alias{upfront.data}
 \docType{data}
 \title{
 Historic Interest Rates
