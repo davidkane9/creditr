@@ -184,9 +184,9 @@ expect_that(round(result.4), equals(round(truth.4)))
 ## calculated value
 
 rates.5 <- rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]
-
+#data(rates)
 result.5 <- upfront(TDate = "2014-04-15",
-                    currency = "USD",                    
+                    currency = "JPY",                    
                     types = "MMMMMSSSSSSSS",
                     rates = rates.5,
                     expiries = c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y"),                    

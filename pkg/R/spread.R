@@ -1,4 +1,4 @@
-#' Calculate conventional spread from upfront
+#' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
 #' @param TDate is when the trade is executed, denoted as T.
 #' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
@@ -67,7 +67,6 @@
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
 #' @return a numeric indicating the spread.
-#' 
 
 spread <- function(TDate,
                    baseDate = as.Date(TDate) + 2,
@@ -111,8 +110,9 @@ spread <- function(TDate,
     
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
-    if(currency=="JPY"){        
+    if(currency == "JPY"){        
       baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
+      
       JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
       
       ## if base date is one of the Japanese holidays we add another business day to it
@@ -130,41 +130,41 @@ spread <- function(TDate,
     }
     
     if(is.null(maturity)){
-      cdsDates <- getDates(TDate = as.Date(TDate), tenor = tenor, maturity = NULL)
+      cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
     }
     else if(is.null(tenor)){
-      cdsDates <- getDates(TDate = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
     }
     
-    if (is.null(valueDate)) valueDate <- cdsDates$valueDate
+    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
     if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate <- cdsDates$startDate
-    if (is.null(endDate)) endDate <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate <- cdsDates$stepinDate
+    if (is.null(startDate)) startDate         <- cdsDates$startDate
+    if (is.null(endDate)) endDate             <- cdsDates$endDate
+    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
 
-    baseDate <- .separateYMD(baseDate)
-    today <- .separateYMD(TDate)
-    valueDate <- .separateYMD(valueDate)
-    benchmarkDate <- .separateYMD(benchmarkDate)
-    startDate <- .separateYMD(startDate)
-    endDate <- .separateYMD(endDate)
-    stepinDate <- .separateYMD(stepinDate)
+    baseDate      <- .separate.YMD(baseDate)
+    today         <- .separate.YMD(TDate)
+    valueDate     <- .separate.YMD(valueDate)
+    benchmarkDate <- .separate.YMD(benchmarkDate)
+    startDate     <- .separate.YMD(startDate)
+    endDate       <- .separate.YMD(endDate)
+    stepinDate    <- .separate.YMD(stepinDate)
 
     stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
         
-        ratesInfo <- getRates(date = ratesDate, currency = as.character(currency))
-        types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates <- as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries <- as.character(ratesInfo[[1]]$expiry)
-        mmDCC <- as.character(ratesInfo[[2]]$mmDCC)
+        ratesInfo <- get.rates(date = ratesDate, currency = as.character(currency))
+        types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+        rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
+        expiries  <- as.character(ratesInfo[[1]]$expiry)
+        mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
         
         fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
         floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC <- as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC <- as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC <- as.character(ratesInfo[[2]]$badDayConvention)
-        holidays <- as.character(ratesInfo[[2]]$swapCalendars)
+        fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
+        floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
+        badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
+        holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
     }
 
     

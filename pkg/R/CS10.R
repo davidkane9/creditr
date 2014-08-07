@@ -1,4 +1,5 @@
-#' Calculate the CS10 of a CDS contract
+#' \code{CS10} Calculates the change in upfront value when the parSpread rises by 10%, 
+#' also known as the CS10 of a contract.
 #'
 #' Calculate the change in value of the contract when there is a 10%
 #' on the spread of the contract.

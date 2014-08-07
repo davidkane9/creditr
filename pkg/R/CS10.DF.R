@@ -4,7 +4,6 @@
 #' @param x data frame containing the trade date, spread, coupon and tenor 
 #' @return original data frame with a column containing the corresponding CS10 values
 
-
 CS10.df <- function(x){
   
   index <- x$index

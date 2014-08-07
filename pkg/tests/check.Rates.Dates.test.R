@@ -14,10 +14,10 @@ library(CDS)
 ##                      "2013-04-16",
 ##                      currency = "EUR")
 
-## save(X, rates, file = "check.Rates.Dates.test.RData")
+## save(X, rates, file = "check.rates.dates.test.RData")
 
-load("check.Rates.Dates.test.RData")
-result <- check.Rates.Dates(X, rates)
+load("check.rates.dates.test.RData")
+result <- check.rates.dates(X, rates)
 
 ## false is contained in the vector returned by the function
 
