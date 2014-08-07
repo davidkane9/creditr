@@ -1,0 +1,76 @@
+CDS                     Build a 'CDS' class object given the input
+                        about a CDS contract.
+CDS, CDS-class          Class definition for the 'CDS-Class'
+CS10                    'CS10' Calculates the change in upfront value
+                        when the parSpread rises by 10 also known as
+                        the CS10 of a contract.
+CS10-method             S4 method CS10
+CS10.df                 function that takes a data frame containing the
+                        trade date, spread, coupon and tenor to return
+                        the corresponding CS 10 column with the rest of
+                        the data frame
+IR.DV.01                'IR.DV.01' Calculate the IR DV01 from
+                        conventional spread
+IR.DV.01-method         The IRDV01 method for CDS class. Calculate the
+                        IRDV01 from conventional spread
+JPY.holidays            Japanese Holidays
+PV01                    'PV01' to calculate present value 01 or present
+                        value of a stream of 1bp payments
+bus.days.offset         'bus.days.offset' passes R objects to compiled
+                        C code loaded into R to adjust for business
+                        days.
+check.date              'check.date' for testing if the date entered is
+                        valid
+check.rates.dates       Function that makes sure the dates in data
+                        frame x being used by the upfrontdf function
+                        are also present in the rates data frame being
+                        entered into the upfrontdf function (if it is
+                        not contained in the rates data frame, the
+                        upfrontdf function will be unable to return the
+                        upfront value) match with the rates on
+                        markit.com for that specific date.
+default.expo            'default.expo' to calculate the default
+                        exposure of a CDS contract based on the
+                        formula: Default Exposure: (1-Recovery
+                        Rate)*Notional - Principal
+default.prob            'default.prob' approximates the default
+                        probability at time t given the parSpread
+get.date                'get.date' returns appropriate dates used in
+                        pricing a CDS contract.
+get.rates               'get.rates' returns the deposits and swap rates
+                        for the day input, along with the date
+                        conventions for that specific currency. The day
+                        input should be a weekday. If not, go to the
+                        most recent previous weekday.
+get.rates.DF            'get.rates.DF' takes a data frame of dates and
+                        returns a data frame with the yields for
+                        different maturities. Note year must be entered
+                        as YYYY-MM-DD.
+implied.recovery.rate   A function that calculates the implied recovery
+                        rate.
+pd.spread               'pd.spread' to calculate spread using the
+                        probability of default, time and recovery rate
+price                   Calculate the price of a CDS contract
+rates                   Historic Interest Rates
+rec.risk.01             'rec.risk.01' calculate the amount of change in
+                        upfront when there is a 1 increase in recovery
+                        rate.
+rec.risk.01-method      Calculate the amount of change in upfront when
+                        there is a 1% increase in recovery rate.
+show                    The show method for CDS class
+spread                  'spread' to calculate conventional spread using
+                        the upfront or ptsUpfront values
+spread.DV.01            'spread.DV.01' calculates the spread DV01 or
+                        change in upfront value when the spread rises
+                        by 1 basis point
+spread.DV.01-method     The spread.DV.01 method for CDS class.
+summary,CDS-method      The summary method displays only the essential
+                        info about the CDS class object.
+update,CDS-method       'update' spread or ptsUpfront or upfront based
+                        on a new CDS class object.
+upfront                 'upfront' calculates dirty upfront payments of
+                        a CDS contract.
+upfrontdf               'upfrontdf' takes a dataframe of variables on
+                        CDSs to return a vector of upfront values. Note
+                        that all CDS in the data frame must be
+                        denominated in the same currency.
