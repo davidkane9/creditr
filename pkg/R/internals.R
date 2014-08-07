@@ -4,103 +4,97 @@
 #' @param d is an input date.
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
-
-.separate.YMD <- function(d){
-    
-    ## valueDate format valueDate = "2008-02-01"
-    
-    dateYear <- as.numeric(format(as.Date(d), "%Y"))
-    dateMonth <- as.numeric(format(as.Date(d), "%m"))
-    dateDay <- as.numeric(format(as.Date(d), "%d"))
-    return(c(dateYear, dateMonth, dateDay))
+#' 
+.separateYMD <- function(d){
+  ## valueDate format valueDate = "2008-02-01"
+  dateYear <- as.numeric(format(as.Date(d), "%Y"))
+  dateMonth <- as.numeric(format(as.Date(d), "%m"))
+  dateDay <- as.numeric(format(as.Date(d), "%d"))
+  return(c(dateYear, dateMonth, dateDay))
 }
 
 
-#' \code{.download.rates} downloads the rates zip file from a given URL. Unzip and parse the
+#' download the rates zip file from a given URL. Unzip and parse the
 #' XML
 #'
 #' @param URL is the link containing the rates.
 #' @param verbose option. Default \code{FALSE}.
 #'
 #' @return a xml file crawled from the \code{URL}.
-
-.download.rates <- function(URL, verbose = FALSE){ 
-    tf <- tempfile()
-    td <- tempdir()
-    
-    ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
-    
-    tmp <- .zipdown(URL, tf)
+#' 
+.downloadRates <- function(URL, verbose = FALSE){ 
+  tf <- tempfile()
+  td <- tempdir()
+  ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
+  tmp <- .zipdown(URL, tf)
+  if (class(tmp) == "character"){
+    return(tmp)
+  } else {
     files <- unzip(tf , exdir = td)
-    
     ## the 2nd file of the unzipped directory contains the rates info
-    
     doc <- xmlTreeParse(files[grep(".xml", files)], getDTD = F)
     r <- xmlRoot(doc)
     return(r)
+  }
 }
 
 
-#' \code{.adj.next.bus.day} gets the next business day following 5 day business day convention.
+#' get the next business day following 5D bus day convention.
 #'
 #' @param date of \code{Date} class.
 #' @return Date adjusted to the following business day
 
-.adj.next.bus.day <- function(date){
-    
-    dateWday <- as.POSIXlt(date)$wday
-    
-    ## change date to the most recent weekday if necessary
-    
-    if (dateWday == 0){
-        date <- date + 1
-    } else if (dateWday == 6) {
-        date <- date + 2
-    }
-    return(date)
+.adjNextBusDay <- function(date){
+  
+  dateWday <- as.POSIXlt(date)$wday
+  ## change date to the most recent weekday if necessary
+  if (dateWday == 0){
+    date <- date + 1
+  } else if (dateWday == 6) {
+    date <- date + 2
+  }
+  return(date)
 }
 
 
-#' \code{.get.first.accrual.date} gets the first accrual date. If it's a weekend, adjust to the
+#' Get the first accrual date. If it's a weekend, adjust to the
 #' following weekday. March/Jun/Sept/Dec 20th
 #'
 #' @param TDate of \code{Date} class
 #' @return a \code{Date} class object
 
-.get.first.accrual.date <- function(TDate){
-
-    date <- as.POSIXlt(TDate)
-
-    ## get the remainder X after dividing it by 3 and then move back X
-    ## month
-    
-    if (date$mon %in% c(2, 5, 8, 11)){
-        if (date$mday < 20)
-            date$mon <- date$mon - 3
-    } else { 
-        date$mon <- date$mon - (as.numeric(format(date, "%m")) %% 3)
-    }
-    date$mday <- 20
-    accrualDate <- .adj.next.bus.day(as.Date(as.POSIXct(date)))
-
-    return(accrualDate)
+.getFirstAccrualDate <- function(TDate){
+  
+  date <- as.POSIXlt(TDate)
+  
+  ## get the remainder X after dividing it by 3 and then move back X
+  ## month
+  if (date$mon %in% c(2, 5, 8, 11)){
+    if (date$mday < 20)
+      date$mon <- date$mon - 3
+  } else { 
+    date$mon <- date$mon - (as.numeric(format(date, "%m")) %% 3)
+  }
+  date$mday <- 20
+  accrualDate <- .adjNextBusDay(as.Date(as.POSIXct(date)))
+  
+  return(accrualDate)
 }
 
-#' \code{.check.length} checkS the length of the input
+#' check the length of the input
 #'
 #' @param dat is a string
 #' @return a numeric indicating the length of the input string.
-
-.check.length <- function(dat){
-    return(nchar(as.character(dat)))
+.checkLength <- function(dat){
+  return(nchar(as.character(dat)))
 }
 
-#' \code{.coerce.to.char} checks if argument is not a character and coerce it to character
+#' check if argument is not a character and coerce it to character
 ##
 #' @param x input into the function
 #' @return true if it is a character 
-
-.coerce.to.char <- function(x) {
+#' 
+.coercetoChar <- function(x) {
   if(class(x)!="character"){
     return(as.character(x))
   }
@@ -112,10 +106,9 @@
 
 #' month difference
 #' @param d date 
- 
 .monnb <- function(d) {
-    lt <- as.POSIXlt(as.Date(d, origin="1900-01-01"))
-    lt$year*12 + lt$mon
+  lt <- as.POSIXlt(as.Date(d, origin="1900-01-01"))
+  lt$year*12 + lt$mon
 } 
 
 
@@ -123,26 +116,38 @@
 #' @param d1 date 1
 #' @param d2 date 2
 #' @return month difference as a difference between two monnb's
- 
+#' 
 .mondf <- function(d1, d2) { .monnb(d2) - .monnb(d1) }
-  
+
+
+
+
 
 .cbind.fill<-function(...){
-    nm <- list(...) 
-    nm <- lapply(nm, as.matrix)
-    n <- max(sapply(nm, nrow)) 
-    do.call(cbind, lapply(nm, function (x) 
-                          rbind(x, matrix(, n-nrow(x), ncol(x))))) 
+  nm <- list(...) 
+  nm <- lapply(nm, as.matrix)
+  n <- max(sapply(nm, nrow)) 
+  do.call(cbind, lapply(nm, function (x) 
+    rbind(x, matrix(, n-nrow(x), ncol(x))))) 
 }
 
 
 .zipdown <- function(url, file){
-    f <- CFILE(file, mode="wb")
-    a <- curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
-        verbose = FALSE)
-    close(f)
-    return(a)
+  f <- CFILE(file, mode="wb")
+  ## a <- curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
+  ##     verbose = FALSE,
+  ##     ssl.verifypeer = FALSE)
+  a <- tryCatch(curlPerform(url = url,
+                            writedata = f@ref, noprogress=TRUE,
+                            verbose = FALSE,
+                            ssl.verifypeer = FALSE),
+                error = function(e) {
+                  return("Rates data not available at markit.com")
+                })
+  close(f)
+  return(a)
 }
+
 
 .onAttach <- function(...) {
   
