@@ -99,16 +99,16 @@ spread.DV.01 <- function(object = NULL,
 
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
-    if(currency == "JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
-      JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
-      
-      ## if base date is one of the Japanese holidays we add another business day to it
-      
-      if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
-      }
+  if(currency == "JPY"){        
+    baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
+    data(JPY.holidays, package = "CDS")
+    
+    ## if base date is one of the Japanese holidays we add another business day to it
+    
+    if(baseDate %in% JPY.holidays){
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
     }
+  }
     ratesDate <- as.Date(TDate)
   
     if(is.null(maturity)){
