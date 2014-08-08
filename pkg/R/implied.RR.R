@@ -9,27 +9,28 @@
 #'
 #' @param data dataframe containing the 1. probability of default (pd) over a 
 #' a certain time period, 2. id and 3. spread
-#' @param col.spread column number of spread
-#' @param col.endDate column number of end dates. maturity date. This 
+#' @param spread.var column number of spread
+#' @param endDate.var column number of end dates. maturity date. This 
 #' is when the contract expires and protection ends. Any default after 
 #' this date does not trigger a payment.
-#' @param col.TDate column number of Trade dates. is when the trade is 
+#' @param TDate.var column number of Trade dates. is when the trade is 
 #' executed, denoted as T. Default is today.
 #' @param col.id is the column for the id of the CDS
-#' @param col.pd column number of probability of default rates
+#' @param pd.var column number of probability of default rates
 #' @return implied recovery rate in percentage based on the general approximation 
 #' for a probability of default in the Bloomberg manual. The actual calculation uses 
 #' a complicated bootstrapping process, so the results may be marginally different.
 
-implied.RR <- function(data, col.spread, col.pd, col.id, col.endDate, col.TDate){
-  spread <- data[, col.spread]
-  endDate <- data[,col.endDate]
-  TDate <- data[,col.TDate]
-  pd <- data[, col.pd]
+implied.RR <- function(data, spread.var, pd.var, col.id, endDate.var, TDate.var){
+  
+  spread <- data[, spread.var]
+  endDate <- data[,endDate.var]
+  TDate <- data[,TDate.var]
+  pd <- data[, pd.var]
   time <- as.numeric(as.Date(endDate) - as.Date(TDate))/360
   
   impRecoveryRate <- c(100+((spread*time/1e2)*(1/log(1-pd))))
   
-  ID <- data[, col.id]
-  return(cbind("CDS ID" = ID, "IMPLED RECOVERY RATE" = impRecoveryRate))
+  return(impRecoveryRate)
+  
 }
