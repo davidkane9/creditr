@@ -50,9 +50,24 @@ rec.risk.01 <- function(x,
                       ){
 
     ## check if certain variables are contained in x
+    
     stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
               parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
   
+    ## check if variables are defined in the correct classes
+    
+    stopifnot(is.numeric(x[[parSpread.var]]))
+    stopifnot(is.numeric(x[[coupon.var]]))
+    stopifnot(is.numeric(x[[recoveryRate.var]]))
+    stopifnot(is.numeric(x[[notional.var]]))
+    #stopifnot(is.character(x[[currency.var]]))
+    #stopifnot(is.character(x[[tenor.var]]))
+    #stopifnot(inherits(x[[TDate.var]], "Date"))
+    
+    #if(!is.na(maturity.var)){
+     # stopifnot(inherits(x[[maturity.var]], "Date"))
+    #}
+    
     ## vector containing recRisk01 columns. By default it contains NAs, which
     ## will be replaced by the recRisk01 values calculated by the function
   
