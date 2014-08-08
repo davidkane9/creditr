@@ -1,159 +1,130 @@
 #' \code{rec.risk.01} calculate the amount of change in upfront when there is a 1%
-#' increase in recovery rate.
+#' increase in recovery rate for a data frame of CDS contracts.
 #'
-#' @param object is the \code{CDS} class object.
-#' @param TDate is when the trade is executed, denoted as T. Default
-#' is \code{Sys.Date}  + 2 weekdays.
-#' @param baseDate is the start date for the IR curve. Default is TDate. 
-#' @param currency in which CDS is denominated. 
-#' @param types is a string indicating the names of the instruments
-#' used for the yield curve. 'M' means money market rate; 'S' is swap
-#' rate.
-#' @param rates is an array of numeric values indicating the rate of
-#' each instrument.
-#' @param expiries is an array of characters indicating the maturity
-#' of each instrument.
-#' @param mmDCC is the day count convention of the instruments.
-#' @param fixedSwapFreq is the frequency of the fixed rate of swap
-#' being paid.
-#' @param floatSwapFreq is the frequency of the floating rate of swap
-#' being paid.
-#' @param fixedSwapDCC is the day count convention of the fixed leg.
-#' @param floatSwapDCC is the day count convention of the floating leg.
-#' @param badDayConvZC is a character indicating how non-business days
-#' are converted.
-#' @param holidays is an input for holiday files to adjust to business
-#' days.
-#' @param valueDate is the date for which the present value of the CDS
-#' is calculated. aka cash-settle date. The default is T + 3.
-#' @param benchmarkDate Accrual begin date.
-#' @param startDate is when the CDS nomially starts in terms of
-#' premium payments, i.e. the number of days in the first period (and
-#' thus the amount of the first premium payment) is counted from this
-#' date. aka accrual begin date.
-#' @param endDate aka maturity date. This is when the contract expires
-#' and protection ends. Any default after this date does not trigger a
-#' payment.
-#' @param stepinDate default is T + 1.
-#' @param maturity date of the CDS contract.
-#' @param tenor of CDS contract
-#' @param dccCDS day count convention of the CDS. Default is ACT/360.
-#' @param freqCDS date interval of the CDS contract.
-#' @param stubCDS is a character indicating the presence of a stub.
-#' @param badDayConvCDS refers to the bay day conversion for the CDS
-#' coupon payments. Default is "F", following.
-#' @param calendar refers to any calendar adjustment for the CDS.
-#' @param parSpread CDS par spread in bps.
-#' @param coupon quoted in bps. It specifies the payment amount from
-#' the protection buyer to the seller on a regular basis.
-#' @param recoveryRate in decimal. Default is 0.4.
+#' @param x is the data frame containing all the relevant columns.
+#' @param TDate.var name of column in x containing dates when the trade 
+#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
+#' @param currency.var name of column in x containing currencies. 
+#' @param maturity.var name of column in x containing maturity dates.
+#' @param tenor.var name of column in x containing tenors.
+#' @param parSpread.var name of column in x containing  par spreads in bps.
+#' @param coupon.var name of column in x containing coupon rates in bps. 
+#' It specifies the payment amount from the protection buyer to the seller 
+#' on a regular basis.
+#' @param recoveryRate.var name of column in x containing recovery 
+#' rates in decimal.
 #' @param isPriceClean refers to the type of upfront calculated. It is
 #' boolean. When \code{TRUE}, calculate principal only. When
 #' \code{FALSE}, calculate principal + accrual.
 #' @param payAccruedOnDefault is a partial payment of the premium made
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
-#' @param notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM.
-#' @return a number indicating the change in upfront when there is a 1
-#' percent increase in recovery rate
+#' @param notional.var name of column in x containing the amount of 
+#' the underlying asset on which the payments are based. 
+#' Default is 1e7, i.e. 10MM.
+#' @return a vector containing the change in upfront when there is a 1
+#' percent increase in recovery rate, for each corresponding CDS contract.
+#' 
+#' @example 
+#' x <- data.frame(dates = c(Sys.Date(), Sys.Date()-1),
+#' currency = c("USD", "EUR"),
+#' maturity = c(NA, NA),
+#' tenor = c("5Y", "5Y"),
+#' spread = c(120, 110),
+#' coupon = c(100, 100),
+#' recoveryRate = c(0.4, 0.4),
+#' notional = c(1e7, 1e7))
 
-rec.risk.01 <- function(object,
-                      TDate = Sys.Date(),
-                      baseDate = as.Date(TDate) + 2,
-                      currency = "USD",
-
-                      types = NULL,
-                      rates = NULL,
-                      expiries = NULL,
-                      mmDCC = "ACT/360",
-                      fixedSwapFreq = "6M",
-                      floatSwapFreq = "3M",
-                      fixedSwapDCC = "30/360",
-                      floatSwapDCC = "ACT/360",
-                      badDayConvZC = "M",
-                      holidays = "None",
-                      
-                      valueDate = NULL,
-                      benchmarkDate = NULL,
-                      startDate = NULL,
-                      endDate = NULL,
-                      stepinDate = NULL,
-                      maturity = NULL,
-                      tenor = NULL,
-                      
-                      dccCDS = "ACT/360",
-                      freqCDS = "1Q",
-                      stubCDS = "F",
-                      badDayConvCDS = "F",
-                      calendar = "None",
-
-                      parSpread,
-                      coupon = 100,
-                      recoveryRate = 0.4,
-                      isPriceClean = FALSE,
-                      payAccruedOnDefault = TRUE,
-                      notional = 1e7
+rec.risk.01 <- function(x,
+                        TDate.var = "dates",
+                        currency.var = "currency",
+                        maturity.var = "maturity",
+                        tenor.var = "tenor",
+                        parSpread.var = "spread",
+                        coupon.var = "coupon",
+                        recoveryRate.var = "recoveryRate",
+                        isPriceClean = FALSE,
+                        payAccruedOnDefault = TRUE,
+                        notional.var = "notional"
                       ){
 
+    ## vector containing recRisk01 columns. By default it contains NAs, which
+    ## will be replaced by the recRisk01 values calculated by the function
+  
+    rec.risk.01 <- rep(NA, nrow(x))
+  
+    for(i in 1:nrow(x)){
+    
     ## stop if TDate is invalid
   
-    stopifnot(check.date(TDate))  
+    stopifnot(check.date(x[[TDate.var]][i]))  
   
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
+    baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
     
-    if(currency == "JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
+    if(as.POSIXlt(baseDate)$wday == 1){ 
+      baseDate <- baseDate + 1
+    }
+    
+    if(x[[currency.var]][i] == "JPY"){        
+      baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
       data(JPY.holidays, package = "CDS")
       
       ## if base date is one of the Japanese holidays we add another business day to it
       
       if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
+        baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 1)
       }
     }
-    ratesDate <- as.Date(TDate)
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
     
-    if(is.null(maturity)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
+    if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
+      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = x[[tenor.var]][i], maturity = NULL)
     }
-    else if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+    else if(is.null(x[[tenor.var]][i])){
+      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }
     
-    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
-    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate         <- cdsDates$startDate
-    if (is.null(endDate)) endDate             <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
+    
+    ## relevant dates are extracted from get.dates and then separated into year,
+    ## month and date using .separate.YMD (in internals.R). This is the format
+    ## required by the C code
+    
+    valueDate           <- cdsDates$valueDate
+    benchmarkDate       <- cdsDates$startDate
+    startDate           <- cdsDates$startDate
+    endDate             <- cdsDates$endDate
+    stepinDate          <- cdsDates$stepinDate
 
     baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(TDate)
+    today         <- .separate.YMD(x[[TDate.var]][i])
     valueDate     <- .separate.YMD(valueDate)
     benchmarkDate <- .separate.YMD(benchmarkDate)
     startDate     <- .separate.YMD(startDate)
     endDate       <- .separate.YMD(endDate)
     stepinDate    <- .separate.YMD(stepinDate)
 
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
-    if ((is.null(types) | is.null(rates) | is.null(expiries))){
+    ## extract currency specific interest rate data and date conventions using
+    ## get.rates()
+    
+    ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
+    types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
+    expiries  <- as.character(ratesInfo[[1]]$expiry)
+    mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
         
-        ratesInfo <- get.rates(date = ratesDate, currency = currency)
-        types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries  <- as.character(ratesInfo[[1]]$expiry)
-        mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
-        
-        fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-        floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-        holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
-    }
+    fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
+    floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
+    fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
+    floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
+    badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
+    holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
+    
+    recoveryRate <- x[[recoveryRate.var]][i]
+    
+    ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
                           baseDate,
@@ -190,7 +161,8 @@ rec.risk.01 <- function(object,
                           notional,
                           PACKAGE = "CDS")
 
-
+    ## call the upfront function again, this time with recoveryRate + 0.1
+    
     upfront.new <- .Call('calcUpfrontTest',
                          baseDate,
                          types,
@@ -225,76 +197,11 @@ rec.risk.01 <- function(object,
                          payAccruedOnDefault,
                          notional,
                          PACKAGE = "CDS")
+    
+    rec.risk.01[i] <- upfront.new - upfront.orig
+    
+    }
 
-
-    return (upfront.new - upfront.orig)
+    return(rec.risk.01)
     
 }
-
-
-
-#' Calculate the amount of change in upfront when there is a 1\%
-#' increase in recovery rate.
-#' 
-#' @name rec.risk.01-method
-#' @aliases rec.risk.01,CDS-method
-#' @docType methods
-#' @rdname rec.risk.01-methods
-#' @param object the input \code{CDS} class object
-#' @export
-
-setMethod("rec.risk.01",
-          signature(object = "CDS"),
-          function(object){
-              baseDate      <- .separate.YMD(object@baseDate)
-              today         <- .separate.YMD(object@TDate)
-              valueDate     <- .separate.YMD(object@valueDate)
-              benchmarkDate <- .separate.YMD(object@benchmarkDate)
-              startDate     <- .separate.YMD(object@startDate)
-              endDate       <- .separate.YMD(object@endDate)
-              stepinDate    <- .separate.YMD(object@stepinDate)
-
-              
-              upfront.new <- .Call('calcUpfrontTest',
-                                   baseDate,
-                                   object@types,
-                                   object@rates,
-                                   object@expiries,
-                                   
-                                   object@mmDCC,
-                                   object@fixedSwapFreq,
-                                   object@floatSwapFreq,
-                                   object@fixedSwapDCC,
-                                   object@floatSwapDCC,
-                                   object@badDayConvZC,
-                                   object@holidays,
-                                   
-                                   today,
-                                   valueDate,
-                                   benchmarkDate,
-                                   startDate,
-                                   endDate,
-                                   stepinDate,
-                                   
-                                   object@dccCDS,
-                                   object@freqCDS,
-                                   object@stubCDS,
-                                   object@badDayConvCDS,
-                                   object@calendar,
-                                   
-                                   object@parSpread,
-                                   object@coupon,
-                                   object@recoveryRate + 0.01,
-                                   isPriceClean = FALSE,
-                                   object@payAccruedOnDefault,
-                                   object@notional,
-                                   PACKAGE = "CDS")
-
-
-              return (upfront.new - object@upfront)
-          }
-          
-          )
-
-
-  

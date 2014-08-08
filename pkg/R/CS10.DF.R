@@ -57,7 +57,6 @@ CS10.DF <- function(x, coupon.var = "coupon", currency = "USD"){
         CS10[i] <- value
       }
     }
-  }
     
   ## return vector of CS10 values
    
