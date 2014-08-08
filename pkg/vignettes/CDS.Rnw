@@ -275,7 +275,7 @@ First, look at our CDS agreement: the portfolio manager pays the premium on Janu
 
 \begin{equation}
  \begin{aligned}
-  {\rm Coupon\hspace{3pt}with\hspace{3pt}Interest = \frac{\$1,000}{(1 + .10)} = \$1,100} 
+  {\rm Coupon\hspace{3pt}with\hspace{3pt}Interest = {\$1,000}*{(1 + .10)} = \$1,100} 
     \end{aligned}
 \end{equation}
 
