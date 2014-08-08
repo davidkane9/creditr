@@ -617,10 +617,20 @@ CDS <- function(contract = "SNAC",
   }
   
   ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
+  ## note: this is a hack; must fix
+  
+  x <- data.frame(dates = c(as.Date(cds@TDate)),
+                  currency = c(cds@currency),
+                  tenor = c(cds@tenor),
+                  maturity = c(cds@maturity),
+                  spread = c(cds@parSpread),
+                  coupon = c(cds@coupon),
+                  recoveryRate = c(cds@recoveryRate),
+                  notional = c(cds@notional))
   
   cds@spreadDV01  <- spread.DV.01(cds)
   cds@IRDV01      <- IR.DV.01(cds) 
-  cds@RecRisk01   <- rec.risk.01(cds)
+  cds@RecRisk01   <- rec.risk.01(x)
   cds@defaultProb <- default.prob(parSpread = cds@parSpread,
                                  t = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,

@@ -18,6 +18,15 @@ result <- rec.risk.01(x)
 
 truth <- c(-20.85, 3.46)
 
+x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-15")),
+                currency = c("USD", "JPY"),
+                tenor = c("5Y", "5Y"),
+                maturity = c(NA, NA),
+                spread = c(105.8, 250),
+                coupon = c(100, 100),
+                recoveryRate = c(0.4, 0.35),
+                notional = c(1e7, 1e7))
+
 ## stopifnot(all.equal(round(result), round(truth)))
 
 upfront(TDate = as.Date("2014-04-22"),

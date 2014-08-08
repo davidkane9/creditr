@@ -108,6 +108,10 @@ rec.risk.01 <- function(x,
     }
     else if(is.null(x[[tenor.var]][i])){
       cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
+    } ## if both are entered, we arbitrarily use one of them
+    
+    else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
+      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }
     
     
@@ -143,7 +147,7 @@ rec.risk.01 <- function(x,
     fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
     floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
     badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-    holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
+    holidays      <- "None"
     
     recoveryRate <- x[[recoveryRate.var]][i]
     
