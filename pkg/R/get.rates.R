@@ -99,7 +99,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
                         mmCalendars = rates$deposits[['calendars']],
                         fixedDCC = rates$swaps[['fixeddaycountconvention']],
                         floatDCC = rates$swaps[['floatingdaycountconvention']],
-                        fixexreq = rates$swaps[['fixedpaymentfrequency']],
+                        fixedFreq = rates$swaps[['fixedpaymentfrequency']],
                         floatFreq = rates$swaps[['floatingpaymentfrequency']],
                         swapCalendars = rates$swaps[['calendars']])
     

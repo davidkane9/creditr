@@ -60,7 +60,7 @@
 #' 
 
 IR.DV.01 <- function(object = NULL,
-                     TDate,
+                     TDate = Sys.Date(),
                      baseDate = as.Date(TDate) + 2,
                      currency = "USD",
                      
@@ -90,7 +90,7 @@ IR.DV.01 <- function(object = NULL,
                      calendar = "None",
                      
                      parSpread,
-                     coupon=100,
+                     coupon = 100,
                      recoveryRate = 0.4,
                      isPriceClean = FALSE,
                      payAccruedOnDefault = TRUE,                       
