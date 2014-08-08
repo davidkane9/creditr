@@ -130,7 +130,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var == "CHF"){
+    } else if(x[i, currency.var == "CHF"]){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
                     "30Y")
