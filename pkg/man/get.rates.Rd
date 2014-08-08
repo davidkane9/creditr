@@ -9,8 +9,8 @@ recent previous weekday.}
 get.rates(date = Sys.Date(), currency = "USD")
 }
 \arguments{
-\item{date}{ideally a weekday. The rates for a trade date T are
-published on T-1 weekday.This date refers to the day on which we
+\item{date}{Trade date. The rates for a trade date T are
+published on T-1 weekday. This date refers to the day on which we
 want the CDS to be priced, not the date for the interest rates as
 the interest rates will be used is the day before the trade date. Eg.
 If we are trying to find the rates used to price a CDS on 2014-04-22,
@@ -25,7 +25,10 @@ the rates based on the ISDA specifications; the second contains all
 the dcc and calendar specifications of the curve.
 }
 \description{
-Assume date and currency are in the same location.
+\code{get.rates} returns the deposits and swap rates for the day
+input, along with the date conventions for that specific currency.
+The day input should be a weekday. If not, go to the most
+recent previous weekday.
 }
 \examples{
 get.rates(as.Date("2014-05-07"), currency = "USD")
