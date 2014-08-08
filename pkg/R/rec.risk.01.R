@@ -26,7 +26,8 @@
 #' percent increase in recovery rate, for each corresponding CDS contract.
 #' 
 #' @example 
-#' x <- data.frame(dates = c(Sys.Date(), Sys.Date()-1),
+#' 
+#'  x <- data.frame(dates = c(Sys.Date(), Sys.Date()-1),
 #' currency = c("USD", "EUR"),
 #' maturity = c(NA, NA),
 #' tenor = c("5Y", "5Y"),
@@ -60,7 +61,10 @@ rec.risk.01 <- function(x,
     stopifnot(check.date(x[[TDate.var]][i]))  
   
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
+    
     baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
+    
+    #baseDate <- x[[TDate.var]][i] + 2
     
     if(as.POSIXlt(baseDate)$wday == 1){ 
       baseDate <- baseDate + 1
