@@ -2,7 +2,7 @@
 #'
 #' @param object is the \code{CDS} class object.
 #' @param TDate is when the trade is executed, denoted as T. Default
-#' is the current date or \code{Sys.Date}.
+#' is \code{Sys.Date}.
 #' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
@@ -80,8 +80,8 @@ IR.DV.01 <- function(object = NULL,
                      startDate = NULL,
                      endDate = NULL,
                      stepinDate = NULL,
-                     tenor = NULL,
                      maturity = NULL,
+                     tenor = NULL,
                      
                      dccCDS = "ACT/360",
                      freqCDS = "1Q",
@@ -90,164 +90,164 @@ IR.DV.01 <- function(object = NULL,
                      calendar = "None",
                      
                      parSpread,
-                     coupon = 100,
+                     coupon=100,
                      recoveryRate = 0.4,
                      isPriceClean = FALSE,
-                     payAccruedOnDefault = TRUE,
+                     payAccruedOnDefault = TRUE,                       
                      notional = 1e7
-                   ){
-    
-    ## stop if TDate is invalid
+){
   
-    stopifnot(check.date(TDate))  
+  ## stop if TDate is invalid
   
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+  stopifnot(check.date(TDate))  
+  
+  ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+  
+  if(currency=="JPY"){        
+    baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
+    JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
     
-    if(currency=="JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
-      JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
-      
-      ## if base date is one of the Japanese holidays we add another business day to it
-      
-      if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
-      }
+    ## if base date is one of the Japanese holidays we add another business day to it
+    
+    if(baseDate %in% JPY.holidays){
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
     }
-    ratesDate <- as.Date(TDate)
+  }
+  ratesDate <- as.Date(TDate)
+  
+  ## if maturity date is not provided, we use tenor to obtain dates through get.date,
+  ## and vice versa.
+  
+  if(is.null(maturity)){
+    cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
+  }
+  else if(is.null(tenor)){
+    cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+  }
+  
+  ## if these dates are not entered, they are extracted using get.date
+  
+  if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
+  if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
+  if (is.null(startDate)) startDate         <- cdsDates$startDate
+  if (is.null(endDate)) endDate             <- cdsDates$endDate
+  if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
+  
+  ## separate an input date into year, month, and day
+  
+  baseDate      <- .separate.YMD(baseDate)
+  today         <- .separate.YMD(TDate)
+  valueDate     <- .separate.YMD(valueDate)
+  benchmarkDate <- .separate.YMD(benchmarkDate)
+  startDate     <- .separate.YMD(startDate)
+  endDate       <- .separate.YMD(endDate)
+  stepinDate    <- .separate.YMD(stepinDate)
+  
+  ## stop if number of rates != number of expiries != length of types
+  
+  stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
+  
+  ## if any of these three are null, we extract them using get.rates
+  
+  if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-    ## if maturity date is not provided, we use tenor to obtain dates through get.date,
-    ## and vice versa.
+    ## interest rates contained in list 1 of ratesInfo
     
-    if(is.null(maturity)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
-    }
-    else if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
-    }
+    ratesInfo <- get.rates(date = ratesDate, currency = currency)
+    types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
+    expiries  <- as.character(ratesInfo[[1]]$expiry)
+    mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
     
-    ## if these dates are not entered, they are extracted using get.date
+    ## date convention standards etc. contained in list 2 of ratesInfo
     
-    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
-    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate         <- cdsDates$startDate
-    if (is.null(endDate)) endDate             <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
-
-    ## separate an input date into year, month, and day
-    
-    baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(TDate)
-    valueDate     <- .separate.YMD(valueDate)
-    benchmarkDate <- .separate.YMD(benchmarkDate)
-    startDate     <- .separate.YMD(startDate)
-    endDate       <- .separate.YMD(endDate)
-    stepinDate    <- .separate.YMD(stepinDate)
-
-    ## stop if number of rates != number of expiries != length of types
-    
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
-    
-    ## if any of these three are null, we extract them using get.rates
-    
-    if ((is.null(types) | is.null(rates) | is.null(expiries))){
-        
-        ## interest rates contained in list 1 of ratesInfo
-        
-        ratesInfo <- get.rates(date = ratesDate, currency = currency)
-        types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries  <- as.character(ratesInfo[[1]]$expiry)
-        mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
-        
-        ## date convention standards etc. contained in list 2 of ratesInfo
-        
-        fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-        floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-        holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
-    }
-
-    ## calculate upfront using C code
-    
-    upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate,
-                          types,
-                          rates,
-                          expiries,
-
-                          mmDCC,
-                          fixedSwapFreq,
-                          floatSwapFreq,
-                          fixedSwapDCC,
-                          floatSwapDCC,
-                          badDayConvZC,
-                          holidays,
-                          
-                          today,
-                          valueDate,
-                          benchmarkDate,
-                          startDate,
-                          endDate,
-                          stepinDate,
-                          
-                          dccCDS,
-                          freqCDS,
-                          stubCDS,
-                          badDayConvCDS,
-                          calendar,
-                          
-                          parSpread,
-                          coupon,
-                          recoveryRate,
-                          isPriceClean,
-                          payAccruedOnDefault,
-                          notional,
-                          PACKAGE = "CDS")
-
-    ## calculate upfront using C code
-    
-    upfront.new <- .Call('calcUpfrontTest',
-                         baseDate,
-                         types,
-                         rates + 1/1e4,
-                         expiries,
-
-                         mmDCC,
-                         fixedSwapFreq,
-                         floatSwapFreq,
-                         fixedSwapDCC,
-                         floatSwapDCC,
-                         badDayConvZC,
-                         holidays,
-                         
-                         today,
-                         valueDate,
-                         benchmarkDate,
-                         startDate,
-                         endDate,
-                         stepinDate,
-                         
-                         dccCDS,
-                         freqCDS,
-                         stubCDS,
-                         badDayConvCDS,
-                         calendar,
-                         
-                         parSpread,
-                         coupon,
-                         recoveryRate,
-                         isPriceClean,
-                         payAccruedOnDefault,
-                         notional,
-                         PACKAGE = "CDS")
-    
-    ## difference in the two upfront payments is the change in upfront with a 1bp
-    ## change in IR curve
-    
-    return (upfront.new - upfront.orig)
-    
+    fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
+    floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
+    fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
+    floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
+    badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
+    holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
+  }
+  
+  ## calculate upfront using C code
+  
+  upfront.orig <- .Call('calcUpfrontTest',
+                        baseDate,
+                        types,
+                        rates,
+                        expiries,
+                        
+                        mmDCC,
+                        fixedSwapFreq,
+                        floatSwapFreq,
+                        fixedSwapDCC,
+                        floatSwapDCC,
+                        badDayConvZC,
+                        holidays,
+                        
+                        today,
+                        valueDate,
+                        benchmarkDate,
+                        startDate,
+                        endDate,
+                        stepinDate,
+                        
+                        dccCDS,
+                        freqCDS,
+                        stubCDS,
+                        badDayConvCDS,
+                        calendar,
+                        
+                        parSpread,
+                        coupon,
+                        recoveryRate,
+                        isPriceClean,
+                        payAccruedOnDefault,
+                        notional,
+                        PACKAGE = "CDS")
+  
+  ## calculate upfront using C code
+  
+  upfront.new <- .Call('calcUpfrontTest',
+                       baseDate,
+                       types,
+                       rates + 1/1e4,
+                       expiries,
+                       
+                       mmDCC,
+                       fixedSwapFreq,
+                       floatSwapFreq,
+                       fixedSwapDCC,
+                       floatSwapDCC,
+                       badDayConvZC,
+                       holidays,
+                       
+                       today,
+                       valueDate,
+                       benchmarkDate,
+                       startDate,
+                       endDate,
+                       stepinDate,
+                       
+                       dccCDS,
+                       freqCDS,
+                       stubCDS,
+                       badDayConvCDS,
+                       calendar,
+                       
+                       parSpread,
+                       coupon,
+                       recoveryRate,
+                       isPriceClean,
+                       payAccruedOnDefault,
+                       notional,
+                       PACKAGE = "CDS")
+  
+  ## difference in the two upfront payments is the change in upfront with a 1bp
+  ## change in IR curve
+  
+  return (upfront.new - upfront.orig)
+  
 }
 
 
@@ -265,50 +265,50 @@ IR.DV.01 <- function(object = NULL,
 setMethod("IR.DV.01",
           signature(object = "CDS"),
           function(object){
-              baseDate      <- .separate.YMD(object@baseDate)
-              today         <- .separate.YMD(object@TDate)
-              valueDate     <- .separate.YMD(object@valueDate)
-              benchmarkDate <- .separate.YMD(object@benchmarkDate)
-              startDate     <- .separate.YMD(object@startDate)
-              endDate       <- .separate.YMD(object@endDate)
-              stepinDate    <- .separate.YMD(object@stepinDate)
-
-              upfront.new <- .Call('calcUpfrontTest',
-                                   baseDate,
-                                   object@types,
-                                   object@rates + 1/1e4,
-                                   object@expiries,
-                                   
-                                   object@mmDCC,
-                                   object@fixedSwapFreq,
-                                   object@floatSwapFreq,
-                                   object@fixedSwapDCC,
-                                   object@floatSwapDCC,
-                                   object@badDayConvZC,
-                                   object@holidays,
-                                   
-                                   today,
-                                   valueDate,
-                                   benchmarkDate,
-                                   startDate,
-                                   endDate,
-                                   stepinDate,
-                                   
-                                   object@dccCDS,
-                                   object@freqCDS,
-                                   object@stubCDS,
-                                   object@badDayConvCDS,
-                                   object@calendar,
-                                   
-                                   object@parSpread,
-                                   object@coupon,
-                                   object@recoveryRate,
-                                   isPriceClean = FALSE,
-                                   object@payAccruedOnDefault,
-                                   object@notional,
-                                   PACKAGE = "CDS")
-
-                 return (upfront.new - object@upfront)
+            baseDate      <- .separate.YMD(object@baseDate)
+            today         <- .separate.YMD(object@TDate)
+            valueDate     <- .separate.YMD(object@valueDate)
+            benchmarkDate <- .separate.YMD(object@benchmarkDate)
+            startDate     <- .separate.YMD(object@startDate)
+            endDate       <- .separate.YMD(object@endDate)
+            stepinDate    <- .separate.YMD(object@stepinDate)
+            
+            upfront.new <- .Call('calcUpfrontTest',
+                                 baseDate,
+                                 object@types,
+                                 object@rates + 1/1e4,
+                                 object@expiries,
+                                 
+                                 object@mmDCC,
+                                 object@fixedSwapFreq,
+                                 object@floatSwapFreq,
+                                 object@fixedSwapDCC,
+                                 object@floatSwapDCC,
+                                 object@badDayConvZC,
+                                 object@holidays,
+                                 
+                                 today,
+                                 valueDate,
+                                 benchmarkDate,
+                                 startDate,
+                                 endDate,
+                                 stepinDate,
+                                 
+                                 object@dccCDS,
+                                 object@freqCDS,
+                                 object@stubCDS,
+                                 object@badDayConvCDS,
+                                 object@calendar,
+                                 
+                                 object@parSpread,
+                                 object@coupon,
+                                 object@recoveryRate,
+                                 isPriceClean = FALSE,
+                                 object@payAccruedOnDefault,
+                                 object@notional,
+                                 PACKAGE = "CDS")
+            
+            return (upfront.new - object@upfront)
           }
           
-          )
+)
