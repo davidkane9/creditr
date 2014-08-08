@@ -2,13 +2,13 @@
 
 library(CDS)
 
-truth.1 <- CDS(TDate = "2014-01-14",
-               tenor = "5Y",
-               parSpread = 32,
-               coupon = 100,
-               recoveryRate = 0.4,
-               isPriceClean = FALSE,
-               notional = 1e7)
+## truth.1 <- CDS(TDate = "2014-01-14",
+##               tenor = "5Y",
+##               parSpread = 32,
+##               coupon = 100,
+##               recoveryRate = 0.4,
+##               isPriceClean = FALSE,
+##               notional = 1e7)
 
 ## save(truth1, file = "CDS.test.RData")
 

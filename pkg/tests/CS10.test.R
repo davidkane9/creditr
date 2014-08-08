@@ -8,19 +8,3 @@ CS10(CDS(TDate = "2014-04-22",
          recoveryRate = 0.4,
          isPriceClean = FALSE,
          notional = 1e7))
-
-CS10(CDS(TDate = Sys.Date(),
-         tenor = "5Y", 
-         parSpread = 105,
-         coupon = 100,
-         recoveryRate = 0.4,
-         isPriceClean = FALSE,
-         notional = 1e7))
-
-upfront(TDate = Sys.Date(),
-    tenor = "5Y", 
-    parSpread = 115.8,
-    coupon = 100,
-    recoveryRate = 0.4,
-    isPriceClean = FALSE,
-    notional = 1e7)
