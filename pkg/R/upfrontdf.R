@@ -42,7 +42,7 @@ upfrontdf <- function(x,
   
   ## You must provide either a maturity or a tenor, but not both.
   #if(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))){
-   # x[[maturity.var]] <- NULL
+  # x[[maturity.var]] <- NULL
   #}
   
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
@@ -80,14 +80,14 @@ upfrontdf <- function(x,
   for(i in 1:nrow(x)){
     
     ## subset out the rates of the relevant currency
-        
+    
     ## change expiries depending on currency
     ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
     ## getRates would download the data from the internet
     
     if(x[i, currency.var]=="USD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y",
-                   "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
+                    "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSSSS"
       mmDCC <- "ACT/360" 
       fixedSwapFreq <- "6M" 
@@ -99,8 +99,8 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="EUR"){
       expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
-                   "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
-                   "30Y")
+                    "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
+                    "30Y")
       types <- "MMMMMMSSSSSSSSSSSSS"
       mmDCC <- "ACT/360" 
       fixedSwapFreq <- "1Y" 
@@ -112,8 +112,8 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="GBP"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
-                   "30Y")
+                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
+                    "30Y")
       types <- "MMMMMMSSSSSSSSSSSSSS"
       mmDCC <- "ACT/365" 
       fixedSwapFreq <- "6M" 
@@ -125,7 +125,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="JPY"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
+                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSSS"
       mmDCC <- "ACT/360" 
       fixedSwapFreq <- "6M" 
@@ -137,8 +137,8 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="CHF"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
-                   "30Y")
+                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
+                    "30Y")
       types <- "MMMMMMSSSSSSSSSSSSSS"
       mmDCC <- "ACT/360" 
       fixedSwapFreq <- "1Y" 
@@ -150,7 +150,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="CAD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
+                    "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSS"
       mmDCC <- "ACT/365" 
       fixedSwapFreq <- "6M" 
@@ -162,7 +162,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="AUD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
+                    "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
       types <- "MMMMSSSSSSSSSSSS"
       mmDCC <- "ACT/365" 
       fixedSwapFreq <- "6M" 
@@ -174,7 +174,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="NZD"){
       expiries <- c("1M", "2Y", "3Y", "6Y", "4Y", "5Y",
-                   "7Y", "10Y", "15Y")
+                    "7Y", "10Y", "15Y")
       types <- "MMMMSSSSS"
       mmmDCC <- "ACT/365" 
       fixedSwapFreq <- "6M" 
@@ -186,7 +186,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="SGD"){
       expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
-                   "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
+                    "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
       types <- "MMMMMMSSSSSSSSSS"
       mmDCC <- "ACT/365" 
       fixedSwapFreq <- "6M" 
@@ -198,7 +198,7 @@ upfrontdf <- function(x,
       calendar <- "None"
     } else if(x[i, currency.var]=="HKD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                   "7Y", "10Y", "12Y", "15Y")
+                    "7Y", "10Y", "12Y", "15Y")
       types <- "MMMMMSSSSSSSS"
       mmDCC <- "ACT/365" 
       fixedSwapFreq <- "3M" 
@@ -222,25 +222,25 @@ upfrontdf <- function(x,
     }
     
     results[i] <- upfront(TDate = x[i, date.var],
-                         currency = x[i, currency.var],                    
-                         types = types,
-                         rates = rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])],
-                         expiries = expiries,                    
-                         mmDCC = as.character(mmDCC),                    
-                         fixedSwapFreq = as.character(fixedSwapFreq),
-                         floatSwapFreq = as.character(floatSwapFreq),
-                         fixedSwapDCC = as.character(fixedSwapDCC),
-                         floatSwapDCC = as.character(floatSwapDCC),
-                         badDayConvZC = as.character(badDayConvZC),
-                         holidays = as.character(holidays),                   
-                         maturity = x[i, maturity.var],
-                         tenor = tenor,
-                         parSpread = x[i, spread.var],
-                         coupon = x[i, coupon.var],
-                         recoveryRate = x[i, recovery.var],
-                         isPriceClean = isPriceClean,
-                         calendar = calendar,
-                         notional = notional)
+                          currency = x[i, currency.var],                    
+                          types = types,
+                          rates = rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])],
+                          expiries = expiries,                    
+                          mmDCC = as.character(mmDCC),                    
+                          fixedSwapFreq = as.character(fixedSwapFreq),
+                          floatSwapFreq = as.character(floatSwapFreq),
+                          fixedSwapDCC = as.character(fixedSwapDCC),
+                          floatSwapDCC = as.character(floatSwapDCC),
+                          badDayConvZC = as.character(badDayConvZC),
+                          holidays = as.character(holidays),                   
+                          maturity = x[i, maturity.var],
+                          tenor = tenor,
+                          parSpread = x[i, spread.var],
+                          coupon = x[i, coupon.var],
+                          recoveryRate = x[i, recovery.var],
+                          isPriceClean = isPriceClean,
+                          calendar = calendar,
+                          notional = notional)
   } 
   
   return(results)

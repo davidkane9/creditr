@@ -60,41 +60,41 @@
 #' 
 
 IR.DV.01 <- function(object = NULL,
-                   TDate,
-                   baseDate = as.Date(TDate) + 2,
-                   currency = "USD",
-                   
-                   types = NULL,
-                   rates = NULL,
-                   expiries = NULL,
-                   mmDCC = "ACT/360",
-                   fixedSwapFreq = "6M",
-                   floatSwapFreq = "3M",
-                   fixedSwapDCC = "30/360",
-                   floatSwapDCC = "ACT/360",
-                   badDayConvZC = "M",
-                   holidays = "None",
-                   
-                   valueDate = NULL,
-                   benchmarkDate = NULL,
-                   startDate = NULL,
-                   endDate = NULL,
-                   stepinDate = NULL,
-                   maturity = NULL,
-                   tenor = NULL,
-                   
-                   dccCDS = "ACT/360",
-                   freqCDS = "1Q",
-                   stubCDS = "F",
-                   badDayConvCDS = "F",
-                   calendar = "None",
-                   
-                   parSpread,
-                   coupon = 100,
-                   recoveryRate = 0.4,
-                   isPriceClean = FALSE,
-                   payAccruedOnDefault = TRUE,                       
-                   notional = 1e7
+                     TDate,
+                     baseDate = as.Date(TDate) + 2,
+                     currency = "USD",
+                     
+                     types = NULL,
+                     rates = NULL,
+                     expiries = NULL,
+                     mmDCC = "ACT/360",
+                     fixedSwapFreq = "6M",
+                     floatSwapFreq = "3M",
+                     fixedSwapDCC = "30/360",
+                     floatSwapDCC = "ACT/360",
+                     badDayConvZC = "M",
+                     holidays = "None",
+                     
+                     valueDate = NULL,
+                     benchmarkDate = NULL,
+                     startDate = NULL,
+                     endDate = NULL,
+                     stepinDate = NULL,
+                     tenor = NULL,
+                     maturity = NULL,
+                     
+                     dccCDS = "ACT/360",
+                     freqCDS = "1Q",
+                     stubCDS = "F",
+                     badDayConvCDS = "F",
+                     calendar = "None",
+                     
+                     parSpread,
+                     coupon = 100,
+                     recoveryRate = 0.4,
+                     isPriceClean = FALSE,
+                     payAccruedOnDefault = TRUE,
+                     notional = 1e7
                    ){
     
     ## stop if TDate is invalid

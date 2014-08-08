@@ -31,8 +31,10 @@ CS10.df <- function(x, coupon.var = "coupon", currency = "USD"){
       
       ## we use the corresponding currency for that index.
       ## Note that we are assuming that there are only 4 indices: IG, HY, XO & Main
+      ## IG & HY (CDX North America Investment Grade & High Yield) are in USD
+      ## XO & Main (iTraxx Europe Crossover & Main) are in EUR
       
-      if(x$index[i]=="IG" | x$index[i]=="HY"){
+      if(x$index[i] == "IG" | x$index[i] == "HY"){
         currency <- "USD"
       } else {
         currency <- "EUR"
@@ -42,13 +44,13 @@ CS10.df <- function(x, coupon.var = "coupon", currency = "USD"){
       
       ## if the trade date lands on a weekend, we move back to the most recent weekday
       
-      if (as.POSIXlt(TDate)$wday==6) {
-        TDate <- TDate-1 
-      } else if (as.POSIXlt(TDate)$wday==0) {
-        TDate <- TDate-2 
+      if (as.POSIXlt(TDate)$wday == 6) {
+        TDate <- TDate - 1 
+      } else if (as.POSIXlt(TDate)$wday == 0) {
+        TDate <- TDate - 2 
       }      
       
-      tenor <- as.character(paste(as.character(x$tenor[i]), "Y", sep=""))
+      tenor <- as.character(paste(as.character(x$tenor[i]), "Y", sep = ""))
       coupon <- as.numeric(x$coupon[i])
       
       ## if calculating the CS10 for a specific contract returns an error, 
@@ -68,7 +70,8 @@ CS10.df <- function(x, coupon.var = "coupon", currency = "USD"){
       } else{
         CS10[i] <- value
       }
-   }
+    }
+  }
     
   ## return vector of CS10 values
    
