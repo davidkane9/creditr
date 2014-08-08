@@ -6,40 +6,25 @@
 #' @param currency of the contract. By default is "USD".
 #' @return original data frame with a column containing the corresponding CS10 values
 
-CS10.df <- function(x, coupon.var = "coupon", currency = "USD"){
+CS10.DF <- function(x, coupon.var = "coupon", currency = "USD"){
   
-  ## create CS10 column containing just NAs
+  ## stop if essential variables are not contained in x
+  
+  stopifnot(c(spread, coupon.var, tenor, date) %in% names(x))
+
+  ## stop if parameters belong to the correct class
+  
+  stopifnot(is.numeric(x$spread))
+  stopifnot(is.numeric(x[[coupon.var]]))
+  stopifnot(is.numeric(x$tenor))
+  stopifnot(inherits(x$date, "Date"))
+    
+  ## create CS10 vector containing just NAs
   
   CS10 <- rep(NA, nrow(x))
   
-  ## coupon column
-  
-  coupon <- x[[coupon.var]]
-  
   for(i in 1:nrow(x)){
     
-    ## stop if parameters belong to the correct class
-    
-    stopifnot(inherits(x$spread[i], "numeric"))
-    stopifnot(inherits(coupon[i], "numeric"))
-    stopifnot(inherits(x$tenor[i], "numeric"))
-    
-    ## if none of the four variables are NA, we can calculate the CS10 value
-    
-    if(!is.na(coupon[i]) & ! !is.na(x$date[i])
-     & !is.na(x$tenor[i]) & !is.na(x$spread[i])){
-      
-      ## we use the corresponding currency for that index.
-      ## Note that we are assuming that there are only 4 indices: IG, HY, XO & Main
-      ## IG & HY (CDX North America Investment Grade & High Yield) are in USD
-      ## XO & Main (iTraxx Europe Crossover & Main) are in EUR
-      
-      if(x$index[i] == "IG" | x$index[i] == "HY"){
-        currency <- "USD"
-      } else {
-        currency <- "EUR"
-      }
-      
       TDate <- as.Date(x$date[i])
       
       ## if the trade date lands on a weekend, we move back to the most recent weekday
@@ -51,16 +36,17 @@ CS10.df <- function(x, coupon.var = "coupon", currency = "USD"){
       }      
       
       tenor <- as.character(paste(as.character(x$tenor[i]), "Y", sep = ""))
-      coupon <- as.numeric(x$coupon[i])
       
       ## if calculating the CS10 for a specific contract returns an error, 
       ## we store it as NA. Since we don't want the whole process to stop
       ## when it returns an error, we use try.
+      ## For instance, if any of the four variables are abset, we can
+      ## still calculate the CS10 value for the rest      
       
       value <- try(CS10(CDS(TDate = TDate,
                            tenor = tenor, 
                            parSpread = x$spread[i],
-                           coupon = coupon,
+                           coupon = x[[coupon.var]][i],
                            recoveryRate = 0.4,
                            notional = 1e7,
                            currency = currency)))
