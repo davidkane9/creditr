@@ -96,11 +96,11 @@ rec.risk.01 <- function(x,
     ## month and date using .separate.YMD (in internals.R). This is the format
     ## required by the C code
     
-    valueDate           <- cdsDates$valueDate
-    benchmarkDate       <- cdsDates$startDate
-    startDate           <- cdsDates$startDate
-    endDate             <- cdsDates$endDate
-    stepinDate          <- cdsDates$stepinDate
+    valueDate     <- cdsDates$valueDate
+    benchmarkDate <- cdsDates$startDate
+    startDate     <- cdsDates$startDate
+    endDate       <- cdsDates$endDate
+    stepinDate    <- cdsDates$stepinDate
 
     baseDate      <- .separate.YMD(baseDate)
     today         <- .separate.YMD(x[[TDate.var]][i])
