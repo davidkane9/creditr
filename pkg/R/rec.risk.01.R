@@ -128,11 +128,15 @@ rec.risk.01 <- function(x,
     
     recoveryRate <- x[[recoveryRate.var]][i]
     
+    ## CDS conventions 
+    
     dccCDS        <- "ACT/360"
     freqCDS       <- "1Q"
     stubCDS       <- "F"
     badDayConvCDS <- "F"
     calendar      <- "None"
+    
+    ## spread, coupon rate and notional
     
     parSpread <- x[[parSpread.var]][i]
     coupon    <- x[[coupon.var]][i]
