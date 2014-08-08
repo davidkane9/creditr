@@ -58,7 +58,7 @@
 #' @return a number indicating the change in upfront when there is a 1
 #' percent increase in recovery rate
 
-rec.risk.01 <- function(object = NULL,
+rec.risk.01 <- function(object,
                       TDate = Sys.Date(),
                       baseDate = as.Date(TDate) + 2,
                       currency = "USD",

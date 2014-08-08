@@ -1517,13 +1517,13 @@ Function to calculate the increase in the upfront value when the recovery rate i
 
 
 <<echo = FALSE>>=
-rec.risk.01(TDate = "2014-06-24",
-          currency = "USD",
-          tenor = "5Y",
-          parSpread = 160,
-          coupon = 100,
-          recoveryRate = 0.4,
-          notional = 1e7)
+#rec.risk.01(TDate = "2014-06-24",
+ #         currency = "USD",
+  #        tenor = "5Y",
+   #       parSpread = 160,
+    #      coupon = 100,
+     #     recoveryRate = 0.4,
+      #    notional = 1e7)
 @ 
 
 \subsubsection{IRDV01}
@@ -1531,13 +1531,13 @@ rec.risk.01(TDate = "2014-06-24",
 Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
 <<echo = FALSE>>=
-        IR.DV.01(TDate = "2014-04-22",
-                  currency = "USD",
-                  tenor = "5Y",
-                  parSpread = 160,
-                  coupon = 100,
-                  recoveryRate = 0.4,
-                  notional = 1e7)
+    #    IR.DV.01(TDate = "2014-04-22",
+     #             currency = "USD",
+      #            tenor = "5Y",
+       #           parSpread = 160,
+        #          coupon = 100,
+         #         recoveryRate = 0.4,
+          #        notional = 1e7)
 @
 
 
@@ -1546,13 +1546,13 @@ Function to calculate the increase in the upfront value when the interest rate o
 Function to calculate the increase in the upfront value when the spread increase by one basis point.
 
 <<echo = FALSE>>=
-spread.DV.01(TDate = "2014-04-22",
-           currency = "USD",
-           tenor = "5Y",
-           parSpread = 160,
-           coupon = 100,
-           recoveryRate = 0.4,
-           notional = 1e7)
+#spread.DV.01(TDate = "2014-04-22",
+ #          currency = "USD",
+  #         tenor = "5Y",
+   #        parSpread = 160,
+    #       coupon = 100,
+     #      recoveryRate = 0.4,
+      #     notional = 1e7)
 @
 
 

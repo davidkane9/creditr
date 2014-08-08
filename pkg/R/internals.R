@@ -6,7 +6,9 @@
 #' \code{d}.
 #' 
 .separate.YMD <- function(d){
+  
   ## valueDate format valueDate = "2008-02-01"
+  
   dateYear <- as.numeric(format(as.Date(d), "%Y"))
   dateMonth <- as.numeric(format(as.Date(d), "%m"))
   dateDay <- as.numeric(format(as.Date(d), "%d"))
@@ -25,13 +27,17 @@
 .download.rates <- function(URL, verbose = FALSE){ 
   tf <- tempfile()
   td <- tempdir()
+  
   ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
+  
   tmp <- .zipdown(URL, tf)
   if (class(tmp) == "character"){
     return(tmp)
   } else {
     files <- unzip(tf , exdir = td)
+    
     ## the 2nd file of the unzipped directory contains the rates info
+    
     doc <- xmlTreeParse(files[grep(".xml", files)], getDTD = F)
     r <- xmlRoot(doc)
     return(r)
@@ -47,7 +53,9 @@
 .adj.next.bus.day <- function(date){
   
   dateWday <- as.POSIXlt(date)$wday
+  
   ## change date to the most recent weekday if necessary
+  
   if (dateWday == 0){
     date <- date + 1
   } else if (dateWday == 6) {
