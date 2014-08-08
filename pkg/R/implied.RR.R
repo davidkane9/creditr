@@ -1,4 +1,4 @@
-#' A function that calculates the implied recovery rate.
+#' \code{implied.RR} that calculates the implied recovery rate.
 #' 
 #' Function that uses the ISDA model to calculate the implied recovery
 #' rate for cases in which we have a spread and a probability of
@@ -20,9 +20,8 @@
 #' @return implied recovery rate in percentage based on the general approximation 
 #' for a probability of default in the Bloomberg manual. The actual calculation uses 
 #' a complicated bootstrapping process, so the results may be marginally different.
-#' 
 
-implied.recovery.rate <- function(data, col.spread, col.pd, col.id, col.endDate, col.TDate){
+implied.RR <- function(data, col.spread, col.pd, col.id, col.endDate, col.TDate){
   spread <- data[, col.spread]
   endDate <- data[,col.endDate]
   TDate <- data[,col.TDate]

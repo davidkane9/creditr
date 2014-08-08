@@ -39,12 +39,6 @@ upfrontdf <- function(x,
                       recovery.var = "recovery",
                       isPriceClean = FALSE){
   
-  
-  ## You must provide either a maturity or a tenor, but not both.
-  #if(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))){
-  # x[[maturity.var]] <- NULL
-  #}
-  
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
   
@@ -59,13 +53,14 @@ upfrontdf <- function(x,
     stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
   }
   stopifnot(inherits(as.character(x[[currency.var]]), "character"))
+  
   stopifnot(is.numeric(notional))
   stopifnot(is.numeric(x[[coupon.var]]))
   
   ## stop if one of the dates in the X data frame does not have a corresponding
   ## interest rate curve in the rates data frame.
   
-  #stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
+  stopifnot(!(FALSE %in% check.Rates.Dates(x, rates)))  
   
   ## subset out the rates data frame to only include the dates between the oldest and
   ## latest date in the 'x' data frame.
@@ -85,7 +80,7 @@ upfrontdf <- function(x,
     ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
     ## getRates would download the data from the internet
     
-    if(x[i, currency.var]=="USD"){
+    if(x[i, currency.var] == "USD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y",
                     "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSSSS"
@@ -97,7 +92,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="EUR"){
+    } else if(x[i, currency.var] == "EUR"){
       expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
                     "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
                     "30Y")
@@ -110,7 +105,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="GBP"){
+    } else if(x[i, currency.var] == "GBP"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
                     "30Y")
@@ -123,7 +118,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="JPY"){
+    } else if(x[i, currency.var] == "JPY"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSSS"
@@ -135,7 +130,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="CHF"){
+    } else if(x[i, currency.var == "CHF"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
                     "30Y")
@@ -148,7 +143,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="CAD"){
+    } else if(x[i, currency.var] == "CAD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
       types <- "MMMMMSSSSSSSSSSSS"
@@ -160,7 +155,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="AUD"){
+    } else if(x[i, currency.var] == "AUD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
       types <- "MMMMSSSSSSSSSSSS"
@@ -172,7 +167,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="NZD"){
+    } else if(x[i, currency.var] == "NZD"){
       expiries <- c("1M", "2Y", "3Y", "6Y", "4Y", "5Y",
                     "7Y", "10Y", "15Y")
       types <- "MMMMSSSSS"
@@ -184,7 +179,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="SGD"){
+    } else if(x[i, currency.var] == "SGD"){
       expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
                     "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
       types <- "MMMMMMSSSSSSSSSS"
@@ -196,7 +191,7 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var]=="HKD"){
+    } else if(x[i, currency.var] == "HKD"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "7Y", "10Y", "12Y", "15Y")
       types <- "MMMMMSSSSSSSS"
@@ -211,6 +206,7 @@ upfrontdf <- function(x,
     }
     
     ## if tenor is just a number i.e. written as just 5, then we turn it to the string "5Y"
+    
     if(!is.null(x[[tenor.var]])) {  ## if tenor is provided
       x[i, tenor.var] <- as.character(x[i, tenor.var])      
       if(!grepl("Y", x[i, tenor.var])){

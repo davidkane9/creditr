@@ -59,7 +59,7 @@
 #' percent increase in recovery rate
 
 rec.risk.01 <- function(object = NULL,
-                      TDate,
+                      TDate = Sys.Date(),
                       baseDate = as.Date(TDate) + 2,
                       currency = "USD",
 

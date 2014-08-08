@@ -15,10 +15,10 @@ library(CDS)
 ##              as.Date("2019-06-20"), as.Date("2019-06-20"))   
 ## df <- data.frame(ids, pd, spread, TDate, endDate)
 
-## save(df, file = "imp.recovery.rate.test.RData")
+## save(df, file = "implied.RR.test.RData")
 
-load("imp.recovery.rate.test.RData")
+load("implied.RR.test.RData")
 
 # 3 is the column number for spread and 2 is the column number for pd, 1 for id
 
-implied.recovery.rate(df, 3, 2, 1, 5, 4)
+implied.RR(df, 3, 2, 1, 5, 4)
