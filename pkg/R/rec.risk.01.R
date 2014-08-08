@@ -128,6 +128,16 @@ rec.risk.01 <- function(x,
     
     recoveryRate <- x[[recoveryRate.var]][i]
     
+    dccCDS        <- "ACT/360"
+    freqCDS       <- "1Q"
+    stubCDS       <- "F"
+    badDayConvCDS <- "F"
+    calendar      <- "None"
+    
+    parSpread <- x[[parSpread.var]][i]
+    coupon    <- x[[coupon.var]][i]
+    notional  <- x[[notional.var]][i]
+    
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
