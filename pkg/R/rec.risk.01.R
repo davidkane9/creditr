@@ -49,6 +49,10 @@ rec.risk.01 <- function(x,
                         notional.var = "notional"
                       ){
 
+    ## check if certain variables are contained in x
+    stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
+              parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
+  
     ## vector containing recRisk01 columns. By default it contains NAs, which
     ## will be replaced by the recRisk01 values calculated by the function
   
