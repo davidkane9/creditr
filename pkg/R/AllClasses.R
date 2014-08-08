@@ -1,10 +1,10 @@
 #' Class definition for the \code{CDS-Class}
 #'
 #' @slot contract is the contract type, default SNAC
-#' @slot entityName is the name of the reference entity (Optional)
-#' @slot RED alphanumeric code assigned to the reference entity (Optional)
+#' @slot entityName is the name of the reference entity. Optional.
+#' @slot RED alphanumeric code assigned to the reference entity. Optional.
 #' @slot TDate is when the trade is executed, denoted as T. Default
-#' is today's date.
+#' is \code{Sys.Date}.
 #' @slot baseDate is the start date for the IR curve. Default is TDate. 
 #' @slot currency in which CDS is denominated. 
 #' @slot types is a string indicating the names of the instruments
@@ -36,8 +36,7 @@
 #' and protection ends. Any default after this date does not trigger a
 #' payment.
 #' @slot stepinDate default is T + 1.
-#' @slot maturity date of the CDS contract. Note that we must provide 
-#' either tenor or maturity but not both.
+#' @slot maturity date of the CDS contract.
 #' @slot tenor of contract - "5Y", "3Y"
 #' @slot dccCDS day count convention of the CDS. Default is ACT/360.
 #' @slot freqCDS date interval of the CDS contract.
@@ -59,7 +58,7 @@
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
-#' @slot accrual is the accrued interest payment. 
+#' @slot accrual is the accrued interest payment.#' 
 #' @slot upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -96,109 +95,109 @@
 #' @docType class
 #' @rdname CDS-class
 #' @export
+#' 
 
 setClass("CDS",
          representation = representation(
-             contract = "character",
-             entityName = "character",
-             RED = "character",
-             TDate = "Date",
-             baseDate = "Date",
-             currency = "character",
-             types = "character",
-             rates = "numeric",
-             expiries = "character",
-             mmDCC = "character",
-             effectiveDate = "Date",
-             fixedSwapFreq = "character",
-             floatSwapFreq = "character",
-             fixedSwapDCC = "character",
-             floatSwapDCC = "character",
-             badDayConvZC = "character",
-             holidays = "character",
-             valueDate = "Date",
-             benchmarkDate = "Date",
-             startDate = "Date",
-             endDate = "Date",
-             stepinDate = "Date",
-             backstopDate = "Date",
-             firstcouponDate = "Date",
-             pencouponDate = "Date",
-             maturity = "Date",
-             tenor = "character",
-             dccCDS = "character",
-             freqCDS ="character",
-             stubCDS ="character",
-             badDayConvCDS ="character",
-             calendar = "character",
-             
-             parSpread = "numeric",
-             coupon = "numeric",
-             recoveryRate = "numeric",
-             inputPriceClean = "logical",
-             notional = "numeric",
-             payAccruedOnDefault = "logical",
-
-             principal = "numeric",
-             accrual = "numeric",
-             upfront = "numeric",
-             ptsUpfront = "numeric",
-             spreadDV01 = "numeric",
-             IRDV01 = "numeric",
-             RecRisk01 = "numeric",
-             defaultProb = "numeric",
-             defaultExpo = "numeric",
-             price = "numeric"
-             ),
+           contract = "character",
+           entityName = "character",
+           RED = "character",
+           TDate = "Date",
+           baseDate = "Date",
+           currency = "character",
+           types = "character",
+           rates = "numeric",
+           expiries = "character",
+           mmDCC = "character",
+           effectiveDate = "Date",
+           fixedSwapFreq = "character",
+           floatSwapFreq = "character",
+           fixedSwapDCC = "character",
+           floatSwapDCC = "character",
+           badDayConvZC = "character",
+           holidays = "character",
+           valueDate = "Date",
+           benchmarkDate = "Date",
+           startDate = "Date",
+           endDate = "Date",
+           stepinDate = "Date",
+           backstopDate = "Date",
+           firstcouponDate = "Date",
+           pencouponDate = "Date",
+           maturity = "Date",
+           tenor = "character",
+           dccCDS = "character",
+           freqCDS ="character",
+           stubCDS ="character",
+           badDayConvCDS ="character",
+           calendar = "character",
+           
+           parSpread = "numeric",
+           coupon = "numeric",
+           recoveryRate = "numeric",
+           inputPriceClean = "logical",
+           notional = "numeric",
+           payAccruedOnDefault = "logical",
+           
+           principal = "numeric",
+           accrual = "numeric",
+           upfront = "numeric",
+           ptsUpfront = "numeric",
+           spreadDV01 = "numeric",
+           IRDV01 = "numeric",
+           RecRisk01 = "numeric",
+           defaultProb = "numeric",
+           defaultExpo = "numeric",
+           price = "numeric"
+         ),
          prototype = prototype(
-             contract = character(),
-             entityName = character(),
-             RED = character(),
-             TDate = character(),
-             baseDate = character(),
-             currency = character(),
-             types = character(),
-             rates = numeric(),
-             expiries = character(),
-             mmDCC = character(),
-             effectiveDate = character(),
-             fixedSwapFreq = character(),
-             floatSwapFreq = character(),
-             fixedSwapDCC = character(),
-             floatSwapDCC = character(),
-             badDayConvZC = character(),
-             holidays = character(),
-             valueDate = character(),
-             benchmarkDate = character(),
-             startDate = character(),
-             endDate = character(),
-             stepinDate = character(),
-             backstopDate = character(),
-             firstcouponDate = character(),
-             pencouponDate = character(),
-             maturity = character(),
-             tenor = character(),
-             dccCDS = character(),
-             freqCDS = character(),
-             stubCDS = character(),
-             badDayConvCDS = character(),
-             calendar = character(),
-             parSpread = numeric(),
-             coupon = numeric(),
-             recoveryRate = numeric(),
-             inputPriceClean = logical(),
-             notional = numeric(),
-             payAccruedOnDefault = logical(),
-             principal = numeric(),
-             accrual = numeric(),
-             upfront = numeric(),
-             ptsUpfront = numeric(),
-             spreadDV01 = numeric(),
-             IRDV01 = numeric(),
-             RecRisk01 = numeric(),
-             defaultProb = numeric(),
-             defaultExpo = numeric(),
-             price = numeric()
-             )
+           contract = character(),
+           entityName = character(),
+           RED = character(),
+           TDate = character(),
+           baseDate = character(),
+           currency = character(),
+           types = character(),
+           rates = numeric(),
+           expiries = character(),
+           mmDCC = character(),
+           effectiveDate = character(),
+           fixedSwapFreq = character(),
+           floatSwapFreq = character(),
+           fixedSwapDCC = character(),
+           floatSwapDCC = character(),
+           badDayConvZC = character(),
+           holidays = character(),
+           valueDate = character(),
+           benchmarkDate = character(),
+           startDate = character(),
+           endDate = character(),
+           stepinDate = character(),
+           backstopDate = character(),
+           firstcouponDate = character(),
+           pencouponDate = character(),
+           maturity = character(),
+           tenor = character(),
+           dccCDS = character(),
+           freqCDS = character(),
+           stubCDS = character(),
+           badDayConvCDS = character(),
+           calendar = character(),
+           parSpread = numeric(),
+           coupon = numeric(),
+           recoveryRate = numeric(),
+           inputPriceClean = logical(),
+           notional = numeric(),
+           payAccruedOnDefault = logical(),
+           principal = numeric(),
+           accrual = numeric(),
+           upfront = numeric(),
+           ptsUpfront = numeric(),
+           spreadDV01 = numeric(),
+           IRDV01 = numeric(),
+           RecRisk01 = numeric(),
+           defaultProb = numeric(),
+           defaultExpo = numeric(),
+           price = numeric()
          )
-
+)

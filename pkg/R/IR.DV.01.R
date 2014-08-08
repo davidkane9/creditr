@@ -2,7 +2,7 @@
 #'
 #' @param object is the \code{CDS} class object.
 #' @param TDate is when the trade is executed, denoted as T. Default
-#' is \code{Sys.Date}.
+#' is the current date or \code{Sys.Date}.
 #' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
@@ -90,7 +90,7 @@ IR.DV.01 <- function(object = NULL,
                    calendar = "None",
                    
                    parSpread,
-                   coupon=100,
+                   coupon = 100,
                    recoveryRate = 0.4,
                    isPriceClean = FALSE,
                    payAccruedOnDefault = TRUE,                       

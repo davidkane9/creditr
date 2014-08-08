@@ -3,10 +3,9 @@
 #' The day input should be a weekday. If not, go to the most
 #' recent previous weekday.
 #'
-#' Assume date and currency are in the same location.
 #' 
-#' @param date ideally a weekday. The rates for a trade date T are
-#' published on T-1 weekday.This date refers to the day on which we
+#' @param date Trade date. The rates for a trade date T are
+#' published on T-1 weekday. This date refers to the day on which we
 #' want the CDS to be priced, not the date for the interest rates as
 #' the interest rates will be used is the day before the trade date. Eg.
 #' If we are trying to find the rates used to price a CDS on 2014-04-22,
@@ -58,7 +57,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     ratesURL <- paste("https://www.markit.com/news/InterestRates_",
                       currency, "_", dateInt, ".zip", sep ="")
 
-    ## XML file from internet, which contains rates data
+    ## XML file from the internet, which contains the rates data
 
     xmlParsedIn <- .download.rates(ratesURL)
 
@@ -66,26 +65,26 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
 
     rates <- xmlSApply(xmlParsedIn, function(x) xmlSApply(x, xmlValue))
     
-    ## extracts the 'M' or 'Y' of the expiry and stores it in curevRates
+    ## extracts the 'M' or 'Y' of the expiry and stores it in curveRates
 
     curveRates <- c(rates$deposits[names(rates$deposits) == "curvepoint"],
                     rates$swaps[names(rates$swaps) == "curvepoint"])
     
     ## split the numbers from the 'M' and 'Y'
 
-    df <- do.call(rbind, strsplit(curveRates, split = "[MY]", perl = TRUE))
-    rownames(df) <- NULL
-    df <- cbind(df, "Y")
+    x <- do.call(rbind, strsplit(curveRates, split = "[MY]", perl = TRUE))
+    rownames(x) <- NULL
+    x <- cbind(x, "Y")
 
     ## attacg M to money month rates
 
-    df[1: (max(which(df[,1] == 1)) - 1), 3] <- "M"
+    x[1: (max(which(x[,1] == 1)) - 1), 3] <- "M"
     
     ## data frame with Interest Rates, maturity, type, expiry
 
-    ratesDf <- data.frame(expiry = paste(df[,1], df[,3], sep = ""),
-                          matureDate = substring(df[,2], 0, 10),
-                          rate = substring(df[,2], 11),
+    ratesx <- data.frame(expiry = paste(x[,1], x[,3], sep = ""),
+                          matureDate = substring(x[,2], 0, 10),
+                          rate = substring(x[,2], 11),
     
                           ## if maturity is 1Y, it is of type M
                           
@@ -94,15 +93,15 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
 
     ## data frame with data on day count etc.
 
-    dccDf <- data.frame(effectiveDate = rates$effectiveasof[[1]],
+    dccx <- data.frame(effectiveDate = rates$effectiveasof[[1]],
                         badDayConvention = rates$baddayconvention,
                         mmDCC = rates$deposits[['daycountconvention']],
                         mmCalendars = rates$deposits[['calendars']],
                         fixedDCC = rates$swaps[['fixeddaycountconvention']],
                         floatDCC = rates$swaps[['floatingdaycountconvention']],
-                        fixedFreq = rates$swaps[['fixedpaymentfrequency']],
+                        fixexreq = rates$swaps[['fixedpaymentfrequency']],
                         floatFreq = rates$swaps[['floatingpaymentfrequency']],
                         swapCalendars = rates$swaps[['calendars']])
     
-    return(list(ratesDf, dccDf))
+    return(list(ratesx, dccx))
 }
