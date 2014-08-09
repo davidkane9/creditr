@@ -1,10 +1,10 @@
-#' Helper function to separate an input date into year, month, and
-#' day.
+#' \code{internals} contains helper functions to separate an input date into
+#'  year, month, and day.
 #'
 #' @param d is an input date.
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
-#' 
+
 .separate.YMD <- function(d){
   
   ## valueDate format valueDate = "2008-02-01"
@@ -24,11 +24,10 @@
 #'
 #' @return a xml file crawled from the \code{URL}.
 #' 
+
 .download.rates <- function(URL, verbose = FALSE){ 
   tf <- tempfile()
   td <- tempdir()
-  
-  ## download.file(URL, tf , method = "curl", quiet = 1-verbose, mode = 'wb')
   
   tmp <- .zipdown(URL, tf)
   if (class(tmp) == "character"){
@@ -75,8 +74,8 @@
   
   date <- as.POSIXlt(TDate)
   
-  ## get the remainder X after dividing it by 3 and then move back X
-  ## month
+  ## get the remainder X after dividing it by 3 and then move back X month
+  
   if (date$mon %in% c(2, 5, 8, 11)){
     if (date$mday < 20)
       date$mon <- date$mon - 3
@@ -93,15 +92,17 @@
 #'
 #' @param dat is a string
 #' @return a numeric indicating the length of the input string.
+
 .check.length <- function(dat){
   return(nchar(as.character(dat)))
 }
 
 #' check if argument is not a character and coerce it to character
-##
+#'
 #' @param x input into the function
 #' @return true if it is a character 
 #' 
+
 .coerce.to.char <- function(x) {
   if(class(x)!="character"){
     return(as.character(x))
@@ -114,6 +115,7 @@
 
 #' month difference
 #' @param d date 
+
 .monnb <- function(d) {
   lt <- as.POSIXlt(as.Date(d, origin="1900-01-01"))
   lt$year*12 + lt$mon
@@ -125,6 +127,7 @@
 #' @param d2 date 2
 #' @return month difference as a difference between two monnb's
 #' 
+
 .mondf <- function(d1, d2) { .monnb(d2) - .monnb(d1) }
 
 
@@ -139,9 +142,11 @@
 
 .zipdown <- function(url, file){
   f <- CFILE(file, mode="wb")
+  
   ## a <- curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
   ##     verbose = FALSE,
   ##     ssl.verifypeer = FALSE)
+  
   a <- tryCatch(curlPerform(url = url,
                             writedata = f@ref, noprogress=TRUE,
                             verbose = FALSE,

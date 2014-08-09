@@ -39,8 +39,8 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
 
     dateWday <- as.POSIXlt(date)$wday
 
-    ## change date to the most recent weekday if necessary i.e. Friday if the day we
-    ## are pricing CDSs is Saturday, Sunday or Monday
+    ## change date to the most recent weekday if necessary i.e. change date to 
+    ## Friday if the day we are pricing CDSs is Saturday or Sunday
 
     if (dateWday == 0){
         date <- date - 2

@@ -29,8 +29,6 @@ get.rates.DF <- function(start, end, currency = "USD"){
   
   x <- NULL
   
-  ## keep 
-  
   while(end > start){
     
     ## use get.rates with the end date and keep reducing it by 1 day

@@ -1,4 +1,4 @@
-#' Calculate the price of a CDS contract
+#' \code{price} calculates the price of a CDS contract
 #'
 #' based on the formula Price = (1 - Principal/Notional)*100.
 #'

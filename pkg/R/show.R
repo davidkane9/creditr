@@ -1,4 +1,4 @@
-#' The show method for CDS class
+#' \code{show} method for CDS class
 #' 
 #' @name show
 #' @aliases show,CDS-method

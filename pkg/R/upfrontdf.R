@@ -42,7 +42,7 @@ upfrontdf <- function(x,
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
   
-  ## stop if not the relevant variables are not contained in x
+  ## stop if not all the relevant variables are contained in x
   
   stopifnot(all(c(date.var, spread.var, coupon.var) %in% names(x)))
   

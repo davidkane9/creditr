@@ -1,4 +1,4 @@
-#' Function that makes sure the dates in data frame x
+#' \code{check.rates.dates.R} makes sure the dates in data frame x
 #' being used by the upfrontdf function are also present in the
 #' rates data frame being entered into the upfrontdf function (if 
 #' it is not contained in the rates data frame, the upfrontdf

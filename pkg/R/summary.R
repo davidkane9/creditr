@@ -1,4 +1,4 @@
-#' The summary method displays only the essential info about the CDS
+#' \code{summary} method displays only the essential info about the CDS
 #' class object.
 #' 
 
