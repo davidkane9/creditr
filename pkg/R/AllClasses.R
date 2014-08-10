@@ -1,3 +1,5 @@
+#' CDS Class
+#' 
 #' Class definition for the \code{CDS-Class}
 #'
 #' @slot contract is the contract type, default SNAC
@@ -58,7 +60,7 @@
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
-#' @slot accrual is the accrued interest payment.#' 
+#' @slot accrual is the accrued interest payment.
 #' @slot upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the

@@ -105,19 +105,6 @@ upfrontdf <- function(x,
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
-    } else if(x[i, currency.var] == "GBP"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
-                    "30Y")
-      types <- "MMMMMMSSSSSSSSSSSSSS"
-      mmDCC <- "ACT/365" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
     } else if(x[i, currency.var] == "JPY"){
       expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
                     "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
@@ -127,79 +114,6 @@ upfrontdf <- function(x,
       floatSwapFreq <- "6M"
       fixedSwapDCC <- "ACT/365" 
       floatSwapDCC <- "ACT/360" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var == "CHF"]){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "25Y", 
-                    "30Y")
-      types <- "MMMMMMSSSSSSSSSSSSSS"
-      mmDCC <- "ACT/360" 
-      fixedSwapFreq <- "1Y" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "30/360" 
-      floatSwapDCC <- "ACT/360" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "CAD"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
-      types <- "MMMMMSSSSSSSSSSSS"
-      mmDCC <- "ACT/365" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "3M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "AUD"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "6Y", "7Y", "8Y", "9Y", "10Y", "15Y", "20Y", "30Y")
-      types <- "MMMMSSSSSSSSSSSS"
-      mmDCC <- "ACT/365" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "NZD"){
-      expiries <- c("1M", "2Y", "3Y", "6Y", "4Y", "5Y",
-                    "7Y", "10Y", "15Y")
-      types <- "MMMMSSSSS"
-      mmmDCC <- "ACT/365" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "SGD"){
-      expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
-                    "5Y", "6Y", "7Y", "10Y", "12Y", "15Y", "20Y")
-      types <- "MMMMMMSSSSSSSSSS"
-      mmDCC <- "ACT/365" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "HKD"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "7Y", "10Y", "12Y", "15Y")
-      types <- "MMMMMSSSSSSSS"
-      mmDCC <- "ACT/365" 
-      fixedSwapFreq <- "3M" 
-      floatSwapFreq <- "3M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/365" 
       badDayConvZC <- "M" 
       holidays <- "None"
       calendar <- "None"
