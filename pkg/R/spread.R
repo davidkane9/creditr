@@ -111,16 +111,19 @@ spread <- function(TDate,
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
     if(currency == "JPY"){        
-      baseDate <- .adjNextBusDay(as.Date(TDate) + 2)
-      
-      JPY.holidays <- suppressWarnings(as.Date(readLines(system.file("data/TYO.DAT.txt", package = "CDS")), "%Y%m%d"))
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
+      data(JPY.holidays, package = "CDS")
       
       ## if base date is one of the Japanese holidays we add another business day to it
       
       if(baseDate %in% JPY.holidays){
-        baseDate <- .adjNextBusDay(as.Date(TDate) + 1)
+        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
       }
     }
+    
+    ## rates Date is the date for which interest rates will be calculated. get.rates 
+    ## function will return the rates of the previous day
+    
     ratesDate <- as.Date(TDate)
     
     if (is.null(ptsUpfront)) {
