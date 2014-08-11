@@ -166,17 +166,15 @@ CDS <- function(contract = "SNAC",
   
   if(is.null(maturity)){
     cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
+  } else{
+    if(is.null(tenor)){
+      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+    }
+    ## if both are entered, we arbitrarily use one of them
+    if((!is.null(tenor) & !is.null(maturity))){
+      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+    }
   }
-  else if(is.null(tenor)){
-    cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
-  }
-  
-  ## if both are entered, we arbitrarily use one of them
-  
-  else if((!is.null(tenor) & !is.null(maturity))){
-    cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
-  }
-
   
   ## if these dates are not entered, we extract that from cdsdates
   
@@ -629,7 +627,7 @@ CDS <- function(contract = "SNAC",
                   notional = c(cds@notional))
   
   cds@spreadDV01  <- spread.DV.01(cds)
-  cds@IRDV01      <- IR.DV.01(cds) 
+  cds@IRDV01      <- IR.DV.01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
   cds@defaultProb <- default.prob(parSpread = cds@parSpread,
                                  t = as.numeric(as.Date(endDate) -

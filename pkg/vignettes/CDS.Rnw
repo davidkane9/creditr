@@ -1342,7 +1342,7 @@ options(width = 100)
 
 <<>>=
 library(CDS)
-cds1 <- CDS(entityName = "Alcoa",
+cds <- CDS(entityName = "Alcoa",
             RED = "49EB20",
             TDate = "2014-06-24",
             tenor = "5Y",
@@ -1531,7 +1531,7 @@ Function to calculate the increase in the upfront value when the recovery rate i
 Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
 <<echo = FALSE>>=
-    #    IR.DV.01(TDate = "2014-04-22",
+    #    IR.DV.01(data.frame(TDate = "2014-04-22",
      #             currency = "USD",
       #            tenor = "5Y",
        #           parSpread = 160,

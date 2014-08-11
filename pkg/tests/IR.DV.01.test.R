@@ -1,26 +1,22 @@
-## IRDV01.test case for Xerox corportation on April 22, 2014
+## IR.DV.01.R
 
 library(CDS)
 
+## comparing IR.DV.01 calculated by our package for Xerox Corp and Electrolux
+## AB on April 22, 2014 with the results on Bloomberg
 
-## actual value 
-## truth.1 <- -7.35
+x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+                currency = c("USD", "EUR"),
+                tenor = c("5Y", "5Y"),
+                maturity = c(NA, NA),
+                spread = c(105.8, 99),
+                coupon = c(100, 100),
+                recoveryRate = c(0.4, 0.4),
+                notional = c(1e7, 1e7))
 
-## save(truth.1, file = "IR.DV.01.test.RData")
+result <- IR.DV.01(x)
 
-load("IR.DV.01.test.RData")
+truth <- c(-7.36, 1.29)
 
-result.1 <- IR.DV.01(TDate = "2014-04-22",
-                  currency = "USD",
-                  tenor = "5Y",
-                  dccCDS = "Act/360",
-                  freqCDS = "1Q",
-                  stubCDS = "F",
-                  badDayConvCDS = "F",
-                  calendar = "None",
-                  parSpread = 105.8,
-                  coupon = 100,
-                  recoveryRate = 0.4,
-                  notional = 1e7)
+## stopifnot(all.equal(round(result), round(truth)))
 
-stopifnot(all.equal(round(result.1), round(truth.1)))
