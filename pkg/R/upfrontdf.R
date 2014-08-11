@@ -70,9 +70,13 @@ upfrontdf <- function(x,
   
   rates <- rates[rates$date >= min.date & rates$date <= max.date,]
   
+  copy <- rates
+  
   results <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
+    
+    rates <- copy
     
     ## subset out the rates of the relevant currency
     
@@ -131,26 +135,162 @@ upfrontdf <- function(x,
       tenor <- NULL
     }
     
-    results[i] <- upfront(TDate = x[i, date.var],
-                          currency = x[i, currency.var],                    
-                          types = types,
-                          rates = rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])],
-                          expiries = expiries,                    
-                          mmDCC = as.character(mmDCC),                    
-                          fixedSwapFreq = as.character(fixedSwapFreq),
-                          floatSwapFreq = as.character(floatSwapFreq),
-                          fixedSwapDCC = as.character(fixedSwapDCC),
-                          floatSwapDCC = as.character(floatSwapDCC),
-                          badDayConvZC = as.character(badDayConvZC),
-                          holidays = as.character(holidays),                   
-                          maturity = x[i, maturity.var],
-                          tenor = tenor,
-                          parSpread = x[i, spread.var],
-                          coupon = x[i, coupon.var],
-                          recoveryRate = x[i, recovery.var],
-                          isPriceClean = isPriceClean,
-                          calendar = calendar,
-                          notional = notional)
+    TDate <- x[i, date.var]
+    baseDate <- as.Date(TDate) + 2
+    currency <- x[i, currency.var]
+    types <- types
+    rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])]
+    expiries <- expiries                    
+    mmDCC <- as.character(mmDCC)                    
+    fixedSwapFreq <- as.character(fixedSwapFreq)
+    floatSwapFreq <- as.character(floatSwapFreq)
+    fixedSwapDCC <- as.character(fixedSwapDCC)
+    floatSwapDCC <- as.character(floatSwapDCC)
+    badDayConvZC <- as.character(badDayConvZC)
+    holidays <- as.character(holidays)    
+    valueDate <- NULL
+    benchmarkDate <- NULL
+    startDate <- NULL
+    endDate <- NULL
+    stepinDate <- NULL
+    tenor <- tenor
+    maturity <- x[i, maturity.var]
+    dccCDS <- "ACT/360"
+    freqCDS <- "1Q"
+    stubCDS <- "F"
+    badDayConvCDS <- "F"
+    calendar <- calendar
+    parSpread <- x[i, spread.var]
+    coupon <- x[i, coupon.var]
+    recoveryRate <- x[i, recovery.var]
+    isPriceClean <- isPriceClean
+    payAccruedOnDefault <- TRUE
+    notional <- notional
+    
+    ## stop if TDate is invalid
+    
+    stopifnot(check.date(TDate))
+    
+    TDate <- as.Date(TDate)
+    
+    if(as.POSIXlt(TDate)$wday==5){
+      baseDate <- .adj.next.bus.day(TDate+4)
+    } else if(as.POSIXlt(TDate)$wday==0){
+      baseDate <- .adj.next.bus.day(TDate+3)
+    } else {
+      baseDate <- .adj.next.bus.day(TDate+2)
+    }
+    
+    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
+    
+    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    
+    if(currency == "JPY"){        
+      baseDate <- .adj.next.bus.day(as.Date(TDate) + 2)
+      data(JPY.holidays, package = "CDS")
+      
+      ## if base date is one of the Japanese holidays we add another business day to it
+      
+      if(baseDate %in% JPY.holidays){
+        baseDate <- .adj.next.bus.day(as.Date(TDate) + 1)
+      }
+    }
+    
+    ## rates Date is the date for which interest rates will be calculated. get.rates 
+    ## function will return the rates of the previous day
+    
+    ratesDate <- as.Date(TDate)
+    
+    ## if maturity date is not provided, we use tenor to obtain dates through
+    ## get.date, and vice versa.
+    
+    if(is.null(tenor)){
+      cdsDates <- get.date(date = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
+    }
+    else if(is.null(maturity)){
+      cdsDates <- get.date(date = as.Date(TDate), maturity = NULL, tenor = tenor)
+    }
+    
+    ## if these dates are not entered, they are extracted using get.date
+    
+    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
+    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
+    if (is.null(startDate)) startDate         <- cdsDates$startDate
+    if (is.null(endDate)) endDate             <- cdsDates$endDate
+    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
+    
+    ## separate an input date into year, month, and day
+    
+    baseDate      <- .separate.YMD(baseDate)
+    today         <- .separate.YMD(TDate)
+    valueDate     <- .separate.YMD(valueDate)
+    benchmarkDate <- .separate.YMD(benchmarkDate)
+    startDate     <- .separate.YMD(startDate)
+    endDate       <- .separate.YMD(endDate)
+    stepinDate    <- .separate.YMD(stepinDate)
+    
+    ## stop if number of rates != number of expiries != length of types
+    
+    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
+    
+    ## if any of these three are null, we extract them using get.rates
+    
+    if ((is.null(types) | is.null(rates) | is.null(expiries))){
+      
+      ratesInfo <- get.rates(date = ratesDate, currency = currency)
+      effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+      
+      ## extract relevant variables like mmDCC, expiries from the get.rates function 
+      ## if they are not entered
+      
+      if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+      if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
+      if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
+      if (is.null(mmDCC)) mmDCC       <- as.character(ratesInfo[[2]]$mmDCC)
+      
+      if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
+      if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
+      if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(ratesInfo[[2]]$fixedDCC)
+      if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(ratesInfo[[2]]$floatDCC)
+      if (is.null(badDayConvZC)) badDayConvZC   <- as.character(ratesInfo[[2]]$badDayConvention)
+      if (is.null(holidays)) holidays           <- as.character(ratesInfo[[2]]$swapCalendars)
+    }
+    
+   
+    results[i] <- .Call('calcUpfrontTest',
+                        baseDate,
+                        types,
+                        rates,
+                        expiries,
+                        
+                        mmDCC,
+                        fixedSwapFreq,
+                        floatSwapFreq,
+                        fixedSwapDCC,
+                        floatSwapDCC,
+                        badDayConvZC,
+                        holidays,
+                        
+                        today,
+                        valueDate,
+                        benchmarkDate,
+                        startDate,
+                        endDate,
+                        stepinDate,
+                        
+                        dccCDS,
+                        freqCDS,
+                        stubCDS,
+                        badDayConvCDS,
+                        calendar,
+                        
+                        parSpread,
+                        coupon,
+                        recoveryRate,
+                        isPriceClean,
+                        payAccruedOnDefault,
+                        notional,
+                        PACKAGE = "CDS")  
   } 
   
   return(results)
