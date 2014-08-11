@@ -1482,7 +1482,15 @@ cds1
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
 
 <<>>=
-cds1.CS10 <- CS10(cds1)
+x <- data.frame(  dates = as.Date(cds1@TDate),
+                  currency = cds1@currency,
+                  tenor = cds1@tenor,
+                  spread = cds1@parSpread,
+                  maturity = cds1@maturity,
+                  coupon = cds1@coupon,
+                  recoveryRate = cds1@recoveryRate,
+                  notional = cds1@notional)
+cds1.CS10 <- CS10(x)
 cds1.CS10
 @ 
 

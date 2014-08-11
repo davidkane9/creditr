@@ -24,6 +24,16 @@
 #' Default is 1e7, i.e. 10MM.
 #' @return a vector containing the change in upfront when there is a 1
 #' percent increase in recovery rate, for each corresponding CDS contract.
+#' @example 
+#' x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+#' currency = c("USD", "EUR"),
+#' maturity = c(NA, NA),
+#' tenor = c("5Y", "5Y"),
+#' spread = c(120, 110),
+#' coupon = c(100, 100),
+#' recoveryRate = c(0.4, 0.4),
+#' notional = c(1e7, 1e7))
+#' result <- rec.risk.01(x)
 
 rec.risk.01 <- function(x,
                         TDate.var = "dates",

@@ -26,8 +26,7 @@
 #' increase in interest rate, for each corresponding CDS contract.
 #' 
 #' @example 
-#' 
-#'  x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+#' x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
 #' maturity = c(NA, NA),
 #' tenor = c("5Y", "5Y"),
@@ -35,6 +34,7 @@
 #' coupon = c(100, 100),
 #' recoveryRate = c(0.4, 0.4),
 #' notional = c(1e7, 1e7))
+#' result <- IR.DV.01(x)
 
 IR.DV.01 <- function(x,
                      TDate.var = "dates",

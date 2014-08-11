@@ -17,10 +17,14 @@ Calculate the change in value of the contract when there is a 10%
 on the spread of the contract.
 }
 \examples{
-# construct a CDS class object
-cds1 <- CDS(TDate = "2014-05-07", tenor="5Y", parSpread = 50, coupon = 100)
-
-# use CS10
-CS10(cds1)
+x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+currency = c("USD", "EUR"),
+maturity = c(NA, NA),
+tenor = c("5Y", "5Y"),
+spread = c(120, 110),
+coupon = c(100, 100),
+recoveryRate = c(0.4, 0.4),
+notional = c(1e7, 1e7))
+result <- CS10(x)
 }
 
