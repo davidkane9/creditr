@@ -83,7 +83,7 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds <- CDS(TDate = "2014-05-07", tenor = "5Y", parSpread = 50, coupon = 100) 
+#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = "5Y", parSpread = 50, coupon = 100) 
 
 CDS <- function(contract = "SNAC", 
                 entityName = NULL,
@@ -621,7 +621,7 @@ CDS <- function(contract = "SNAC",
                   currency = c(cds@currency),
                   tenor = c(cds@tenor),
                   maturity = c(cds@maturity),
-                  spread = c(cds@parSpread),
+                  spread = c(parSpread),
                   coupon = c(cds@coupon),
                   recoveryRate = c(cds@recoveryRate),
                   notional = c(cds@notional))
