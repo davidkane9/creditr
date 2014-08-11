@@ -2,9 +2,8 @@
 \linespread{1.5}
 \usepackage[round]{natbib}
 \usepackage{amssymb, amsmath}
-%% \usepackage{RJournal}
 \usepackage{fancyvrb}
-\usepackage{Sweave, url, tikz}
+\usepackage{url, tikz}
 \usepackage{hyperref}
 \usepackage[sc]{mathpazo}
 \usepackage[T1]{fontenc}
@@ -13,20 +12,13 @@
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
 \usepackage{url}
-%\usepackage{breakurl}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage[nottoc]{tocbibind}
 
-\newcommand{\ts}{\textsuperscript}
-\newcommand\bc{\begin{center}}
-\newcommand\ec{\end{center}}
-
-%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontsize=\small,fontshape=sl}
-%\DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\small}
-%\DefineVerbatimEnvironment{Scode}{Verbatim}{fontsize=\small,fontshape=sl}
-%\fvset{listparameters={\setlength{\topsep}{0pt}}}
-%\renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+%\newcommand{\ts}{\textsuperscript}
+%\newcommand\bc{\begin{center}}
+%\newcommand\ec{\end{center}}
 
 
 <<include=FALSE>>=
@@ -38,6 +30,7 @@ echo = TRUE, results='markup', tidy=FALSE
 
 \bibliographystyle{abbrvnat}
 
+%\VignetteIndexEntry{knitr::knitr}
 %%\VignetteIndexEntry{Credit Default Swaps with R}
 
 \begin{document}
@@ -817,7 +810,18 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-So far we have only discussed pricing of CDS contracts across two periods. Let us now see how CDS are priced across multiple periods. Let's say that our CDS contract now has a tenor of five years and that each coupon payment is made quarterly. Once again, let's say that the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. In this case the upfront payment is the sum of the expected present value of each coupon payment. 
+So far we have only discussed pricing of CDS contracts across two periods. Let us now see how CDS are priced across multiple periods. Let's say that our CDS contract now has a tenor of five years and that each coupon payment is made quarterly. The cash flows from the protection  buyer to the seller, when there is no credit even, would look like Figure \ref{fig:CDSnoevent}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
+\caption{CDS cash flows when there is no credit event.}
+\label{fig:CDSnoevent}
+\end{figure}
+
+Once again, let's say that the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. In this case the upfront payment is the sum of the expected present value of each coupon payment. 
+
+\subsubsection{Discount Factor}
 
 So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. The term structure of interest rates is known as the \textbf{Swap Curve} or \textbf{Risk-Free Curve}. If, for a given date, we plot the maturities of different bonds, such as treasury bonds, on the x-axis and their corresponding yields on the y-axis, we get a \textbf{Swap Curve}.
 
@@ -828,25 +832,41 @@ So far we have assumed that the interest is 0\%. In the actual CDS world we woul
 \label{fig:YieldCurve}
 \end{figure}  
 
-Moreover, we also have to account for the probability of default for each period. Together, these are known as the \textbf{risky discount factor}. 
+\subsubsection{Hazard Rates}
+
+Moreover, we also have to account for the probability of default for each period. The cumulative probability that a company survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}.   
+
+Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. This is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
+
+\begin{equation}
+ \begin{aligned}
+   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
+    \end{aligned}
+\end{equation}
+
+The above equation does not account for the accrued amount that a protection buyer would not have to pay. If we account for that, the equation would be:
+
+\begin{equation}
+ \begin{aligned}
+   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
+    \end{aligned}
+\end{equation}
 
 
+The present value of 1 bp stream of payments is known as \textbf{PV01} or \textbf{Present Value 01}. The principal or Mark-to-Market value can also be calculated in terms of the PV01:
 
 
-Therefore, the cash flow, when there is no credit even, would look like Figure \ref{fig:CDSnoevent}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
-\caption{CDS cash flows when there is no credit event.}
-\label{fig:CDSnoevent}
-\end{figure}
+\begin{equation}
+ \begin{aligned}
+   (Coupon - Spread)*(PV01)*(Notional)
+    \end{aligned}
+\end{equation}
 
 
 \subsection{Premium Leg}
 \label{sec:CashFlows1}
 
-The stream of cash flows from the protection buyer to the seller, when there is no default, is known as the \textbf{premium leg}. To understand the premium leg, we must look at the \textbf{Trade Spread} (marked as \textbf{Trd Sprd} in Figure \ref{fig:CDSalcoa}) and \textbf{Coupon} in Figure \ref{fig:CDSalcoa}. In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection. Until 2009, the two counterparties in a CDS contract would agree on the coupon level before the trade. Then, as the market moved, this tradable coupon would vary. So if our portfolio manager was purchasing a CDS before 2009, she would have had to negotiate a fixed coupon---which would then vary as the company's credit risk varied---with the hedge fund. 
+The stream of cash flows from the protection buyer to the seller, when there is no default, is known as the \textbf{premium leg}. To understand the premium leg, we must look at the \textbf{Trade Spread} (marked as \textbf{Trd Sprd} in Figure \ref{fig:CDSalcoa}) and \textbf{Coupon} in Figure \ref{fig:CDSalcoa}. In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection.
 
 %% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
 
@@ -854,11 +874,6 @@ The stream of cash flows from the protection buyer to the seller, when there is 
 
 %% Explain why this change was made.
 %% The problem with a system like the one described above is that . 
-
-In April 2009 in North America, the ISDA introduced a series of mandatory modifications to the CDS contract known as the "Big Bang" protocol. Under the new rules, coupon rates were standardized in North America and Europe starting June 2009. Dealers now had to quote \textbf{standard coupons} of 100bps or 500bps in North America, or 25bps, 100bps, 500bps or 1000bps in Europe, and all coupons were paid quarterly on one of the four roll dates. The coupon printed in the figure above is the fixed coupon for Alcoa, which is 100bps, or 1\% of the notional amount. However, the dealers may not feel that this is the fair premium for protection. For instance, the hedge fund selling protection to the portfolio manager may feel that the fair premium should be 160bps, and not 100bps. This fair premium rate is known as \textbf{trade spread} (or \textbf{par spread}, or just \textbf{spread}), labeled as 160 in the figure above. 
-
-Naturally, if the hedge fund believes that the fair premium should be 160bps, it would like to be compensated for receiving just 100bps. As a result, the portfolio manager would have to make what is known as an \textbf{upfront payment} at the trade inception. Therefore, in the absence of a credit event, the cash flow between the two parties, over the life of the contract, would look like Figure \ref{fig:CDSnoevent}.
-
 
 
 The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
@@ -1138,6 +1153,7 @@ There are several assumptions made here:
 \item Counterparty risk is not considered
 \item 
 \end{itemize}
+
 %\begin{displaymath}
 %PV(Protection) =  \e^-\int_0^t h(t)dt\), \nonumber\\
 %\end{displaymath}
