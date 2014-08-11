@@ -1342,7 +1342,7 @@ options(width = 100)
 
 <<>>=
 library(CDS)
-cds <- CDS(entityName = "Alcoa",
+cds1 <- CDS(entityName = "Alcoa",
             RED = "49EB20",
             TDate = "2014-06-24",
             tenor = "5Y",

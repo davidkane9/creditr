@@ -111,7 +111,7 @@ spread.DV.01 <- function(x,
     else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
       cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }
-    
+
     
     ## relevant dates are extracted from get.dates and then separated into year,
     ## month and date using .separate.YMD (in internals.R). This is the format
