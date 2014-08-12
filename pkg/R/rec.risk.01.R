@@ -50,15 +50,7 @@ rec.risk.01 <- function(x,
 
     ## check if certain variables are contained in x
     
-    stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
-              parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
-  
-    ## check if variables are defined in the correct classes
-    
-    stopifnot(is.numeric(x[[parSpread.var]]))
-    stopifnot(is.numeric(x[[coupon.var]]))
-    stopifnot(is.numeric(x[[recoveryRate.var]]))
-    stopifnot(is.numeric(x[[notional.var]]))
+    x <- check.dataframe(x)
         
     ## vector containing recRisk01 columns. By default it contains NAs, which
     ## will be replaced by the recRisk01 values calculated by the function
@@ -74,6 +66,8 @@ rec.risk.01 <- function(x,
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
     baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
+    TDate <- x[[TDate.var]][i]
+    currency <- x[[currency.var]][i]
     
     #baseDate <- x[[TDate.var]][i] + 2
     
@@ -81,16 +75,8 @@ rec.risk.01 <- function(x,
       baseDate <- baseDate + 1
     }
     
-    if(x[[currency.var]][i] == "JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
-      data(JPY.holidays, package = "CDS")
-      
-      ## if base date is one of the Japanese holidays we add another business day to it
-      
-      if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 1)
-      }
-    }
+    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+                              currency = currency)
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
@@ -174,7 +160,7 @@ rec.risk.01 <- function(x,
                           holidays,
                           
                           today,
-                          valueDate,
+                          .separate.YMD(cdsDates$valueDate),
                           benchmarkDate,
                           startDate,
                           endDate,

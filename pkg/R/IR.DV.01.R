@@ -54,15 +54,7 @@ IR.DV.01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
-              parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
-  
-  ## check if variables are defined in the correct classes
-  
-  stopifnot(is.numeric(x[[parSpread.var]]))
-  stopifnot(is.numeric(x[[coupon.var]]))
-  stopifnot(is.numeric(x[[recoveryRate.var]]))
-  stopifnot(is.numeric(x[[notional.var]]))
+  x <- check.dataframe(x)
     
   IR.DV.01 <- rep(NA, nrow(x))
   
@@ -75,6 +67,8 @@ IR.DV.01 <- function(x,
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
     baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
+    TDate <- x[[TDate.var]][i]
+    currency <- x[[currency.var]][i]
     
     #baseDate <- x[[TDate.var]][i] + 2
     
@@ -82,16 +76,8 @@ IR.DV.01 <- function(x,
       baseDate <- baseDate + 1
     }
     
-    if(x[[currency.var]][i] == "JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
-      data(JPY.holidays, package = "CDS")
-      
-      ## if base date is one of the Japanese holidays we add another business day to it
-      
-      if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 1)
-      }
-    }
+    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+                              currency = currency)
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
@@ -118,116 +104,84 @@ IR.DV.01 <- function(x,
     endDate       <- cdsDates$endDate
     stepinDate    <- cdsDates$stepinDate
     
-    baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(x[[TDate.var]][i])
-    valueDate     <- .separate.YMD(valueDate)
-    benchmarkDate <- .separate.YMD(benchmarkDate)
-    startDate     <- .separate.YMD(startDate)
-    endDate       <- .separate.YMD(endDate)
-    stepinDate    <- .separate.YMD(stepinDate)
-    
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
     ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
-    types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
-    expiries  <- as.character(ratesInfo[[1]]$expiry)
-    mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
-    
-    fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-    floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-    fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
-    floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
-    badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-    holidays      <- "None"
-    
-    recoveryRate <- x[[recoveryRate.var]][i]
-    
-    
-    dccCDS        <- "ACT/360"
-    freqCDS       <- "1Q"
-    stubCDS       <- "F"
-    badDayConvCDS <- "F"
-    calendar      <- "None"
-    parSpread <- x[[parSpread.var]][i]
-    coupon    <- x[[coupon.var]][i]
-    notional  <- x[[notional.var]][i]
-    
-    
     
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate,
-                          types,
-                          rates,
-                          expiries,
+                          .separate.YMD(baseDate),
+                          paste(as.character(ratesInfo[[1]]$type), collapse = ""),
+                          as.numeric(as.character(ratesInfo[[1]]$rate)),
+                          as.character(ratesInfo[[1]]$expiry),
                           
-                          mmDCC,
-                          fixedSwapFreq,
-                          floatSwapFreq,
-                          fixedSwapDCC,
-                          floatSwapDCC,
-                          badDayConvZC,
-                          holidays,
+                          as.character(ratesInfo[[2]]$mmDCC),
+                          as.character(ratesInfo[[2]]$fixedFreq),
+                          as.character(ratesInfo[[2]]$floatFreq),
+                          as.character(ratesInfo[[2]]$fixedDCC),
+                          as.character(ratesInfo[[2]]$floatDCC),
+                          as.character(ratesInfo[[2]]$badDayConvention),
+                          "None",
                           
-                          today,
-                          valueDate,
-                          benchmarkDate,
-                          startDate,
-                          endDate,
-                          stepinDate,
+                          .separate.YMD(x[[TDate.var]][i]),
+                          .separate.YMD(valueDate),
+                          .separate.YMD(benchmarkDate),
+                          .separate.YMD(startDate),
+                          .separate.YMD(endDate),
+                          .separate.YMD(stepinDate),
                           
-                          dccCDS,
-                          freqCDS,
-                          stubCDS,
-                          badDayConvCDS,
-                          calendar,
+                          "ACT/360",
+                          "1Q",
+                          "F",
+                          "F",
+                          "None",
                           
-                          parSpread,
-                          coupon,
-                          recoveryRate,
+                          x[[parSpread.var]][i],
+                          x[[coupon.var]][i],
+                          x[[recoveryRate.var]][i],
                           isPriceClean,
                           payAccruedOnDefault,
-                          notional,
+                          x[[notional.var]][i],
                           PACKAGE = "CDS")
     
     ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate,
-                         types,
-                         rates + 1/1e4,
-                         expiries,
+                         .separate.YMD(baseDate),
+                         paste(as.character(ratesInfo[[1]]$type), collapse = ""),
+                         as.numeric(as.character(ratesInfo[[1]]$rate)) + 1/1e4,
+                         as.character(ratesInfo[[1]]$expiry),
                          
-                         mmDCC,
-                         fixedSwapFreq,
-                         floatSwapFreq,
-                         fixedSwapDCC,
-                         floatSwapDCC,
-                         badDayConvZC,
-                         holidays,
                          
-                         today,
-                         valueDate,
-                         benchmarkDate,
-                         startDate,
-                         endDate,
-                         stepinDate,
+                         as.character(ratesInfo[[2]]$mmDCC),
+                         as.character(ratesInfo[[2]]$fixedFreq),
+                         as.character(ratesInfo[[2]]$floatFreq),
+                         as.character(ratesInfo[[2]]$fixedDCC),
+                         as.character(ratesInfo[[2]]$floatDCC),
+                         as.character(ratesInfo[[2]]$badDayConvention),
+                         "None",
                          
-                         dccCDS,
-                         freqCDS,
-                         stubCDS,
-                         badDayConvCDS,
-                         calendar,
+                         .separate.YMD(x[[TDate.var]][i]),
+                         .separate.YMD(valueDate),
+                         .separate.YMD(benchmarkDate),
+                         .separate.YMD(startDate),
+                         .separate.YMD(endDate),
+                         .separate.YMD(stepinDate),
                          
-                         parSpread,
-                         coupon,
-                         recoveryRate,
+                         "ACT/360",
+                         "1Q",
+                         "F",
+                         "F",
+                         "None",
+                         
+                         x[[parSpread.var]][i],
+                         x[[coupon.var]][i],
+                         x[[recoveryRate.var]][i],
                          isPriceClean,
                          payAccruedOnDefault,
-                         notional,
+                         x[[notional.var]][i],
                          PACKAGE = "CDS")
     
     IR.DV.01[i] <- upfront.new - upfront.orig
