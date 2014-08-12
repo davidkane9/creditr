@@ -110,25 +110,10 @@ IR.DV.01 <- function(x,
     endDate       <- cdsDates$endDate
     stepinDate    <- cdsDates$stepinDate
     
-    baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(x[[TDate.var]][i])
-    valueDate     <- .separate.YMD(valueDate)
-    benchmarkDate <- .separate.YMD(benchmarkDate)
-    startDate     <- .separate.YMD(startDate)
-    endDate       <- .separate.YMD(endDate)
-    stepinDate    <- .separate.YMD(stepinDate)
-    
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
     ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
-    types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
-    expiries  <- as.character(ratesInfo[[1]]$expiry)
-    mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
-    
-    fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-    floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
     fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
     floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
     badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
@@ -151,25 +136,25 @@ IR.DV.01 <- function(x,
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate,
-                          types,
-                          rates,
-                          expiries,
+                          .separate.YMD(baseDate),
+                          paste(as.character(ratesInfo[[1]]$type), collapse = ""),
+                          as.numeric(as.character(ratesInfo[[1]]$rate)),
+                          as.character(ratesInfo[[1]]$expiry),
                           
-                          mmDCC,
-                          fixedSwapFreq,
-                          floatSwapFreq,
+                          as.character(ratesInfo[[2]]$mmDCC),
+                          as.character(ratesInfo[[2]]$fixedFreq),
+                          as.character(ratesInfo[[2]]$floatFreq),
                           fixedSwapDCC,
                           floatSwapDCC,
                           badDayConvZC,
                           holidays,
                           
-                          today,
-                          valueDate,
-                          benchmarkDate,
-                          startDate,
-                          endDate,
-                          stepinDate,
+                          .separate.YMD(x[[TDate.var]][i]),
+                          .separate.YMD(valueDate),
+                          .separate.YMD(benchmarkDate),
+                          .separate.YMD(startDate),
+                          .separate.YMD(endDate),
+                          .separate.YMD(stepinDate),
                           
                           dccCDS,
                           freqCDS,
@@ -188,25 +173,26 @@ IR.DV.01 <- function(x,
     ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate,
-                         types,
-                         rates + 1/1e4,
-                         expiries,
+                         .separate.YMD(baseDate),
+                         paste(as.character(ratesInfo[[1]]$type), collapse = ""),
+                         as.numeric(as.character(ratesInfo[[1]]$rate)) + 1/1e4,
+                         as.character(ratesInfo[[1]]$expiry),
                          
-                         mmDCC,
-                         fixedSwapFreq,
-                         floatSwapFreq,
+                         
+                         as.character(ratesInfo[[2]]$mmDCC),
+                         as.character(ratesInfo[[2]]$fixedFreq),
+                         as.character(ratesInfo[[2]]$floatFreq),
                          fixedSwapDCC,
                          floatSwapDCC,
                          badDayConvZC,
                          holidays,
                          
-                         today,
-                         valueDate,
-                         benchmarkDate,
-                         startDate,
-                         endDate,
-                         stepinDate,
+                         .separate.YMD(x[[TDate.var]][i]),
+                         .separate.YMD(valueDate),
+                         .separate.YMD(benchmarkDate),
+                         .separate.YMD(startDate),
+                         .separate.YMD(endDate),
+                         .separate.YMD(stepinDate),
                          
                          dccCDS,
                          freqCDS,
