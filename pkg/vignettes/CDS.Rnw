@@ -814,7 +814,7 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-So far we have only discussed pricing of CDS contracts across two periods. Let us now see how CDS are priced across multiple periods. Let's say that our CDS contract now has a tenor of five years and that each coupon payment is made quarterly. The cash flows from the protection  buyer to the seller, when there is no credit even, would look like Figure \ref{fig:CDSnoevent}
+So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
 
 \begin{figure}[H]
 \centering
@@ -827,7 +827,7 @@ Once again, let's say that the coupon is a 100 basis points and the spread is 16
 
 \subsubsection{Discount Factor}
 
-So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. The term structure of interest rates is known as the \textbf{Swap Curve} or \textbf{Risk-Free Curve}. If, for a given date, we plot the maturities of different bonds, such as treasury bonds, on the x-axis and their corresponding yields on the y-axis, we get a \textbf{Swap Curve}.
+So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. The term structure of interest rates used is known as the \textbf{Swap Curve} or \textbf{Risk-Free Curve}. If, for a given date, we plot the maturities of different bonds, such as treasury bonds, on the x-axis and their corresponding yields on the y-axis, we get a \textbf{Swap Curve}.
 
 \begin{figure}[H]
 \centering
@@ -838,11 +838,11 @@ So far we have assumed that the interest is 0\%. In the actual CDS world we woul
 
 \subsubsection{Hazard Rates}
 
-Moreover, we also have to account for the probability of default for each period. The cumulative probability that a company survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}.   
+As we did in the two-period case, we also have to account for the probability of default for each period. The cumulative probability of a company surviving survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}. The hazard rate curve is piecewise constant. This means that the default probability is different across different time periods, but constant over a specific time period.    
 
 \subsubsection{Upfront Payment in an N-period Case}
 
-Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. This is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
+Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. The discount factor is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
 
 \begin{equation}
  \begin{aligned}
