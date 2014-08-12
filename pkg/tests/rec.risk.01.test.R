@@ -29,11 +29,13 @@ x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-15")),
 
 ## stopifnot(all.equal(round(result), round(truth)))
 
-upfront(TDate = as.Date("2014-04-22"),
+rates <- get.rates(as.Date("2014-04-22"), currency = "EUR")[[1]]
+
+upfrontdf(data.frame(date = as.Date("2014-04-22"),
         currency = "EUR",
         tenor = "5Y",
-        parSpread = 99,
+        spread = 99,
         coupon = 100,
-        recoveryRate = 0.41)
+        recovery = 0.41), rates = rates)
 
 

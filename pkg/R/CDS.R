@@ -274,40 +274,18 @@ CDS <- function(contract = "SNAC",
     
     ## clean upfront or principal
     
-    cds@principal <- upfront(TDate,
-                             baseDate = baseDate,
-                             currency = currency,
-                             types = types,
-                             rates = rates,
-                             expiries = expiries,
-                             mmDCC = mmDCC,
-                             fixedSwapFreq,
-                             floatSwapFreq,
-                             fixedSwapDCC,
-                             floatSwapDCC,
-                             badDayConvZC,
-                             holidays,
-                             
-                             valueDate, 
-                             benchmarkDate, 
-                             startDate, 
-                             endDate,
-                             stepinDate,
-                             tenor,
-                             maturity,
-                             
-                             dccCDS,
-                             freqCDS,
-                             stubCDS,
-                             badDayConvCDS,
-                             calendar,
-                             
-                             parSpread,
-                             coupon,
-                             recoveryRate,
-                             TRUE,
-                             payAccruedOnDefault,
-                             notional)
+    df <- data.frame(date = c(as.Date(cds@TDate)),
+                     spread = c(parSpread),
+                     coupon = c(cds@coupon),
+                     maturity = c(cds@maturity),
+                     currency = c(cds@currency),
+                     recovery = c(cds@recoveryRate))
+    
+    ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+                          expiries = expiries, rates = rates)
+    
+    cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+                               isPriceClean = TRUE)
     
     ## points upfront
     
@@ -315,40 +293,8 @@ CDS <- function(contract = "SNAC",
     
     ## dirty upfront
     
-    cds@upfront <- upfront(TDate,
-                           baseDate = baseDate,
-                           currency = currency,
-                           types = types,
-                           rates = rates,
-                           expiries = expiries,
-                           mmDCC = mmDCC,
-                           fixedSwapFreq,
-                           floatSwapFreq,
-                           fixedSwapDCC,
-                           floatSwapDCC,
-                           badDayConvZC,
-                           holidays,
-                           
-                           valueDate, 
-                           benchmarkDate, 
-                           startDate, 
-                           endDate,
-                           stepinDate,
-                           tenor,
-                           maturity,
-                           
-                           dccCDS,
-                           freqCDS,
-                           stubCDS,
-                           badDayConvCDS,
-                           calendar,
-                           
-                           parSpread,
-                           coupon,
-                           recoveryRate,
-                           FALSE,
-                           payAccruedOnDefault,
-                           notional)
+    cds@upfront <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+                             isPriceClean = FALSE)
   } else if (!is.null(ptsUpfront)){
     
     ## points upfront
@@ -395,37 +341,18 @@ CDS <- function(contract = "SNAC",
     
     ## calculate  dirty upfront
     
-    cds@upfront <- upfront(TDate,
-                           baseDate,
-                           currency,
-                           types,
-                           rates,
-                           expiries,
-                           mmDCC,
-                           fixedSwapFreq,
-                           floatSwapFreq,
-                           fixedSwapDCC,
-                           floatSwapDCC,
-                           badDayConvZC,
-                           holidays,
-                           valueDate,
-                           benchmarkDate,
-                           startDate,
-                           endDate,
-                           stepinDate,
-                           tenor,
-                           maturity,
-                           dccCDS,
-                           freqCDS,
-                           stubCDS,
-                           badDayConvCDS,
-                           calendar,
-                           cds@parSpread,
-                           coupon, 
-                           recoveryRate,
-                           FALSE,
-                           payAccruedOnDefault,
-                           notional)
+    df <- data.frame(date = c(as.Date(cds@TDate)),
+                     spread = c(parSpread),
+                     coupon = c(cds@coupon),
+                     maturity = c(cds@maturity),
+                     currency = c(cds@currency),
+                     recovery = c(cds@recoveryRate))
+    
+    ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+                          expiries = expiries, rates = rates)
+    
+    cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+                               isPriceClean = FALSE)
     
   } 
   
@@ -479,37 +406,18 @@ CDS <- function(contract = "SNAC",
       
       ## dirty upfront
       
-      cds@upfront <- upfront(TDate = TDate,
-                             baseDate = baseDate,
-                             currency = currency,
-                             types = types,
-                             rates = rates,
-                             expiries = expiries,
-                             mmDCC = mmDCC,
-                             fixedSwapFreq = fixedSwapFreq,
-                             floatSwapFreq = floatSwapFreq,
-                             fixedSwapDCC = fixedSwapDCC,
-                             floatSwapDCC = floatSwapDCC,
-                             badDayConvZC = badDayConvZC,
-                             holidays = holidays,
-                             valueDate = valueDate, 
-                             benchmarkDate = benchmarkDate, 
-                             startDate = startDate, 
-                             endDate = endDate,
-                             stepinDate = stepinDate,
-                             tenor = tenor,
-                             maturity = maturity,
-                             dccCDS = dccCDS,
-                             freqCDS = freqCDS,
-                             stubCDS = stubCDS,
-                             badDayConvCDS = badDayConvCDS,
-                             calendar = calendar,
-                             parSpread = cds@parSpread,
-                             coupon = coupon,
-                             recoveryRate = recoveryRate,
-                             isPriceClean = FALSE,
-                             payAccruedOnDefault = payAccruedOnDefault,
-                             notional = notional)
+      df <- data.frame(date = c(as.Date(cds@TDate)),
+                       spread = c(parSpread),
+                       coupon = c(cds@coupon),
+                       maturity = c(cds@maturity),
+                       currency = c(cds@currency),
+                       recovery = c(cds@recoveryRate))
+      
+      ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+                            expiries = expiries, rates = rates)
+      
+      cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+                                 isPriceClean = FALSE)
       
       
     } else {
@@ -555,37 +463,18 @@ CDS <- function(contract = "SNAC",
       
       ## principal
       
-      cds@principal <- upfront(TDate,
-                               baseDate,
-                               currency,
-                               types,
-                               rates,
-                               expiries,
-                               mmDCC,
-                               fixedSwapFreq,
-                               floatSwapFreq,
-                               fixedSwapDCC,
-                               floatSwapDCC,
-                               badDayConvZC,
-                               holidays,
-                               valueDate, 
-                               benchmarkDate, 
-                               startDate, 
-                               endDate,
-                               stepinDate,
-                               tenor,
-                               maturity,
-                               dccCDS,
-                               freqCDS,
-                               stubCDS,
-                               badDayConvCDS,
-                               calendar,
-                               cds@parSpread,
-                               coupon,
-                               recoveryRate,
-                               isPriceClean = TRUE,
-                               payAccruedOnDefault,
-                               notional)
+      df <- data.frame(date = c(as.Date(cds@TDate)),
+                       spread = c(parSpread),
+                       coupon = c(cds@coupon),
+                       maturity = c(cds@maturity),
+                       currency = c(cds@currency),
+                       recovery = c(cds@recoveryRate))
+      
+      ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+                            expiries = expiries, rates = rates)
+      
+      cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+                                 isPriceClean = TRUE)
       
       ## ptsUpfront
       
