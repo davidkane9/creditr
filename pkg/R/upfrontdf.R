@@ -181,8 +181,6 @@ upfrontdf <- function(x,
       baseDate <- .adj.next.bus.day(TDate+2)
     }
     
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
-    
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
     baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
@@ -211,16 +209,6 @@ upfrontdf <- function(x,
     if (is.null(endDate)) endDate             <- cdsDates$endDate
     if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
     
-    ## separate an input date into year, month, and day
-    
-    baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(TDate)
-    valueDate     <- .separate.YMD(valueDate)
-    benchmarkDate <- .separate.YMD(benchmarkDate)
-    startDate     <- .separate.YMD(startDate)
-    endDate       <- .separate.YMD(endDate)
-    stepinDate    <- .separate.YMD(stepinDate)
-    
     ## stop if number of rates != number of expiries != length of types
     
     stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
@@ -230,59 +218,43 @@ upfrontdf <- function(x,
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
       
       ratesInfo <- get.rates(date = ratesDate, currency = currency)
-      effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
-      
-      ## extract relevant variables like mmDCC, expiries from the get.rates function 
-      ## if they are not entered
-      
-      if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-      if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
-      if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
-      if (is.null(mmDCC)) mmDCC       <- as.character(ratesInfo[[2]]$mmDCC)
-      
-      if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-      if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-      if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(ratesInfo[[2]]$fixedDCC)
-      if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(ratesInfo[[2]]$floatDCC)
-      if (is.null(badDayConvZC)) badDayConvZC   <- as.character(ratesInfo[[2]]$badDayConvention)
-      if (is.null(holidays)) holidays           <- as.character(ratesInfo[[2]]$swapCalendars)
     }
     
    
     results[i] <- .Call('calcUpfrontTest',
-                        baseDate,
-                        types,
-                        rates,
-                        expiries,
+                        .separate.YMD(baseDate),
+                        paste(as.character(ratesInfo[[1]]$type), collapse = ""),
+                        as.numeric(as.character(ratesInfo[[1]]$rate)),
+                        as.character(ratesInfo[[1]]$expiry),
                         
-                        mmDCC,
-                        fixedSwapFreq,
-                        floatSwapFreq,
-                        fixedSwapDCC,
-                        floatSwapDCC,
-                        badDayConvZC,
-                        holidays,
+                        as.character(ratesInfo[[2]]$mmDCC),
+                        as.character(ratesInfo[[2]]$fixedFreq),
+                        as.character(ratesInfo[[2]]$floatFreq),
+                        as.character(ratesInfo[[2]]$fixedDCC),
+                        as.character(ratesInfo[[2]]$floatDCC),
+                        as.character(ratesInfo[[2]]$badDayConvention),
+                        "None",
                         
-                        today,
-                        valueDate,
-                        benchmarkDate,
-                        startDate,
-                        endDate,
-                        stepinDate,
+                        .separate.YMD(x[[TDate.var]][i]),
+                        .separate.YMD(valueDate),
+                        .separate.YMD(benchmarkDate),
+                        .separate.YMD(startDate),
+                        .separate.YMD(endDate),
+                        .separate.YMD(stepinDate),
                         
-                        dccCDS,
-                        freqCDS,
-                        stubCDS,
-                        badDayConvCDS,
-                        calendar,
+                        "ACT/360",
+                        "1Q",
+                        "F",
+                        "F",
+                        "None",
                         
-                        parSpread,
-                        coupon,
-                        recoveryRate,
+                        x[[parSpread.var]][i],
+                        x[[coupon.var]][i],
+                        x[[recoveryRate.var]][i],
                         isPriceClean,
                         payAccruedOnDefault,
-                        notional,
-                        PACKAGE = "CDS")  
+                        x[[notional.var]][i],
+                        PACKAGE = "CDS")
   } 
   
   return(results)
