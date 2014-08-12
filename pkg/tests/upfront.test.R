@@ -273,6 +273,4 @@ result.13 <- upfrontdf(data.frame(date = as.Date("2009-03-18"),
 
 truth.13 <- 3487
 
-expect_that(round(result.13, -1), equals(round(truth.13, -1)))
-
-
+expect_true(abs(result.13 - truth.13) < 5)
