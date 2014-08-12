@@ -114,24 +114,6 @@ IR.DV.01 <- function(x,
     ## get.rates()
     
     ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
-    fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
-    floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
-    badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-    holidays      <- "None"
-    
-    recoveryRate <- x[[recoveryRate.var]][i]
-    
-    
-    dccCDS        <- "ACT/360"
-    freqCDS       <- "1Q"
-    stubCDS       <- "F"
-    badDayConvCDS <- "F"
-    calendar      <- "None"
-    parSpread <- x[[parSpread.var]][i]
-    coupon    <- x[[coupon.var]][i]
-    notional  <- x[[notional.var]][i]
-    
-    
     
     ## call the upfront function using the above variables
     
@@ -144,10 +126,10 @@ IR.DV.01 <- function(x,
                           as.character(ratesInfo[[2]]$mmDCC),
                           as.character(ratesInfo[[2]]$fixedFreq),
                           as.character(ratesInfo[[2]]$floatFreq),
-                          fixedSwapDCC,
-                          floatSwapDCC,
-                          badDayConvZC,
-                          holidays,
+                          as.character(ratesInfo[[2]]$fixedDCC),
+                          as.character(ratesInfo[[2]]$floatDCC),
+                          as.character(ratesInfo[[2]]$badDayConvention),
+                          "None",
                           
                           .separate.YMD(x[[TDate.var]][i]),
                           .separate.YMD(valueDate),
@@ -156,18 +138,18 @@ IR.DV.01 <- function(x,
                           .separate.YMD(endDate),
                           .separate.YMD(stepinDate),
                           
-                          dccCDS,
-                          freqCDS,
-                          stubCDS,
-                          badDayConvCDS,
-                          calendar,
+                          "ACT/360",
+                          "1Q",
+                          "F",
+                          "F",
+                          "None",
                           
-                          parSpread,
-                          coupon,
-                          recoveryRate,
+                          x[[parSpread.var]][i],
+                          x[[coupon.var]][i],
+                          x[[recoveryRate.var]][i],
                           isPriceClean,
                           payAccruedOnDefault,
-                          notional,
+                          x[[notional.var]][i],
                           PACKAGE = "CDS")
     
     ## call the upfront function again, this time with rates + 1/1e4
@@ -182,10 +164,10 @@ IR.DV.01 <- function(x,
                          as.character(ratesInfo[[2]]$mmDCC),
                          as.character(ratesInfo[[2]]$fixedFreq),
                          as.character(ratesInfo[[2]]$floatFreq),
-                         fixedSwapDCC,
-                         floatSwapDCC,
-                         badDayConvZC,
-                         holidays,
+                         as.character(ratesInfo[[2]]$fixedDCC),
+                         as.character(ratesInfo[[2]]$floatDCC),
+                         as.character(ratesInfo[[2]]$badDayConvention),
+                         "None",
                          
                          .separate.YMD(x[[TDate.var]][i]),
                          .separate.YMD(valueDate),
@@ -194,18 +176,18 @@ IR.DV.01 <- function(x,
                          .separate.YMD(endDate),
                          .separate.YMD(stepinDate),
                          
-                         dccCDS,
-                         freqCDS,
-                         stubCDS,
-                         badDayConvCDS,
-                         calendar,
+                         "ACT/360",
+                         "1Q",
+                         "F",
+                         "F",
+                         "None",
                          
-                         parSpread,
-                         coupon,
-                         recoveryRate,
+                         x[[parSpread.var]][i],
+                         x[[coupon.var]][i],
+                         x[[recoveryRate.var]][i],
                          isPriceClean,
                          payAccruedOnDefault,
-                         notional,
+                         x[[notional.var]][i],
                          PACKAGE = "CDS")
     
     IR.DV.01[i] <- upfront.new - upfront.orig
