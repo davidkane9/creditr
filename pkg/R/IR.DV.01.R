@@ -67,6 +67,8 @@ IR.DV.01 <- function(x,
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
     baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
+    TDate <- x[[TDate.var]][i]
+    currency <- x[[currency.var]][i]
     
     #baseDate <- x[[TDate.var]][i] + 2
     
@@ -74,16 +76,8 @@ IR.DV.01 <- function(x,
       baseDate <- baseDate + 1
     }
     
-    if(x[[currency.var]][i] == "JPY"){        
-      baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
-      data(JPY.holidays, package = "CDS")
-      
-      ## if base date is one of the Japanese holidays we add another business day to it
-      
-      if(baseDate %in% JPY.holidays){
-        baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 1)
-      }
-    }
+    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+                              currency = currency)
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates

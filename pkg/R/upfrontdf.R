@@ -185,7 +185,8 @@ upfrontdf <- function(x,
     
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
-    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, currency = currency)
+    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+                              currency = currency)
     
     ## rates Date is the date for which interest rates will be calculated. get.rates 
     ## function will return the rates of the previous day
