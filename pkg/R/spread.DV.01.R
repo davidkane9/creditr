@@ -58,14 +58,7 @@ spread.DV.01 <- function(x,
   stopifnot(is.numeric(x[[coupon.var]]))
   stopifnot(is.numeric(x[[recoveryRate.var]]))
   stopifnot(is.numeric(x[[notional.var]]))
-  #stopifnot(is.character(x[[currency.var]]))
-  #stopifnot(is.character(x[[tenor.var]]))
-  #stopifnot(inherits(x[[TDate.var]], "Date"))
-  
-  #if(!is.na(maturity.var)){
-  # stopifnot(inherits(x[[maturity.var]], "Date"))
-  #}
-  
+    
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function
   
