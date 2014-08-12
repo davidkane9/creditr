@@ -9,7 +9,6 @@ pkg/vignettes/*.gz
 pkg/vignettes/*.tex
 pkg/vignettes/*.toc
 pkg/vignettes/*.aux
-pkg/vignettes/*.pdf
 pkg/vignettes/*.bbl
 pkg/vignettes/*.blg
 pkg/src/*so

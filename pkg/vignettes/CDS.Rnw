@@ -5,6 +5,7 @@
 \usepackage{url, tikz}
 \usepackage{hyperref}
 \usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \setcounter{secnumdepth}{2}
@@ -145,10 +146,19 @@ While the above assumptions represent assumptions that we will maintain througho
 
 5. The insurance agreement included one premium payment of \$1,000. However, there are cases in the insurance market where there are multiple premium payments on different dates. We did not account for that possibility in our example, but we will account for parallel situations in the CDS market.
 
-\subsection{Simple One-Period Case}
+\subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to meet its obligations. For example, a portfolio manager from the hedge fund, Citadel, believes that the company, Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
+\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
+\label{fig:AlcoaBond}
+\end{figure}
+
+CDS are used for the purpose of hedging against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
 
 Keep the same timeline (January 1 to December 31) and numerical figures from our property insurance example. The interest rate is still 0\%. In exchange for protection on the \$100,000, the portfolio manager agrees to pay a \textbf{coupon} (equivalent to the premium in our property insurance example) of 1\% of the notional amount. The coupon payment of \$1,000 is paid on January 1, the beginning of the coverage period. This side of the CDS is called the \textbf{premium leg}, and the portfolio manager is known as the \textbf{protection buyer}, since she is purchasing protection.
 
@@ -267,7 +277,7 @@ Similar to the property insurance example, we made several assumptions in our si
 
 Because we made many more assumptions and failed to address many aspects of a CDS, we have split up the following simple one-period CDs complications into five separate sections that address interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment. 
 
-\subsubsection{Interest Rate}
+\subsubsection{Interest Rates}
 \label{sec:InterestRate}
 
 Up until now, we have assumed that the interest rate is 0\% in the simple one-period CDS. The \textbf{interest rate} is a benchmark rate that participants in the CDS market use to discount cash flows. How might the cash flows in the CDS agreement change if the interest rate was \emph{not} 0\%?
@@ -280,7 +290,7 @@ First, look at our CDS agreement: the portfolio manager pays the premium on Janu
     \end{aligned}
 \end{equation}
 
-By December 31, the \$1,000 would grow to \$1,100, which gives JPM an extra \$100 that renders the expected cash flows unequal. In order to equate them, we need to discount the payment made by the protection buyer on January 1 by the interest rate---known as the \textbf{discount rate} in this context. In other words, the payment made by the protection buyer on January 1 should be an amount that, if invested at an interest rate of 10\% for one year, would equal the coupon payment of \$1,000. This payment, which we will call the discounted coupon, can be calculated as follows. ("C" is the coupon payment and "i" is the interest rate.)
+By December 31, the \$1,000 would grow to \$1,100, which gives JPM an extra \$100 that renders the expected cash flows unequal. In order to equate them, we need to discount the payment made by the protection buyer on January 1 by the interest rate---known as the \textbf{discount rate} in this context. In other words, the payment made by the protection buyer on January 1 should be an amount that, if invested at an interest rate of 10\% for one year, would equal the coupon payment of \$1,000. The current value of a future payment is known as the \textbf{present value}. This payment, which we will call the discounted coupon, can be calculated as follows. ("C" is the coupon payment and "i" is the interest rate.)
 
 \begin{equation}
  \begin{aligned}
@@ -461,7 +471,7 @@ As we can see, the accrued coupon increases as the contract matures---or, in oth
 
 Note that accrued coupon only becomes relevant when the contract does not initiate on a coupon payment date. In the real-world CDS market, there are four dates each year---instead of, in our example, the one date of January 1---when coupon payments can be made. These dates are known as \textbf{roll dates} and comprise the following: March 20, June 20, September 20, and December 20. As we proceed with our simple CDS example, however, we'll continue with the assumption that January 1 is the one and only "roll date."  
 
-\subsubsection{Non-standard Coupon}
+\subsubsection{Non-standard Coupon and Big Bang Protocol}
 \label{sec:nonStandardCoupon}
 
 In all of our CDS examples, we have assumed a coupon of 1\%. We have done so because we have been working with the same basic numerical figures: a risk-neutral probability of default of 1\% and a notional amount of \$100,000:
@@ -490,7 +500,7 @@ One issue with this system was that traders could not easily trade CDS, since ea
 For example, investment banks like JPM often buy protection for one CDS and sell protection for another so as to offset each deal and \textbf{hedge} its risk. However, this became difficult to do when the CDS agreements had different coupons and thus different expected cash flows.
 
 So, in 2009, a regulatory organization known as the International Swaps and Derivates Association (ISDA) 
-introduced new CDS market conventions in North America which required buyers and sellers to trade at coupons of 100 bps or 500 bps. Since then, the spread of a CDS no longer signifies the coupon at which the CDS is traded; instead, the spread is the coupon that the CDS \emph{would} be traded at in a market without standardized coupons---or the coupon that the CDS would have been traded at before 2009. In order to account for the discrepancy between the spread and the standardized coupon at which a CDS must trade, protection buyers and sellers use \textbf{upfront payments}, discussed in the next section.
+introduced new CDS market conventions in North America which required buyers and sellers to trade at coupons of 100 bps or 500 bps. This, along with a number of other regulatory changes, came to be known as the `Big Bang Protocol`. Since then, the spread of a CDS no longer signifies the coupon at which the CDS is traded; instead, the spread is the coupon that the CDS \emph{would} be traded at in a market without standardized coupons---or the coupon that the CDS would have been traded at before 2009. In order to account for the discrepancy between the spread and the standardized coupon at which a CDS must trade, protection buyers and sellers use \textbf{upfront payments}, discussed in the next section.
 
 \subsubsection{Upfront payment}
 \label{sec:Upfront}
@@ -830,6 +840,8 @@ So far we have assumed that the interest is 0\%. In the actual CDS world we woul
 
 Moreover, we also have to account for the probability of default for each period. The cumulative probability that a company survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}.   
 
+\subsubsection{Upfront Payment in an N-period Case}
+
 Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. This is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
 
 \begin{equation}
@@ -917,32 +929,14 @@ When a default does occur, the protection seller would owe the protection buyer 
 \section{Fixed Income Securities and Credit Risk}
 \label{sec:Bonds}
 
-CDS are used for the purpose of hedging against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Before we approach understanding how CDS work, we must understand the mechanics of a standard coupon bond and its associated risks.
+Before we approach understanding how CDS work, we must understand the mechanics of a standard coupon bond and its associated risks.
 
-\subsection{Bond Basics}
-\label{sec:BondMechanics}
 
-Consider the following example: say that there exists a portfolio manager who has to allocate her clients' money (a total sum of \$10 million). This particular manager is a risk-averse investor who seeks to minimize her losses, even if that ultimately creates lower returns on investments. She also wants to invest in assets that are \textbf{liquid} i.e. assets that are easily retrievable or can be easily converted into cash. In such a scenario, coupon bonds seem like an attractive investment.
 
-A \textbf{coupon bond} is an agreement in which one party lends money to another party in exchange for that same sum of money, plus periodic \textbf{coupon payments}, at a future date. A major advantage of holding bonds over shares (which are also known as equity) is that bondholders are compensated before shareholders in the case of liquidiation (such as a default). If a company or other reference entity defaults on its debt and goes bankrupt, the remaining assets associated with the company are gathered and distrubited among bondholders and shareholders according to the issuer's capital structure (another terms for the hierarchy of investors). Bonds can be further categorized as "senior" and "junior," so although bondholders will be compensated first, those with a greater seniority ("senior" bonds) will be compensated before those with a lesser seniority ("junior" bonds). The amount of assets remaining after default and bankruptcy is known as the \textbf{recovery rate}. 
-
-To understand the different variables used to determine cash flows and bond pricing, look at actual data for an Alcoa bond that will mature, or be paid out, five years from now (since the data descibes a bond that was initiated seven years ago). 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
-\label{fig:AlcoaBond}
-\end{figure}
-
-\subsection{Credit Risk Associated with Bonds}
+\subsection{Credit Ratings}
 \label{sec:RiskBonds}
 
-A bond has many kinds of risks associated with it such as interest rate risk, inflation risk or liquidity risk. For our purposes, we will concentrate on credit risk.
-
-If we look to the right of Figure \ref{fig:AlcoaBond}, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. When a company like Alcoa issues bonds, there is always a possibility that it may not be able to meet its debt obligations. That possibility, or risk, is known as the credit risk. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
-
-A risk-averse investor, like our pension fund portfolio manager, would naturally want to purchase senior bonds from a company that has a low credit risk---a company like Alcoa, which has a rating of BBB- from S\&P, BB+ from Fitch and Ba1 from Moody's. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this vignette. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Such companies, at least from the viewpoint of the rating agencies, have low credit risks. Bonds that are rated below the IG benchmark are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds, and have a higher yield than IG bonds. We can see a complete list of classifications from Moody's and S\&P in Figure \ref{fig:RatingsList}:
+We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Such companies, at least from the viewpoint of the rating agencies, have low credit risks. Bonds that are rated below the IG benchmark are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds, and have a higher yield than IG bonds. We can see a complete list of classifications from Moody's and S\&P in Figure \ref{fig:RatingsList}:
 
 \begin{figure}[H]
 \centering
@@ -954,46 +948,11 @@ A risk-averse investor, like our pension fund portfolio manager, would naturally
 %% Source: \url{http://www.investopedia.com/articles/03/102203.asp}. Accessed: June 24, 2014}
 %% https://www.moodys.com/sites/products/AboutMoodysRatingsAttachments/MoodysRatingsSymbolsand%20Definitions.pdf
 
-\subsection{Risk-free Bonds}
-\label{sec:RiskFreeBonds}
-
-Bonds issues by the U.S. Government (known as \text{treasury bonds}) are generally considered to be \textbf{risk-free} since the probability of the U.S. Government failing to meet its debt obligations is almost negligible. Bonds issued by Japan (Japanese Government Bonds or JGBs) and Britain (Gilts) are also considered to be risk-free. Therefore, the interest paid by sovereign bonds is an important benchmark for the pricing of corporate bonds or even the bonds of other governments.
-
-Bonds from Alcoa, or any corporation, are generally riskier than bonds issued by the U.S. Government. A rational investor would want a riskier bond to pay a higher coupon rate than a U.S. treasury bond since otherwise she could get the same interest payment at no risk at all. In other words, she would want the expected return of a corporate bond to be the same as the expected return of a risk-free bond. For this to be the case, the riskier bond would have to pay more interest than the risk-free asset in order to compensate for the added risk. The amount to which the riskier bond's interest exceeds that of a risk-free bond is known as the \textbf{risk premium}. So, the interest that an investor would want from a bond would change as the risk-free coupon rate changes. It is important to understand the intuition behind this before learning how bonds are priced.
 
 
 
 % source: http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx
 
-\subsection{Bond Pricing}
-\label{sec:BondPricing}
-%% Citing images from Barclays and Bloomberg.
-%% Bloomberg screenshot
-
-\subsubsection{Present Value (PV)}
-\label{sec:PresentValue}
-
-\textbf{Present value} refers to the current value of a future payment. For example, if an investor has \$1 million, that asset (if invested) it is worth more today than \$1 million ten years from now. If this person invests his \$1 million in, say, a risk-free asset earning a coupon of 5\% a year (compounded semi-annually), that initial amount will become \$1.63 million in ten years. So, the present value of that \$1.63 million (that will accumulate over ten years) is \$1 million. The 5\% coupon rate that we are using to discount the future value is known as the \textbf{discount rate}.      
-
-Applying this concept to bond pricing, we can say that a bond's price is essentially the sum of the present values of its cash flows i.e. the sum of the present values of coupon payments and principal. Basically, we have to pretend as though we are investing the coupon payments and principal at different time periods. So for our \$1 million bond with a discount rate of 5\% paid semi-annually (2.5\% every six months), the present value of the first coupon of \$25,000 is \$25,000/1.025, that of the second coupon is \$25,000/$1.025^2$ and so on. The present value (and price) of a bond can be calculated using the equation below:
-
-
-\begin{equation}
- \begin{aligned}
-  {\rm Price = C*\frac{1-\frac{1}{(1+i)^n}}{i} + \frac{M}{(1+i)^n}}
-    \end{aligned}
-\end{equation}
-
-
-"M" represents the principal payment and "C" refers to the coupon payment of \$25,000. The variable, "i", is the discount rate and is also called the \textbf{yield to maturity (YTM)} or just \textbf{yield}. It is the required interest or discount rate for the present value of a future payment to be equal to the bond price.
-
-If we look at the top of Figure \ref{fig:AlcoaBond}, we see that a bond with a face value of \$100 for Alcoa on June 24, 2014 has a coupon rate of 5.72\%, a price of \$112.063 and a yield of 2.928\%. As we can see, the bond price is greater than the bond's face value---the amount that Alcoa will return to the bondholder when the contract ends---because the bondholder is receiving 5.72\% interest, which is larger than the coupon rate of a treasury bond or other risk-free bond. The \textbf{Cpn Freq} (Coupon Frequency) is quoted as "S/A" which stands for "semi-annually." So, if our portfolio manager were to purchase Alcoa bonds that have a principal of \$10 million and that pay a coupon of \$286,000 semi-annually, it would cost her \$11,206,300. If we substitute "i" in the above equation with 0.014514 (the discount rate for a five-year bond), "C" with \$2.86, "M" with \$100 and "n" (the number of coupon payments) with 10, we would get the bond price quoted in the Bloomberg screenshot in Figure \ref{fig:AlcoaBond}: \$112.063.  
-
-When our portfolio manager has to purchase a bond, she has to determine what a fair yield, or discount rate, for that specific bond would look like. The factors affecting the yield include the risk-free rate, as explained earlier, and the credit health of the company, represented partly by the credit rating. If we look at the equation above or even think of these concepts intuitively, we can see that the bond yield has an inverse relationship with its price. If there is a fixed coupon rate, and an investor wants a higher bond yield, the only way to keep the same coupon rate and increase the yield is the lower the bond price---and decrease what the investor has to pay---accordingly. Moreover, the difference between the yield of a bond and the yield of a risk-free bond of the same maturity is a common measurement of the company's credit risk.
-
-%% Let’s assume that our portfolio manager buys bonds of Alcoa with a face value of $10 million and with a maturity of five years. However, six months after she makes this trade, her confidence in the creditworthiness of Alcoa begins to waiver. Of course, she could simply sell the bonds. However, that may be premature or even unprofitable. Instead, she could hedge her position by purchasing a financial product whose value rises with a drop in the bonds’ value. In other words, she could take a position that allows her to profit from increased credit risk. Hedging is a process that allows someone to profit from both a rise and a drop in an asset’s value. When an investors hedges, she takes two opposite positions on an asset such that in the case of a rise or drop, her downside is limited, and one position offsets the losses from the other.
-
-%% When the asset in question is a bond, one option is to be long, a position in which you simply own the bond and profit when its price increases (or yield drops). The opposite position is to be short. Shorting is the process of borrowing security (i.e. purchasing it), immediately selling the security to other investors, and then buying it back from the investors and returning it to the lender. Clearly, this is profitable if the value of the security drops by the time the lender repurchases the security in the future. It is a convenitional technique of hedging against credit risk. However, there are several issues associated with this method. It is difficult to short bonds that are not liquid. The portfolio manager may not be able to find enough bonds that will mature at the same time. Moreover, she would have to spend $10 million to hedge her entire portfolio of $10 million, which is a substantial opportunity cost. Therefore, it makes sense for her to seek out an alternate method of reducing her credit risk.
 
 \section{CDS Terminology and Cash Flows}
 \label{CDSCashFlows}
