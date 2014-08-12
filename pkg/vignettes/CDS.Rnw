@@ -2,11 +2,9 @@
 \linespread{1.5}
 \usepackage[round]{natbib}
 \usepackage{amssymb, amsmath}
-\usepackage{fancyvrb}
 \usepackage{url, tikz}
 \usepackage{hyperref}
 \usepackage[sc]{mathpazo}
-\usepackage[T1]{fontenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \setcounter{secnumdepth}{2}
@@ -15,10 +13,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage[nottoc]{tocbibind}
-
-%\newcommand{\ts}{\textsuperscript}
-%\newcommand\bc{\begin{center}}
-%\newcommand\ec{\end{center}}
 
 
 <<include=FALSE>>=
