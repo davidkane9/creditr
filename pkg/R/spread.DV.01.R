@@ -49,15 +49,7 @@ spread.DV.01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
-              parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
-  
-  ## check if variables are defined in the correct classes
-  
-  stopifnot(is.numeric(x[[parSpread.var]]))
-  stopifnot(is.numeric(x[[coupon.var]]))
-  stopifnot(is.numeric(x[[recoveryRate.var]]))
-  stopifnot(is.numeric(x[[notional.var]]))
+  x <- check.dataframe(x)
     
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function

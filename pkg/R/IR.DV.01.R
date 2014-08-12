@@ -54,15 +54,7 @@ IR.DV.01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  stopifnot(c(TDate.var, currency.var, maturity.var, tenor.var, 
-              parSpread.var, coupon.var, recoveryRate.var, notional.var) %in% names(x))
-  
-  ## check if variables are defined in the correct classes
-  
-  stopifnot(is.numeric(x[[parSpread.var]]))
-  stopifnot(is.numeric(x[[coupon.var]]))
-  stopifnot(is.numeric(x[[recoveryRate.var]]))
-  stopifnot(is.numeric(x[[notional.var]]))
+  x <- check.dataframe(x)
     
   IR.DV.01 <- rep(NA, nrow(x))
   
