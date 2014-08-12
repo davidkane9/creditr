@@ -149,7 +149,7 @@ While the above assumptions represent assumptions that we will maintain througho
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
 
 \begin{figure}[H]
 \centering
@@ -158,7 +158,7 @@ Instead of buying insurance against property damage, consider buying insurance a
 \label{fig:AlcoaBond}
 \end{figure}
 
-CDS are used for the purpose of hedging against the \textbf{credit risk} associated with \textbf{bonds} or \textbf{fixed income}. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
+CDS are used for the purpose of hedging against the \textbf{credit risk} associated with bonds. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
 
 Keep the same timeline (January 1 to December 31) and numerical figures from our property insurance example. The interest rate is still 0\%. In exchange for protection on the \$100,000, the portfolio manager agrees to pay a \textbf{coupon} (equivalent to the premium in our property insurance example) of 1\% of the notional amount. The coupon payment of \$1,000 is paid on January 1, the beginning of the coverage period. This side of the CDS is called the \textbf{premium leg}, and the portfolio manager is known as the \textbf{protection buyer}, since she is purchasing protection.
 
@@ -814,33 +814,59 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
+So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. If we look at Figure \ref{CDSalcoa} below, we can see the details of an actual CDS contract on Alcoa priced on June 23, 2014.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
-\caption{CDS cash flows when there is no credit event.}
-\label{fig:CDSnoevent}
+\includegraphics[width=5in, height=3.8in]{images/AlcoaIncCDS.jpg}
+\caption{CDS figures from Bloomberg for Alcoa. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and the \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa". The label \textbf{Debt type}, marked as "Senior", refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN in Figure \ref{fig:AlcoaBond}. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.}
+\label{AlcoaIncCDS}
 \end{figure}
 
-Once again, let's say that the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. In this case the upfront payment is the sum of the expected present value of each coupon payment. 
+
+Once again, the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. The mark-to-market value or \textbf{principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+
+\begin{equation}
+ \begin{aligned}
+  {\rm Accrued = \frac{5}{360}*\frac{1}{100}*\$10000000 = \$1,389}
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Calculating the Upfront Payment in an N-period Case}
 
 \subsubsection{Discount Factor}
 
 So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. The term structure of interest rates used is known as the \textbf{Swap Curve} or \textbf{Risk-Free Curve}. If, for a given date, we plot the maturities of different bonds, such as treasury bonds, on the x-axis and their corresponding yields on the y-axis, we get a \textbf{Swap Curve}.
 
+In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=4.3in, height=3in]{images/DynYieldCurve.png}
-\caption{Swap Curve for treasury bonds on June 23, 2014. Clearly, yields are higher for debt obligations with longer maturities. This makes sense since investors would want a higher overall yield if they were to take on more risk by buying a bond with a longer maturity.}
-\label{fig:YieldCurve}
-\end{figure}  
+\includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
+\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
+\label{fig:AlcoaRates}
+\end{figure} 
 
-\subsubsection{Hazard Rates}
+% source: http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx
+
+\subsubsection{Survival Probability and Hazard Rates}
 
 As we did in the two-period case, we also have to account for the probability of default for each period. The cumulative probability of a company surviving survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}. The hazard rate curve is piecewise constant. This means that the default probability is different across different time periods, but constant over a specific time period.    
 
-\subsubsection{Upfront Payment in an N-period Case}
+The survival probability is used to determine the expected cash flow of a CDS contract. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
+
+\begin{displaymath}
+S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
+\end{displaymath}
+
+To calculate the hazard rates, we need a \textbf{CDS curve} or the \textbf{term structure} of CDS rates. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=4in, height=3in]{images/CDScurve.png}
+\caption{Term-structure of CDS rates for Alcoa on June 24, 2014}
+\label{fig:CDScurveAlcoa}
+\end{figure} 
 
 Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. The discount factor is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
 
@@ -858,131 +884,66 @@ The above equation does not account for the accrued amount that a protection buy
     \end{aligned}
 \end{equation}
 
+\subsubsection{Present Value 01 (PV01)}
+\label{sec:PV01}
 
-The present value of 1 bp stream of payments is known as \textbf{PV01} or \textbf{Present Value 01}. The principal or Mark-to-Market value can also be calculated in terms of the PV01:
+The PV01 is the present value of a stream of 1 basis points. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
+\begin{displaymath}
+%PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+\end{displaymath}
+\begin{itemize}
+\item $i =$ coupon index,
+\item $t_i =$ coupon date,
+\item $B(t_i) =$ day count fraction at $t_i$.
+\item $Df(f_i) =$ discount factor until $t_i$,
+\item $S(t_i) =$ survival probability until $t_i$,
+\end{itemize}
+
+%In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
+As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment.Before go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon 360 or 365, depending on the day count convention of that CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation.
+
+We can use the formula above for PV01 to calculate the principal amount (clean upfront payment) paid from the protection buyer to the seller using the following formula:
 
 \begin{equation}
  \begin{aligned}
    (Coupon - Spread)*(PV01)*(Notional)
     \end{aligned}
 \end{equation}
-
-
-\subsection{Premium Leg}
-\label{sec:CashFlows1}
-
-The stream of cash flows from the protection buyer to the seller, when there is no default, is known as the \textbf{premium leg}. To understand the premium leg, we must look at the \textbf{Trade Spread} (marked as \textbf{Trd Sprd} in Figure \ref{fig:CDSalcoa}) and \textbf{Coupon} in Figure \ref{fig:CDSalcoa}. In section \ref{CDSMechanics}, we stated that the protection buyer pays the protection seller a fixed coupon for purchasing protection.
-
-%% Among these changes were the standardization rules on the first accrual dates, fixed coupon rates (100 bps or 500 bps), and the recovery rate (40\%).
-
-%In this type of contract, the \textbf{present value} of the contract (the current worth of a future sum of money) would be zero. 
-
-%% Explain why this change was made.
-%% The problem with a system like the one described above is that . 
-
-
-The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
-
-\begin{equation}
- \begin{aligned}
-  {\rm Accrued = \frac{5}{360}*\frac{1}{100}*\$10000000 = \$1,389}
-    \end{aligned}
-\end{equation}
-
-We must note that we are dividing 5 by 360 instead of 365 in the above calculation. This has to do with the \textbf{day count convention} (\textbf{Day Cnt} in Figure \ref{fig:CDSalcoa}) of the contract, which specifies that the accrual factor between two dates is ACT/360, or Actual/360. 
-
-Since the upfront payment is calculated as if the trade began on the roll date before the date of trade inception, the payment that the protection buyer \emph{actually} makes---known as the \textbf{dirty upfront} or \textbf{cash settlement amount}---is the calculated upfront payment minus the accrued interest. As we can see in Figure \ref{fig:CDSalcoa}, the dirty upfront value for this contract is \$286,069. The \textbf{clean upfront} payment or \textbf{principal}, on the other hand, is simply another term for the initial, calculated upfront payment. In this case, it is \$287,458. Moreover, we can also note a variable called \textbf{Pts Upf} in Figure \ref{fig:CDSalcoa}. This variable, known as \textbf{points upfront}, or simply \textbf{points}, is the clean upfront expressed as a percentage of the notional amount. 
-
-As we can see, the upfront and points upfront values are positive, since the spread of the CDS is higher than the fixed coupon rate. If instead, the portfolio manager and hedge fund agree that the fair premium should be 60bps, the upfront value would be negative i.e. the hedge fund would pay the portfolio manager a compensation for receiving a coupon higher than the fair premium or spread. The cash flows would then look like the values in Figure \ref{fig:MarkitAlcoa}. The clean and dirty values are now both negative. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
-\caption{CDS cash flows for Alcoa when spread is equal to 60bps and the coupon is equal to 100bps. These have been calculated using the calculator provided by Markit.}
-\label{fig:MarkitAlcoa}
+  
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
+%\caption{CDS cash flows for Alcoa when spread is equal to 60bps and the coupon is equal to 100bps. These have been calculated using the calculator provided by Markit.}
+%\label{fig:MarkitAlcoa}
 
 %\footnote{The Markit CDS Calculator is available
 % at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}}.}
 
-\end{figure}
+%\end{figure}
 
-\subsection{Protection Leg}
-\label{sec:CashFlows2}
+%\subsection{Protection Leg}
+%\label{sec:CashFlows2}
 
 %% Section incomplete
 %% Over here we'll use a bond that actually defaulted.
 
-So far we have only discussed the stream of payments for a contract in which a credit event does not occur. The stream of payments that would be have to be made in the case of a credit event is known as the \textbf{protection leg} or \textbf{contingent leg}. The resulting cash flow would like that in Figure \ref{fig:CDScreditevent}. 
+%So far we have only discussed the stream of payments for a contract in which a credit event does not occur. The stream of payments that would be have to be made in the case of a credit event is known as the \textbf{protection leg} or \textbf{contingent leg}. The resulting cash flow would like that in Figure \ref{fig:CDScreditevent}. 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
-\caption{CDS cash flows when there is a credit event.}
-\label{fig:CDScreditevent}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=4.6in, height=3.4in]{images/CDScreditevent.png}
+%\caption{CDS cash flows when there is a credit event.}
+%\label{fig:CDScreditevent}
+%\end{figure}
 
-When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
+%When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
 %% Need to find correct definition for this. Maybe mention in "One-period over time" section instead?
-
-\section{Fixed Income Securities and Credit Risk}
-\label{sec:Bonds}
-
-Before we approach understanding how CDS work, we must understand the mechanics of a standard coupon bond and its associated risks.
-
-
-
-\subsection{Credit Ratings}
-\label{sec:RiskBonds}
-
-We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Such companies, at least from the viewpoint of the rating agencies, have low credit risks. Bonds that are rated below the IG benchmark are termed as \textbf{speculative grade} bonds or \textbf{junk} bonds, and have a higher yield than IG bonds. We can see a complete list of classifications from Moody's and S\&P in Figure \ref{fig:RatingsList}:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=6.3in, height=3in]{images/Ratings.jpeg}
-\caption{Credit rating classifications from S\&P, Fitch and Moody's for long-term debt obligations. Even though S\&P and Fitch have the same credit rating scale, note how the rating determined by S\&P and the rating determined by Fitch for Alcoa bonds in Figure \ref{fig:AlcoaBond} are \emph{different}, which implies that the two rating agencies use different measurements to determine a credit rating. Herein lies the value of having three different ratings agencies that can provide three different ratings: if, for example, a company can be classified as IG across \emph{all three} ratings---which are all not determined by the exact same combination of metrics---then one can be more confident in the fact that the bond or the company actually is of IG quality.}
-\label{fig:RatingsList}
-\end{figure} 
-
-%% Source: \url{http://www.investopedia.com/articles/03/102203.asp}. Accessed: June 24, 2014}
-%% https://www.moodys.com/sites/products/AboutMoodysRatingsAttachments/MoodysRatingsSymbolsand%20Definitions.pdf
-
-
-
-
-% source: http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx
-
 
 \section{CDS Terminology and Cash Flows}
 \label{CDSCashFlows}
 
-Although the cash flows involved in a CDS seem pretty simple in Figure \ref{fig:cashFlow}, the underlying mechanics of a CDS are a bit more complex. To understand this, look at actual CDS data from Bloomberg for Alcoa. Figure \ref{fig:CDSalcoa} below displays many different variables such as RED Pair Code, REF Entity, Trade Date, Debt Type etc. for the CDS of Alcoa for June 24, 2014. These are standard terms of CDS contracts that were set by the \textbf{International Swaps and Derivatives Association (ISDA)}, the organization that regulates over-the-counter derivatives such as CDS. These variables are important for understanding the cash flow\footnote{Some of the
-  definitions come from \textit{Credit Derivatives Glossary}
-  \citep{glossary}, \textit{Standard Corporate CDS Handbook}
-  \citep{barclays}, \textit{Credit Derivatives} \citep{bloomberg}, and
-  \textit{The Pricing and Risk Management of Credit Default Swaps,
-    with a Focus on the ISDA Model} \citep{openGamma}.}.
-
-%% Need to introduce key terms in CDS pricing BEFORE we show the Bloomberg screenshot.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{CDS figures from Bloomberg for Alcoa Note that this \textbf{REF Obligation} (Reference Obligation) matches the ISIN in Figure \ref{fig:AlcoaBond}.}
-\label{fig:CDSalcoa}
-\end{figure}
-
-\subsection{Entity-Specific Variables}
-\label{sec:EntitySpecVars}
-
-Some of these variables seem self-explanatory. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) that the buyer wants protection against. The \textbf{ticker} is an abbreviated reference symbol for the Reference Entity, which is "AA" for Alcoa Moreover, the \textbf{Trade Date} is the date on which we are making the trade: June 24, 2014. 
-
-The \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa"
-
-We can also note the label \textbf{Debt type}, marked as "Senior." Clearly, this refers to the seniority of the debt. The \textbf{notional amount} is printed as "10" or \$10 million USD (US Dollars). The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS. Since our portfolio manager is purchasing protection on the bonds she previously purchased, this \textbf{REF Obligation} matches the ISIN in Figure \ref{fig:AlcoaBond}.  
-
-\textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. The most commonly traded contracts have maturities of five years. The Bloomberg screenshot displays the length of the contract, as well as the implied maturity date. Interestingly, the maturity date for the CDS of Alcoa on June 24, 2014 is September 20, 2019. This might seem odd since we would expect it to be on June 24, 2019, exactly five years from the Trade Date. However, the maturity date always falls on one of the four \textbf{roll dates}: March 20, June 20, September 20 and December 20. Therefore, the maturity date for this contract will be on the roll date after June 24, 2019, which is September 20, 2019. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
 % cite http://developers.opengamma.com/quantitative-research/Pricing-and-Risk-Management-of-Credit-Default-Swaps-OpenGamma.pdf
 
@@ -1043,37 +1004,16 @@ These index products trade in high volumes and are very liquid. In this vignette
 \section{CDS Pricing}
 \label{sec:CDSpricing}
 
-The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. In this section we will lay out the assumptions made by the Standard Model, and explain the methods and formulas used to calculate certain information related to CDS.
-
-There are several ways of calculating the price of a CDS such as hedge-based valuation or bond-yield-based pricing. We will apply the \textbf{discounted-cash flow pricing} or \textbf{risk-neutral valuation}, where the present value of the CDS is equal to the expected value of its discounted future cash flows. This model assumes that the probability of default is risk-neutral. 
+The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
 
 \subsection{Discounted-Cash Flow Pricing or Risk-Neutral Valuation}
 \label{sec:PVCDS}
 
-Our portfolio manager wants to sell her CDS contract for whatever reason. Finding the market value of a CDS contract for the protection buyer is known as \textbf{Marking-to-market (MTM)} and the value is known as the \textbf{mark-to-market} value. Theoretically, the value of this CDS (of Alcoa) for the portfolio manager is:
 
-\begin{center}
- [Money she expects to receive] --- [Money she expects to pay]
-\end{center}
-
-Clearly, if she expects to receive more than she expects to pay, the value of the contract will be positive. So, if the fair spread for this CDS contract rises and Alcoa's credit risk increases, the market value of her CDS will increase and she will be in a \textbf{mark-to-market profit}. If, on the other hand, the credit risk and fair spread drop, she would have a \textbf{mark-to-market loss}. 
-
-The Standard Model assumes that the mark-to-market value is computed by discounting the expected protection leg and premium leg cashflows from the trade date until the maturity date. In Section \ref{sec:BondPricing} we explained the concept of \textbf{present value} and how a bond's price is the present value of its future cash flows. This concept applies to the pricing of CDS as well. If we are looking at the value of a CDS from the protection buyer's perspective, the premium leg has a negative value and the protection leg has a positive value. So it is equivalent to saying that, 
-
-\begin{center}
-PV(CDS) = PV(Protection) - PV(Premium)
-\end{center}
-
-Using the above equation, we can intuitively understand how the upfront value is calculated. We know that one of the central components in determining the price of a CDS is the spread. When the spread is different from the standard coupon of the contract, an upfront payment has to be made as a compensation. This upfront value is the expected present value of the extra cash flows that will be made hypothetically, on top of the standard coupon payments. 
-
-So if we have a five-year contract for the CDS of Alcoa, in which the standard coupon is 100bps and the fair spread is 160bps, the upfront value paid by the portfolio manager to the hedge fund is the \textit{net expected} present value of the extra 60bps payments made quarterly (15 bps per quarter) over a period of five years. When we say \textit{expected} present value, it implies that there is a chance that this hypothetical payment will never have to be made, since the company might default, and then the protection seller may have to make the contingent payment. We have to account for that probability in calculating the present value of those payments.
-
-When an upfront payment is made, the transaction simply implies that the expected present value of the protection and premium legs are not equal. In the all-running contracts before the "Big Bang Protocol," where the coupon could be set at any level that the two parties agreed to, the premium leg would naturally equal the protection leg and the present value of the contract would be zero. But when the coupon is fixed and when the fair spread is not equal to the coupon, the expected present values of the two legs would not be the same and an upfront payment would have to be made as compensation. The upfront value essentially equates the premium leg and the protection leg.   
 
 \subsubsection{Present Value of the Net Expected Cash Flows}
 \label{sec:PVPremiumLeg}
 
-As mentioned before, the premium leg is the present value of the stream of payments made by by the protection buyer to the protection seller. Here we have to account for the \textbf{survival probability}---the conditional probability that the reference entity survives until a given time period. We will use a term structure of survival probabilities to weight each of the contingent premium payments. 
 
 Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
 
@@ -1089,43 +1029,10 @@ The protection leg is the present value of the expected contingent protection pa
 
 %% Add equations for survival probability curves
 
-%% Add image for CDS curve for Alcoa
-
-\subsubsection{Survival Probability Curve and Risk Neutral Probability}
-\label{sec:survivalProbCurve}
-
-The survival probability is used to determine the expected cash flow of a CDS contract. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
-
-%% \begin{displaymath}
-%% S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
-%% \end{displaymath}
-
-There are several assumptions made here:
-\begin{itemize}
-\item The risk-free rate and credit risk are not correlated
-\item Counterparty risk is not considered
-\item 
-\end{itemize}
-
-%\begin{displaymath}
-%PV(Protection) =  \e^-\int_0^t h(t)dt\), \nonumber\\
-%\end{displaymath}
-
-This \textbf{Hazard Rate function} is piecewise constant. What this means is that the function varies across a scale but remains constant between two points. 
-
-To calculate the hazard rates, we need a \textbf{CDS curve} or the \textbf{term structure} of CDS rates. A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=4in, height=3in]{images/CDScurve.png}
-\caption{Term-structure of CDS rates for Alcoa on June 24, 2014}
-\label{fig:CDScurveAlcoa}
-\end{figure} 
 
 \subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
 \label{sec:discountfactor}
 
-In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
 
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
@@ -1133,12 +1040,6 @@ The Standard Model allows market participants to convert between the par spread 
 
 %% Add to the caption details regarding the details and terms of the image below.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
-\label{fig:AlcoaRates}
-\end{figure} 
 
 The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
@@ -1191,32 +1092,7 @@ For a constant premium, higher recovery rates imply a high default probability.
 
 %Therefore, par spread is the spread value which makes the present value of a CDS contract zero.
 
-\subsubsection{Present Value 01 (PV01)}
-\label{sec:PV01}
 
-The PV01 is the present value of a stream of 1 basis points. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
-
-\begin{displaymath}
-%% PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-\end{displaymath}
-\begin{itemize}
-\item $i =$ coupon index,
-\item $t_i =$ coupon date,
-\item $B(t_i) =$ day count fraction at $t_i$.
-\item $Df(f_i) =$ discount factor until $t_i$,
-\item $S(t_i) =$ survival probability until $t_i$,
-\end{itemize}
-
-%In section \ref{sec:BondPricing}, we discuss the present value of a bond. 
-As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment.Before go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon 360 or 365, depending on the day count convention of that CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation.
-
-We can also use the PV01 to calculate the premoum leg as premium leg is simply the present value of future coupon payments. It is simply the coupon payment mutliplied by the PV01
-
-We can use the formula above for PV01 to calculate the principal amount (clean upfront payment) paid from the protection buyer to the seller using the following formula:
-
-\begin{center}
-  Principal Amount = PV(Protection) - PV(Premium) = (Par Spread - Coupon) $\times$ PV01
-\end{center}
 
 %% http://www.cdsmodel.com/assets/cds-model/docs/Interest%20Rate%20Curve%20Specification%20-%20All%20Currencies%20%28Updated%20May%202013%29.pdf
 
@@ -1600,3 +1476,14 @@ of complexity, however, \texttt{CDS} provides a good starting point for valuing 
 %% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
 
 %% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
+
+
+%The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
+%\caption{CDS cash flows when there is no credit event.}
+%\label{fig:CDSnoevent}
+%\end{figure}
+
