@@ -836,9 +836,7 @@ Once again, the coupon is a 100 basis points and the spread is 160 basis points.
 
 \subsubsection{Discount Factor}
 
-So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. The term structure of interest rates used is known as the \textbf{Swap Curve} or \textbf{Risk-Free Curve}. If, for a given date, we plot the maturities of different bonds, such as treasury bonds, on the x-axis and their corresponding yields on the y-axis, we get a \textbf{Swap Curve}.
-
-In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:YieldCurve}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
+So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
 
 \begin{figure}[H]
 \centering
@@ -847,13 +845,10 @@ In the risk-neutral valuation framework, the risk free curve is the discount fac
 \label{fig:AlcoaRates}
 \end{figure} 
 
-% source: http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx
-
 \subsubsection{Survival Probability and Hazard Rates}
 
-As we did in the two-period case, we also have to account for the probability of default for each period. The cumulative probability of a company surviving survives till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. The term structure of these probabilities are known as \textbf{hazard rates}. The hazard rate curve is piecewise constant. This means that the default probability is different across different time periods, but constant over a specific time period.    
-
-The survival probability is used to determine the expected cash flow of a CDS contract. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
+As we did in the two-period case, we also have to account for the probability of default for each period. The probability of a company defaulting is different across each time period. It is assumed that while the probability of default varies across different time periods, it is constant within a specific time period. The term structure of these probabilities are known as the \textbf{hazard rates} and the hazard rate function is piecewise constant.  
+The probability of a company surviving till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. This is known as the survival \textit{probability}. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default given below,
 
 \begin{displaymath}
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
@@ -887,10 +882,10 @@ The above equation does not account for the accrued amount that a protection buy
 \subsubsection{Present Value 01 (PV01)}
 \label{sec:PV01}
 
-The PV01 is the present value of a stream of 1 basis points. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
+The principal payment can also be equated in the terms of PV01, which is the present value of a stream of 1 basis points of payments. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
 \begin{displaymath}
-%PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \end{displaymath}
 \begin{itemize}
 \item $i =$ coupon index,
@@ -910,12 +905,6 @@ We can use the formula above for PV01 to calculate the principal amount (clean u
    (Coupon - Spread)*(PV01)*(Notional)
     \end{aligned}
 \end{equation}
-  
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=2.6in, height=3in]{images/MarkitAlcoaNegUpf.png}
-%\caption{CDS cash flows for Alcoa when spread is equal to 60bps and the coupon is equal to 100bps. These have been calculated using the calculator provided by Markit.}
-%\label{fig:MarkitAlcoa}
 
 %\footnote{The Markit CDS Calculator is available
 % at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}}.}
@@ -940,10 +929,6 @@ We can use the formula above for PV01 to calculate the principal amount (clean u
 %When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
 %% Need to find correct definition for this. Maybe mention in "One-period over time" section instead?
-
-\section{CDS Terminology and Cash Flows}
-\label{CDSCashFlows}
-
 
 % cite http://developers.opengamma.com/quantitative-research/Pricing-and-Risk-Management-of-Credit-Default-Swaps-OpenGamma.pdf
 
@@ -1001,45 +986,12 @@ These index products trade in high volumes and are very liquid. In this vignette
 
 
 
-\section{CDS Pricing}
-\label{sec:CDSpricing}
+\section{ISDA Standard Model}
+\label{sec:ISDAStMod}
 
 The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
 
-\subsection{Discounted-Cash Flow Pricing or Risk-Neutral Valuation}
-\label{sec:PVCDS}
-
-
-
-\subsubsection{Present Value of the Net Expected Cash Flows}
-\label{sec:PVPremiumLeg}
-
-
-Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
-
-%% \begin{displaymath}
-%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-%% \end{displaymath}
-
-The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
-
-%% \begin{displaymath}
-%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
-%% \end{displaymath}
-
-%% Add equations for survival probability curves
-
-
-\subsubsection{Discount factor: Using the Swap Curve or Risk-Free Curve}
-\label{sec:discountfactor}
-
-
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
-
-%% Are we using the yields of zero-coupon bonds or coupon bonds?
-
-%% Add to the caption details regarding the details and terms of the image below.
-
 
 The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
 \begin{itemize}
@@ -1061,53 +1013,22 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
   assume a 40\% recovery rate for valuation purposes. 
 \end{itemize}
 
-%For the buyer of protection. As we pointed out earlier, if the spread equals the standard coupon at the start of the deal, the upfront value will be zero.
-
-%\begin{center}
- %   CDS mark-to-market = T - 60 Calender Days.
-%\end{center}
-
-% http://www.globalriskguard.com/resources/crderiv/bnp_Understanding%20Credit%20Derivatives%20volume%204.pdf
-
-\subsubsection{Credit Triangle}
-
-The probability of default, recovery rate and spread form a credit triangle such that if we have two of them, we can use it to calulate the third:
-
-\begin{center}
-  Hazard Rate = Spread/(1 - Recovery Rate)
-\end{center}
-
-For a constant premium, higher recovery rates imply a high default probability.
-
-\subsubsection{Price}
-
-\textbf{Price} refers to the clean dollar price of the contract. The price of this Alcoa CDS is 97.13, less than 100. A CDS will have a price less than 100 if the points upfront are positive; that is, the CDS buyer needs to pay money to obtain protection because he promises to pay a coupon of, say, 100 even if the spread is 160. This is analogous to a bond investor paying less than the face value of a bond because current interest rates are higher than the coupon rate on the bond. It can be calculated by
-
-\begin{equation}
-  \begin{aligned}
-    {\rm Price} =  (1 - {\rm Principal} / {\rm Notional})*100  \nonumber \\
-    \& =  100 - \text{Points Upfront}. \nonumber
-  \end{aligned}
-\end{equation}
-
-%Therefore, par spread is the spread value which makes the present value of a CDS contract zero.
 
 
 
-%% http://www.cdsmodel.com/assets/cds-model/docs/Interest%20Rate%20Curve%20Specification%20-%20All%20Currencies%20%28Updated%20May%202013%29.pdf
+%Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
 
-%% what is cds1??
-  
-%%\item[Spread] is quoted in basis points per year. If, instead of using
-  %%a fixed coupon and exchanging upfront fees, the buyer and seller of
-  %%protection were to agree on a variable coupon, then the spread would be
-  %%the coupon size that they agree on. It is quoted as 50 bps in
-  %%\texttt{cds1}.
-%%\end{description}
+%% \begin{displaymath}
+%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+%% \end{displaymath}
+
+%The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
+
+%% \begin{displaymath}
+%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
+%% \end{displaymath}
 \subsection{Risk Measures of a Standard CDS Contract}
 \label{sec:RiskMeasures}
-
-The PV01 can be used to compute certain risk measures related to interest rates, spread and the default probability.
 
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
