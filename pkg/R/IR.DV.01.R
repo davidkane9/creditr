@@ -146,8 +146,8 @@ IR.DV.01 <- function(x,
                           recoveryRate = x[[recoveryRate.var]][i],
                           isPriceClean_input = isPriceClean,
                           payAccruedOnDefault_input = payAccruedOnDefault,
-                          x[[notional.var]][i],
-                          notional = PACKAGE = "CDS")
+                          notional = x[[notional.var]][i],
+                          PACKAGE = "CDS")
     
     ## call the upfront function again, this time with rates + 1/1e4
     
@@ -183,8 +183,8 @@ IR.DV.01 <- function(x,
                          recoveryRate = x[[recoveryRate.var]][i],
                          isPriceClean_input = isPriceClean,
                          payAccruedOnDefault_input = payAccruedOnDefault,
-                         x[[notional.var]][i],
-                         notional = PACKAGE = "CDS")
+                         notional = x[[notional.var]][i],
+                         PACKAGE = "CDS")
     
     IR.DV.01[i] <- upfront.new - upfront.orig
     
