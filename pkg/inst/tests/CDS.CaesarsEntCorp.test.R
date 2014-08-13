@@ -1,4 +1,4 @@
-## CDS.R test case for Caesars Entertainment Operating Co Inc
+## CDS.R test case for Caesars Entertainment Operating Co Inc using data obtainined from Bloomberg
 
 library(CDS)
 

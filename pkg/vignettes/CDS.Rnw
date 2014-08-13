@@ -225,7 +225,7 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PNL) of the Citadel portfolio manager and JPM change from January 1 to December 31. 
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PnL) of the Citadel portfolio manager and JPM change from January 1 to December 31. 
 
 %% Assume that Alcoa does not default during that year.
 
@@ -233,7 +233,7 @@ We can think of the mark-to-market value as the price at which the CDS would sel
 
 We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in Section {sec:nonStandardCoupon}). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
 
-PNL represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the PNL of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's PNL measures what JPM earns each day that it provides protection during that year.
+PnL represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the PnL of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's PnL measures what JPM earns each day that it provides protection during that year.
 
 Here is a table that considers what happens to the above-mentioned variables as the contract matures from January 1 to December 31. Note that we are considering the case in which Alcoa does not default during the one-year contract.
 
@@ -242,7 +242,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PNL (Citadel) & PNL (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PnL (Citadel) & PnL (JPM) \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -252,7 +252,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-mark
 \end{tabular}
 }
 
-\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of "P", the mark-to-market value of the contract, the spread, and the PNL for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of "P" decreases from 1\% to 0\% as the contract matures, a process we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the PNL of both parties is 0.} 
+\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of "P", the mark-to-market value of the contract, the spread, and the PnL for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of "P" decreases from 1\% to 0\% as the contract matures, a process we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the PnL of both parties is 0.} 
 \label{table.1}
 \end{table}
 
@@ -453,7 +453,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS o
 {\footnotesize
 \begin{tabular}{lllll}
   \hline
-Date & Mark-to-market & PNL (Citadel) & PNL (JPM) & Accrued Coupon \\ 
+Date & Mark-to-market & PnL (Citadel) & PnL (JPM) & Accrued Coupon \\ 
   \hline
   Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
   Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
@@ -462,7 +462,7 @@ Date & Mark-to-market & PNL (Citadel) & PNL (JPM) & Accrued Coupon \\
    \hline
 \end{tabular}
 }
-\caption{This table measures the mark-to-market value, the PNL for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's PNL is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
+\caption{This table measures the mark-to-market value, the PnL for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's PnL is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
 \end{table}
 
 As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
@@ -785,14 +785,14 @@ What it's reversed: what if the risk-neutral probability of default for year one
 
 \subsubsection{Two-Period Case Over Time}
 
-Consider what happens to variables such as the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PNL of both parties as the two-year contract matures.
+Consider what happens to variables such as the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PnL of both parties as the two-year contract matures.
 
 \begin{table}[H]
 \centering
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PNL (Citadel) & PNL (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PnL (Citadel) & PnL (JPM) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
@@ -804,7 +804,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-mark
    \hline
 \end{tabular}
 }
-\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PNL of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
+\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral "P", the mark-to-market value, the spread, and the PnL of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
 \end{table}
 
 Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
@@ -814,7 +814,7 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. If we look at Figure \ref{CDSalcoa} below, we can see the details of an actual CDS contract on Alcoa priced on June 23, 2014.
+So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. If we look at Figure \ref{AlcoaIncCDS} below, we can see the details of an actual CDS contract on Alcoa priced on June 23, 2014.
 
 \begin{figure}[H]
 \centering
@@ -863,7 +863,7 @@ To calculate the hazard rates, we need a \textbf{CDS curve} or the \textbf{term 
 \label{fig:CDScurveAlcoa}
 \end{figure} 
 
-Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. The discount factor is used in calculating the upfront value for a CDS maturing over \textit{n} periods.
+Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. The discount factor is used in calculating the upfront value for a CDS maturing over \textit{n} periods. Therefore the principal or mark-to-market value can be calculated using the formula below:
 
 \begin{equation}
  \begin{aligned}
