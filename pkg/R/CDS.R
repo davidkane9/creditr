@@ -160,11 +160,13 @@ CDS <- function(contract = "SNAC",
     cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
   } else{
     if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- get.date(date = as.Date(TDate), 
+                           tenor = NULL, maturity = as.Date(maturity))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- get.date(date = as.Date(TDate), 
+                           tenor = NULL, maturity = as.Date(maturity))
     }
   }
   

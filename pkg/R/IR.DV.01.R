@@ -83,14 +83,17 @@ IR.DV.01 <- function(x,
     ## get.date function. Results are stored in cdsdates
     
     if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = x[[tenor.var]][i], maturity = NULL)
+      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+                           tenor = x[[tenor.var]][i], maturity = NULL)
     }
     else if(is.null(x[[tenor.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
+      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }  ## if both are entered, we arbitrarily use one of them
   
     else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-    cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
+    cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+                         tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
    }
     
     

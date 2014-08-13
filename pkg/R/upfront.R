@@ -139,7 +139,8 @@ upfront <- function(x,
     baseDate <- as.Date(TDate) + 2
     currency <- x[i, currency.var]
     types <- types
-    rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & rates$currency == as.character(x[i, currency.var])]
+    rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & 
+                           rates$currency == as.character(x[i, currency.var])]
     expiries <- expiries                    
     mmDCC <- as.character(mmDCC)                    
     fixedSwapFreq <- as.character(fixedSwapFreq)
