@@ -4,17 +4,14 @@ library(CDS)
 
 data(rates)
 
-## rates for the relevant date and currency, extracted from the rates data frame, stored in the data 
-## directory.
-
-rates.20140415 <- rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]
-expiries.20140415 <- rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]
+## we use rates for the relevant date and currency, extracted from the rates data frame, stored in the data 
+## directory. 
 
 result.1 <- CDS(TDate = "2014-04-15",
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
-                rates = rates.20140415,
-                expiries = expiries.20140415,                    
+                rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
+                expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],                    
                 mmDCC = "Act/360",                    
                 fixedSwapFreq = "6M",
                 floatSwapFreq = "6M",
@@ -64,8 +61,8 @@ expect_equal(round(0.5745,4), round(result.1@ptsUpfront,4))
 result.2 <- CDS(TDate = "2014-04-15",
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
-                rates = rates.20140415,
-                expiries = expiries.20140415,                    
+                rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
+                expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],                    
                 mmDCC = "Act/360",                    
                 fixedSwapFreq = "6M",
                 floatSwapFreq = "6M",
@@ -111,14 +108,11 @@ expect_equal(round(0.065808, 4), round(result.2@ptsUpfront, 4))
 
 ## CDS.R test case for Electrolux AB corporation
 
-rates.20140422 <- rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"]
-expiries.20140422 <- rates$expiries[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"]
-
 result.3 <- CDS(TDate = "2014-04-22",
                 tenor = "5Y",
                 types = "MMMMMMSSSSSSS",
-                rates = rates.20140422,
-                expiries = expiries.20140422,
+                rates = rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"],
+                expiries = rates$expiries[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"],
                 mmDCC = "Act/360",                    
                 fixedSwapFreq = "6M",
                 floatSwapFreq = "6M",
@@ -155,18 +149,14 @@ expect_equal(round(4923.93), round(result.3@spreadDV01))
 
 expect_equal(round(-0.00049239, 4), round(result.3@ptsUpfront, 4))
 
+
 ## CDS.R test case for Norske Skogindustrier ASA (European company)
-
-## EUR Rates for April 15 2014
-
-rates.20140415 <- rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"]
-expiries.20140415 <- rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"]
 
 result.4 <- CDS(TDate = "2014-04-15",
                 tenor = "5Y",
                 types = "MMMMMMSSSSSSS",
-                rates = rates.20140415,
-                expiries = expiries.20140415,
+                rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"],
+                expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"],
                 mmDCC = "Act/360",                    
                 fixedSwapFreq = "6M",
                 floatSwapFreq = "6M",
@@ -185,21 +175,21 @@ result.4 <- CDS(TDate = "2014-04-15",
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
 
-expect_equal(round(4412500, -3), round(result.4@upfront, -3))
+expect_equal(round(4412500, -2), round(result.4@upfront, -2))
 
 expect_equal(round(-727.47), round(result.4@IRDV01))
 
-expect_equal(truth1$price, round(result.4@price, 1))
+expect_equal(55.5, round(result.4@price, 1))
 
 expect_equal(round(4450000, -3), round(result.4@principal, -3))
 
-expect_equal(round(truth1$RecRisk01, -3), round(result.4@RecRisk01, -3))
+expect_equal(round(-56413.77, -4), round(result.4@RecRisk01, -4))
 
-expect_equal(round(truth1$defaultExpo, -3), round(result.4@defaultExpo, -3))
+expect_equal(round(1550000, -3), round(result.4@defaultExpo, -3))
 
-expect_equal(round(truth1$spreadDV01), round(result.4@spreadDV01))
+expect_equal(round(731.48), round(result.4@spreadDV01))
 
-expect_equal(round(truth1$ptsUpfront, 2), round(result.4@ptsUpfront, 2))
+expect_equal(round(0.445, 2), round(result.4@ptsUpfront, 2))
 
 ## CDS.R test case for RadioShack Corp
 
@@ -300,21 +290,21 @@ result.7 <- CDS(TDate = "2014-04-15",
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
 
-expect_equal(round(701502), round(result.7@upfront))
+expect_equal(round(3237500), round(result.7@upfront))
 
-expect_equal(round(-184.69), round(result.7@IRDV01))
+expect_equal(round(-648.12), round(result.7@IRDV01))
 
-expect_equal(round(92.91), round(result.7@price))
+expect_equal(round(67.25), round(result.7@price))
 
-expect_equal(round(709002), round(result.7@principal))
+expect_equal(round(3275000), round(result.7@principal))
 
-expect_equal(round(-1061.74, -3), round(result.7@RecRisk01, -3))
+expect_equal(round(-30848.67, -3), round(result.7@RecRisk01, -3))
 
-expect_equal(round(5790998), round(result.7@defaultExpo))
+expect_equal(round(2725000), round(result.7@defaultExpo))
 
-expect_equal(round(4448.92), round(result.7@spreadDV01))
+expect_equal(round(1580.31), round(result.7@spreadDV01))
 
-expect_equal(round(0.0709), round(result.7@ptsUpfront))
+expect_equal(0.3275, round(result.7@ptsUpfront,4))
 
 ## CDS.R test case for Xerox corporation
 
@@ -329,18 +319,18 @@ result.8 <- CDS(TDate = "2014-04-22",
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
 
-expect_equal(round(701502), round(result.8@upfront))
+expect_equal(round(18624), round(result.8@upfront))
 
-expect_equal(round(-184.69, 1), round(result.8@IRDV01, 1))
+expect_equal(round(-7.36, 1), round(result.8@IRDV01, 1))
 
-expect_equal(92.91, round(result.8@price, 2))
+expect_equal(round(99.71931785,2), round(result.8@price, 2))
 
-expect_equal(round(709002), round(result.8@principal))
+expect_equal(round(28068), round(result.8@principal))
 
-expect_equal(round(-1061.74), round(result.8@RecRisk01))
+expect_equal(round(-20.85), round(result.8@RecRisk01))
 
-expect_equal(round(5790998), round(result.8@defaultExpo))
+expect_equal(round(5971932), round(result.8@defaultExpo))
 
-expect_equal(round(4448.92, 2), round(result.8@spreadDV01, 2))
+expect_equal(round(4825.49, 2), round(result.8@spreadDV01, 2))
 
-expect_equal(round(0.0709, 4), round(result.8@ptsUpfront, 4))
+expect_equal(round(0.002806821, 4), round(result.8@ptsUpfront, 4))
