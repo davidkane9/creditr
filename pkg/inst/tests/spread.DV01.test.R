@@ -4,9 +4,9 @@ library(CDS)
 ## actual spread for Xerox
 ## truth.1 <- 4825.49
 
-## save(truth.1, file = "spread.DV.01.test.RData")
+## save(truth.1, file = "spread.DV01.test.RData")
 
-load("spread.DV.01.test.RData")
+load("spread.DV01.test.RData")
 
 x <- data.frame(dates = as.Date("2014-04-22"),
                  currency = "USD",
@@ -17,7 +17,7 @@ x <- data.frame(dates = as.Date("2014-04-22"),
                  recoveryRate = 0.4,
                  notional = 1e7)
 
-result.1 <- spread.DV.01(x)
+result.1 <- spread.DV01(x)
 
 ## test case passes when results are rounded to the nearest whole number
 

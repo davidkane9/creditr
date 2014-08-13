@@ -1,4 +1,4 @@
-#' \code{spread.DV.01} calculates the spread DV01 or change in upfront 
+#' \code{spread.DV01} calculates the spread DV01 or change in upfront 
 #' value when the spread rises by 1 basis point
 #' 
 #' @param x is the data frame containing all the relevant columns.
@@ -34,7 +34,7 @@
 #' recoveryRate = c(0.4, 0.4),
 #' notional = c(1e7, 1e7))
 #' 
-spread.DV.01 <- function(x,
+spread.DV01 <- function(x,
                         TDate.var = "dates",
                         currency.var = "currency",
                         maturity.var = "maturity",
@@ -54,7 +54,7 @@ spread.DV.01 <- function(x,
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function
   
-  spread.DV.01 <- rep(NA, nrow(x))
+  spread.DV01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
@@ -184,9 +184,9 @@ spread.DV.01 <- function(x,
                          notional = x[[notional.var]][i],
                          PACKAGE = "CDS")
     
-    spread.DV.01[i] <- upfront.new - upfront.orig
+    spread.DV01[i] <- upfront.new - upfront.orig
     
   }
   
-  return(spread.DV.01)
+  return(spread.DV01)
 }
