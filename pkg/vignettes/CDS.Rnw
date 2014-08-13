@@ -932,102 +932,7 @@ We can use the formula above for PV01 to calculate the principal amount (clean u
 
 % cite http://developers.opengamma.com/quantitative-research/Pricing-and-Risk-Management-of-Credit-Default-Swaps-OpenGamma.pdf
 
-\subsubsection{Types of Settlements in the Case of a Default}
-\label{sec:SettlementType}
-
-Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds. This is more likely to happen when there is a large number of outstanding CDS contracts. 
-
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate can often prove to be an issue. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
-
-\subsubsection{What Constitutes a Default?}
-\label{sec:DafaultType}
-
-%cite bloomber manual here
-Another issue that we have to face when creating CDS is the definition of "default." A default does not always have to be outright bankruptcy. Often companies \textbf{restructure} their debt---or renegotiate the terms of their debt---instead of declaring for bankruptcy, and in some CDS contracts, restructuring does not constitute a default. In Figure \ref{fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as "MM." This stands for "Modified Modified" restructuring and implies that debt restructuring does in fact constitute a default. So, if Alcoa decides to restructure this specific debt, the hedge will have to pay the protection leg to the portfolio manager.
-
-\subsubsection{Counterparty Risk}
-\label{sec:CounterpartyRisk}
-
-When a counterparty such as the hedge fund sells protection on a bond, there is always the possibility that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
-
-\subsection{CDS Indices}
-\label{sec:CDSIndices}
-
-Holding a disproportionate number of Alcoa bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
-
-Instead of holding Alcoa bonds with a face value of \$10 million, say our portfolio manager decides to take on less risk by holding bonds of 100 different IG companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDS, or CDS indices, which contain a basket of CDS. The two most common indices are CDX and iTraxx, which represent North American CDS and European CDS, respectively.
- 
-Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDS based on sectors such as automobiles or consumer goods.
-
-These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDS and do not delve into the more complex world of multi-name CDS. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
-
-%% What is an auction?
-%% Explain MM and XR
-
-%% I am not so sure. I think that the standard terms are 
-%% things like XR and MM, strict definitions for credit events, auction
-%% proceedures and so on. I think that the Standard Model just refers to the
-%% math. But perhaps this is too confusing a distinction (and I might be 
-%% wrong), so leave it for the next version.
-
-%% Cite the Markit webpage. Leave nothing out.
-
-%% Start with a bond portfolio manager who owns a specific bond,
-%% something that is a reference obligation for a member of CDX IG. 
-%% That PM is concerned about the credit worthiness of the company,
-%% at least over the next year or two. But selling the bond is too
-%% expensive or annoying. So, he can buy some CDS protection on 
-%% the bond. And so on. Describe all the cash flows, both from his
-%% point of view, and the point of view of the hedge fund that sells
-%% the protection. Better yet, have the exercise occur in the past,
-%% but use a bond that actually defaulted. Then we can talk about the
-%% auction, recovery rate and so on.
-
-
-
-
-\section{ISDA Standard Model}
-\label{sec:ISDAStMod}
-
-The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
-
-The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
-
-The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
-\begin{itemize}
-\item The day count convention (DCC) for money market instruments and
-  the floating legs of the swaps is \textbf{ACT/360}.
-\item DCC for floating legs of the swaps is \textbf{30/360}.
-\item Payment frequency for fixed legs of the swaps is 6 months.
-\item Payment frequency for floating legs of the swaps is 3
-  months.\footnote{See
-    \url{http://www.fincad.com/derivatives-resources/wiki/swap-pricing.aspx}
-    for details on floating and fixed legs calculation.}
-\item A business day calendar of weekdays (Monday to Friday) is
-  assumed. Saturdays and Sundays will be the only non-business days.
-\item If a date falls on a non-business day, the convention used for
-  adjusting coupon payment dates is \textbf{M} (Modified Following).
-\item Recovery Rate is the estimated percentage of par value that
-  bondholders will receive after a credit event. It is commonly
-  reported in percentage of notional value. CDS contracts for corporate bonds
-  assume a 40\% recovery rate for valuation purposes. 
-\end{itemize}
-
-
-
-
-%Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
-
-%% \begin{displaymath}
-%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-%% \end{displaymath}
-
-%The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
-
-%% \begin{displaymath}
-%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
-%% \end{displaymath}
-\subsection{Risk Measures of a Standard CDS Contract}
+\subsection{Risk Measures and other CDS related variables}
 \label{sec:RiskMeasures}
 
 \subsubsection{Spread DV01}
@@ -1071,12 +976,109 @@ where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery ra
   - \text{Principal}. \nonumber
 \end{equation} 
 
+\subsection{In the Event of a Default}
+
+\subsubsection{What Constitutes a Default?}
+\label{sec:DafaultType}
+
+%cite bloomber manual here
+Another issue that we have to face when creating CDS is the definition of "default." A default does not always have to be outright bankruptcy. Often companies \textbf{restructure} their debt---or renegotiate the terms of their debt---instead of declaring for bankruptcy, and in some CDS contracts, restructuring does not constitute a default. In Figure \ref{fig:CDSalcoa}, if we look between the notional amount and the currency, we will see a text box printed as "MM." This stands for "Modified Modified" restructuring and implies that debt restructuring does in fact constitute a default. So, if Alcoa decides to restructure this specific debt, the hedge will have to pay the protection leg to the portfolio manager.
+
+\subsubsection{Types of Settlements in the Case of a Default}
+\label{sec:SettlementType}
+
+Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds. This is more likely to happen when there is a large number of outstanding CDS contracts. 
+
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate can often prove to be an issue. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
+
+\subsubsection{Counterparty Risk}
+\label{sec:CounterpartyRisk}
+
+When a counterparty such as the hedge fund sells protection on a bond, there is always the possibility that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
+
+\subsection{CDS Indices}
+\label{sec:CDSIndices}
+
+Holding a disproportionate number of Alcoa bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
+
+Instead of holding Alcoa bonds with a face value of \$10 million, say our portfolio manager decides to take on less risk by holding bonds of 100 different IG companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDS, or CDS indices, which contain a basket of CDS. The two most common indices are CDX and iTraxx, which represent North American CDS and European CDS, respectively.
+ 
+Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDS based on sectors such as automobiles or consumer goods.
+
+These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDS and do not delve into the more complex world of multi-name CDS. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
+
+%% What is an auction?
+%% Explain MM and XR
+
+%% I am not so sure. I think that the standard terms are 
+%% things like XR and MM, strict definitions for credit events, auction
+%% proceedures and so on. I think that the Standard Model just refers to the
+%% math. But perhaps this is too confusing a distinction (and I might be 
+%% wrong), so leave it for the next version.
+
+%% Cite the Markit webpage. Leave nothing out.
+
+%% Start with a bond portfolio manager who owns a specific bond,
+%% something that is a reference obligation for a member of CDX IG. 
+%% That PM is concerned about the credit worthiness of the company,
+%% at least over the next year or two. But selling the bond is too
+%% expensive or annoying. So, he can buy some CDS protection on 
+%% the bond. And so on. Describe all the cash flows, both from his
+%% point of view, and the point of view of the hedge fund that sells
+%% the protection. Better yet, have the exercise occur in the past,
+%% but use a bond that actually defaulted. Then we can talk about the
+%% auction, recovery rate and so on.
+
+
+
+%Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
+
+%% \begin{displaymath}
+%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
+%% \end{displaymath}
+
+%The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
+
+%% \begin{displaymath}
+%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
+%% \end{displaymath}
+
 
 \newpage
 \section{Using the CDS package}
 \label{CDSpkg}
 
-In this section, we will demonstrate the use of the \textbf{CDS} package in detail and provide a series of examples. The \textbf{CDS} package implements the Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. Currently, a market participant can conduct CDS-related calculations by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the Markit CDS Calculator\footnote{The Markit CDS Calculator is available
+In this section, we will demonstrate the use of the \textbf{CDS} package in detail and provide a series of examples. The \textbf{CDS} package implements the Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
+
+\subsection{ISDA Standard Model}
+\label{sec:ISDAStMod}
+
+The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
+
+The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
+
+The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
+\begin{itemize}
+\item The day count convention (DCC) for money market instruments and
+  the floating legs of the swaps is \textbf{ACT/360}.
+\item DCC for floating legs of the swaps is \textbf{30/360}.
+\item Payment frequency for fixed legs of the swaps is 6 months.
+\item Payment frequency for floating legs of the swaps is 3
+  months.\footnote{See
+    \url{http://www.fincad.com/derivatives-resources/wiki/swap-pricing.aspx}
+    for details on floating and fixed legs calculation.}
+\item A business day calendar of weekdays (Monday to Friday) is
+  assumed. Saturdays and Sundays will be the only non-business days.
+\item If a date falls on a non-business day, the convention used for
+  adjusting coupon payment dates is \textbf{M} (Modified Following).
+\item Recovery Rate is the estimated percentage of par value that
+  bondholders will receive after a credit event. It is commonly
+  reported in percentage of notional value. CDS contracts for corporate bonds
+  assume a 40\% recovery rate for valuation purposes. 
+\end{itemize}
+
+
+Currently, a market participant can conduct CDS-related calculations by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the Markit CDS Calculator\footnote{The Markit CDS Calculator is available
   at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.}. The \textbf{CDS} package provides tools for valuing a single-name CDS contract. The default setting allows a user to value a USD-denominated CDS contract following the Standard Model as mentioned before. She can also specify her own set of parameters to customize the calculation. 
 
 \subsection{CDS Class}
