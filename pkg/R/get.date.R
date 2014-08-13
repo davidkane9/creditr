@@ -46,10 +46,12 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   dateWday <- as.POSIXlt(date)$wday
   if (!(dateWday %in% c(1:5))) stop("date must be a weekday")
   
-  ## stepinDate is T + 1 day
+  ## stepinDate is the date on which a party assumes ownership of a trade side. 
+  ## it is Trade date + 1 day
   
   stepinDate <- date + 1
   
+  ## valueDate is the date on which a cash payment is settled.
   ## valueDate is 3 business days after the Trade Date. 
   
   valueDate <- stepinDate
