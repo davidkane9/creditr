@@ -66,12 +66,17 @@ result1 <-  CDS(TDate = "2014-04-15",
 ## The results have to be rounded off as there are marginal differences
 
 expect_that(round(truth1$upfront, -1), equals(round(result1@upfront, -1)))
+#true result is 5707438 whereas the package returns 5707436
+#expect_equal(5707438, result1@upfront)
 
 expect_that(round(truth1$IRDV01, 1), equals(round(result1@IRDV01, 1)))
+#expect_equal(-271.18, result1@IRDV01)
 
 expect_that(truth1$price, equals(round(result1@price, 2)))
+#expect_equal(42.55, result1@price)
 
 expect_that(round(truth1$principal, -1), equals(round(result1@principal, -1)))
+#expect_equal(5744938, result1@principal)
 
 expect_that(round(truth1$RecRisk01, -2), equals(round(result1@RecRisk01, -2)))
 
