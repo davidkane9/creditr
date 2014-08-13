@@ -79,11 +79,16 @@ expect_that(round(truth1$principal, -1), equals(round(result1@principal, -1)))
 #expect_equal(5744938, result1@principal)
 
 expect_that(round(truth1$RecRisk01, -2), equals(round(result1@RecRisk01, -2)))
+#expect_equal(-95430.32, result1@RecRisk01)
 
 expect_that(round(truth1$defaultExpo, -1), equals(round(result1@defaultExpo, -1)))
+#expect_equal(255062, result1@defaultExpo)
 
 expect_that(round(truth1$spreadDV01, 2), equals(round(result1@spreadDV01, 2)))
+#expect_equal( 21.15, result1@spreadDV01)
 
 expect_that(round(truth1$ptsUpfront, 4), equals(round(result1@ptsUpfront, 4)))
+#expect_equal(0.5745, result1@ptsUpfront)
+
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))
 expect_that(as.character(truth1$freqCDS), equals(result1@freqCDS))
