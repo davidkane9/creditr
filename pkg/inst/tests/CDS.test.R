@@ -246,6 +246,9 @@ expect_equal(round(0.5649, 2), round(result.5@ptsUpfront, 2))
 
 result.6 <- CDS(TDate = "2014-04-15",
                 tenor = "5Y",
+                types = "MMMMMSSSSSSSS",
+                rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "JPY"],
+                expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "JPY"]
                 baseDate = "2014-04-17",
                 stepinDate = "2014-4-16",
                 contract ="STEC",
@@ -256,7 +259,7 @@ result.6 <- CDS(TDate = "2014-04-15",
                 isPriceClean = FALSE,
                 notional = 1e7)
 
-## comparing result.6s with true values from Bloomberg
+## comparing result.6 with true values from Bloomberg
 ## The result.6 have to be rounded off as there are marginal differences
 
 expect_equal(round(701502, -1), round(result.6@upfront, -1))
