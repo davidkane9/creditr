@@ -9,8 +9,8 @@ bus.days.offset <- function(fromDate, offset, holidays = NULL){
     fromDate <- .separate.YMD(fromDate)
     
     .Call('busDaysOffset',
-          fromDate,
-          offset,
-          holidays,
+          fromDate_input = fromDate,
+          offset_input = offset,
+          holidays = holidays,
           PACKAGE = 'CDS')
 }
