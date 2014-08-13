@@ -69,10 +69,6 @@ get.date <- function(date, maturity = NULL, tenor = NULL){
     endDate <- as.Date(endDate)
   }
   else{
-    
-  ## endDate <- as.POSIXlt(firstcouponDate)  
-  ## endDate$year <- endDate$year + (as.POSIXlt(maturity)$year - as.POSIXlt(date)$year)
-    
     endDate <- as.Date(maturity)
   }
     
