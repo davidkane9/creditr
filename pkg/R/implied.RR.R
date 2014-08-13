@@ -23,11 +23,11 @@
 
 implied.RR <- function(data, spread.var, pd.var, col.id, endDate.var, TDate.var){
   
-  spread <- data[, spread.var]
+  spread  <- data[, spread.var]
   endDate <- data[,endDate.var]
-  TDate <- data[,TDate.var]
-  pd <- data[, pd.var]
-  time <- as.numeric(as.Date(endDate) - as.Date(TDate))/360
+  TDate   <- data[,TDate.var]
+  pd      <- data[, pd.var]
+  time    <- as.numeric(as.Date(endDate) - as.Date(TDate))/360
   
   impRecoveryRate <- c(100+((spread*time/1e2)*(1/log(1-pd))))
   
