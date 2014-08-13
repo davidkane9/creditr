@@ -181,8 +181,6 @@ upfront <- function(x,
       baseDate <- .adj.next.bus.day(TDate+2)
     }
     
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays  
-    
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
     
     baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, currency = currency)
@@ -209,16 +207,6 @@ upfront <- function(x,
     if (is.null(startDate)) startDate         <- cdsDates$startDate
     if (is.null(endDate)) endDate             <- cdsDates$endDate
     if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
-    
-    ## separate an input date into year, month, and day
-    
-    baseDate      <- .separate.YMD(baseDate)
-    today         <- .separate.YMD(TDate)
-    valueDate     <- .separate.YMD(valueDate)
-    benchmarkDate <- .separate.YMD(benchmarkDate)
-    startDate     <- .separate.YMD(startDate)
-    endDate       <- .separate.YMD(endDate)
-    stepinDate    <- .separate.YMD(stepinDate)
     
     ## stop if number of rates != number of expiries != length of types
     
@@ -249,7 +237,7 @@ upfront <- function(x,
     
     
     results[i] <- .Call('calcUpfrontTest',
-                        baseDate,
+                        .separate.YMD(baseDate),
                         types,
                         rates,
                         expiries,
@@ -262,12 +250,12 @@ upfront <- function(x,
                         badDayConvZC,
                         holidays,
                         
-                        today,
-                        valueDate,
-                        benchmarkDate,
-                        startDate,
-                        endDate,
-                        stepinDate,
+                        .separate.YMD(TDate),
+                        .separate.YMD(valueDate),
+                        .separate.YMD(benchmarkDate),
+                        .separate.YMD(startDate),
+                        .separate.YMD(endDate),
+                        .separate.YMD(stepinDate),
                         
                         dccCDS,
                         freqCDS,
