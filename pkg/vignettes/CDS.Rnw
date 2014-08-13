@@ -1070,51 +1070,7 @@ where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery ra
   \text{Default Exposure} = (1 - \text{Recovery Rate})*\text{Notional}
   - \text{Principal}. \nonumber
 \end{equation} 
- 
-\subsection{Risk-Neutral Pricing}
-\label{sec:riskneutralpricing}
- 
-%% Add screenshot with data from one of the indices
 
-%% provide a history of iTraxx and CDX 
- 
-\section{Pricing Sources}
-\label{sec:PricingSources}
-
-%% section incomplete
-
-Bloomberg and Markit are the most widely used sources for data related to pricing of CDS. We compared the results from our package with results from Bloomberg and Markit. Interestingly,
-the results from Markit and Bloomberg were not always identical. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, , height=4in]{images/MarkitCDSAlcoa.png}
-\caption{CDS figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=4in]{images/BloombergCDSAlcoa.png}
-\caption{CDS figures from Bloomberg}
-\end{figure}
-
-The interest rate results were identical, at least until the fourth decimal place.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.6in, height=4.2in]{images/MarkitIRJun2.png}
-\caption{Interest Rate figures from Markit.com}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=3.2in, height=2.7in]{images/BloombergIRJun2.png}
-\caption{Interest Rate figures from Bloomberg}
-\end{figure}
-
-%% the origins of the ISDA standard model. Next version: Talk about Europe?
-
-%% Maybe will have to delete this list.
 
 \newpage
 \section{Using the CDS package}
@@ -1131,12 +1087,12 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an o
 <<>>=
 #library(CDS)
 #cds <- CDS(entityName = "Alcoa",
- #           RED = "49EB20",
-  #          TDate = "2014-06-24",
-   #         tenor = "5Y",
-    #        notional = 1e7,
-     #       coupon = 100,
-      #      parSpread = 160)
+ #          RED = "49EB20",
+  #         TDate = "2014-06-24",
+   #        tenor = "5Y",
+    #       notional = 1e7,
+     #      coupon = 100,
+      #     parSpread = 160)
 @
 
 Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
