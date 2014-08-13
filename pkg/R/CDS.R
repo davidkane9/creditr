@@ -516,7 +516,12 @@ CDS <- function(contract = "SNAC",
                                  t = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
                                  recoveryRate = recoveryRate)
-  cds@defaultExpo <- default.expo(recoveryRate, notional, cds@principal)
+  
+  ## calculate the default exposure of a CDS contract based on the
+  ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
+  
+  cds@defaultExpo <- (1-recoveryRate) * notional - cds@principal
+
   cds@price       <- price(cds@principal, notional)
   
   ## return object with all the calculated data
