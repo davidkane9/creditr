@@ -29,7 +29,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     stopifnot(toupper(as.character(currency)) %in% 
     c( "USD", "GBP", "EUR", "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
     
-    stopifnot(is.character(currency))
+    #stopifnot(is.character(currency))
 
     ## CDS for Trade Date will use rates from Trade Date - 1 
 

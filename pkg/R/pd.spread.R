@@ -4,6 +4,7 @@
 #' @param PD probability of default in decimals
 #' @param tenor in years
 #' @param TDate trade date. By default is the current date
+#' 
 #' @return spread in basis points, calculated by inverting the formula for probability
 #' of default given in the Bloomberg Manual
 
