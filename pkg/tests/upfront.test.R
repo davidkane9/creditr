@@ -17,7 +17,7 @@ load("upfront.test.RData")
 
 rates.1 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.1 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.1 <- upfront(data.frame(date = as.Date("2014-04-22"),
                      currency = "USD",
                      tenor = "5Y",
                      spread = 105.8,
@@ -40,7 +40,7 @@ expect_that(round(result.1), equals(round(truth.1)))
 
 rates.2 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.2 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.2 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  tenor = "5Y",
                                  spread = 100,
@@ -64,7 +64,7 @@ expect_that(round(result.2), equals(truth.2))
 
 rates.3 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.3 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.3 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  tenor = "5Y",
                                  spread = 105.8,
@@ -87,7 +87,7 @@ expect_that(round(result.3), equals(round(truth.3)))
 
 rates.4 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.4 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.4 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  tenor = "5Y",
                                  spread = 105.8,
@@ -110,7 +110,7 @@ expect_that(round(result.4), equals(round(truth.4)))
 
 rates.5 <- get.rates(as.Date("2014-04-15"), currency = "USD")[[1]][1:13,]
 
-result.5 <- upfrontdf(data.frame(date = as.Date("2014-04-15"),
+result.5 <- upfront(data.frame(date = as.Date("2014-04-15"),
                                  currency = "USD",
                                  maturity = "2019-06-20",
                                  spread = 105.8,
@@ -131,7 +131,7 @@ expect_that(round(result.5), equals(round(truth.5)))
 #calculated value
 rates.6 <- get.rates(as.Date("2014-04-29"), currency = "USD")[[1]][1:13,]
 
-result.6 <- upfrontdf(data.frame(date = as.Date("2014-04-29"),
+result.6 <- upfront(data.frame(date = as.Date("2014-04-29"),
                                  currency = "USD",
                                  maturity = "2019-06-20",
                                  spread = 105.8,
@@ -152,7 +152,7 @@ expect_that(round(result.6), equals(round(truth.6)))
 
 rates.7 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.7 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.7 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  maturity = "2019-03-20",
                                  spread = 105.8,
@@ -173,7 +173,7 @@ expect_that(round(result.7), equals(round(truth.7)))
 
 rates.8 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.8 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.8 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  maturity = "2019-09-20",
                                  spread = 105.8,
@@ -195,7 +195,7 @@ expect_that(round(result.8), equals(round(truth.8)))
 
 rates.9 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.9 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.9 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  tenor = "5Y",
                                  spread = 155.8,
@@ -216,7 +216,7 @@ expect_that(round(result.9), equals(round(truth.9)))
 
 rates.10 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
 
-result.10 <- upfrontdf(data.frame(date = as.Date("2014-04-22"),
+result.10 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
                                  tenor = "5Y",
                                  spread = 55.8,
@@ -239,7 +239,7 @@ expect_that(round(result.10), equals(round(truth.10)))
 
 rates.11 <- get.rates(as.Date("2013-09-20"), currency = "USD")[[1]][1:13,]
 
-result.11 <- upfrontdf(data.frame(date = as.Date("2013-09-20"),
+result.11 <- upfront(data.frame(date = as.Date("2013-09-20"),
                                  currency = "USD",
                                  maturity = "2013-09-20",
                                  spread = 105.8,
@@ -264,7 +264,7 @@ result.11 <- upfrontdf(data.frame(date = as.Date("2013-09-20"),
 
 rates.13 <- get.rates(as.Date("2009-03-18"), currency = "USD")[[1]][1:13,]
 
-result.13 <- upfrontdf(data.frame(date = as.Date("2009-03-18"),
+result.13 <- upfront(data.frame(date = as.Date("2009-03-18"),
                                   currency = "JPY",
                                   maturity = "2014-03-20",
                                   spread = 105.8,
