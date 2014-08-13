@@ -18,8 +18,8 @@ get.rates.DF <- function(start, end, currency = "USD"){
 
   ## start & end date must be valid
   
-  stopifnot(check.date(start))
-  stopifnot(check.date(end))
+  #stopifnot(check.date(start))
+  #stopifnot(check.date(end))
     
   ## start date must be smaller than end date
   
@@ -49,7 +49,7 @@ get.rates.DF <- function(start, end, currency = "USD"){
         rates <- as.numeric(as.character(getRates$rate))
         expiry <- getRates$expiry
         date <- rep(end, length(rates))
-        thisCurrency <- rep(currency, length(rates))
+        currency <- rep(currency, length(rates))
         
         ## append all the data from the different dates where rates are available
         

@@ -26,12 +26,12 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
 
     ## coerce into character and change to upper case
   
-    stopifnot(toupper(as.character(currency)) %in% c( "USD", "GBP", "EUR",
-"JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
+    stopifnot(toupper(as.character(currency)) %in% 
+    c( "USD", "GBP", "EUR", "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
     
-    currency <- as.character(currency)
+    stopifnot(is.character(currency))
 
-    ## CDS for TDate will use rates from TDate-1
+    ## CDS for Trade Date will use rates from Trade Date - 1 
 
     date <- as.Date(date) - 1
 
@@ -50,7 +50,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     
     ## convert date to numeric
 
-    dateInt <- as.numeric(format(date, "%Y%m%d"))
+    dateInt <- format(date, "%Y%m%d")
 
     ## markit rates URL
 
@@ -71,7 +71,7 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
                     rates$swaps[names(rates$swaps) == "curvepoint"])
     
     ## split the numbers from the 'M' and 'Y'
-
+    
     x <- do.call(rbind, strsplit(curveRates, split = "[MY]", perl = TRUE))
     rownames(x) <- NULL
     x <- cbind(x, "Y")

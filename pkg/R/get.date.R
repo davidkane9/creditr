@@ -75,13 +75,16 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   
   if(is.null(maturity)){
     endDate <- as.POSIXlt(firstcouponDate)
-    if (duration == "M"){
+    if (duration == "M"){ 
+      ## note you'll have to remove this if statement once tenor is numeric
+      ## because then you can only feed in years.
       endDate$mon <- endDate$mon + length
     } else {
       endDate$year <- endDate$year + length
     }
     endDate <- as.Date(endDate)
   }
+  ## if the maturity date is provided, it is the enddate.
   else{
     endDate <- as.Date(maturity)
   }
