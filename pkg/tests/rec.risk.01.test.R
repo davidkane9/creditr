@@ -31,7 +31,7 @@ x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-15")),
 
 rates <- get.rates(as.Date("2014-04-22"), currency = "EUR")[[1]]
 
-upfrontdf(data.frame(date = as.Date("2014-04-22"),
+upfront(data.frame(date = as.Date("2014-04-22"),
         currency = "EUR",
         tenor = "5Y",
         spread = 99,

@@ -27,13 +27,13 @@ x.2 <- data.frame(date = c(rep("2014-04-15", 100), rep("2014-04-22", 100)),
 
 ##  save(x.1, x.2, file = "upfrontdf.test.RData")
 
-load("upfrontdf.test.RData")
+load("upfront.test2.RData")
 
 ## match the results from upfrontdf.R with the actual result. Note that there was a marginal difference
 ## which required the results to be rounded off to the nearest whole number
 
-result.1 <- upfrontdf(x = x.1, rates = rates, tenor.var = "tenor")
+result.1 <- upfront(x = x.1, rates = rates, tenor.var = "tenor")
 expect_that(round(result.1, -2), equals(c(rep(4412500, 100), rep(round(-14368, -2), 100))))
 
-result.2 <- upfrontdf(x.2, rates, tenor = "tenor")
+result.2 <- upfront(x.2, rates, tenor = "tenor")
 expect_that(round(result.2, -2), equals(c(rep(4412500, 100), rep(round(-14368, -2), 100))))

@@ -276,7 +276,7 @@ CDS <- function(contract = "SNAC",
     ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                           expiries = expiries, rates = rates)
     
-    cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+    cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                isPriceClean = TRUE)
     
     ## points upfront
@@ -285,7 +285,7 @@ CDS <- function(contract = "SNAC",
     
     ## dirty upfront
     
-    cds@upfront <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+    cds@upfront <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                              isPriceClean = FALSE)
   } else if (!is.null(ptsUpfront)){
     
@@ -343,7 +343,7 @@ CDS <- function(contract = "SNAC",
     ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                           expiries = expiries, rates = rates)
     
-    cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+    cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                isPriceClean = FALSE)
     
   } 
@@ -408,7 +408,7 @@ CDS <- function(contract = "SNAC",
       ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                             expiries = expiries, rates = rates)
       
-      cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+      cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                  isPriceClean = FALSE)
       
       
@@ -465,7 +465,7 @@ CDS <- function(contract = "SNAC",
       ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                             expiries = expiries, rates = rates)
       
-      cds@principal <- upfrontdf(x = df, rates = ratesdf, notional = cds@notional,
+      cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                  isPriceClean = TRUE)
       
       ## ptsUpfront
