@@ -510,7 +510,7 @@ CDS <- function(contract = "SNAC",
                   notional = c(cds@notional))
   
   cds@spreadDV01  <- spread.DV01(x)
-  cds@IRDV01      <- IR.DV.01(x) 
+  cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
   cds@defaultProb <- default.prob(parSpread = cds@parSpread,
                                  t = as.numeric(as.Date(endDate) -
