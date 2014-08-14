@@ -523,7 +523,7 @@ CDS <- function(contract = "SNAC",
   
   cds@defaultExpo <- (1-recoveryRate) * notional - cds@principal
 
-  cds@price       <- price(cds@principal, notional)
+  cds@price       <- (1 - cds@principal / notional) * 100
   
   ## return object with all the calculated data
   
