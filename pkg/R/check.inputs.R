@@ -48,17 +48,19 @@ check.inputs <- function(x, ## change "dates" to "date" later
     stop("please enter a tenor OR maturity")
   }
   
-  if(is.null(tenor.var)){
-    stopifnot(inherits(x[[maturity.var]], "Date"))
-  }else if(is.null(maturity.var)){
+  ## re-use the below commented out code once tenor is changed to numeric
+  
+ # if(is.null(tenor.var)){
+ #   stopifnot(inherits(x[[maturity.var]], "Date"))
+ # }else if(is.null(maturity.var)){
     
     ## here I assume the tenor.var is already numeric.
     ## If CMD check fails, possibly because of here
     
-    stopifnot(is.numeric(x[[tenor.var]]))
-  }else{
-    stopifnot(inherits(x[[maturity.var]], "Date") & is.numeric(x[[tenor.var]]))
-  }
+ #   stopifnot(is.numeric(x[[tenor.var]]))
+ # }else{
+ #   stopifnot(inherits(x[[maturity.var]], "Date") & is.numeric(x[[tenor.var]]))
+ # }
   
   stopifnot(is.numeric(x[[spread.var]]))
   stopifnot(is.numeric(x[[coupon.var]]))
