@@ -1,8 +1,8 @@
-## IR.DV.01.R
+## IR.DV01.R
 
 library(CDS)
 
-## comparing IR.DV.01 calculated by our package for Xerox Corp and Electrolux
+## comparing IR.DV01 calculated by our package for Xerox Corp and Electrolux
 ## AB on April 22, 2014 with the results on Bloomberg
 
 x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
@@ -14,7 +14,7 @@ x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                 recoveryRate = c(0.4, 0.4),
                 notional = c(1e7, 1e7))
 
-result <- IR.DV.01(x)
+result <- IR.DV01(x)
 
 truth <- c(-7.36, 1.29)
 

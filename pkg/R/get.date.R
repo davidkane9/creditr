@@ -11,7 +11,6 @@
 #'   start date (accrual begin date), end date (maturity), backstop date (T-60 
 #'   day look back from which 'protection' is effective), pen coupon date 
 #'   (second to last coupon date)
-#' @export
 #' @examples
 #' get.date(as.Date("2014-05-07"), tenor = "5Y", maturity = NULL)
 
