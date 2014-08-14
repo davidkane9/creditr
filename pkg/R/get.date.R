@@ -2,7 +2,7 @@
 #' 
 #' @param date the date for which we are calculating the relevant dates. Must be of class "date".
 #' @param maturity date of maturity of the CDS contract. Default is NULL. Must be of class "date"
-#' @param tenor character tenor of the CDS contract in format like 5Y. Default
+#' @param tenor character tenor of the CDS contract in format like 5, 3. Default
 #'   is NULL. Must enter either maturity or tenor, but not both.
 #' @param currency of the contract for which we are calculating the relevant dates. The currency affects
 #' the calculation of the baseDate as in the case of JPY denominated contracts, the baseDate cannot
@@ -27,20 +27,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
     stopifnot(inherits(as.Date(maturity), "Date"))    
   }
   
-  ## if tenor does not end with an M or Y, the function does not 
-  ## know if we are referring to a certain number of months or years.
-  ## Note: this whole else statement will be deleted once tenor is of 
-  ## "numeric" class. 
-  
-  else{
-    duration <- gsub("[[:digit:]]", "", tenor)  
-    if (!(duration %in% c("M", "Y"))) {
-      stop ("Tenor must end with 'M' or 'Y' or enter valid date ")      
-    } 
-    else{
-      length <- as.numeric(gsub("[^[:digit:]]", "", tenor))
-    }
-  }  
+  length <- tenor
   
   dateWday <- as.POSIXlt(date)$wday
   if (!(dateWday %in% c(1:5))) stop("date must be a weekday")
@@ -74,13 +61,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   
   if(is.null(maturity)){
     endDate <- as.POSIXlt(firstcouponDate)
-    if (duration == "M"){ 
-      ## note you'll have to remove this if statement once tenor is numeric
-      ## because then you can only feed in years.
-      endDate$mon <- endDate$mon + length
-    } else {
-      endDate$year <- endDate$year + length
-    }
+    endDate$year <- endDate$year + length
     endDate <- as.Date(endDate)
   }
   ## if the maturity date is provided, it is the enddate.

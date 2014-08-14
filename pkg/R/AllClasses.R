@@ -39,7 +39,7 @@
 #' payment.
 #' @slot stepinDate default is T + 1.
 #' @slot maturity date of the CDS contract.
-#' @slot tenor of contract - "5Y", "3Y"
+#' @slot tenor of contract in number of years - 5, 3
 #' @slot dccCDS day count convention of the CDS. Default is ACT/360.
 #' @slot freqCDS date interval of the CDS contract.
 #' @slot stubCDS is a character indicating the presence of a stub.
@@ -127,7 +127,7 @@ setClass("CDS",
            firstcouponDate = "Date",
            pencouponDate = "Date",
            maturity = "Date",
-           tenor = "character",
+           tenor = "numeric",
            dccCDS = "character",
            freqCDS ="character",
            stubCDS ="character",
@@ -179,7 +179,7 @@ setClass("CDS",
            firstcouponDate = character(),
            pencouponDate = character(),
            maturity = character(),
-           tenor = character(),
+           tenor = numeric(),
            dccCDS = character(),
            freqCDS = character(),
            stubCDS = character(),
