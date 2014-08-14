@@ -136,6 +136,6 @@ contract.
 \examples{
 # Build a simple CDS class object
 require(CDS)
-cds <- CDS(TDate = "2014-05-07", tenor = "5Y", parSpread = 50, coupon = 100)
+cds <- CDS(TDate = as.Date("2014-05-07"), tenor = "5Y", parSpread = 50, coupon = 100)
 }
 

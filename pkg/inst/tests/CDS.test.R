@@ -8,7 +8,7 @@ data(rates)
 ## we use rates for the relevant date and currency, extracted from the rates data frame, stored in the data 
 ## directory. 
 
-result.1 <- CDS(TDate = "2014-04-15",
+result.1 <- CDS(TDate = as.Date("2014-04-15"),
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
@@ -59,7 +59,7 @@ expect_equal(round(0.5745,4), round(result.1@ptsUpfront,4))
 
 ## CDS.R test case for Chorus Ltd. (Australian company)
 
-result.2 <- CDS(TDate = "2014-04-15",
+result.2 <- CDS(TDate = as.Date("2014-04-15"),
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
@@ -109,7 +109,7 @@ expect_equal(round(0.065808, 4), round(result.2@ptsUpfront, 4))
 
 ## CDS.R test case for Electrolux AB corporation
 
-result.3 <- CDS(TDate = "2014-04-22",
+result.3 <- CDS(TDate = as.Date("2014-04-22"),
                 tenor = "5Y",
                 types = "MMMMMMSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"],
@@ -153,7 +153,7 @@ expect_equal(round(-0.00049239, 4), round(result.3@ptsUpfront, 4))
 
 ## CDS.R test case for Norske Skogindustrier ASA (European company)
 
-result.4 <- CDS(TDate = "2014-04-15",
+result.4 <- CDS(TDate = as.Date("2014-04-15"),
                 tenor = "5Y",
                 types = "MMMMMMSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"],
@@ -194,7 +194,7 @@ expect_equal(round(0.445, 2), round(result.4@ptsUpfront, 2))
 
 ## CDS.R test case for RadioShack Corp
 
-result.5 <- CDS(TDate = "2014-04-15",
+result.5 <- CDS(TDate = as.Date("2014-04-15"),
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
@@ -244,7 +244,7 @@ expect_equal(round(0.5649, 2), round(result.5@ptsUpfront, 2))
 
 ## CDS.R test case for Tokyo Electric Power Co. Inc.
 
-result.6 <- CDS(TDate = "2014-04-15",
+result.6 <- CDS(TDate = as.Date("2014-04-15"),
                 tenor = "5Y",
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "JPY"],
@@ -281,7 +281,7 @@ expect_equal(round(0.0709, 3), round(result.6@ptsUpfront, 3))
 
 ## CDS.R test case for Toys R Us Inc
 
-result.7 <- CDS(TDate = "2014-04-15",
+result.7 <- CDS(TDate = as.Date("2014-04-15"),
                 tenor = "5Y",
                 contract="SNAC",
                 types = "MMMMMSSSSSSSS",
@@ -315,7 +315,7 @@ expect_equal(0.3275, round(result.7@ptsUpfront,4))
 
 ## CDS.R test case for Xerox corporation
 
-result.8 <- CDS(TDate = "2014-04-22",
+result.8 <- CDS(TDate = as.Date("2014-04-22"),
                 tenor = "5Y",
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "USD"],

@@ -6,7 +6,7 @@ library(CDS)
   
 load("spread.test.RData")
 
-result.1 <- spread(TDate = "2014-04-22",
+result.1 <- spread(TDate = as.Date("2014-04-22"),
                   currency = "USD",
                   tenor = "5Y",
                   types = "MMMMMSSSSSSSSSSSSSS",
@@ -51,7 +51,7 @@ stopifnot(all.equal(round(result.1, 2), round(truth.1, 1)))
 
 ## results when we don't enter the rates manually are less accurate 
 
-result.2 <- spread(TDate = "2014-04-22",
+result.2 <- spread(TDate = as.Date("2014-04-22"),
                   baseDate = "2014-04-22",
                   currency = "USD",
                   tenor = "5Y",
@@ -130,7 +130,7 @@ stopifnot(all.equal(round(result.2), round(truth.1)))
 
 load("spread.test.RData")
 
-result.3 <- spread(TDate = "2014-01-14",
+result.3 <- spread(TDate = as.Date("2014-01-14"),
                   currency = "USD",
                   tenor = "5Y",
                   types = "MMMMMSSSSSSSSS",
@@ -166,7 +166,7 @@ result.3 <- spread(TDate = "2014-01-14",
 
 stopifnot(all.equal(result.3, truth.2))
 
-result.4 <- spread(TDate = "2014-01-14",
+result.4 <- spread(TDate = as.Date("2014-01-14"),
                   baseDate = "2014-01-13",
                   currency = "USD",
                   tenor = "5Y",

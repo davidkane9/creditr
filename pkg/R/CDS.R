@@ -135,6 +135,9 @@ CDS <- function(contract = "SNAC",
   ## stop if date is invalid
   
   stopifnot(check.date(TDate))
+  stopifnot(is.character(contract))
+  stopifnot(is.character(currency))
+  
   
   ## if none of the three are entered
   
@@ -149,9 +152,7 @@ CDS <- function(contract = "SNAC",
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
-  ratesDate <- as.Date(TDate)
-  
-  effectiveDate <- as.Date(TDate)  
+  effectiveDate <- TDate
   
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## get.date function. Results are stored in cdsdates
@@ -172,12 +173,12 @@ CDS <- function(contract = "SNAC",
   
   ## if these dates are not entered, we extract that from cdsdates
   
-  if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
-  if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-  if (is.null(startDate)) startDate         <- cdsDates$startDate
-  if (is.null(endDate)) endDate             <- cdsDates$endDate
-  if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
-  if (is.null(maturity)) maturity           <- cdsDates$endDate
+  if (is.null(valueDate)) valueDate         <- as.Date(cdsDates$valueDate)
+  if (is.null(benchmarkDate)) benchmarkDate <- as.Date(cdsDates$startDate)
+  if (is.null(startDate)) startDate         <- as.Date(cdsDates$startDate)
+  if (is.null(endDate)) endDate             <- as.Date(cdsDates$endDate)
+  if (is.null(stepinDate)) stepinDate       <- as.Date(cdsDates$stepinDate)
+  if (is.null(maturity)) maturity           <- as.Date(cdsDates$endDate)
   
   ## stop if the number of interest rates is not the same as number of expiries
   
@@ -188,7 +189,7 @@ CDS <- function(contract = "SNAC",
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-    ratesInfo     <- get.rates(date = ratesDate, currency = currency)
+    ratesInfo     <- get.rates(date = TDate, currency = currency)
     effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
     
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
@@ -216,12 +217,12 @@ CDS <- function(contract = "SNAC",
   ## create object of class CDS using the data we extracted
   
   cds <- new("CDS",
-             contract = as.character(contract),
-             entityName = as.character(entityName),
-             RED = as.character(RED),
-             TDate = as.Date(TDate),
-             baseDate = as.Date(baseDate),
-             currency = as.character(currency),
+             contract = contract,
+             entityName = entityName,
+             RED = RED,
+             TDate = TDate,
+             baseDate = baseDate,
+             currency = currency,
              
              types = types,
              rates = rates,
@@ -236,15 +237,15 @@ CDS <- function(contract = "SNAC",
              badDayConvZC = badDayConvZC,
              holidays = holidays,
              
-             valueDate = as.Date(valueDate),
-             benchmarkDate = as.Date(benchmarkDate),
-             startDate = as.Date(startDate), 
-             endDate = as.Date(endDate), 
-             stepinDate = as.Date(stepinDate),
-             backstopDate = as.Date(cdsDates$backstopDate),
-             firstcouponDate = as.Date(cdsDates$firstcouponDate),
-             pencouponDate = as.Date(cdsDates$pencouponDate),
-             maturity = as.Date(maturity),
+             valueDate = valueDate,
+             benchmarkDate = benchmarkDate,
+             startDate = startDate, 
+             endDate = endDate, 
+             stepinDate = stepinDate,
+             backstopDate = cdsDates$backstopDate,
+             firstcouponDate = cdsDates$firstcouponDate,
+             pencouponDate = cdsDates$pencouponDate,
+             maturity = maturity,
              tenor = as.character(tenor),
              
              dccCDS = dccCDS,
