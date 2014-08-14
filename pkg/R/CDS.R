@@ -482,15 +482,7 @@ CDS <- function(contract = "SNAC",
   cds@accrual <- cds@upfront - cds@principal
   
   ## if tenor is NULL, we determine the tenor using the maturity date
-  
-   #if (is.null(tenor)) {
-    #md <- as.numeric(.mondf(TDate, maturity))/12
-    #if (md < 12){
-     # cds@tenor <- paste(md, "M", sep = "", collapse = "")
-    #} else {
-     # cds@tenor <- paste(floor(md/12), "Y", sep = "", collapse = "")
-    #}
-  #}
+
   if(is.null(tenor)){
     cds@tenor <- as.numeric(.mondf(TDate, maturity))/12   
   }
