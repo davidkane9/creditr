@@ -18,6 +18,8 @@ PV.01 <- function(x,
                   coupon.var = "coupon", 
                   notional.var = "notional"){
   
+  stopifnot(c(principal.var, parSpread.var, coupon.var, notional.var) %in% names(x))
+  
   principal <- as.numeric(x[[principal.var]])
   notional  <- as.numeric(x[[notional.var]])
   parSpread <- as.numeric(x[[parSpread.var]])
