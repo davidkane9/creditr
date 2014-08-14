@@ -12,7 +12,7 @@ test_that("test case for CS10", {
                   recoveryRate = c(0.4, 0.4),
                   notional = c(1e7, 1e7))
   
-  result <- IR.DV.01(x)
+  result <- IR.DV01(x)
   ## we don't have any thing to test this against at the moment
 })
 
