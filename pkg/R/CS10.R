@@ -49,7 +49,7 @@ CS10 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.dataframe(x)
+  x <- check.inputs(x)
   
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function

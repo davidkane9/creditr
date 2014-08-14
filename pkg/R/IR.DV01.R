@@ -54,7 +54,7 @@ IR.DV01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.dataframe(x)
+  x <- check.inputs(x)
     
   IR.DV01 <- rep(NA, nrow(x))
   
