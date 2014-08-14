@@ -126,13 +126,10 @@ upfront <- function(x,
     ## if tenor is just a number i.e. written as just 5, then we turn it to the string "5Y"
     
     if(!is.null(x[[tenor.var]])) {  ## if tenor is provided
-      x[i, tenor.var] <- as.character(x[i, tenor.var])      
-      if(!grepl("Y", x[i, tenor.var])){
-        x[i, tenor.var] <- paste(x[i, tenor.var], "Y", sep = "")
-      }
+      x[i, tenor.var] <- as.numeric(x[i, tenor.var])      
       tenor <- x[i, tenor.var]
     } else {
-      tenor <- NULL
+     tenor <- NULL
     }
     
     TDate <- x[i, date.var]

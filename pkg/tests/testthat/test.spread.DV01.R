@@ -23,6 +23,6 @@ test_that("test for spread.DV01", {
   
   ## test case passes when results are rounded to the nearest whole number
   
-  ## stopifnot(all.equal(round(result.1, 0), round(truth.1, 0)))
+  stopifnot(all.equal(round(result.1), round(truth.1)))
   
 })
