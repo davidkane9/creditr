@@ -513,10 +513,10 @@ CDS <- function(contract = "SNAC",
   cds@spreadDV01  <- spread.DV01(x)
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
-  cds@defaultProb <- default.prob(parSpread = cds@parSpread,
-                                 t = as.numeric(as.Date(endDate) -
+  cds@defaultProb <- spread.to.pd(spread = cds@parSpread,
+                                 time = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
-                                 recoveryRate = recoveryRate)
+                                 recovery.rate = recoveryRate)
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
