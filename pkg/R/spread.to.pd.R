@@ -5,7 +5,7 @@
 #' @param recovery.rate in decimal. Default is 0.4.
 #' @return default probability in decimals
 
-spread.to.pd <- function(spread, time, recovery,rate = 0.4){
+spread.to.pd <- function(spread, time, recovery.rate = 0.4){
     
     ## Bloomberg Approximation
     
