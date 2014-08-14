@@ -41,7 +41,7 @@
 #' payment.
 #' @param stepinDate default is T + 1.
 #' @param maturity date of the CDS contract.
-#' @param tenor of contract. By default is set as "5Y"
+#' @param tenor of contract. By default is set as 5
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
@@ -83,7 +83,7 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = "5Y", parSpread = 50, coupon = 100) 
+#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100) 
 
 CDS <- function(contract = "SNAC", 
                 entityName = NULL,
@@ -246,7 +246,7 @@ CDS <- function(contract = "SNAC",
              firstcouponDate = cdsDates$firstcouponDate,
              pencouponDate = cdsDates$pencouponDate,
              maturity = maturity,
-             tenor = as.character(tenor),
+             tenor = as.numeric(tenor),
              
              dccCDS = dccCDS,
              freqCDS = freqCDS,

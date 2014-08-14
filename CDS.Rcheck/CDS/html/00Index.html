@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Credit Default Swap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+<h1> Credit Default Swap
+<img class="toplogo" src="../../../doc/html/logo.jpg" alt="[R logo]">
+</h1>
+<hr>
+<div align="center">
+<a href="../../../doc/html/packages.html"><img src="../../../doc/html/left.jpg" alt="[Up]" width="30" height="30" border="0"></a>
+<a href="../../../doc/html/index.html"><img src="../../../doc/html/up.jpg" alt="[Top]" width="30" height="30" border="0"></a>
+</div><h2>Documentation for package &lsquo;CDS&rsquo; version 0.2-1</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td width="25%"><a href="bus.days.offset.html">bus.days.offset</a></td>
+<td>bus.days.offset</td></tr>
+<tr><td width="25%"><a href="CDS.html">CDS</a></td>
+<td>Build a 'CDS' class object given the input about a CDS contract.</td></tr>
+<tr><td width="25%"><a href="CDS-class.html">CDS,</a></td>
+<td>Class definition for the 'CDS-Class'</td></tr>
+<tr><td width="25%"><a href="CDS-class.html">CDS, CDS-class</a></td>
+<td>Class definition for the 'CDS-Class'</td></tr>
+<tr><td width="25%"><a href="CDS-class.html">CDS-class</a></td>
+<td>Class definition for the 'CDS-Class'</td></tr>
+<tr><td width="25%"><a href="check.date.html">check.date</a></td>
+<td>'check.date' for testing if the date entered is valid</td></tr>
+<tr><td width="25%"><a href="check.rates.dates.html">check.rates.dates</a></td>
+<td>Function that makes sure the dates in data frame x being used by the upfrontdf function are also present in the rates data frame being entered into the upfrontdf function (if it is not contained in the rates data frame, the upfrontdf function will be unable to return the upfront value) match with the rates on markit.com for that specific date.</td></tr>
+<tr><td width="25%"><a href="CS10.html">CS10</a></td>
+<td>'CS10' Calculates the change in upfront value when the parSpread rises by 10 also known as the CS10 of a contract.</td></tr>
+<tr><td width="25%"><a href="CS10-methods.html">CS10-method</a></td>
+<td>S4 method CS10</td></tr>
+<tr><td width="25%"><a href="CS10.df.html">CS10.df</a></td>
+<td>'CS10.DF' takes a data frame containing the trade date, spread, coupon and tenor to return the corresponding CS 10 column with the rest of the data frame</td></tr>
+<tr><td width="25%"><a href="default.expo.html">default.expo</a></td>
+<td>'default.expo' to calculate the default exposure of a CDS contract based on the formula: Default Exposure: (1-Recovery Rate)*Notional - Principal</td></tr>
+<tr><td width="25%"><a href="default.prob.html">default.prob</a></td>
+<td>'default.prob' approximates the default probability at time t given the parSpread</td></tr>
+<tr><td width="25%"><a href="get.date.html">get.date</a></td>
+<td>'get.date' returns appropriate dates used in pricing a CDS contract.</td></tr>
+<tr><td width="25%"><a href="get.rates.html">get.rates</a></td>
+<td>'get.rates' returns the deposits and swap rates for the day input, along with the date conventions for that specific currency. The day input should be a weekday. If not, go to the most recent previous weekday.</td></tr>
+<tr><td width="25%"><a href="get.rates.DF.html">get.rates.DF</a></td>
+<td>'get.rates.DF' takes a data frame of dates and returns a data frame with the yields for different maturities. Note year must be entered as YYYY-MM-DD.</td></tr>
+<tr><td width="25%"><a href="implied.recovery.rate.html">implied.recovery.rate</a></td>
+<td>A function that calculates the implied recovery rate.</td></tr>
+<tr><td width="25%"><a href="IR.DV.01.html">IR.DV.01</a></td>
+<td>'IR.DV.01' Calculate the IR DV01 from conventional spread</td></tr>
+<tr><td width="25%"><a href="JPY.holidays.html">JPY.holidays</a></td>
+<td>Japanese Holidays</td></tr>
+<tr><td width="25%"><a href="pd.spread.html">pd.spread</a></td>
+<td>'pd.spread' to calculate spread using the probability of default, time and recovery rate</td></tr>
+<tr><td width="25%"><a href="price.html">price</a></td>
+<td>Calculate the price of a CDS contract</td></tr>
+<tr><td width="25%"><a href="PV01.html">PV.01</a></td>
+<td>'PV01' to calculate present value 01 or present value of a stream of 1bp payments</td></tr>
+<tr><td width="25%"><a href="PV01.html">PV01</a></td>
+<td>'PV01' to calculate present value 01 or present value of a stream of 1bp payments</td></tr>
+<tr><td width="25%"><a href="rates.html">rates</a></td>
+<td>Historic Interest Rates</td></tr>
+<tr><td width="25%"><a href="rates.html">rates.this</a></td>
+<td>Historic Interest Rates</td></tr>
+<tr><td width="25%"><a href="rec.risk.01.html">rec.risk.01</a></td>
+<td>'rec.risk.01' calculate the amount of change in upfront when there is a 1 increase in recovery rate for a data frame of CDS contracts.</td></tr>
+<tr><td width="25%"><a href="rec.risk.01-methods.html">rec.risk.01-method</a></td>
+<td>Calculate the amount of change in upfront when there is a 1% increase in recovery rate.</td></tr>
+<tr><td width="25%"><a href="show-methods.html">show</a></td>
+<td>The show method for CDS class</td></tr>
+<tr><td width="25%"><a href="show-methods.html">show-method</a></td>
+<td>The show method for CDS class</td></tr>
+<tr><td width="25%"><a href="spread.html">spread</a></td>
+<td>'spread' to calculate conventional spread using the upfront or ptsUpfront values</td></tr>
+<tr><td width="25%"><a href="spread.DV01.html">spread.DV01</a></td>
+<td>'spread.DV01' calculates the spread DV01 or change in upfront value when the spread rises by 1 basis point</td></tr>
+<tr><td width="25%"><a href="spread.DV01-methods.html">spread.DV01-method</a></td>
+<td>The spread.DV01 method for CDS class.</td></tr>
+<tr><td width="25%"><a href="summary-CDS-method.html">summary-method</a></td>
+<td>The summary method displays only the essential info about the CDS class object.</td></tr>
+<tr><td width="25%"><a href="update-CDS-method.html">update-method</a></td>
+<td>'update' spread or ptsUpfront or upfront based on a new CDS class object.</td></tr>
+<tr><td width="25%"><a href="upfront.html">upfront</a></td>
+<td>'upfront' takes a dataframe of variables on CDSs to return a vector of upfront values. Note that all CDS in the data frame must be denominated in the same currency.</td></tr>
+<tr><td width="25%"><a href="rates.html">upfront.data</a></td>
+<td>Historic Interest Rates</td></tr>
+</table>
+</body></html>

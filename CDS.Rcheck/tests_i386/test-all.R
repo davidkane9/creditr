@@ -1,4 +1,4 @@
 library(testthat)
 library(CDS)
 
-test_package("CDS")
+test_check("CDS")

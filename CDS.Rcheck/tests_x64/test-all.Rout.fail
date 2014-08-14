@@ -1,0 +1,66 @@
+
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(CDS)
+Loading required package: grid
+Loading required package: Rcpp
+Loading required package: RCurl
+Loading required package: bitops
+Loading required package: XML
+Warning message:
+package 'XML' was built under R version 3.1.1 
+> 
+> test_check("CDS")
+1..................234
+
+1. Error: test for the CDS -----------------------------------------------------
+assignment of an object of class "character" is not valid for @'tenor' in an object of class "CDS"; is(value, "numeric") is not TRUE
+1: CDS(TDate = as.Date("2014-04-15"), currency = "USD", types = "MMMMMSSSSSSSS", rates = rates$rates[rates$date == 
+       as.Date("2014-04-15") & rates$currency == "USD"], expiries = rates$expiries[rates$date == 
+       as.Date("2014-04-15") & rates$currency == "USD"], mmDCC = "Act/360", fixedSwapFreq = "6M", 
+       floatSwapFreq = "6M", fixedSwapDCC = "30/360", floatSwapDCC = "30/360", badDayConvZC = "M", 
+       holidays = "None", valueDate = as.Date("2014-04-18"), startDate = as.Date("2014-03-20"), 
+       endDate = as.Date("2019-06-20"), stepinDate = as.Date("2014-04-16"), maturity = as.Date("2019-06-20"), 
+       dccCDS = "Act/360", freqCDS = "Q", stubCDS = "f/s", badDayConvCDS = "F", calendar = "None", 
+       parSpread = 12354.529, coupon = 500, recoveryRate = 0.4, isPriceClean = FALSE, 
+       notional = 1e+07) at test.CDS.R:12
+2: checkAtAssignment(structure("CDS", package = "CDS"), "tenor", "character")
+3: stop(gettextf("assignment of an object of class %s is not valid for @%s in an object of class %s; is(value, \"%s\") is not TRUE", 
+       dQuote(valueClass), sQuote(name), dQuote(cl), slotClass), domain = NA)
+
+2. Error: test for rec.risk.01 -------------------------------------------------
+non-numeric argument to binary operator
+1: upfront(data.frame(date = as.Date("2014-04-22"), currency = "EUR", tenor = 5, spread = 99, 
+       coupon = 100, recovery = 0.41), rates = rates) at test.rec.risk.01.R:35
+2: get.date(date = as.Date(TDate), maturity = NULL, tenor = tenor)
+
+3. Error: test for upfront -----------------------------------------------------
+non-numeric argument to binary operator
+1: upfront(data.frame(date = as.Date("2014-04-22"), currency = "USD", tenor = 5, spread = 105.8, 
+       coupon = 100, recovery = 0.4), rates = rates.1, isPriceClean = FALSE) at test.upfront.R:22
+2: get.date(date = as.Date(TDate), maturity = NULL, tenor = tenor)
+
+4. Error: 2nd set of test for upfront ------------------------------------------
+non-numeric argument to binary operator
+1: upfront(x = x.1, rates = rates, tenor.var = "tenor") at test.upfront_2.R:36
+2: get.date(date = as.Date(TDate), maturity = NULL, tenor = tenor)
+
+Error: Test failures
+In addition: Warning message:
+In initialize(value, ...) : NAs introduced by coercion
+Execution halted
