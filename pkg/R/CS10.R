@@ -35,16 +35,16 @@
 #' result <- CS10(x)
 
 CS10 <- function(x,
-                        TDate.var = "dates",
-                        currency.var = "currency",
-                        maturity.var = "maturity",
-                        tenor.var = "tenor",
-                        parSpread.var = "spread",
-                        coupon.var = "coupon",
-                        recoveryRate.var = "recoveryRate",
-                        isPriceClean = FALSE,
-                        payAccruedOnDefault = TRUE,
-                        notional.var = "notional"
+                 TDate.var = "dates",
+                 currency.var = "currency",
+                 maturity.var = "maturity",
+                 tenor.var = "tenor",
+                 parSpread.var = "spread",
+                 coupon.var = "coupon",
+                 recoveryRate.var = "recoveryRate",
+                 isPriceClean = FALSE,
+                 payAccruedOnDefault = TRUE,
+                 notional.var = "notional"
 ){
   
   ## check if certain variables are contained in x
@@ -60,7 +60,9 @@ CS10 <- function(x,
     
     ## stop if TDate is invalid
     
-    stopifnot(check.date(x[[TDate.var]][i]))  
+    if(check.date(x[[TDate.var]][i]) == FALSE){
+      warning("The dates provided are future dates")
+    }  
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
