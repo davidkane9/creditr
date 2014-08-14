@@ -15,6 +15,7 @@
 #' this date does not trigger a payment.
 #' @param date.var name of the column containing the trade dates.
 #' @param pd.var name of the column containing the probability of default rates.
+#' 
 #' @return implied recovery rate in percentage based on the general approximation 
 #' for a probability of default in the Bloomberg manual. The actual calculation uses 
 #' a complicated bootstrapping process, so the results may be marginally different.
