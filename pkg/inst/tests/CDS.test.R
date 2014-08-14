@@ -8,7 +8,8 @@ data(rates)
 ## we use rates for the relevant date and currency, extracted from the rates data frame, stored in the data 
 ## directory. 
 
-result.1 <- CDS(TDate = as.Date("2014-04-15"),
+test_that("test for the CDS", {
+  result.1 <- CDS(TDate = as.Date("2014-04-15"),
                 currency = "USD",                    
                 types = "MMMMMSSSSSSSS",
                 rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
@@ -343,4 +344,5 @@ expect_equal(round(5971932), round(result.8@defaultExpo))
 
 expect_equal(round(4825.49, 2), round(result.8@spreadDV01, 2))
 
-expect_equal(round(0.002806821, 4), round(result.8@ptsUpfront, 4))
+expect_equal(round(0.002806821, 4), round(result.8@ptsUpfront, 4))}
+)
