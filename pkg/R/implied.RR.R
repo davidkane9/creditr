@@ -8,29 +8,42 @@
 #' vector of implied default rates. 
 #'
 #' @param data dataframe containing the 1. probability of default (pd) over a 
-#' a certain time period, 2. id and 3. spread
-#' @param spread.var column number of spread
-#' @param endDate.var column number of end dates. maturity date. This 
-#' is when the contract expires and protection ends. Any default after 
+#' a certain tenor period, 2. id and 3. spread
+#' @param spread.var name of the column containing the spread
+#' @param end.date.var name of the column containing the end dates or maturity dates. 
+#' This is when the contract expires and protection ends. Any default after 
 #' this date does not trigger a payment.
-#' @param TDate.var column number of Trade dates. is when the trade is 
-#' executed, denoted as T. Default is today.
-#' @param col.id is the column for the id of the CDS
-#' @param pd.var column number of probability of default rates
+#' @param date.var name of the column containing the trade dates.
+#' @param pd.var name of the column containing the probability of default rates.
 #' @return implied recovery rate in percentage based on the general approximation 
 #' for a probability of default in the Bloomberg manual. The actual calculation uses 
 #' a complicated bootstrapping process, so the results may be marginally different.
 
-implied.RR <- function(data, spread.var, pd.var, col.id, endDate.var, TDate.var){
+implied.RR <- function(data, 
+                       spread.var = "spread", 
+                       pd.var = "pd", 
+                       end.date.var = "end.date", 
+                       date.var = "date"){
   
-  spread  <- data[, spread.var]
-  endDate <- data[,endDate.var]
-  TDate   <- data[,TDate.var]
-  pd      <- data[, pd.var]
-  time    <- as.numeric(as.Date(endDate) - as.Date(TDate))/360
+  ## stop if the required columns are not contained in the data frame
   
-  impRecoveryRate <- c(100+((spread*time/1e2)*(1/log(1-pd))))
+  stopifnot(c(spread.var, pd.var, end.date.var, date.var) %in% names(data))
   
-  return(impRecoveryRate)
+  ## stop if the required variables do not belong to the correct classes
+  
+  stopifnot(is.numeric(data[[spread.var]]))
+  stopifnot(is.numeric(data[[pd.var]]))
+  stopifnot(inherits(data[[end.date.var]], "Date"))
+  stopifnot(inherits(data[[date.var]], "Date"))
+  
+  ## calculate the tenor of the contract using the end date and start date
+  
+  tenor <- as.numeric(data[[end.date.var]] - data[[date.var]])/360
+  
+  ## calculate the implied recovery rate 
+  
+  x <- c(100+((data[[spread.var]]*tenor/1e2)*(1/log(1-data[[pd.var]]))))
+  
+  return(x)
   
 }
