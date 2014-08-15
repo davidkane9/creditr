@@ -25,7 +25,7 @@ echo = TRUE, results='markup', tidy=FALSE
 
 \bibliographystyle{abbrvnat}
 
-%\VignetteIndexEngine{knitr}
+%\VignetteEngine{knitr}
 %\VignetteIndexEntry{knitr::knitr}
 %\VignetteIndexEntry{Credit Default Swaps with R}
 
