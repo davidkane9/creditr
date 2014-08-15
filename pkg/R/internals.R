@@ -1,3 +1,5 @@
+#' Internal Functions
+#' 
 #' \code{internals} contains helper functions to separate an input date into
 #'  year, month, and day.
 #'

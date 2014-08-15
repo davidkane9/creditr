@@ -1,3 +1,5 @@
+#' Return CDS dates
+#' 
 #' \code{get.date} returns appropriate dates used in pricing a CDS contract. 
 #' 
 #' @param date the date for which we are calculating the relevant dates. Must be of class "date".

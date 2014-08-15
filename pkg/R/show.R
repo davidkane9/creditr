@@ -1,3 +1,5 @@
+#' Show method
+#' 
 #' \code{show} method for CDS class
 #' 
 #' @name show

@@ -2,7 +2,7 @@
 \name{PV01}
 \alias{PV.01}
 \alias{PV01}
-\title{\code{PV01} to calculate present value 01 or present value of a stream of 1bp payments}
+\title{Calculate PV01}
 \usage{
 PV.01(x, principal.var = "principal", parSpread.var = "spread",
   coupon.var = "coupon", notional.var = "notional")

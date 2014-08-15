@@ -1,3 +1,5 @@
+#' Calculate PV01
+#' 
 #' \code{PV01} to calculate present value 01 or present value of a stream of 1bp payments
 #' 
 #' @name PV01

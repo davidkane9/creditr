@@ -1,3 +1,5 @@
+#' Calculates RR
+#' 
 #' \code{implied.RR} that calculates the implied recovery rate.
 #' 
 #' Function that uses the ISDA model to calculate the implied recovery

@@ -1,3 +1,5 @@
+#' Get Rates with Dataframe Input
+#' 
 #' \code{get.rates.DF} takes a data frame of dates and returns a data frame with
 #' the yields for different maturities. Note year must be entered as YYYY-MM-DD.
 #' 

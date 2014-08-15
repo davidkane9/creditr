@@ -1,29 +1,10 @@
+#' Calculate Upfront Payments
+#' 
 #' \code{upfront} takes a dataframe of variables on CDSs to return a vector of
 #' upfront values. Note that all CDS in the data frame must be denominated in 
 #' the same currency.
 #' 
-#' @param x dataframe containing variables date.var, spread.var, coupon.var and
-#'   maturity.var.
-#' @param rates dataframe containing dates and rates for those dates. Note that 
-#'   the date column over here refers to the date for which the adjacent 
-#'   interest rate curve would apply. So if it says "2014-07-25", the interest 
-#'   rate curve is from "2014-07-24".
-#' @param currency.var name of the column for currencies in the dataframe. 
-#' @param notional values of CDSs in the dataframe. Defualt is 10 million.
-#' @param date.var name of the column containing dates. By default is "date"
-#' @param spread.var name of the column containing spreads. By default is 
-#' "spread".
-#' @param coupon.var name of the column containing the coupon rates. By default 
-#' is "coupon"
-#' @param recovery.var name of the column containing the recovery rates. By default 
-#' is "recovery"
-#' @param maturity.var name of the column containing the maturity dates (note: 
-#' this is different from tenor i.e. it is a proper date like "2019-06-20" and
-#' not "5Y"). By default is "maturity".
-#' @param tenor.var name of the column containing the tenors of the CDS contracts.
-#' Note that we can only provide either the tenor or the maturity date, not both.    
-#' @param isPriceClean boolean to specify if you want the dirty upfront or the 
-#' clean upfront (principal).
+#' @inheritParams CS10
 #'   
 #' @return vector of upfront values (with accrual) in the same order
 

@@ -1,4 +1,6 @@
-#' \code{CS10} Calculates the change in upfront value when the parSpread rises by 10%, 
+#' Calculate CS10
+#' 
+#' \code{CS10} Calculates the change in upfront value when the spread rises by 10%, 
 #' also known as the CS10 of a contract.
 #' @param x is the data frame containing all the relevant columns.
 #' @param TDate.var name of column in x containing dates when the trade 

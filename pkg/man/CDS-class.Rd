@@ -4,7 +4,7 @@
 \alias{CDS,}
 \alias{CDS, CDS-class}
 \alias{CDS-class}
-\title{Class definition for the \code{CDS-Class}}
+\title{CDS Class}
 \description{
 Class definition for the \code{CDS-Class}
 }
@@ -70,7 +70,7 @@ payment.}
 
 \item{\code{maturity}}{date of the CDS contract.}
 
-\item{\code{tenor}}{of contract - 5, 3}
+\item{\code{tenor}}{of contract in number of years - 5, 3}
 
 \item{\code{dccCDS}}{day count convention of the CDS. Default is ACT/360.}
 
@@ -104,7 +104,7 @@ to the protection seller in the event of a default. Default is
 
 \item{\code{principal}}{is the dirty \code{upfront} less the \code{accrual}.}
 
-\item{\code{accrual}}{is the accrued interest payment.#'}
+\item{\code{accrual}}{is the accrued interest payment.}
 
 \item{\code{upfront}}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

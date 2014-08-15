@@ -1,3 +1,5 @@
+#' Update with New CDS
+#' 
 #' \code{update} spread or ptsUpfront or upfront based on a new CDS class object.
 #'
 #' @param object is a \code{CDS} class object.

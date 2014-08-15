@@ -1,9 +1,10 @@
+#' Get Rates
+#' 
 #' \code{get.rates} returns the deposits and swap rates for the day
 #' input, along with the date conventions for that specific currency. 
 #' The day input should be a weekday. If not, go to the most
 #' recent previous weekday.
 #'
-#' 
 #' @param date Trade date. The rates for a trade date T are
 #' published on T-1 weekday. This date refers to the day on which we
 #' want the CDS to be priced, not the date for the interest rates as

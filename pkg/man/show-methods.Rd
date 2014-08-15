@@ -3,7 +3,7 @@
 \name{show}
 \alias{show}
 \alias{show,CDS-method}
-\title{The show method for CDS class}
+\title{Show method}
 \usage{
 \S4method{show}{CDS}(object)
 }
@@ -11,6 +11,6 @@
 \item{object}{the input \code{CDS} class object}
 }
 \description{
-The show method for CDS class
+\code{show} method for CDS class
 }
 

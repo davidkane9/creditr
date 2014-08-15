@@ -1,3 +1,5 @@
+#' Calcualte Default Probability with Spread
+#' 
 #' \code{spread.to.pd} approximates the default probability at time given the spread
 #'
 #' @param spread in bps

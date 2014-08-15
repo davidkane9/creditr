@@ -11,13 +11,15 @@ spread(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
   endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
   dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
   calendar = "None", upfront = NULL, ptsUpfront = NULL, coupon = 100,
-  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 10000000,
+  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 1e+07,
   payAccruedOnDefault = TRUE)
 }
 \arguments{
-\item{TDate}{is when the trade is executed, denoted as T.}
+\item{TDate}{is when the trade is executed, denoted as T. Default
+is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.}
+\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
+Format must be YYYY-MM-DD.}
 
 \item{currency}{in which CDS is denominated.}
 
@@ -67,7 +69,7 @@ payment.}
 
 \item{maturity}{date of the CDS contract.}
 
-\item{tenor}{of the CDS contract}
+\item{tenor}{of contract. By default is set as 5}
 
 \item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
 
@@ -101,10 +103,6 @@ the protection buyer to the seller on a regular basis. The default
 is 100 bps.}
 
 \item{recoveryRate}{in decimal. Default is 0.4.}
-
-\item{payAccruedAtStart}{determines whether a clean or dirty
-upfront is paid. It is \code{boolean}. When \code{TRUE}, calculate
-principal only. When \code{FALSE}, calculate principal + accrual.}
 
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}

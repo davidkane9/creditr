@@ -1,27 +1,10 @@
+#' Calculate IR.DV01
+#' 
 #' \code{IR.DV01} calculate the amount of change in upfront when there is a 1/1e4
 #' increase in interest rate for a data frame of CDS contracts.
 #'
-#' @param x is the data frame containing all the relevant columns.
-#' @param TDate.var name of column in x containing dates when the trade 
-#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
-#' @param currency.var name of column in x containing currencies. 
-#' @param maturity.var name of column in x containing maturity dates.
-#' @param tenor.var name of column in x containing tenors.
-#' @param parSpread.var name of column in x containing  par spreads in bps.
-#' @param coupon.var name of column in x containing coupon rates in bps. 
-#' It specifies the payment amount from the protection buyer to the seller 
-#' on a regular basis.
-#' @param recoveryRate.var name of column in x containing recovery 
-#' rates in decimal.
-#' @param isPriceClean refers to the type of upfront calculated. It is
-#' boolean. When \code{TRUE}, calculate principal only. When
-#' \code{FALSE}, calculate principal + accrual.
-#' @param payAccruedOnDefault is a partial payment of the premium made
-#' to the protection seller in the event of a default. Default is
-#' \code{TRUE}.
-#' @param notional.var name of column in x containing the amount of 
-#' the underlying asset on which the payments are based. 
-#' Default is 1e7, i.e. 10MM.
+#' @inheritParams CS10
+#' 
 #' @return a vector containing the change in upfront when there is a 1/1e4
 #' increase in interest rate, for each corresponding CDS contract.
 #' 

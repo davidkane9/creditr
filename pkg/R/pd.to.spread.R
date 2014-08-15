@@ -1,3 +1,5 @@
+#' Calculate spread with Default Probability
+#' 
 #' \code{pd.to.spread} to calculate spread using the probability of default, tenor and 
 #' recovery rate.
 #' 

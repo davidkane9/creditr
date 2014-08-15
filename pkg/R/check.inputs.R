@@ -4,19 +4,7 @@
 #'      is a minimum set of checks. Things such as recovery.rate var are
 #'      not checked, because some functions don't need them as input. 
 #' 
-#' @param x is the data frame containing all the relevant columns.
-#' @param date.var name of column in x containing dates when the trade 
-#'        is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
-#' @param currency.var name of column in x containing currencies. 
-#' @param maturity.var name of column in x containing maturity dates.
-#' @param tenor.var name of column in x containing tenors.
-#' @param spread.var name of column in x containing  par spreads in bps.
-#' @param coupon.var name of column in x containing coupon rates in bps. 
-#'        It specifies the payment amount from the protection buyer to the 
-#'        seller on a regular basis.
-#' @param notional.var name of column in x containing the amount of 
-#'        the underlying asset on which the payments are based. 
-#'        Default is 1e7, i.e. 10MM.
+#' @inheritParams CS10
 #' 
 #' @return a data frame if not stopped by errors.
 

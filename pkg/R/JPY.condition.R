@@ -1,3 +1,5 @@
+#' Japanese Dates
+#' 
 #' \code{JPY.condition} examines whether the currency is JPY, and adjusts base
 #'    date accordingly if so
 #' 
