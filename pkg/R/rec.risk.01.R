@@ -24,7 +24,7 @@
 #' Default is 1e7, i.e. 10MM.
 #' @return a vector containing the change in upfront when there is a 1
 #' percent increase in recovery rate, for each corresponding CDS contract.
-#' @example 
+#' @examples 
 #' x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
 #' maturity = c(NA, NA),
