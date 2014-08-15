@@ -30,7 +30,7 @@ a \code{CDS} class object
 }
 \examples{
 ## build a CDS class object
-cds1 <- CDS(TDate = "2014-05-07", tenor = 5, parSpread = 50, coupon = 100)
+cds1 <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100)
 
 ## update
 update(cds1, spread = 55)
