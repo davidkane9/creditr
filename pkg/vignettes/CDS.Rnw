@@ -1,5 +1,6 @@
 \documentclass[a4paper]{article}
 \linespread{1.5}
+\usepackage{Sweave}
 \usepackage[round]{natbib}
 \usepackage{amssymb, amsmath}
 \usepackage{url, tikz}
@@ -15,8 +16,9 @@
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
 
+\begin{document}
 
-<<include=FALSE>>=
+<<include=FALSE, echo=FALSE>>=
 library(knitr)
 opts_chunk$set(
 echo = TRUE, results='markup', tidy=FALSE
@@ -29,9 +31,10 @@ echo = TRUE, results='markup', tidy=FALSE
 %\VignetteIndexEntry{knitr::knitr}
 %\VignetteIndexEntry{Credit Default Swaps with R}
 
-\begin{document}
 
-<<include=FALSE>>=
+\SweaveOpts{concordance=TRUE}
+
+<<include=FALSE, echo=FALSE>>=
 library(knitr)
 opts_chunk$set(
 concordance=TRUE
