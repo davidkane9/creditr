@@ -63,13 +63,13 @@ setMethod("show",
                                     .check.length(object@pencouponDate)),
                                     collapse = ""))), "\n",
 
-                  sprintf(paste("Day Cnt:", object@dccCDS,
+                  sprintf(paste("Day Cnt:", object@convention['dccCDS'],
                                 sep = paste0(rep(" ",
                                     40-.check.length("Day Cnt:") -
-                                    .check.length(object@dccCDS)), collapse = ""))),
-                  sprintf(paste("   Freq:", object@freqCDS,
+                                    .check.length(object@convention['dccCDS'])), collapse = ""))),
+                  sprintf(paste("   Freq:", object@convention['freqCDS'],
                                 sep = paste0(rep(" ", 40-.check.length("   Freq:") -
-                                    .check.length(object@freqCDS)),
+                                    .check.length(object@convention['freqCDS'])),
                                     collapse = ""))), "\n",
                   sep = ""
                   )
