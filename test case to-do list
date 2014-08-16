@@ -2,6 +2,10 @@
 
 ## Just check if firstcoupondate, pencoupondate, stepindate, maturity date (enddate), 
 ## startdate, benchmarkdate should or should not be on a weekend, or holiday.
+## Checked the ISDA, find out the following:
+## a. maturity date （endDate) does not need to be a weekday. It remains unfixed, and has to be roll date.
+## b. coupondate must be a weekday; if the roll date is a weekend day, coupon date has to be adjusted to business day.
+## 
 
 ## Rec Risk 01 was problematic. More test cases needed there (ask for BB screenshots from Dave).
 ## (RecRisk shouldn't be more problematic, because its code is almost identical to IR.DV01 and spread.DV01,
