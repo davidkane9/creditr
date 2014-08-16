@@ -20,15 +20,7 @@ test_that("test for get.date", {
   ## different dates for a CDS with a 10-year maturity
   
   ## Test case with CDS from April 15, 2014 (Caesar's Entertainment Corporation)
-  
-  ## truth <- data.frame(date = as.Date("2014-04-15"), stepinDate = as.Date("2014-04-16"), 
-  ##           valueDate = as.Date("2014-04-18"), stardate = as.Date("2014-03-20"), 
-  ##           firstcouponDate = as.Date("2014-06-20"),
-  ##           pencouponDate=as.Date("2019-03-20"), endDate = as.Date("2019-06-20"), 
-  ##           backstopDate = as.Date("2014-02-14"))
-  
-  ## save(truth, file="get.date.test.RData")
-  
+    
   load("get.date.test.RData")
   
   result.1 <- get.date(date = as.Date("2014-04-15"), tenor = 5)
@@ -36,5 +28,20 @@ test_that("test for get.date", {
   
   expect_that(result.1, is_identical_to(truth))
   expect_that(result.2, is_identical_to(truth))
-})
 
+  ## if the endDate (maturity date) is a weekend, get.date should just
+  ## return a weekend day, instead of adjust it to the next weekeday
+  
+  ## for example, if we let trade date be "2010-06-18", then the
+  ## maturity date should be "2015-06-20", a Saturday. As can be
+  ## tested with Markit calculator
+  
+  ## However, currently get.date() coerce the endDate (maturity date)
+  ## to be a weekend. Have to fix it later; for now we comment out
+  ## the below test case
+  
+  # result.3 <- get.date(date = as.Date("2010-06-18"), tenor = 5)
+  # expect_equal(result.3$endDate, as.Date("2015-06-20"))
+
+
+})

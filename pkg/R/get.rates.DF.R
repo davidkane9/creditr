@@ -1,8 +1,8 @@
 #' \code{get.rates.DF} takes a data frame of dates and returns a data frame with
 #' the yields for different maturities. Note year must be entered as YYYY-MM-DD.
 #' 
-#' @param start date for gathering interest rates
-#' @param end date for gathering interest rates
+#' @param start date for gathering interest rates. Must be a Date type
+#' @param end date for gathering interest rates. Must be a Date type
 #' @param currency for which rates are being retrieved
 #' @return data frame containing the rates from every day from start to end 
 #'   dates. Note: the date in the output data frame does not refer to the rates 
