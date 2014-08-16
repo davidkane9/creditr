@@ -1,7 +1,6 @@
 CDS TO-DO List
 ========================================================
 * Create test cases for all the examples that Kanishka came up with. If those test cases currently fail because our code does not produce the right answers, that is OK. Comment them out. But we still want the test cases.
-* Create test cases for summary and show. (I think that testthat has tools for testing things that write to the screen.) Should do this before making the changes below in class structure. That way, you can be sure that your changes are not messing up these functions.
 * Make all test cases pass.
 * Remove all (or almost all) errors and warnings from R CMD check.
 * Add "context" to test cases (see cdsDB for examples of how this is done) so that sensible messages are printed out while test cases run.
