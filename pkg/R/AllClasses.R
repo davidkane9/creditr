@@ -16,17 +16,6 @@
 #' each instrument.
 #' @slot expiries is an array of characters indicating the maturity
 #' of each instrument.
-#' @slot mmDCC is the day count convention of the instruments.
-#' @slot fixedSwapFreq is the frequency of the fixed rate of swap
-#' being paid.
-#' @slot floatSwapFreq is the frequency of the floating rate of swap
-#' being paid.
-#' @slot fixedSwapDCC is the day count convention of the fixed leg.
-#' @slot floatSwapDCC is the day count convention of the floating leg.
-#' @slot badDayConvZC is a character indicating how non-business days
-#' are converted.
-#' @slot holidays is an input for holiday files to adjust to business
-#' days.
 #' @slot valueDate is the date for which the present value of the CDS
 #' is calculated. aka cash-settle date. The default is T + 3.
 #' @slot benchmarkDate Accrual begin date.
@@ -40,12 +29,6 @@
 #' @slot stepinDate default is T + 1.
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
-#' @slot dccCDS day count convention of the CDS. Default is ACT/360.
-#' @slot freqCDS date interval of the CDS contract.
-#' @slot stubCDS is a character indicating the presence of a stub.
-#' @slot badDayConvCDS refers to the bay day conversion for the CDS
-#' coupon payments. Default is "F", following.
-#' @slot calendar refers to any calendar adjustment for the CDS.
 #' @slot parSpread CDS par spread in bps.
 #' @slot coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis.
@@ -91,6 +74,7 @@
 #' @slot defaultExpo calculates the default exposure of a CDS contract
 #' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 #' - Principal.
+#' @slot convention
 #'  
 #' @name CDS, CDS-class
 #' @aliases CDS, CDS-class
@@ -110,14 +94,7 @@ setClass("CDS",
            types = "character",
            rates = "numeric",
            expiries = "character",
-           mmDCC = "character",
            effectiveDate = "Date",
-           fixedSwapFreq = "character",
-           floatSwapFreq = "character",
-           fixedSwapDCC = "character",
-           floatSwapDCC = "character",
-           badDayConvZC = "character",
-           holidays = "character",
            valueDate = "Date",
            benchmarkDate = "Date",
            startDate = "Date",
@@ -128,11 +105,6 @@ setClass("CDS",
            pencouponDate = "Date",
            maturity = "Date",
            tenor = "numeric",
-           dccCDS = "character",
-           freqCDS ="character",
-           stubCDS ="character",
-           badDayConvCDS ="character",
-           calendar = "character",
            
            parSpread = "numeric",
            coupon = "numeric",
@@ -150,7 +122,8 @@ setClass("CDS",
            RecRisk01 = "numeric",
            defaultProb = "numeric",
            defaultExpo = "numeric",
-           price = "numeric"
+           price = "numeric",
+           convention = "data.frame"
          ),
          prototype = prototype(
            contract = character(),
@@ -162,14 +135,9 @@ setClass("CDS",
            types = character(),
            rates = numeric(),
            expiries = character(),
-           mmDCC = character(),
+      
            effectiveDate = character(),
-           fixedSwapFreq = character(),
-           floatSwapFreq = character(),
-           fixedSwapDCC = character(),
-           floatSwapDCC = character(),
-           badDayConvZC = character(),
-           holidays = character(),
+           
            valueDate = character(),
            benchmarkDate = character(),
            startDate = character(),
@@ -180,11 +148,8 @@ setClass("CDS",
            pencouponDate = character(),
            maturity = character(),
            tenor = numeric(),
-           dccCDS = character(),
-           freqCDS = character(),
-           stubCDS = character(),
-           badDayConvCDS = character(),
-           calendar = character(),
+           
+          
            parSpread = numeric(),
            coupon = numeric(),
            recoveryRate = numeric(),
@@ -200,6 +165,7 @@ setClass("CDS",
            RecRisk01 = numeric(),
            defaultProb = numeric(),
            defaultExpo = numeric(),
-           price = numeric()
+           price = numeric(),
+           convention = data.frame()
          )
 )
