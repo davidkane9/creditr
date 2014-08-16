@@ -10,49 +10,25 @@ test_that("test show() method", {
   
   expect_that(output[1], equals("CDS Contract "))
   
-  expect_that(output[2], equals(paste("Contract Type:                     ",
-                                      cds@contract,
-                                      "  Currency:                        ",
-                                      cds@currency)))
+  expect_that(output[2], equals("Contract Type:                      SNAC   Currency:                         USD"))
   
-  expect_that(output[3], equals(paste("Entity Name:                         ",
-                                      cds@entityName,
-                                      "  RED:                              ",
-                                      cds@RED)))
+  expect_that(output[3], equals("Entity Name:                          NA   RED:                               NA"))
   
-  expect_that(output[4], equals(paste("TDate:                       ",
-                                      cds@TDate,
-                                      "  End Date:                 ",
-                                      cds@endDate)))
+  expect_that(output[4], equals("TDate:                        2014-05-07   End Date:                  2019-06-20"))
   
-  expect_that(output[5], equals(paste("Start Date:                  ",
-                                      cds@startDate,
-                                      "  Backstop Date:            ",
-                                      cds@backstopDate)))
+  expect_that(output[5], equals("Start Date:                   2014-03-20   Backstop Date:             2014-03-08"))
   
-  expect_that(output[6], equals(paste("1st Coupon:                  ",
-                                      cds@firstcouponDate,
-                                      "  Pen Coupon:               ",
-                                      cds@pencouponDate)))
+  expect_that(output[6], equals("1st Coupon:                   2014-06-20   Pen Coupon:                2019-03-20"))
   
-  expect_that(output[7], equals(paste("Day Cnt:                        ",
-                                      cds@dccCDS,
-                                      "  Freq:                              ",
-                                      cds@freqCDS)))
+  expect_that(output[7], equals("Day Cnt:                               1   Freq:                               1"))
   
   expect_that(output[8], equals(""))
   
   expect_that(output[9], equals("Calculation "))
   
-  expect_that(output[10], equals(paste("Value Date:                  ",
-                                       cds@valueDate,
-                                       "  Price:                        ",
-                                       round(cds@price, 2))))
+  expect_that(output[10], equals("Value Date:                   2014-05-12   Price:                         102.46"))
   
-  expect_that(output[11], equals(paste("Spread:                              ",
-                                       cds@parSpread,
-                                       "  Pts Upfront:                 ",
-                                       round(cds@ptsUpfront, 4))))
+  expect_that(output[11], equals("Spread:                               50   Pts Upfront:                  -0.0246"))
   
   ## Actually, hard coding doesn't matter here since we are dealing with this
   ## specific case.
