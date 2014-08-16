@@ -72,7 +72,8 @@ setMethod("update",
                                 ptsUpfront = newPtsUpfront, 
                                 isPriceClean = isPriceClean,
                                 notional = object@notional,
-                                payAccruedOnDefault = object@payAccruedOnDefault)
+                                payAccruedOnDefault = object@payAccruedOnDefault,
+                                convention = object@convention)
                   
                   return(newCDS)
 
