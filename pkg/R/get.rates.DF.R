@@ -1,5 +1,3 @@
-#' Get Rates with Dataframe Input
-#' 
 #' \code{get.rates.DF} takes a data frame of dates and returns a data frame with
 #' the yields for different maturities. Note year must be entered as YYYY-MM-DD.
 #' 
@@ -12,17 +10,17 @@
 #'   corresponding rate is actually the rate of the previous day. Example: if 
 #'   the column reads 2014-04-22, the corresponding rates are actually for 
 #'   2014-04-21.
- 
-get.rates.DF <- function(start, end, currency = "USD"){
 
+get.rates.DF <- function(start, end, currency = "USD"){
+  
   stopifnot(inherits(start, "Date"))
   stopifnot(inherits(end, "Date"))
-
+  
   ## start & end date must be valid
   
-  #stopifnot(check.date(start))
-  #stopifnot(check.date(end))
-    
+  stopifnot(check.date(start))
+  stopifnot(check.date(end))
+  
   ## start date must be smaller than end date
   
   stopifnot(end > start)
@@ -35,30 +33,30 @@ get.rates.DF <- function(start, end, currency = "USD"){
     
     ## use get.rates with the end date and keep reducing it by 1 day
     ## store this data in Rates
-      
+    
     Rates <- try(get.rates(date = end, currency=currency)[[1]])
     
     ## we use try so that if there is a date where rates are unavailable,
     ## it doesn't stop the function. 
+    
+    if(is(Rates, "try-error")){
+      end <- end - 1 
+    } else {
+      getRates <- Rates
       
-      if(is(Rates, "try-error")){
-        end <- end - 1 
-      } else {
-        getRates <- Rates
-        
-        ## extract relevant columns from Rates
-        
-        rates <- as.numeric(as.character(getRates$rate))
-        expiry <- getRates$expiry
-        date <- rep(end, length(rates))
-        currency <- rep(currency, length(rates))
-        
-        ## append all the data from the different dates where rates are available
-        
-        x <- rbind(x, data.frame(date, currency, expiry, rates))
-        end <- end - 1      
-      }    
-    }  
+      ## extract relevant columns from Rates
+      
+      rates <- as.numeric(as.character(getRates$rate))
+      expiry <- getRates$expiry
+      date <- rep(end, length(rates))
+      thisCurrency <- rep(currency, length(rates))
+      
+      ## append all the data from the different dates where rates are available
+      
+      x <- rbind(x, data.frame(date, currency, expiry, rates))
+      end <- end - 1      
+    }    
+  }  
   
   return(x)
 }
