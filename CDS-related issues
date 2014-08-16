@@ -16,7 +16,7 @@
 
 ## DONE: 5. When TDate is one day before the maturity date (added to test.get.date)
 
-## 6. Where TDate is Monday (I doubt why this has to be tested? )
+## DONE: 6. Where TDate is Monday (added to test.get.date; something very unexpected happens)
 
 ## 7. Where Spread is very high. Like if coupon =  100, spread = 1100
 ##
