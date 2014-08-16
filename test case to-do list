@@ -1,9 +1,22 @@
 ## Kanishka's note on what test cases to add
 
+## Just check if firstcoupondate, pencoupondate, stepindate, maturity date (enddate), 
+## startdate, benchmarkdate should or should not be on a weekend, or holiday.
+
+## Rec Risk 01 was problematic. More test cases needed there (ask for BB screenshots from Dave).
+## (RecRisk shouldn't be more problematic, because its code is almost identical to IR.DV01 and spread.DV01,
+## maybe it's just that the effect of change in RecRisk is bigger than other variable, so it seems that 
+## the code of RecRisk is more problematic)
+
+## PV.01 test case if George provides the true values to test against.
+
+
+
 ## Preferably do all these before 2012 because I haven't found inaccuracies for cases in the
 ## last two years 
 
-## 1. when the trade date is right after a roll date. Eg June 23 (roll date is June 20). 
+## DONE: 1. when the trade date is right after a roll date. Eg June 23 (roll date is June 20). 
+## (added to test.get.date)
 
 ## DONE: 2. when the maturity date lands on a weekend. Right now, if you don't provide a maturity date,
 ## and you provide just the tenor, get.date returns a maturity date or enddate which has to 
@@ -19,13 +32,9 @@
 
 ## DONE: 6. Where TDate is Monday (added to test.get.date; something very unexpected happens)
 
-## 7. Where Spread is very high. Like if coupon =  100, spread = 1100
-##
-## Just check if firstcoupondate, pencoupondate, stepindate, maturity date (enddate), 
-## startdate, benchmarkdate should or should not be on a weekend, or holiday.
-##
-## Rec Risk 01 was problematic. More test cases needed there (ask for BB screenshots from Dave).
-## PV.01 test case if George provides the true values to test against.
+## DONE: 7. Where Spread is very high. Like if coupon =  100, spread = 1100 (this is already in test.CDS, 
+## where the spread is even higher; the result is compared with Bloomberg)
+
 
 
 
