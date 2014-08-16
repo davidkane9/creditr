@@ -1,18 +1,17 @@
 ## Preferably do all these before 2012 because I haven't found inaccuracies for cases in the
-## last two years
+## last two years 
 
 ## 1. when the trade date is right after a roll date. Eg June 23 (roll date is June 20). 
 
 ## DONE: 2. when the maturity date lands on a weekend. Right now, if you don't provide a maturity date,
 ## and you provide just the tenor, get.date returns a maturity date or enddate which has to 
-## be a weekday. (This test case is added to test.get.date.R, but commented out because get.date()
-## coerce endDate to be weekday for now)
+## be a weekday. (added to test.get.date.R)
 
-## 3. when the trade date is on a holiday that is a holiday only for that specific region for 
-## USD, JPY & EUR (like July 4 is only a holiday in US).
+## DONE: 3. when the trade date is on a holiday that is a holiday only for that specific region for 
+## USD, JPY & EUR (like July 4 is only a holiday in US). (added to test.get.date)
 
-## 4. when the basedate happens to land on a holiday, for JPY, USD & EUR. Basedate is T+2 weekdays (for non-JPY) 
-## and T+2 business days (for JPY).
+## DONE: 4. when the basedate happens to land on a holiday, for JPY, USD & EUR. Basedate is T+2 weekdays (for non-JPY) 
+## and T+2 business days (for JPY). (added test to test.JPY.condition)
 
 ## DONE: 5. When TDate is one day before the maturity date (added to test.get.date)
 
