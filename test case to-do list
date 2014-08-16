@@ -1,6 +1,11 @@
 ## Kanishka's note on what test cases to add
 
 ## Checked the ISDA, find out the following:
+## link 1: (http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf) (just see the yellow box)
+## link 2: (http://www.cdsmodel.com/assets/cds-model/docs/Standard%20CDS%20Examples.pdf) (see whole stuff carefully, especially
+##         the examples which are all very useful in determining dates)
+## link 3: (http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2366447) (comprehensive, but not that detailed and useful since
+##         it doesn't touch the details of weekends, weekdays, and business days)
 ## a. maturity date （endDate) does not need to be a weekday. It remains unfixed, and has to be roll date.
 ## b. coupondate must be a weekday; if the roll date is a weekend day, coupon date has to be adjusted to business day.
 ## c. Accrual Start Date must be a weekday. if the rolldate before trade date is a weekend day, accrual start date
