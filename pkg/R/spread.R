@@ -1,6 +1,7 @@
 #' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
 #' @inheritParams CDS
+#' @param payAccruedAtStart whether pay at start date the accrual amount
 #' 
 #' @return a numeric indicating the spread.
 

@@ -15,6 +15,8 @@ spread(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
   payAccruedOnDefault = TRUE)
 }
 \arguments{
+\item{payAccruedAtStart}{whether pay at start date the accrual amount}
+
 \item{TDate}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 

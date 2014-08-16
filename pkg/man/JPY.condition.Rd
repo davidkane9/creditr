@@ -8,7 +8,7 @@ JPY.condition(currency = currency, TDate = Tdate, baseDate = baseDate)
 \arguments{
 \item{currency}{in which CDS is denominated.}
 
-\item{Tdate}{is when the trade is executed, denoted as T. Default
+\item{TDate}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
 \item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.

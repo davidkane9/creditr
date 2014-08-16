@@ -8,6 +8,11 @@ check.inputs(x, date.var = "dates", currency.var = "currency",
   coupon.var = "coupon", notional.var = "notional")
 }
 \arguments{
+\item{spread.var}{name of column in x containing  spreads in bps.}
+
+\item{date.var}{column in x containing dates when the trade
+is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
+
 \item{x}{is the data frame containing all the relevant columns.}
 
 \item{currency.var}{name of column in x containing currencies.}

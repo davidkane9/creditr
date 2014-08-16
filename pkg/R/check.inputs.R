@@ -5,6 +5,9 @@
 #'      not checked, because some functions don't need them as input. 
 #' 
 #' @inheritParams CS10
+#' @param spread.var name of column in x containing  spreads in bps.
+#' @param date.var column in x containing dates when the trade 
+#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
 #' 
 #' @return a data frame if not stopped by errors.
 

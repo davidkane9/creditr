@@ -9,6 +9,20 @@ upfront(x, rates, currency.var = "currency", notional = 1e+07,
   recovery.var = "recovery", isPriceClean = FALSE)
 }
 \arguments{
+\item{rates}{is an array of numeric values indicating the rate of
+each instrument.}
+
+\item{notional}{is the amount of the underlying asset on which the
+payments are based. Default is 1e7, i.e. 10MM.}
+
+\item{date.var}{name of column in x containing dates when the trade
+is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
+
+\item{spread.var}{name of column in x containing  par spreads in bps.}
+
+\item{recovery.var}{f column in x containing recovery
+rates in decimal.}
+
 \item{x}{is the data frame containing all the relevant columns.}
 
 \item{currency.var}{name of column in x containing currencies.}
