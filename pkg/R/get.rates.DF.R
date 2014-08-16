@@ -49,7 +49,6 @@ get.rates.DF <- function(start, end, currency = "USD"){
       rates <- as.numeric(as.character(getRates$rate))
       expiry <- getRates$expiry
       date <- rep(end, length(rates))
-      thisCurrency <- rep(currency, length(rates))
       
       ## append all the data from the different dates where rates are available
       
