@@ -26,8 +26,14 @@ test_that("test for get.date", {
   result.1 <- get.date(date = as.Date("2014-04-15"), tenor = 5)
   result.2 <- get.date(date = as.Date("2014-04-15"), maturity = "2019-06-20") 
   
-  expect_that(result.1, is_identical_to(truth))
-  expect_that(result.2, is_identical_to(truth))
+  expect_that(result.1, is_identical_to(truth.1))
+  expect_that(result.2, is_identical_to(truth.1))
+  
+  ## if the trade date is right after roll date, then the endDate 
+  ## should go to next roll date
+  
+  result.3 <- get.date(date = as.Date("2011-06-21"), tenor = 5)
+  expect_that(result.3, is_identical_to(truth.2))
   
   ## if the trade date is a US holiday, say, independence Day
   ## "2011-07-04", then get.date() should give a warning because
