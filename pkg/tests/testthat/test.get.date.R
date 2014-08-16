@@ -28,7 +28,18 @@ test_that("test for get.date", {
   
   expect_that(result.1, is_identical_to(truth))
   expect_that(result.2, is_identical_to(truth))
-
+  
+  ## if the trade date is only one day before the maturity date,
+  ## get.date() should give a warning because it's impossible
+  ## to return dates in duration of 0 days. (since stepinDate is equal
+  ## to (maturity date + 1), which is the maturity date, 
+  ## the duration is 0 day). This is an extreme test case, and since
+  ## get.date() cannot solve this test case for now, the following 
+  ## test case is commented out.
+  
+  # expect_warning(get.date(date = as.Date("2009-06-19"), 
+  #                maturity = as.Date("2009-06-20")))
+  
   ## if the endDate (maturity date) is a weekend, get.date should just
   ## return a weekend day, instead of adjust it to the next weekeday
   
@@ -40,8 +51,8 @@ test_that("test for get.date", {
   ## to be a weekend. Have to fix it later; for now we comment out
   ## the below test case
   
-  # result.3 <- get.date(date = as.Date("2010-06-18"), tenor = 5)
-  # expect_equal(result.3$endDate, as.Date("2015-06-20"))
+  # x <- get.date(date = as.Date("2010-06-18"), tenor = 5)
+  # expect_equal(x$endDate, as.Date("2015-06-20"))
 
 
 })
