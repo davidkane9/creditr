@@ -4,11 +4,11 @@ library(CDS)
 
 test_that("test for spread.DV01", {
   ## actual spread for Xerox
-  ## truth.1 <- 4825.49
+   truth.1 <- 4825.49
   
   ## save(truth.1, file = "spread.DV01.test.RData")
   
-  load("spread.DV01.test.RData")
+  
   
   x <- data.frame(dates = as.Date("2014-04-22"),
                   currency = "USD",
