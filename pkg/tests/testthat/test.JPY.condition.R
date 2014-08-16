@@ -16,6 +16,17 @@ expect_equal(JPY.condition(currency = "JPY", TDate = as.Date("2014-03-18"),
                            baseDate = as.Date("2014-03-20")), 
              as.Date("2014-03-20"))
 
+## if the baseDate falls on a JP holiday, then one more day should
+## be added to the baseDate
+## here 2009-03-20 is a friday, roll date, and JP holiday
+## if the trade date is 2009-03-18, then the baseDate will fall on
+## 2009-03-20, but since it's a JP holiday, one more day should be
+## added, so the baseDate becomes 2009-03-21. But now it's wrong
+
+# expect_equal(JPY.condition(currency = "JPY", TDate = as.Date("2009-03-18"), 
+#                            baseDate = as.Date("2009-03-20")), 
+#              as.Date("2014-03-21"))
+
 ## if the currency is JPY, and the date is a Thursday and one day
 ## before a JP holiday, baseDate is five days after TDate
 ## (two days for skipping to next Monday and one day for the holiday,

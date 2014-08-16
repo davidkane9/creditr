@@ -29,6 +29,14 @@ test_that("test for get.date", {
   expect_that(result.1, is_identical_to(truth))
   expect_that(result.2, is_identical_to(truth))
   
+  ## if the trade date is a US holiday, say, independence Day
+  ## "2011-07-04", then get.date() should give a warning because
+  ## US trade date can't happen on the independence date. But it 
+  ## doesn't now, so have to comment out the following test
+  
+  # expect_warning(get.date(date = as.Date("2011-07-04"), 
+  #                         tenor = 5, currency="USD"))
+  
   ## if the trade date is a Monday
   
   ## for this test, something unexpected happened:
