@@ -48,8 +48,20 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   for (i in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
   
   ## startDate is the date from when the accrued amount is calculated
-  
-  startDate <- .get.first.accrual.date(date)
+    
+    date.first <- as.POSIXlt(date)
+    
+    ## get the remainder X after dividing it by 3 and then move back X month
+    
+    if (date.first$mon %in% c(2, 5, 8, 11)){
+      if (date.first$mday < 20)
+        date.first$mon <- date.first$mon - 3
+    } else { 
+      date.first$mon <- date.first$mon - (as.numeric(format(date.first, "%m")) %% 3)
+    }
+    date.first$mday <- 20
+    
+    startDate <- adj.next.bus.day(as.Date(as.POSIXct(date.first)))
   
   ## firstcouponDate is the roll date after the startDate.
   ## it has to be a business day. So if the roll date happens to
