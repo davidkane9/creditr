@@ -1,4 +1,4 @@
-context("JPY.condition function")
+context("Test JPY.condition function")
 
 
 ## if the currency is not JPY, and the date is a workday, 
