@@ -45,7 +45,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   ## valueDate is 3 business days after the Trade Date. 
   
   valueDate <- stepinDate
-  for (i in 1:2){valueDate <- .adj.next.bus.day(valueDate + 1)}
+  for (i in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
   
   ## startDate is the date from when the accrued amount is calculated
   
@@ -57,7 +57,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   
   firstcouponDate     <- as.POSIXlt(startDate)
   firstcouponDate$mon <- firstcouponDate$mon + 3
-  firstcouponDate     <- as.Date(.adj.next.bus.day(firstcouponDate))
+  firstcouponDate     <- as.Date(adj.next.bus.day(firstcouponDate))
   
   ## endDate is the maturity date of the contract or the date up till when
   ## protection is offered. It is the firstCouponDate + tenor. So if the 
@@ -79,7 +79,7 @@ get.date <- function(date, maturity = NULL, tenor = NULL, currency = "USD"){
   
   pencouponDate     <- as.POSIXlt(endDate)
   pencouponDate$mon <- pencouponDate$mon - 3
-  pencouponDate     <- as.Date(.adj.next.bus.day(pencouponDate))
+  pencouponDate     <- as.Date(adj.next.bus.day(pencouponDate))
   
   ## backstopDate is the date from which protection is effective.
   ## So if a credit event occured in the 60 days prior to the trade

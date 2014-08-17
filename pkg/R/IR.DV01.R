@@ -49,7 +49,7 @@ IR.DV01 <- function(x,
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
-    baseDate <- .adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
+    baseDate <- adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
     TDate <- x[[TDate.var]][i]
     currency <- x[[currency.var]][i]
     

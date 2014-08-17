@@ -163,11 +163,11 @@ upfront <- function(x,
     ## basedate is T + 2 weekdays .    
     
     if(as.POSIXlt(TDate)$wday==5){
-     baseDate <- .adj.next.bus.day(TDate+4)
+     baseDate <- adj.next.bus.day(TDate+4)
     } else if(as.POSIXlt(TDate)$wday==0){
-     baseDate <- .adj.next.bus.day(TDate+3)
+     baseDate <- adj.next.bus.day(TDate+3)
     } else {
-     baseDate <- .adj.next.bus.day(TDate+2)
+     baseDate <- adj.next.bus.day(TDate+2)
     }
     
     ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays

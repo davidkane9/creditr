@@ -27,27 +27,6 @@
   }
 }
 
-
-#' get the next business day following 5D bus day convention.
-#'
-#' @param date of \code{Date} class.
-#' @return Date adjusted to the following business day
-
-.adj.next.bus.day <- function(date){
-  
-  dateWday <- as.POSIXlt(date)$wday
-  
-  ## change date to the most recent weekday if necessary
-  
-  if (dateWday == 0){
-    date <- date + 1
-  } else if (dateWday == 6) {
-    date <- date + 2
-  }
-  return(date)
-}
-
-
 #' Get the first accrual date. If it's a weekend, adjust to the
 #' following weekday. March/Jun/Sept/Dec 20th
 #'
@@ -67,7 +46,7 @@
     date$mon <- date$mon - (as.numeric(format(date, "%m")) %% 3)
   }
   date$mday <- 20
-  accrualDate <- .adj.next.bus.day(as.Date(as.POSIXct(date)))
+  accrualDate <- adj.next.bus.day(as.Date(as.POSIXct(date)))
   
   return(accrualDate)
 }
@@ -112,7 +91,16 @@
 #' @return month difference as a difference between two monnb's
 #' 
 
-.mondf <- function(d1, d2) { .monnb(d2) - .monnb(d1) }
+.mondf <- function(d1, d2) { 
+  
+  lt1 <- as.POSIXlt(as.Date(d1, origin="1900-01-01"))
+  monnb1 <- lt1$year*12 + lt1$mon
+  
+  lt2 <- as.POSIXlt(as.Date(d2, origin="1900-01-01"))
+  monnb2 <- lt2$year*12 + lt2$mon
+  
+  return(monnb2 - monnb2)
+}
 
 
 .cbind.fill<-function(...){
