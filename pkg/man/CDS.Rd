@@ -96,7 +96,10 @@ payments are based. Default is 1e7, i.e. 10MM.}
 to the protection seller in the event of a default. Default is
 \code{TRUE}.}
 
-\item{convention}{contains all the conventional parameters}
+\item{convention}{a named vector which contains all the 12 conventional
+parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+and badDayConvZC with their default values}
 }
 \value{
 a \code{CDS} class object including the input informtion on

@@ -79,7 +79,7 @@ spread.DV01 <- function(x,
 
     
     ## relevant dates are extracted from get.dates and then separated into year,
-    ## month and date using .separate.YMD (in internals.R). This is the format
+    ## month and date using separate.YMD (in internals.R). This is the format
     ## required by the C code
     
     valueDate     <- cdsDates$valueDate
@@ -96,7 +96,7 @@ spread.DV01 <- function(x,
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = .separate.YMD(baseDate),
+                          baseDate_input = separate.YMD(baseDate),
                           types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
@@ -109,12 +109,12 @@ spread.DV01 <- function(x,
                           badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                           holidays = "None",
                           
-                          todayDate_input = .separate.YMD(x[[TDate.var]][i]),
-                          valueDate_input = .separate.YMD(valueDate),
-                          benchmarkDate_input = .separate.YMD(benchmarkDate),
-                          startDate_input = .separate.YMD(startDate),
-                          endDate_input = .separate.YMD(endDate),
-                          stepinDate_input = .separate.YMD(stepinDate),
+                          todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                          valueDate_input = separate.YMD(valueDate),
+                          benchmarkDate_input = separate.YMD(benchmarkDate),
+                          startDate_input = separate.YMD(startDate),
+                          endDate_input = separate.YMD(endDate),
+                          stepinDate_input = separate.YMD(stepinDate),
                           
                           dccCDS = "ACT/360",
                           ivlCDS = "1Q",
@@ -133,7 +133,7 @@ spread.DV01 <- function(x,
     ## call the upfront function again, this time with recoveryRate + 0.1
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = .separate.YMD(baseDate),
+                         baseDate_input = separate.YMD(baseDate),
                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                          expiries = as.character(ratesInfo[[1]]$expiry),
@@ -146,12 +146,12 @@ spread.DV01 <- function(x,
                          badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                          holidays = "None",
                          
-                         todayDate_input = .separate.YMD(x[[TDate.var]][i]),
-                         valueDate_input = .separate.YMD(valueDate),
-                         benchmarkDate_input = .separate.YMD(benchmarkDate),
-                         startDate_input = .separate.YMD(startDate),
-                         endDate_input = .separate.YMD(endDate),
-                         stepinDate_input = .separate.YMD(stepinDate),
+                         todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                         valueDate_input = separate.YMD(valueDate),
+                         benchmarkDate_input = separate.YMD(benchmarkDate),
+                         startDate_input = separate.YMD(startDate),
+                         endDate_input = separate.YMD(endDate),
+                         stepinDate_input = separate.YMD(stepinDate),
                          
                          dccCDS = "ACT/360",
                          ivlCDS = "1Q",

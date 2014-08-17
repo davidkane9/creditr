@@ -1,6 +1,7 @@
 context("Test check.inputs") 
 
 test_that("test for check.input", {
+  
   ## define a valid data frame of inputs. The test below just modifies it.
   
   x0 <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
@@ -53,6 +54,5 @@ test_that("test for check.input", {
   x7 <- x0
   x7$notional <- c("10000000", "10000000")
   expect_error(check.inputs(x7))
-  
   
 })

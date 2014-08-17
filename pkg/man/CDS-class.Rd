@@ -114,6 +114,9 @@ time t given the \code{parSpread}.}
 based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 - Principal.}
 
-\item{\code{convention}}{}
+\item{\code{convention}}{a named vector which contains all the 12 conventional
+parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+and badDayConvZC with their default values}
 }}
 
