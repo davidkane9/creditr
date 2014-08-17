@@ -75,34 +75,6 @@
   }
 }
 
-
-#' month difference
-#' @param d date 
-
-.monnb <- function(d) {
-  lt <- as.POSIXlt(as.Date(d, origin="1900-01-01"))
-  lt$year*12 + lt$mon
-} 
-
-
-#' compute a month difference as a difference between two monnb's
-#' @param d1 date 1
-#' @param d2 date 2
-#' @return month difference as a difference between two monnb's
-#' 
-
-.mondf <- function(d1, d2) { 
-  
-  lt1 <- as.POSIXlt(as.Date(d1, origin="1900-01-01"))
-  monnb1 <- lt1$year*12 + lt1$mon
-  
-  lt2 <- as.POSIXlt(as.Date(d2, origin="1900-01-01"))
-  monnb2 <- lt2$year*12 + lt2$mon
-  
-  return(monnb2 - monnb2)
-}
-
-
 .cbind.fill<-function(...){
   nm <- list(...) 
   nm <- lapply(nm, as.matrix)

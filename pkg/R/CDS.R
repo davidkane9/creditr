@@ -462,7 +462,16 @@ CDS <- function(contract = "SNAC",
   ## if tenor is NULL, we determine the tenor using the maturity date
 
   if(is.null(tenor)){
-    cds@tenor <- as.numeric(.mondf(TDate, maturity))/12   
+
+      lt1 <- as.POSIXlt(as.Date(TDate, origin="1900-01-01"))
+      monnb1 <- lt1$year*12 + lt1$mon
+      
+      lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
+      monnb2 <- lt2$year*12 + lt2$mon
+      
+      tenor.mondf <- monnb2 - monnb2
+      
+      cds@tenor <- as.numeric(tenor.mondf)/12
   }
   
   ## if maturity date is NULL, we set maturity date as the endDate, which obtained using get.date.
