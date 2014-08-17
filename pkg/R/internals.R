@@ -51,29 +51,7 @@
   return(accrualDate)
 }
 
-#' check the length of the input
-#'
-#' @param dat is a string
-#' @return a numeric indicating the length of the input string.
 
-.check.length <- function(dat){
-  return(nchar(as.character(dat)))
-}
-
-#' check if argument is not a character and coerce it to character
-#'
-#' @param x input into the function
-#' @return true if it is a character 
-#' 
-
-.coerce.to.char <- function(x) {
-  if(class(x)!="character"){
-    return(as.character(x))
-  }
-  else{
-    return(x)
-  }
-}
 
 .cbind.fill<-function(...){
   nm <- list(...) 
