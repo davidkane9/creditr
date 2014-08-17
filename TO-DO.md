@@ -1,8 +1,6 @@
 CDS TO-DO List
 ========================================================
 
-* Remove all (or almost all) errors and warnings from R CMD check.
- 
 * Add "context" to test cases (see cdsDB for examples of how this is done) so that sensible messages are printed out while test cases run.
  
 * Understand what all the slots in the CDS class mean and why they matter. I may quiz you about this on Monday.
