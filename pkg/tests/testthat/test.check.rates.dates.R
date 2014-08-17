@@ -1,5 +1,4 @@
-## test case for check.Rates.Dates
-library(CDS)
+context("Test check.rates.dates")
 
 test_that("test for check.Rates.Dates", {
   ## the datframe 'rates' below does not contain the dates for the CDSs in data frane X.

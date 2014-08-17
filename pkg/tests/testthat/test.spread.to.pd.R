@@ -1,5 +1,4 @@
-library(CDS)
-
+context("Test spread.to.pd")
 
 test_that("spread.to.pd.test.R", {
   

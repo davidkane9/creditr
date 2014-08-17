@@ -1,3 +1,5 @@
+context("Test upfront")
+
 ## Test. In the following test cases we compare the results of 
 ## our upront functions for different data with results from markit.com using
 ## the same data

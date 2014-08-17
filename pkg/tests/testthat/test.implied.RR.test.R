@@ -1,3 +1,5 @@
+context("Test implied.RR")
+
 ## test case for implied recovery rate using a data frame containing ids, spreads and pds of 
 ## seven different CDSs
 

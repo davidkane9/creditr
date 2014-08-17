@@ -1,3 +1,5 @@
+context("Test show")
+
 library(utils)
 
 ## use capture.output to test the show() method

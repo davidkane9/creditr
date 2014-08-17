@@ -1,5 +1,6 @@
+context("Test check.date")
+
 # test case for check.date function
-library(CDS)
 
 test_that("test for check.date", {
   

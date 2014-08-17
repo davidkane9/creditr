@@ -1,3 +1,5 @@
+context("Test get.date")
+
 ## Test cases for the get.date function (using data from April 15, 2014 for Norske
 ## Skogindustrier ASA).
 

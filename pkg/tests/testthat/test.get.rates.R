@@ -1,6 +1,4 @@
-## test case for getRates function
-library(CDS)
-
+context("Test get.rates")
 
 test_that("test for get.rates",{
   ## US treasury yield curve from April 15, 2014

@@ -1,7 +1,4 @@
-## IR.DV01.R
-
-library(CDS)
-
+context("Test IR.DV01")
 
 test_that("test for IR.DV01", {
   ## comparing IR.DV01 calculated by our package for Xerox Corp and Electrolux

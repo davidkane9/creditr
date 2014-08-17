@@ -1,6 +1,5 @@
-# test case for JPY.condition function
+context("JPY.condition function")
 
-library(CDS)
 
 ## if the currency is not JPY, and the date is a workday, 
 ## baseDate is two days after TDate

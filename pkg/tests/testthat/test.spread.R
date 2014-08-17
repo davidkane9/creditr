@@ -1,6 +1,6 @@
-## spread() test case with data from Xerox corporation
-library(CDS)
+context("Test spread")
 
+## spread() test case with data from Xerox corporation
 
 test_that("test for spread", {
   ## actual spread value from Bloomberg for Xerox Corp.

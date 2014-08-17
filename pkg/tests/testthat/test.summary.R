@@ -1,3 +1,5 @@
+context("Test summary")
+
 library(utils)
 
 ## use capture.output to test the summary() method

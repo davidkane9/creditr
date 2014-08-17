@@ -1,6 +1,4 @@
-## test case for CS10, for CDS of Xerox corporation
-
-library(CDS)
+context("Test CS10")
 
 test_that("test case for CS10", {
   x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),

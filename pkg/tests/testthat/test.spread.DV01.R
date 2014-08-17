@@ -1,6 +1,6 @@
-## SpreadDV01.test.R using CDS data for Xerox Corp on April 22, 2014
-library(CDS)
+context("Test spread.DV01")
 
+## SpreadDV01.test.R using CDS data for Xerox Corp on April 22, 2014
 
 test_that("test for spread.DV01", {
   ## actual spread for Xerox

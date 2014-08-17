@@ -1,6 +1,4 @@
-## rec.risk.01.test.R
-
-library(CDS)
+context("Test rec.risk.01")
 
 test_that("test for rec.risk.01", {
   ## comparing rec.risk.01 calculated by our package for Xerox Corp and Electrolux

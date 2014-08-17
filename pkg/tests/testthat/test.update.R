@@ -1,5 +1,6 @@
+context("Test update")
+
 ## test case for update using CDS of Xerox
-library(CDS)
 
 test_that("test for spread", {
    ## object of class CDS

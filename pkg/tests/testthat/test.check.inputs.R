@@ -1,5 +1,4 @@
-# test case for check.inputs function
-library(CDS)
+context("Test check.inputs") 
 
 test_that("test for check.input", {
   ## define a valid data frame of inputs. The test below just modifies it.
