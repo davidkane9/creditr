@@ -58,7 +58,10 @@
 #' @param payAccruedOnDefault is a partial payment of the premium made
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
-#' @param convention contains all the conventional parameters
+#' @param convention a named vector which contains all the 12 conventional
+#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+#' floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+#' and badDayConvZC with their default values
 #' 
 #' @return a \code{CDS} class object including the input informtion on
 #' the contract as well as the valuation results of the contract.

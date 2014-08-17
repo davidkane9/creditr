@@ -74,8 +74,10 @@
 #' @slot defaultExpo calculates the default exposure of a CDS contract
 #' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 #' - Principal.
-#' @slot convention
-#'  
+#' @slot convention a named vector which contains all the 12 conventional
+#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+#' floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+#' and badDayConvZC with their default values
 #' @name CDS, CDS-class
 #' @aliases CDS, CDS-class
 #' @docType class
