@@ -6,15 +6,15 @@ contract.}
 \usage{
 CDS(contract = "SNAC", entityName = NULL, RED = NULL,
   TDate = Sys.Date(), baseDate = as.Date(TDate) + 2, currency = "USD",
-  types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
-  fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
-  floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
-  valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
-  endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
-  dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
-  calendar = "None", parSpread = NULL, coupon = 100, recoveryRate = 0.4,
-  upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
-  notional = 1e+07, payAccruedOnDefault = TRUE)
+  types = NULL, rates = NULL, expiries = NULL, valueDate = NULL,
+  benchmarkDate = NULL, startDate = NULL, endDate = NULL,
+  stepinDate = NULL, maturity = NULL, tenor = NULL, parSpread = NULL,
+  coupon = 100, recoveryRate = 0.4, upfront = NULL, ptsUpfront = NULL,
+  isPriceClean = FALSE, notional = 1e+07, payAccruedOnDefault = TRUE,
+  convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
+  fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", fixedSwapFreq = "6M",
+  floatSwapFreq = "3M", holidays = "None", dccCDS = "ACT/360", freqCDS = "Q",
+  stubCDS = "F", badDayConvCDS = "F", badDayConvZC = "M")))
 }
 \arguments{
 \item{contract}{is the contract type, default SNAC}
@@ -41,24 +41,6 @@ each instrument.}
 \item{expiries}{is an array of characters indicating the maturity
 of each instrument.}
 
-\item{mmDCC}{is the day count convention of the instruments.}
-
-\item{fixedSwapFreq}{is the frequency of the fixed rate of swap
-being paid.}
-
-\item{floatSwapFreq}{is the frequency of the floating rate of swap
-being paid.}
-
-\item{fixedSwapDCC}{is the day count convention of the fixed leg.}
-
-\item{floatSwapDCC}{is the day count convention of the floating leg.}
-
-\item{badDayConvZC}{is a character indicating how non-business days
-are converted.}
-
-\item{holidays}{is an input for holiday files to adjust to business
-days.}
-
 \item{valueDate}{is the date for which the present value of the CDS
 is calculated. aka cash-settle date. The default is T + 3.}
 
@@ -78,17 +60,6 @@ payment.}
 \item{maturity}{date of the CDS contract.}
 
 \item{tenor}{of contract. By default is set as 5}
-
-\item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
-
-\item{freqCDS}{date interval of the CDS contract.}
-
-\item{stubCDS}{is a character indicating the presence of a stub.}
-
-\item{badDayConvCDS}{refers to the bay day conversion for the CDS
-coupon payments. Default is "F", following.}
-
-\item{calendar}{refers to any calendar adjustment for the CDS.}
 
 \item{parSpread}{CDS par spread in bps.}
 
@@ -124,6 +95,8 @@ payments are based. Default is 1e7, i.e. 10MM.}
 \item{payAccruedOnDefault}{is a partial payment of the premium made
 to the protection seller in the event of a default. Default is
 \code{TRUE}.}
+
+\item{convention}{contains all the conventional parameters}
 }
 \value{
 a \code{CDS} class object including the input informtion on

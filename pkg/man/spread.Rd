@@ -17,23 +17,7 @@ spread(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
 \arguments{
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
-\item{TDate}{is when the trade is executed, denoted as T. Default
-is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
-
-\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
-Format must be YYYY-MM-DD.}
-
-\item{currency}{in which CDS is denominated.}
-
-\item{types}{is a string indicating the names of the instruments
-used for the yield curve. 'M' means money market rate; 'S' is swap
-rate.}
-
-\item{rates}{is an array of numeric values indicating the rate of
-each instrument.}
-
-\item{expiries}{is an array of characters indicating the maturity
-of each instrument.}
+\item{spread}{in bps}
 
 \item{mmDCC}{is the day count convention of the instruments.}
 
@@ -52,6 +36,35 @@ are converted.}
 
 \item{holidays}{is an input for holiday files to adjust to business
 days.}
+
+\item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
+
+\item{freqCDS}{date interval of the CDS contract.}
+
+\item{stubCDS}{is a character indicating the presence of a stub.}
+
+\item{badDayConvCDS}{refers to the bay day conversion for the CDS
+coupon payments. Default is "F", following.}
+
+\item{calendar}{refers to any calendar adjustment for the CDS.}
+
+\item{TDate}{is when the trade is executed, denoted as T. Default
+is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
+
+\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
+Format must be YYYY-MM-DD.}
+
+\item{currency}{in which CDS is denominated.}
+
+\item{types}{is a string indicating the names of the instruments
+used for the yield curve. 'M' means money market rate; 'S' is swap
+rate.}
+
+\item{rates}{is an array of numeric values indicating the rate of
+each instrument.}
+
+\item{expiries}{is an array of characters indicating the maturity
+of each instrument.}
 
 \item{valueDate}{is the date for which the present value of the CDS
 is calculated. aka cash-settle date. The default is T + 3.}
@@ -72,17 +85,6 @@ payment.}
 \item{maturity}{date of the CDS contract.}
 
 \item{tenor}{of contract. By default is set as 5}
-
-\item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
-
-\item{freqCDS}{date interval of the CDS contract.}
-
-\item{stubCDS}{is a character indicating the presence of a stub.}
-
-\item{badDayConvCDS}{refers to the bay day conversion for the CDS
-coupon payments. Default is "F", following.}
-
-\item{calendar}{refers to any calendar adjustment for the CDS.}
 
 \item{upfront}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

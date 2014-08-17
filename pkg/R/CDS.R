@@ -58,7 +58,7 @@
 #' @param payAccruedOnDefault is a partial payment of the premium made
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
-#' @param convention
+#' @param convention contains all the conventional parameters
 #' 
 #' @return a \code{CDS} class object including the input informtion on
 #' the contract as well as the valuation results of the contract.

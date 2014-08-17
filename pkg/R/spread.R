@@ -2,6 +2,24 @@
 #' 
 #' @inheritParams CDS
 #' @param payAccruedAtStart whether pay at start date the accrual amount
+#' @param spread in bps
+#' @param mmDCC is the day count convention of the instruments.
+#' @param fixedSwapFreq is the frequency of the fixed rate of swap
+#' being paid.
+#' @param floatSwapFreq is the frequency of the floating rate of swap
+#' being paid.
+#' @param fixedSwapDCC is the day count convention of the fixed leg.
+#' @param floatSwapDCC is the day count convention of the floating leg.
+#' @param badDayConvZC is a character indicating how non-business days
+#' are converted.
+#' @param holidays is an input for holiday files to adjust to business
+#' days.
+#' @param dccCDS day count convention of the CDS. Default is ACT/360.
+#' @param freqCDS date interval of the CDS contract.
+#' @param stubCDS is a character indicating the presence of a stub.
+#' @param badDayConvCDS refers to the bay day conversion for the CDS
+#' coupon payments. Default is "F", following.
+#' @param calendar refers to any calendar adjustment for the CDS.
 #' 
 #' @return a numeric indicating the spread.
 

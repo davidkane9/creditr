@@ -34,24 +34,6 @@ each instrument.}
 \item{\code{expiries}}{is an array of characters indicating the maturity
 of each instrument.}
 
-\item{\code{mmDCC}}{is the day count convention of the instruments.}
-
-\item{\code{fixedSwapFreq}}{is the frequency of the fixed rate of swap
-being paid.}
-
-\item{\code{floatSwapFreq}}{is the frequency of the floating rate of swap
-being paid.}
-
-\item{\code{fixedSwapDCC}}{is the day count convention of the fixed leg.}
-
-\item{\code{floatSwapDCC}}{is the day count convention of the floating leg.}
-
-\item{\code{badDayConvZC}}{is a character indicating how non-business days
-are converted.}
-
-\item{\code{holidays}}{is an input for holiday files to adjust to business
-days.}
-
 \item{\code{valueDate}}{is the date for which the present value of the CDS
 is calculated. aka cash-settle date. The default is T + 3.}
 
@@ -71,17 +53,6 @@ payment.}
 \item{\code{maturity}}{date of the CDS contract.}
 
 \item{\code{tenor}}{of contract in number of years - 5, 3}
-
-\item{\code{dccCDS}}{day count convention of the CDS. Default is ACT/360.}
-
-\item{\code{freqCDS}}{date interval of the CDS contract.}
-
-\item{\code{stubCDS}}{is a character indicating the presence of a stub.}
-
-\item{\code{badDayConvCDS}}{refers to the bay day conversion for the CDS
-coupon payments. Default is "F", following.}
-
-\item{\code{calendar}}{refers to any calendar adjustment for the CDS.}
 
 \item{\code{parSpread}}{CDS par spread in bps.}
 
@@ -142,5 +113,7 @@ time t given the \code{parSpread}.}
 \item{\code{defaultExpo}}{calculates the default exposure of a CDS contract
 based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 - Principal.}
+
+\item{\code{convention}}{}
 }}
 
