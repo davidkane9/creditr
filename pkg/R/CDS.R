@@ -60,7 +60,7 @@
 #' \code{TRUE}.
 #' @param convention a named vector which contains all the 12 conventional
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+#' floatSwapFreq, holidays, dccCDS, freqCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
 #' 
 #' @return a \code{CDS} class object including the input informtion on
@@ -116,7 +116,7 @@ CDS <- function(contract = "SNAC",
                                                    holidays = "None",
                                                    dccCDS = "ACT/360",
                                                    freqCDS = "Q",
-                                                   stubCDS = "F",
+                                              
                                                    badDayConvCDS = "F",
                                                    badDayConvZC = "M"))
 ){
@@ -302,7 +302,7 @@ CDS <- function(contract = "SNAC",
                             maturity = maturity,
                             dccCDS = convention['dccCDS'],
                             freqCDS = convention['freqCDS'],
-                            stubCDS = convention['stubCDS'],
+                            stubCDS = "F",
                             badDayConvCDS = convention['badDayConvCDS'],
                             calendar = convention['calendar'],
                             upfront = upfront,
@@ -371,7 +371,7 @@ CDS <- function(contract = "SNAC",
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
                               freqCDS = convention['freqCDS'],
-                              stubCDS = convention['stubCDS'],
+                              stubCDS = "F",
                               badDayConvCDS = convention['badDayConvCDS'],
                               calendar = convention['calendar'],
                               upfront = NULL,
@@ -428,7 +428,7 @@ CDS <- function(contract = "SNAC",
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
                               freqCDS = convention['freqCDS'],
-                              stubCDS = convention['stubCDS'],
+                              stubCDS = "F",
                               badDayConvCDS = convention['badDayConvCDS'],
                               calendar = convention['calendar'],
                               upfront = upfront,
@@ -488,7 +488,7 @@ CDS <- function(contract = "SNAC",
   ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
   ## note: this is a hack; must fix
   
-  x <- data.frame(dates = c(as.Date(cds@TDate)),
+  x <- data.frame(date = c(as.Date(cds@TDate)),
                   currency = c(cds@currency),
                   tenor = c(cds@tenor),
                   maturity = c(cds@maturity),
