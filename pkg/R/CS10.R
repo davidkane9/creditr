@@ -13,7 +13,7 @@
 #' @param coupon.var name of column in x containing coupon rates in bps. 
 #' It specifies the payment amount from the protection buyer to the seller 
 #' on a regular basis.
-#' @param recoveryRate.var name of column in x containing recovery 
+#' @param RR.var name of column in x containing recovery 
 #' rates in decimal.
 #' @param isPriceClean refers to the type of upfront calculated. It is
 #' boolean. When \code{TRUE}, calculate principal only. When
@@ -46,7 +46,7 @@ CS10 <- function(x,
                  tenor.var = "tenor",
                  spread.var = "spread",
                  coupon.var = "coupon",
-                 recoveryRate.var = "recoveryRate",
+                 RR.var = "recoveryRate",
                  notional.var = "notional",
                  isPriceClean = FALSE,
                  payAccruedOnDefault = TRUE
@@ -146,7 +146,7 @@ CS10 <- function(x,
                           
                           parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
-                          recoveryRate = x[[recoveryRate.var]][i],
+                          recoveryRate = x[[RR.var]][i],
                           isPriceClean_input = isPriceClean,
                           payAccruedOnDefault_input = payAccruedOnDefault,
                           notional = x[[notional.var]][i],
@@ -183,7 +183,7 @@ CS10 <- function(x,
                          
                          parSpread = x[[spread.var]][i] * 1.1,
                          couponRate = x[[coupon.var]][i],
-                         recoveryRate = x[[recoveryRate.var]][i],
+                         recoveryRate = x[[RR.var]][i],
                          isPriceClean_input = isPriceClean,
                          payAccruedOnDefault_input = payAccruedOnDefault,
                          notional = x[[notional.var]][i],
