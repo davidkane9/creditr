@@ -13,11 +13,9 @@
 #' that specific trade date in X is contained in rates
 
 check.rates.dates <- function(x, rates){
-  dates.1 <- x$date
-  dates.2 <- unique(rates$date)
   contained <- NULL
-  for (i in 1:length(dates.1)){
-    if (as.Date(dates.1[i]) %in% dates.2){
+  for (i in 1:length(x$date)){
+    if (as.Date(x$date[i]) %in% unique(rates$date)){
       contained <- c(contained, TRUE)
     } else{
       contained <- c(contained, FALSE)
