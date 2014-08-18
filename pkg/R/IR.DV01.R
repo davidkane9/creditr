@@ -44,9 +44,7 @@ IR.DV01 <- function(x,
   
   IR.DV01 <- rep(NA, nrow(x))
   
-  baseDate.vec <- adj.next.bus.day(x[[date.var]] + 2)
-  
-  baseDate.vec <- lapply(baseDate.vec, function(y){
+  baseDate.vec <- lapply(adj.next.bus.day(x[[date.var]] + 2), function(y){
     if(as.POSIXlt(y)$wday == 1){ 
       y <- y + 1
     }
