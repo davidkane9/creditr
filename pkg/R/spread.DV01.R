@@ -16,7 +16,7 @@
 #' coupon = c(100, 100),
 #' recoveryRate = c(0.4, 0.4),
 #' notional = c(1e7, 1e7))
-#' 
+
 spread.DV01 <- function(x,
                         date.var = "date",
                         currency.var = "currency",
@@ -32,7 +32,10 @@ spread.DV01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x)
+  x <- check.inputs(x, date.var = date.var, currency.var = currency.var,
+                    maturity.var = maturity.var, tenor.var = tenor.var,
+                    spread.var = spread.var, coupon.var = coupon.var,
+                    notional.var = notional.var)
     
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function

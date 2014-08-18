@@ -1,3 +1,5 @@
+#' Download Rates from the Internet
+#' 
 #' \code{download.rates} download the rates zip file from a given URL. Unzip and parse the
 #' XML
 #' 
@@ -5,8 +7,9 @@
 #' @param verbose option. Default \code{FALSE}.
 #' 
 #' @return a xml file crawled from the \code{URL}.
-#' 
+
 download.rates <- function(URL, verbose = FALSE){ 
+  
   tf <- tempfile()
   td <- tempdir()
   

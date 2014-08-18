@@ -9,12 +9,15 @@
 #' @param currency of the contract for which we are calculating the relevant dates. The currency affects
 #' the calculation of the baseDate as in the case of JPY denominated contracts, the baseDate cannot
 #' lie on any of the specific Japanese holidays.
+#' 
 #' @return a date frame with 8 variables: step-in date (T+1), value date (T+3 business days),
 #'   start date (accrual begin date), end date (maturity), backstop date (T-60 
 #'   day look back from which 'protection' is effective), pen coupon date 
 #'   (second to last coupon date)
+#' 
 #' @references
 #' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
+#' 
 #' @examples
 #' get.date(as.Date("2014-05-07"), tenor = 5, maturity = NULL)
 

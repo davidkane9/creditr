@@ -19,8 +19,8 @@
 #' the dcc and calendar specifications of the curve.
 #'
 #' @export
+#' 
 #' @examples
-#'
 #' get.rates(as.Date("2014-05-07"), currency = "USD")
 
 get.rates <- function(date = Sys.Date(), currency = "USD"){

@@ -9,7 +9,7 @@
 
 adj.next.bus.day <- function(date){
   
-  dateWday <- as.POSIXlt(date)$wday
+  dateWday <- as.POSIXlt(as.Date(date))$wday
   
   ## change date to the most recent weekday if necessary
   
