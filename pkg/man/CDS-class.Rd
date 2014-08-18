@@ -116,7 +116,7 @@ based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 
 \item{\code{convention}}{a named vector which contains all the 12 conventional
 parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+floatSwapFreq, holidays, dccCDS, freqCDS, badDayConvCDS,
 and badDayConvZC with their default values}
 }}
 

@@ -14,7 +14,7 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
   convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
   fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", fixedSwapFreq = "6M",
   floatSwapFreq = "3M", holidays = "None", dccCDS = "ACT/360", freqCDS = "Q",
-  stubCDS = "F", badDayConvCDS = "F", badDayConvZC = "M")))
+  badDayConvCDS = "F", badDayConvZC = "M")))
 }
 \arguments{
 \item{contract}{is the contract type, default SNAC}
@@ -98,7 +98,7 @@ to the protection seller in the event of a default. Default is
 
 \item{convention}{a named vector which contains all the 12 conventional
 parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, freqCDS, stubCDS, badDayConvCDS,
+floatSwapFreq, holidays, dccCDS, freqCDS, badDayConvCDS,
 and badDayConvZC with their default values}
 }
 \value{

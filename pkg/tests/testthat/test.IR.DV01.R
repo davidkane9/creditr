@@ -4,7 +4,7 @@ test_that("test for IR.DV01", {
   ## comparing IR.DV01 calculated by our package for Xerox Corp and Electrolux
   ## AB on April 22, 2014 with the results on Bloomberg
   
-  x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+  x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                   currency = c("USD", "EUR"),
                   tenor = c(5, 5),
                   maturity = c(NA, NA),

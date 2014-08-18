@@ -3,7 +3,7 @@
 \alias{check.rates.dates}
 \title{Make sure dates are available}
 \usage{
-check.rates.dates(x, rates)
+check.rates.dates(x, rates, date.var = "date", rate.var = "rates")
 }
 \arguments{
 \item{x}{data frame which contains rates for a specific date}

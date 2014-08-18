@@ -3,16 +3,16 @@
 \alias{CS10}
 \title{Calculate CS10}
 \usage{
-CS10(x, TDate.var = "dates", currency.var = "currency",
-  maturity.var = "maturity", tenor.var = "tenor",
-  parSpread.var = "spread", coupon.var = "coupon",
-  recoveryRate.var = "recoveryRate", isPriceClean = FALSE,
-  payAccruedOnDefault = TRUE, notional.var = "notional")
+CS10(x, date.var = "date", currency.var = "currency",
+  maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
+  coupon.var = "coupon", recoveryRate.var = "recoveryRate",
+  notional.var = "notional", isPriceClean = FALSE,
+  payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{x}{is the data frame containing all the relevant columns.}
 
-\item{TDate.var}{name of column in x containing dates when the trade
+\item{date.var}{name of column in x containing dates when the trade
 is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 
 \item{currency.var}{name of column in x containing currencies.}
@@ -21,7 +21,7 @@ is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 
 \item{tenor.var}{name of column in x containing tenors.}
 
-\item{parSpread.var}{name of column in x containing  par spreads in bps.}
+\item{spread.var}{name of column in x containing  par spreads in bps.}
 
 \item{coupon.var}{name of column in x containing coupon rates in bps.
 It specifies the payment amount from the protection buyer to the seller
@@ -51,7 +51,7 @@ a vector containing the change in upfront when parSpread increase by
 also known as the CS10 of a contract.
 }
 \examples{
-x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 currency = c("USD", "EUR"),
 maturity = c(NA, NA),
 tenor = c(5, 5),

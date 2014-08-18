@@ -3,7 +3,7 @@
 \alias{check.inputs}
 \title{Check whether inputs from the data frame are valid}
 \usage{
-check.inputs(x, date.var = "dates", currency.var = "currency",
+check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", notional.var = "notional")
 }
