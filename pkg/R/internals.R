@@ -22,10 +22,8 @@
                   return("Rates data not available at markit.com")
                 })
   close(f)
-  
-  tmp <- a
-  if (class(tmp) == "character"){
-    return(tmp)
+  if (class(a) == "character"){
+    return(a)
   } else {
     files <- unzip(tf , exdir = td)
     
