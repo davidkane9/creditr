@@ -9,14 +9,18 @@
 
 adj.next.bus.day <- function(date){
   
-  dateWday <- as.POSIXlt(as.Date(date))$wday
-  
-  ## change date to the most recent weekday if necessary
-  
-  if (dateWday == 0){
-    date <- date + 1
-  } else if (dateWday == 6) {
-    date <- date + 2
+  for(i in 1:length(date)){
+    dateWday <- as.POSIXlt(as.Date(date[i]))$wday
+    
+    ## change date to the most recent weekday if necessary
+    
+    if (dateWday == 0){
+      date[i] <- date[i] + 1
+    } else if (dateWday == 6) {
+      date[i] <- date[i] + 2
+    }
+    
   }
+  
   return(date)
 }

@@ -20,16 +20,16 @@
 #' result <- IR.DV01(x)
 
 IR.DV01 <- function(x,
-                     date.var = "date",
-                     currency.var = "currency",
-                     maturity.var = "maturity",
-                     tenor.var = "tenor",
-                     spread.var = "spread",
-                     coupon.var = "coupon",
-                     RR.var = "recoveryRate",
-                     notional.var = "notional",
-                     isPriceClean = FALSE,
-                     payAccruedOnDefault = TRUE
+                    date.var = "date",
+                    currency.var = "currency",
+                    maturity.var = "maturity",
+                    tenor.var = "tenor",
+                    spread.var = "spread",
+                    coupon.var = "coupon",
+                    RR.var = "recoveryRate",
+                    notional.var = "notional",
+                    isPriceClean = FALSE,
+                    payAccruedOnDefault = TRUE
 ){
   
   ## vector containing recRisk01 columns. By default it contains NAs, which
@@ -41,7 +41,7 @@ IR.DV01 <- function(x,
                     maturity.var = maturity.var, tenor.var = tenor.var,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var)
-    
+  
   IR.DV01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
@@ -72,11 +72,11 @@ IR.DV01 <- function(x,
       cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }  ## if both are entered, we arbitrarily use one of them
-  
+    
     else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-    cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                         tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
-   }
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
+                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
+    }
     
     
     ## relevant dates are extracted from get.dates and then separated into year,
