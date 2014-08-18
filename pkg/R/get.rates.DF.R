@@ -15,12 +15,7 @@ get.rates.DF <- function(start, end, currency = "USD"){
   
   stopifnot(inherits(start, "Date"))
   stopifnot(inherits(end, "Date"))
-  
-  ## start & end date must be valid
-  
-  stopifnot(check.date(start))
-  stopifnot(check.date(end))
-  
+
   ## start date must be smaller than end date
   
   stopifnot(end > start)

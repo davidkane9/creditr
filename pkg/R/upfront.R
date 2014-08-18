@@ -156,8 +156,6 @@ upfront <- function(x,
     
     ## stop if TDate is invalid
     
-    stopifnot(check.date(TDate))
-    
     TDate <- as.Date(TDate)
     
     ## basedate is T + 2 weekdays .    

@@ -27,6 +27,7 @@
 #' 
 #' @return a vector containing the change in upfront when parSpread increase by
 #' 10%, for each corresponding CDS contract.
+#' 
 #' @examples 
 #' x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
@@ -46,9 +47,10 @@ CS10 <- function(x,
                  parSpread.var = "spread",
                  coupon.var = "coupon",
                  recoveryRate.var = "recoveryRate",
+                 notional.var = "notional",
                  isPriceClean = FALSE,
-                 payAccruedOnDefault = TRUE,
-                 notional.var = "notional"
+                 payAccruedOnDefault = TRUE
+                 
 ){
   
   ## check if certain variables are contained in x
@@ -61,12 +63,6 @@ CS10 <- function(x,
   CS10 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
-    
-    ## stop if TDate is invalid
-    
-    if(check.date(x[[TDate.var]][i]) == FALSE){
-      warning("The dates provided are future dates")
-    }  
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     

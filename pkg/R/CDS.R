@@ -122,8 +122,7 @@ CDS <- function(contract = "SNAC",
 ){
   
   ## stop if date is invalid
-  
-  stopifnot(check.date(TDate))
+
   stopifnot(is.character(contract))
   stopifnot(is.character(currency))
   

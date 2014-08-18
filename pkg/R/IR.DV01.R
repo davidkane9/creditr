@@ -43,10 +43,6 @@ IR.DV01 <- function(x,
   
   for(i in 1:nrow(x)){
     
-    ## stop if TDate is invalid
-    
-    stopifnot(check.date(x[[TDate.var]][i]))  
-    
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
     baseDate <- adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
