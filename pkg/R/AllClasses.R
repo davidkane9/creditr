@@ -76,7 +76,7 @@
 #' - Principal.
 #' @slot convention a named vector which contains all the 12 conventional
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, freqCDS, badDayConvCDS,
+#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
 #' @name CDS, CDS-class
 #' @aliases CDS, CDS-class

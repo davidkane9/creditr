@@ -60,7 +60,7 @@
 #' \code{TRUE}.
 #' @param convention a named vector which contains all the 12 conventional
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, freqCDS, badDayConvCDS,
+#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
 #' 
 #' @return a \code{CDS} class object including the input informtion on
@@ -115,7 +115,7 @@ CDS <- function(contract = "SNAC",
                                                    floatSwapFreq = "3M",
                                                    holidays = "None",
                                                    dccCDS = "ACT/360",
-                                                   freqCDS = "Q",
+                                                   
                                               
                                                    badDayConvCDS = "F",
                                                    badDayConvZC = "M"))
@@ -301,7 +301,7 @@ CDS <- function(contract = "SNAC",
                             stepinDate = stepinDate,
                             maturity = maturity,
                             dccCDS = convention['dccCDS'],
-                            freqCDS = convention['freqCDS'],
+                            freqCDS = "Q",
                             stubCDS = "F",
                             badDayConvCDS = convention['badDayConvCDS'],
                             calendar = convention['calendar'],
@@ -370,7 +370,7 @@ CDS <- function(contract = "SNAC",
                               maturity = maturity,
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
-                              freqCDS = convention['freqCDS'],
+                              freqCDS = "Q",
                               stubCDS = "F",
                               badDayConvCDS = convention['badDayConvCDS'],
                               calendar = convention['calendar'],
@@ -427,7 +427,7 @@ CDS <- function(contract = "SNAC",
                               maturity = maturity,
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
-                              freqCDS = convention['freqCDS'],
+                              freqCDS = "Q",
                               stubCDS = "F",
                               badDayConvCDS = convention['badDayConvCDS'],
                               calendar = convention['calendar'],
