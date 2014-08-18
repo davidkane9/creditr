@@ -10,7 +10,7 @@ test_that("test for spread.DV01", {
   
   
   
-  x <- data.frame(dates = as.Date("2014-04-22"),
+  x <- data.frame(date = as.Date("2014-04-22"),
                   currency = "USD",
                   maturity = NA,
                   tenor = 5,

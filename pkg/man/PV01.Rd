@@ -4,7 +4,7 @@
 \alias{PV01}
 \title{Calculate PV01}
 \usage{
-PV.01(x, principal.var = "principal", parSpread.var = "spread",
+PV.01(x, principal.var = "principal", spread.var = "spread",
   coupon.var = "coupon", notional.var = "notional")
 }
 \arguments{
@@ -13,7 +13,7 @@ PV.01(x, principal.var = "principal", parSpread.var = "spread",
 \item{principal.var}{name of the column containing the principal or
 clean upfront values of the CDS}
 
-\item{parSpread.var}{name of the column containing the CDS contract in basis points}
+\item{spread.var}{name of the column containing the CDS contract in basis points}
 
 \item{coupon.var}{name of the column containing the CDS contract in basis points}
 

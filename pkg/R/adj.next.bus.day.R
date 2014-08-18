@@ -1,6 +1,6 @@
 #' Adjust to Next Business Day
 #' 
-#' \code{adj.next.bus.day} get the next business day 
+#' \code{adj.next.bus.day} gets the next business day 
 #' following 5D bus day convention.
 #'
 #' @param date of \code{Date} class.
@@ -9,7 +9,7 @@
 
 adj.next.bus.day <- function(date){
   
-  dateWday <- as.POSIXlt(date)$wday
+  dateWday <- as.POSIXlt(as.Date(date))$wday
   
   ## change date to the most recent weekday if necessary
   

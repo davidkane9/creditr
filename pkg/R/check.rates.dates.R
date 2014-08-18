@@ -9,19 +9,23 @@
 #' 
 #' @param x data frame which contains rates for a specific date 
 #' @param rates data frame which contains rates and dates
+#' 
 #' @return vector containing true or false to indicate whether
 #' that specific trade date in X is contained in rates
 
-check.rates.dates <- function(x, rates){
-  dates.1 <- x$date
-  dates.2 <- unique(rates$date)
+check.rates.dates <- function(x, rates, 
+                              date.var = "date", rate.var = "rates"){
+
+  ## check data frame inputs
+  
+  stopifnot(inherits(x[[date.var]], "Date") & 
+              inherits(rates[[date.var]], "Date"))
+  
+  stopifnot(is.numeric(rates[[rate.var]]))
+  
   contained <- NULL
-  for (i in 1:length(dates.1)){
-    if (as.Date(dates.1[i]) %in% dates.2){
-      contained <- c(contained, TRUE)
-    } else{
-      contained <- c(contained, FALSE)
-    }
-  }
+    
+  contained <- c(contained, as.Date(x$date) %in% unique(rates$date))
+  
   return(contained)
 }

@@ -3,16 +3,16 @@
 \alias{spread.DV01}
 \title{Calculate Spread Change}
 \usage{
-spread.DV01(x, TDate.var = "dates", currency.var = "currency",
-  maturity.var = "maturity", tenor.var = "tenor",
-  parSpread.var = "spread", coupon.var = "coupon",
-  recoveryRate.var = "recoveryRate", isPriceClean = FALSE,
-  payAccruedOnDefault = TRUE, notional.var = "notional")
+spread.DV01(x, date.var = "date", currency.var = "currency",
+  maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
+  coupon.var = "coupon", recoveryRate.var = "recoveryRate",
+  notional.var = "notional", isPriceClean = FALSE,
+  payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{x}{is the data frame containing all the relevant columns.}
 
-\item{TDate.var}{name of column in x containing dates when the trade
+\item{date.var}{name of column in x containing dates when the trade
 is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 
 \item{currency.var}{name of column in x containing currencies.}
@@ -21,7 +21,7 @@ is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 
 \item{tenor.var}{name of column in x containing tenors.}
 
-\item{parSpread.var}{name of column in x containing  par spreads in bps.}
+\item{spread.var}{name of column in x containing  par spreads in bps.}
 
 \item{coupon.var}{name of column in x containing coupon rates in bps.
 It specifies the payment amount from the protection buyer to the seller
@@ -30,6 +30,10 @@ on a regular basis.}
 \item{recoveryRate.var}{name of column in x containing recovery
 rates in decimal.}
 
+\item{notional.var}{name of column in x containing the amount of
+the underlying asset on which the payments are based.
+Default is 1e7, i.e. 10MM.}
+
 \item{isPriceClean}{refers to the type of upfront calculated. It is
 boolean. When \code{TRUE}, calculate principal only. When
 \code{FALSE}, calculate principal + accrual.}
@@ -37,10 +41,6 @@ boolean. When \code{TRUE}, calculate principal only. When
 \item{payAccruedOnDefault}{is a partial payment of the premium made
 to the protection seller in the event of a default. Default is
 \code{TRUE}.}
-
-\item{notional.var}{name of column in x containing the amount of
-the underlying asset on which the payments are based.
-Default is 1e7, i.e. 10MM.}
 }
 \value{
 a vector containing the change in upfront when there is a 1
@@ -51,7 +51,7 @@ basis point increase in spread, for each corresponding CDS contract.
 value when the spread rises by 1 basis point
 }
 \examples{
-x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 currency = c("USD", "EUR"),
 maturity = c(NA, NA),
 tenor = c(5, 5),

@@ -12,7 +12,7 @@
 #' @return a data frame if not stopped by errors.
 
 check.inputs <- function(x, ## change "dates" to "date" later
-                            date.var = "dates", 
+                            date.var = "date", 
                             currency.var = "currency",
                             maturity.var = "maturity",
                             tenor.var = "tenor",
