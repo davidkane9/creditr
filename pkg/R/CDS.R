@@ -188,12 +188,18 @@ CDS <- function(contract = "SNAC",
     if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
     if (is.null(convention['mmDCC'])) convention['mmDCC']       <- as.character(ratesInfo[[2]]$mmDCC)
     
-    if (is.null(convention['fixedSwapFreq'])) convention['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)
-    if (is.null(convention['floatSwapFreq'])) convention['floatSwapFreq'] <- as.character(ratesInfo[[2]]$floatFreq)
-    if (is.null(convention['fixedSwapDCC'])) convention['fixedSwapDCC']   <- as.character(ratesInfo[[2]]$fixedDCC)
-    if (is.null(convention['floatSwapDCC'])) convention['floatSwapDCC']   <- as.character(ratesInfo[[2]]$floatDCC)
-    if (is.null(convention['badDayConvZC'])) convention['badDayConvZC']   <- as.character(ratesInfo[[2]]$badDayConvention)
-    if (is.null(convention['holidays'])) convention['holidays']           <- as.character(ratesInfo[[2]]$swapCalendars)
+    if (is.null(convention['fixedSwapFreq'])){ 
+      convention['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)}
+    if (is.null(convention['floatSwapFreq'])){ 
+      convention['floatSwapFreq'] <- as.character(ratesInfo[[2]]$floatFreq)}
+    if (is.null(convention['fixedSwapDCC'])){ 
+      convention['fixedSwapDCC']   <- as.character(ratesInfo[[2]]$fixedDCC)}
+    if (is.null(convention['floatSwapDCC'])){ 
+      convention['floatSwapDCC']   <- as.character(ratesInfo[[2]]$floatDCC)}
+    if (is.null(convention['badDayConvZC'])){ 
+      convention['badDayConvZC']   <- as.character(ratesInfo[[2]]$badDayConvention)}
+    if (is.null(convention['holidays'])){ 
+      convention['holidays']       <- as.character(ratesInfo[[2]]$swapCalendars)}
   }
   
   ## if entity name and/or RED code is not provided, we set it as NA
