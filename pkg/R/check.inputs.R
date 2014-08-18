@@ -11,14 +11,14 @@
 #' 
 #' @return a data frame if not stopped by errors.
 
-check.inputs <- function(x, ## change "dates" to "date" later
-                            date.var = "date", 
-                            currency.var = "currency",
-                            maturity.var = "maturity",
-                            tenor.var = "tenor",
-                            spread.var = "spread",
-                            coupon.var = "coupon",
-                            notional.var = "notional"){
+check.inputs <- function(x,
+                         date.var = "date", 
+                         currency.var = "currency",
+                         maturity.var = "maturity",
+                         tenor.var = "tenor",
+                         spread.var = "spread",
+                         coupon.var = "coupon",
+                         notional.var = "notional"){
 
   ## check if certain variables are contained in x
   

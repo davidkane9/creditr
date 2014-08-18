@@ -1,7 +1,5 @@
 CDS TO-DO List
 ========================================================
-* parSpread.var should be spread.var everywhere
-* TDate.var should be date.var everywhere
 * recovery.rate.var should be RR.var everywhere
 
 * IRDV01 (and similar functions) do too much in the loop. All (?) the date stuff can be pulled oustide the loop and done on the input data frame as a whole. To do this, make get.date take a data frame as its first argument and return a new data frame with extra variables added on, after making sure that they do not already exist in the passed in data frame.
