@@ -20,11 +20,11 @@
 #' result <- IR.DV01(x)
 
 IR.DV01 <- function(x,
-                     TDate.var = "dates",
+                     date.var = "date",
                      currency.var = "currency",
                      maturity.var = "maturity",
                      tenor.var = "tenor",
-                     parSpread.var = "spread",
+                     spread.var = "spread",
                      coupon.var = "coupon",
                      recoveryRate.var = "recoveryRate",
                      isPriceClean = FALSE,
@@ -45,11 +45,11 @@ IR.DV01 <- function(x,
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
-    baseDate <- adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
-    TDate <- x[[TDate.var]][i]
+    baseDate <- adj.next.bus.day(as.Date(x[[date.var]][i]) + 2)
+    TDate <- x[[date.var]][i]
     currency <- x[[currency.var]][i]
     
-    #baseDate <- x[[TDate.var]][i] + 2
+    #baseDate <- x[[date.var]][i] + 2
     
     if(as.POSIXlt(baseDate)$wday == 1){ 
       baseDate <- baseDate + 1
@@ -62,16 +62,16 @@ IR.DV01 <- function(x,
     ## get.date function. Results are stored in cdsdates
     
     if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = x[[tenor.var]][i], maturity = NULL)
     }
     else if(is.null(x[[tenor.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }  ## if both are entered, we arbitrarily use one of them
   
     else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-    cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+    cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                          tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
    }
     
@@ -89,7 +89,7 @@ IR.DV01 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
+    ratesInfo <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][i])
     
     ## call the upfront function using the above variables
     
@@ -107,7 +107,7 @@ IR.DV01 <- function(x,
                           badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                           holidays = "None",
                           
-                          todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                          todayDate_input = separate.YMD(x[[date.var]][i]),
                           valueDate_input = separate.YMD(valueDate),
                           benchmarkDate_input = separate.YMD(benchmarkDate),
                           startDate_input = separate.YMD(startDate),
@@ -120,7 +120,7 @@ IR.DV01 <- function(x,
                           badDayConvCDS = "F",
                           calendar = "None",
                           
-                          parSpread = x[[parSpread.var]][i],
+                          parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
                           recoveryRate = x[[recoveryRate.var]][i],
                           isPriceClean_input = isPriceClean,
@@ -144,7 +144,7 @@ IR.DV01 <- function(x,
                          badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                          holidays = "None",
                          
-                         todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                         todayDate_input = separate.YMD(x[[date.var]][i]),
                          valueDate_input = separate.YMD(valueDate),
                          benchmarkDate_input = separate.YMD(benchmarkDate),
                          startDate_input = separate.YMD(startDate),
@@ -157,7 +157,7 @@ IR.DV01 <- function(x,
                          badDayConvCDS = "F",
                          calendar = "None",
                          
-                         parSpread = x[[parSpread.var]][i],
+                         parSpread = x[[spread.var]][i],
                          couponRate = x[[coupon.var]][i],
                          recoveryRate = x[[recoveryRate.var]][i],
                          isPriceClean_input = isPriceClean,
