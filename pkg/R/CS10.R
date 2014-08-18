@@ -4,12 +4,12 @@
 #' also known as the CS10 of a contract.
 #' 
 #' @param x is the data frame containing all the relevant columns.
-#' @param TDate.var name of column in x containing dates when the trade 
+#' @param date.var name of column in x containing dates when the trade 
 #' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
 #' @param currency.var name of column in x containing currencies. 
 #' @param maturity.var name of column in x containing maturity dates.
 #' @param tenor.var name of column in x containing tenors.
-#' @param parSpread.var name of column in x containing  par spreads in bps.
+#' @param spread.var name of column in x containing  par spreads in bps.
 #' @param coupon.var name of column in x containing coupon rates in bps. 
 #' It specifies the payment amount from the protection buyer to the seller 
 #' on a regular basis.
@@ -40,11 +40,11 @@
 #' result <- CS10(x)
 
 CS10 <- function(x,
-                 TDate.var = "dates",
+                 date.var = "date",
                  currency.var = "currency",
                  maturity.var = "maturity",
                  tenor.var = "tenor",
-                 parSpread.var = "spread",
+                 spread.var = "spread",
                  coupon.var = "coupon",
                  recoveryRate.var = "recoveryRate",
                  notional.var = "notional",
@@ -66,11 +66,11 @@ CS10 <- function(x,
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
     
-    baseDate <- adj.next.bus.day(as.Date(x[[TDate.var]][i]) + 2)
-    TDate <- x[[TDate.var]][i]
+    baseDate <- adj.next.bus.day(as.Date(x[[date.var]][i]) + 2)
+    TDate <- x[[date.var]][i]
     currency <- x[[currency.var]][i]
     
-    #baseDate <- x[[TDate.var]][i] + 2
+    #baseDate <- x[[date.var]][i] + 2
     
     if(as.POSIXlt(baseDate)$wday == 1){ 
       baseDate <- baseDate + 1
@@ -83,16 +83,16 @@ CS10 <- function(x,
     ## get.date function. Results are stored in cdsdates
     
     if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = x[[tenor.var]][i], maturity = NULL)
     }
     else if(is.null(x[[tenor.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     } ## if both are entered, we arbitrarily use one of them
     
     else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[TDate.var]][i]), 
+      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }
     
@@ -110,7 +110,7 @@ CS10 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x[[TDate.var]][i], currency = x[[currency.var]][i])
+    ratesInfo <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][i])
         
     ## call the upfront function using the above variables
     
@@ -128,7 +128,7 @@ CS10 <- function(x,
                           badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                           holidays = "None",
                           
-                          todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                          todayDate_input = separate.YMD(x[[date.var]][i]),
                           valueDate_input = separate.YMD(valueDate),
                           benchmarkDate_input = separate.YMD(benchmarkDate),
                           startDate_input = separate.YMD(startDate),
@@ -141,7 +141,7 @@ CS10 <- function(x,
                           badDayConvCDS = "F",
                           calendar = "None",
                           
-                          parSpread = x[[parSpread.var]][i],
+                          parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
                           recoveryRate = x[[recoveryRate.var]][i],
                           isPriceClean_input = isPriceClean,
@@ -165,7 +165,7 @@ CS10 <- function(x,
                          badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
                          holidays = "None",
                          
-                         todayDate_input = separate.YMD(x[[TDate.var]][i]),
+                         todayDate_input = separate.YMD(x[[date.var]][i]),
                          valueDate_input = separate.YMD(valueDate),
                          benchmarkDate_input = separate.YMD(benchmarkDate),
                          startDate_input = separate.YMD(startDate),
@@ -178,7 +178,7 @@ CS10 <- function(x,
                          badDayConvCDS = "F",
                          calendar = "None",
                          
-                         parSpread = x[[parSpread.var]][i] * 1.1,
+                         parSpread = x[[spread.var]][i] * 1.1,
                          couponRate = x[[coupon.var]][i],
                          recoveryRate = x[[recoveryRate.var]][i],
                          isPriceClean_input = isPriceClean,
