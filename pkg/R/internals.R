@@ -13,7 +13,17 @@
   tf <- tempfile()
   td <- tempdir()
   
-  tmp <- .zipdown(URL, tf)
+  f <- CFILE(tf, mode="wb")
+  a <- tryCatch(curlPerform(url = URL,
+                            writedata = f@ref, noprogress=TRUE,
+                            verbose = FALSE,
+                            ssl.verifypeer = FALSE),
+                error = function(e) {
+                  return("Rates data not available at markit.com")
+                })
+  close(f)
+  
+  tmp <- a
   if (class(tmp) == "character"){
     return(tmp)
   } else {
@@ -50,25 +60,6 @@
   
   return(accrualDate)
 }
-
-.zipdown <- function(url, file){
-  f <- CFILE(file, mode="wb")
-  
-  ## a <- curlPerform(url = url, writedata = f@ref, noprogress=TRUE,
-  ##     verbose = FALSE,
-  ##     ssl.verifypeer = FALSE)
-  
-  a <- tryCatch(curlPerform(url = url,
-                            writedata = f@ref, noprogress=TRUE,
-                            verbose = FALSE,
-                            ssl.verifypeer = FALSE),
-                error = function(e) {
-                  return("Rates data not available at markit.com")
-                })
-  close(f)
-  return(a)
-}
-
 
 #.onAttach <- function(...) {
   
