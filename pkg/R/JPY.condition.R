@@ -14,16 +14,21 @@
 JPY.condition <- function(currency = currency, 
                           TDate = Tdate, baseDate = baseDate){
   
-    if(currency == "JPY"){        
-      baseDate <- adj.next.bus.day(as.Date(TDate) + 2)
+  for(i in 1:length(currency)){
+    
+    if(currency[i] == "JPY"){        
+      baseDate[[i]] <- adj.next.bus.day(as.Date(TDate[i]) + 2)
       data(JPY.holidays, package = "CDS")
       
       ## if base date is one of the Japanese holidays we add another business day to it
       
-      if(baseDate %in% JPY.holidays){
-        baseDate <- adj.next.bus.day(as.Date(TDate) + 1)
+      if(baseDate[[i]] %in% JPY.holidays){
+        baseDate[[i]] <- adj.next.bus.day(as.Date(TDate[i]) + 1)
       }
     }
+    
+  }
+  
   
   return(baseDate)
 }

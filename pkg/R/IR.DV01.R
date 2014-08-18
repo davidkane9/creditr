@@ -52,12 +52,12 @@ IR.DV01 <- function(x,
     }
     y})
   
+  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, TDate = x[[date.var]], 
+                            currency = x[[currency.var]])
+  
   for(i in 1:nrow(x)){
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
-
-    baseDate <- JPY.condition(baseDate = as.Date(baseDate.vec[[i]]), TDate = x[[date.var]][i], 
-                              currency = x[[currency.var]][i])
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
@@ -75,7 +75,6 @@ IR.DV01 <- function(x,
       cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
     }
-    
     
     ## relevant dates are extracted from get.dates and then separated into year,
     ## month and date using separate.YMD (in internals.R). This is the format
@@ -95,7 +94,7 @@ IR.DV01 <- function(x,
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = separate.YMD(baseDate),
+                          baseDate_input = separate.YMD(baseDate.vec[[i]]),
                           types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
@@ -132,7 +131,7 @@ IR.DV01 <- function(x,
     ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = separate.YMD(baseDate),
+                         baseDate_input = separate.YMD(baseDate.vec[[i]]),
                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)) + 1/1e4,
                          expiries = as.character(ratesInfo[[1]]$expiry),
