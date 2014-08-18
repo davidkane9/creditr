@@ -30,8 +30,7 @@
     ## the 2nd file of the unzipped directory contains the rates info
     
     doc <- xmlTreeParse(files[grep(".xml", files)], getDTD = F)
-    r <- xmlRoot(doc)
-    return(r)
+    return(xmlRoot(doc))
   }
 }
 
