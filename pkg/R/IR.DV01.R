@@ -44,22 +44,20 @@ IR.DV01 <- function(x,
   
   IR.DV01 <- rep(NA, nrow(x))
   
+  baseDate.vec <- adj.next.bus.day(x[[date.var]] + 2)
+  
+  baseDate.vec <- lapply(baseDate.vec, function(y){
+    if(as.POSIXlt(y)$wday == 1){ 
+      y <- y + 1
+    }
+    y})
+  
   for(i in 1:nrow(x)){
     
     ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
-    
-    baseDate <- adj.next.bus.day(as.Date(x[[date.var]][i]) + 2)
-    TDate <- x[[date.var]][i]
-    currency <- x[[currency.var]][i]
-    
-    #baseDate <- x[[date.var]][i] + 2
-    
-    if(as.POSIXlt(baseDate)$wday == 1){ 
-      baseDate <- baseDate + 1
-    }
-    
-    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
-                              currency = currency)
+
+    baseDate <- JPY.condition(baseDate = as.Date(baseDate.vec[[i]]), TDate = x[[date.var]][i], 
+                              currency = x[[currency.var]][i])
     
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
