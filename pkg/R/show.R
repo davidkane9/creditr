@@ -184,10 +184,15 @@ setMethod("show",
 
               ratesDf <- data.frame(Term = object@expiries, Rate = object@rates)
               rowN <- ceiling(dim(ratesDf)[1]/2)
-              print(as.data.frame(.cbind.fill(ratesDf[1:rowN,],
-                                              ratesDf[(rowN+1):dim(ratesDf)[1],])),
-                    row.names = F, quote = F, na.print = "")
               
+              nm <- list(ratesDf[1:rowN,],ratesDf[(rowN+1):dim(ratesDf)[1],]) 
+              nm <- lapply(nm, as.matrix)
+              n <- max(sapply(nm, nrow)) 
+              result <- do.call(cbind, lapply(nm, function (x) rbind(x, matrix(, n-nrow(x), ncol(x))))) 
+              
+              print(as.data.frame(result),
+                    row.names = F, quote = F, na.print = "")
+                      
               cat("\n")
           
       }
