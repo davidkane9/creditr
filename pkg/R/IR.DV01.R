@@ -27,9 +27,9 @@ IR.DV01 <- function(x,
                      spread.var = "spread",
                      coupon.var = "coupon",
                      recoveryRate.var = "recoveryRate",
+                     notional.var = "notional",
                      isPriceClean = FALSE,
-                     payAccruedOnDefault = TRUE,
-                     notional.var = "notional"
+                     payAccruedOnDefault = TRUE
 ){
   
   ## vector containing recRisk01 columns. By default it contains NAs, which

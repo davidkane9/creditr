@@ -26,10 +26,10 @@ rec.risk.01 <- function(x,
                         spread.var = "spread",
                         coupon.var = "coupon",
                         recoveryRate.var = "recoveryRate",
+                        notional.var = "notional",
                         isPriceClean = FALSE,
-                        payAccruedOnDefault = TRUE,
-                        notional.var = "notional"
-                      ){
+                        payAccruedOnDefault = TRUE
+){
 
     ## check if certain variables are contained in x
     
