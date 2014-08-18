@@ -29,7 +29,7 @@
 #' 10%, for each corresponding CDS contract.
 #' 
 #' @examples 
-#' x <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+#' x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
 #' maturity = c(NA, NA),
 #' tenor = c(5, 5),
