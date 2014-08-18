@@ -66,11 +66,7 @@ setMethod("show",
                   sprintf(paste("Day Cnt:", object@convention['dccCDS'],
                                 sep = paste0(rep(" ",
                                     40-nchar(as.character("Day Cnt:")) -
-                                    nchar(as.character(object@convention['dccCDS']))), collapse = ""))),
-                  sprintf(paste("   Freq:", object@convention['freqCDS'],
-                                sep = paste0(rep(" ", 40-nchar(as.character("   Freq:")) -
-                                    nchar(as.character(object@convention['freqCDS']))),
-                                    collapse = ""))), "\n",
+                                    nchar(as.character(object@convention['dccCDS']))), collapse = ""))), "\n",
                   sep = ""
                   )
 

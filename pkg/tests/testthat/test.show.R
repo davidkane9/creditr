@@ -22,7 +22,7 @@ test_that("test show() method", {
   
   expect_that(output[6], equals("1st Coupon:                   2014-06-20   Pen Coupon:                2019-03-20"))
   
-  expect_that(output[7], equals("Day Cnt:                               1   Freq:                               1"))
+  expect_that(output[7], equals("Day Cnt:                               1"))
   
   expect_that(output[8], equals(""))
   

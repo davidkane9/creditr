@@ -5,7 +5,7 @@
 \usage{
 CS10(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", recoveryRate.var = "recoveryRate",
+  coupon.var = "coupon", RR.var = "recoveryRate",
   notional.var = "notional", isPriceClean = FALSE,
   payAccruedOnDefault = TRUE)
 }
@@ -27,7 +27,7 @@ is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 It specifies the payment amount from the protection buyer to the seller
 on a regular basis.}
 
-\item{recoveryRate.var}{name of column in x containing recovery
+\item{RR.var}{name of column in x containing recovery
 rates in decimal.}
 
 \item{isPriceClean}{refers to the type of upfront calculated. It is
