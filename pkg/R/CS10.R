@@ -2,6 +2,7 @@
 #' 
 #' \code{CS10} Calculates the change in upfront value when the spread rises by 10%, 
 #' also known as the CS10 of a contract.
+#' 
 #' @param x is the data frame containing all the relevant columns.
 #' @param TDate.var name of column in x containing dates when the trade 
 #' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
@@ -23,6 +24,7 @@
 #' @param notional.var name of column in x containing the amount of 
 #' the underlying asset on which the payments are based. 
 #' Default is 1e7, i.e. 10MM.
+#' 
 #' @return a vector containing the change in upfront when parSpread increase by
 #' 10%, for each corresponding CDS contract.
 #' @examples 
