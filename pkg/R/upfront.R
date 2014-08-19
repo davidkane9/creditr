@@ -178,16 +178,17 @@ upfront <- function(x,
     ratesDate <- as.Date(TDate)
     
     ## if maturity date is not provided, we use tenor to obtain dates through
-    ## get.date, and vice versa.
+    ## add.dates, and vice versa.
     
     if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), maturity = as.Date(maturity), tenor = NULL)
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+                                       maturity = as.Date(maturity)))
     }
     else if(is.null(maturity)){
-      cdsDates <- get.date(date = as.Date(TDate), maturity = NULL, tenor = tenor)
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
     }
     
-    ## if these dates are not entered, they are extracted using get.date
+    ## if these dates are not entered, they are extracted using add.dates
     
     if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
     if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
