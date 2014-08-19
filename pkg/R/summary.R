@@ -16,10 +16,10 @@ setMethod("summary",
                       nchar(as.character(object@TDate))), collapse = ""))), "\n",
        
        
-       sprintf(paste("Entity Name:", object@entityName,
+       sprintf(paste("Entity Name:", object@name,
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Entity Name:")) -
-                       nchar(as.character(object@entityName))), collapse = ""))),
+                       nchar(as.character(object@name))), collapse = ""))),
        sprintf(paste("   RED:", object@RED,
                      sep = paste0(rep(" ", 40-nchar(as.character("   RED:")) -
                           nchar(as.character(object@RED))), collapse = ""))), "\n",
@@ -32,12 +32,12 @@ setMethod("summary",
                      sep = paste0(rep(" ", 40-nchar(as.character("   End Date:")) -
                           nchar(as.character(object@endDate))), collapse = ""))), "\n",
        sprintf(paste("Spread:",
-                     format(round(object@parSpread, 4),big.mark = ",",
+                     format(round(object@spread, 4),big.mark = ",",
                             scientific=F),
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Spread:")) -
                                         nchar(as.character(
-                                          format(round(object@parSpread, 4), big.mark=",",
+                                          format(round(object@spread, 4), big.mark=",",
                                                  scientific=F)))),
                                   collapse = ""))),
        sprintf(paste("   Coupon:",

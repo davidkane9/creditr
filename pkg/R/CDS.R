@@ -4,7 +4,7 @@
 #' @name CDS
 #' 
 #' @param contract is the contract type, default SNAC
-#' @param entityName is the name of the reference entity. Optional.
+#' @param name is the name of the reference entity. Optional.
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
 #' @param TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
@@ -31,7 +31,7 @@
 #' @param stepinDate default is T + 1.
 #' @param maturity date of the CDS contract.
 #' @param tenor of contract. By default is set as 5
-#' @param parSpread CDS par spread in bps.
+#' @param spread CDS par spread in bps.
 #' @param coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis. The default
 #' is 100 bps.
@@ -70,10 +70,10 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100) 
+#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
 CDS <- function(contract = "SNAC", 
-                entityName = NULL,
+                name = NULL,
                 RED = NULL,
                 
                 TDate = Sys.Date(),
@@ -96,7 +96,7 @@ CDS <- function(contract = "SNAC",
                 maturity = NULL,
                 tenor = NULL,
                 
-                parSpread = NULL,
+                spread = NULL,
                 coupon = 100,
                 recoveryRate = 0.4,
                 upfront = NULL,
@@ -129,7 +129,7 @@ CDS <- function(contract = "SNAC",
   
   ## if none of the three are entered
   
-  if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(parSpread)))
+  if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(spread)))
     stop("Please input spread, upfront or pts upfront")
   
   ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
@@ -204,7 +204,7 @@ CDS <- function(contract = "SNAC",
   
   ## if entity name and/or RED code is not provided, we set it as NA
   
-  if (is.null(entityName)) entityName <- "NA"
+  if (is.null(name)) name <- "NA"
   
   if (is.null(RED)) RED <- "NA"
   
@@ -212,7 +212,7 @@ CDS <- function(contract = "SNAC",
   
   cds <- new("CDS",
              contract = contract,
-             entityName = entityName,
+             name = name,
              RED = RED,
              TDate = TDate,
              baseDate = baseDate,
@@ -244,16 +244,16 @@ CDS <- function(contract = "SNAC",
              convention = convention
   )
   
-  ## if parSpread is given, calculate principal and accrual
+  ## if spread is given, calculate principal and accrual
   
-  if (!is.null(parSpread)){
+  if (!is.null(spread)){
     
-    cds@parSpread <- parSpread
+    cds@spread <- spread
     
     ## clean upfront or principal
     
     df <- data.frame(date = c(as.Date(cds@TDate)),
-                     spread = c(parSpread),
+                     spread = c(spread),
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
@@ -281,7 +281,7 @@ CDS <- function(contract = "SNAC",
     
     ## calculate par spread if not provided
     
-    cds@parSpread <- spread(TDate = TDate,
+    cds@spread <- spread(TDate = TDate,
                             baseDate = baseDate,
                             currency = currency,
                             types = types,
@@ -320,7 +320,7 @@ CDS <- function(contract = "SNAC",
     ## calculate  dirty upfront
     
     df <- data.frame(date = c(as.Date(cds@TDate)),
-                     spread = c(parSpread),
+                     spread = c(spread),
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
@@ -334,7 +334,7 @@ CDS <- function(contract = "SNAC",
     
   } 
   
-  ## if pts upfront and parspread are both provided, then we have to calculate the spread
+  ## if pts upfront and spread are both provided, then we have to calculate the spread
   
   else {        
     if (isPriceClean == TRUE) {
@@ -347,9 +347,9 @@ CDS <- function(contract = "SNAC",
       
       cds@ptsUpfront <- upfront / notional
       
-      ## calculate parSpread if only clean upfront (principal) and ptsUpfront are provided
+      ## calculate spread if only clean upfront (principal) and ptsUpfront are provided
       
-      cds@parSpread <- spread(TDate = TDate,
+      cds@spread <- spread(TDate = TDate,
                               baseDate = baseDate,
                               currency = currency,
                               types = types,
@@ -385,7 +385,7 @@ CDS <- function(contract = "SNAC",
       ## dirty upfront
       
       df <- data.frame(date = c(as.Date(cds@TDate)),
-                       spread = c(parSpread),
+                       spread = c(spread),
                        coupon = c(cds@coupon),
                        tenor = c(cds@tenor),
                        currency = c(cds@currency),
@@ -406,7 +406,7 @@ CDS <- function(contract = "SNAC",
       
       ## par Spread
       
-      cds@parSpread <- spread(TDate = TDate,
+      cds@spread <- spread(TDate = TDate,
                               baseDate = baseDate,
                               currency = currency,
                               types = types,
@@ -442,7 +442,7 @@ CDS <- function(contract = "SNAC",
       ## principal
       
       df <- data.frame(date = c(as.Date(cds@TDate)),
-                       spread = c(parSpread),
+                       spread = c(spread),
                        coupon = c(cds@coupon),
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
@@ -491,7 +491,7 @@ CDS <- function(contract = "SNAC",
   x <- data.frame(date = c(as.Date(cds@TDate)),
                   currency = c(cds@currency),
                   tenor = c(cds@tenor),
-                  spread = c(parSpread),
+                  spread = c(spread),
                   coupon = c(cds@coupon),
                   recoveryRate = c(cds@recoveryRate),
                   notional = c(cds@notional))
@@ -499,7 +499,7 @@ CDS <- function(contract = "SNAC",
   cds@spreadDV01  <- spread.DV01(x)
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
-  cds@defaultProb <- spread.to.pd(spread = cds@parSpread,
+  cds@defaultProb <- spread.to.pd(spread = cds@spread,
                                  time = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
                                  recovery.rate = recoveryRate)

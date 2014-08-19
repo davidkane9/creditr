@@ -147,7 +147,7 @@ upfront <- function(x,
     stubCDS <- "F"
     badDayConvCDS <- "F"
     calendar <- calendar
-    parSpread <- x[i, spread.var]
+    spread <- x[i, spread.var]
     coupon <- x[i, coupon.var]
     recoveryRate <- x[i, recovery.var]
     isPriceClean <- isPriceClean
@@ -251,7 +251,7 @@ upfront <- function(x,
                         badDayConvCDS = badDayConvCDS,
                         calendar = calendar,
                         
-                        parSpread = parSpread,
+                        spread = spread,
                         couponRate = coupon,
                         recoveryRate = recoveryRate,
                         isPriceClean_input = isPriceClean,

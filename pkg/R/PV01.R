@@ -4,7 +4,7 @@
 #' 
 #' @name PV01
 #' 
-#' @param x data frame containing the principal, parSpread, coupon and notional
+#' @param x data frame containing the principal, spread, coupon and notional
 #' @param principal.var name of the column containing the principal or 
 #' clean upfront values of the CDS
 #' @param spread.var name of the column containing the CDS contract in basis points
@@ -12,7 +12,7 @@
 #' @param notional.var name of the column containing the notional amount (in currency terms).
 #' 
 #' @return Vector containing the PV01 values using the formula: 
-#' (principal/notional)*(10000/(parSpread-coupon))
+#' (principal/notional)*(10000/(spread-coupon))
 
 PV.01 <- function(x, 
                   principal.var = "principal", 
@@ -24,10 +24,10 @@ PV.01 <- function(x,
   
   principal <- as.numeric(x[[principal.var]])
   notional  <- as.numeric(x[[notional.var]])
-  parSpread <- as.numeric(x[[spread.var]])
+  spread <- as.numeric(x[[spread.var]])
   coupon    <- as.numeric(x[[coupon.var]])
   
-  PV01 <- (abs(principal)/notional)*(10000/abs(parSpread-coupon))
+  PV01 <- (abs(principal)/notional)*(10000/abs(spread-coupon))
   
   return(PV01)
 }
