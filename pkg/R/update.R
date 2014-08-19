@@ -70,7 +70,7 @@ setMethod("update",
                                 isPriceClean = isPriceClean,
                                 notional = object@notional,
                                 payAccruedOnDefault = object@payAccruedOnDefault,
-                                convention = object@convention)
+                                conventions = object@conventions)
                   
                   return(newCDS)
 
