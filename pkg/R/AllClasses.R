@@ -2,21 +2,18 @@
 #' 
 #' Class definition for the \code{CDS-Class}
 #'
-#' @slot contract is the contract type, default SNAC
 #' @slot name is the name of the reference entity. Optional.
+#' @slot contract is the contract type, default SNAC
 #' @slot RED alphanumeric code assigned to the reference entity. Optional.
+#' 
 #' @slot date is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}.
-#' @slot baseDate is the start date for the IR curve. Default is date. 
-#' @slot currency in which CDS is denominated. 
-#' @slot interest.rates a list which contains types, rates and expiries
-#' @slot dates named array which contains relevant date data
+#' @slot spread CDS par spread in bps.
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
-#' @slot spread CDS par spread in bps.
 #' @slot coupon quoted in bps. It specifies the payment amount from
-#' the protection buyer to the seller on a regular basis.
 #' @slot recovery.rate in decimal. Default is 0.4.
+#' @slot currency in which CDS is denominated.
 #' @slot inputPriceClean records the \code{isPriceClean} argument
 #' input by the user. \code{isPriceClean} refers to the type of
 #' upfront calculated. It is boolean. When \code{TRUE}, calculate
@@ -28,6 +25,24 @@
 #' \code{TRUE}.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
 #' @slot accrual is the accrued interest payment.
+#' @slot defaultProb is the approximate the default probability at
+#' time t given the \code{spread}.
+#' @slot defaultExpo calculates the default exposure of a CDS contract
+#' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
+#' - Principal.
+#' @slot price
+#' 
+#' @slot dates named array which contains relevant date data
+#' the protection buyer to the seller on a regular basis.
+#' @slot baseDate is the start date for the IR curve. Default is date.
+#' 
+#' @slot conventions a named vector which contains all the 12 conventional
+#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
+#' and badDayConvZC with their default values
+#' 
+#' @slot interest.rates a list which contains types, rates and expiries
+#' 
 #' @slot upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -53,15 +68,6 @@
 #' itself.
 #' @slot RecRisk01 is the dollar value change in market value if the
 #' recovery rate used in the CDS valuation were increased by 1\%.
-#' @slot defaultProb is the approximate the default probability at
-#' time t given the \code{spread}.
-#' @slot defaultExpo calculates the default exposure of a CDS contract
-#' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
-#' - Principal.
-#' @slot conventions a named vector which contains all the 12 conventional
-#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-#' and badDayConvZC with their default values
 #' 
 #' @name CDS, CDS-class
 #' @aliases CDS, CDS-class
@@ -72,61 +78,97 @@
 
 setClass("CDS",
          representation = representation(
-           contract = "character",
+           
+           ## name stuff
+           
            name = "character",
+           contract = "character",
            RED = "character",
+          
+           ## basic info
+           
            date = "Date",
-           baseDate = "Date",
-           currency = "character",
-           interest.rates = "list",
-           dates = "data.frame",
+           spread = "numeric",
            maturity = "Date",
            tenor = "numeric",
-           spread = "numeric",
            coupon = "numeric",
            recovery.rate = "numeric",
+           currency = "character",
            inputPriceClean = "logical",
            notional = "numeric",
            payAccruedOnDefault = "logical",
            principal = "numeric",
            accrual = "numeric",
+           defaultProb = "numeric",
+           defaultExpo = "numeric",
+           price = "numeric",
+           
+           ## dates
+           
+           dates = "data.frame",
+           baseDate = "Date",
+           
+           ## conventions
+           
+           conventions = "data.frame",
+           
+           ## interest.rates
+           
+           interest.rates = "list",
+           
+           ## calculated amount
+           
            upfront = "numeric",
            ptsUpfront = "numeric",
            spreadDV01 = "numeric",
            IRDV01 = "numeric",
-           RecRisk01 = "numeric",
-           defaultProb = "numeric",
-           defaultExpo = "numeric",
-           price = "numeric",
-           conventions = "data.frame"
+           RecRisk01 = "numeric"  
          ),
          prototype = prototype(
-           contract = character(),
+          
+           ## name stuff
+           
            name = character(),
+           contract = character(),
            RED = character(),
+           
+           ## basic info
+           
            date = character(),
-           baseDate = character(),
-           currency = character(),
-           interest.rates = list(),
-           dates = data.frame(),
+           spread = numeric(),
            maturity = character(),
            tenor = numeric(),
-           spread = numeric(),
            coupon = numeric(),
            recovery.rate = numeric(),
+           currency = character(),
            inputPriceClean = logical(),
            notional = numeric(),
            payAccruedOnDefault = logical(),
            principal = numeric(),
            accrual = numeric(),
+           defaultProb = numeric(),
+           defaultExpo = numeric(),
+           price = numeric(),
+           
+           ## dates
+           
+           dates = data.frame(),
+           baseDate = character(),
+           
+           ## conventions
+           
+           conventions = data.frame(),
+           
+           ## interest.rates
+           
+           interest.rates = list(),
+           
+           ## calculated amount
+           
            upfront = numeric(),
            ptsUpfront = numeric(),
            spreadDV01 = numeric(),
            IRDV01 = numeric(),
-           RecRisk01 = numeric(),
-           defaultProb = numeric(),
-           defaultExpo = numeric(),
-           price = numeric(),
-           conventions = data.frame()
+           RecRisk01 = numeric()
          )
 )

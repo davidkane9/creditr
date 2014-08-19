@@ -56,43 +56,34 @@
 #' require(CDS)
 #' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
-CDS <- function(contract = "SNAC", 
+CDS <- function(## name stuff
                 name = NULL,
+                contract = "SNAC", 
                 RED = NULL,
+
                 date = Sys.Date(),
-                
-                ## IR curve dates
-                
-                baseDate = as.Date(date) + 2,
-                currency = "USD",
-                
-                ## interest.rates stuff
-                
-                interest.rates = list(types = NULL,
-                                     rates = NULL,
-                                     expiries = NULL),
-                ## CDS 
-                
-                dates = as.vector(data.frame(effectiveDate = NA,
-                          valueDate = NA,
-                          benchmarkDate = NA,
-                          startDate = NA, 
-                          endDate = NA, 
-                          stepinDate = NA,
-                          backstopDate = NA,
-                          firstcouponDate = NA,
-                          pencouponDate = NA)),
-                
+                spread = NULL,
                 maturity = NULL,
                 tenor = NULL,
-                spread = NULL,
                 coupon = 100,
                 recovery.rate = 0.4,
-                upfront = NULL,
-                ptsUpfront = NULL,
+                currency = "USD",
                 isPriceClean = FALSE,
                 notional = 1e7,
                 payAccruedOnDefault = TRUE,
+                
+                ## dates
+                
+                dates = as.vector(data.frame(effectiveDate = NA,
+                                             valueDate = NA,
+                                             benchmarkDate = NA,
+                                             startDate = NA, 
+                                             endDate = NA, 
+                                             stepinDate = NA,
+                                             backstopDate = NA,
+                                             firstcouponDate = NA,
+                                             pencouponDate = NA)),
+                baseDate = as.Date(date) + 2,
                 
                 ## conventions
                 
@@ -104,10 +95,18 @@ CDS <- function(contract = "SNAC",
                                                    floatSwapFreq = "3M",
                                                    holidays = "None",
                                                    dccCDS = "ACT/360",
-                                                   
-                                              
                                                    badDayConvCDS = "F",
-                                                   badDayConvZC = "M"))
+                                                   badDayConvZC = "M")),
+                
+                ## interest.rates stuff
+                
+                interest.rates = list(types = NULL,
+                                     rates = NULL,
+                                     expiries = NULL),
+                ## CDS
+                
+                upfront = NULL,
+                ptsUpfront = NULL             
 ){
   
   ## stop if date is invalid
@@ -216,22 +215,27 @@ CDS <- function(contract = "SNAC",
   ## create object of class CDS using the data we extracted
   
   cds <- new("CDS",
-             contract = contract,
+             
              name = name,
+             contract = contract,
              RED = RED,
+             
              date = date,
-             baseDate = baseDate,
-             currency = currency,
-             interest.rates = interest.rates,
-             dates = dates,
              maturity = maturity,
              tenor = as.numeric(tenor),
              coupon = coupon,
              recovery.rate = recovery.rate,
+             currency = currency,
              inputPriceClean = isPriceClean,
              notional = notional,
              payAccruedOnDefault = payAccruedOnDefault,
-             conventions = conventions
+             
+             dates = dates,
+             baseDate = baseDate,
+             
+             conventions = conventions,
+             
+             interest.rates = interest.rates          
   )
   
   ## if spread is given, calculate principal and accrual
