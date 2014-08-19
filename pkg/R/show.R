@@ -178,7 +178,7 @@ setMethod("show",
    cat(paste0("Credit curve effective of ",
               object@dates['effectiveDate'][[1]]), "\n")
    
-   ratesDf <- data.frame(Term = object@expiries, Rate = object@rates)
+   ratesDf <- data.frame(Term = object@interest.rates$expiries, Rate = object@interest.rates$rates)
    rowN <- ceiling(dim(ratesDf)[1]/2)
    
    nm <- list(ratesDf[1:rowN,],ratesDf[(rowN+1):dim(ratesDf)[1],]) 
