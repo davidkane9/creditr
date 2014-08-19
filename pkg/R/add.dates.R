@@ -35,7 +35,7 @@ add.dates <- function(x, date.var = "date",
   ## You must provide either a maturity or a tenor, but not both.
 
   stopifnot(! (is.null(x$maturity) & is.null(x$tenor)))
-  stopifnot(   is.null(x$maturity) | is.null(x$tenor))
+  stopifnot(is.null(x$maturity) | is.null(x$tenor))
   
   stepinDate <- as.Date(rep(NA, nrow(x)))
   valueDate <- as.Date(rep(NA, nrow(x)))

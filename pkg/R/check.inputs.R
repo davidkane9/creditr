@@ -22,8 +22,7 @@ check.inputs <- function(x,
 
   ## check if certain variables are contained in x
   
-  stopifnot(c(date.var, currency.var, maturity.var, tenor.var, 
-             spread.var, coupon.var, notional.var) %in% names(x))
+  stopifnot(c(date.var, currency.var, spread.var, coupon.var, notional.var) %in% names(x))
   
   ## check if variables are defined in the correct classes
   
@@ -42,7 +41,7 @@ check.inputs <- function(x,
   
   if(is.null(x[[tenor.var]]) | all(is.na(x[[tenor.var]]))){
     stopifnot(inherits(x[[maturity.var]], "Date"))
-  }else if(is.null(x[[maturity.var]]) | all(is.na(x[[maturity.var]]))){
+  }else if(is.null(x[[maturity.var]])){
     stopifnot(is.numeric(x[[tenor.var]]))
   }else{
     stopifnot(inherits(x[[maturity.var]], "Date") & is.numeric(x[[tenor.var]]))

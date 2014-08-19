@@ -11,7 +11,6 @@
 #' @examples 
 #' x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
-#' maturity = c(NA, NA),
 #' tenor = c(5, 5),
 #' spread = c(120, 110),
 #' coupon = c(100, 100),
@@ -53,36 +52,9 @@ IR.DV01 <- function(x,
   baseDate.vec <- JPY.condition(baseDate = baseDate.vec, TDate = x[[date.var]], 
                             currency = x[[currency.var]])
   
+  cdsDates <- add.dates(x)
+  
   for(i in 1:nrow(x)){
-    
-    ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
-    
-    ## if maturity date is not given we use the tenor and vice-versa, to get dates using
-    ## get.date function. Results are stored in cdsdates
-    
-    if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = x[[tenor.var]][i], maturity = NULL)
-    }
-    else if(is.null(x[[tenor.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
-    }  ## if both are entered, we arbitrarily use one of them
-    
-    else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
-    }
-    
-    ## relevant dates are extracted from get.dates and then separated into year,
-    ## month and date using separate.YMD (in internals.R). This is the format
-    ## required by the C code
-    
-    valueDate     <- cdsDates$valueDate
-    benchmarkDate <- cdsDates$startDate
-    startDate     <- cdsDates$startDate
-    endDate       <- cdsDates$endDate
-    stepinDate    <- cdsDates$stepinDate
     
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
@@ -106,11 +78,11 @@ IR.DV01 <- function(x,
                           holidays = "None",
                           
                           todayDate_input = separate.YMD(x[[date.var]][i]),
-                          valueDate_input = separate.YMD(valueDate),
-                          benchmarkDate_input = separate.YMD(benchmarkDate),
-                          startDate_input = separate.YMD(startDate),
-                          endDate_input = separate.YMD(endDate),
-                          stepinDate_input = separate.YMD(stepinDate),
+                          valueDate_input = separate.YMD(cdsDates$valueDate[i]),
+                          benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
+                          startDate_input = separate.YMD(cdsDates$startDate[i]),
+                          endDate_input = separate.YMD(cdsDates$endDate[i]),
+                          stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
                           
                           dccCDS = "ACT/360",
                           ivlCDS = "1Q",
@@ -143,11 +115,11 @@ IR.DV01 <- function(x,
                          holidays = "None",
                          
                          todayDate_input = separate.YMD(x[[date.var]][i]),
-                         valueDate_input = separate.YMD(valueDate),
-                         benchmarkDate_input = separate.YMD(benchmarkDate),
-                         startDate_input = separate.YMD(startDate),
-                         endDate_input = separate.YMD(endDate),
-                         stepinDate_input = separate.YMD(stepinDate),
+                         valueDate_input = separate.YMD(cdsDates$valueDate[i]),
+                         benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
+                         startDate_input = separate.YMD(cdsDates$startDate[i]),
+                         endDate_input = separate.YMD(cdsDates$endDate[i]),
+                         stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
                          
                          dccCDS = "ACT/360",
                          ivlCDS = "1Q",
@@ -164,7 +136,6 @@ IR.DV01 <- function(x,
                          PACKAGE = "CDS")
     
     IR.DV01[i] <- upfront.new - upfront.orig
-    
   }
   
   return(IR.DV01)
