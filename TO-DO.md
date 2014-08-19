@@ -7,3 +7,5 @@ CDS TO-DO List
 * Fix all line wraps by reformatting code.
 
 * Consider simply removing slots that we never use. For example, if everywhere in the package, the value of stubCDS is "F" then it doesn't need to be a slot. We can just hard code it as "F" everywhere it is used, which is probably only in getting passed to the C functions. Note that I think that a bunch of slots can be removed in this way. (stubCDS and freqCDS have been removed and hard coded, not sure if some others can also be deleted.)
+
+* Fix check.inputs so that it ensures that only one of maturity and tenor is passed in as input. (easy)
