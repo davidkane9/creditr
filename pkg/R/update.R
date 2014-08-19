@@ -57,11 +57,8 @@ setMethod("update",
                                 rates = object@rates,
                                 expiries = object@expiries,
                              
-                                valueDate = object@valueDate,
-                                benchmarkDate = object@benchmarkDate,
-                                startDate = object@startDate,
-                                endDate = object@endDate,
-                                stepinDate = object@stepinDate,
+                                dates = object@dates,
+                                
                                 maturity = object@maturity,
                                 tenor = object@tenor,                               
                                

@@ -135,13 +135,9 @@ CDS <- function(contract = "SNAC",
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
-<<<<<<< HEAD
-  dates['effectiveDate'] <- TDate
 
-=======
-  effectiveDate <- date
-  
->>>>>>> origin/master
+  dates['effectiveDate'] <- date
+
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
   
@@ -177,13 +173,11 @@ CDS <- function(contract = "SNAC",
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-<<<<<<< HEAD
-    ratesInfo     <- get.rates(date = TDate, currency = currency)
-    dates['effectiveDate'] <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
-=======
+
+    
     ratesInfo     <- get.rates(date = date, currency = currency)
-    effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
->>>>>>> origin/master
+    dates['effectiveDate'] <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+
     
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
@@ -502,17 +496,14 @@ CDS <- function(contract = "SNAC",
   cds@spreadDV01  <- spread.DV01(x)
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
-<<<<<<< HEAD
-  cds@defaultProb <- spread.to.pd(spread = cds@parSpread,
-                                 time = as.numeric(dates['endDate'][[1]] -
-                                                  as.Date(TDate))/360,
-                                 recovery.rate = recoveryRate)
-=======
+
+
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
-                                 time = as.numeric(as.Date(endDate) -
+                                 time = as.numeric(dates['endDate'][[1]] -
                                                   as.Date(date))/360,
                                  recovery.rate = recovery.rate)
->>>>>>> origin/master
+
+
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
