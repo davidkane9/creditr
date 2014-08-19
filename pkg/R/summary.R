@@ -16,10 +16,10 @@ setMethod("summary",
                       nchar(as.character(object@TDate))), collapse = ""))), "\n",
        
        
-       sprintf(paste("Entity Name:", object@entityName,
+       sprintf(paste("Entity Name:", object@name,
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Entity Name:")) -
-                       nchar(as.character(object@entityName))), collapse = ""))),
+                       nchar(as.character(object@name))), collapse = ""))),
        sprintf(paste("   RED:", object@RED,
                      sep = paste0(rep(" ", 40-nchar(as.character("   RED:")) -
                           nchar(as.character(object@RED))), collapse = ""))), "\n",

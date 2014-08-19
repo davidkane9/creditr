@@ -3,7 +3,7 @@
 #' Class definition for the \code{CDS-Class}
 #'
 #' @slot contract is the contract type, default SNAC
-#' @slot entityName is the name of the reference entity. Optional.
+#' @slot name is the name of the reference entity. Optional.
 #' @slot RED alphanumeric code assigned to the reference entity. Optional.
 #' @slot TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}.
@@ -88,7 +88,7 @@
 setClass("CDS",
          representation = representation(
            contract = "character",
-           entityName = "character",
+           name = "character",
            RED = "character",
            TDate = "Date",
            baseDate = "Date",
@@ -129,7 +129,7 @@ setClass("CDS",
          ),
          prototype = prototype(
            contract = character(),
-           entityName = character(),
+           name = character(),
            RED = character(),
            TDate = character(),
            baseDate = character(),

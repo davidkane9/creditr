@@ -48,7 +48,7 @@ setMethod("update",
                   newPtsUpfront <- NULL
               }
                   newCDS <- CDS(contract = object@contract,
-                                entityName = object@entityName,
+                                name = object@name,
                                 RED = object@RED,
                                 TDate = object@TDate,
                                 baseDate = object@baseDate,

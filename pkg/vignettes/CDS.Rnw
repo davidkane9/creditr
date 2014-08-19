@@ -1092,7 +1092,7 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an o
 
 <<>>=
 #library(CDS)
-#cds <- CDS(entityName = "Alcoa",
+#cds <- CDS(name = "Alcoa",
  #          RED = "49EB20",
   #         TDate = "2014-06-24",
    #        tenor = "5Y",
@@ -1192,7 +1192,7 @@ A user can call \texttt{summary} on a \texttt{cds1} to view essential informatio
 #summary(cds1)
 @
 
-In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{entityName} in the package) refers to the entity name of the CDS contract and is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
+In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{name} in the package) refers to the entity name of the CDS contract and is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
 \texttt{coupon} field. \texttt{upfront} indicates the dirty upfront payment in dollars or the cash settlement amount. 
 
 The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. In \texttt{cds1},the IR DV01 is \$66.14. \textbf{Recovery Risk 01} or \texttt{Rec Risk

@@ -4,7 +4,7 @@
 #' @name CDS
 #' 
 #' @param contract is the contract type, default SNAC
-#' @param entityName is the name of the reference entity. Optional.
+#' @param name is the name of the reference entity. Optional.
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
 #' @param TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
@@ -73,7 +73,7 @@
 #' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100) 
 
 CDS <- function(contract = "SNAC", 
-                entityName = NULL,
+                name = NULL,
                 RED = NULL,
                 
                 TDate = Sys.Date(),
@@ -204,7 +204,7 @@ CDS <- function(contract = "SNAC",
   
   ## if entity name and/or RED code is not provided, we set it as NA
   
-  if (is.null(entityName)) entityName <- "NA"
+  if (is.null(name)) name <- "NA"
   
   if (is.null(RED)) RED <- "NA"
   
@@ -212,7 +212,7 @@ CDS <- function(contract = "SNAC",
   
   cds <- new("CDS",
              contract = contract,
-             entityName = entityName,
+             name = name,
              RED = RED,
              TDate = TDate,
              baseDate = baseDate,
