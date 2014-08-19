@@ -3,7 +3,7 @@
 #' \code{pd.to.spread} to calculate spread using the probability of default, tenor and 
 #' recovery rate.
 #' 
-#' @param data dataset containing the recovery rate, tenor (in years), probability
+#' @param x dataset containing the recovery rate, tenor (in years), probability
 #' of default and trade date.
 #' @param recovery.rate.var name of the column containing the recovery rate in decimals.
 #' @param pd.var name of the column containing the probability of default in decimals.
@@ -13,7 +13,7 @@
 #' @return vector containing the spread values in basis points, calculated by inverting 
 #' the formula for probability of default given in the Bloomberg Manual
 
-pd.to.spread <- function(data, 
+pd.to.spread <- function(x, 
                          recovery.rate.var = "recoveryRate", 
                          tenor.var = "tenor", 
                          date.var = "date", 
@@ -21,14 +21,14 @@ pd.to.spread <- function(data,
   
   ## stop if the required variables are not contained in the data frame 
   
-  stopifnot(c(recovery.rate.var, tenor.var, date.var, pd.var) %in% names(data))
+  stopifnot(c(recovery.rate.var, tenor.var, date.var, pd.var) %in% names(x))
   
   ## stop if the variables do not belong to the correct class
   
-  #stopifnot(is.numeric(data[[tenor.var]]))
-  stopifnot(is.numeric(data[[recovery.rate.var]]))
-  stopifnot(is.numeric(data[[pd.var]]))
-  stopifnot(inherits(data[[date.var]], "Date"))
+  stopifnot(is.numeric(x[[tenor.var]]))
+  stopifnot(is.numeric(x[[recovery.rate.var]]))
+  stopifnot(is.numeric(x[[pd.var]]))
+  stopifnot(inherits(x[[date.var]], "Date"))
   
   ## calculate the exact time from the trade date till the maturity date
   ## Note: this 'time' is different from tenor. Let's say the trade date April 15, 2014
@@ -36,14 +36,15 @@ pd.to.spread <- function(data,
   ## used to calculate the spread is the time between June 20, 2019 and April 15, 2014,
   ## which is 5.255556 years.
   
-  time <- rep(NA, nrow(data))
+  time <- rep(NA, nrow(x))
   
-  for(i in 1:nrow(data)){
-    time[i] <- as.numeric((add.dates(data.frame(date = data[[date.var]][i], tenor = data[[tenor.var]][i]))$endDate)-data[[date.var]][i])/360    
+  for(i in 1:nrow(x)){
+    time[i] <- as.numeric((add.dates(data.frame(date = x[[date.var]][i], 
+    tenor = x[[tenor.var]][i]))$endDate)-x[[date.var]][i])/360    
   }
   
   ## calculate the spread by inverting the formula for probability of default
-  spread <- 1e4*(data[[recovery.rate.var]]-1)*log(1-data[[pd.var]])/time
+  spread <- 1e4*(x[[recovery.rate.var]]-1)*log(1-x[[pd.var]])/time
   
   return(spread)
 }
