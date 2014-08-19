@@ -54,7 +54,7 @@ payment.}
 
 \item{\code{tenor}}{of contract in number of years - 5, 3}
 
-\item{\code{parSpread}}{CDS par spread in bps.}
+\item{\code{spread}}{CDS par spread in bps.}
 
 \item{\code{coupon}}{quoted in bps. It specifies the payment amount from
 the protection buyer to the seller on a regular basis.}
@@ -108,7 +108,7 @@ itself.}
 recovery rate used in the CDS valuation were increased by 1\%.}
 
 \item{\code{defaultProb}}{is the approximate the default probability at
-time t given the \code{parSpread}.}
+time t given the \code{spread}.}
 
 \item{\code{defaultExpo}}{calculates the default exposure of a CDS contract
 based on the formula: Default Exposure: (1-Recovery Rate)*Notional

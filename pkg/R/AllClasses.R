@@ -29,7 +29,7 @@
 #' @slot stepinDate default is T + 1.
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
-#' @slot parSpread CDS par spread in bps.
+#' @slot spread CDS par spread in bps.
 #' @slot coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis.
 #' @slot recoveryRate in decimal. Default is 0.4.
@@ -70,7 +70,7 @@
 #' @slot RecRisk01 is the dollar value change in market value if the
 #' recovery rate used in the CDS valuation were increased by 1\%.
 #' @slot defaultProb is the approximate the default probability at
-#' time t given the \code{parSpread}.
+#' time t given the \code{spread}.
 #' @slot defaultExpo calculates the default exposure of a CDS contract
 #' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 #' - Principal.
@@ -108,7 +108,7 @@ setClass("CDS",
            maturity = "Date",
            tenor = "numeric",
            
-           parSpread = "numeric",
+           spread = "numeric",
            coupon = "numeric",
            recoveryRate = "numeric",
            inputPriceClean = "logical",
@@ -152,7 +152,7 @@ setClass("CDS",
            tenor = numeric(),
            
           
-           parSpread = numeric(),
+           spread = numeric(),
            coupon = numeric(),
            recoveryRate = numeric(),
            inputPriceClean = logical(),

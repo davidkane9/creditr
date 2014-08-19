@@ -1098,13 +1098,13 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an o
    #        tenor = "5Y",
     #       notional = 1e7,
      #      coupon = 100,
-      #     parSpread = 160)
+      #     spread = 160)
 @
 
-Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{parSpread}, and \texttt{maturity} information,
+Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{spread}, and \texttt{maturity} information,
 the valuation of the contract will be the same.
 
-Besides \texttt{parSpread}, a market paricipant can choose to specify either \texttt{ptsUpfront} or \texttt{upfront} to construct a \texttt{CDS} class object.\footnote{See Section \ref{sec:CashFlows1} for definitions on both terms.} One of the three arguments has to be specified in order to construct the \texttt{CDS} class object.
+Besides \texttt{spread}, a market paricipant can choose to specify either \texttt{ptsUpfront} or \texttt{upfront} to construct a \texttt{CDS} class object.\footnote{See Section \ref{sec:CashFlows1} for definitions on both terms.} One of the three arguments has to be specified in order to construct the \texttt{CDS} class object.
 
 %% No we haven't!
 
@@ -1270,7 +1270,7 @@ Function to calculate the increase in the upfront value when the recovery rate i
 #rec.risk.01(TDate = "2014-06-24",
  #         currency = "USD",
   #        tenor = "5Y",
-   #       parSpread = 160,
+   #       spread = 160,
     #      coupon = 100,
      #     recoveryRate = 0.4,
       #    notional = 1e7)
@@ -1284,7 +1284,7 @@ Function to calculate the increase in the upfront value when the interest rate o
     #    IR.DV.01(data.frame(TDate = "2014-04-22",
      #             currency = "USD",
       #            tenor = "5Y",
-       #           parSpread = 160,
+       #           spread = 160,
         #          coupon = 100,
          #         recoveryRate = 0.4,
           #        notional = 1e7)
@@ -1299,7 +1299,7 @@ Function to calculate the increase in the upfront value when the spread increase
 #spread.DV.01(TDate = "2014-04-22",
  #          currency = "USD",
   #         tenor = "5Y",
-   #        parSpread = 160,
+   #        spread = 160,
     #       coupon = 100,
      #      recoveryRate = 0.4,
       #     notional = 1e7)
@@ -1320,7 +1320,7 @@ Function to calculate the default exposure.
 Probability of default calculated using the function provided in the Bloomberg manual.
 
 <<echo = FALSE>>=
-#default.prob(parSpread = 160, t = 5, recoveryRate = 0.4)
+#default.prob(spread = 160, t = 5, recoveryRate = 0.4)
 @
 
 \section{Conclusion}

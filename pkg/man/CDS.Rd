@@ -8,7 +8,7 @@ CDS(contract = "SNAC", name = NULL, RED = NULL, TDate = Sys.Date(),
   baseDate = as.Date(TDate) + 2, currency = "USD", types = NULL,
   rates = NULL, expiries = NULL, valueDate = NULL, benchmarkDate = NULL,
   startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
-  tenor = NULL, parSpread = NULL, coupon = 100, recoveryRate = 0.4,
+  tenor = NULL, spread = NULL, coupon = 100, recoveryRate = 0.4,
   upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
   notional = 1e+07, payAccruedOnDefault = TRUE,
   convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
@@ -61,7 +61,7 @@ payment.}
 
 \item{tenor}{of contract. By default is set as 5}
 
-\item{parSpread}{CDS par spread in bps.}
+\item{spread}{CDS par spread in bps.}
 
 \item{coupon}{quoted in bps. It specifies the payment amount from
 the protection buyer to the seller on a regular basis. The default
@@ -112,6 +112,6 @@ contract.
 \examples{
 # Build a simple CDS class object
 require(CDS)
-cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100)
+cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 }
 

@@ -43,7 +43,7 @@ the underlying asset on which the payments are based.
 Default is 1e7, i.e. 10MM.}
 }
 \value{
-a vector containing the change in upfront when parSpread increase by
+a vector containing the change in upfront when spread increase by
 10%, for each corresponding CDS contract.
 }
 \description{

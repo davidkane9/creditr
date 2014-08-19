@@ -15,7 +15,7 @@
 #' @examples
 #'
 #' ## build a CDS class object
-#' cds1 <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100)
+#' cds1 <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 #'
 #' ## update
 #' update(cds1, spread = 55)
@@ -65,7 +65,7 @@ setMethod("update",
                                 maturity = object@maturity,
                                 tenor = object@tenor,                               
                                
-                                parSpread = newSpread,
+                                spread = newSpread,
                                 coupon = object@coupon,
                                 recoveryRate = object@recoveryRate,
                                 upfront = newUpfront,

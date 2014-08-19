@@ -8,7 +8,7 @@ PV.01(x, principal.var = "principal", spread.var = "spread",
   coupon.var = "coupon", notional.var = "notional")
 }
 \arguments{
-\item{x}{data frame containing the principal, parSpread, coupon and notional}
+\item{x}{data frame containing the principal, spread, coupon and notional}
 
 \item{principal.var}{name of the column containing the principal or
 clean upfront values of the CDS}
@@ -21,7 +21,7 @@ clean upfront values of the CDS}
 }
 \value{
 Vector containing the PV01 values using the formula:
-(principal/notional)*(10000/(parSpread-coupon))
+(principal/notional)*(10000/(spread-coupon))
 }
 \description{
 \code{PV01} to calculate present value 01 or present value of a stream of 1bp payments
