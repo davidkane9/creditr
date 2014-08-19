@@ -1,8 +1,6 @@
 CDS TO-DO List
 ========================================================
 
-* Perhaps all the date variables except for date (formerly TDate) should go in a named array called "dates"? Things like: startDate, stepinDate, benchmarkDate and so on. Obviously, we should tie this array into get.dates() as closely as possible.
-
 * Perhaps types, rates and expiries could all be put into a single slot. Again, we want to tie this grouping as closely as possible into the function (mostly get.rates(), I think?) which populate it.
 
 * Do we ever need isPriceClean an payAccruedOnDefault as arguments to functions like IR.DV01? I don't think so. So, let's remove them everywhere an hard code those default values.
