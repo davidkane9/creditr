@@ -14,7 +14,7 @@
 #' the formula for probability of default given in the Bloomberg Manual
 
 pd.to.spread <- function(x, 
-                         recovery.rate.var = "recoveryRate", 
+                         recovery.rate.var = "recovery.rate", 
                          tenor.var = "tenor", 
                          date.var = "date", 
                          pd.var = "PD"){

@@ -149,7 +149,7 @@ upfront <- function(x,
     calendar <- calendar
     spread <- x[i, spread.var]
     coupon <- x[i, coupon.var]
-    recoveryRate <- x[i, recovery.var]
+    recovery.rate <- x[i, recovery.var]
     isPriceClean <- isPriceClean
     payAccruedOnDefault <- TRUE
     notional <- notional
@@ -253,7 +253,7 @@ upfront <- function(x,
                         
                         parSpread = spread,
                         couponRate = coupon,
-                        recoveryRate = recoveryRate,
+                        recoveryRate = recovery.rate,
                         isPriceClean_input = isPriceClean,
                         payAccruedOnDefault_input = payAccruedOnDefault,
                         notional = notional,

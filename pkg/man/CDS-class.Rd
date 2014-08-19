@@ -59,7 +59,7 @@ payment.}
 \item{\code{coupon}}{quoted in bps. It specifies the payment amount from
 the protection buyer to the seller on a regular basis.}
 
-\item{\code{recoveryRate}}{in decimal. Default is 0.4.}
+\item{\code{recovery.rate}}{in decimal. Default is 0.4.}
 
 \item{\code{inputPriceClean}}{records the \code{isPriceClean} argument
 input by the user. \code{isPriceClean} refers to the type of

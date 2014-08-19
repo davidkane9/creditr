@@ -11,7 +11,7 @@ spread(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
   endDate = NULL, stepinDate = NULL, maturity = NULL, tenor = NULL,
   dccCDS = "ACT/360", freqCDS = "Q", stubCDS = "F", badDayConvCDS = "F",
   calendar = "None", upfront = NULL, ptsUpfront = NULL, coupon = 100,
-  recoveryRate = 0.4, payAccruedAtStart = FALSE, notional = 1e+07,
+  recovery.rate = 0.4, payAccruedAtStart = FALSE, notional = 1e+07,
   payAccruedOnDefault = TRUE)
 }
 \arguments{
@@ -106,7 +106,7 @@ points are negative.}
 the protection buyer to the seller on a regular basis. The default
 is 100 bps.}
 
-\item{recoveryRate}{in decimal. Default is 0.4.}
+\item{recovery.rate}{in decimal. Default is 0.4.}
 
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}

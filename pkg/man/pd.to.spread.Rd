@@ -3,7 +3,7 @@
 \alias{pd.to.spread}
 \title{Calculate spread with Default Probability}
 \usage{
-pd.to.spread(x, recovery.rate.var = "recoveryRate", tenor.var = "tenor",
+pd.to.spread(x, recovery.rate.var = "recovery.rate", tenor.var = "tenor",
   date.var = "date", pd.var = "PD")
 }
 \arguments{

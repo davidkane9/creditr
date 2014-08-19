@@ -35,7 +35,7 @@
 #' @param coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis. The default
 #' is 100 bps.
-#' @param recoveryRate in decimal. Default is 0.4.
+#' @param recovery.rate in decimal. Default is 0.4.
 #' @param upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -98,7 +98,7 @@ CDS <- function(contract = "SNAC",
                 
                 spread = NULL,
                 coupon = 100,
-                recoveryRate = 0.4,
+                recovery.rate = 0.4,
                 upfront = NULL,
                 ptsUpfront = NULL,
                 isPriceClean = FALSE,
@@ -236,7 +236,7 @@ CDS <- function(contract = "SNAC",
              
           
              coupon = coupon,
-             recoveryRate = recoveryRate,
+             recovery.rate = recovery.rate,
              inputPriceClean = isPriceClean,
              notional = notional,
              payAccruedOnDefault = payAccruedOnDefault,
@@ -257,7 +257,7 @@ CDS <- function(contract = "SNAC",
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
-                     recovery = c(cds@recoveryRate))
+                     recovery = c(cds@recovery.rate))
     
     ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                           expiries = expiries, rates = rates)
@@ -308,7 +308,7 @@ CDS <- function(contract = "SNAC",
                             upfront = upfront,
                             ptsUpfront = ptsUpfront,
                             coupon = coupon, 
-                            recoveryRate = recoveryRate,
+                            recovery.rate = recovery.rate,
                             payAccruedAtStart = isPriceClean,
                             notional = notional,
                             payAccruedOnDefault = payAccruedOnDefault)
@@ -324,7 +324,7 @@ CDS <- function(contract = "SNAC",
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
-                     recovery = c(cds@recoveryRate))
+                     recovery = c(cds@recovery.rate))
     
     ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                           expiries = expiries, rates = rates)
@@ -377,7 +377,7 @@ CDS <- function(contract = "SNAC",
                               upfront = NULL,
                               ptsUpfront = cds@ptsUpfront,
                               coupon = coupon,
-                              recoveryRate = recoveryRate,
+                              recovery.rate = recovery.rate,
                               payAccruedAtStart = TRUE,
                               payAccruedOnDefault = payAccruedOnDefault,
                               notional = notional)
@@ -389,7 +389,7 @@ CDS <- function(contract = "SNAC",
                        coupon = c(cds@coupon),
                        tenor = c(cds@tenor),
                        currency = c(cds@currency),
-                       recovery = c(cds@recoveryRate))
+                       recovery = c(cds@recovery.rate))
       
       ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                             expiries = expiries, rates = rates)
@@ -434,7 +434,7 @@ CDS <- function(contract = "SNAC",
                               upfront = upfront,
                               ptsUpfront = NULL,
                               coupon = coupon,
-                              recoveryRate = recoveryRate,
+                              recovery.rate = recovery.rate,
                               payAccruedAtStart = FALSE,
                               notional = notional,
                               payAccruedOnDefault = payAccruedOnDefault)
@@ -446,7 +446,7 @@ CDS <- function(contract = "SNAC",
                        coupon = c(cds@coupon),
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
-                       recovery = c(cds@recoveryRate))
+                       recovery = c(cds@recovery.rate))
       
       ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
                             expiries = expiries, rates = rates)
@@ -493,7 +493,7 @@ CDS <- function(contract = "SNAC",
                   tenor = c(cds@tenor),
                   spread = c(spread),
                   coupon = c(cds@coupon),
-                  recoveryRate = c(cds@recoveryRate),
+                  recovery.rate = c(cds@recovery.rate),
                   notional = c(cds@notional))
   
   cds@spreadDV01  <- spread.DV01(x)
@@ -502,12 +502,12 @@ CDS <- function(contract = "SNAC",
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
                                  time = as.numeric(as.Date(endDate) -
                                                   as.Date(TDate))/360,
-                                 recovery.rate = recoveryRate)
+                                 recovery.rate = recovery.rate)
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
   
-  cds@defaultExpo <- (1-recoveryRate) * notional - cds@principal
+  cds@defaultExpo <- (1-recovery.rate) * notional - cds@principal
 
   cds@price       <- (1 - cds@principal / notional) * 100
   

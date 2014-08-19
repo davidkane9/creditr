@@ -55,7 +55,7 @@ spread <- function(TDate,
                    upfront = NULL,
                    ptsUpfront = NULL,
                    coupon = 100, 
-                   recoveryRate = 0.4,
+                   recovery.rate = 0.4,
                    payAccruedAtStart = FALSE,
                    notional = 1e7,
                    payAccruedOnDefault = TRUE){
@@ -150,7 +150,7 @@ spread <- function(TDate,
           calendar_input = calendar,
 
           upfrontCharge_input = ptsUpfront,
-          recoveryRate_input = recoveryRate,
+          recoveryRate_input = recovery.rate,
           payAccruedAtStart_input = payAccruedAtStart,
           PACKAGE = "CDS")
 

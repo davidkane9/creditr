@@ -34,7 +34,7 @@
 #' tenor = c(5, 5),
 #' spread = c(120, 110),
 #' coupon = c(100, 100),
-#' recoveryRate = c(0.4, 0.4),
+#' recovery.rate = c(0.4, 0.4),
 #' notional = c(1e7, 1e7))
 #' result <- CS10(x)
 
@@ -45,7 +45,7 @@ CS10 <- function(x,
                     tenor.var = "tenor",
                     spread.var = "spread",
                     coupon.var = "coupon",
-                    RR.var = "recoveryRate",
+                    RR.var = "recovery.rate",
                     notional.var = "notional",
                     isPriceClean = FALSE,
                     payAccruedOnDefault = TRUE

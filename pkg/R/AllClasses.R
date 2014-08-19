@@ -32,7 +32,7 @@
 #' @slot spread CDS par spread in bps.
 #' @slot coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis.
-#' @slot recoveryRate in decimal. Default is 0.4.
+#' @slot recovery.rate in decimal. Default is 0.4.
 #' @slot inputPriceClean records the \code{isPriceClean} argument
 #' input by the user. \code{isPriceClean} refers to the type of
 #' upfront calculated. It is boolean. When \code{TRUE}, calculate
@@ -110,7 +110,7 @@ setClass("CDS",
            
            spread = "numeric",
            coupon = "numeric",
-           recoveryRate = "numeric",
+           recovery.rate = "numeric",
            inputPriceClean = "logical",
            notional = "numeric",
            payAccruedOnDefault = "logical",
@@ -154,7 +154,7 @@ setClass("CDS",
           
            spread = numeric(),
            coupon = numeric(),
-           recoveryRate = numeric(),
+           recovery.rate = numeric(),
            inputPriceClean = logical(),
            notional = numeric(),
            payAccruedOnDefault = logical(),

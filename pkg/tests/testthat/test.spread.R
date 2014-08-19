@@ -28,7 +28,7 @@ test_that("test for spread", {
      
                      upfront = 18624,
                      coupon = 100, 
-                     recoveryRate = .4,
+                     recovery.rate = .4,
                      payAccruedAtStart = FALSE,
                      notional = 1e7,
                      payAccruedOnDefault = TRUE,
@@ -66,7 +66,7 @@ test_that("test for spread", {
                      
                      upfront = 18623.7,
                      coupon = 100, 
-                     recoveryRate = 0.4,
+                     recovery.rate = 0.4,
                      payAccruedAtStart = FALSE,
                      notional = 1e7,
                      payAccruedOnDefault = TRUE)
@@ -105,7 +105,7 @@ test_that("test for spread", {
   
                     upfront = -1e7*3.48963/100,
                    coupon = 100, 
-                    recoveryRate = .4,
+                    recovery.rate = .4,
                     payAccruedAtStart = FALSE,
                   notional = 1e7,
                     payAccruedOnDefault = TRUE)
@@ -123,7 +123,7 @@ test_that("test for spread", {
   
                     upfront = -1e7*3.41/100,
                     coupon = 100, 
-                    recoveryRate = .4,
+                    recovery.rate = .4,
                     payAccruedAtStart = TRUE,
                     notional = 1e7,
                     payAccruedOnDefault = TRUE)
@@ -160,7 +160,7 @@ test_that("test for spread", {
                      
                      upfront = -1e7*3.48963/100,
                      coupon = 100, 
-                     recoveryRate = .4,
+                     recovery.rate = .4,
                      payAccruedAtStart = FALSE,
                      notional = 1e7,
                      payAccruedOnDefault = TRUE)
@@ -180,7 +180,7 @@ test_that("test for spread", {
                      
                      upfront = -1e7*3.41/100,
                      coupon = 100, 
-                     recoveryRate = .4,
+                     recovery.rate = .4,
                      payAccruedAtStart = TRUE,
                      notional = 1e7,
                      payAccruedOnDefault = TRUE)

@@ -13,7 +13,7 @@ test_that("test for spread.DV01", {
                   tenor = 5,
                   spread = 105.8,
                   coupon = 100,
-                  recoveryRate = 0.4,
+                  recovery.rate = 0.4,
                   notional = 1e7)
   
   result.1 <- spread.DV01(x)

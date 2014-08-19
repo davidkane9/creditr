@@ -9,7 +9,7 @@ test_that("test for rec.risk.01", {
                   tenor = c(5, 5),
                   spread = c(105.8, 99),
                   coupon = c(100, 100),
-                  recoveryRate = c(0.4, 0.4),
+                  recovery.rate = c(0.4, 0.4),
                   notional = c(1e7, 1e7))
   
   result <- rec.risk.01(x)

@@ -8,7 +8,7 @@ CDS(contract = "SNAC", name = NULL, RED = NULL, TDate = Sys.Date(),
   baseDate = as.Date(TDate) + 2, currency = "USD", types = NULL,
   rates = NULL, expiries = NULL, valueDate = NULL, benchmarkDate = NULL,
   startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
-  tenor = NULL, spread = NULL, coupon = 100, recoveryRate = 0.4,
+  tenor = NULL, spread = NULL, coupon = 100, recovery.rate = 0.4,
   upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
   notional = 1e+07, payAccruedOnDefault = TRUE,
   convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
@@ -67,7 +67,7 @@ payment.}
 the protection buyer to the seller on a regular basis. The default
 is 100 bps.}
 
-\item{recoveryRate}{in decimal. Default is 0.4.}
+\item{recovery.rate}{in decimal. Default is 0.4.}
 
 \item{upfront}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

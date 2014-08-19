@@ -67,7 +67,7 @@ setMethod("update",
                                
                                 spread = newSpread,
                                 coupon = object@coupon,
-                                recoveryRate = object@recoveryRate,
+                                recovery.rate = object@recovery.rate,
                                 upfront = newUpfront,
                                 ptsUpfront = newPtsUpfront, 
                                 isPriceClean = isPriceClean,
