@@ -143,19 +143,19 @@ CDS <- function(contract = "SNAC",
   effectiveDate <- TDate
   
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
-  ## get.date function. Results are stored in cdsdates
+  ## add.dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
-    cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
+    cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
   } else{
     if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), 
-                           tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+                                       maturity = as.Date(maturity)))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
-      cdsDates <- get.date(date = as.Date(TDate), 
-                           tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+                                       maturity = as.Date(maturity)))
     }
   }
   
@@ -479,7 +479,7 @@ CDS <- function(contract = "SNAC",
       cds@tenor <- as.numeric(tenor.mondf)/12
   }
   
-  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using get.date.
+  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
   
   if(is.null(maturity)){
     cds@maturity = endDate
