@@ -58,5 +58,6 @@ spread = c(120, 110),
 coupon = c(100, 100),
 recoveryRate = c(0.4, 0.4),
 notional = c(1e7, 1e7))
+spread.DV01(x)
 }
 
