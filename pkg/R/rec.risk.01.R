@@ -34,7 +34,6 @@ rec.risk.01 <- function(x,
     ## check if certain variables are contained in x
     
   x <- check.inputs(x, date.var = date.var, currency.var = currency.var,
-                    maturity.var = maturity.var, tenor.var = tenor.var,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var)
         
@@ -63,7 +62,7 @@ rec.risk.01 <- function(x,
     ## if maturity date is not given we use the tenor and vice-versa, to get dates using
     ## get.date function. Results are stored in cdsdates
     
-    if(is.null(x[[maturity.var]][i]) | is.na(x[[maturity.var]][i])){
+    if(is.null(x[[maturity.var]][i])){
       cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
                            tenor = x[[tenor.var]][i], maturity = NULL)
     }
