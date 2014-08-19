@@ -7,12 +7,9 @@ test_that("test for spread.DV01", {
    truth.1 <- 4825.49
   
   ## save(truth.1, file = "spread.DV01.test.RData")
-  
-  
-  
+
   x <- data.frame(date = as.Date("2014-04-22"),
                   currency = "USD",
-                  maturity = NA,
                   tenor = 5,
                   spread = 105.8,
                   coupon = 100,

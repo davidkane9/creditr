@@ -53,7 +53,6 @@ value when the spread rises by 1 basis point
 \examples{
 x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 currency = c("USD", "EUR"),
-maturity = c(NA, NA),
 tenor = c(5, 5),
 spread = c(120, 110),
 coupon = c(100, 100),

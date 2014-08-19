@@ -7,7 +7,6 @@ test_that("test for rec.risk.01", {
   x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                   currency = c("USD", "EUR"),
                   tenor = c(5, 5),
-                  maturity = c(NA, NA),
                   spread = c(105.8, 99),
                   coupon = c(100, 100),
                   recoveryRate = c(0.4, 0.4),

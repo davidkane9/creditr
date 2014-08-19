@@ -387,7 +387,7 @@ CDS <- function(contract = "SNAC",
       df <- data.frame(date = c(as.Date(cds@TDate)),
                        spread = c(parSpread),
                        coupon = c(cds@coupon),
-                       maturity = c(cds@maturity),
+                       tenor = c(cds@tenor),
                        currency = c(cds@currency),
                        recovery = c(cds@recoveryRate))
       
@@ -474,7 +474,7 @@ CDS <- function(contract = "SNAC",
       lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
       monnb2 <- lt2$year*12 + lt2$mon
       
-      tenor.mondf <- monnb2 - monnb2
+      tenor.mondf <- monnb2 - monnb1
       
       cds@tenor <- as.numeric(tenor.mondf)/12
   }
