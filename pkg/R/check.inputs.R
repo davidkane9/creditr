@@ -34,17 +34,14 @@ check.inputs <- function(x,
   
   ## check maturity OR tenor
   
-  if(is.null(x[[tenor.var]]) & is.null(x[[maturity.var]])){
-    stop("please enter a tenor OR maturity")
-  }
-  
-  
-  if(is.null(x[[tenor.var]]) | all(is.na(x[[tenor.var]]))){
-    stopifnot(inherits(x[[maturity.var]], "Date"))
-  }else if(is.null(x[[maturity.var]])){
+  if(maturity.var %in% names(x) & tenor.var %in% names(x)){
+    stop("do not provide both maturity and tenor")
+  }else if(maturity.var %in% names(x)){
+    stopifnot(inherits(x[[maturity.var]], "Dates"))
+  }else if(tenor.var %in% names(x)){
     stopifnot(is.numeric(x[[tenor.var]]))
   }else{
-    stopifnot(inherits(x[[maturity.var]], "Date") & is.numeric(x[[tenor.var]]))
+    stop("provide either tenor OR maturity")
   }
   
   stopifnot(is.numeric(x[[spread.var]]))
