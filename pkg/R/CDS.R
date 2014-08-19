@@ -11,13 +11,7 @@
 #' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
 #' Format must be YYYY-MM-DD. 
 #' @param currency in which CDS is denominated. 
-#' @param types is a string indicating the names of the instruments
-#' used for the yield curve. 'M' means money market rate; 'S' is swap
-#' rate.
-#' @param rates is an array of numeric values indicating the rate of
-#' each instrument.
-#' @param expiries is an array of characters indicating the maturity
-#' of each instrument.
+#' @param interest.rates a list which contains types, rates and expiries
 #' @param dates named array which contains relevant date data
 #' @param maturity date of the CDS contract.
 #' @param tenor of contract. By default is set as 5
@@ -72,10 +66,10 @@ CDS <- function(contract = "SNAC",
                 
                 baseDate = as.Date(date) + 2,
                 currency = "USD",
-                types = NULL,
-                rates = NULL,
-                expiries = NULL,
                 
+                interest.rates = list(types = NULL,
+                                     rates = NULL,
+                                     expiries = NULL),
                 ## CDS 
                 
                 dates = as.vector(data.frame(effectiveDate = NA,
@@ -166,12 +160,12 @@ CDS <- function(contract = "SNAC",
   
   ## stop if the number of interest rates is not the same as number of expiries
   
-  stopifnot(all.equal(length(rates), length(expiries), nchar(types)))  
+  stopifnot(all.equal(length(interest.rates$rates), length(interest.rates$expiries), nchar(interest.rates$types)))  
   
   ## if the rates are not entered, we extract them using get.rates, and store them
   ## in ratesinfo 
   
-  if ((is.null(types) | is.null(rates) | is.null(expiries))){
+  if ((is.null(interest.rates$types) | is.null(interest.rates$rates) | is.null(interest.rates$expiries))){
     
 
     
@@ -182,9 +176,9 @@ CDS <- function(contract = "SNAC",
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
     
-    if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
-    if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
+    if (is.null(interest.rates$types)) interest.rates$types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
+    if (is.null(interest.rates$rates)) interest.rates$rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
+    if (is.null(interest.rates$expiries)) interest.rates$expiries <- as.character(ratesInfo[[1]]$expiry)
     if (is.null(conventions['mmDCC'])) conventions['mmDCC']       <- as.character(ratesInfo[[2]]$mmDCC)
     
     if (is.null(conventions['fixedSwapFreq'])){ 
@@ -221,9 +215,7 @@ CDS <- function(contract = "SNAC",
              baseDate = baseDate,
              currency = currency,
              
-             types = types,
-             rates = rates,
-             expiries = expiries,
+             interest.rates = interest.rates,
              
              dates = dates,
              
@@ -257,7 +249,7 @@ CDS <- function(contract = "SNAC",
                      recovery = c(cds@recovery.rate))
     
     ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                          expiries = expiries, rates = rates)
+                          expiries = interest.rates$expiries, rates = interest.rates$rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                isPriceClean = TRUE)
@@ -281,9 +273,9 @@ CDS <- function(contract = "SNAC",
     cds@spread <- spread(date = date,
                             baseDate = baseDate,
                             currency = currency,
-                            types = types,
-                            rates = rates,
-                            expiries = expiries,
+                            types = interest.rates$types,
+                            rates = interest.rates$rates,
+                            expiries = interest.rates$expiries,
                             mmDCC = conventions['mmDCC'],
                             fixedSwapFreq = conventions['fixedSwapFreq'],
                             floatSwapFreq = conventions['floatSwapFreq'],
@@ -324,7 +316,7 @@ CDS <- function(contract = "SNAC",
                      recovery = c(cds@recovery.rate))
     
     ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                          expiries = expiries, rates = rates)
+                          expiries = interest.rates$expiries, rates = interest.rates$rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                isPriceClean = FALSE)
@@ -349,9 +341,9 @@ CDS <- function(contract = "SNAC",
       cds@spread <- spread(date = date,
                               baseDate = baseDate,
                               currency = currency,
-                              types = types,
-                              rates = rates,
-                              expiries = expiries,
+                              types = interest.rates$types,
+                              rates = interest.rates$rates,
+                              expiries = interest.rates$expiries,
                               mmDCC = conventions['mmDCC'],
                               fixedSwapFreq = conventions['fixedSwapFreq'],
                               floatSwapFreq = conventions['floatSwapFreq'],
@@ -389,7 +381,7 @@ CDS <- function(contract = "SNAC",
                        recovery = c(cds@recovery.rate))
       
       ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                            expiries = expiries, rates = rates)
+                            expiries = interest.rates$expiries, rates = interest.rates$rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                  isPriceClean = FALSE)
@@ -406,9 +398,9 @@ CDS <- function(contract = "SNAC",
       cds@spread <- spread(date = date,
                               baseDate = baseDate,
                               currency = currency,
-                              types = types,
-                              rates = rates,
-                              expiries = expiries,
+                              types = interest.rates$types,
+                              rates = interest.rates$rates,
+                              expiries = interest.rates$expiries,
                               mmDCC = conventions['mmDCC'],
                               fixedSwapFreq = conventions['fixedSwapFreq'],
                               floatSwapFreq = conventions['floatSwapFreq'],
@@ -446,7 +438,7 @@ CDS <- function(contract = "SNAC",
                        recovery = c(cds@recovery.rate))
       
       ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                            expiries = expiries, rates = rates)
+                            expiries = interest.rates$expiries, rates = interest.rates$rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
                                  isPriceClean = TRUE)

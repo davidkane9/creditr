@@ -9,13 +9,7 @@
 #' is \code{Sys.Date}.
 #' @slot baseDate is the start date for the IR curve. Default is date. 
 #' @slot currency in which CDS is denominated. 
-#' @slot types is a string indicating the names of the instruments
-#' used for the yield curve. 'M' means money market rate; 'S' is swap
-#' rate.
-#' @slot rates is an array of numeric values indicating the rate of
-#' each instrument.
-#' @slot expiries is an array of characters indicating the maturity
-#' of each instrument.
+#' @slot interest.rates a list which contains types, rates and expiries
 #' @slot dates named array which contains relevant date data
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
@@ -83,9 +77,8 @@ setClass("CDS",
            date = "Date",
            baseDate = "Date",
            currency = "character",
-           types = "character",
-           rates = "numeric",
-           expiries = "character",
+           
+           interest.rates = "list",
            
            dates = "data.frame",
            
@@ -118,9 +111,8 @@ setClass("CDS",
            date = character(),
            baseDate = character(),
            currency = character(),
-           types = character(),
-           rates = numeric(),
-           expiries = character(),
+           
+           interest.rates = list(),
       
            
            dates = data.frame(),
