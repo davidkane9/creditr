@@ -18,83 +18,52 @@
 #' result <- rec.risk.01(x)
 
 rec.risk.01 <- function(x,
-                        date.var = "date",
-                        currency.var = "currency",
-                        maturity.var = "maturity",
-                        tenor.var = "tenor",
-                        spread.var = "spread",
-                        coupon.var = "coupon",
-                        RR.var = "recoveryRate",
-                        notional.var = "notional",
-                        isPriceClean = FALSE,
-                        payAccruedOnDefault = TRUE
+                    date.var = "date",
+                    currency.var = "currency",
+                    maturity.var = "maturity",
+                    tenor.var = "tenor",
+                    spread.var = "spread",
+                    coupon.var = "coupon",
+                    RR.var = "recoveryRate",
+                    notional.var = "notional",
+                    isPriceClean = FALSE,
+                    payAccruedOnDefault = TRUE
 ){
-
-    ## check if certain variables are contained in x
-    
+  
+  ## vector containing recRisk01 columns. By default it contains NAs, which
+  ## will be replaced by the recRisk01 values calculated by the function
+  
+  ## check if certain variables are contained in x
+  
   x <- check.inputs(x, date.var = date.var, currency.var = currency.var,
+                    maturity.var = maturity.var, tenor.var = tenor.var,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var)
-        
-    ## vector containing recRisk01 columns. By default it contains NAs, which
-    ## will be replaced by the recRisk01 values calculated by the function
   
-    rec.risk.01 <- rep(NA, nrow(x))
+  IR.DV01 <- rep(NA, nrow(x))
   
-    for(i in 1:nrow(x)){
-
-    ## Base date is TDate + 2 weekedays. For JPY, the baseDate is TDate + 2 business days.
-    
-    baseDate <- adj.next.bus.day(as.Date(x[[date.var]][i]) + 2)
-    TDate <- x[[date.var]][i]
-    currency <- x[[currency.var]][i]
-    
-    #baseDate <- x[[date.var]][i] + 2
-    
-    if(as.POSIXlt(baseDate)$wday == 1){ 
-      baseDate <- baseDate + 1
+  baseDate.vec <- lapply(adj.next.bus.day(x[[date.var]] + 2), function(y){
+    if(as.POSIXlt(y)$wday == 1){ 
+      y <- y + 1
     }
+    y})
+  
+  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, TDate = x[[date.var]], 
+                                currency = x[[currency.var]])
+  
+  cdsDates <- add.dates(x)
+  
+  for(i in 1:nrow(x)){
     
-    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
-                              currency = currency)
-    
-    ## if maturity date is not given we use the tenor and vice-versa, to get dates using
-    ## get.date function. Results are stored in cdsdates
-    
-    if(is.null(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = x[[tenor.var]][i], maturity = NULL)
-    }
-    else if(is.null(x[[tenor.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
-    } ## if both are entered, we arbitrarily use one of them
-    
-    else if((!is.null(x[[tenor.var]][i])) & !is.null(x[[maturity.var]][i])){
-      cdsDates <- get.date(date = as.Date(x[[date.var]][i]), 
-                           tenor = NULL, maturity = as.Date(x[[maturity.var]][i]))
-    }
-    
-    
-    ## relevant dates are extracted from get.dates and then separated into year,
-    ## month and date using separate.YMD (in internals.R). This is the format
-    ## required by the C code
-    
-    valueDate     <- cdsDates$valueDate
-    benchmarkDate <- cdsDates$startDate
-    startDate     <- cdsDates$startDate
-    endDate       <- cdsDates$endDate
-    stepinDate    <- cdsDates$stepinDate
-
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
     ratesInfo <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][i])
-        
+    
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = separate.YMD(baseDate),
+                          baseDate_input = separate.YMD(baseDate.vec[[i]]),
                           types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
@@ -108,11 +77,11 @@ rec.risk.01 <- function(x,
                           holidays = "None",
                           
                           todayDate_input = separate.YMD(x[[date.var]][i]),
-                          valueDate_input = separate.YMD(valueDate),
-                          benchmarkDate_input = separate.YMD(benchmarkDate),
-                          startDate_input = separate.YMD(startDate),
-                          endDate_input = separate.YMD(endDate),
-                          stepinDate_input = separate.YMD(stepinDate),
+                          valueDate_input = separate.YMD(cdsDates$valueDate[i]),
+                          benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
+                          startDate_input = separate.YMD(cdsDates$startDate[i]),
+                          endDate_input = separate.YMD(cdsDates$endDate[i]),
+                          stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
                           
                           dccCDS = "ACT/360",
                           ivlCDS = "1Q",
@@ -128,10 +97,10 @@ rec.risk.01 <- function(x,
                           notional = x[[notional.var]][i],
                           PACKAGE = "CDS")
     
-    ## call the upfront function again, this time with recoveryRate + 0.1
+    ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = separate.YMD(baseDate),
+                         baseDate_input = separate.YMD(baseDate.vec[[i]]),
                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                          expiries = as.character(ratesInfo[[1]]$expiry),
@@ -145,11 +114,11 @@ rec.risk.01 <- function(x,
                          holidays = "None",
                          
                          todayDate_input = separate.YMD(x[[date.var]][i]),
-                         valueDate_input = separate.YMD(valueDate),
-                         benchmarkDate_input = separate.YMD(benchmarkDate),
-                         startDate_input = separate.YMD(startDate),
-                         endDate_input = separate.YMD(endDate),
-                         stepinDate_input = separate.YMD(stepinDate),
+                         valueDate_input = separate.YMD(cdsDates$valueDate[i]),
+                         benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
+                         startDate_input = separate.YMD(cdsDates$startDate[i]),
+                         endDate_input = separate.YMD(cdsDates$endDate[i]),
+                         stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
                          
                          dccCDS = "ACT/360",
                          ivlCDS = "1Q",
@@ -165,10 +134,9 @@ rec.risk.01 <- function(x,
                          notional = x[[notional.var]][i],
                          PACKAGE = "CDS")
     
-    rec.risk.01[i] <- upfront.new - upfront.orig
-    
-    }
-
-    return(rec.risk.01)
-    
+    IR.DV01[i] <- upfront.new - upfront.orig
+  }
+  
+  return(IR.DV01)
+  
 }
