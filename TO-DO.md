@@ -1,6 +1,5 @@
 CDS TO-DO List
 ========================================================
-* Perhaps types, rates and expiries could all be put into a single slot. Again, we want to tie this grouping as closely as possible into the function (mostly get.rates(), I think?) which populate it.
 
 * Reorganize the order of the slots in CDS.R so that they are grouped in a sensible way, with lines skipped between the major groupings. name is probably the first slot, then all the variables (like date, spread, maturity, coupon, recovery.rate, et cetera) that one needs when calling the important data.frame functions, then the date stuff, then the conventions, ending with all the things that we need to calculate like upfronts, spreadDV01 and so on.
 
