@@ -53,9 +53,7 @@ setMethod("update",
                                 date = object@date,
                                 baseDate = object@baseDate,
                                 currency = object@currency,
-                                types = object@types,
-                                rates = object@rates,
-                                expiries = object@expiries,
+                                interest.rates = object@interest.rates,
                              
                                 dates = object@dates,
                                 
