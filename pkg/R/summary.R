@@ -28,9 +28,9 @@ setMethod("summary",
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Currency:")) -
                           nchar(as.character(object@currency))), collapse = ""))),
-       sprintf(paste("   End Date:", object@endDate,
+       sprintf(paste("   End Date:", object@dates['endDate'][[1]],
                      sep = paste0(rep(" ", 40-nchar(as.character("   End Date:")) -
-                          nchar(as.character(object@endDate))), collapse = ""))), "\n",
+                          nchar(as.character(object@dates['endDate'][[1]]))), collapse = ""))), "\n",
        sprintf(paste("Spread:",
                      format(round(object@spread, 4),big.mark = ",",
                             scientific=F),
