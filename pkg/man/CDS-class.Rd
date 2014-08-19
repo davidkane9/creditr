@@ -13,7 +13,7 @@ Class definition for the \code{CDS-Class}
 \describe{
 \item{\code{contract}}{is the contract type, default SNAC}
 
-\item{\code{entityName}}{is the name of the reference entity. Optional.}
+\item{\code{name}}{is the name of the reference entity. Optional.}
 
 \item{\code{RED}}{alphanumeric code assigned to the reference entity. Optional.}
 

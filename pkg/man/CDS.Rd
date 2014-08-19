@@ -4,13 +4,13 @@
 \title{Build a \code{CDS} class object given the input about a CDS
 contract.}
 \usage{
-CDS(contract = "SNAC", entityName = NULL, RED = NULL,
-  TDate = Sys.Date(), baseDate = as.Date(TDate) + 2, currency = "USD",
-  types = NULL, rates = NULL, expiries = NULL, valueDate = NULL,
-  benchmarkDate = NULL, startDate = NULL, endDate = NULL,
-  stepinDate = NULL, maturity = NULL, tenor = NULL, parSpread = NULL,
-  coupon = 100, recoveryRate = 0.4, upfront = NULL, ptsUpfront = NULL,
-  isPriceClean = FALSE, notional = 1e+07, payAccruedOnDefault = TRUE,
+CDS(contract = "SNAC", name = NULL, RED = NULL, TDate = Sys.Date(),
+  baseDate = as.Date(TDate) + 2, currency = "USD", types = NULL,
+  rates = NULL, expiries = NULL, valueDate = NULL, benchmarkDate = NULL,
+  startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
+  tenor = NULL, parSpread = NULL, coupon = 100, recoveryRate = 0.4,
+  upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
+  notional = 1e+07, payAccruedOnDefault = TRUE,
   convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
   fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", fixedSwapFreq = "6M",
   floatSwapFreq = "3M", holidays = "None", dccCDS = "ACT/360", badDayConvCDS =
@@ -19,7 +19,7 @@ CDS(contract = "SNAC", entityName = NULL, RED = NULL,
 \arguments{
 \item{contract}{is the contract type, default SNAC}
 
-\item{entityName}{is the name of the reference entity. Optional.}
+\item{name}{is the name of the reference entity. Optional.}
 
 \item{RED}{alphanumeric code assigned to the reference entity. Optional.}
 
