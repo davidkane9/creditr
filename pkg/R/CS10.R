@@ -25,7 +25,7 @@
 #' the underlying asset on which the payments are based. 
 #' Default is 1e7, i.e. 10MM.
 #' 
-#' @return a vector containing the change in upfront when spread increase by
+#' @return a vector containing the change in upfront when parSpread increase by
 #' 10%, for each corresponding CDS contract.
 #' 
 #' @examples 
@@ -110,7 +110,7 @@ CS10 <- function(x,
                           badDayConvCDS = "F",
                           calendar = "None",
                           
-                          spread = x[[spread.var]][i],
+                          parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
                           recoveryRate = x[[RR.var]][i],
                           isPriceClean_input = isPriceClean,
@@ -147,7 +147,7 @@ CS10 <- function(x,
                          badDayConvCDS = "F",
                          calendar = "None",
                          
-                         spread = x[[spread.var]][i] * 1.1,
+                         parSpread = x[[spread.var]][i] * 1.1,
                          couponRate = x[[coupon.var]][i],
                          recoveryRate = x[[RR.var]][i],
                          isPriceClean_input = isPriceClean,

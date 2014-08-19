@@ -6,7 +6,7 @@ library(utils)
 
 test_that("test show() method", {
   
-  cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+  cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, parSpread = 50, coupon = 100)
   
   output <- capture.output(show(cds))
   

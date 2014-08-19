@@ -6,7 +6,7 @@ test_that("test for spread", {
    ## object of class CDS
    object <- CDS(TDate = as.Date("2014-04-22"),
                 tenor = 5, 
-                spread = 105.8,
+                parSpread = 105.8,
                 coupon = 100,
                 recoveryRate = 0.4,
                 isPriceClean = FALSE,

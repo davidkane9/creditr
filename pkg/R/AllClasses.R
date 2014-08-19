@@ -3,7 +3,7 @@
 #' Class definition for the \code{CDS-Class}
 #'
 #' @slot contract is the contract type, default SNAC
-#' @slot name is the name of the reference entity. Optional.
+#' @slot entityName is the name of the reference entity. Optional.
 #' @slot RED alphanumeric code assigned to the reference entity. Optional.
 #' @slot TDate is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}.
@@ -29,7 +29,7 @@
 #' @slot stepinDate default is T + 1.
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
-#' @slot spread CDS par spread in bps.
+#' @slot parSpread CDS par spread in bps.
 #' @slot coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis.
 #' @slot recoveryRate in decimal. Default is 0.4.
@@ -70,7 +70,7 @@
 #' @slot RecRisk01 is the dollar value change in market value if the
 #' recovery rate used in the CDS valuation were increased by 1\%.
 #' @slot defaultProb is the approximate the default probability at
-#' time t given the \code{spread}.
+#' time t given the \code{parSpread}.
 #' @slot defaultExpo calculates the default exposure of a CDS contract
 #' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 #' - Principal.
@@ -88,7 +88,7 @@
 setClass("CDS",
          representation = representation(
            contract = "character",
-           name = "character",
+           entityName = "character",
            RED = "character",
            TDate = "Date",
            baseDate = "Date",
@@ -108,7 +108,7 @@ setClass("CDS",
            maturity = "Date",
            tenor = "numeric",
            
-           spread = "numeric",
+           parSpread = "numeric",
            coupon = "numeric",
            recoveryRate = "numeric",
            inputPriceClean = "logical",
@@ -129,7 +129,7 @@ setClass("CDS",
          ),
          prototype = prototype(
            contract = character(),
-           name = character(),
+           entityName = character(),
            RED = character(),
            TDate = character(),
            baseDate = character(),
@@ -152,7 +152,7 @@ setClass("CDS",
            tenor = numeric(),
            
           
-           spread = numeric(),
+           parSpread = numeric(),
            coupon = numeric(),
            recoveryRate = numeric(),
            inputPriceClean = logical(),

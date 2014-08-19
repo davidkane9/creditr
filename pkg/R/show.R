@@ -26,10 +26,10 @@ setMethod("show",
                                         nchar(as.character(object@currency))),
                                   collapse = ""))), "\n",
        
-       sprintf(paste("Entity Name:", object@name,
+       sprintf(paste("Entity Name:", object@entityName,
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Entity Name:")) -
-                                        nchar(as.character(object@name))), collapse = ""))),
+                                        nchar(as.character(object@entityName))), collapse = ""))),
        sprintf(paste("   RED:", object@RED,
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("   RED:")) -
@@ -88,11 +88,11 @@ setMethod("show",
                                   collapse = ""))), "\n",
        
        sprintf(paste("Spread:",
-                     format(round(object@spread, 4), big.mark = ",",
+                     format(round(object@parSpread, 4), big.mark = ",",
                             scientific = F),
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Spread:")) -
-                     nchar(as.character(format(round(object@spread, 4), big.mark = ",",
+                     nchar(as.character(format(round(object@parSpread, 4), big.mark = ",",
                                                                   scientific = F)))),
                                   collapse = ""))),
        sprintf(paste("   Pts Upfront:",
