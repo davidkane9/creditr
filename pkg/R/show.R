@@ -63,10 +63,10 @@ setMethod("show",
                                         nchar(as.character(object@dates['pencouponDate'][[1]]))),
                                   collapse = ""))), "\n",
        
-       sprintf(paste("Day Cnt:", object@convention['dccCDS'],
+       sprintf(paste("Day Cnt:", object@conventions['dccCDS'],
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Day Cnt:")) -
-                     nchar(as.character(object@convention['dccCDS']))), collapse = ""))), "\n",
+                     nchar(as.character(object@conventions['dccCDS']))), collapse = ""))), "\n",
        sep = ""
    )
    

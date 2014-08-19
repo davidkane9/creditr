@@ -48,7 +48,7 @@
 #' @param payAccruedOnDefault is a partial payment of the premium made
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}.
-#' @param convention a named vector which contains all the 12 conventional
+#' @param conventions a named vector which contains all the 12 conventional
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
 #' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
@@ -100,9 +100,9 @@ CDS <- function(contract = "SNAC",
                 notional = 1e7,
                 payAccruedOnDefault = TRUE,
                 
-                ## convention
+                ## conventions
                 
-                convention = as.vector(data.frame(mmDCC = "ACT/360",
+                conventions = as.vector(data.frame(mmDCC = "ACT/360",
                                                    calendar = "None",
                                                    fixedSwapDCC = "30/360",
                                                    floatSwapDCC = "ACT/360",
@@ -185,20 +185,20 @@ CDS <- function(contract = "SNAC",
     if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
     if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
     if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
-    if (is.null(convention['mmDCC'])) convention['mmDCC']       <- as.character(ratesInfo[[2]]$mmDCC)
+    if (is.null(conventions['mmDCC'])) conventions['mmDCC']       <- as.character(ratesInfo[[2]]$mmDCC)
     
-    if (is.null(convention['fixedSwapFreq'])){ 
-      convention['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)}
-    if (is.null(convention['floatSwapFreq'])){ 
-      convention['floatSwapFreq'] <- as.character(ratesInfo[[2]]$floatFreq)}
-    if (is.null(convention['fixedSwapDCC'])){ 
-      convention['fixedSwapDCC']   <- as.character(ratesInfo[[2]]$fixedDCC)}
-    if (is.null(convention['floatSwapDCC'])){ 
-      convention['floatSwapDCC']   <- as.character(ratesInfo[[2]]$floatDCC)}
-    if (is.null(convention['badDayConvZC'])){ 
-      convention['badDayConvZC']   <- as.character(ratesInfo[[2]]$badDayConvention)}
-    if (is.null(convention['holidays'])){ 
-      convention['holidays']       <- as.character(ratesInfo[[2]]$swapCalendars)}
+    if (is.null(conventions['fixedSwapFreq'])){ 
+      conventions['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)}
+    if (is.null(conventions['floatSwapFreq'])){ 
+      conventions['floatSwapFreq'] <- as.character(ratesInfo[[2]]$floatFreq)}
+    if (is.null(conventions['fixedSwapDCC'])){ 
+      conventions['fixedSwapDCC']   <- as.character(ratesInfo[[2]]$fixedDCC)}
+    if (is.null(conventions['floatSwapDCC'])){ 
+      conventions['floatSwapDCC']   <- as.character(ratesInfo[[2]]$floatDCC)}
+    if (is.null(conventions['badDayConvZC'])){ 
+      conventions['badDayConvZC']   <- as.character(ratesInfo[[2]]$badDayConvention)}
+    if (is.null(conventions['holidays'])){ 
+      conventions['holidays']       <- as.character(ratesInfo[[2]]$swapCalendars)}
   }
   
   ## if entity name and/or RED code is not provided, we set it as NA
@@ -238,7 +238,7 @@ CDS <- function(contract = "SNAC",
              notional = notional,
              payAccruedOnDefault = payAccruedOnDefault,
              
-             convention = convention
+             conventions = conventions
   )
   
   ## if spread is given, calculate principal and accrual
@@ -284,24 +284,24 @@ CDS <- function(contract = "SNAC",
                             types = types,
                             rates = rates,
                             expiries = expiries,
-                            mmDCC = convention['mmDCC'],
-                            fixedSwapFreq = convention['fixedSwapFreq'],
-                            floatSwapFreq = convention['floatSwapFreq'],
-                            fixedSwapDCC = convention['fixedSwapDCC'],
-                            floatSwapDCC = convention['floatSwapDCC'],
-                            badDayConvZC = convention['badDayConvZC'],
-                            holidays = convention['holidays'],
+                            mmDCC = conventions['mmDCC'],
+                            fixedSwapFreq = conventions['fixedSwapFreq'],
+                            floatSwapFreq = conventions['floatSwapFreq'],
+                            fixedSwapDCC = conventions['fixedSwapDCC'],
+                            floatSwapDCC = conventions['floatSwapDCC'],
+                            badDayConvZC = conventions['badDayConvZC'],
+                            holidays = conventions['holidays'],
                             valueDate = dates['valueDate'],
                             benchmarkDate = dates['benchmarkDate'],
                             startDate = dates['startDate'],
                             endDate = dates['endDate'],
                             stepinDate = dates['stepinDate'],
                             maturity = maturity,
-                            dccCDS = convention['dccCDS'],
+                            dccCDS = conventions['dccCDS'],
                             freqCDS = "Q",
                             stubCDS = "F",
-                            badDayConvCDS = convention['badDayConvCDS'],
-                            calendar = convention['calendar'],
+                            badDayConvCDS = conventions['badDayConvCDS'],
+                            calendar = conventions['calendar'],
                             upfront = upfront,
                             ptsUpfront = ptsUpfront,
                             coupon = coupon, 
@@ -352,13 +352,13 @@ CDS <- function(contract = "SNAC",
                               types = types,
                               rates = rates,
                               expiries = expiries,
-                              mmDCC = convention['mmDCC'],
-                              fixedSwapFreq = convention['fixedSwapFreq'],
-                              floatSwapFreq = convention['floatSwapFreq'],
-                              fixedSwapDCC = convention['fixedSwapDCC'],
-                              floatSwapDCC = convention['floatSwapDCC'],
-                              badDayConvZC = convention['badDayConvZC'],
-                              holidays = convention['holidays'],
+                              mmDCC = conventions['mmDCC'],
+                              fixedSwapFreq = conventions['fixedSwapFreq'],
+                              floatSwapFreq = conventions['floatSwapFreq'],
+                              fixedSwapDCC = conventions['fixedSwapDCC'],
+                              floatSwapDCC = conventions['floatSwapDCC'],
+                              badDayConvZC = conventions['badDayConvZC'],
+                              holidays = conventions['holidays'],
                               valueDate = dates['valueDate'], 
                               benchmarkDate = dates['benchmarkDate'], 
                               startDate = dates['startDate'], 
@@ -366,11 +366,11 @@ CDS <- function(contract = "SNAC",
                               stepinDate = dates['stepinDate'],
                               maturity = maturity,
                               tenor = tenor,
-                              dccCDS = convention['dccCDS'],
+                              dccCDS = conventions['dccCDS'],
                               freqCDS = "Q",
                               stubCDS = "F",
-                              badDayConvCDS = convention['badDayConvCDS'],
-                              calendar = convention['calendar'],
+                              badDayConvCDS = conventions['badDayConvCDS'],
+                              calendar = conventions['calendar'],
                               upfront = NULL,
                               ptsUpfront = cds@ptsUpfront,
                               coupon = coupon,
@@ -409,13 +409,13 @@ CDS <- function(contract = "SNAC",
                               types = types,
                               rates = rates,
                               expiries = expiries,
-                              mmDCC = convention['mmDCC'],
-                              fixedSwapFreq = convention['fixedSwapFreq'],
-                              floatSwapFreq = convention['floatSwapFreq'],
-                              fixedSwapDCC = convention['fixedSwapDCC'],
-                              floatSwapDCC = convention['floatSwapDCC'],
-                              badDayConvZC = convention['badDayConvZC'],
-                              holidays = convention['holidays'],
+                              mmDCC = conventions['mmDCC'],
+                              fixedSwapFreq = conventions['fixedSwapFreq'],
+                              floatSwapFreq = conventions['floatSwapFreq'],
+                              fixedSwapDCC = conventions['fixedSwapDCC'],
+                              floatSwapDCC = conventions['floatSwapDCC'],
+                              badDayConvZC = conventions['badDayConvZC'],
+                              holidays = conventions['holidays'],
                               valueDate = dates['valueDate'], 
                               benchmarkDate = dates['benchmarkDate'], 
                               startDate = dates['startDate'], 
@@ -423,11 +423,11 @@ CDS <- function(contract = "SNAC",
                               stepinDate = dates['stepinDate'],
                               maturity = maturity,
                               tenor = tenor,
-                              dccCDS = convention['dccCDS'],
+                              dccCDS = conventions['dccCDS'],
                               freqCDS = "Q",
                               stubCDS = "F",
-                              badDayConvCDS = convention['badDayConvCDS'],
-                              calendar = convention['calendar'],
+                              badDayConvCDS = conventions['badDayConvCDS'],
+                              calendar = conventions['calendar'],
                               upfront = upfront,
                               ptsUpfront = NULL,
                               coupon = coupon,

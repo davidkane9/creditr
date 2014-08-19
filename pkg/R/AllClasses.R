@@ -64,7 +64,7 @@
 #' @slot defaultExpo calculates the default exposure of a CDS contract
 #' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 #' - Principal.
-#' @slot convention a named vector which contains all the 12 conventional
+#' @slot conventions a named vector which contains all the 12 conventional
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
 #' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
@@ -109,7 +109,7 @@ setClass("CDS",
            defaultProb = "numeric",
            defaultExpo = "numeric",
            price = "numeric",
-           convention = "data.frame"
+           conventions = "data.frame"
          ),
          prototype = prototype(
            contract = character(),
@@ -145,6 +145,6 @@ setClass("CDS",
            defaultProb = numeric(),
            defaultExpo = numeric(),
            price = numeric(),
-           convention = data.frame()
+           conventions = data.frame()
          )
 )
