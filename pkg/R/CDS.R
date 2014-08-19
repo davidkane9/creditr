@@ -59,13 +59,14 @@
 CDS <- function(contract = "SNAC", 
                 name = NULL,
                 RED = NULL,
-                
                 date = Sys.Date(),
                 
                 ## IR curve dates
                 
                 baseDate = as.Date(date) + 2,
                 currency = "USD",
+                
+                ## interest.rates stuff
                 
                 interest.rates = list(types = NULL,
                                      rates = NULL,
@@ -84,7 +85,6 @@ CDS <- function(contract = "SNAC",
                 
                 maturity = NULL,
                 tenor = NULL,
-                
                 spread = NULL,
                 coupon = 100,
                 recovery.rate = 0.4,
@@ -176,11 +176,19 @@ CDS <- function(contract = "SNAC",
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
     
-    if (is.null(interest.rates$types)) interest.rates$types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-    if (is.null(interest.rates$rates)) interest.rates$rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
-    if (is.null(interest.rates$expiries)) interest.rates$expiries <- as.character(ratesInfo[[1]]$expiry)
-    if (is.null(conventions['mmDCC'])) conventions['mmDCC']       <- as.character(ratesInfo[[2]]$mmDCC)
+    ## interest.rates stuff
     
+    if (is.null(interest.rates$types)){ 
+      interest.rates$types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")}
+    if (is.null(interest.rates$rates)){
+      interest.rates$rates <- as.numeric(as.character(ratesInfo[[1]]$rate))}
+    if (is.null(interest.rates$expiries)){
+      interest.rates$expiries <- as.character(ratesInfo[[1]]$expiry)}
+    
+    ## conventions stuff
+    
+    if (is.null(conventions['mmDCC'])){
+      conventions['mmDCC']    <- as.character(ratesInfo[[2]]$mmDCC)}
     if (is.null(conventions['fixedSwapFreq'])){ 
       conventions['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)}
     if (is.null(conventions['floatSwapFreq'])){ 
@@ -214,22 +222,15 @@ CDS <- function(contract = "SNAC",
              date = date,
              baseDate = baseDate,
              currency = currency,
-             
              interest.rates = interest.rates,
-             
              dates = dates,
-             
-
              maturity = maturity,
              tenor = as.numeric(tenor),
-             
-          
              coupon = coupon,
              recovery.rate = recovery.rate,
              inputPriceClean = isPriceClean,
              notional = notional,
              payAccruedOnDefault = payAccruedOnDefault,
-             
              conventions = conventions
   )
   
@@ -488,24 +489,18 @@ CDS <- function(contract = "SNAC",
   cds@spreadDV01  <- spread.DV01(x)
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
-
-
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
                                  time = as.numeric(dates['endDate'][[1]] -
                                                   as.Date(date))/360,
                                  recovery.rate = recovery.rate)
 
-
-  
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
   
   cds@defaultExpo <- (1-recovery.rate) * notional - cds@principal
-
   cds@price       <- (1 - cds@principal / notional) * 100
   
   ## return object with all the calculated data
   
   return(cds)
-  
 }

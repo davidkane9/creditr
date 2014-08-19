@@ -54,12 +54,9 @@ setMethod("update",
                                 baseDate = object@baseDate,
                                 currency = object@currency,
                                 interest.rates = object@interest.rates,
-                             
-                                dates = object@dates,
-                                
+                                dates = object@dates, 
                                 maturity = object@maturity,
                                 tenor = object@tenor,                               
-                               
                                 spread = newSpread,
                                 coupon = object@coupon,
                                 recovery.rate = object@recovery.rate,

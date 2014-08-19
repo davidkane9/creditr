@@ -62,6 +62,7 @@
 #' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
 #' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 #' and badDayConvZC with their default values
+#' 
 #' @name CDS, CDS-class
 #' @aliases CDS, CDS-class
 #' @docType class
@@ -77,21 +78,16 @@ setClass("CDS",
            date = "Date",
            baseDate = "Date",
            currency = "character",
-           
            interest.rates = "list",
-           
            dates = "data.frame",
-           
            maturity = "Date",
            tenor = "numeric",
-           
            spread = "numeric",
            coupon = "numeric",
            recovery.rate = "numeric",
            inputPriceClean = "logical",
            notional = "numeric",
            payAccruedOnDefault = "logical",
-           
            principal = "numeric",
            accrual = "numeric",
            upfront = "numeric",
@@ -111,16 +107,10 @@ setClass("CDS",
            date = character(),
            baseDate = character(),
            currency = character(),
-           
            interest.rates = list(),
-      
-           
            dates = data.frame(),
-           
            maturity = character(),
            tenor = numeric(),
-           
-          
            spread = numeric(),
            coupon = numeric(),
            recovery.rate = numeric(),
