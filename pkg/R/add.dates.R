@@ -58,7 +58,6 @@ add.dates <- function(x, date.var = "date",
     length <- ret$tenor[i]
     
     dateWday <- as.POSIXlt(ret$date[i])$wday
-    if (!(dateWday %in% c(1:5))) stop("date must be a weekday")
     
     ## stepinDate is the date on which a party assumes ownership of a trade side. 
     ## it is Trade date + 1 day
