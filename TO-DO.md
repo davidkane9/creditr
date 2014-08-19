@@ -1,12 +1,6 @@
 CDS TO-DO List
 ========================================================
 
-* We should mak slot names and argument names more consistent, even if this breaks some of the links to the C code. For example:
-** parSpread should be spread everywhere
-** recoveryRate should be recovery.rate everywhere
-** TDate should be date everywhere
-** entityName should be name
-
 * Perhaps all the date variables except for date (formerly TDate) should go in a named array called "dates"? Things like: startDate, stepinDate, benchmarkDate and so on. Obviously, we should tie this array into get.dates() as closely as possible.
 
 * Perhaps types, rates and expiries could all be put into a single slot. Again, we want to tie this grouping as closely as possible into the function (mostly get.rates(), I think?) which populate it.
