@@ -1,6 +1,6 @@
 CDS TO-DO List
 ========================================================
-* pd.to.spread first argument should be x, not data.
+
 * We should mak slot names and argument names more consistent, even if this breaks some of the links to the C code. For example:
 ** parSpread should be spread everywhere
 ** recoveryRate should be recovery.rate everywhere
@@ -18,5 +18,3 @@ CDS TO-DO List
 * get.date ought to include the JPY stuff, I think. Maybe also business date stuff? Change name to add.dates.
 
 * Fix all line wraps by reformatting code.
-
-* Fix check.inputs so that it ensures that only one of maturity and tenor is passed in as input. (easy)
