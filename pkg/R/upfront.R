@@ -122,7 +122,7 @@ upfront <- function(x,
      tenor <- NULL
     }
     
-    TDate <- x[i, date.var]
+    date <- x[i, date.var]
     currency <- x[i, currency.var]
     types <- types
     rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & 
@@ -154,38 +154,38 @@ upfront <- function(x,
     payAccruedOnDefault <- TRUE
     notional <- notional
     
-    ## stop if TDate is invalid
+    ## stop if date is invalid
     
-    TDate <- as.Date(TDate)
+    date <- as.Date(date)
     
     ## basedate is T + 2 weekdays .    
     
-    if(as.POSIXlt(TDate)$wday==5){
-     baseDate <- adj.next.bus.day(TDate+4)
-    } else if(as.POSIXlt(TDate)$wday==0){
-     baseDate <- adj.next.bus.day(TDate+3)
+    if(as.POSIXlt(date)$wday==5){
+     baseDate <- adj.next.bus.day(date+4)
+    } else if(as.POSIXlt(date)$wday==0){
+     baseDate <- adj.next.bus.day(date+3)
     } else {
-     baseDate <- adj.next.bus.day(TDate+2)
+     baseDate <- adj.next.bus.day(date+2)
     }
     
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
     
-    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, currency = currency)
+    baseDate <- JPY.condition(baseDate = baseDate, date = date, currency = currency)
     
     ## rates Date is the date for which interest rates will be calculated. get.rates 
     ## function will return the rates of the previous day
     
-    ratesDate <- as.Date(TDate)
+    ratesDate <- as.Date(date)
     
     ## if maturity date is not provided, we use tenor to obtain dates through
     ## add.dates, and vice versa.
     
     if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+      cdsDates <- add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity)))
     }
     else if(is.null(maturity)){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
+      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor))
     }
     
     ## if these dates are not entered, they are extracted using add.dates
@@ -238,7 +238,7 @@ upfront <- function(x,
                         badDayConvZC = badDayConvZC,
                         holidays = holidays,
                         
-                        todayDate_input = separate.YMD(TDate),
+                        todayDate_input = separate.YMD(date),
                         valueDate_input = separate.YMD(valueDate),
                         benchmarkDate_input = separate.YMD(benchmarkDate),
                         startDate_input = separate.YMD(startDate),

@@ -6,7 +6,7 @@ library(utils)
 
 test_that("test show() method", {
   
-  cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+  cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
   
   output <- capture.output(show(cds))
   
@@ -16,7 +16,7 @@ test_that("test show() method", {
   
   expect_that(output[3], equals("Entity Name:                          NA   RED:                               NA"))
   
-  expect_that(output[4], equals("TDate:                        2014-05-07   End Date:                  2019-06-20"))
+  expect_that(output[4], equals("date:                         2014-05-07   End Date:                  2019-06-20"))
   
   expect_that(output[5], equals("Start Date:                   2014-03-20   Backstop Date:             2014-03-08"))
   

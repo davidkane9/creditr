@@ -121,7 +121,7 @@ add.dates <- function(x, date.var = "date",
     ## date, the protection seller has the obligation to make the 
     ## protection payment.
     ## Since 2009 (Big Bang Protocol), the backstop date is 60 days
-    ## before the trade date. Prior to 2009, it was TDate-2
+    ## before the trade date. Prior to 2009, it was trade date-2
     
     backstopDate <- ret$date[i] - 60
     

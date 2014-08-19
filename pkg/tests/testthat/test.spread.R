@@ -8,7 +8,7 @@ test_that("test for spread", {
   
   load("spread.test.RData")
   
-  result.1 <- spread(TDate = as.Date("2014-04-22"),
+  result.1 <- spread(date = as.Date("2014-04-22"),
                      currency = "USD",
                      tenor = 5,
                      types = "MMMMMSSSSSSSSSSSSSS",
@@ -53,7 +53,7 @@ test_that("test for spread", {
   
   ## results when we don't enter the rates manually are less accurate 
   
-  result.2 <- spread(TDate = as.Date("2014-04-22"),
+  result.2 <- spread(date = as.Date("2014-04-22"),
                      baseDate = "2014-04-22",
                      currency = "USD",
                      tenor = 5,
@@ -77,7 +77,7 @@ test_that("test for spread", {
   
   ## test cases to make sure results of the function don't change over time
   
-   truth.2 <- spread(TDate = "2014-01-14",
+   truth.2 <- spread(date = "2014-01-14",
                     currency = "USD",
                     tenor = 5,
                     types = "MMMMMSSSSSSSSS",
@@ -110,7 +110,7 @@ test_that("test for spread", {
                   notional = 1e7,
                     payAccruedOnDefault = TRUE)
   
-   truth.3 <- spread(TDate = "2014-01-14",
+   truth.3 <- spread(date = "2014-01-14",
                     baseDate = "2014-01-13",
                     currency = "USD",
                     tenor = 5,
@@ -131,7 +131,7 @@ test_that("test for spread", {
   
   load("spread.test.RData")
   
-  result.3 <- spread(TDate = as.Date("2014-01-14"),
+  result.3 <- spread(date = as.Date("2014-01-14"),
                      currency = "USD",
                      tenor = 5,
                      types = "MMMMMSSSSSSSSS",
@@ -167,7 +167,7 @@ test_that("test for spread", {
   
   stopifnot(all.equal(result.3, truth.2))
   
-  result.4 <- spread(TDate = as.Date("2014-01-14"),
+  result.4 <- spread(date = as.Date("2014-01-14"),
                      baseDate = "2014-01-13",
                      currency = "USD",
                      tenor = 5,

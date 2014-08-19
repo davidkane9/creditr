@@ -3,8 +3,8 @@
 \alias{spread}
 \title{\code{spread} to calculate conventional spread using the upfront or ptsUpfront values}
 \usage{
-spread(TDate, baseDate = as.Date(TDate) + 2, currency = "USD",
-  types = NULL, rates = NULL, expiries = NULL, mmDCC = "ACT/360",
+spread(date, baseDate = as.Date(date) + 2, currency = "USD", types = NULL,
+  rates = NULL, expiries = NULL, mmDCC = "ACT/360",
   fixedSwapFreq = "6M", floatSwapFreq = "3M", fixedSwapDCC = "30/360",
   floatSwapDCC = "ACT/360", badDayConvZC = "M", holidays = "None",
   valueDate = NULL, benchmarkDate = NULL, startDate = NULL,
@@ -48,10 +48,10 @@ coupon payments. Default is "F", following.}
 
 \item{calendar}{refers to any calendar adjustment for the CDS.}
 
-\item{TDate}{is when the trade is executed, denoted as T. Default
+\item{date}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
+\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
 Format must be YYYY-MM-DD.}
 
 \item{currency}{in which CDS is denominated.}

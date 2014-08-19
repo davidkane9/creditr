@@ -48,7 +48,7 @@ spread.DV01 <- function(x,
     }
     y})
   
-  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, TDate = x[[date.var]], 
+  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, date = x[[date.var]], 
                                 currency = x[[currency.var]])
   
   cdsDates <- add.dates(x)

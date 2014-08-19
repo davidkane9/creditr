@@ -5,9 +5,9 @@
 #' @slot contract is the contract type, default SNAC
 #' @slot name is the name of the reference entity. Optional.
 #' @slot RED alphanumeric code assigned to the reference entity. Optional.
-#' @slot TDate is when the trade is executed, denoted as T. Default
+#' @slot date is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}.
-#' @slot baseDate is the start date for the IR curve. Default is TDate. 
+#' @slot baseDate is the start date for the IR curve. Default is date. 
 #' @slot currency in which CDS is denominated. 
 #' @slot types is a string indicating the names of the instruments
 #' used for the yield curve. 'M' means money market rate; 'S' is swap
@@ -90,7 +90,7 @@ setClass("CDS",
            contract = "character",
            name = "character",
            RED = "character",
-           TDate = "Date",
+           date = "Date",
            baseDate = "Date",
            currency = "character",
            types = "character",
@@ -131,7 +131,7 @@ setClass("CDS",
            contract = character(),
            name = character(),
            RED = character(),
-           TDate = character(),
+           date = character(),
            baseDate = character(),
            currency = character(),
            types = character(),

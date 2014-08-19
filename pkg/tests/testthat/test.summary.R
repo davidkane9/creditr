@@ -6,14 +6,14 @@ library(utils)
 
 test_that("test summary() method", {
   
-  cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+  cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
   
   output <- capture.output(summary(cds))
   
   ## below expectations are hard coded, but are fine, because all we need to care about
   ## is that summary() still produces the same output after we redesign the class.
   
-  expect_that(output[1], equals("Contract Type:                      SNAC   TDate:                     2014-05-07"))
+  expect_that(output[1], equals("Contract Type:                      SNAC   date:                      2014-05-07"))
   
   expect_that(output[2], equals("Entity Name:                          NA   RED:                               NA"))
   

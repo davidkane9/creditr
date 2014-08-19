@@ -36,9 +36,9 @@ setMethod("show",
                                         nchar(as.character(object@RED))),
                                   collapse = ""))), "\n",
        
-       sprintf(paste("TDate:", object@TDate,
-                     sep = paste0(rep(" ", 40-nchar(as.character("TDate:")) -
-                                        nchar(as.character(object@TDate))), collapse = ""))),
+       sprintf(paste("date:", object@date,
+                     sep = paste0(rep(" ", 40-nchar(as.character("date:")) -
+                                        nchar(as.character(object@date))), collapse = ""))),
        sprintf(paste("   End Date:", object@endDate,
                      sep = paste0(rep(" ", 40-nchar(as.character("   End Date:")) -
                                         nchar(as.character(object@endDate))),

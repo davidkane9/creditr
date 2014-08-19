@@ -4,7 +4,7 @@ context("Test update")
 
 test_that("test for spread", {
    ## object of class CDS
-   object <- CDS(TDate = as.Date("2014-04-22"),
+   object <- CDS(date = as.Date("2014-04-22"),
                 tenor = 5, 
                 spread = 105.8,
                 coupon = 100,

@@ -6,9 +6,9 @@
 #' @param contract is the contract type, default SNAC
 #' @param name is the name of the reference entity. Optional.
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
-#' @param TDate is when the trade is executed, denoted as T. Default
+#' @param date is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
-#' @param baseDate is the start date for the IR curve. Default is TDate + 2 weekdays.
+#' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
 #' Format must be YYYY-MM-DD. 
 #' @param currency in which CDS is denominated. 
 #' @param types is a string indicating the names of the instruments
@@ -70,17 +70,17 @@
 #' @examples
 #' # Build a simple CDS class object
 #' require(CDS)
-#' cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
+#' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
 CDS <- function(contract = "SNAC", 
                 name = NULL,
                 RED = NULL,
                 
-                TDate = Sys.Date(),
+                date = Sys.Date(),
                 
                 ## IR curve dates
                 
-                baseDate = as.Date(TDate) + 2,
+                baseDate = as.Date(date) + 2,
                 currency = "USD",
                 types = NULL,
                 rates = NULL,
@@ -132,29 +132,29 @@ CDS <- function(contract = "SNAC",
   if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(spread)))
     stop("Please input spread, upfront or pts upfront")
   
-  ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+  ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
   
-  baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+  baseDate <- JPY.condition(baseDate = baseDate, date = date, 
                             currency = currency)
   
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
-  effectiveDate <- TDate
+  effectiveDate <- date
   
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
-    cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
+    cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor))
   } else{
     if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+      cdsDates <- add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity)))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate),
+      cdsDates <- add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity)))
     }
   }
@@ -177,7 +177,7 @@ CDS <- function(contract = "SNAC",
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
-    ratesInfo     <- get.rates(date = TDate, currency = currency)
+    ratesInfo     <- get.rates(date = date, currency = currency)
     effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
     
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
@@ -214,7 +214,7 @@ CDS <- function(contract = "SNAC",
              contract = contract,
              name = name,
              RED = RED,
-             TDate = TDate,
+             date = date,
              baseDate = baseDate,
              currency = currency,
              
@@ -252,14 +252,14 @@ CDS <- function(contract = "SNAC",
     
     ## clean upfront or principal
     
-    df <- data.frame(date = c(as.Date(cds@TDate)),
+    df <- data.frame(date = c(as.Date(cds@date)),
                      spread = c(spread),
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
     
-    ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+    ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
                           expiries = expiries, rates = rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
@@ -281,7 +281,7 @@ CDS <- function(contract = "SNAC",
     
     ## calculate par spread if not provided
     
-    cds@spread <- spread(TDate = TDate,
+    cds@spread <- spread(date = date,
                             baseDate = baseDate,
                             currency = currency,
                             types = types,
@@ -319,14 +319,14 @@ CDS <- function(contract = "SNAC",
     
     ## calculate  dirty upfront
     
-    df <- data.frame(date = c(as.Date(cds@TDate)),
+    df <- data.frame(date = c(as.Date(cds@date)),
                      spread = c(spread),
                      coupon = c(cds@coupon),
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
     
-    ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+    ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
                           expiries = expiries, rates = rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
@@ -349,7 +349,7 @@ CDS <- function(contract = "SNAC",
       
       ## calculate spread if only clean upfront (principal) and ptsUpfront are provided
       
-      cds@spread <- spread(TDate = TDate,
+      cds@spread <- spread(date = date,
                               baseDate = baseDate,
                               currency = currency,
                               types = types,
@@ -384,14 +384,14 @@ CDS <- function(contract = "SNAC",
       
       ## dirty upfront
       
-      df <- data.frame(date = c(as.Date(cds@TDate)),
+      df <- data.frame(date = c(as.Date(cds@date)),
                        spread = c(spread),
                        coupon = c(cds@coupon),
                        tenor = c(cds@tenor),
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
       
-      ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+      ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
                             expiries = expiries, rates = rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
@@ -406,7 +406,7 @@ CDS <- function(contract = "SNAC",
       
       ## par Spread
       
-      cds@spread <- spread(TDate = TDate,
+      cds@spread <- spread(date = date,
                               baseDate = baseDate,
                               currency = currency,
                               types = types,
@@ -441,14 +441,14 @@ CDS <- function(contract = "SNAC",
       
       ## principal
       
-      df <- data.frame(date = c(as.Date(cds@TDate)),
+      df <- data.frame(date = c(as.Date(cds@date)),
                        spread = c(spread),
                        coupon = c(cds@coupon),
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
       
-      ratesdf <- data.frame(date = as.Date(cds@TDate), currency = cds@currency,
+      ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
                             expiries = expiries, rates = rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
@@ -468,7 +468,7 @@ CDS <- function(contract = "SNAC",
 
   if(is.null(tenor)){
 
-      lt1 <- as.POSIXlt(as.Date(TDate, origin="1900-01-01"))
+      lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
       monnb1 <- lt1$year*12 + lt1$mon
       
       lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
@@ -488,7 +488,7 @@ CDS <- function(contract = "SNAC",
   ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
   ## note: this is a hack; must fix
   
-  x <- data.frame(date = c(as.Date(cds@TDate)),
+  x <- data.frame(date = c(as.Date(cds@date)),
                   currency = c(cds@currency),
                   tenor = c(cds@tenor),
                   spread = c(spread),
@@ -501,7 +501,7 @@ CDS <- function(contract = "SNAC",
   cds@RecRisk01   <- rec.risk.01(x)
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
                                  time = as.numeric(as.Date(endDate) -
-                                                  as.Date(TDate))/360,
+                                                  as.Date(date))/360,
                                  recovery.rate = recovery.rate)
   
   ## calculate the default exposure of a CDS contract based on the

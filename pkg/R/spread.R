@@ -23,8 +23,8 @@
 #' 
 #' @return a numeric indicating the spread.
 
-spread <- function(TDate,
-                   baseDate = as.Date(TDate) + 2,
+spread <- function(date,
+                   baseDate = as.Date(date) + 2,
                    currency = "USD",
 
                    types = NULL,
@@ -63,15 +63,15 @@ spread <- function(TDate,
     if (is.null(upfront) & is.null(ptsUpfront))
         stop("Please input upfront or pts upfront")
     
-    ## for JPY, the baseDate is TDate + 2 bus days, whereas for the rest it is TDate + 2 weekdays
+    ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
     
-    baseDate <- JPY.condition(baseDate = baseDate, TDate = TDate, 
+    baseDate <- JPY.condition(baseDate = baseDate, date = date, 
                               currency = currency)
         
     ## rates Date is the date for which interest rates will be calculated. get.rates 
     ## function will return the rates of the previous day
     
-    ratesDate <- as.Date(TDate)
+    ratesDate <- as.Date(date)
     
     if (is.null(ptsUpfront)) {
         ptsUpfront <- upfront / notional
@@ -80,10 +80,10 @@ spread <- function(TDate,
     }
     
     if(is.null(maturity)){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
+      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor))
     }
     else if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(TDate), 
+      cdsDates <- add.dates(data.frame(date = as.Date(date), 
                            maturity = as.Date(maturity)))
     }
     
@@ -94,7 +94,7 @@ spread <- function(TDate,
     if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
 
     baseDate      <- separate.YMD(baseDate)
-    today         <- separate.YMD(TDate)
+    today         <- separate.YMD(date)
     valueDate     <- separate.YMD(valueDate)
     benchmarkDate <- separate.YMD(benchmarkDate)
     startDate     <- separate.YMD(startDate)

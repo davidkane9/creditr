@@ -17,10 +17,10 @@ Class definition for the \code{CDS-Class}
 
 \item{\code{RED}}{alphanumeric code assigned to the reference entity. Optional.}
 
-\item{\code{TDate}}{is when the trade is executed, denoted as T. Default
+\item{\code{date}}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}.}
 
-\item{\code{baseDate}}{is the start date for the IR curve. Default is TDate.}
+\item{\code{baseDate}}{is the start date for the IR curve. Default is date.}
 
 \item{\code{currency}}{in which CDS is denominated.}
 

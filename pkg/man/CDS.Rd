@@ -4,8 +4,8 @@
 \title{Build a \code{CDS} class object given the input about a CDS
 contract.}
 \usage{
-CDS(contract = "SNAC", name = NULL, RED = NULL, TDate = Sys.Date(),
-  baseDate = as.Date(TDate) + 2, currency = "USD", types = NULL,
+CDS(contract = "SNAC", name = NULL, RED = NULL, date = Sys.Date(),
+  baseDate = as.Date(date) + 2, currency = "USD", types = NULL,
   rates = NULL, expiries = NULL, valueDate = NULL, benchmarkDate = NULL,
   startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
   tenor = NULL, spread = NULL, coupon = 100, recovery.rate = 0.4,
@@ -23,10 +23,10 @@ CDS(contract = "SNAC", name = NULL, RED = NULL, TDate = Sys.Date(),
 
 \item{RED}{alphanumeric code assigned to the reference entity. Optional.}
 
-\item{TDate}{is when the trade is executed, denoted as T. Default
+\item{date}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is TDate + 2 weekdays.
+\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
 Format must be YYYY-MM-DD.}
 
 \item{currency}{in which CDS is denominated.}
@@ -112,6 +112,6 @@ contract.
 \examples{
 # Build a simple CDS class object
 require(CDS)
-cds <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 }
 

@@ -15,7 +15,7 @@
 #' @examples
 #'
 #' ## build a CDS class object
-#' cds1 <- CDS(TDate = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+#' cds1 <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 #'
 #' ## update
 #' update(cds1, spread = 55)
@@ -50,7 +50,7 @@ setMethod("update",
                   newCDS <- CDS(contract = object@contract,
                                 name = object@name,
                                 RED = object@RED,
-                                TDate = object@TDate,
+                                date = object@date,
                                 baseDate = object@baseDate,
                                 currency = object@currency,
                                 types = object@types,
