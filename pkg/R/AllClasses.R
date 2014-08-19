@@ -16,17 +16,7 @@
 #' each instrument.
 #' @slot expiries is an array of characters indicating the maturity
 #' of each instrument.
-#' @slot valueDate is the date for which the present value of the CDS
-#' is calculated. aka cash-settle date. The default is T + 3.
-#' @slot benchmarkDate Accrual begin date.
-#' @slot startDate is when the CDS nomially starts in terms of
-#' premium payments, i.e. the number of days in the first period (and
-#' thus the amount of the first premium payment) is counted from this
-#' date. aka accrual begin date.
-#' @slot endDate aka maturity date. This is when the contract expires
-#' and protection ends. Any default after this date does not trigger a
-#' payment.
-#' @slot stepinDate default is T + 1.
+#' @slot dates named array which contains relevant date data
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
 #' @slot spread CDS par spread in bps.
@@ -96,15 +86,9 @@ setClass("CDS",
            types = "character",
            rates = "numeric",
            expiries = "character",
-           effectiveDate = "Date",
-           valueDate = "Date",
-           benchmarkDate = "Date",
-           startDate = "Date",
-           endDate = "Date",
-           stepinDate = "Date",
-           backstopDate = "Date",
-           firstcouponDate = "Date",
-           pencouponDate = "Date",
+           
+           dates = "data.frame",
+           
            maturity = "Date",
            tenor = "numeric",
            
@@ -138,16 +122,9 @@ setClass("CDS",
            rates = numeric(),
            expiries = character(),
       
-           effectiveDate = character(),
            
-           valueDate = character(),
-           benchmarkDate = character(),
-           startDate = character(),
-           endDate = character(),
-           stepinDate = character(),
-           backstopDate = character(),
-           firstcouponDate = character(),
-           pencouponDate = character(),
+           dates = data.frame(),
+           
            maturity = character(),
            tenor = numeric(),
            

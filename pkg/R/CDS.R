@@ -18,17 +18,7 @@
 #' each instrument.
 #' @param expiries is an array of characters indicating the maturity
 #' of each instrument.
-#' @param valueDate is the date for which the present value of the CDS
-#' is calculated. aka cash-settle date. The default is T + 3.
-#' @param benchmarkDate Accrual begin date.
-#' @param startDate is when the CDS nomially starts in terms of
-#' premium payments, i.e. the number of days in the first period (and
-#' thus the amount of the first premium payment) is counted from this
-#' date. aka accrual begin date.
-#' @param endDate aka maturity date. This is when the contract expires
-#' and protection ends. Any default after this date does not trigger a
-#' payment.
-#' @param stepinDate default is T + 1.
+#' @param dates named array which contains relevant date data
 #' @param maturity date of the CDS contract.
 #' @param tenor of contract. By default is set as 5
 #' @param spread CDS par spread in bps.
@@ -88,11 +78,16 @@ CDS <- function(contract = "SNAC",
                 
                 ## CDS 
                 
-                valueDate = NULL,
-                benchmarkDate = NULL,
-                startDate = NULL,
-                endDate = NULL,
-                stepinDate = NULL,
+                dates = as.vector(data.frame(effectiveDate = NA,
+                          valueDate = NA,
+                          benchmarkDate = NA,
+                          startDate = NA, 
+                          endDate = NA, 
+                          stepinDate = NA,
+                          backstopDate = NA,
+                          firstcouponDate = NA,
+                          pencouponDate = NA)),
+                
                 maturity = NULL,
                 tenor = NULL,
                 
@@ -140,8 +135,13 @@ CDS <- function(contract = "SNAC",
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
+<<<<<<< HEAD
+  dates['effectiveDate'] <- TDate
+
+=======
   effectiveDate <- date
   
+>>>>>>> origin/master
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
   
@@ -161,11 +161,11 @@ CDS <- function(contract = "SNAC",
   
   ## if these dates are not entered, we extract that from cdsdates
   
-  if (is.null(valueDate)) valueDate         <- as.Date(cdsDates$valueDate)
-  if (is.null(benchmarkDate)) benchmarkDate <- as.Date(cdsDates$startDate)
-  if (is.null(startDate)) startDate         <- as.Date(cdsDates$startDate)
-  if (is.null(endDate)) endDate             <- as.Date(cdsDates$endDate)
-  if (is.null(stepinDate)) stepinDate       <- as.Date(cdsDates$stepinDate)
+  if (is.na(dates['valueDate'])) dates['valueDate']      <- as.Date(cdsDates$valueDate)
+  if (is.na(dates['benchmarkDate'])) dates['benchmarkDate'] <- as.Date(cdsDates$startDate)
+  if (is.na(dates['startDate'])) dates['startDate']         <- as.Date(cdsDates$startDate)
+  if (is.na(dates['endDate'])) dates['endDate']             <- as.Date(cdsDates$endDate)
+  if (is.na(dates['stepinDate'])) dates['stepinDate']       <- as.Date(cdsDates$stepinDate)
   if (is.null(maturity)) maturity           <- as.Date(cdsDates$endDate)
   
   ## stop if the number of interest rates is not the same as number of expiries
@@ -177,8 +177,13 @@ CDS <- function(contract = "SNAC",
   
   if ((is.null(types) | is.null(rates) | is.null(expiries))){
     
+<<<<<<< HEAD
+    ratesInfo     <- get.rates(date = TDate, currency = currency)
+    dates['effectiveDate'] <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+=======
     ratesInfo     <- get.rates(date = date, currency = currency)
     effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+>>>>>>> origin/master
     
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
@@ -208,6 +213,10 @@ CDS <- function(contract = "SNAC",
   
   if (is.null(RED)) RED <- "NA"
   
+  dates['backstopDate'] <- cdsDates$backstopDate
+  dates['firstcouponDate'] <- cdsDates$firstcouponDate
+  dates['pencouponDate'] <- cdsDates$pencouponDate
+  
   ## create object of class CDS using the data we extracted
   
   cds <- new("CDS",
@@ -222,15 +231,9 @@ CDS <- function(contract = "SNAC",
              rates = rates,
              expiries = expiries,
              
-             effectiveDate = effectiveDate,
-             valueDate = valueDate,
-             benchmarkDate = benchmarkDate,
-             startDate = startDate, 
-             endDate = endDate, 
-             stepinDate = stepinDate,
-             backstopDate = cdsDates$backstopDate,
-             firstcouponDate = cdsDates$firstcouponDate,
-             pencouponDate = cdsDates$pencouponDate,
+             dates = dates,
+             
+
              maturity = maturity,
              tenor = as.numeric(tenor),
              
@@ -294,11 +297,11 @@ CDS <- function(contract = "SNAC",
                             floatSwapDCC = convention['floatSwapDCC'],
                             badDayConvZC = convention['badDayConvZC'],
                             holidays = convention['holidays'],
-                            valueDate = valueDate,
-                            benchmarkDate = benchmarkDate,
-                            startDate = startDate,
-                            endDate = endDate,
-                            stepinDate = stepinDate,
+                            valueDate = dates['valueDate'],
+                            benchmarkDate = dates['benchmarkDate'],
+                            startDate = dates['startDate'],
+                            endDate = dates['endDate'],
+                            stepinDate = dates['stepinDate'],
                             maturity = maturity,
                             dccCDS = convention['dccCDS'],
                             freqCDS = "Q",
@@ -362,11 +365,11 @@ CDS <- function(contract = "SNAC",
                               floatSwapDCC = convention['floatSwapDCC'],
                               badDayConvZC = convention['badDayConvZC'],
                               holidays = convention['holidays'],
-                              valueDate = valueDate, 
-                              benchmarkDate = benchmarkDate, 
-                              startDate = startDate, 
-                              endDate = endDate,
-                              stepinDate = stepinDate,
+                              valueDate = dates['valueDate'], 
+                              benchmarkDate = dates['benchmarkDate'], 
+                              startDate = dates['startDate'], 
+                              endDate = dates['endDate'],
+                              stepinDate = dates['stepinDate'],
                               maturity = maturity,
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
@@ -419,11 +422,11 @@ CDS <- function(contract = "SNAC",
                               floatSwapDCC = convention['floatSwapDCC'],
                               badDayConvZC = convention['badDayConvZC'],
                               holidays = convention['holidays'],
-                              valueDate = valueDate, 
-                              benchmarkDate = benchmarkDate, 
-                              startDate = startDate, 
-                              endDate = endDate,
-                              stepinDate = stepinDate,
+                              valueDate = dates['valueDate'], 
+                              benchmarkDate = dates['benchmarkDate'], 
+                              startDate = dates['startDate'], 
+                              endDate = dates['endDate'],
+                              stepinDate = dates['stepinDate'],
                               maturity = maturity,
                               tenor = tenor,
                               dccCDS = convention['dccCDS'],
@@ -482,7 +485,7 @@ CDS <- function(contract = "SNAC",
   ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
   
   if(is.null(maturity)){
-    cds@maturity = endDate
+    cds@maturity = dates['endDate']
   }
   
   ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
@@ -499,10 +502,17 @@ CDS <- function(contract = "SNAC",
   cds@spreadDV01  <- spread.DV01(x)
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
+<<<<<<< HEAD
+  cds@defaultProb <- spread.to.pd(spread = cds@parSpread,
+                                 time = as.numeric(dates['endDate'][[1]] -
+                                                  as.Date(TDate))/360,
+                                 recovery.rate = recoveryRate)
+=======
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
                                  time = as.numeric(as.Date(endDate) -
                                                   as.Date(date))/360,
                                  recovery.rate = recovery.rate)
+>>>>>>> origin/master
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
