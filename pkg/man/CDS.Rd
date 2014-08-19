@@ -6,12 +6,14 @@ contract.}
 \usage{
 CDS(contract = "SNAC", name = NULL, RED = NULL, date = Sys.Date(),
   baseDate = as.Date(date) + 2, currency = "USD", types = NULL,
-  rates = NULL, expiries = NULL, valueDate = NULL, benchmarkDate = NULL,
-  startDate = NULL, endDate = NULL, stepinDate = NULL, maturity = NULL,
-  tenor = NULL, spread = NULL, coupon = 100, recovery.rate = 0.4,
-  upfront = NULL, ptsUpfront = NULL, isPriceClean = FALSE,
-  notional = 1e+07, payAccruedOnDefault = TRUE,
-  convention = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
+  rates = NULL, expiries = NULL,
+  dates = as.vector(data.frame(effectiveDate = NA, valueDate = NA,
+  benchmarkDate = NA, startDate = NA, endDate = NA, stepinDate = NA,
+  backstopDate = NA, firstcouponDate = NA, pencouponDate = NA)),
+  maturity = NULL, tenor = NULL, spread = NULL, coupon = 100,
+  recovery.rate = 0.4, upfront = NULL, ptsUpfront = NULL,
+  isPriceClean = FALSE, notional = 1e+07, payAccruedOnDefault = TRUE,
+  conventions = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
   fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", fixedSwapFreq = "6M",
   floatSwapFreq = "3M", holidays = "None", dccCDS = "ACT/360", badDayConvCDS =
   "F", badDayConvZC = "M")))
@@ -41,21 +43,7 @@ each instrument.}
 \item{expiries}{is an array of characters indicating the maturity
 of each instrument.}
 
-\item{valueDate}{is the date for which the present value of the CDS
-is calculated. aka cash-settle date. The default is T + 3.}
-
-\item{benchmarkDate}{Accrual begin date.}
-
-\item{startDate}{is when the CDS nomially starts in terms of
-premium payments, i.e. the number of days in the first period (and
-thus the amount of the first premium payment) is counted from this
-date. aka accrual begin date.}
-
-\item{endDate}{aka maturity date. This is when the contract expires
-and protection ends. Any default after this date does not trigger a
-payment.}
-
-\item{stepinDate}{default is T + 1.}
+\item{dates}{named array which contains relevant date data}
 
 \item{maturity}{date of the CDS contract.}
 
@@ -96,7 +84,7 @@ payments are based. Default is 1e7, i.e. 10MM.}
 to the protection seller in the event of a default. Default is
 \code{TRUE}.}
 
-\item{convention}{a named vector which contains all the 12 conventional
+\item{conventions}{a named vector which contains all the 12 conventional
 parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
 floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 and badDayConvZC with their default values}

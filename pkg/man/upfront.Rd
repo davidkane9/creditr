@@ -34,10 +34,6 @@ on a regular basis.}
 \item{tenor.var}{name of column in x containing tenors.}
 
 \item{maturity.var}{name of column in x containing maturity dates.}
-
-\item{isPriceClean}{refers to the type of upfront calculated. It is
-boolean. When \code{TRUE}, calculate principal only. When
-\code{FALSE}, calculate principal + accrual.}
 }
 \value{
 vector of upfront values (with accrual) in the same order

@@ -26,9 +26,7 @@ IR.DV01 <- function(x,
                     spread.var = "spread",
                     coupon.var = "coupon",
                     RR.var = "recovery.rate",
-                    notional.var = "notional",
-                    isPriceClean = FALSE,
-                    payAccruedOnDefault = TRUE
+                    notional.var = "notional"
 ){
   
   ## vector containing recRisk01 columns. By default it contains NAs, which
@@ -93,8 +91,8 @@ IR.DV01 <- function(x,
                           parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
                           recoveryRate = x[[RR.var]][i],
-                          isPriceClean_input = isPriceClean,
-                          payAccruedOnDefault_input = payAccruedOnDefault,
+                          isPriceClean_input = FALSE,
+                          payAccruedOnDefault_input = TRUE,
                           notional = x[[notional.var]][i],
                           PACKAGE = "CDS")
     
@@ -130,8 +128,8 @@ IR.DV01 <- function(x,
                          parSpread = x[[spread.var]][i],
                          couponRate = x[[coupon.var]][i],
                          recoveryRate = x[[RR.var]][i],
-                         isPriceClean_input = isPriceClean,
-                         payAccruedOnDefault_input = payAccruedOnDefault,
+                         isPriceClean_input = FALSE,
+                         payAccruedOnDefault_input = TRUE,
                          notional = x[[notional.var]][i],
                          PACKAGE = "CDS")
     
