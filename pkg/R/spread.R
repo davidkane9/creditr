@@ -80,10 +80,11 @@ spread <- function(TDate,
     }
     
     if(is.null(maturity)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = tenor, maturity = NULL)
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate), tenor = tenor))
     }
     else if(is.null(tenor)){
-      cdsDates <- get.date(date = as.Date(TDate), tenor = NULL, maturity = as.Date(maturity))
+      cdsDates <- add.dates(data.frame(date = as.Date(TDate), 
+                           maturity = as.Date(maturity)))
     }
     
     if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
