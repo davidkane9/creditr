@@ -34,21 +34,7 @@ each instrument.}
 \item{\code{expiries}}{is an array of characters indicating the maturity
 of each instrument.}
 
-\item{\code{valueDate}}{is the date for which the present value of the CDS
-is calculated. aka cash-settle date. The default is T + 3.}
-
-\item{\code{benchmarkDate}}{Accrual begin date.}
-
-\item{\code{startDate}}{is when the CDS nomially starts in terms of
-premium payments, i.e. the number of days in the first period (and
-thus the amount of the first premium payment) is counted from this
-date. aka accrual begin date.}
-
-\item{\code{endDate}}{aka maturity date. This is when the contract expires
-and protection ends. Any default after this date does not trigger a
-payment.}
-
-\item{\code{stepinDate}}{default is T + 1.}
+\item{\code{dates}}{named array which contains relevant date data}
 
 \item{\code{maturity}}{date of the CDS contract.}
 
@@ -114,7 +100,7 @@ time t given the \code{spread}.}
 based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 - Principal.}
 
-\item{\code{convention}}{a named vector which contains all the 12 conventional
+\item{\code{conventions}}{a named vector which contains all the 12 conventional
 parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
 floatSwapFreq, holidays, dccCDS, badDayConvCDS,
 and badDayConvZC with their default values}

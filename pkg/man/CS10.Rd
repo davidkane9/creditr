@@ -6,8 +6,7 @@
 CS10(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", RR.var = "recovery.rate",
-  notional.var = "notional", isPriceClean = FALSE,
-  payAccruedOnDefault = TRUE)
+  notional.var = "notional")
 }
 \arguments{
 \item{x}{is the data frame containing all the relevant columns.}
@@ -29,14 +28,6 @@ on a regular basis.}
 
 \item{RR.var}{name of column in x containing recovery
 rates in decimal.}
-
-\item{isPriceClean}{refers to the type of upfront calculated. It is
-boolean. When \code{TRUE}, calculate principal only. When
-\code{FALSE}, calculate principal + accrual.}
-
-\item{payAccruedOnDefault}{is a partial payment of the premium made
-to the protection seller in the event of a default. Default is
-\code{TRUE}.}
 
 \item{notional.var}{name of column in x containing the amount of
 the underlying asset on which the payments are based.

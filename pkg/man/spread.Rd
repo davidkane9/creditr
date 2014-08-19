@@ -66,22 +66,6 @@ each instrument.}
 \item{expiries}{is an array of characters indicating the maturity
 of each instrument.}
 
-\item{valueDate}{is the date for which the present value of the CDS
-is calculated. aka cash-settle date. The default is T + 3.}
-
-\item{benchmarkDate}{Accrual begin date.}
-
-\item{startDate}{is when the CDS nomially starts in terms of
-premium payments, i.e. the number of days in the first period (and
-thus the amount of the first premium payment) is counted from this
-date. aka accrual begin date.}
-
-\item{endDate}{aka maturity date. This is when the contract expires
-and protection ends. Any default after this date does not trigger a
-payment.}
-
-\item{stepinDate}{default is T + 1.}
-
 \item{maturity}{date of the CDS contract.}
 
 \item{tenor}{of contract. By default is set as 5}

@@ -15,12 +15,6 @@
 #' on a regular basis.
 #' @param RR.var name of column in x containing recovery 
 #' rates in decimal.
-#' @param isPriceClean refers to the type of upfront calculated. It is
-#' boolean. When \code{TRUE}, calculate principal only. When
-#' \code{FALSE}, calculate principal + accrual.
-#' @param payAccruedOnDefault is a partial payment of the premium made
-#' to the protection seller in the event of a default. Default is
-#' \code{TRUE}.
 #' @param notional.var name of column in x containing the amount of 
 #' the underlying asset on which the payments are based. 
 #' Default is 1e7, i.e. 10MM.
@@ -46,9 +40,7 @@ CS10 <- function(x,
                     spread.var = "spread",
                     coupon.var = "coupon",
                     RR.var = "recovery.rate",
-                    notional.var = "notional",
-                    isPriceClean = FALSE,
-                    payAccruedOnDefault = TRUE
+                    notional.var = "notional"
 ){
   
   ## vector containing recRisk01 columns. By default it contains NAs, which
@@ -113,8 +105,8 @@ CS10 <- function(x,
                           parSpread = x[[spread.var]][i],
                           couponRate = x[[coupon.var]][i],
                           recoveryRate = x[[RR.var]][i],
-                          isPriceClean_input = isPriceClean,
-                          payAccruedOnDefault_input = payAccruedOnDefault,
+                          isPriceClean_input = FALSE,
+                          payAccruedOnDefault_input = TRUE,
                           notional = x[[notional.var]][i],
                           PACKAGE = "CDS")
     
@@ -150,8 +142,8 @@ CS10 <- function(x,
                          parSpread = x[[spread.var]][i] * 1.1,
                          couponRate = x[[coupon.var]][i],
                          recoveryRate = x[[RR.var]][i],
-                         isPriceClean_input = isPriceClean,
-                         payAccruedOnDefault_input = payAccruedOnDefault,
+                         isPriceClean_input = FALSE,
+                         payAccruedOnDefault_input = TRUE,
                          notional = x[[notional.var]][i],
                          PACKAGE = "CDS")
     
