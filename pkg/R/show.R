@@ -39,28 +39,28 @@ setMethod("show",
        sprintf(paste("date:", object@date,
                      sep = paste0(rep(" ", 40-nchar(as.character("date:")) -
                                         nchar(as.character(object@date))), collapse = ""))),
-       sprintf(paste("   End Date:", object@endDate,
+       sprintf(paste("   End Date:", object@dates['endDate'][[1]],
                      sep = paste0(rep(" ", 40-nchar(as.character("   End Date:")) -
-                                        nchar(as.character(object@endDate))),
+                                        nchar(as.character(object@dates['endDate'][[1]]))),
                                   collapse = ""))), "\n",
        
-       sprintf(paste("Start Date:", object@startDate,
+       sprintf(paste("Start Date:", object@dates['startDate'][[1]],
                      sep = paste0(rep(" ", 40-nchar(as.character("Start Date:")) -
-                                        nchar(as.character(object@startDate))), collapse = ""))),
-       sprintf(paste("   Backstop Date:", object@backstopDate,
+                                        nchar(as.character(object@dates['startDate'][[1]]))), collapse = ""))),
+       sprintf(paste("   Backstop Date:", object@dates['backstopDate'][[1]],
                      sep = paste0(rep(" ", 40-
                                         nchar(as.character("   Backstop Date:")) -
-                                        nchar(as.character(object@backstopDate))),
+                                        nchar(as.character(object@dates['backstopDate'][[1]]))),
                                   collapse = ""))), "\n",
        
-       sprintf(paste("1st Coupon:", object@firstcouponDate,
+       sprintf(paste("1st Coupon:", object@dates['firstcouponDate'][[1]],
                      sep = paste0(rep(" ", 40-nchar(as.character("1st Coupon:")) -
-                                        nchar(as.character(object@firstcouponDate))),
+                                        nchar(as.character(object@dates['firstcouponDate'][[1]]))),
                                   collapse = ""))),
-       sprintf(paste("   Pen Coupon:", object@pencouponDate,
+       sprintf(paste("   Pen Coupon:", object@dates['pencouponDate'][[1]],
                      sep = paste0(rep(" ", 40-
                                         nchar(as.character("   Pen Coupon:")) -
-                                        nchar(as.character(object@pencouponDate))),
+                                        nchar(as.character(object@dates['pencouponDate'][[1]]))),
                                   collapse = ""))), "\n",
        
        sprintf(paste("Day Cnt:", object@convention['dccCDS'],
@@ -73,10 +73,10 @@ setMethod("show",
    cat("\n")
    cat("Calculation \n")
    
-   cat(sprintf(paste("Value Date:", object@valueDate,
+   cat(sprintf(paste("Value Date:", object@dates['valueDate'][[1]],
                      sep = paste0(rep(" ",
                                       40-nchar(as.character("Value Date:")) -
-                                        nchar(as.character(object@valueDate))),
+                                        nchar(as.character(object@dates['valueDate'][[1]]))),
                                   collapse = ""))),
        sprintf(paste("   Price:",
                      format(round(object@price, 2), big.mark=",",
@@ -176,7 +176,7 @@ setMethod("show",
    )
    cat("\n")
    cat(paste0("Credit curve effective of ",
-              object@effectiveDate), "\n")
+              object@dates['effectiveDate'][[1]]), "\n")
    
    ratesDf <- data.frame(Term = object@expiries, Rate = object@rates)
    rowN <- ceiling(dim(ratesDf)[1]/2)
