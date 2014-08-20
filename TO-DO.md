@@ -10,6 +10,8 @@ CDS TO-DO List
 
 * Try to make data/rates.RData go back to Jan 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
+* Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
+
 * Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
 
 * Maybe check.rates.dates is no longer necessary?
@@ -26,6 +28,4 @@ CDS TO-DO List
 ** Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
 ** Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoin slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
 
-* Create get.conventions() to take over the second functionality of get.rates(). This can be hard coded with "if" statements without using fancy data frame.
 
-* Drastically cut the slots of CDS class, including dates, interest.rates and conventions.
