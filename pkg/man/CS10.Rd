@@ -30,25 +30,25 @@ on a regular basis.}
 rates in decimal.}
 
 \item{notional.var}{name of column in x containing the amount of
-the underlying asset on which the payments are based.
-Default is 1e7, i.e. 10MM.}
+   the underlying asset on which the payments are based.
+   Default is 1e7, i.e. 10MM.}
 }
 \value{
 a vector containing the change in upfront when spread increase by
-10%, for each corresponding CDS contract.
+   10%, for each corresponding CDS contract.
 }
 \description{
 \code{CS10} Calculates the change in upfront value when the spread rises by 10%,
 also known as the CS10 of a contract.
 }
 \examples{
-x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
-currency = c("USD", "EUR"),
-tenor = c(5, 5),
-spread = c(120, 110),
-coupon = c(100, 100),
-recovery.rate = c(0.4, 0.4),
-notional = c(1e7, 1e7))
+x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
+                currency = c("USD", "EUR"),
+                tenor = c(5, 5),
+                spread = c(120, 110),
+                coupon = c(100, 100),
+                recovery.rate = c(0.4, 0.4),
+                notional = c(1e7, 1e7))
 result <- CS10(x)
 }
 

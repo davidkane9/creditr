@@ -26,8 +26,8 @@ It specifies the payment amount from the protection buyer to the seller
 on a regular basis.}
 
 \item{notional.var}{name of column in x containing the amount of
-the underlying asset on which the payments are based.
-Default is 1e7, i.e. 10MM.}
+   the underlying asset on which the payments are based.
+   Default is 1e7, i.e. 10MM.}
 }
 \value{
 a data frame if not stopped by errors.

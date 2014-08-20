@@ -30,8 +30,8 @@ on a regular basis.}
 rates in decimal.}
 
 \item{notional.var}{name of column in x containing the amount of
-the underlying asset on which the payments are based.
-Default is 1e7, i.e. 10MM.}
+   the underlying asset on which the payments are based.
+   Default is 1e7, i.e. 10MM.}
 }
 \value{
 a vector containing the change in upfront when there is a 1
