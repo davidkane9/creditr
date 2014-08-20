@@ -34,6 +34,17 @@ rec.risk.01 <- function(x,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var)
   
+  ## change the column names anyway
+  
+  colnames(x)[which(colnames(x) == date.var)] <- "date"
+  colnames(x)[which(colnames(x) == currency.var)] <- "currency"
+  colnames(x)[which(colnames(x) == maturity.var)] <- "maturity"
+  colnames(x)[which(colnames(x) == tenor.var)] <- "tenor"
+  colnames(x)[which(colnames(x) == spread.var)] <- "spread"
+  colnames(x)[which(colnames(x) == coupon.var)] <- "coupon"
+  colnames(x)[which(colnames(x) == RR.var)] <- "recovery.rate"
+  colnames(x)[which(colnames(x) == notional.var)] <- "notional"
+  
   rec.risk.01 <- rep(NA, nrow(x))
   
   x <- add.conventions(add.dates(x))
@@ -43,7 +54,7 @@ rec.risk.01 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][i])
+    ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
     
     ## call the upfront function using the above variables
     
@@ -61,7 +72,7 @@ rec.risk.01 <- function(x,
                           badDayConvZC = as.character(x$badDayConvention[i]),
                           holidays = "None",
                           
-                          todayDate_input = separate.YMD(x[[date.var]][i]),
+                          todayDate_input = separate.YMD(x$date[i]),
                           valueDate_input = separate.YMD(x$valueDate[i]),
                           benchmarkDate_input = separate.YMD(x$startDate[i]),
                           startDate_input = separate.YMD(x$startDate[i]),
@@ -74,12 +85,12 @@ rec.risk.01 <- function(x,
                           badDayConvCDS = "F",
                           calendar = "None",
                           
-                          parSpread = x[[spread.var]][i],
-                          couponRate = x[[coupon.var]][i],
-                          recoveryRate = x[[RR.var]][i],
+                          parSpread = x$spread[i],
+                          couponRate = x$coupon[i],
+                          recoveryRate = x$recovery.rate[i],
                           isPriceClean_input = FALSE,
                           payAccruedOnDefault_input = TRUE,
-                          notional = x[[notional.var]][i],
+                          notional = x$notional[i],
                           PACKAGE = "CDS")
     
     ## call the upfront function again, this time with rates + 1/1e4
@@ -98,7 +109,7 @@ rec.risk.01 <- function(x,
                          badDayConvZC = as.character(x$badDayConvention[i]),
                          holidays = "None",
                          
-                         todayDate_input = separate.YMD(x[[date.var]][i]),
+                         todayDate_input = separate.YMD(x$date[i]),
                          valueDate_input = separate.YMD(x$valueDate[i]),
                          benchmarkDate_input = separate.YMD(x$startDate[i]),
                          startDate_input = separate.YMD(x$startDate[i]),
@@ -111,12 +122,12 @@ rec.risk.01 <- function(x,
                          badDayConvCDS = "F",
                          calendar = "None",
                          
-                         parSpread = x[[spread.var]][i],
-                         couponRate = x[[coupon.var]][i],
-                         recoveryRate = x[[RR.var]][i] + 0.01,
+                         parSpread = x$spread[i],
+                         couponRate = x$coupon[i],
+                         recoveryRate = x$recovery.rate[i] + 0.01,
                          isPriceClean_input = FALSE,
                          payAccruedOnDefault_input = TRUE,
-                         notional = x[[notional.var]][i],
+                         notional = x$notional[i],
                          PACKAGE = "CDS")
     
     rec.risk.01[i] <- upfront.new - upfront.orig
