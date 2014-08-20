@@ -85,13 +85,13 @@ spread <- function(date,
     }
     
     if(is.null(maturity)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor,
-                                       currency = currency))
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), tenor = tenor,
+                                       currency = currency)))
     }
     else if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date), 
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), 
                            maturity = as.Date(maturity),
-                           currency = currency))
+                           currency = currency)))
     }
     
     if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
@@ -115,14 +115,14 @@ spread <- function(date,
         types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
         rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
         expiries  <- as.character(ratesInfo[[1]]$expiry)
-        mmDCC     <- as.character(ratesInfo[[2]]$mmDCC)
+        mmDCC     <- as.character(cdsDates$mmDCC)
         
-        fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-        floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-        fixedSwapDCC  <- as.character(ratesInfo[[2]]$fixedDCC)
-        floatSwapDCC  <- as.character(ratesInfo[[2]]$floatDCC)
-        badDayConvZC  <- as.character(ratesInfo[[2]]$badDayConvention)
-        holidays      <- as.character(ratesInfo[[2]]$swapCalendars)
+        fixedSwapFreq <- as.character(cdsDates$fixedFreq)
+        floatSwapFreq <- as.character(cdsDates$floatFreq)
+        fixedSwapDCC  <- as.character(cdsDates$fixedDCC)
+        floatSwapDCC  <- as.character(cdsDates$floatDCC)
+        badDayConvZC  <- as.character(cdsDates$badDayConvention)
+        holidays      <- as.character(cdsDates$swapCalendars)
     }
 
     

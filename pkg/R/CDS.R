@@ -127,7 +127,6 @@ CDS <- function(## name stuff
   
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
-  
 
   dates['effectiveDate'] <- date
 
@@ -135,18 +134,19 @@ CDS <- function(## name stuff
   ## add.dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
-    cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor, currency = currency))
+    cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
+                                                     tenor = tenor, currency = currency)))
   } else{
     if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date),
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity),
-                                       currency = currency))
+                                       currency = currency)))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
-      cdsDates <- add.dates(data.frame(date = as.Date(date),
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity),
-                                       currency = currency))
+                                       currency = currency)))
     }
   }
   
@@ -168,12 +168,9 @@ CDS <- function(## name stuff
   
   if ((is.null(interest.rates$types) | is.null(interest.rates$rates) | is.null(interest.rates$expiries))){
     
-
-    
     ratesInfo     <- get.rates(date = date, currency = currency)
-    dates['effectiveDate'] <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+    dates['effectiveDate'] <- adj.next.bus.day(date)
 
-    
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
     
@@ -189,19 +186,19 @@ CDS <- function(## name stuff
     ## conventions stuff
     
     if (is.null(conventions['mmDCC'])){
-      conventions['mmDCC']    <- as.character(ratesInfo[[2]]$mmDCC)}
+      conventions['mmDCC']    <- as.character(cdsDates$mmDCC)}
     if (is.null(conventions['fixedSwapFreq'])){ 
-      conventions['fixedSwapFreq'] <- as.character(ratesInfo[[2]]$fixedFreq)}
+      conventions['fixedSwapFreq'] <- as.character(cdsDates$fixedFreq)}
     if (is.null(conventions['floatSwapFreq'])){ 
-      conventions['floatSwapFreq'] <- as.character(ratesInfo[[2]]$floatFreq)}
+      conventions['floatSwapFreq'] <- as.character(cdsDates$floatFreq)}
     if (is.null(conventions['fixedSwapDCC'])){ 
-      conventions['fixedSwapDCC']   <- as.character(ratesInfo[[2]]$fixedDCC)}
+      conventions['fixedSwapDCC']   <- as.character(cdsDates$fixedDCC)}
     if (is.null(conventions['floatSwapDCC'])){ 
-      conventions['floatSwapDCC']   <- as.character(ratesInfo[[2]]$floatDCC)}
+      conventions['floatSwapDCC']   <- as.character(cdsDates$floatDCC)}
     if (is.null(conventions['badDayConvZC'])){ 
-      conventions['badDayConvZC']   <- as.character(ratesInfo[[2]]$badDayConvention)}
+      conventions['badDayConvZC']   <- as.character(cdsDates$badDayConvention)}
     if (is.null(conventions['holidays'])){ 
-      conventions['holidays']       <- as.character(ratesInfo[[2]]$swapCalendars)}
+      conventions['holidays']       <- as.character(cdsDates$swapCalendars)}
   }
   
   ## if entity name and/or RED code is not provided, we set it as NA

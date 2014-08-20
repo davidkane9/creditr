@@ -91,18 +91,5 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
                           
                           type = c(rep("M", sum(names(rates$deposits) == "curvepoint")),
                               rep("S", sum(names(rates$swaps) == "curvepoint"))))
-
-    ## data frame with data on day count etc.
-
-    dccx <- data.frame(effectiveDate = rates$effectiveasof[[1]],
-                        badDayConvention = rates$baddayconvention,
-                        mmDCC = rates$deposits[['daycountconvention']],
-                        mmCalendars = rates$deposits[['calendars']],
-                        fixedDCC = rates$swaps[['fixeddaycountconvention']],
-                        floatDCC = rates$swaps[['floatingdaycountconvention']],
-                        fixedFreq = rates$swaps[['fixedpaymentfrequency']],
-                        floatFreq = rates$swaps[['floatingpaymentfrequency']],
-                        swapCalendars = rates$swaps[['calendars']])
-    
-    return(list(ratesx, dccx))
+    return(list(ratesx))
 }

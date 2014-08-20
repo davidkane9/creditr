@@ -181,13 +181,13 @@ upfront <- function(x,
     ## add.dates, and vice versa.
     
     if(is.null(tenor)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date),
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
                                        maturity = as.Date(maturity),
-                                       currency = currency))
+                                       currency = currency)))
     }
     else if(is.null(maturity)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor,
-                                       currency = currency))
+      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), tenor = tenor,
+                                       currency = currency)))
     }
     
     ## if these dates are not entered, they are extracted using add.dates
@@ -207,7 +207,7 @@ upfront <- function(x,
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
       
       ratesInfo <- get.rates(date = ratesDate, currency = currency)
-      effectiveDate <- as.Date(as.character(ratesInfo[[2]]$effectiveDate))
+      effectiveDate <- adj.next.bus.day(date)
       
       ## extract relevant variables like mmDCC, expiries from the get.rates function 
       ## if they are not entered
@@ -215,14 +215,14 @@ upfront <- function(x,
       if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
       if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
       if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
-      if (is.null(mmDCC)) mmDCC       <- as.character(ratesInfo[[2]]$mmDCC)
+      if (is.null(mmDCC)) mmDCC       <- as.character(cdsDates$mmDCC)
       
-      if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(ratesInfo[[2]]$fixedFreq)
-      if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(ratesInfo[[2]]$floatFreq)
-      if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(ratesInfo[[2]]$fixedDCC)
-      if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(ratesInfo[[2]]$floatDCC)
-      if (is.null(badDayConvZC)) badDayConvZC   <- as.character(ratesInfo[[2]]$badDayConvention)
-      if (is.null(holidays)) holidays           <- as.character(ratesInfo[[2]]$swapCalendars)
+      if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(cdsDates$fixedFreq)
+      if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(cdsDates$floatFreq)
+      if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(cdsDates$fixedDCC)
+      if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(cdsDates$floatDCC)
+      if (is.null(badDayConvZC)) badDayConvZC   <- as.character(cdsDates$badDayConvention)
+      if (is.null(holidays)) holidays           <- as.character(cdsDates$swapCalendars)
     }
     
     
