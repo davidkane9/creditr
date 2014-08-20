@@ -64,8 +64,8 @@ CS10 <- function(x,
   baseDate.vec <- JPY.condition(baseDate = baseDate.vec, date = x[[date.var]], 
                                 currency = x[[currency.var]])
   
-  cdsDates <- add.dates(x)
-  
+  cdsDates <- add.conventions(add.dates(x))
+ 
   for(i in 1:nrow(x)){
     
     ## extract currency specific interest rate data and date conventions using
@@ -81,12 +81,12 @@ CS10 <- function(x,
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
                           
-                          mmDCC = as.character(ratesInfo[[2]]$mmDCC),
-                          fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq),
-                          floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq),
-                          fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC),
-                          floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC),
-                          badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
+                          mmDCC = as.character(cdsDates$mmDCC[i]),
+                          fixedSwapFreq = as.character(cdsDates$fixedFreq[i]),
+                          floatSwapFreq = as.character(cdsDates$floatFreq[i]),
+                          fixedSwapDCC = as.character(cdsDates$fixedDCC[i]),
+                          floatSwapDCC = as.character(cdsDates$floatDCC[i]),
+                          badDayConvZC = as.character(cdsDates$badDayConvention[i]),
                           holidays = "None",
                           
                           todayDate_input = separate.YMD(x[[date.var]][i]),
@@ -118,12 +118,12 @@ CS10 <- function(x,
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                          expiries = as.character(ratesInfo[[1]]$expiry),
                          
-                         mmDCC = as.character(ratesInfo[[2]]$mmDCC),
-                         fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq),
-                         floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq),
-                         fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC),
-                         floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC),
-                         badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
+                         mmDCC = as.character(cdsDates$mmDCC[i]),
+                         fixedSwapFreq = as.character(cdsDates$fixedFreq[i]),
+                         floatSwapFreq = as.character(cdsDates$floatFreq[i]),
+                         fixedSwapDCC = as.character(cdsDates$fixedDCC[i]),
+                         floatSwapDCC = as.character(cdsDates$floatDCC[i]),
+                         badDayConvZC = as.character(cdsDates$badDayConvention[i]),
                          holidays = "None",
                          
                          todayDate_input = separate.YMD(x[[date.var]][i]),

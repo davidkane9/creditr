@@ -5,7 +5,9 @@ test_that("test add conventions", {
   ## used independently
   
   x1 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
-  result1 <- add.conventions(x2)
+  result1 <- add.conventions(x1)
+  
+  ## joint usage with add.dates
   
   x2 <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                   currency = c("USD", "EUR"),
@@ -14,8 +16,6 @@ test_that("test add conventions", {
                   coupon = c(100, 100),
                   recovery.rate = c(0.4, 0.4),
                   notional = c(1e7, 1e7))
-  
-  ## joint usage with add.dates
   
   x2 <- add.dates(x2)
   result2 <- add.conventions(x2)
