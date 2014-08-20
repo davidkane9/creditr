@@ -51,15 +51,6 @@ CS10 <- function(x,
   
   IR.DV01 <- rep(NA, nrow(x))
   
-  baseDate.vec <- lapply(adj.next.bus.day(x[[date.var]] + 2), function(y){
-    if(as.POSIXlt(y)$wday == 1){ 
-      y <- y + 1
-    }
-    y})
-  
-  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, date = x[[date.var]], 
-                                currency = x[[currency.var]])
-  
   x <- add.conventions(add.dates(x))
  
   for(i in 1:nrow(x)){
@@ -72,7 +63,7 @@ CS10 <- function(x,
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = separate.YMD(baseDate.vec[[i]]),
+                          baseDate_input = separate.YMD(x$baseDate[i]),
                           types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
@@ -109,7 +100,7 @@ CS10 <- function(x,
     ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = separate.YMD(baseDate.vec[[i]]),
+                         baseDate_input = separate.YMD(x$baseDate[i]),
                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                          expiries = as.character(ratesInfo[[1]]$expiry),
