@@ -33,15 +33,14 @@
 #' result <- CS10(x)
 
 CS10 <- function(x,
-                    date.var = "date",
-                    currency.var = "currency",
-                    maturity.var = "maturity",
-                    tenor.var = "tenor",
-                    spread.var = "spread",
-                    coupon.var = "coupon",
-                    RR.var = "recovery.rate",
-                    notional.var = "notional"
-){
+                 date.var     = "date",
+                 currency.var = "currency",
+                 maturity.var = "maturity",
+                 tenor.var    = "tenor",
+                 spread.var   = "spread",
+                 coupon.var   = "coupon",
+                 RR.var       = "recovery.rate",
+                 notional.var = "notional"){
   
   ## vector containing recRisk01 columns. By default it contains NAs, which
   ## will be replaced by the recRisk01 values calculated by the function
