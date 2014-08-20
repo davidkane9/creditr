@@ -7,7 +7,7 @@
 Historic Interest Rates
 }
 \description{
-Interest rates for USD, EUR, GBP, and JPY from 2003-01-02 till 2014-07-16.
+Interest rates for USD, EUR, GBP, and JPY from 2003-01-02 till 2014-07-16. There are some missing data for either a currency or an expiry for a short period of time.
 }
 \usage{
 data(rates)
