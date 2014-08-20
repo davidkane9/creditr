@@ -9,6 +9,8 @@
 #' 
 #' @param x data frame which contains rates for a specific date 
 #' @param rates data frame which contains rates and dates
+#' @param date.var character which indicates the name of date column
+#' @param rate.var character which indicates the name of rate column
 #' 
 #' @return vector containing true or false to indicate whether
 #' that specific trade date in X is contained in rates

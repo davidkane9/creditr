@@ -12,6 +12,9 @@
 
 \item{upfront}{is the new upfront payment amount.}
 
+\item{isPriceClean}{boolean variable indicating if the price calculated is
+with accrued interest rate}
+
 \item{ptsUpfront}{is the new pts upfront. It's in decimal.}
 
 \item{spread}{is the new spread in bps.}

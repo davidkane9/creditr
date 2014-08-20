@@ -9,6 +9,10 @@ check.rates.dates(x, rates, date.var = "date", rate.var = "rates")
 \item{x}{data frame which contains rates for a specific date}
 
 \item{rates}{data frame which contains rates and dates}
+
+\item{date.var}{character which indicates the name of date column}
+
+\item{rate.var}{character which indicates the name of rate column}
 }
 \value{
 vector containing true or false to indicate whether

@@ -14,6 +14,11 @@
 #' are converted.
 #' @param holidays is an input for holiday files to adjust to business
 #' days.
+#' @param valueDate T+3 business days
+#' @param benchmarkDate accrual begin date
+#' @param startDate start date
+#' @param endDate end date
+#' @param stepinDate T+1
 #' @param dccCDS day count convention of the CDS. Default is ACT/360.
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.

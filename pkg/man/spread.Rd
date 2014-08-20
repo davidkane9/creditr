@@ -37,6 +37,16 @@ are converted.}
 \item{holidays}{is an input for holiday files to adjust to business
 days.}
 
+\item{valueDate}{T+3 business days}
+
+\item{benchmarkDate}{accrual begin date}
+
+\item{startDate}{start date}
+
+\item{endDate}{end date}
+
+\item{stepinDate}{T+1}
+
 \item{dccCDS}{day count convention of the CDS. Default is ACT/360.}
 
 \item{freqCDS}{date interval of the CDS contract.}
@@ -55,16 +65,6 @@ is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 Format must be YYYY-MM-DD.}
 
 \item{currency}{in which CDS is denominated.}
-
-\item{types}{is a string indicating the names of the instruments
-used for the yield curve. 'M' means money market rate; 'S' is swap
-rate.}
-
-\item{rates}{is an array of numeric values indicating the rate of
-each instrument.}
-
-\item{expiries}{is an array of characters indicating the maturity
-of each instrument.}
 
 \item{maturity}{date of the CDS contract.}
 

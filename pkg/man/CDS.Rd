@@ -4,58 +4,66 @@
 \title{Build a \code{CDS} class object given the input about a CDS
 contract.}
 \usage{
-CDS(contract = "SNAC", name = NULL, RED = NULL, date = Sys.Date(),
-  baseDate = as.Date(date) + 2, currency = "USD", types = NULL,
-  rates = NULL, expiries = NULL,
+CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
+  spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
+  recovery.rate = 0.4, currency = "USD", isPriceClean = FALSE,
+  notional = 1e+07, payAccruedOnDefault = TRUE,
   dates = as.vector(data.frame(effectiveDate = NA, valueDate = NA,
   benchmarkDate = NA, startDate = NA, endDate = NA, stepinDate = NA,
   backstopDate = NA, firstcouponDate = NA, pencouponDate = NA)),
-  maturity = NULL, tenor = NULL, spread = NULL, coupon = 100,
-  recovery.rate = 0.4, upfront = NULL, ptsUpfront = NULL,
-  isPriceClean = FALSE, notional = 1e+07, payAccruedOnDefault = TRUE,
-  conventions = as.vector(data.frame(mmDCC = "ACT/360", calendar = "None",
-  fixedSwapDCC = "30/360", floatSwapDCC = "ACT/360", fixedSwapFreq = "6M",
-  floatSwapFreq = "3M", holidays = "None", dccCDS = "ACT/360", badDayConvCDS =
-  "F", badDayConvZC = "M")))
+  baseDate = as.Date(date) + 2, conventions = as.vector(data.frame(mmDCC =
+  "ACT/360", calendar = "None", fixedSwapDCC = "30/360", floatSwapDCC =
+  "ACT/360", fixedSwapFreq = "6M", floatSwapFreq = "3M", holidays = "None",
+  dccCDS = "ACT/360", badDayConvCDS = "F", badDayConvZC = "M")),
+  interest.rates = list(types = NULL, rates = NULL, expiries = NULL),
+  upfront = NULL, ptsUpfront = NULL)
 }
 \arguments{
-\item{contract}{is the contract type, default SNAC}
-
 \item{name}{is the name of the reference entity. Optional.}
+
+\item{contract}{is the contract type, default SNAC}
 
 \item{RED}{alphanumeric code assigned to the reference entity. Optional.}
 
 \item{date}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
-Format must be YYYY-MM-DD.}
-
-\item{currency}{in which CDS is denominated.}
-
-\item{types}{is a string indicating the names of the instruments
-used for the yield curve. 'M' means money market rate; 'S' is swap
-rate.}
-
-\item{rates}{is an array of numeric values indicating the rate of
-each instrument.}
-
-\item{expiries}{is an array of characters indicating the maturity
-of each instrument.}
-
-\item{dates}{named array which contains relevant date data}
+\item{spread}{CDS par spread in bps.}
 
 \item{maturity}{date of the CDS contract.}
 
 \item{tenor}{of contract. By default is set as 5}
-
-\item{spread}{CDS par spread in bps.}
 
 \item{coupon}{quoted in bps. It specifies the payment amount from
 the protection buyer to the seller on a regular basis. The default
 is 100 bps.}
 
 \item{recovery.rate}{in decimal. Default is 0.4.}
+
+\item{currency}{in which CDS is denominated.}
+
+\item{isPriceClean}{refers to the type of upfront calculated. It is
+boolean. When \code{TRUE}, calculate principal only. When
+\code{FALSE}, calculate principal + accrual.}
+
+\item{notional}{is the amount of the underlying asset on which the
+payments are based. Default is 1e7, i.e. 10MM.}
+
+\item{payAccruedOnDefault}{is a partial payment of the premium made
+to the protection seller in the event of a default. Default is
+\code{TRUE}.}
+
+\item{dates}{named array which contains relevant date data}
+
+\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
+Format must be YYYY-MM-DD.}
+
+\item{conventions}{a named vector which contains all the 12 conventional
+parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+floatSwapFreq, holidays, dccCDS, badDayConvCDS,
+and badDayConvZC with their default values}
+
+\item{interest.rates}{a list which contains types, rates and expiries}
 
 \item{upfront}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is
@@ -72,22 +80,6 @@ payment. High Yield (HY) CDS contracts are often quoted in points
 upfront. The protection buyer pays the upfront payment if points
 upfront are positive, and the buyer is paid by the seller if the
 points are negative.}
-
-\item{isPriceClean}{refers to the type of upfront calculated. It is
-boolean. When \code{TRUE}, calculate principal only. When
-\code{FALSE}, calculate principal + accrual.}
-
-\item{notional}{is the amount of the underlying asset on which the
-payments are based. Default is 1e7, i.e. 10MM.}
-
-\item{payAccruedOnDefault}{is a partial payment of the premium made
-to the protection seller in the event of a default. Default is
-\code{TRUE}.}
-
-\item{conventions}{a named vector which contains all the 12 conventional
-parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-and badDayConvZC with their default values}
 }
 \value{
 a \code{CDS} class object including the input informtion on

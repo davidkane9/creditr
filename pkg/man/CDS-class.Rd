@@ -11,41 +11,26 @@ Class definition for the \code{CDS-Class}
 \section{Slots}{
 
 \describe{
-\item{\code{contract}}{is the contract type, default SNAC}
-
 \item{\code{name}}{is the name of the reference entity. Optional.}
+
+\item{\code{contract}}{is the contract type, default SNAC}
 
 \item{\code{RED}}{alphanumeric code assigned to the reference entity. Optional.}
 
 \item{\code{date}}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}.}
 
-\item{\code{baseDate}}{is the start date for the IR curve. Default is date.}
-
-\item{\code{currency}}{in which CDS is denominated.}
-
-\item{\code{types}}{is a string indicating the names of the instruments
-used for the yield curve. 'M' means money market rate; 'S' is swap
-rate.}
-
-\item{\code{rates}}{is an array of numeric values indicating the rate of
-each instrument.}
-
-\item{\code{expiries}}{is an array of characters indicating the maturity
-of each instrument.}
-
-\item{\code{dates}}{named array which contains relevant date data}
+\item{\code{spread}}{CDS par spread in bps.}
 
 \item{\code{maturity}}{date of the CDS contract.}
 
 \item{\code{tenor}}{of contract in number of years - 5, 3}
 
-\item{\code{spread}}{CDS par spread in bps.}
-
-\item{\code{coupon}}{quoted in bps. It specifies the payment amount from
-the protection buyer to the seller on a regular basis.}
+\item{\code{coupon}}{quoted in bps. It specifies the payment amount from}
 
 \item{\code{recovery.rate}}{in decimal. Default is 0.4.}
+
+\item{\code{currency}}{in which CDS is denominated.}
 
 \item{\code{inputPriceClean}}{records the \code{isPriceClean} argument
 input by the user. \code{isPriceClean} refers to the type of
@@ -62,6 +47,27 @@ to the protection seller in the event of a default. Default is
 \item{\code{principal}}{is the dirty \code{upfront} less the \code{accrual}.}
 
 \item{\code{accrual}}{is the accrued interest payment.}
+
+\item{\code{defaultProb}}{is the approximate the default probability at
+time t given the \code{spread}.}
+
+\item{\code{defaultExpo}}{calculates the default exposure of a CDS contract
+based on the formula: Default Exposure: (1-Recovery Rate)*Notional
+- Principal.}
+
+\item{\code{price}}{}
+
+\item{\code{dates}}{named array which contains relevant date data
+the protection buyer to the seller on a regular basis.}
+
+\item{\code{baseDate}}{is the start date for the IR curve. Default is date.}
+
+\item{\code{conventions}}{a named vector which contains all the 12 conventional
+parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+floatSwapFreq, holidays, dccCDS, badDayConvCDS,
+and badDayConvZC with their default values}
+
+\item{\code{interest.rates}}{a list which contains types, rates and expiries}
 
 \item{\code{upfront}}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is
@@ -92,17 +98,5 @@ itself.}
 
 \item{\code{RecRisk01}}{is the dollar value change in market value if the
 recovery rate used in the CDS valuation were increased by 1\%.}
-
-\item{\code{defaultProb}}{is the approximate the default probability at
-time t given the \code{spread}.}
-
-\item{\code{defaultExpo}}{calculates the default exposure of a CDS contract
-based on the formula: Default Exposure: (1-Recovery Rate)*Notional
-- Principal.}
-
-\item{\code{conventions}}{a named vector which contains all the 12 conventional
-parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-and badDayConvZC with their default values}
 }}
 

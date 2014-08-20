@@ -3,23 +3,35 @@
 #' 
 #' @name CDS
 #' 
-#' @param contract is the contract type, default SNAC
 #' @param name is the name of the reference entity. Optional.
+#' @param contract is the contract type, default SNAC
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
 #' @param date is when the trade is executed, denoted as T. Default
 #' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
-#' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
-#' Format must be YYYY-MM-DD. 
-#' @param currency in which CDS is denominated. 
-#' @param interest.rates a list which contains types, rates and expiries
-#' @param dates named array which contains relevant date data
+#' @param spread CDS par spread in bps.
 #' @param maturity date of the CDS contract.
 #' @param tenor of contract. By default is set as 5
-#' @param spread CDS par spread in bps.
 #' @param coupon quoted in bps. It specifies the payment amount from
 #' the protection buyer to the seller on a regular basis. The default
 #' is 100 bps.
 #' @param recovery.rate in decimal. Default is 0.4.
+#' @param currency in which CDS is denominated. 
+#' @param isPriceClean refers to the type of upfront calculated. It is
+#' boolean. When \code{TRUE}, calculate principal only. When
+#' \code{FALSE}, calculate principal + accrual.
+#' @param notional is the amount of the underlying asset on which the
+#' payments are based. Default is 1e7, i.e. 10MM.
+#' @param payAccruedOnDefault is a partial payment of the premium made
+#' to the protection seller in the event of a default. Default is
+#' \code{TRUE}. 
+#' @param dates named array which contains relevant date data
+#' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
+#' Format must be YYYY-MM-DD. 
+#' @param conventions a named vector which contains all the 12 conventional
+#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
+#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
+#' and badDayConvZC with their default values
+#' @param interest.rates a list which contains types, rates and expiries
 #' @param upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -34,18 +46,6 @@
 #' upfront. The protection buyer pays the upfront payment if points
 #' upfront are positive, and the buyer is paid by the seller if the
 #' points are negative.
-#' @param isPriceClean refers to the type of upfront calculated. It is
-#' boolean. When \code{TRUE}, calculate principal only. When
-#' \code{FALSE}, calculate principal + accrual.
-#' @param notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM.
-#' @param payAccruedOnDefault is a partial payment of the premium made
-#' to the protection seller in the event of a default. Default is
-#' \code{TRUE}.
-#' @param conventions a named vector which contains all the 12 conventional
-#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-#' and badDayConvZC with their default values
 #' 
 #' @return a \code{CDS} class object including the input informtion on
 #' the contract as well as the valuation results of the contract.
