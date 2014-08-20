@@ -21,7 +21,8 @@
         packageStartupMessage("Please type **yes** to assent to the 
                               aforementioned terms.")
     }
-  message(
+    
+  packageStartupMessage(
   "Due to CRAN regulations, we cannot include ISDA C-code in
    our package. To continue using this package, please go to 
    http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?

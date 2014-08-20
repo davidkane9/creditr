@@ -11,7 +11,7 @@ Interest rates for USD, EUR, GBP, and JPY from 2003-01-02 till 2014-07-16. There
 }
 \usage{
 data(rates)
-View(rates)}
+}
 \format{
   A data frame with 225067 observations on the following 4 variables.
   \describe{

@@ -111,8 +111,9 @@ add.dates <- function(x, date.var = "date",
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
     
     if(is.null(ret$maturity[i])){
-      endDate <- as.POSIXlt(firstcouponDate)
-      endDate$year <- endDate$year + length
+      endDate <- date.first
+      endDate$year <- date.first$year + length
+      endDate$mon <- endDate$mon + 3
       endDate <- as.Date(endDate)
     }
     ## if the maturity date is provided, it is the enddate.

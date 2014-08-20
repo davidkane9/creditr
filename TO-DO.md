@@ -26,6 +26,7 @@ DONE: * Provide much more detail in ?rates, especially about how the data  frame
 * Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
 
 * Maybe check.rates.dates is no longer necessary?
+  It hasn't been used once in the package. So maybe it's not necessary.
 
 * get.date ought to include the JPY stuff, I think. Maybe also business date stuff? Change name to add.dates.
 
