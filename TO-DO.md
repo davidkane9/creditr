@@ -1,5 +1,6 @@
 CDS TO-DO List
 ========================================================
+* create get.conventions(). This returns a one row data frame of the accounting convention variables like 
 
 * re-organize get.rates(). I think that this should probably only return the actual rates, not that other junk. The other junk should be permanently stored in a data frame in /data. But first check that it never changes, not matter how far back you go.
 
