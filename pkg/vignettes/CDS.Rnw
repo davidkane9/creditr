@@ -1,6 +1,5 @@
 \documentclass[a4paper]{article}
 \linespread{1.5}
-\usepackage{Sweave}
 \usepackage[round]{natbib}
 \usepackage{amssymb, amsmath}
 \usepackage{url, tikz}
@@ -42,7 +41,7 @@ concordance=TRUE
 @
 
 \title{Credit Default Swaps with R}
-\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, and Skylar Smith\thanks{\href{mailto:sws2@williams.edu}{sws2@williams.edu}}}
+\author{Heidi Chen\thanks{\href{mailto:s.heidi.chen@gmail.com}{s.heidi.chen@gmail.com}}, Yuanchu Dang\thanks{\href{mailto:yuanchu.dang@williams.edu}{yuanchu.dang@williams.edu}}, David Kane\thanks{\href{mailto:dave.kane@gmail.com}{dave.kane@gmail.com}}, Yang Lu\thanks{\href{mailto:yang.lu2014@gmail.com}{yang.lu2014@gmail.com}}, \\ Kanishka Malik\thanks{\href{mailto:kanishkamalik@gmail.com}{kanishkamalik@gmail.com}}, Skylar Smith\thanks{\href{mailto:sws2@williams.edu}{sws2@williams.edu}}, and Zijie Zhu\thanks{\href{mailto:zijie.zhu@williams.edu}{zijie.zhu@williams.edu}}}
 \maketitle
 
 \setkeys{Gin}{width=0.95\textwidth}
