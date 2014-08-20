@@ -23,17 +23,17 @@ is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 \item{recovery.var}{f column in x containing recovery
 rates in decimal.}
 
-\item{x}{is the data frame containing all the relevant columns.}
+\item{x}{data frame, contains all the relevant columns.}
 
-\item{currency.var}{name of column in x containing currencies.}
+\item{currency.var}{character, column in x containing currency.}
 
-\item{coupon.var}{name of column in x containing coupon rates in bps.
-It specifies the payment amount from the protection buyer to the seller
-on a regular basis.}
+\item{coupon.var}{character, column in x containing coupon rates in basis
+points. It specifies the payment amount from the protection buyer to the
+seller on an annual basis.}
 
-\item{tenor.var}{name of column in x containing tenors.}
+\item{tenor.var}{character, column in x containing tenors.}
 
-\item{maturity.var}{name of column in x containing maturity dates.}
+\item{maturity.var}{character, column in x containing maturity date.}
 }
 \value{
 vector of upfront values (with accrual) in the same order

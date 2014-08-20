@@ -1,27 +1,25 @@
 #' Calculate CS10
 #' 
-#' \code{CS10} Calculates the change in upfront value when the spread rises by 10%, 
-#' also known as the CS10 of a contract.
+#' \code{CS10} calculates the change in upfront value when the spread rises by 
+#' 10%, also known as the CS10 of a contract.
 #' 
-#' @param x is the data frame containing all the relevant columns.
-#' @param date.var name of column in x containing dates when the trade 
-#'    is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
-#' @param currency.var name of column in x containing currencies. 
-#' @param maturity.var name of column in x containing maturity dates.
-#' @param tenor.var name of column in x containing tenors.
-#' @param spread.var name of column in x containing  par spreads in bps.
-#' @param coupon.var name of column in x containing coupon rates in bps. 
-#'    It specifies the payment amount from the protection buyer to the seller 
-#'    on a regular basis.
-#' @param RR.var name of column in x containing recovery 
-#'    rates in decimal.
-#' @param notional.var name of column in x containing the amount of 
-#'    the underlying asset on which the payments are based. 
-#'    Default is 1e7, i.e. 10MM.
-#' 
-#' @return a vector containing the change in upfront when spread increase by
-#'    10%, for each corresponding CDS contract.
-#' 
+#' @param x data frame, contains all the relevant columns.
+#' @param date.var character, column in x containing date variable.
+#' @param currency.var character, column in x containing currency.
+#' @param maturity.var character, column in x containing maturity date.
+#' @param tenor.var character, column in x containing tenors.
+#' @param spread.var character, column in x containing spread in basis points.
+#' @param coupon.var character, column in x containing coupon rates in basis 
+#'   points. It specifies the payment amount from the protection buyer to the 
+#'   seller on an annual basis.
+#' @param RR.var character, column in x containing recovery rates. ISDA model 
+#'   standard recovery rate asscumption is 0.4.
+#' @param notional.var character, column in x containing the amount of the 
+#'   underlying asset on which the payments are based.
+#'   
+#' @return a vector containing the change in upfront in units of currency.var
+#'   when spread increase by 10%, for each corresponding CDS contract.
+#'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 #'                 currency = c("USD", "EUR"),

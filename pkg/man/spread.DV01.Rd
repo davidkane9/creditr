@@ -9,29 +9,27 @@ spread.DV01(x, date.var = "date", currency.var = "currency",
   notional.var = "notional")
 }
 \arguments{
-\item{x}{is the data frame containing all the relevant columns.}
+\item{x}{data frame, contains all the relevant columns.}
 
-\item{date.var}{name of column in x containing dates when the trade
-is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
+\item{date.var}{character, column in x containing date variable.}
 
-\item{currency.var}{name of column in x containing currencies.}
+\item{currency.var}{character, column in x containing currency.}
 
-\item{maturity.var}{name of column in x containing maturity dates.}
+\item{maturity.var}{character, column in x containing maturity date.}
 
-\item{tenor.var}{name of column in x containing tenors.}
+\item{tenor.var}{character, column in x containing tenors.}
 
-\item{spread.var}{name of column in x containing  par spreads in bps.}
+\item{spread.var}{character, column in x containing spread in basis points.}
 
-\item{coupon.var}{name of column in x containing coupon rates in bps.
-It specifies the payment amount from the protection buyer to the seller
-on a regular basis.}
+\item{coupon.var}{character, column in x containing coupon rates in basis
+points. It specifies the payment amount from the protection buyer to the
+seller on an annual basis.}
 
-\item{RR.var}{name of column in x containing recovery
-rates in decimal.}
+\item{RR.var}{character, column in x containing recovery rates. ISDA model
+standard recovery rate asscumption is 0.4.}
 
-\item{notional.var}{name of column in x containing the amount of
-   the underlying asset on which the payments are based.
-   Default is 1e7, i.e. 10MM.}
+\item{notional.var}{character, column in x containing the amount of the
+  underlying asset on which the payments are based.}
 }
 \value{
 a vector containing the change in upfront when there is a 1
