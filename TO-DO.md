@@ -14,6 +14,13 @@ CDS TO-DO List
 
 * In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. This suggests that download.rates should be changed as well so that, next time we rebuild the data, we get what we want.
 
+* What is going on with the dates in 2003 that have a 1M but not a 3Y. table(rates$expiry[rates$year %in% c(2003)])
+
+ 1M  3Y 
+729 724 
+
+I am not saying this data is wrong, but anomalies like this should be mentioned in ?rates.
+
 * Provide much more detail in ?rates, especially about how the data  frame is created (with get.rates.DF), ultimate source (give the URL), different date ranges for different currencies, different expiry for different currencies, changes in expiries over time and so on. Also, make clear what "date" means. It is not the same as the date that these rates were in effect, right? It is the date after, so that it can match with the CDS pricing date. Explain all that. 
 
 * Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
