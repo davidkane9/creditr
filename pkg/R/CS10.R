@@ -49,7 +49,7 @@ CS10 <- function(x,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var)
   
-  IR.DV01 <- rep(NA, nrow(x))
+  CS10 <- rep(NA, nrow(x))
   
   x <- add.conventions(add.dates(x))
  
@@ -134,9 +134,9 @@ CS10 <- function(x,
                          notional = x[[notional.var]][i],
                          PACKAGE = "CDS")
     
-    IR.DV01[i] <- upfront.new - upfront.orig
+    CS10[i] <- upfront.new - upfront.orig
   }
   
-  return(IR.DV01)
+  return(CS10)
   
 }

@@ -19,18 +19,14 @@
 #' result <- IR.DV01(x)
 
 IR.DV01 <- function(x,
-                    date.var = "date",
-                    currency.var = "currency",
-                    maturity.var = "maturity",
-                    tenor.var = "tenor",
-                    spread.var = "spread",
-                    coupon.var = "coupon",
-                    RR.var = "recovery.rate",
-                    notional.var = "notional"
-){
-  
-  ## vector containing recRisk01 columns. By default it contains NAs, which
-  ## will be replaced by the recRisk01 values calculated by the function
+                 date.var     = "date",
+                 currency.var = "currency",
+                 maturity.var = "maturity",
+                 tenor.var    = "tenor",
+                 spread.var   = "spread",
+                 coupon.var   = "coupon",
+                 RR.var       = "recovery.rate",
+                 notional.var = "notional"){
   
   ## check if certain variables are contained in x
   
@@ -41,16 +37,7 @@ IR.DV01 <- function(x,
   
   IR.DV01 <- rep(NA, nrow(x))
   
-  baseDate.vec <- lapply(adj.next.bus.day(x[[date.var]] + 2), function(y){
-    if(as.POSIXlt(y)$wday == 1){ 
-      y <- y + 1
-    }
-    y})
-  
-  baseDate.vec <- JPY.condition(baseDate = baseDate.vec, date = x[[date.var]], 
-                            currency = x[[currency.var]])
-  
-  cdsDates <- add.dates(x)
+  x <- add.conventions(add.dates(x))
   
   for(i in 1:nrow(x)){
     
@@ -62,25 +49,25 @@ IR.DV01 <- function(x,
     ## call the upfront function using the above variables
     
     upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = separate.YMD(baseDate.vec[[i]]),
+                          baseDate_input = separate.YMD(x$baseDate[i]),
                           types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                           rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
                           expiries = as.character(ratesInfo[[1]]$expiry),
                           
-                          mmDCC = as.character(ratesInfo[[2]]$mmDCC),
-                          fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq),
-                          floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq),
-                          fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC),
-                          floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC),
-                          badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
+                          mmDCC = as.character(x$mmDCC[i]),
+                          fixedSwapFreq = as.character(x$fixedFreq[i]),
+                          floatSwapFreq = as.character(x$floatFreq[i]),
+                          fixedSwapDCC = as.character(x$fixedDCC[i]),
+                          floatSwapDCC = as.character(x$floatDCC[i]),
+                          badDayConvZC = as.character(x$badDayConvention[i]),
                           holidays = "None",
                           
                           todayDate_input = separate.YMD(x[[date.var]][i]),
-                          valueDate_input = separate.YMD(cdsDates$valueDate[i]),
-                          benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
-                          startDate_input = separate.YMD(cdsDates$startDate[i]),
-                          endDate_input = separate.YMD(cdsDates$endDate[i]),
-                          stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
+                          valueDate_input = separate.YMD(x$valueDate[i]),
+                          benchmarkDate_input = separate.YMD(x$startDate[i]),
+                          startDate_input = separate.YMD(x$startDate[i]),
+                          endDate_input = separate.YMD(x$endDate[i]),
+                          stepinDate_input = separate.YMD(x$stepinDate[i]),
                           
                           dccCDS = "ACT/360",
                           ivlCDS = "1Q",
@@ -99,25 +86,25 @@ IR.DV01 <- function(x,
     ## call the upfront function again, this time with rates + 1/1e4
     
     upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = separate.YMD(baseDate.vec[[i]]),
+                         baseDate_input = separate.YMD(x$baseDate[i]),
                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)) + 1/1e4,
                          expiries = as.character(ratesInfo[[1]]$expiry),
                          
-                         mmDCC = as.character(ratesInfo[[2]]$mmDCC),
-                         fixedSwapFreq = as.character(ratesInfo[[2]]$fixedFreq),
-                         floatSwapFreq = as.character(ratesInfo[[2]]$floatFreq),
-                         fixedSwapDCC = as.character(ratesInfo[[2]]$fixedDCC),
-                         floatSwapDCC = as.character(ratesInfo[[2]]$floatDCC),
-                         badDayConvZC = as.character(ratesInfo[[2]]$badDayConvention),
+                         mmDCC = as.character(x$mmDCC[i]),
+                         fixedSwapFreq = as.character(x$fixedFreq[i]),
+                         floatSwapFreq = as.character(x$floatFreq[i]),
+                         fixedSwapDCC = as.character(x$fixedDCC[i]),
+                         floatSwapDCC = as.character(x$floatDCC[i]),
+                         badDayConvZC = as.character(x$badDayConvention[i]),
                          holidays = "None",
                          
                          todayDate_input = separate.YMD(x[[date.var]][i]),
-                         valueDate_input = separate.YMD(cdsDates$valueDate[i]),
-                         benchmarkDate_input = separate.YMD(cdsDates$startDate[i]),
-                         startDate_input = separate.YMD(cdsDates$startDate[i]),
-                         endDate_input = separate.YMD(cdsDates$endDate[i]),
-                         stepinDate_input = separate.YMD(cdsDates$stepinDate[i]),
+                         valueDate_input = separate.YMD(x$valueDate[i]),
+                         benchmarkDate_input = separate.YMD(x$startDate[i]),
+                         startDate_input = separate.YMD(x$startDate[i]),
+                         endDate_input = separate.YMD(x$endDate[i]),
+                         stepinDate_input = separate.YMD(x$stepinDate[i]),
                          
                          dccCDS = "ACT/360",
                          ivlCDS = "1Q",
