@@ -5,31 +5,31 @@
 #' 
 #' @param x is the data frame containing all the relevant columns.
 #' @param date.var name of column in x containing dates when the trade 
-#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
+#'    is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
 #' @param currency.var name of column in x containing currencies. 
 #' @param maturity.var name of column in x containing maturity dates.
 #' @param tenor.var name of column in x containing tenors.
 #' @param spread.var name of column in x containing  par spreads in bps.
 #' @param coupon.var name of column in x containing coupon rates in bps. 
-#' It specifies the payment amount from the protection buyer to the seller 
-#' on a regular basis.
+#'    It specifies the payment amount from the protection buyer to the seller 
+#'    on a regular basis.
 #' @param RR.var name of column in x containing recovery 
-#' rates in decimal.
+#'    rates in decimal.
 #' @param notional.var name of column in x containing the amount of 
-#' the underlying asset on which the payments are based. 
-#' Default is 1e7, i.e. 10MM.
+#'    the underlying asset on which the payments are based. 
+#'    Default is 1e7, i.e. 10MM.
 #' 
 #' @return a vector containing the change in upfront when spread increase by
-#' 10%, for each corresponding CDS contract.
+#'    10%, for each corresponding CDS contract.
 #' 
 #' @examples 
-#' x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
-#' currency = c("USD", "EUR"),
-#' tenor = c(5, 5),
-#' spread = c(120, 110),
-#' coupon = c(100, 100),
-#' recovery.rate = c(0.4, 0.4),
-#' notional = c(1e7, 1e7))
+#' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
+#'                 currency = c("USD", "EUR"),
+#'                 tenor = c(5, 5),
+#'                 spread = c(120, 110),
+#'                 coupon = c(100, 100),
+#'                 recovery.rate = c(0.4, 0.4),
+#'                 notional = c(1e7, 1e7))
 #' result <- CS10(x)
 
 CS10 <- function(x,
