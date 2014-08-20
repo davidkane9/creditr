@@ -8,18 +8,20 @@ library(CDS)
 test_that("test for add.dates", {
   ## Should return an error when no tenor or maturity date is given
   
-  expect_error(add.dates(data.frame(date = as.Date("2014-04-15"))))
+  expect_error(add.dates(data.frame(date = as.Date("2014-04-15"), currency = "USD")))
   
   ## Should return an error when both tenor and maturity date are given; only one
   ## should be entered
   
   expect_error(add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5,
-                                    maturity = as.Date("2016-06-20"))))
+                                    maturity = as.Date("2016-06-20",
+                                                       currency = "USD"))))
   
   ## Should return an error when maturity is not of type date
   
   expect_error(add.dates(data.frame(date = as.Date("2014-04-15"),
-                                    maturity = "not a date")))
+                                    maturity = "not a date",
+                                    currency = "JPY")))
   
   ## different dates for a CDS with a 10-year maturity
   
@@ -27,8 +29,9 @@ test_that("test for add.dates", {
     
   load("add.dates.test.RData")
   
-  result.1 <- add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5))
-  result.2 <- add.dates(data.frame(date = as.Date("2014-04-15"), maturity = "2019-06-20")) 
+  result.1 <- add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5, currency = "USD"))
+  result.2 <- add.dates(data.frame(date = as.Date("2014-04-15"),
+                                   maturity = "2019-06-20", currency = "USD")) 
   
   ## expect_that(result.1, is_identical_to(truth.1))
   ## expect_that(result.2, is_identical_to(truth.1))
@@ -36,7 +39,8 @@ test_that("test for add.dates", {
   ## if the trade date is right after roll date, then the endDate 
   ## should go to next roll date
   
-  result.3 <- add.dates(data.frame(date = as.Date("2011-06-21"), tenor = 5))
+  result.3 <- add.dates(data.frame(date = as.Date("2011-06-21"), tenor = 5,
+                                   currency = "USD"))
   ## expect_that(result.3, is_identical_to(truth.2))
   
   ## if the trade date is a US holiday, say, independence Day

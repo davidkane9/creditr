@@ -3,7 +3,7 @@
 \alias{JPY.condition}
 \title{Japanese Dates}
 \usage{
-JPY.condition(currency = currency, date = Tdate, baseDate = baseDate)
+JPY.condition(currency = "USD", date, baseDate)
 }
 \arguments{
 \item{currency}{in which CDS is denominated.}

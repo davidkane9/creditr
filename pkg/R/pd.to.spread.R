@@ -39,8 +39,11 @@ pd.to.spread <- function(x,
   time <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
+    
+    ## set currency to "USD" so that add.dates can be used properly
+    
     time[i] <- as.numeric((add.dates(data.frame(date = x[[date.var]][i], 
-    tenor = x[[tenor.var]][i]))$endDate)-x[[date.var]][i])/360    
+    tenor = x[[tenor.var]][i], currency = "USD"))$endDate)-x[[date.var]][i])/360    
   }
   
   ## calculate the spread by inverting the formula for probability of default

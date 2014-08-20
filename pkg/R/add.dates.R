@@ -18,14 +18,13 @@
 #' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
 #' 
 #' @examples
-#' x1 <- data.frame(date = as.Date("2014-05-07"), tenor = 5)
+#' x1 <- data.frame(date = as.Date("2014-05-07"), tenor = 5, currency = "USD")
 #' add.dates(x1)
 #' 
-#' x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), tenor = rep(5, 2))
+#' x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
+#' tenor = rep(5, 2),
+#' currency = "JPY")
 #' add.dates(x2)
-#' 
-#' x3 <- data.frame(date = as.Date("2014-05-07"), maturity = as.Date("2019-06-20"))
-#' add.dates(x3)
 
 add.dates <- function(x, date.var = "date",
                      maturity.var = "maturity",
@@ -37,6 +36,7 @@ add.dates <- function(x, date.var = "date",
   stopifnot(! (is.null(x$maturity) & is.null(x$tenor)))
   stopifnot(is.null(x$maturity) | is.null(x$tenor))
   
+  baseDate <- as.Date(rep(NA, nrow(x)))
   stepinDate <- as.Date(rep(NA, nrow(x)))
   valueDate <- as.Date(rep(NA, nrow(x)))
   startDate <- as.Date(rep(NA, nrow(x)))
@@ -45,7 +45,8 @@ add.dates <- function(x, date.var = "date",
   endDate <- as.Date(rep(NA, nrow(x)))
   backstopDate <- as.Date(rep(NA, nrow(x)))
   
-  ret <- cbind(x, stepinDate, valueDate, startDate, firstcouponDate, pencouponDate, endDate, backstopDate)
+  ret <- cbind(x, stepinDate, valueDate, startDate, firstcouponDate,
+               pencouponDate, endDate, backstopDate, baseDate)
   
   for(i in 1:nrow(ret)){
    
@@ -59,6 +60,17 @@ add.dates <- function(x, date.var = "date",
     
     dateWday <- as.POSIXlt(ret$date[i])$wday
     
+    ## calculate baseDate
+    
+    baseDate <- adj.next.bus.day(ret$date[i] + 2)
+    
+    if(as.POSIXlt(baseDate)$wday == 1){ 
+      baseDate <- baseDate + 1
+    }
+    
+    baseDate <- JPY.condition(baseDate = baseDate, date = x[[date.var]][i], 
+                              currency = x[[currency.var]][i])[[1]]
+  
     ## stepinDate is the date on which a party assumes ownership of a trade side. 
     ## it is Trade date + 1 day
     
@@ -132,6 +144,7 @@ add.dates <- function(x, date.var = "date",
     ret$endDate[i] <- endDate
     ret$backstopDate[i] <- backstopDate
     ret$valueDate[i] <- valueDate
+    ret$baseDate[i] <- baseDate
   }
   
   return(ret)

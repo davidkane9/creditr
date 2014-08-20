@@ -28,14 +28,13 @@ a date frame with 8 variables: step-in date (T+1), value date (T+3 business days
 the function returns appropriate dates used in pricing a CDS contract.
 }
 \examples{
-x1 <- data.frame(date = as.Date("2014-05-07"), tenor = 5)
+x1 <- data.frame(date = as.Date("2014-05-07"), tenor = 5, currency = "USD")
 add.dates(x1)
 
-x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), tenor = rep(5, 2))
+x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
+tenor = rep(5, 2),
+currency = "JPY")
 add.dates(x2)
-
-x3 <- data.frame(date = as.Date("2014-05-07"), maturity = as.Date("2019-06-20"))
-add.dates(x3)
 }
 \references{
 http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf

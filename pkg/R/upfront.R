@@ -182,10 +182,12 @@ upfront <- function(x,
     
     if(is.null(tenor)){
       cdsDates <- add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity)))
+                                       maturity = as.Date(maturity),
+                                       currency = currency))
     }
     else if(is.null(maturity)){
-      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor))
+      cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor,
+                                       currency = currency))
     }
     
     ## if these dates are not entered, they are extracted using add.dates

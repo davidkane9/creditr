@@ -135,16 +135,18 @@ CDS <- function(## name stuff
   ## add.dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
-    cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor))
+    cdsDates <- add.dates(data.frame(date = as.Date(date), tenor = tenor, currency = currency))
   } else{
     if(is.null(tenor)){
       cdsDates <- add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity)))
+                                       maturity = as.Date(maturity),
+                                       currency = currency))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
       cdsDates <- add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity)))
+                                       maturity = as.Date(maturity),
+                                       currency = currency))
     }
   }
   

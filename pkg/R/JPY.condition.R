@@ -11,8 +11,7 @@
 #' 
 #' @return updated \code{baseDate}
 
-JPY.condition <- function(currency = currency, 
-                          date = Tdate, baseDate = baseDate){
+JPY.condition <- function(currency = "USD", date, baseDate){
   
   for(i in 1:length(currency)){
     
@@ -25,10 +24,7 @@ JPY.condition <- function(currency = currency,
       if(baseDate[[i]] %in% JPY.holidays){
         baseDate[[i]] <- adj.next.bus.day(as.Date(date[i]) + 1)
       }
-    }
-    
+    } 
   }
-  
-  
   return(baseDate)
 }
