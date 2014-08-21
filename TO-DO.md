@@ -1,6 +1,8 @@
 CDS TO-DO List
 ========================================================
-* Do not just delete items from this list. Do them and the put [DONE] at the beginning of them. I will then check them and delete them if I agree that it its done. You can, however, reorganize the order of the list, if that is convenient.
+* In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. Also, no GDP in rates. This suggests that download.rates (or maybe this is handled in get.rates?) should be changed as well so that, next time we rebuild the data, we get what we want. In fact, do this and rebuild now. And then compare the old with the new. Did anything weird happen?
+
+* After you mark an item [DONE], move it to the top of the list so that I notice it. As a test, do that with this item, now that you have read it.
 
 * create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
 
@@ -8,16 +10,15 @@ call.ISDA(x, name, ...)
 
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
 
-* create get.conventions(). This returns a one row data frame of the accounting convention variables like badDayConvention and mmDCC. All the information for this is in the R code itself, not in an extraneous data frame. Handles changes in rules for Japan. Takes a date and currency as arguments. Does not need to work for data frames, I think.
 
 
-* re-organize get.rates(). Should only return the actual rates, not that other junk. Should have a new argument: "stored" with default value TRUE. If TRUE, the data is gotten from the rates.RData. If false, it goes to the internet. If you ask for rates for a day that has no information in rates.RData (or if stored = FALSE and you get nothing back from the internet), then get.rates issues an informative warning (which day/currency failed) and then returns zero interest rates.
+* Enhance get.rates(). Should have a new argument: "stored" with default value TRUE. If TRUE, the data is gotten from the rates.RData. If it can't find data, it issues an error. Also, add another sourcing to get.rates(), data from FRED. 
 
-* Try to make data/rates.RData go back to Jan 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
+* Make data/rates.RData go back to Jan 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
 * Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
 
-* In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. This suggests that download.rates should be changed as well so that, next time we rebuild the data, we get what we want.
+
 
 * What is going on with the dates in 2003 that have a 1M but not a 3Y. table(rates$expiry[rates$year %in% c(2003)])
 
