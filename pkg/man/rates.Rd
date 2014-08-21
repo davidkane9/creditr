@@ -22,7 +22,7 @@ data(rates)
   }
 }
 \details{
-\code{rates.Data} is created by a CDS function, \code{get.rates.DF}. Currently, the rates for all currencies (USD, JPY, EUR) date back to 2003-12-31. The source of these rates is from https://www.markit.com/ and . Also, please note that for different currencies, their conventional expiries are different. However, a currency's conventional expiry stays the same. Also, notice that the 
+\code{rates.Data} is created by a CDS function, \code{get.rates.DF}. The rates in this data frame are the ones that are used in pricing the credit default swaps. Currently, the rates for all currencies (USD, JPY and EUR) date back to 2003-12-31. The source of these rates is from https://www.markit.com/ and http://research.stlouisfed.org/fred2/. Also, please note that for different currencies, their conventional expiries are different. However, a currency's conventional expiry stays the same. Also, notice that the 
 \code{rates} here does not correspond to the \code{date} in the data 
 frame; they correspond to \code{trade date - 1}, given that the trade date is from Tuesday to Saturday; if the trade date is on Sunday or Monday, then the rates are the previous Friday's.
 }
