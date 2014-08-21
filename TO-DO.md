@@ -1,6 +1,13 @@
 CDS TO-DO List
 ========================================================
-* In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. Also, no GDP in rates. This suggests that download.rates (or maybe this is handled in get.rates?) should be changed as well so that, next time we rebuild the data, we get what we want. In fact, do this and rebuild now. And then compare the old with the new. Did anything weird happen?
+DONE: In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. Also, no GDP in rates. This suggests that download.rates (or maybe this is handled in get.rates?) should be changed as well so that, next time we rebuild the data, we get what we want. In fact, do this and rebuild now. And then compare the old with the new. Did anything weird happen?
+
+DONE: After you mark an item [DONE], move it to the top of the list so that I notice it. As a test, do that with this item, now that you have read it.
+
+DONE: Check inputs ought to provide some useful default behavior
+** It should only pass back the columns that are needed going forward. That is, even if input x has 50 columns, check.inputs only passes back the columns that need to be kept around.
+** Instead of just failing if something like notional.var is missing, it ought to create a x$notional column and give it a sensible default value. If any of these are missing, don't fail, just create with the default name: date.var with today's date. tenor.var with 5, notional.var with 10,000,000 and RR.var with 0.4.
+
 
 * Update ?rates with lots of information.
 
@@ -8,11 +15,6 @@ CDS TO-DO List
 
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
-* After you mark an item [DONE], move it to the top of the list so that I notice it. As a test, do that with this item, now that you have read it.
-
-* Check inputs ought to provide some useful default behavior
-** It should only pass back the columns that are needed going forward. That is, even if input x has 50 columns, check.inputs only passes back the columns that need to be kept around.
-** Instead of just failing if something like notional.var is missing, it ought to create a x$notional column and give it a sensible default value. If any of these are missing, don't fail, just create with the default name: date.var with today's date. tenor.var with 5, notional.var with 10,000,000 and RR.var with 0.4.
 
 * Add all the test cases specified at the bottom of test.rates.R
 
