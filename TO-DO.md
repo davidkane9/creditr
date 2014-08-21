@@ -2,6 +2,8 @@ CDS TO-DO List
 ========================================================
 * In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. Also, no GDP in rates. This suggests that download.rates (or maybe this is handled in get.rates?) should be changed as well so that, next time we rebuild the data, we get what we want. In fact, do this and rebuild now. And then compare the old with the new. Did anything weird happen?
 
+* Update ?rates with lots of information.
+
 * Change get.rates.DF (and associated helper functions) so that it goes back to January 1, 2004 for all three currencies.
 
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
