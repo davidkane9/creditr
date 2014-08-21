@@ -22,7 +22,7 @@ data(rates)
   }
 }
 \details{
-\code{rates.Data} is created by a CDS function, \code{get.rates.DF}. Currently, the rates for USD date back to 2003-01-02; the rates for EUR, GBP and JPY date back to 2005-01-05. The source of these rates is from https://www.markit.com/. Also, please note that for different currencies, their conventional expiries are different. However, a currency's conventional expiry stays the same. Also, notice that the 
+\code{rates.Data} is created by a CDS function, \code{get.rates.DF}. Currently, the rates for all currencies (USD, JPY, EUR) date back to 2003-12-31. The source of these rates is from https://www.markit.com/ and . Also, please note that for different currencies, their conventional expiries are different. However, a currency's conventional expiry stays the same. Also, notice that the 
 \code{rates} here does not correspond to the \code{date} in the data 
 frame; they correspond to \code{trade date - 1}, given that the trade date is from Tuesday to Saturday; if the trade date is on Sunday or Monday, then the rates are the previous Friday's.
 }
@@ -39,3 +39,7 @@ data(rates)
 ## rates[rates$currency=="JPY" & rates$date=="2005-10-01",]
 }
 \keyword{datasets}
+\seealso{
+ \code{\link{get.rates}}
+ \code{\link{get.rates.DF}}
+}

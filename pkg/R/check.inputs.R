@@ -44,9 +44,9 @@ check.inputs <- function(x,
     stop("provide either tenor OR maturity")
   }
   
-  stopifnot(is.numeric(x[[spread.var]]))
-  stopifnot(is.numeric(x[[coupon.var]]))
-  stopifnot(is.numeric(x[[notional.var]]))
+  stopifnot(is.numeric(x[[spread.var]]) & !(is.integer(x[[spread.var]])))
+  stopifnot(is.numeric(x[[coupon.var]]) & !(is.integer(x[[coupon.var]])))
+  stopifnot(is.numeric(x[[notional.var]]) & !(is.integer(x[[notional.var]])))
   
   return(x)
 }
