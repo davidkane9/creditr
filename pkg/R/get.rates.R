@@ -94,5 +94,5 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     
     ratesx$expiry <- as.character(ratesx$expiry)
     
-    return(list(ratesx))
+    return(ratesx)
 }

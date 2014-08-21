@@ -60,10 +60,10 @@ rec.risk.01 <- function(x,
     
     upfront.orig <- .Call('calcUpfrontTest',
                           baseDate_input = separate.YMD(x$baseDate[i]),
-                          types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
-                          rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
-                          expiries = as.character(ratesInfo[[1]]$expiry),
-                          
+                          types = paste(as.character(ratesInfo$type), collapse = ""),
+                          rates = as.numeric(as.character(ratesInfo$rate)),
+                          expiries = as.character(ratesInfo$expiry),
+                      
                           mmDCC = as.character(x$mmDCC[i]),
                           fixedSwapFreq = as.character(x$fixedFreq[i]),
                           floatSwapFreq = as.character(x$floatFreq[i]),
@@ -97,9 +97,9 @@ rec.risk.01 <- function(x,
     
     upfront.new <- .Call('calcUpfrontTest',
                          baseDate_input = separate.YMD(x$baseDate[i]),
-                         types = paste(as.character(ratesInfo[[1]]$type), collapse = ""),
-                         rates = as.numeric(as.character(ratesInfo[[1]]$rate)),
-                         expiries = as.character(ratesInfo[[1]]$expiry),
+                         types = paste(as.character(ratesInfo$type), collapse = ""),
+                         rates = as.numeric(as.character(ratesInfo$rate)),
+                         expiries = as.character(ratesInfo$expiry),
                          
                          mmDCC = as.character(x$mmDCC[i]),
                          fixedSwapFreq = as.character(x$fixedFreq[i]),

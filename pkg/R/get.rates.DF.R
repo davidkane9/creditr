@@ -32,7 +32,7 @@ get.rates.DF <- function(start, end, currency = "USD"){
     ## use get.rates with the end date and keep reducing it by 1 day
     ## store this data in Rates
     
-    Rates <- try(get.rates(date = end, currency=currency)[[1]])
+    Rates <- try(get.rates(date = end, currency=currency))
     
     ## we use try so that if there is a date where rates are unavailable,
     ## it doesn't stop the function. 

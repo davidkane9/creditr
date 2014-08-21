@@ -177,11 +177,11 @@ CDS <- function(## name stuff
     ## interest.rates stuff
     
     if (is.null(interest.rates$types)){ 
-      interest.rates$types <- paste(as.character(ratesInfo[[1]]$type), collapse = "")}
+      interest.rates$types <- paste(as.character(ratesInfo$type), collapse = "")}
     if (is.null(interest.rates$rates)){
-      interest.rates$rates <- as.numeric(as.character(ratesInfo[[1]]$rate))}
+      interest.rates$rates <- as.numeric(as.character(ratesInfo$rate))}
     if (is.null(interest.rates$expiries)){
-      interest.rates$expiries <- as.character(ratesInfo[[1]]$expiry)}
+      interest.rates$expiries <- as.character(ratesInfo$expiry)}
     
     ## conventions stuff
     

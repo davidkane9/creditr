@@ -19,7 +19,7 @@ test_that("test for upfront", {
   
   ## truth.1 <- 18624
   
-  rates.1 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.1 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.1 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -42,7 +42,7 @@ test_that("test for upfront", {
   ## truth.2 <- -9444
   ## calculated value
   
-  rates.2 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.2 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.2 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -66,7 +66,7 @@ test_that("test for upfront", {
   ## calculated value
   
   
-  rates.3 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.3 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.3 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -89,7 +89,7 @@ test_that("test for upfront", {
   ## calculated value
   
   
-  rates.4 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.4 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.4 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -112,7 +112,7 @@ test_that("test for upfront", {
   ## calculated value
   
   
-  rates.5 <- get.rates(as.Date("2014-04-15"), currency = "USD")[[1]][1:13,]
+  rates.5 <- get.rates(as.Date("2014-04-15"), currency = "USD")[1:13,]
   
   result.5 <- upfront(data.frame(date = as.Date("2014-04-15"),
                                  currency = "USD",
@@ -133,7 +133,7 @@ test_that("test for upfront", {
   ## actual value
   ## truth.6 <- 16582
   #calculated value
-  rates.6 <- get.rates(as.Date("2014-04-29"), currency = "USD")[[1]][1:13,]
+  rates.6 <- get.rates(as.Date("2014-04-29"), currency = "USD")[1:13,]
   
   result.6 <- upfront(data.frame(date = as.Date("2014-04-29"),
                                  currency = "USD",
@@ -154,7 +154,7 @@ test_that("test for upfront", {
   ## truth.7 <- 17395
   #calculated value
   
-  rates.7 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.7 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.7 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -175,7 +175,7 @@ test_that("test for upfront", {
   ## calculated value
   
   
-  rates.8 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.8 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.8 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -197,7 +197,7 @@ test_that("test for upfront", {
   ## calculated value
   
   
-  rates.9 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.9 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.9 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                  currency = "USD",
@@ -218,7 +218,7 @@ test_that("test for upfront", {
   ## truth.10 <- -227912
   ## calculated value
   
-  rates.10 <- get.rates(as.Date("2014-04-22"), currency = "USD")[[1]][1:13,]
+  rates.10 <- get.rates(as.Date("2014-04-22"), currency = "USD")[1:13,]
   
   result.10 <- upfront(data.frame(date = as.Date("2014-04-22"),
                                   currency = "USD",
@@ -241,7 +241,7 @@ test_that("test for upfront", {
   ## calculated value
   ## 
   
-  rates.11 <- get.rates(as.Date("2013-09-20"), currency = "USD")[[1]][1:13,]
+  rates.11 <- get.rates(as.Date("2013-09-20"), currency = "USD")[1:13,]
   
   result.11 <- upfront(data.frame(date = as.Date("2013-09-20"),
                                   currency = "USD",
@@ -266,7 +266,7 @@ test_that("test for upfront", {
   
   ## test for different Japanese dates
   
-  rates.13 <- get.rates(as.Date("2009-03-18"), currency = "USD")[[1]][1:13,]
+  rates.13 <- get.rates(as.Date("2009-03-18"), currency = "USD")[1:13,]
   
   result.13 <- upfront(data.frame(date = as.Date("2009-03-18"),
                                   currency = "JPY",

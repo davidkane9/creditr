@@ -112,9 +112,9 @@ spread <- function(date,
     if ((is.null(types) | is.null(rates) | is.null(expiries))){
         
         ratesInfo <- get.rates(date = ratesDate, currency = as.character(currency))
-        types     <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-        rates     <- as.numeric(as.character(ratesInfo[[1]]$rate))
-        expiries  <- as.character(ratesInfo[[1]]$expiry)
+        types     <- paste(as.character(ratesInfo$type), collapse = "")
+        rates     <- as.numeric(as.character(ratesInfo$rate))
+        expiries  <- as.character(ratesInfo$expiry)
         mmDCC     <- as.character(cdsDates$mmDCC)
         
         fixedSwapFreq <- as.character(cdsDates$fixedFreq)

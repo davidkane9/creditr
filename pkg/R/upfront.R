@@ -212,9 +212,9 @@ upfront <- function(x,
       ## extract relevant variables like mmDCC, expiries from the get.rates function 
       ## if they are not entered
       
-      if (is.null(types)) types       <- paste(as.character(ratesInfo[[1]]$type), collapse = "")
-      if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo[[1]]$rate))
-      if (is.null(expiries)) expiries <- as.character(ratesInfo[[1]]$expiry)
+      if (is.null(types)) types       <- paste(as.character(ratesInfo$type), collapse = "")
+      if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo$rate))
+      if (is.null(expiries)) expiries <- as.character(ratesInfo$expiry)
       if (is.null(mmDCC)) mmDCC       <- as.character(cdsDates$mmDCC)
       
       if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(cdsDates$fixedFreq)
