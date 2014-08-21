@@ -1,6 +1,13 @@
 CDS TO-DO List
 ========================================================
 
+DONE: create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
+
+call.ISDA(x, name, ...)
+
+where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
+
+
 * Make build.rates.df a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates.df should consist of download.markit and download.fred. On the other hand, get.rates should first consult the stored rates dataframe before checking markit and then fred.
 
 * Investigate makefile and use that to fetch all our c code to complie the package instantly.
@@ -13,12 +20,6 @@ CDS TO-DO List
 
 
 * Add all the test cases specified at the bottom of test.rates.R
-
-* create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
-
-call.ISDA(x, name, ...)
-
-where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
 
 
 * Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
