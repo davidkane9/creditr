@@ -4,14 +4,14 @@ data(rates)
 
 test_that("test that rates data frame has correct variable names and types", {
   
-  expect_equal(names(rates), c("date", "currency", "expiry", "rates"))
-  expect_equal(unname(sapply(rates, class)), c("Date", "factor", "factor", "numeric"))  
+  expect_equal(names(rates), c("date", "currency", "expiry", "rate"))
+  expect_equal(unname(sapply(rates, class)), c("Date", "character", "character", "numeric"))  
 
 })
 
 test_that("test that rates data frame variables currency and expiry have only allowed values", {
   
-  expect_true(all(rates$currency %in% c("USD", "JPY", "EUR", "GBP")))
+  expect_true(all(rates$currency %in% c("USD", "JPY", "EUR")))
   
   expect_true(all(rates$expiry %in% c("1M", "2M", "3M", "6M", "9M",
                                       "1Y", "2Y", "3Y", "4Y", "5Y",  
@@ -23,4 +23,11 @@ test_that("test that rates data frame variables currency and expiry have only al
 
 ## labor day test case
 
-## a random weekend all currency
+## a random weekend test case. Done for each currency separately, on separate week-ends.
+
+## Test to show there are no missing dates.
+
+## Test to show that, within a currency, now given expiry changes by more than 
+## X% from one day to the next. Most changes are very small. Doubt that there
+## are any changes bigger than 10%, even 5%.
+
