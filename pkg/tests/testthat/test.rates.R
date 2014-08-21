@@ -20,3 +20,7 @@ test_that("test that rates data frame variables currency and expiry have only al
   
   
 })
+
+## labor day test case
+
+## a random weekend all currency
