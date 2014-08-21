@@ -2,9 +2,14 @@ CDS TO-DO List
 ========================================================
 * Do not just delete items from this list. Do them and the put [DONE] at the beginning of them. I will then check them and delete them if I agree that it its done. You can, however, reorganize the order of the list, if that is convenient.
 
+* create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
+
+call.ISDA(x, name, ...)
+
+where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
+
 * create get.conventions(). This returns a one row data frame of the accounting convention variables like badDayConvention and mmDCC. All the information for this is in the R code itself, not in an extraneous data frame. Handles changes in rules for Japan. Takes a date and currency as arguments. Does not need to work for data frames, I think.
 
-* Understand how the C code can be "tricked" into dealing with missing in interest rates. First, if we pass in nothing, what does it do? Second, if that fails, how can we pass in the simplest zero rate. Maybe just 0 at 1Y? 
 
 * re-organize get.rates(). Should only return the actual rates, not that other junk. Should have a new argument: "stored" with default value TRUE. If TRUE, the data is gotten from the rates.RData. If false, it goes to the internet. If you ask for rates for a day that has no information in rates.RData (or if stored = FALSE and you get nothing back from the internet), then get.rates issues an informative warning (which day/currency failed) and then returns zero interest rates.
 
