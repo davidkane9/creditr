@@ -91,5 +91,8 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
                           
                           type = c(rep("M", sum(names(rates$deposits) == "curvepoint")),
                               rep("S", sum(names(rates$swaps) == "curvepoint"))))
+    
+    ratesx$expiry <- as.character(ratesx$expiry)
+    
     return(list(ratesx))
 }
