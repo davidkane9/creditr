@@ -2,6 +2,10 @@ CDS TO-DO List
 ========================================================
 * In rates.RData, "rates" variable should be renamed as "rate". Also, currency and expiry should be character, not factor. Also, no GDP in rates. This suggests that download.rates (or maybe this is handled in get.rates?) should be changed as well so that, next time we rebuild the data, we get what we want. In fact, do this and rebuild now. And then compare the old with the new. Did anything weird happen?
 
+* Change get.rates.DF (and associated helper functions) so that it goes back to January 1, 2004 for all three currencies.
+
+* Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
+
 * After you mark an item [DONE], move it to the top of the list so that I notice it. As a test, do that with this item, now that you have read it.
 
 * create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
@@ -14,7 +18,7 @@ where x is a data frame that looks like the result after add.dates() and add.con
 
 * Enhance get.rates(). Should have a new argument: "stored" with default value TRUE. If TRUE, the data is gotten from the rates.RData. If it can't find data, it issues an error. Also, add another sourcing to get.rates(), data from FRED. 
 
-* Make data/rates.RData go back to Jan 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
+
 
 * Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
 

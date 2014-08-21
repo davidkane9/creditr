@@ -4,8 +4,8 @@ data(rates)
 
 test_that("test that rates data frame has correct variable names and types", {
   
-  expect_true(all.equal(names(rates), c("date", "currency", "expiry", "rates")))
-    
+  expect_equal(names(rates), c("date", "currency", "expiry", "rates"))
+  expect_equal(unname(sapply(rates, class)), c("Date", "factor", "factor", "numeric"))  
 
 })
 
