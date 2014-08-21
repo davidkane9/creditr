@@ -4,7 +4,7 @@
 #' 
 #' @param name character function name within which call.ISDA is called
 #' @param x dataframe which contains relevant dates and convention info
-#' @ratesInfo dataframe which contains relevant rates data
+#' @param ratesInfo dataframe which contains relevant rates data
 #' @param i integer which indicates which iteration of the loop we are currently at
 #' 
 #' @return a numeric value which is the difference between the new upfront and the old one

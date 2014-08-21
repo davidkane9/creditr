@@ -60,5 +60,4 @@ rec.risk.01 <- function(x,
   }
   
   return(rec.risk.01)
-  
 }

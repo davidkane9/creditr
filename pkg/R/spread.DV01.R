@@ -18,14 +18,14 @@
 #' spread.DV01(x)
 
 spread.DV01 <- function(x,
-                    date.var     = "date",
-                    currency.var = "currency",
-                    maturity.var = "maturity",
-                    tenor.var    = "tenor",
-                    spread.var   = "spread",
-                    coupon.var   = "coupon",
-                    RR.var       = "recovery.rate",
-                    notional.var = "notional"){
+                        date.var     = "date",
+                        currency.var = "currency",
+                        maturity.var = "maturity",
+                        tenor.var    = "tenor",
+                        spread.var   = "spread",
+                        coupon.var   = "coupon",
+                        RR.var       = "recovery.rate",
+                        notional.var = "notional"){
   
   ## check if certain variables are contained in x
   
@@ -33,6 +33,17 @@ spread.DV01 <- function(x,
                     maturity.var = maturity.var, tenor.var = tenor.var,
                     spread.var = spread.var, coupon.var = coupon.var,
                     notional.var = notional.var, RR.var = RR.var)
+  
+  ## change the column names anyway
+  
+  colnames(x)[which(colnames(x) == date.var)] <- "date"
+  colnames(x)[which(colnames(x) == currency.var)] <- "currency"
+  colnames(x)[which(colnames(x) == maturity.var)] <- "maturity"
+  colnames(x)[which(colnames(x) == tenor.var)] <- "tenor"
+  colnames(x)[which(colnames(x) == spread.var)] <- "spread"
+  colnames(x)[which(colnames(x) == coupon.var)] <- "coupon"
+  colnames(x)[which(colnames(x) == RR.var)] <- "recovery.rate"
+  colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
   
   spread.DV01 <- rep(NA, nrow(x))
   
@@ -43,85 +54,10 @@ spread.DV01 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][i])
+    ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    ## call the upfront function using the above variables
-    
-    upfront.orig <- .Call('calcUpfrontTest',
-                          baseDate_input = separate.YMD(x$baseDate[i]),
-                          types = paste(as.character(ratesInfo$type), collapse = ""),
-                          rates = as.numeric(as.character(ratesInfo$rate)),
-                          expiries = as.character(ratesInfo$expiry),
-                          
-                          mmDCC = as.character(x$mmDCC[i]),
-                          fixedSwapFreq = as.character(x$fixedFreq[i]),
-                          floatSwapFreq = as.character(x$floatFreq[i]),
-                          fixedSwapDCC = as.character(x$fixedDCC[i]),
-                          floatSwapDCC = as.character(x$floatDCC[i]),
-                          badDayConvZC = as.character(x$badDayConvention[i]),
-                          holidays = "None",
-                          
-                          todayDate_input = separate.YMD(x[[date.var]][i]),
-                          valueDate_input = separate.YMD(x$valueDate[i]),
-                          benchmarkDate_input = separate.YMD(x$startDate[i]),
-                          startDate_input = separate.YMD(x$startDate[i]),
-                          endDate_input = separate.YMD(x$endDate[i]),
-                          stepinDate_input = separate.YMD(x$stepinDate[i]),
-                          
-                          dccCDS = "ACT/360",
-                          ivlCDS = "1Q",
-                          stubCDS = "F",
-                          badDayConvCDS = "F",
-                          calendar = "None",
-                          
-                          parSpread = x[[spread.var]][i],
-                          couponRate = x[[coupon.var]][i],
-                          recoveryRate = x[[RR.var]][i],
-                          isPriceClean_input = FALSE,
-                          payAccruedOnDefault_input = TRUE,
-                          notional = x[[notional.var]][i],
-                          PACKAGE = "CDS")
-    
-    ## call the upfront function again, this time with rates + 1/1e4
-    
-    upfront.new <- .Call('calcUpfrontTest',
-                         baseDate_input = separate.YMD(x$baseDate[i]),
-                         types = paste(as.character(ratesInfo$type), collapse = ""),
-                         rates = as.numeric(as.character(ratesInfo$rate)),
-                         expiries = as.character(ratesInfo$expiry),
-                         
-                         mmDCC = as.character(x$mmDCC[i]),
-                         fixedSwapFreq = as.character(x$fixedFreq[i]),
-                         floatSwapFreq = as.character(x$floatFreq[i]),
-                         fixedSwapDCC = as.character(x$fixedDCC[i]),
-                         floatSwapDCC = as.character(x$floatDCC[i]),
-                         badDayConvZC = as.character(x$badDayConvention[i]),
-                         holidays = "None",
-                         
-                         todayDate_input = separate.YMD(x[[date.var]][i]),
-                         valueDate_input = separate.YMD(x$valueDate[i]),
-                         benchmarkDate_input = separate.YMD(x$startDate[i]),
-                         startDate_input = separate.YMD(x$startDate[i]),
-                         endDate_input = separate.YMD(x$endDate[i]),
-                         stepinDate_input = separate.YMD(x$stepinDate[i]),
-                         
-                         dccCDS = "ACT/360",
-                         ivlCDS = "1Q",
-                         stubCDS = "F",
-                         badDayConvCDS = "F",
-                         calendar = "None",
-                         
-                         parSpread = x[[spread.var]][i] + 1,
-                         couponRate = x[[coupon.var]][i],
-                         recoveryRate = x[[RR.var]][i],
-                         isPriceClean_input = FALSE,
-                         payAccruedOnDefault_input = TRUE,
-                         notional = x[[notional.var]][i],
-                         PACKAGE = "CDS")
-    
-    spread.DV01[i] <- upfront.new - upfront.orig
+    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x, ratesInfo = ratesInfo, i = i)
   }
   
   return(spread.DV01)
-  
 }
