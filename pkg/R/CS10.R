@@ -45,7 +45,7 @@ CS10 <- function(x,
   x <- check.inputs(x, date.var = date.var, currency.var = currency.var,
                     maturity.var = maturity.var, tenor.var = tenor.var,
                     spread.var = spread.var, coupon.var = coupon.var,
-                    notional.var = notional.var)
+                    notional.var = notional.var, RR.var = RR.var)
   
   CS10 <- rep(NA, nrow(x))
   

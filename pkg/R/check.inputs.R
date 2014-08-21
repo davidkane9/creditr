@@ -18,11 +18,28 @@ check.inputs <- function(x,
                          tenor.var = "tenor",
                          spread.var = "spread",
                          coupon.var = "coupon",
-                         notional.var = "notional"){
+                         notional.var = "notional",
+                         RR.var = "recovery.rate"){
 
   ## check if certain variables are contained in x
   
-  stopifnot(c(date.var, currency.var, spread.var, coupon.var, notional.var) %in% names(x))
+  stopifnot(c(currency.var, spread.var, coupon.var) %in% names(x))
+  
+  if(!notional.var %in% names(x)){
+    x <- cbind(x, notional = 1e7)
+  }
+  
+  if(!RR.var %in% names(x)){
+    x <- cbind(x, recovery.rate = 0.4)
+  }
+  
+  if(!date.var %in% names(x)){
+    x <- cbind(x, date = Sys.Date())
+  }
+  
+  if(!(tenor.var %in% names(x) | maturity.var %in% names(x))){
+    x <- cbind(x, tenor = 5)
+  }
   
   ## check if variables are defined in the correct classes
   

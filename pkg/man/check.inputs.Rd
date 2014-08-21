@@ -5,7 +5,8 @@
 \usage{
 check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", notional.var = "notional")
+  coupon.var = "coupon", notional.var = "notional",
+  RR.var = "recovery.rate")
 }
 \arguments{
 \item{spread.var}{name of column in x containing  spreads in bps.}
@@ -27,6 +28,9 @@ seller on an annual basis.}
 
 \item{notional.var}{character, column in x containing the amount of the
   underlying asset on which the payments are based.}
+
+\item{RR.var}{character, column in x containing recovery rates. ISDA model
+standard recovery rate asscumption is 0.4.}
 }
 \value{
 a data frame if not stopped by errors.
