@@ -43,7 +43,7 @@ rec.risk.01 <- function(x,
   colnames(x)[which(colnames(x) == spread.var)] <- "spread"
   colnames(x)[which(colnames(x) == coupon.var)] <- "coupon"
   colnames(x)[which(colnames(x) == RR.var)] <- "recovery.rate"
-  colnames(x)[which(colnames(x) == notional.var)] <- "notional"
+  colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
   
   rec.risk.01 <- rep(NA, nrow(x))
   
