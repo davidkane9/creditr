@@ -44,16 +44,18 @@ get.rates.DF <- function(start, end, currency = "USD"){
       
       ## extract relevant columns from Rates
       
-      rates <- as.numeric(as.character(getRates$rate))
+      rate <- as.numeric(as.character(getRates$rate))
       expiry <- getRates$expiry
-      date <- rep(end, length(rates))
+      date <- rep(end, length(rate))
       
       ## append all the data from the different dates where rates are available
       
-      x <- rbind(x, data.frame(date, currency, expiry, rates))
+      x <- rbind(x, data.frame(date, currency, expiry, rate))
       end <- end - 1      
     }    
   }  
+  
+  x$expiry <- as.character(x$expiry)
   
   return(x)
 }
