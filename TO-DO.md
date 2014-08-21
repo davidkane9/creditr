@@ -10,6 +10,10 @@ CDS TO-DO List
 
 * After you mark an item [DONE], move it to the top of the list so that I notice it. As a test, do that with this item, now that you have read it.
 
+* Check inputs ought to provide some useful default behavior
+** It should only pass back the columns that are needed going forward. That is, even if input x has 50 columns, check.inputs only passes back the columns that need to be kept around.
+** Instead of just failing if something like notional.var is missing, it ought to create a x$notional column and give it a sensible default value. If any of these are missing, don't fail, just create with the default name: date.var with today's date. tenor.var with 5, notional.var with 10,000,000 and RR.var with 0.4.
+
 * create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
 
 call.ISDA(x, name, ...)
@@ -17,13 +21,7 @@ call.ISDA(x, name, ...)
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
 
 
-
-* Enhance get.rates(). Should have a new argument: "stored" with default value TRUE. If TRUE, the data is gotten from the rates.RData. If it can't find data, it issues an error. Also, add another sourcing to get.rates(), data from FRED. 
-
-
-
 * Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
-
 
 
 * What is going on with the dates in 2003 that have a 1M but not a 3Y. table(rates$expiry[rates$year %in% c(2003)])
