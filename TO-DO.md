@@ -14,6 +14,8 @@ CDS TO-DO List
 ** It should only pass back the columns that are needed going forward. That is, even if input x has 50 columns, check.inputs only passes back the columns that need to be kept around.
 ** Instead of just failing if something like notional.var is missing, it ought to create a x$notional column and give it a sensible default value. If any of these are missing, don't fail, just create with the default name: date.var with today's date. tenor.var with 5, notional.var with 10,000,000 and RR.var with 0.4.
 
+* Add all the test cases specified at the bottom of test.rates.R
+
 * create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
 
 call.ISDA(x, name, ...)
