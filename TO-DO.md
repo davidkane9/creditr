@@ -7,6 +7,20 @@ call.ISDA(x, name, ...)
 
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
 
+DONE: Update ?rates with lots of information.
+
+DONE: * Provide much more detail in ?rates, especially about how the data  frame is created (with get.rates.DF), ultimate source (give the URL), different date ranges for different currencies, different expiry for different currencies, changes in expiries over time and so on. Also, make clear what "date" means. It is not the same as the date that these rates were in effect, right? It is the date after, so that it can match with the CDS pricing date. Explain all that. 
+
+* What is going on with the dates in 2003 that have a 1M but not a 3Y. table(rates$expiry[rates$year %in% c(2003)])
+
+ 1M  3Y 
+729 724 
+
+DONE: I am not saying this data is wrong, but anomalies like this should be mentioned in ?rates.
+
+DONE: Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
+
+========================================================
 
 * Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
@@ -20,30 +34,13 @@ where x is a data frame that looks like the result after add.dates() and add.con
 ** Downloading the files from cdsmodel.com is non-trivial. (Go try it.) Because it requires checking a box, providing a (fake?) e-mail address and then dealing with a .zip file. R provides various packages and functions for dealing with these issues, but I am not an expert in their use.
 ** If we can't make all the above automatic, then we could, instead, still get the package on CRAN by making the process as easy as possible. That is, we still don't distribute the c code, but we provide step-by-step instructions in what to do after you have downloaded the package. This is non-trivial because it would require re-compiling the package after the user gets the c code. But it is still not a bad answer. In fact, doing this is probably a good idea because it will show you all the steps that need to be added to the Makefile.
 
-
-* Update ?rates with lots of information.
-
 * Change get.rates.DF (and associated helper functions) so that it goes back to January 1, 2004 for all three currencies.
 
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
-
 * Add all the test cases specified at the bottom of test.rates.R
 
-
 * Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
-
-
-* What is going on with the dates in 2003 that have a 1M but not a 3Y. table(rates$expiry[rates$year %in% c(2003)])
-
- 1M  3Y 
-729 724 
-
-DONE: I am not saying this data is wrong, but anomalies like this should be mentioned in ?rates.
-
-DONE: * Provide much more detail in ?rates, especially about how the data  frame is created (with get.rates.DF), ultimate source (give the URL), different date ranges for different currencies, different expiry for different currencies, changes in expiries over time and so on. Also, make clear what "date" means. It is not the same as the date that these rates were in effect, right? It is the date after, so that it can match with the CDS pricing date. Explain all that. 
-
-* Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
 
 * Maybe check.rates.dates is no longer necessary?
   It hasn't been used once in the package. So maybe it's not necessary.
