@@ -8,6 +8,10 @@ call.ISDA(x, name, ...)
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in.
 
 
+* Make spread and upfront similar format as CS10 which take dataframe and return vectors.
+
+* Fix the hard coded expiries problem in upfront.
+
 * Make build.rates.df a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates.df should consist of download.markit and download.fred. On the other hand, get.rates should first consult the stored rates dataframe before checking markit and then fred.
 
 * Investigate makefile and use that to fetch all our c code to complie the package instantly.
