@@ -23,6 +23,7 @@
 #' @param holidays is an input for holiday files to adjust to business
 #' days.
 #' @param valueDate T+3 business days
+#' @param baseDate T + 2 calendar day
 #' @param benchmarkDate accrual begin date
 #' @param startDate start date
 #' @param endDate end date
