@@ -50,6 +50,8 @@ days.}
 
 \item{valueDate}{T+3 business days}
 
+\item{baseDate}{T + 2 calendar day}
+
 \item{benchmarkDate}{accrual begin date}
 
 \item{startDate}{start date}
