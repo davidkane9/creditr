@@ -12,9 +12,14 @@ where x is a data frame that looks like the result after add.dates() and add.con
 
 * Fix the hard coded expiries problem in upfront.
 
-* Make build.rates.df a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates.df should consist of download.markit and download.fred. On the other hand, get.rates should first consult the stored rates dataframe before checking markit and then fred.
+* Make build.rates() a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates() should consist of download.markit() and download.FRED(). On the other hand, get.rates should first consult the stored rates dataframe before trying markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
 
-* Investigate makefile and use that to fetch all our c code to complie the package instantly.
+* We want to put the package on CRAN. To do that, we can't include the c code (all the items in /src). So, how can we solve this? (Might be useful to post a question about this on stackoverflow. But Google a bunch first.) Idea: Have the package automatically go a get the files on installation and/or loading. Complications:
+** Might need to create the src/ directory as well, or have an empty file in the source directory because R does not like empty directories in packages.
+** "Makefile" is the typical way that this is solved in non-R contexts. Learn about Makefiles. But I don't know if R allows for the use of Makefiles. Or, if it does, exactly how this might work. Maybe "Makevars" is also relevant?
+** Downloading the files from cdsmodel.com is non-trivial. (Go try it.) Because it requires checking a box, providing a (fake?) e-mail address and then dealing with a .zip file. R provides various packages and functions for dealing with these issues, but I am not an expert in their use.
+** If we can't make all the above automatic, then we could, instead, still get the package on CRAN by making the process as easy as possible. That is, we still don't distribute the c code, but we provide step-by-step instructions in what to do after you have downloaded the package. This is non-trivial because it would require re-compiling the package after the user gets the c code. But it is still not a bad answer. In fact, doing this is probably a good idea because it will show you all the steps that need to be added to the Makefile.
+
 
 * Update ?rates with lots of information.
 
