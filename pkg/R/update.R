@@ -51,10 +51,10 @@ setMethod("update",
                                 name = object@name,
                                 RED = object@RED,
                                 date = object@date,
-                                baseDate = object@baseDate,
+                               
                                 currency = object@currency,
-                                interest.rates = object@interest.rates,
-                                dates = object@dates, 
+                              
+                                
                                 maturity = object@maturity,
                                 tenor = object@tenor,                               
                                 spread = newSpread,
@@ -64,8 +64,7 @@ setMethod("update",
                                 ptsUpfront = newPtsUpfront, 
                                 isPriceClean = isPriceClean,
                                 notional = object@notional,
-                                payAccruedOnDefault = object@payAccruedOnDefault,
-                                conventions = object@conventions)
+                                payAccruedOnDefault = object@payAccruedOnDefault)
                   
                   return(newCDS)
 
