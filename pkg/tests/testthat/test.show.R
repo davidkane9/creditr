@@ -22,7 +22,7 @@ test_that("test show() method", {
   
   expect_that(output[6], equals("Calculation "))
   
-  expect_that(output[7], equals("   Price:                         102.46"))
+  expect_that(output[7], equals("price:                            102.46"))
   
   expect_that(output[8], equals("Spread:                               50   Pts Upfront:                  -0.0246"))
   

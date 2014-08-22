@@ -45,14 +45,9 @@ setMethod("show",
             cat("\n")
             cat("Calculation \n")
             
-            cat(sprintf(paste("   Price:",
-                              format(round(object@price, 2), big.mark=",",
-                                     scientific = F),
-                              sep = paste0(rep(" ", 40-nchar(as.character("   Price:")) -
-                                                 nchar(as.character(
-                                                   format(round(object@price, 2), big.mark=",",
-                                                          scientific=F)))),
-                                           collapse = ""))), "\n",
+            cat(sprintf(paste("price:", round(object@price, 2),
+                              sep = paste0(rep(" ", 40-nchar(as.character("price:")) -
+                                                 nchar(as.character(round(object@price, 2)))), collapse = ""))), "\n",
                 
                 sprintf(paste("Spread:",
                               format(round(object@spread, 4), big.mark = ",",
