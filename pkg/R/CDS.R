@@ -24,14 +24,6 @@
 #' @param payAccruedOnDefault is a partial payment of the premium made
 #' to the protection seller in the event of a default. Default is
 #' \code{TRUE}. 
-#' @param dates named array which contains relevant date data
-#' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
-#' Format must be YYYY-MM-DD. 
-#' @param conventions a named vector which contains all the 12 conventional
-#' parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-#' floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-#' and badDayConvZC with their default values
-#' @param interest.rates a list which contains types, rates and expiries
 #' @param upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -57,63 +49,61 @@
 #' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
 CDS <- function(## name stuff
-                name = NULL,
-                contract = "SNAC", 
-                RED = NULL,
-
-                date = Sys.Date(),
-                spread = NULL,
-                maturity = NULL,
-                tenor = NULL,
-                coupon = 100,
-                recovery.rate = 0.4,
-                currency = "USD",
-                isPriceClean = FALSE,
-                notional = 1e7,
-                payAccruedOnDefault = TRUE,
-                
-                ## dates
-                
-                dates = as.vector(data.frame(effectiveDate = NA,
-                                             valueDate = NA,
-                                             benchmarkDate = NA,
-                                             startDate = NA, 
-                                             endDate = NA, 
-                                             stepinDate = NA,
-                                             backstopDate = NA,
-                                             firstcouponDate = NA,
-                                             pencouponDate = NA)),
-                baseDate = as.Date(date) + 2,
-                
-                ## conventions
-                
-                conventions = as.vector(data.frame(mmDCC = "ACT/360",
-                                                   calendar = "None",
-                                                   fixedSwapDCC = "30/360",
-                                                   floatSwapDCC = "ACT/360",
-                                                   fixedSwapFreq = "6M",
-                                                   floatSwapFreq = "3M",
-                                                   holidays = "None",
-                                                   dccCDS = "ACT/360",
-                                                   badDayConvCDS = "F",
-                                                   badDayConvZC = "M")),
-                
-                ## interest.rates stuff
-                
-                interest.rates = list(types = NULL,
-                                     rates = NULL,
-                                     expiries = NULL),
-                ## CDS
-                
-                upfront = NULL,
-                ptsUpfront = NULL             
+  name = NULL,
+  contract = "SNAC", 
+  RED = NULL,
+  
+  date = Sys.Date(),
+  spread = NULL,
+  maturity = NULL,
+  tenor = NULL,
+  coupon = 100,
+  recovery.rate = 0.4,
+  currency = "USD",
+  isPriceClean = FALSE,
+  notional = 1e7,
+  payAccruedOnDefault = TRUE,
+  
+  ## CDS
+  
+  upfront = NULL,
+  ptsUpfront = NULL             
 ){
   
+  ## dates
+  
+  dates = as.vector(data.frame(effectiveDate = NA,
+                               valueDate = NA,
+                               benchmarkDate = NA,
+                               startDate = NA, 
+                               endDate = NA, 
+                               stepinDate = NA,
+                               backstopDate = NA,
+                               firstcouponDate = NA,
+                               pencouponDate = NA))
+  
+  baseDate = as.Date(date) + 2
+  
+  ## conventions
+  
+  conventions = as.vector(data.frame(mmDCC = "ACT/360",
+                                     calendar = "None",
+                                     fixedSwapDCC = "30/360",
+                                     floatSwapDCC = "ACT/360",
+                                     fixedSwapFreq = "6M",
+                                     floatSwapFreq = "3M",
+                                     holidays = "None",
+                                     dccCDS = "ACT/360",
+                                     badDayConvCDS = "F",
+                                     badDayConvZC = "M"))
+  ## interest.rates stuff
+  
+  interest.rates = list(types = NULL, rates = NULL, expiries = NULL)
+  
   ## stop if date is invalid
-
+  
   stopifnot(is.character(contract))
   stopifnot(is.character(currency))
-  
   
   ## if none of the three are entered
   
@@ -127,9 +117,9 @@ CDS <- function(## name stuff
   
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
-
+  
   dates['effectiveDate'] <- date
-
+  
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
   
@@ -139,14 +129,14 @@ CDS <- function(## name stuff
   } else{
     if(is.null(tenor)){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity),
-                                       currency = currency)))
+                                                       maturity = as.Date(maturity),
+                                                       currency = currency)))
     }
     ## if both are entered, we arbitrarily use one of them
     if((!is.null(tenor) & !is.null(maturity))){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity),
-                                       currency = currency)))
+                                                       maturity = as.Date(maturity),
+                                                       currency = currency)))
     }
   }
   
@@ -170,7 +160,7 @@ CDS <- function(## name stuff
     
     ratesInfo     <- get.rates(date = date, currency = currency)
     dates['effectiveDate'] <- adj.next.bus.day(date)
-
+    
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
     ## if they are not entered
     
@@ -227,15 +217,7 @@ CDS <- function(## name stuff
              currency = currency,
              inputPriceClean = isPriceClean,
              notional = notional,
-             payAccruedOnDefault = payAccruedOnDefault,
-             
-             dates = dates,
-             baseDate = baseDate,
-             
-             conventions = conventions,
-             
-             interest.rates = interest.rates          
-  )
+             payAccruedOnDefault = payAccruedOnDefault)
   
   ## if spread is given, calculate principal and accrual
   
@@ -256,7 +238,7 @@ CDS <- function(## name stuff
                           expiries = interest.rates$expiries, rates = interest.rates$rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
-                               isPriceClean = TRUE)
+                             isPriceClean = TRUE)
     
     ## points upfront
     
@@ -265,7 +247,7 @@ CDS <- function(## name stuff
     ## dirty upfront
     
     cds@upfront <- upfront(x = df, rates = ratesdf, notional = cds@notional,
-                             isPriceClean = FALSE)
+                           isPriceClean = FALSE)
   } else if (!is.null(ptsUpfront)){
     
     ## points upfront
@@ -275,36 +257,36 @@ CDS <- function(## name stuff
     ## calculate par spread if not provided
     
     cds@spread <- spread(date = date,
-                            baseDate = baseDate,
-                            currency = currency,
-                            types = interest.rates$types,
-                            rates = interest.rates$rates,
-                            expiries = interest.rates$expiries,
-                            mmDCC = conventions['mmDCC'],
-                            fixedSwapFreq = conventions['fixedSwapFreq'],
-                            floatSwapFreq = conventions['floatSwapFreq'],
-                            fixedSwapDCC = conventions['fixedSwapDCC'],
-                            floatSwapDCC = conventions['floatSwapDCC'],
-                            badDayConvZC = conventions['badDayConvZC'],
-                            holidays = conventions['holidays'],
-                            valueDate = dates['valueDate'],
-                            benchmarkDate = dates['benchmarkDate'],
-                            startDate = dates['startDate'],
-                            endDate = dates['endDate'],
-                            stepinDate = dates['stepinDate'],
-                            maturity = maturity,
-                            dccCDS = conventions['dccCDS'],
-                            freqCDS = "Q",
-                            stubCDS = "F",
-                            badDayConvCDS = conventions['badDayConvCDS'],
-                            calendar = conventions['calendar'],
-                            upfront = upfront,
-                            ptsUpfront = ptsUpfront,
-                            coupon = coupon, 
-                            recovery.rate = recovery.rate,
-                            payAccruedAtStart = isPriceClean,
-                            notional = notional,
-                            payAccruedOnDefault = payAccruedOnDefault)
+                         baseDate = baseDate,
+                         currency = currency,
+                         types = interest.rates$types,
+                         rates = interest.rates$rates,
+                         expiries = interest.rates$expiries,
+                         mmDCC = conventions['mmDCC'],
+                         fixedSwapFreq = conventions['fixedSwapFreq'],
+                         floatSwapFreq = conventions['floatSwapFreq'],
+                         fixedSwapDCC = conventions['fixedSwapDCC'],
+                         floatSwapDCC = conventions['floatSwapDCC'],
+                         badDayConvZC = conventions['badDayConvZC'],
+                         holidays = conventions['holidays'],
+                         valueDate = dates['valueDate'],
+                         benchmarkDate = dates['benchmarkDate'],
+                         startDate = dates['startDate'],
+                         endDate = dates['endDate'],
+                         stepinDate = dates['stepinDate'],
+                         maturity = maturity,
+                         dccCDS = conventions['dccCDS'],
+                         freqCDS = "Q",
+                         stubCDS = "F",
+                         badDayConvCDS = conventions['badDayConvCDS'],
+                         calendar = conventions['calendar'],
+                         upfront = upfront,
+                         ptsUpfront = ptsUpfront,
+                         coupon = coupon, 
+                         recovery.rate = recovery.rate,
+                         payAccruedAtStart = isPriceClean,
+                         notional = notional,
+                         payAccruedOnDefault = payAccruedOnDefault)
     
     ## calculate principal or clean upfront using ptsUpfront
     
@@ -323,7 +305,7 @@ CDS <- function(## name stuff
                           expiries = interest.rates$expiries, rates = interest.rates$rates)
     
     cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
-                               isPriceClean = FALSE)
+                             isPriceClean = FALSE)
     
   } 
   
@@ -343,37 +325,37 @@ CDS <- function(## name stuff
       ## calculate spread if only clean upfront (principal) and ptsUpfront are provided
       
       cds@spread <- spread(date = date,
-                              baseDate = baseDate,
-                              currency = currency,
-                              types = interest.rates$types,
-                              rates = interest.rates$rates,
-                              expiries = interest.rates$expiries,
-                              mmDCC = conventions['mmDCC'],
-                              fixedSwapFreq = conventions['fixedSwapFreq'],
-                              floatSwapFreq = conventions['floatSwapFreq'],
-                              fixedSwapDCC = conventions['fixedSwapDCC'],
-                              floatSwapDCC = conventions['floatSwapDCC'],
-                              badDayConvZC = conventions['badDayConvZC'],
-                              holidays = conventions['holidays'],
-                              valueDate = dates['valueDate'], 
-                              benchmarkDate = dates['benchmarkDate'], 
-                              startDate = dates['startDate'], 
-                              endDate = dates['endDate'],
-                              stepinDate = dates['stepinDate'],
-                              maturity = maturity,
-                              tenor = tenor,
-                              dccCDS = conventions['dccCDS'],
-                              freqCDS = "Q",
-                              stubCDS = "F",
-                              badDayConvCDS = conventions['badDayConvCDS'],
-                              calendar = conventions['calendar'],
-                              upfront = NULL,
-                              ptsUpfront = cds@ptsUpfront,
-                              coupon = coupon,
-                              recovery.rate = recovery.rate,
-                              payAccruedAtStart = TRUE,
-                              payAccruedOnDefault = payAccruedOnDefault,
-                              notional = notional)
+                           baseDate = baseDate,
+                           currency = currency,
+                           types = interest.rates$types,
+                           rates = interest.rates$rates,
+                           expiries = interest.rates$expiries,
+                           mmDCC = conventions['mmDCC'],
+                           fixedSwapFreq = conventions['fixedSwapFreq'],
+                           floatSwapFreq = conventions['floatSwapFreq'],
+                           fixedSwapDCC = conventions['fixedSwapDCC'],
+                           floatSwapDCC = conventions['floatSwapDCC'],
+                           badDayConvZC = conventions['badDayConvZC'],
+                           holidays = conventions['holidays'],
+                           valueDate = dates['valueDate'], 
+                           benchmarkDate = dates['benchmarkDate'], 
+                           startDate = dates['startDate'], 
+                           endDate = dates['endDate'],
+                           stepinDate = dates['stepinDate'],
+                           maturity = maturity,
+                           tenor = tenor,
+                           dccCDS = conventions['dccCDS'],
+                           freqCDS = "Q",
+                           stubCDS = "F",
+                           badDayConvCDS = conventions['badDayConvCDS'],
+                           calendar = conventions['calendar'],
+                           upfront = NULL,
+                           ptsUpfront = cds@ptsUpfront,
+                           coupon = coupon,
+                           recovery.rate = recovery.rate,
+                           payAccruedAtStart = TRUE,
+                           payAccruedOnDefault = payAccruedOnDefault,
+                           notional = notional)
       
       ## dirty upfront
       
@@ -388,7 +370,7 @@ CDS <- function(## name stuff
                             expiries = interest.rates$expiries, rates = interest.rates$rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
-                                 isPriceClean = FALSE)
+                               isPriceClean = FALSE)
       
       
     } else {
@@ -400,37 +382,37 @@ CDS <- function(## name stuff
       ## par Spread
       
       cds@spread <- spread(date = date,
-                              baseDate = baseDate,
-                              currency = currency,
-                              types = interest.rates$types,
-                              rates = interest.rates$rates,
-                              expiries = interest.rates$expiries,
-                              mmDCC = conventions['mmDCC'],
-                              fixedSwapFreq = conventions['fixedSwapFreq'],
-                              floatSwapFreq = conventions['floatSwapFreq'],
-                              fixedSwapDCC = conventions['fixedSwapDCC'],
-                              floatSwapDCC = conventions['floatSwapDCC'],
-                              badDayConvZC = conventions['badDayConvZC'],
-                              holidays = conventions['holidays'],
-                              valueDate = dates['valueDate'], 
-                              benchmarkDate = dates['benchmarkDate'], 
-                              startDate = dates['startDate'], 
-                              endDate = dates['endDate'],
-                              stepinDate = dates['stepinDate'],
-                              maturity = maturity,
-                              tenor = tenor,
-                              dccCDS = conventions['dccCDS'],
-                              freqCDS = "Q",
-                              stubCDS = "F",
-                              badDayConvCDS = conventions['badDayConvCDS'],
-                              calendar = conventions['calendar'],
-                              upfront = upfront,
-                              ptsUpfront = NULL,
-                              coupon = coupon,
-                              recovery.rate = recovery.rate,
-                              payAccruedAtStart = FALSE,
-                              notional = notional,
-                              payAccruedOnDefault = payAccruedOnDefault)
+                           baseDate = baseDate,
+                           currency = currency,
+                           types = interest.rates$types,
+                           rates = interest.rates$rates,
+                           expiries = interest.rates$expiries,
+                           mmDCC = conventions['mmDCC'],
+                           fixedSwapFreq = conventions['fixedSwapFreq'],
+                           floatSwapFreq = conventions['floatSwapFreq'],
+                           fixedSwapDCC = conventions['fixedSwapDCC'],
+                           floatSwapDCC = conventions['floatSwapDCC'],
+                           badDayConvZC = conventions['badDayConvZC'],
+                           holidays = conventions['holidays'],
+                           valueDate = dates['valueDate'], 
+                           benchmarkDate = dates['benchmarkDate'], 
+                           startDate = dates['startDate'], 
+                           endDate = dates['endDate'],
+                           stepinDate = dates['stepinDate'],
+                           maturity = maturity,
+                           tenor = tenor,
+                           dccCDS = conventions['dccCDS'],
+                           freqCDS = "Q",
+                           stubCDS = "F",
+                           badDayConvCDS = conventions['badDayConvCDS'],
+                           calendar = conventions['calendar'],
+                           upfront = upfront,
+                           ptsUpfront = NULL,
+                           coupon = coupon,
+                           recovery.rate = recovery.rate,
+                           payAccruedAtStart = FALSE,
+                           notional = notional,
+                           payAccruedOnDefault = payAccruedOnDefault)
       
       ## principal
       
@@ -445,7 +427,7 @@ CDS <- function(## name stuff
                             expiries = interest.rates$expiries, rates = interest.rates$rates)
       
       cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
-                                 isPriceClean = TRUE)
+                               isPriceClean = TRUE)
       
       ## ptsUpfront
       
@@ -458,18 +440,18 @@ CDS <- function(## name stuff
   cds@accrual <- cds@upfront - cds@principal
   
   ## if tenor is NULL, we determine the tenor using the maturity date
-
+  
   if(is.null(tenor)){
-
-      lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
-      monnb1 <- lt1$year*12 + lt1$mon
-      
-      lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
-      monnb2 <- lt2$year*12 + lt2$mon
-      
-      tenor.mondf <- monnb2 - monnb1
-      
-      cds@tenor <- as.numeric(tenor.mondf)/12
+    
+    lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
+    monnb1 <- lt1$year*12 + lt1$mon
+    
+    lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
+    monnb2 <- lt2$year*12 + lt2$mon
+    
+    tenor.mondf <- monnb2 - monnb1
+    
+    cds@tenor <- as.numeric(tenor.mondf)/12
   }
   
   ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
@@ -493,10 +475,10 @@ CDS <- function(## name stuff
   cds@IRDV01      <- IR.DV01(x) 
   cds@RecRisk01   <- rec.risk.01(x)
   cds@defaultProb <- spread.to.pd(spread = cds@spread,
-                                 time = as.numeric(dates['endDate'][[1]] -
-                                                  as.Date(date))/360,
-                                 recovery.rate = recovery.rate)
-
+                                  time = as.numeric(dates['endDate'][[1]] -
+                                                      as.Date(date))/360,
+                                  recovery.rate = recovery.rate)
+  
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
   

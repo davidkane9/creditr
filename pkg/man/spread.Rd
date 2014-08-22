@@ -72,9 +72,6 @@ coupon payments. Default is "F", following.}
 \item{date}{is when the trade is executed, denoted as T. Default
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
-\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
-Format must be YYYY-MM-DD.}
-
 \item{currency}{in which CDS is denominated.}
 
 \item{maturity}{date of the CDS contract.}

@@ -7,16 +7,8 @@ contract.}
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
   recovery.rate = 0.4, currency = "USD", isPriceClean = FALSE,
-  notional = 1e+07, payAccruedOnDefault = TRUE,
-  dates = as.vector(data.frame(effectiveDate = NA, valueDate = NA,
-  benchmarkDate = NA, startDate = NA, endDate = NA, stepinDate = NA,
-  backstopDate = NA, firstcouponDate = NA, pencouponDate = NA)),
-  baseDate = as.Date(date) + 2, conventions = as.vector(data.frame(mmDCC =
-  "ACT/360", calendar = "None", fixedSwapDCC = "30/360", floatSwapDCC =
-  "ACT/360", fixedSwapFreq = "6M", floatSwapFreq = "3M", holidays = "None",
-  dccCDS = "ACT/360", badDayConvCDS = "F", badDayConvZC = "M")),
-  interest.rates = list(types = NULL, rates = NULL, expiries = NULL),
-  upfront = NULL, ptsUpfront = NULL)
+  notional = 1e+07, payAccruedOnDefault = TRUE, upfront = NULL,
+  ptsUpfront = NULL)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -52,18 +44,6 @@ payments are based. Default is 1e7, i.e. 10MM.}
 \item{payAccruedOnDefault}{is a partial payment of the premium made
 to the protection seller in the event of a default. Default is
 \code{TRUE}.}
-
-\item{dates}{named array which contains relevant date data}
-
-\item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
-Format must be YYYY-MM-DD.}
-
-\item{conventions}{a named vector which contains all the 12 conventional
-parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-and badDayConvZC with their default values}
-
-\item{interest.rates}{a list which contains types, rates and expiries}
 
 \item{upfront}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

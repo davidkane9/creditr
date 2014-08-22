@@ -57,18 +57,6 @@ based on the formula: Default Exposure: (1-Recovery Rate)*Notional
 
 \item{\code{price}}{}
 
-\item{\code{dates}}{named array which contains relevant date data
-the protection buyer to the seller on a regular basis.}
-
-\item{\code{baseDate}}{is the start date for the IR curve. Default is date.}
-
-\item{\code{conventions}}{a named vector which contains all the 12 conventional
-parameters: mmDCC, calendar, fixedSwapDCC, floatSwapDCC, fixedSwapFreq,
-floatSwapFreq, holidays, dccCDS, badDayConvCDS,
-and badDayConvZC with their default values}
-
-\item{\code{interest.rates}}{a list which contains types, rates and expiries}
-
 \item{\code{upfront}}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is
 introduced to reconcile the difference in contract value due to the
