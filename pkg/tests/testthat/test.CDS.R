@@ -12,40 +12,13 @@ test_that("test for the CDS", {
   result.1 <- CDS(date = as.Date("2014-04-15"),
                   currency = "USD",
                   
-                  interest.rates = list(
-                    types = "MMMMMSSSSSSSS",
-                    rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
-                    expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]),
-                
-                  dates = as.vector(data.frame(effectiveDate = NA,
-                                               valueDate = as.Date("2014-04-18"),
-                                               benchmarkDate = NA,
-                                               startDate = as.Date("2014-03-20"), 
-                                               endDate = as.Date("2019-06-20"), 
-                                               stepinDate = as.Date("2014-04-16"),
-                                               backstopDate = NA,
-                                               firstcouponDate = NA,
-                                               pencouponDate = NA)),
+                  
                   maturity = as.Date("2019-06-20"),                    
                   spread = 12354.529,
                   coupon = 500,
                   recovery.rate = 0.4,
                   isPriceClean = FALSE,
-                  notional = 1e7,
-                  
-                  conventions = as.vector(data.frame(
-                    mmDCC = "Act/360",                    
-                    fixedSwapFreq = "6M",
-                    floatSwapFreq = "6M",
-                    fixedSwapDCC = "30/360",
-                    floatSwapDCC = "30/360",
-                    badDayConvZC = 'M',
-                    holidays = 'None',
-                    dccCDS = "Act/360",
-                    freqCDS = "Q",
-                    stubCDS = "f/s",
-                    badDayConvCDS = "F",
-                    calendar = "None")))
+                  notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
@@ -72,41 +45,12 @@ expect_equal(round(0.5745,4), round(result.1@ptsUpfront,4))
 
 result.2 <- CDS(date = as.Date("2014-04-15"),
                 currency = "USD",                    
-                
-                interest.rates = list(
-                  types = "MMMMMSSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]),                         
-                
-                dates = as.vector(data.frame(effectiveDate = NA,
-                                             valueDate = as.Date("2014-04-18"),
-                                             benchmarkDate = NA,
-                                             startDate = as.Date("2014-03-20"), 
-                                             endDate = as.Date("2019-06-20"), 
-                                             stepinDate = as.Date("2014-04-16"),
-                                             backstopDate = NA,
-                                             firstcouponDate = NA,
-                                             pencouponDate = NA)),
-        
                 maturity = as.Date("2019-06-20"),                    
                 spread = 243.28,
                 coupon = 100,
                 recovery.rate = 0.40,
                 isPriceClean = FALSE,
-                notional = 1e7,
-                conventions = as.vector(data.frame(
-                  mmDCC = "Act/360",                    
-                  fixedSwapFreq = "6M",
-                  floatSwapFreq = "6M",
-                  fixedSwapDCC = "30/360",
-                  floatSwapDCC = "30/360",
-                  badDayConvZC = 'M',
-                  holidays = 'None',
-                  dccCDS = "Act/360",
-                  freqCDS = "Q",
-                  stubCDS = "f/s",
-                  badDayConvCDS = "F",
-                  calendar = "None")))
+                notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
@@ -132,27 +76,13 @@ expect_equal(round(0.065808, 4), round(result.2@ptsUpfront, 4))
 
 result.3 <- CDS(date = as.Date("2014-04-22"),
                 tenor = 5,
-                interest.rates = list(
-                  types = "MMMMMMSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-22") & rates$currency == "EUR"]),   
-                
                 spread = 99,
                 contract ="STEC",
                 currency="EUR",
                 coupon = 100,
                 recovery.rate = 0.4,
                 isPriceClean = FALSE,
-                notional = 1e7,
-                
-                conventions = as.vector(data.frame(
-                  mmDCC = "Act/360",                    
-                  fixedSwapFreq = "6M",
-                  floatSwapFreq = "6M",
-                  fixedSwapDCC = "30/360",
-                  floatSwapDCC = "30/360",
-                  badDayConvZC = 'M',
-                  holidays = 'None')))
+                notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences 
@@ -180,28 +110,13 @@ expect_equal(round(-0.00049239, 4), round(result.3@ptsUpfront, 4))
 
 result.4 <- CDS(date = as.Date("2014-04-15"),
                 tenor = 5,
-                
-                interest.rates = list(
-                  types = "MMMMMMSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "EUR"]),    
-                
                 spread = 2785.8889,
                 contract ="STEC",
                 currency="EUR",
                 coupon = 500,
                 recovery.rate = 0.4,
                 isPriceClean = FALSE,
-                notional = 1e7,
-                
-                conventions = as.vector(data.frame(
-                  mmDCC = "Act/360",                    
-                  fixedSwapFreq = "6M",
-                  floatSwapFreq = "6M",
-                  fixedSwapDCC = "30/360",
-                  floatSwapDCC = "30/360",
-                  badDayConvZC = 'M',
-                  holidays = 'None')))
+                notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
@@ -225,43 +140,13 @@ expect_equal(round(0.445, 2), round(result.4@ptsUpfront, 2))
 ## CDS.R test case for RadioShack Corp
 
 result.5 <- CDS(date = as.Date("2014-04-15"),
-                currency = "USD",                    
-                
-                interest.rates = list(
-                  types = "MMMMMSSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]),         
-                
-                dates = as.vector(data.frame(effectiveDate = NA,
-                                             valueDate = as.Date("2014-04-18"),
-                                             benchmarkDate = NA,
-                                             startDate = as.Date("2014-03-20"), 
-                                             endDate = as.Date("2019-06-20"), 
-                                             stepinDate = as.Date("2014-04-16"),
-                                             backstopDate = NA,
-                                             firstcouponDate = NA,
-                                             pencouponDate = NA)),
-                
+                currency = "USD",                     
                 maturity = as.Date("2019-06-20"),
                 spread = 9106.8084,
                 coupon = 500,
                 recovery.rate = 0.4,
                 isPriceClean = FALSE,
-                notional = 1e7,
-                
-                conventions = as.vector(data.frame(
-                  mmDCC = "Act/360",                    
-                  fixedSwapFreq = "6M",
-                  floatSwapFreq = "6M",
-                  fixedSwapDCC = "30/360",
-                  floatSwapDCC = "30/360",
-                  badDayConvZC = 'M',
-                  holidays = 'None',     
-                  dccCDS = "Act/360",
-                  freqCDS = "Q",
-                  stubCDS = "f/s",
-                  badDayConvCDS = "F",
-                  calendar = "None")))
+                notional = 1e7)
 
 ## comparing results with true values from Bloomberg
 ## The results have to be rounded off as there are marginal differences
@@ -287,23 +172,6 @@ expect_equal(round(0.5649, 2), round(result.5@ptsUpfront, 2))
 
 result.6 <- CDS(date = as.Date("2014-04-15"),
                 tenor = 5,
-                
-                interest.rates = list(
-                  types = "MMMMMSSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "JPY"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "JPY"]),
-                
-                baseDate = as.Date("2014-04-17"),
-                
-                dates = as.vector(data.frame(effectiveDate = NA,
-                                             valueDate = NA,
-                                             benchmarkDate = NA,
-                                             startDate = NA, 
-                                             endDate = NA, 
-                                             stepinDate = as.Date("2014-04-16"),
-                                             backstopDate = NA,
-                                             firstcouponDate = NA,
-                                             pencouponDate = NA)),
                 contract ="STEC",
                 spread = 250,
                 currency = "JPY",
@@ -337,12 +205,6 @@ expect_equal(round(0.0709, 3), round(result.6@ptsUpfront, 3))
 result.7 <- CDS(date = as.Date("2014-04-15"),
                 tenor = 5,
                 contract="SNAC",
-                
-                interest.rates = list(
-                  types = "MMMMMSSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-15") & rates$currency == "USD"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-15") & rates$currency == "USD"]),                                    
-                
                 spread = 1737.7289,
                 currency = "USD",
                 coupon = 500,
@@ -373,12 +235,6 @@ expect_equal(0.3275, round(result.7@ptsUpfront,4))
 
 result.8 <- CDS(date = as.Date("2014-04-22"),
                 tenor = 5,
-                
-                interest.rates = list(
-                  types = "MMMMMSSSSSSSS",
-                  rates = rates$rates[rates$date == as.Date("2014-04-22") & rates$currency == "USD"],
-                  expiries = rates$expiries[rates$date == as.Date("2014-04-22") & rates$currency == "USD"]),                                    
-                
                 spread = 105.8,
                 coupon = 100,
                 recovery.rate = 0.4,
