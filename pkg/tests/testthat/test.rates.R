@@ -37,7 +37,8 @@ test_that("test that holidays are covered in rates.RData", {
   expect_equal(rate.holi.1, rate.holi.2)
 })
 
-## a random weekend test case. Done for each currency separately, on separate week-ends.
+## a random weekend test case. Done for each currency separately, 
+## on separate week-ends.
 
 test_that("test that weekends are covered correctly", {
   
@@ -50,12 +51,25 @@ test_that("test that weekends are covered correctly", {
   rate.weekend.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-10"),]$rate[1]
   rate.weekend.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-09"),]$rate[1]
   expect_equal(rate.weekend.1, rate.weekend.2)
+
+  ## a random weekend for JPY
+  
+  rate.weekend.3 <- rates[rates$currency == "JPY" & rates$date == as.Date("2014-08-03"),]$rate[1]
+  rate.weekend.4 <- rates[rates$currency == "JPY" & rates$date == as.Date("2014-08-02"),]$rate[1]
+  expect_equal(rate.weekend.3, rate.weekend.4)
+  
+  ## a random weekend for JPY
+  
+  rate.weekend.5 <- rates[rates$currency == "EUR" & rates$date == as.Date("2014-08-17"),]$rate[1]
+  rate.weekend.6 <- rates[rates$currency == "EUR" & rates$date == as.Date("2014-08-16"),]$rate[1]
+  expect_equal(rate.weekend.5, rate.weekend.6)
+  
 })
 
 ## Test to show there are no missing dates.
 
-## This test case is not possible right now. Because when we get data from
-## Markit or FRED, the data seem to be missing already.
+## This test case is currently not possible. Because when we get data from
+## Markit, the data seem to be missing already.
 
 ## Test to show that, within a currency, now given expiry changes by more than 
 ## X% from one day to the next. Most changes are very small. Doubt that there
