@@ -23,6 +23,10 @@ is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
 \item{recovery.var}{f column in x containing recovery
 rates in decimal.}
 
+\item{isPriceClean}{refers to the type of upfront calculated. It is
+       boolean. When \code{TRUE}, calculate principal only. When
+       \code{FALSE}, calculate principal + accrual.}
+
 \item{x}{data frame, contains all the relevant columns.}
 
 \item{currency.var}{character, column in x containing currency.}

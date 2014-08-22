@@ -4,8 +4,6 @@
 #'
 #' @param object is a \code{CDS} class object.
 #' @param upfront is the new upfront payment amount.
-#' @param isPriceClean boolean variable indicating if the price calculated is
-#' with accrued interest rate
 #' @param ptsUpfront is the new pts upfront. It's in decimal.
 #' @param spread is the new spread in bps.
 #' @param isPriceClean specifies whether it is a dirty or clean

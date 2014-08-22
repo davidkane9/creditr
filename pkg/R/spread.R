@@ -1,6 +1,14 @@
 #' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
 #' @inheritParams CDS
+#' @param types is the type of interest rate that we are using in CDS calculation
+#' @param rates is the interest rate we are using for calculating a spread.
+#'        notice that when we trade CDS on a trade date, we don't use the 
+#'        interest rate on that date to calculate the pricing; instead, we
+#'        use the interest rate of the previous business day. This is 
+#'        set by the ISDA Standard Model
+#' @param expiries is the type of CDS expiries we use to calculate. Expiries
+#'        are usually different among different currencies.
 #' @param payAccruedAtStart whether pay at start date the accrual amount
 #' @param spread in bps
 #' @param mmDCC is the day count convention of the instruments.

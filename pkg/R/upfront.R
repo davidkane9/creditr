@@ -6,15 +6,18 @@
 #' 
 #' @inheritParams CS10
 #' @param rates is an array of numeric values indicating the rate of
-#' each instrument.
+#'        each instrument.
 #' @param notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM.
+#'        payments are based. Default is 1e7, i.e. 10MM.
 #' @param date.var name of column in x containing dates when the trade 
-#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
+#'        is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
 #' @param spread.var name of column in x containing  par spreads in bps.
 #' @param recovery.var f column in x containing recovery 
-#' rates in decimal.
-#'
+#'        rates in decimal.
+#' @param isPriceClean refers to the type of upfront calculated. It is
+#'        boolean. When \code{TRUE}, calculate principal only. When
+#'        \code{FALSE}, calculate principal + accrual.
+#'        
 #' @return vector of upfront values (with accrual) in the same order
 
 upfront <- function(x, 

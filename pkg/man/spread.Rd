@@ -15,6 +15,17 @@ spread(date, baseDate = as.Date(date) + 2, currency = "USD", types = NULL,
   payAccruedOnDefault = TRUE)
 }
 \arguments{
+\item{types}{is the type of interest rate that we are using in CDS calculation}
+
+\item{rates}{is the interest rate we are using for calculating a spread.
+notice that when we trade CDS on a trade date, we don't use the
+interest rate on that date to calculate the pricing; instead, we
+use the interest rate of the previous business day. This is
+set by the ISDA Standard Model}
+
+\item{expiries}{is the type of CDS expiries we use to calculate. Expiries
+are usually different among different currencies.}
+
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
 \item{spread}{in bps}
