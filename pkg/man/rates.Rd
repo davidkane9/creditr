@@ -38,7 +38,6 @@ Finally, please notice that some of the data are missing for a certain expiry of
 }
 \examples{
 data(rates)
-View(rates)
 
 ## for JPY rates: 
  rates[rates$currency == "JPY",]
