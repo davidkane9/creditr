@@ -21,11 +21,41 @@ test_that("test that rates data frame variables currency and expiry have only al
   
 })
 
-## labor day test case
+## independence day test case
+
+test_that("test that holidays are covered in rates.RData", {
+  
+  ## if we trade on 2012-07-05, then we should use the previous business day's
+  ## interest rate, which is 2012-07-03. But notice here, that the interest
+  ## rate of 2012-07-03 is not stored in rates.RData as the row with date
+  ## 2012-07-03; instead, it's the row with 2012-07-04 that contains the 
+  ## true interest rate of 2012-07-03, because we have to adjust one
+  ## business day after 2012-07-03 in rates.RData
+  
+  rate.holi.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-05"),]$rate[1]
+  rate.holi.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-04"),]$rate[1]
+  expect_equal(rate.holi.1, rate.holi.2)
+})
 
 ## a random weekend test case. Done for each currency separately, on separate week-ends.
 
+test_that("test that weekends are covered correctly", {
+  
+  ## a random weekend for USD
+  
+  ## we want to see that for sunday, 2014-08-10, its interest rate should be same with
+  ## saturday, 2014-08-09, because their previous business days are both
+  ## friday, 2014-08-08.
+  
+  rate.weekend.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-10"),]$rate[1]
+  rate.weekend.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-09"),]$rate[1]
+  expect_equal(rate.weekend.1, rate.weekend.2)
+})
+
 ## Test to show there are no missing dates.
+
+## This test case is not possible right now. Because when we get data from
+## Markit or FRED, the data seem to be missing already.
 
 ## Test to show that, within a currency, now given expiry changes by more than 
 ## X% from one day to the next. Most changes are very small. Doubt that there
