@@ -23,6 +23,7 @@ DONE: Deal with the "The following files look like leftovers/mistakes" issue. Th
 
 DONE: Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
 
+DONE: * Maybe check.rates.dates is no longer necessary? It hasn't been used once in the package, so we deleted it.
 
 ========================================================
 
@@ -43,9 +44,6 @@ DONE: Drastically cut the slots of CDS class, including dates, interest.rates an
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
 * Add all the test cases specified at the bottom of test.rates.R
-
-* Maybe check.rates.dates is no longer necessary?
-  It hasn't been used once in the package. So maybe it's not necessary.
 
 * get.date ought to include the JPY stuff, I think. Maybe also business date stuff? Change name to add.dates.
 
