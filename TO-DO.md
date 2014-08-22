@@ -25,8 +25,9 @@ DONE: Drastically cut the slots of CDS class, including dates, interest.rates an
 
 DONE: * Maybe check.rates.dates is no longer necessary? It hasn't been used once in the package, so we deleted it.
 
-========================================================
+DONE:  Add all the test cases specified at the bottom of test.rates.R
 
+========================================================
 * Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
 * Fix the hard coded expiries problem in upfront.
@@ -42,8 +43,6 @@ DONE: * Maybe check.rates.dates is no longer necessary? It hasn't been used once
 * Change get.rates.DF (and associated helper functions) so that it goes back to January 1, 2004 for all three currencies.
 
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
-
-* Add all the test cases specified at the bottom of test.rates.R
 
 * get.date ought to include the JPY stuff, I think. Maybe also business date stuff? Change name to add.dates.
 
