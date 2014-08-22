@@ -20,6 +20,9 @@ DONE: I am not saying this data is wrong, but anomalies like this should be ment
 
 DONE: Deal with the "The following files look like leftovers/mistakes" issue. There is no reason to have this. Note that I tried moving the new .Rbuildignore file down one level, into pkg/. This caused the test cases to fail, I think. (Or it might just have been an intermittent internet thing. If so, the error messages were not informative.)
 
+DONE: Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
+
+
 ========================================================
 
 * Make spread and upfront similar format as CS10 which take dataframe and return vectors.
@@ -39,8 +42,6 @@ DONE: Deal with the "The following files look like leftovers/mistakes" issue. Th
 * Make data/rates.RData go back to January 1, 2004. This is how far back our pricing goes. Document clearly how this is updated.
 
 * Add all the test cases specified at the bottom of test.rates.R
-
-* Drastically cut the slots of CDS class, including dates, interest.rates and conventions. We don't need to keep this stuff around, I think. Instead, we grab these items on the fly when they are needed, using add.dates(), get.rates() and get.conventions().
 
 * Maybe check.rates.dates is no longer necessary?
   It hasn't been used once in the package. So maybe it's not necessary.
