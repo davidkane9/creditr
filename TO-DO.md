@@ -1,5 +1,7 @@
 CDS TO-DO List
 ========================================================
+DONE: * Add your names as authors of the package and of CDS.Rnw.
+========================================================
 call.ISDA:
 NOT DONE, (x should be the first argument, like it almost always is, and name the second. Also, the code is fairly sloppy, don't you think? None of the arguments should have defaults. Are there any test cases? Et cetera.) 
 
@@ -10,13 +12,10 @@ call.ISDA(x, name, ...)
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in."
 
 * Fix call.ISDA so that, instead of taking in a huge data frame and an "i" for the row number, it just takes in a data frame with a single row. Isn't that obviously better? It is the job of the function which calls call.ISDA to pass in the right row each time.
-
 ========================================================
 * Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
 * Fix the hard coded expiries problem in upfront.
-
-* Add your names as authors of the package and of CDS.Rnw.
 
 * Make build.rates() a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates() should consist of download.markit() and download.FRED(). 
 
