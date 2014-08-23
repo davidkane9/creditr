@@ -11,13 +11,10 @@ data(rates)
 test_that("test for the CDS", {
   result.1 <- CDS(date = as.Date("2014-04-15"),
                   currency = "USD",
-                  
-                  
                   maturity = as.Date("2019-06-20"),                    
                   spread = 12354.529,
                   coupon = 500,
                   recovery.rate = 0.4,
-                  isPriceClean = FALSE,
                   notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -49,7 +46,6 @@ result.2 <- CDS(date = as.Date("2014-04-15"),
                 spread = 243.28,
                 coupon = 100,
                 recovery.rate = 0.40,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -81,7 +77,6 @@ result.3 <- CDS(date = as.Date("2014-04-22"),
                 currency="EUR",
                 coupon = 100,
                 recovery.rate = 0.4,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -115,7 +110,6 @@ result.4 <- CDS(date = as.Date("2014-04-15"),
                 currency="EUR",
                 coupon = 500,
                 recovery.rate = 0.4,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -145,7 +139,6 @@ result.5 <- CDS(date = as.Date("2014-04-15"),
                 spread = 9106.8084,
                 coupon = 500,
                 recovery.rate = 0.4,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -177,7 +170,6 @@ result.6 <- CDS(date = as.Date("2014-04-15"),
                 currency = "JPY",
                 coupon = 100,
                 recovery.rate = 0.35,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing result.6 with true values from Bloomberg
@@ -209,7 +201,6 @@ result.7 <- CDS(date = as.Date("2014-04-15"),
                 currency = "USD",
                 coupon = 500,
                 recovery.rate = 0.40,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
@@ -238,7 +229,6 @@ result.8 <- CDS(date = as.Date("2014-04-22"),
                 spread = 105.8,
                 coupon = 100,
                 recovery.rate = 0.4,
-                isPriceClean = FALSE,
                 notional = 1e7)
 
 ## comparing results with true values from Bloomberg
