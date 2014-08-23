@@ -2,7 +2,7 @@ CDS TO-DO List
 ========================================================
 
 DONE: * Add your names as authors of the package and of CDS.Rnw.
-========================================================
+
 call.ISDA:
 NOT DONE, (x should be the first argument, like it almost always is, and name the second. Also, the code is fairly sloppy, don't you think? None of the arguments should have defaults. Are there any test cases? Et cetera.) 
 
