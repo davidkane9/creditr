@@ -57,7 +57,7 @@ IR.DV01 <- function(x,
     
     ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    IR.DV01[i] <- call.ISDA(name = "IR.DV01", x = x, ratesInfo = ratesInfo, i = i)
+    IR.DV01[i] <- call.ISDA(name = "IR.DV01", x = x[i,], ratesInfo = ratesInfo)
   }
   
   return(IR.DV01)

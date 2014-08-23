@@ -56,7 +56,7 @@ spread.DV01 <- function(x,
     
     ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x, ratesInfo = ratesInfo, i = i)
+    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x[i,], ratesInfo = ratesInfo)
   }
   
   return(spread.DV01)

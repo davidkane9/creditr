@@ -56,7 +56,7 @@ rec.risk.01 <- function(x,
     
     ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    rec.risk.01[i] <- call.ISDA(name = "rec.risk.01", x = x, ratesInfo = ratesInfo, i = i)
+    rec.risk.01[i] <- call.ISDA(name = "rec.risk.01", x = x[i,], ratesInfo = ratesInfo)
   }
   
   return(rec.risk.01)
