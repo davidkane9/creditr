@@ -23,7 +23,7 @@ add.conventions <- function(x, currency.var = "currency"){
   
   ## You must provide a currency.
   
-  stopifnot(! (is.null(x$currency)))
+  stopifnot(! (is.null(x[[currency.var]])))
   
   badDayConvention <- rep(NA, nrow(x))
   mmDCC            <- rep(NA, nrow(x))
@@ -43,7 +43,7 @@ add.conventions <- function(x, currency.var = "currency"){
     ret$mmDCC[i] <- "ACT/360"
     ret$floatDCC[i] <- "ACT/360"
 
-    if(ret$currency[i] == "USD"){
+    if(ret[[currency.var]][i] == "USD"){
       
       ret$mmCalendars[i] <- "none"
       ret$fixedDCC[i] <- "30/360"
@@ -52,7 +52,7 @@ add.conventions <- function(x, currency.var = "currency"){
       ret$swapCalendars[i] <- "none"
     } else{
       
-      if(ret$currency[i] == "JPY"){
+      if(ret[[currency.var]][i] == "JPY"){
         
         ret$mmCalendars[i] <- "TYO"
         ret$fixedDCC[i] <- "ACT/365"
@@ -61,7 +61,7 @@ add.conventions <- function(x, currency.var = "currency"){
         ret$swapCalendars[i] <- "TYO"
       } else{
         
-        if(ret$currency[i] == "EUR"){
+        if(ret[[currency.var]][i] == "EUR"){
           
           ret$mmCalendars[i] <- "none"
           ret$fixedDCC[i] <- "30/360"
