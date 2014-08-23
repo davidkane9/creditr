@@ -56,6 +56,21 @@ CDS <- function(name = NULL,
                 upfront = NULL,
                 ptsUpfront = NULL){
   
+  ## if all three of date, tenor and maturity are given as input,
+  ## then we need to check if the three are compatible
+  
+  if(!(is.null(tenor) | is.null(maturity))){
+    
+    ## maturityshouldbe is the correct maturity given the input date and tenor
+    
+    maturityshouldbe <- add.dates(data.frame(date = date, tenor = tenor,
+                                             currency = currency))$endDate
+    
+    ## check if the input maturity matches the correct should-be maturity
+    
+    stopifnot(maturity == maturityshouldbe) 
+  }
+  
   isPriceClean <- FALSE
   
   payAccruedOnDefault <- TRUE
