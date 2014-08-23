@@ -3,7 +3,7 @@
 \alias{call.ISDA}
 \title{call ISDA c function}
 \usage{
-call.ISDA(name, x = x, ratesInfo = ratesInfo, i = i)
+call.ISDA(x, name, ratesInfo, i)
 }
 \arguments{
 \item{name}{character function name within which call.ISDA is called}

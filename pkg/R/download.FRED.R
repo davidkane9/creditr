@@ -108,6 +108,17 @@ download.FRED <- function(start = as.Date("2003-12-31"),
     
     rate.complete.df <- rbind(rate.complete.df, rate.partial.df)
   }
-
+  
+  ## since the rates.RData is in a descending date order, we sort
+  ## rate.complete.df here
+  
+  rate.complete.df <- rate.complete.df[order((rate.complete.df$date), 
+                                             decreasing = TRUE),] 
+  
+  ## since FRED is in percentage while markit is in decimal,
+  ## we devide the rates by 100
+  
+  rate.complete.df$rate <- rate.complete.df$rate / 100
+  
   return(rate.complete.df)
 }
