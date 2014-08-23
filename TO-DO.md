@@ -13,7 +13,7 @@ call.ISDA(x, name, ...)
 where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in."
 
 * Fix call.ISDA so that, instead of taking in a huge data frame and an "i" for the row number, it just takes in a data frame with a single row. Isn't that obviously better? It is the job of the function which calls call.ISDA to pass in the right row each time.
-========================================================
+
 * Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
 * Fix the hard coded expiries problem in upfront.
