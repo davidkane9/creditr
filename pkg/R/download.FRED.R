@@ -20,8 +20,10 @@
 #' @export
 #' 
 #' @examples
+#' \dontrun{
 #' download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"), 
 #'               currency = "JPY")
+#' }             
 
 download.FRED <- function(start = as.Date("2003-12-31"), 
                              end = as.Date("2005-01-04"), currency = "JPY"){
