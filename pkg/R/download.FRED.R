@@ -106,7 +106,8 @@ download.FRED <- function(start = as.Date("2004-01-01"),
     ## with its date index an independent column.
     
     rate.partial.df <- data.frame(date = index(data), currency = currency,
-                          expiry=expiry[i], coredata(data))
+                                  expiry=expiry[i], coredata(data), 
+                                  row.names = NULL)
     
     ## A stupid thing about using getSymbols() is that when it reads from
     ## a .csv file, it always set header = TRUE, and we can't change it.
@@ -139,6 +140,11 @@ download.FRED <- function(start = as.Date("2004-01-01"),
   ## see ?rates.
   
   rate.complete.df$date <- rate.complete.df$date + 1
+  
+  ## convert factor type to character type.
+  
+  x$currency <- as.character(x$currency)
+  x$expiry   <- as.character(x$expiry)
   
   return(rate.complete.df)
 }

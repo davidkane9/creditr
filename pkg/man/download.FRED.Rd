@@ -3,7 +3,7 @@
 \alias{download.FRED}
 \title{Get Rates from FRED}
 \usage{
-download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"),
+download.FRED(start = as.Date("2004-01-01"), end = as.Date("2005-01-04"),
   currency = "JPY")
 }
 \arguments{
@@ -28,7 +28,9 @@ input, along with the date conventions for that specific currency.
 The source is FRED.
 }
 \examples{
+\dontrun{
 download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"),
               currency = "JPY")
+}
 }
 
