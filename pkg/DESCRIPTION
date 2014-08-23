@@ -23,7 +23,8 @@ Depends:
     RCurl,
     XML,
     testthat,
-    quantmod
+    quantmod,
+    xts
 Maintainer: Kanishka Malik <kanishkamalik@gmail.com>
 Description: Tools for pricing credit default swaps.
 License: GPL (>= 2)
