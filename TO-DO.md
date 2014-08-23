@@ -1,5 +1,7 @@
 CDS TO-DO List
 ========================================================
+DONE: In CDS.R, check if date, tenor and maturity are compatible if all three are provided as input.
+
 DONE: Fix the hard coded expiries problem in upfront.
 
 DONE: I don't think we need slots for inputPriceClean or payAccruedOnDefault because they always take the same value, so we can just hard code them. And then, we also don't need them as an input argument in any function. Assuming I am correct, remove the slots, remove the input arguments, and hard code the single value that each takes in the c code.
