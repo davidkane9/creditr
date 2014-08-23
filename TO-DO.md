@@ -1,7 +1,8 @@
 CDS TO-DO List
 ========================================================
+DONE: I don't think we need slots for inputPriceClean or payAccruedOnDefault because they always take the same value, so we can just hard code them. And then, we also don't need them as an input argument in any function. Assuming I am correct, remove the slots, remove the input arguments, and hard code the single value that each takes in the c code.
 
-DONE: * Add your names as authors of the package and of CDS.Rnw.
+DONE: Add your names as authors of the package and of CDS.Rnw.
 
 call.ISDA:
 NOT DONE, (x should be the first argument, like it almost always is, and name the second. Also, the code is fairly sloppy, don't you think? None of the arguments should have defaults. Are there any test cases? Et cetera.) 
@@ -27,8 +28,6 @@ where x is a data frame that looks like the result after add.dates() and add.con
 * Change build.rates() (and associated helper functions) so that rates goes back to January 1, 2004 for all three currencies.
 
 * On the other hand, get.rates should first consult the stored rates dataframe before trying markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
-
-* I don't think we need slots for inputPriceClean or payAccruedOnDefault because they always take the same value, so we can just hard code them. And then, we also don't need them as an input argument in any function. Assuming I am correct, remove the slots, remove the input arguments, and hard code the single value that each takes in the c code.
 
 * Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates. Find the bug and fix it.
 

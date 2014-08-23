@@ -9,7 +9,6 @@ test_that("test for spread", {
                 spread = 105.8,
                 coupon = 100,
                 recovery.rate = 0.4,
-                isPriceClean = FALSE,
                 notional = 1e7)
    ## old upfront value from Markit.com, with spread 105.8
    
