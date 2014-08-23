@@ -3,7 +3,7 @@
 \alias{call.ISDA}
 \title{call ISDA c function}
 \usage{
-call.ISDA(x, name, ratesInfo, i)
+call.ISDA(x, name, ratesInfo)
 }
 \arguments{
 \item{name}{character function name within which call.ISDA is called}
@@ -11,8 +11,6 @@ call.ISDA(x, name, ratesInfo, i)
 \item{x}{dataframe which contains relevant dates and convention info}
 
 \item{ratesInfo}{dataframe which contains relevant rates data}
-
-\item{i}{integer which indicates which iteration of the loop we are currently at}
 }
 \value{
 a numeric value which is the difference between the new upfront and the old one
