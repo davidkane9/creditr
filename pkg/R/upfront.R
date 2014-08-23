@@ -21,16 +21,16 @@
 #' @return vector of upfront values (with accrual) in the same order
 
 upfront <- function(x, 
-                      rates, 
-                      currency.var = "currency", 
-                      notional = 1e7,
-                      date.var = "date", 
-                      spread.var = "spread",
-                      coupon.var = "coupon",
-                      tenor.var = "tenor",
-                      maturity.var = "maturity",
-                      recovery.var = "recovery",
-                      isPriceClean = FALSE){
+                    rates, 
+                    currency.var = "currency", 
+                    notional = 1e7,
+                    date.var = "date", 
+                    spread.var = "spread",
+                    coupon.var = "coupon",
+                    tenor.var = "tenor",
+                    maturity.var = "maturity",
+                    recovery.var = "recovery",
+                    isPriceClean = FALSE){
   
   stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
@@ -67,6 +67,8 @@ upfront <- function(x,
   
   results <- rep(NA, nrow(x))
   
+  x <- add.conventions(x)
+  
   for(i in 1:nrow(x)){
     
     rates <- copy
@@ -77,44 +79,18 @@ upfront <- function(x,
     ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
     ## getRates would download the data from the internet
     
-    if(x[i, currency.var] == "USD"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y",
-                    "10Y", "12Y", "15Y", "20Y", "25Y", "30Y")
-      types <- "MMMMMSSSSSSSSSSSSSS"
-      mmDCC <- "ACT/360" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "3M"
-      fixedSwapDCC <- "30/360" 
-      floatSwapDCC <- "ACT/360" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "EUR"){
-      expiries <- c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", 
-                    "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", 
-                    "30Y")
-      types <- "MMMMMMSSSSSSSSSSSSS"
-      mmDCC <- "ACT/360" 
-      fixedSwapFreq <- "1Y" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "30/360" 
-      floatSwapDCC <- "ACT/360" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    } else if(x[i, currency.var] == "JPY"){
-      expiries <- c("1M", "2M", "3M", "6M", "1Y", "2Y", "3Y", "4Y", "5Y", 
-                    "6Y", "7Y", "8Y", "9Y", "10Y", "12Y", "15Y", "20Y", "30Y")
-      types <- "MMMMMSSSSSSSSSSSSS"
-      mmDCC <- "ACT/360" 
-      fixedSwapFreq <- "6M" 
-      floatSwapFreq <- "6M"
-      fixedSwapDCC <- "ACT/365" 
-      floatSwapDCC <- "ACT/360" 
-      badDayConvZC <- "M" 
-      holidays <- "None"
-      calendar <- "None"
-    }
+    
+    expiries <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][[i]])$expiry
+    types <-  paste(as.character(get.rates(date = x[[date.var]][i],
+                                           currency = x[[currency.var]][[i]])$type), collapse = "")
+    mmDCC <- x$mmDCC 
+    fixedSwapFreq <- x$fixedFreq 
+    floatSwapFreq <- x$floatFreq
+    fixedSwapDCC <- x$fixedDCC
+    floatSwapDCC <- x$floatDCC 
+    badDayConvZC <- x$badDayConvention  
+    holidays <- "NONE"
+    calendar <- "NONE"
     
     ## if tenor is just a number i.e. written as just 5, then we turn it to the string "5Y"
     
@@ -122,40 +98,28 @@ upfront <- function(x,
       x[i, tenor.var] <- as.numeric(x[i, tenor.var])      
       tenor <- x[i, tenor.var]
     } else {
-     tenor <- NULL
+      tenor <- NULL
     }
     
     date <- x[i, date.var]
     currency <- x[i, currency.var]
-    types <- types
     rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & 
-                           rates$currency == as.character(x[i, currency.var])]
-    expiries <- expiries                    
-    mmDCC <- as.character(mmDCC)                    
-    fixedSwapFreq <- as.character(fixedSwapFreq)
-    floatSwapFreq <- as.character(floatSwapFreq)
-    fixedSwapDCC <- as.character(fixedSwapDCC)
-    floatSwapDCC <- as.character(floatSwapDCC)
-    badDayConvZC <- as.character(badDayConvZC)
-    holidays <- as.character(holidays)    
+                           rates$currency == as.character(x[i, currency.var])]                                     
     valueDate <- NULL
     benchmarkDate <- NULL
     startDate <- NULL
     endDate <- NULL
     stepinDate <- NULL
-    tenor <- tenor
     maturity <- x[i, maturity.var]
     dccCDS <- "ACT/360"
     freqCDS <- "1Q"
     stubCDS <- "F"
     badDayConvCDS <- "F"
-    calendar <- calendar
     spread <- x[i, spread.var]
     coupon <- x[i, coupon.var]
     recovery.rate <- x[i, recovery.var]
     isPriceClean <- isPriceClean
     payAccruedOnDefault <- TRUE
-    notional <- notional
     
     ## stop if date is invalid
     
@@ -164,11 +128,11 @@ upfront <- function(x,
     ## basedate is T + 2 weekdays .    
     
     if(as.POSIXlt(date)$wday==5){
-     baseDate <- adj.next.bus.day(date+4)
+      baseDate <- adj.next.bus.day(date+4)
     } else if(as.POSIXlt(date)$wday==0){
-     baseDate <- adj.next.bus.day(date+3)
+      baseDate <- adj.next.bus.day(date+3)
     } else {
-     baseDate <- adj.next.bus.day(date+2)
+      baseDate <- adj.next.bus.day(date+2)
     }
     
     ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
@@ -185,12 +149,12 @@ upfront <- function(x,
     
     if(is.null(tenor)){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
-                                       maturity = as.Date(maturity),
-                                       currency = currency)))
+                                                       maturity = as.Date(maturity),
+                                                       currency = currency)))
     }
     else if(is.null(maturity)){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), tenor = tenor,
-                                       currency = currency)))
+                                                       currency = currency)))
     }
     
     ## if these dates are not entered, they are extracted using add.dates
