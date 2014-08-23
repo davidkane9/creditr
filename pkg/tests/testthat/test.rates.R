@@ -71,7 +71,25 @@ test_that("test that weekends are covered correctly", {
 ## This test case is currently not possible. Because when we get data from
 ## Markit, the data seem to be missing already.
 
-## Test to show that, within a currency, now given expiry changes by more than 
-## X% from one day to the next. Most changes are very small. Doubt that there
-## are any changes bigger than 10%, even 5%.
+## Test to show that, within a given currency and a given expiry, no interest
+## changes by more than 5% from one day to the next.
+
+test_that("test that no rates change more than 5% given currency and expiry", {
+
+  for(i in 1:10){
+    
+    sample.df=rates[rates$currency == "EUR" & rates$expiry == "20Y",]
+    
+    sample.date <- sample(sample.df$date, size = 1)
+    sample.date.next <- sample.date + 1
+    
+    rates.1 <- rates[rates$date == sample.date & rates$currency == "EUR" & 
+                       rates$expiry == "20Y", ]$rates
+    
+    rates.2 <- rates[rates$date == sample.date.next & rates$currency == "EUR" & 
+                       rates$expiry == "20Y", ]$rates
+    
+    expect_true(abs(rates.2-rates.1)/rates.1 < 0.05)
+  }
+})
 
