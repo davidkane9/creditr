@@ -122,5 +122,12 @@ download.FRED <- function(start = as.Date("2003-12-31"),
   
   rate.complete.df$rate <- rate.complete.df$rate / 100
   
+  ## Last step, don't forget to add one day to all the dates in the 
+  ## data frame, because we use the previous business day's interest
+  ## rate for the trading date pricing. If you don't understand this,
+  ## see ?rates.
+  
+  rate.complete.df$date <- rate.complete.df$date + 1
+  
   return(rate.complete.df)
 }
