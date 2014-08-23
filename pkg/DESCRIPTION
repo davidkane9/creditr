@@ -4,14 +4,18 @@ Date: 2014-08-22
 Title: Credit Default Swap
 Author: c(person("Heidi", "Chen", role = c("aut"),
     email = "s.heidi.chen@gmail.com"),
+    person("Yuanchu", "Dang", role = c("aut"),
+    email = "yuanchu.dang@williams.edu"),
     person("David", "Kane", role = c("aut"),
     email = "dave.kane@gmail.com"),
     person("Yang", "Lu", role = c("aut", "cre"),
     email = "yang.lu2014@gmail.com"),
     person("Skylar", "Smith", role = c("aut"),
     email = "sws2@williams.edu"),
-    person("Kanishka", "Malik", role = "aut",
-    email = "kanishkamalik@gmail.com"))
+    person("Kanishka", "Malik", role = c("aut"),
+    email = "kanishkamalik@gmail.com"),
+    person("Zijie", "Zhu", role = c("aut"),
+    email = "zijie.miller.zhu@gmail.com"))
 Depends:
     grid,
     R (>= 2.10),methods,
