@@ -1,0 +1,115 @@
+#' Get Rates from FRED
+#' 
+#' \code{download.FRED} returns the deposits and swap rates for the day
+#' input, along with the date conventions for that specific currency. 
+#' The source is FRED.
+#'
+#' @param date is the Trade date.
+#'        The rates for a trade date T are published on T-1 weekday. 
+#'        This date refers to the day on which we want the CDS to be 
+#'        priced, not the date for the interest rates as the interest 
+#'        rates will be used is the day before the trade date. Eg. If we 
+#'        are trying to find the rates used to price a CDS on 2014-04-22,
+#'        it will return the rates of 2014-04-21
+#' @param currency is the three-letter currency code. As of now, it works
+#'        for USD, EUR, and JPY. The default is JPY.
+#' 
+#' @return a data frame that contains the rates based on the ISDA 
+#'         pecifications
+#'
+#' @export
+#' 
+#' @examples
+#' download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"), 
+#'               currency = "JPY")
+
+download.FRED <- function(start = as.Date("2003-12-31"), 
+                             end = as.Date("2005-01-04"), currency = "JPY"){
+  
+  ## define an empty data.frame for loop rbind later
+  ## rate.complete.df is the return object
+  
+  rate.complete.df <- data.frame()
+  
+  ## time.intv is the time interval of the dates we want. 
+  ## it is a vector Date type
+  
+  time.intv <- seq(0, difftime(end, start))
+  
+  ## define expiry to be twelve months. FRED does not have data
+  ## for expiry over a year
+  
+  expiry <- c("1M", "2M", "3M", "4M", "5M", "6M", 
+              "7M", "8M", "9M", "10M", "11M", "12M")
+
+  ## every time the loop run below, it goes to get a new expiry
+  
+  for(i in 1:12){
+    
+    ## Because the naming of FRED data for 1M~9M is different from
+    ## that of 10M~12M, so we have to use a "if" here
+    
+    if(expiry[i] %in% c("1M", "2M", "3M", "4M", "5M", "6M", "7M", 
+                        "8M", "9M")){
+      FRED.symbol <- paste(currency, expiry[i], "TD156N", sep = "")
+    } else{
+      FRED.symbol <- paste(currency, expiry[i], "D156N", sep = "")
+    } 
+    
+    ## raw.data is to get the raw data from FRED using getSymbols()
+    ## from "quantmod" package. We have to use suppressWarnings here
+    ## because getSymbols() often generates a series of warnings that
+    ## are actually not warnings. See stackoverflow for furtner
+    ## explanations. The suppressWarnings here is harmless.
+    ## Be sure to set env = NULL because if you store the data in an
+    ## environment, error will occur.
+    
+    raw.data <- suppressWarnings(getSymbols(Symbols = FRED.symbol, 
+                                            warnings = FALSE, src='FRED', 
+                                            env = NULL))
+    
+    ## Here we use "xts" package because it is good at manipulating missing
+    ## dates. We define here an empty zoo object for the merge() later.
+    
+    empty <- zoo(order.by = seq.Date(head(index(raw.data), 1), 
+                                   tail(index(raw.data), 1), by = "days"))
+    
+    ## merge() is a cool command that can merge two zoo objects together.
+    ## the raw.data we get has missing rows, for example, 2004-01-03 is
+    ## absent. So we define an empty row that has 2004-01-03 but no rate.
+    ## we use merge() to merge raw.data and empty zoo object, then whenever
+    ## merge() finds a missing row of date in raw.data, it will use the 
+    ## previous day's rate to fill the blank of the empty row of date in
+    ## the empty zoo object. This just satisfies our need, because according
+    ## to ISDA Standard Model, we use previous business day's rate for
+    ## holidays and weekends. And this is exactly carried out by merge()
+    ## and na.locf(). For further explanation, see stackoverflow.
+    ## then we use [start+time.intv], where time.intv is defined earlier,
+    ## to get the dates we want from the giant data frame
+    
+    data <- na.locf(merge(raw.data, empty))[start+time.intv]
+    
+    ## rate.partial.df is a data frame containing only one expiry type of 
+    ## rates. then later we use rbind to put it into rate.complete.df.
+    ## here, we use date = index(data) to put xts object into a data frame
+    ## with its date index an independent column.
+    
+    rate.partial.df <- data.frame(date = index(data), currency = currency,
+                          expiry=expiry[i], coredata(data))
+    
+    ## A stupid thing about using getSymbols() is that when it reads from
+    ## a .csv file, it always set header = TRUE, and we can't change it.
+    ## so it always bring the nasty header of the csv file into our
+    ## data frame. And to delete a header is tedious, as is shown below.
+    
+    names(rate.partial.df) <- NULL
+    
+    names(rate.partial.df) <- c("date", "currency", "expiry", "rate")
+    
+    ## then we rbind() the rate.partial.df and rate.complete.df
+    
+    rate.complete.df <- rbind(rate.complete.df, rate.partial.df)
+  }
+
+  return(rate.complete.df)
+}
