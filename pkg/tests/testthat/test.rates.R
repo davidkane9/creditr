@@ -76,8 +76,6 @@ test_that("test that weekends are covered correctly", {
 
 test_that("test that no rates change more than 5% given currency and expiry", {
 
-  for(i in 1:5){
-    
     sample.df=rates[rates$currency == "EUR" & rates$expiry == "20Y",]
     
     sample.date <- sample(sample.df$date, size = 1)
@@ -90,6 +88,5 @@ test_that("test that no rates change more than 5% given currency and expiry", {
                        rates$expiry == "20Y", ]$rate
     
     expect_true(abs(rates.2-rates.1)/rates.1 < 0.05)
-  }
 })
 
