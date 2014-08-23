@@ -278,6 +278,16 @@ test_that("test for upfront", {
   truth.13 <- 3487
   
   expect_true(abs(result.13 - truth.13) < 5)
+})
+
+
+## more test cases for upfront  
+
+## retrieve interest rates from Rates data frame
+
+
+
+test_that("2nd set of test for upfront", {
   
   data(rates, package = "CDS")
   
@@ -294,7 +304,7 @@ test_that("test for upfront", {
                     spread = c(2785.8889, 99),
                     currency = c("EUR", "EUR"),
                     recovery = c(0.4, 0.4))
-  
+ 
   result.1 <- upfront(x = x.1, rates = rates, tenor.var = "tenor")
   expect_that(round(result.1, -2), equals(c(4412500, round(-14368, -2))))
   

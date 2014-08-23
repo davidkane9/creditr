@@ -1,0 +1,66 @@
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(CDS)
+Loading required package: grid
+Loading required package: Rcpp
+Loading required package: RCurl
+Loading required package: bitops
+Loading required package: XML
+> 
+> test_check("CDS")
+Test CDS : ................................................................
+Test CS10 : 
+Test IR.DV01 : 
+Test JPY.condition function : ..
+Test add.conventions : 
+Test add.dates : ...
+Test adj.next.bus.day : ....
+Test check.inputs : .......
+Test check.rates.dates : 
+Test get.rates : 
+Test implied.RR : .
+Test pd.to.spread : .
+Test values in rates data frame : ........12345
+Test rec.risk.01 : 
+Test show : .............
+Test spread.DV01 : 
+Test spread : 
+Test spread.to.pd : 
+Test summary : .......
+Test update : .
+Test upfront : .............
+
+
+1. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+
+2. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+
+3. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+
+4. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+
+5. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+
+Error: Test failures
+Execution halted

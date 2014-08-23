@@ -1,0 +1,118 @@
+* using log directory 'C:/Users/think/Desktop/repository/Yuanchu/CDS/CDS.Rcheck'
+* using R version 3.1.1 (2014-07-10)
+* using platform: x86_64-w64-mingw32 (64-bit)
+* using session charset: ASCII
+* checking for file 'CDS/DESCRIPTION' ... OK
+* this is package 'CDS' version '0.3-4'
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking whether package 'CDS' can be installed ... [56s] WARNING
+Found the following significant warnings:
+  schedule.c:322:19: warning: operation on '(streamSched->fArray + (unsigned int)((unsigned int)i * 20u))->resetDate' may be undefined [-Wsequence-point]
+  schedule.c:322:19: warning: operation on '(streamSched->fArray + (long long unsigned int)((long long unsigned int)i * 20ull))->resetDate' may be undefined [-Wsequence-point]
+See 'C:/Users/think/Desktop/repository/Yuanchu/CDS/CDS.Rcheck/00install.out' for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* loading checks for arch 'i386'
+** checking whether the package can be loaded ... OK
+** checking whether the package can be loaded with stated dependencies ... OK
+** checking whether the package can be unloaded cleanly ... OK
+** checking whether the namespace can be loaded with stated dependencies ... OK
+** checking whether the namespace can be unloaded cleanly ... OK
+* loading checks for arch 'x64'
+** checking whether the package can be loaded ... OK
+** checking whether the package can be loaded with stated dependencies ... OK
+** checking whether the package can be unloaded cleanly ... OK
+** checking whether the namespace can be loaded with stated dependencies ... OK
+** checking whether the namespace can be unloaded cleanly ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+JPY.condition: no visible binding for global variable 'JPY.holidays'
+
+Found the following calls to data() loading into the global environment:
+File 'CDS/R/JPY.condition.R':
+  data(JPY.holidays, package = "CDS")
+See section 'Good practice' in '?data'.
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... WARNING
+Undocumented data sets:
+  'alpha' 'x'
+All user-level objects in a package should have documentation entries.
+See the chapter 'Writing R documentation files' in the 'Writing R
+Extensions' manual.
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of 'data' directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking line endings in Makefiles ... WARNING
+Found the following Makefiles with CR or CRLF line endings:
+  src/Makevars
+Some Unix 'make' programs require LF line endings.
+* checking compilation flags in Makevars ... OK
+* checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
+* checking compiled code ... OK
+* checking files in 'vignettes' ... OK
+* checking examples ...
+** running examples for arch 'i386' ... [20s] OK
+Examples with CPU or elapsed time > 5s
+                  user system elapsed
+update-CDS-method 0.87   0.09    6.21
+** running examples for arch 'x64' ... [20s] OK
+Examples with CPU or elapsed time > 5s
+                  user system elapsed
+update-CDS-method 0.72   0.08    5.94
+* checking for unstated dependencies in tests ... OK
+* checking tests ...
+** running tests for arch 'i386' ... ERROR
+Running the tests in 'tests/test-all.R' failed.
+Last 13 lines of output:
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  3. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  4. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  5. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  Error: Test failures
+  Execution halted
+** running tests for arch 'x64' ... ERROR
+Running the tests in 'tests/test-all.R' failed.
+Last 13 lines of output:
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  3. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  4. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  5. Failure(@test.rates.R#92): test that no rates change more than 5% given currency and expiry 
+  abs(rates.2 - rates.1)/rates.1 < 0.1 isn't true
+  
+  Error: Test failures
+  Execution halted

@@ -1,0 +1,203 @@
+* installing *source* package 'CDS' ...
+** libs
+
+*** arch - i386
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c badday.c -o badday.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c bsearch.c -o bsearch.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c busDaysOffset.c -o busDaysOffset.o
+busDaysOffset.c: In function 'busDaysOffset':
+busDaysOffset.c:27:7: warning: unused variable 'i' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c buscache.c -o buscache.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c busday.c -o busday.o
+busday.c:112:12: warning: 'readHolidaysAll' declared 'static' but never defined [-Wunused-function]
+busday.c:118:12: warning: 'stringToDate' declared 'static' but never defined [-Wunused-function]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c calcSpread.c -o calcSpread.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c calcUpfront.c -o calcUpfront.o
+calcUpfront.c: In function 'calcUpfrontTest':
+calcUpfront.c:280:5: warning: 'dates_main' may be used uninitialized in this function [-Wuninitialized]
+calcUpfront.c:281:5: warning: 'upfrontPayment' may be used uninitialized in this function [-Wuninitialized]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cashflow.c -o cashflow.o
+cashflow.c: In function 'JpmcdsNewCFLFromDL3':
+cashflow.c:320:17: warning: unused variable 'routine' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cds.c -o cds.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cdsbootstrap.c -o cdsbootstrap.o
+cdsbootstrap.c: In function 'CdsBootstrap':
+cdsbootstrap.c:209:21: warning: unused variable 'settleDiscount' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cdsone.c -o cdsone.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cerror.c -o cerror.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cfileio.c -o cfileio.o
+cfileio.c: In function 'JpmcdsFgets':
+cfileio.c:172:18: warning: unused variable 'routine' [-Wunused-variable]
+g++ -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -mtune=core2   -c cfinanci.cpp -o cfinanci.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cmemory.c -o cmemory.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c contingentleg.c -o contingentleg.o
+contingentleg.c: In function 'onePeriodIntegral':
+contingentleg.c:181:12: warning: variable 't' set but not used [-Wunused-but-set-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c convert.c -o convert.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cx.c -o cx.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cxbsearch.c -o cxbsearch.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cxdatelist.c -o cxdatelist.o
+cxdatelist.c:19:12: warning: 'qsortDateCompare' defined but not used [-Wunused-function]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c cxzerocurve.c -o cxzerocurve.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c date_sup.c -o date_sup.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c dateadj.c -o dateadj.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c dateconv.c -o dateconv.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c datelist.c -o datelist.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c defaulted.c -o defaulted.o
+defaulted.c: In function 'JpmcdsDefaultAccrual':
+defaulted.c:38:11: warning: unused variable 'accrualEndDateAdj' [-Wunused-variable]
+defaulted.c:37:11: warning: unused variable 'accrualStartDateAdj' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c dtlist.c -o dtlist.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c feeleg.c -o feeleg.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c fltrate.c -o fltrate.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c gtozc.c -o gtozc.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c interpc.c -o interpc.o
+interpc.c: In function 'JpmcdsInterpRateExact':
+interpc.c:113:9: warning: unused variable 'order' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c ldate.c -o ldate.o
+ldate.c:608:12: warning: 'mymin' defined but not used [-Wunused-function]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c linterpc.c -o linterpc.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c lintrp1.c -o lintrp1.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c lprintf.c -o lprintf.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c lscanf.c -o lscanf.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c rtbrent.c -o rtbrent.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c schedule.c -o schedule.o
+schedule.c: In function 'JpmcdsNewCouponDatesSwap':
+schedule.c:322:19: warning: operation on '(streamSched->fArray + (unsigned int)((unsigned int)i * 20u))->resetDate' may be undefined [-Wsequence-point]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c streamcf.c -o streamcf.o
+streamcf.c: In function 'JpmcdsNewStreamFloatCFLGen':
+streamcf.c:120:18: warning: unused variable 'stubCompound' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c strutil.c -o strutil.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c stub.c -o stub.o
+stub.c: In function 'JpmcdsStubPayment':
+stub.c:44:12: warning: variable 'coupon' set but not used [-Wunused-but-set-variable]
+stub.c:43:12: warning: variable 'stubFrac' set but not used [-Wunused-but-set-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c tcurve.c -o tcurve.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c timeline.c -o timeline.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c version.c -o version.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c yearfrac.c -o yearfrac.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zcall.c -o zcall.o
+zcall.c: In function 'JpmcdsZCInterpolate':
+zcall.c:1142:20: warning: unused variable 'yearsFromBaseDate' [-Wunused-variable]
+zcall.c:1140:20: warning: unused variable 'interpData' [-Wunused-variable]
+zcall.c:1136:22: warning: variable 'metricFP' set but not used [-Wunused-but-set-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zcswap.c -o zcswap.o
+zcswap.c: In function 'JpmcdsZCAddSwaps':
+zcswap.c:188:19: warning: unused variable 'useFastZC' [-Wunused-variable]
+zcswap.c:185:19: warning: unused variable 'newDates' [-Wunused-variable]
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zcswdate.c -o zcswdate.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zcswutil.c -o zcswutil.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zerocurve.c -o zerocurve.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zr2coup.c -o zr2coup.o
+gcc -m32 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -std=gnu99 -mtune=core2 -c zr2fwd.c -o zr2fwd.o
+g++ -m32 -shared -s -static-libgcc -o CDS.dll tmp.def badday.o bsearch.o busDaysOffset.o buscache.o busday.o calcSpread.o calcUpfront.o cashflow.o cds.o cdsbootstrap.o cdsone.o cerror.o cfileio.o cfinanci.o cmemory.o contingentleg.o convert.o cx.o cxbsearch.o cxdatelist.o cxzerocurve.o date_sup.o dateadj.o dateconv.o datelist.o defaulted.o dtlist.o feeleg.o fltrate.o gtozc.o interpc.o ldate.o linterpc.o lintrp1.o lprintf.o lscanf.o rtbrent.o schedule.o streamcf.o strutil.o stub.o tcurve.o timeline.o version.o yearfrac.o zcall.o zcswap.o zcswdate.o zcswutil.o zerocurve.o zr2coup.o zr2fwd.o -Ld:/RCompile/CRANpkg/extralibs64/local/lib/i386 -Ld:/RCompile/CRANpkg/extralibs64/local/lib -LD:/R/bin/i386 -lR
+installing to C:/Users/think/Desktop/repository/Yuanchu/CDS/CDS.Rcheck/CDS/libs/i386
+
+*** arch - x64
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c badday.c -o badday.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c bsearch.c -o bsearch.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c busDaysOffset.c -o busDaysOffset.o
+busDaysOffset.c: In function 'busDaysOffset':
+busDaysOffset.c:27:7: warning: unused variable 'i' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c buscache.c -o buscache.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c busday.c -o busday.o
+busday.c:112:12: warning: 'readHolidaysAll' declared 'static' but never defined [-Wunused-function]
+busday.c:118:12: warning: 'stringToDate' declared 'static' but never defined [-Wunused-function]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c calcSpread.c -o calcSpread.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c calcUpfront.c -o calcUpfront.o
+calcUpfront.c: In function 'calcUpfrontTest':
+calcUpfront.c:280:5: warning: 'dates_main' may be used uninitialized in this function [-Wuninitialized]
+calcUpfront.c:281:5: warning: 'upfrontPayment' may be used uninitialized in this function [-Wuninitialized]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cashflow.c -o cashflow.o
+cashflow.c: In function 'JpmcdsNewCFLFromDL3':
+cashflow.c:320:17: warning: unused variable 'routine' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cds.c -o cds.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cdsbootstrap.c -o cdsbootstrap.o
+cdsbootstrap.c: In function 'CdsBootstrap':
+cdsbootstrap.c:209:21: warning: unused variable 'settleDiscount' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cdsone.c -o cdsone.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cerror.c -o cerror.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cfileio.c -o cfileio.o
+cfileio.c: In function 'JpmcdsFgets':
+cfileio.c:172:18: warning: unused variable 'routine' [-Wunused-variable]
+g++ -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O3 -Wall  -mtune=core2   -c cfinanci.cpp -o cfinanci.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cmemory.c -o cmemory.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c contingentleg.c -o contingentleg.o
+contingentleg.c: In function 'onePeriodIntegral':
+contingentleg.c:181:12: warning: variable 't' set but not used [-Wunused-but-set-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c convert.c -o convert.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cx.c -o cx.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cxbsearch.c -o cxbsearch.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cxdatelist.c -o cxdatelist.o
+cxdatelist.c:19:12: warning: 'qsortDateCompare' defined but not used [-Wunused-function]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c cxzerocurve.c -o cxzerocurve.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c date_sup.c -o date_sup.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c dateadj.c -o dateadj.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c dateconv.c -o dateconv.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c datelist.c -o datelist.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c defaulted.c -o defaulted.o
+defaulted.c: In function 'JpmcdsDefaultAccrual':
+defaulted.c:38:11: warning: unused variable 'accrualEndDateAdj' [-Wunused-variable]
+defaulted.c:37:11: warning: unused variable 'accrualStartDateAdj' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c dtlist.c -o dtlist.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c feeleg.c -o feeleg.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c fltrate.c -o fltrate.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c gtozc.c -o gtozc.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c interpc.c -o interpc.o
+interpc.c: In function 'JpmcdsInterpRateExact':
+interpc.c:113:9: warning: unused variable 'order' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c ldate.c -o ldate.o
+ldate.c:608:12: warning: 'mymin' defined but not used [-Wunused-function]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c linterpc.c -o linterpc.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c lintrp1.c -o lintrp1.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c lprintf.c -o lprintf.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c lscanf.c -o lscanf.o
+lscanf.c: In function 'JpmcdsLvfscanf':
+lscanf.c:631:26: warning: 'D' may be used uninitialized in this function [-Wuninitialized]
+lscanf.c:631:26: warning: 'D.sigD' may be used uninitialized in this function [-Wuninitialized]
+lscanf.c:532:29: warning: 'D.exp' may be used uninitialized in this function [-Wuninitialized]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c rtbrent.c -o rtbrent.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c schedule.c -o schedule.o
+schedule.c: In function 'JpmcdsNewCouponDatesSwap':
+schedule.c:322:19: warning: operation on '(streamSched->fArray + (long long unsigned int)((long long unsigned int)i * 20ull))->resetDate' may be undefined [-Wsequence-point]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c streamcf.c -o streamcf.o
+streamcf.c: In function 'JpmcdsNewStreamFloatCFLGen':
+streamcf.c:120:18: warning: unused variable 'stubCompound' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c strutil.c -o strutil.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c stub.c -o stub.o
+stub.c: In function 'JpmcdsStubPayment':
+stub.c:44:12: warning: variable 'coupon' set but not used [-Wunused-but-set-variable]
+stub.c:43:12: warning: variable 'stubFrac' set but not used [-Wunused-but-set-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c tcurve.c -o tcurve.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c timeline.c -o timeline.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c version.c -o version.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c yearfrac.c -o yearfrac.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zcall.c -o zcall.o
+zcall.c: In function 'JpmcdsZCInterpolate':
+zcall.c:1142:20: warning: unused variable 'yearsFromBaseDate' [-Wunused-variable]
+zcall.c:1140:20: warning: unused variable 'interpData' [-Wunused-variable]
+zcall.c:1136:22: warning: variable 'metricFP' set but not used [-Wunused-but-set-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zcswap.c -o zcswap.o
+zcswap.c: In function 'JpmcdsZCAddSwaps':
+zcswap.c:188:19: warning: unused variable 'useFastZC' [-Wunused-variable]
+zcswap.c:185:19: warning: unused variable 'newDates' [-Wunused-variable]
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zcswdate.c -o zcswdate.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zcswutil.c -o zcswutil.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zerocurve.c -o zerocurve.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zr2coup.c -o zr2coup.o
+gcc -m64 -I"D:/R/include"       -I"D:/R/library/Rcpp/include" -I"d:/RCompile/CRANpkg/extralibs64/local/include"  -Wall -pedantic   -O2 -Wall  -std=gnu99 -mtune=core2 -c zr2fwd.c -o zr2fwd.o
+g++ -m64 -shared -s -static-libgcc -o CDS.dll tmp.def badday.o bsearch.o busDaysOffset.o buscache.o busday.o calcSpread.o calcUpfront.o cashflow.o cds.o cdsbootstrap.o cdsone.o cerror.o cfileio.o cfinanci.o cmemory.o contingentleg.o convert.o cx.o cxbsearch.o cxdatelist.o cxzerocurve.o date_sup.o dateadj.o dateconv.o datelist.o defaulted.o dtlist.o feeleg.o fltrate.o gtozc.o interpc.o ldate.o linterpc.o lintrp1.o lprintf.o lscanf.o rtbrent.o schedule.o streamcf.o strutil.o stub.o tcurve.o timeline.o version.o yearfrac.o zcall.o zcswap.o zcswdate.o zcswutil.o zerocurve.o zr2coup.o zr2fwd.o -Ld:/RCompile/CRANpkg/extralibs64/local/lib/x64 -Ld:/RCompile/CRANpkg/extralibs64/local/lib -LD:/R/bin/x64 -lR
+installing to C:/Users/think/Desktop/repository/Yuanchu/CDS/CDS.Rcheck/CDS/libs/x64
+** R
+** data
+** preparing package for lazy loading
+Creating a generic function for 'summary' from package 'base' in package 'CDS'
+Creating a generic function for 'update' from package 'stats' in package 'CDS'
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+*** arch - i386
+*** arch - x64
+* DONE (CDS)
