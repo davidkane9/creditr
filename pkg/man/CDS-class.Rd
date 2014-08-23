@@ -32,18 +32,6 @@ is \code{Sys.Date}.}
 
 \item{\code{currency}}{in which CDS is denominated.}
 
-\item{\code{inputPriceClean}}{records the \code{isPriceClean} argument
-input by the user. \code{isPriceClean} refers to the type of
-upfront calculated. It is boolean. When \code{TRUE}, calculate
-principal only. When \code{FALSE}, calculate principal + accrual.}
-
-\item{\code{notional}}{is the amount of the underlying asset on which the
-payments are based. Default is 1e7, i.e. 10MM.}
-
-\item{\code{payAccruedOnDefault}}{is a partial payment of the premium made
-to the protection seller in the event of a default. Default is
-\code{TRUE}.}
-
 \item{\code{principal}}{is the dirty \code{upfront} less the \code{accrual}.}
 
 \item{\code{accrual}}{is the accrued interest payment.}

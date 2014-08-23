@@ -6,9 +6,8 @@ contract.}
 \usage{
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
-  recovery.rate = 0.4, currency = "USD", isPriceClean = FALSE,
-  notional = 1e+07, payAccruedOnDefault = TRUE, upfront = NULL,
-  ptsUpfront = NULL)
+  recovery.rate = 0.4, currency = "USD", notional = 1e+07,
+  upfront = NULL, ptsUpfront = NULL)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -34,16 +33,8 @@ is 100 bps.}
 
 \item{currency}{in which CDS is denominated.}
 
-\item{isPriceClean}{refers to the type of upfront calculated. It is
-boolean. When \code{TRUE}, calculate principal only. When
-\code{FALSE}, calculate principal + accrual.}
-
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}
-
-\item{payAccruedOnDefault}{is a partial payment of the premium made
-to the protection seller in the event of a default. Default is
-\code{TRUE}.}
 
 \item{upfront}{is quoted in the currency amount. Since a standard
 contract is traded with fixed coupons, upfront payment is

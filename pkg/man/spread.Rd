@@ -104,10 +104,6 @@ is 100 bps.}
 
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}
-
-\item{payAccruedOnDefault}{is a partial payment of the premium made
-to the protection seller in the event of a default. Default is
-\code{TRUE}.}
 }
 \value{
 a numeric indicating the spread.
