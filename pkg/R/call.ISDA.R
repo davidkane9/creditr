@@ -5,11 +5,9 @@
 #' @param name character function name within which call.ISDA is called
 #' @param x dataframe which contains relevant dates and convention info
 #' @param ratesInfo dataframe which contains relevant rates data
-#' @param i integer which indicates which iteration of the loop we are currently at
-#' 
 #' @return a numeric value which is the difference between the new upfront and the old one
 
-call.ISDA <- function(x, name, ratesInfo, i){
+call.ISDA <- function(x, name, ratesInfo){
   
   ## define CS10, IR.DV01, rec.risk.01 and spread.DV01 and set their default
   ## to zero. If the name matches any of the four functions, then the corres-
@@ -35,25 +33,25 @@ call.ISDA <- function(x, name, ratesInfo, i){
   ## original upfront
   
   upfront.orig <- .Call('calcUpfrontTest',
-                        baseDate_input = separate.YMD(x$baseDate[i]),
+                        baseDate_input = separate.YMD(x$baseDate),
                         types = paste(as.character(ratesInfo$type), collapse = ""),
                         rates = as.numeric(as.character(ratesInfo$rate)),
                         expiries = as.character(ratesInfo$expiry),
                         
-                        mmDCC = as.character(x$mmDCC[i]),
-                        fixedSwapFreq = as.character(x$fixedFreq[i]),
-                        floatSwapFreq = as.character(x$floatFreq[i]),
-                        fixedSwapDCC = as.character(x$fixedDCC[i]),
-                        floatSwapDCC = as.character(x$floatDCC[i]),
-                        badDayConvZC = as.character(x$badDayConvention[i]),
+                        mmDCC = as.character(x$mmDCC),
+                        fixedSwapFreq = as.character(x$fixedFreq),
+                        floatSwapFreq = as.character(x$floatFreq),
+                        fixedSwapDCC = as.character(x$fixedDCC),
+                        floatSwapDCC = as.character(x$floatDCC),
+                        badDayConvZC = as.character(x$badDayConvention),
                         holidays = "None",
                         
-                        todayDate_input = separate.YMD(x$date[i]),
-                        valueDate_input = separate.YMD(x$valueDate[i]),
-                        benchmarkDate_input = separate.YMD(x$startDate[i]),
-                        startDate_input = separate.YMD(x$startDate[i]),
-                        endDate_input = separate.YMD(x$endDate[i]),
-                        stepinDate_input = separate.YMD(x$stepinDate[i]),
+                        todayDate_input = separate.YMD(x$date),
+                        valueDate_input = separate.YMD(x$valueDate),
+                        benchmarkDate_input = separate.YMD(x$startDate),
+                        startDate_input = separate.YMD(x$startDate),
+                        endDate_input = separate.YMD(x$endDate),
+                        stepinDate_input = separate.YMD(x$stepinDate),
                         
                         dccCDS = "ACT/360",
                         ivlCDS = "1Q",
@@ -61,36 +59,36 @@ call.ISDA <- function(x, name, ratesInfo, i){
                         badDayConvCDS = "F",
                         calendar = "None",
                         
-                        parSpread = x$spread[i],
-                        couponRate = x$coupon[i],
-                        recoveryRate = x$recovery.rate[i],
+                        parSpread = x$spread,
+                        couponRate = x$coupon,
+                        recoveryRate = x$recovery.rate,
                         isPriceClean_input = FALSE,
                         payAccruedOnDefault_input = TRUE,
-                        notional = x$notional[i],
+                        notional = x$notional,
                         PACKAGE = "CDS")
   
   ## new upfront
   
   upfront.new <- .Call('calcUpfrontTest',
-                       baseDate_input = separate.YMD(x$baseDate[i]),
+                       baseDate_input = separate.YMD(x$baseDate),
                        types = paste(as.character(ratesInfo$type), collapse = ""),
                        rates = as.numeric(as.character(ratesInfo$rate)) + IR.DV01 * 1/1e4,
                        expiries = as.character(ratesInfo$expiry),
                        
-                       mmDCC = as.character(x$mmDCC[i]),
-                       fixedSwapFreq = as.character(x$fixedFreq[i]),
-                       floatSwapFreq = as.character(x$floatFreq[i]),
-                       fixedSwapDCC = as.character(x$fixedDCC[i]),
-                       floatSwapDCC = as.character(x$floatDCC[i]),
-                       badDayConvZC = as.character(x$badDayConvention[i]),
+                       mmDCC = as.character(x$mmDCC),
+                       fixedSwapFreq = as.character(x$fixedFreq),
+                       floatSwapFreq = as.character(x$floatFreq),
+                       fixedSwapDCC = as.character(x$fixedDCC),
+                       floatSwapDCC = as.character(x$floatDCC),
+                       badDayConvZC = as.character(x$badDayConvention),
                        holidays = "None",
                        
-                       todayDate_input = separate.YMD(x$date[i]),
-                       valueDate_input = separate.YMD(x$valueDate[i]),
-                       benchmarkDate_input = separate.YMD(x$startDate[i]),
-                       startDate_input = separate.YMD(x$startDate[i]),
-                       endDate_input = separate.YMD(x$endDate[i]),
-                       stepinDate_input = separate.YMD(x$stepinDate[i]),
+                       todayDate_input = separate.YMD(x$date),
+                       valueDate_input = separate.YMD(x$valueDate),
+                       benchmarkDate_input = separate.YMD(x$startDate),
+                       startDate_input = separate.YMD(x$startDate),
+                       endDate_input = separate.YMD(x$endDate),
+                       stepinDate_input = separate.YMD(x$stepinDate),
                        
                        dccCDS = "ACT/360",
                        ivlCDS = "1Q",
@@ -98,12 +96,12 @@ call.ISDA <- function(x, name, ratesInfo, i){
                        badDayConvCDS = "F",
                        calendar = "None",
                        
-                       parSpread = x$spread[i] * (1 + CS10 * 0.1) + spread.DV01,
-                       couponRate = x$coupon[i],
-                       recoveryRate = x$recovery.rate[i] + 0.01 * rec.risk.01,
+                       parSpread = x$spread * (1 + CS10 * 0.1) + spread.DV01,
+                       couponRate = x$coupon,
+                       recoveryRate = x$recovery.rate + 0.01 * rec.risk.01,
                        isPriceClean_input = FALSE,
                        payAccruedOnDefault_input = TRUE,
-                       notional = x$notional[i],
+                       notional = x$notional,
                        PACKAGE = "CDS")
   
   return(upfront.new - upfront.orig)
