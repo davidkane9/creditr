@@ -25,9 +25,20 @@
 #'               currency = "JPY")
 #' }             
 
-download.FRED <- function(start = as.Date("2003-12-31"), 
+download.FRED <- function(start = as.Date("2004-01-01"), 
                              end = as.Date("2005-01-04"), currency = "JPY"){
+    
+  ## We make start date and end date go back one day, because we use the 
+  ## previous business day's interest rate for trading date pricing. By
+  ## making them go back one day and then calculate and then make the 
+  ## output go forward one day (so that it prints what we want), we save
+  ## lots of trouble in the middle of the function of adjusting the day,
+  ## because we want to adjust the day when we are calling the data from
+  ## FRED
   
+  start <- start - 1
+  end <- end - 1
+    
   ## define an empty data.frame for loop rbind later
   ## rate.complete.df is the return object
   
