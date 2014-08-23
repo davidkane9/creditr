@@ -72,7 +72,7 @@ test_that("test that weekends are covered correctly", {
 ## Markit, the data seem to be missing already.
 
 ## Test to show that, within a given currency and a given expiry, no interest
-## changes by more than 10% from one day to the next.
+## changes by more than 5% from one day to the next.
 
 test_that("test that no rates change more than 5% given currency and expiry", {
 
@@ -84,12 +84,12 @@ test_that("test that no rates change more than 5% given currency and expiry", {
     sample.date.next <- sample.date + 1
     
     rates.1 <- rates[rates$date == sample.date & rates$currency == "EUR" & 
-                       rates$expiry == "20Y", ]$rates
+                       rates$expiry == "20Y", ]$rate
     
     rates.2 <- rates[rates$date == sample.date.next & rates$currency == "EUR" & 
-                       rates$expiry == "20Y", ]$rates
+                       rates$expiry == "20Y", ]$rate
     
-    expect_true(abs(rates.2-rates.1)/rates.1 < 0.1)
+    expect_true(abs(rates.2-rates.1)/rates.1 < 0.05)
   }
 })
 
