@@ -1,7 +1,9 @@
 CDS TO-DO List
 ========================================================
 
-DONE: create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
+NOT DONE, (x should be the first argument, like it almost always is, and name the second. Also, the code is fairly sloppy, don't you think? None of the arguments should have defaults. Are there any test cases? Et cetera.) 
+
+Create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
 
 call.ISDA(x, name, ...)
 
@@ -33,6 +35,10 @@ DONE: * Maybe check.rates.dates is no longer necessary? It hasn't been used once
 
 * Make build.rates() a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates() should consist of download.markit() and download.FRED(). On the other hand, get.rates should first consult the stored rates dataframe before trying markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
 
+* I don't think we need slots for inputPriceClean or payAccruedOnDefault because they always take the same value, so we can just hard code them. And then, we also don't need them as an input argument in any function. Assuming I am correct, remove the slots, remove the input arguments, and hard code the single value that each takes in the c code.
+
+
+
 * We want to put the package on CRAN. To do that, we can't include the c code (all the items in /src). So, how can we solve this? (Might be useful to post a question about this on stackoverflow. But Google a bunch first.) Idea: Have the package automatically go a get the files on installation and/or loading. Complications:
 ** Might need to create the src/ directory as well, or have an empty file in the source directory because R does not like empty directories in packages.
 ** "Makefile" is the typical way that this is solved in non-R contexts. Learn about Makefiles. But I don't know if R allows for the use of Makefiles. Or, if it does, exactly how this might work. Maybe "Makevars" is also relevant?
@@ -50,6 +56,8 @@ DONE: * Maybe check.rates.dates is no longer necessary? It hasn't been used once
 * Fix all line wraps by reformatting code.
 
 * Drop the maturity slot? We should discuss this.
+
+* Add your names as authors of the package and of CDS.Rnw.
 
 * Things to fix in CDS.Rnw
 ** Read and completely understand the current version three times.
