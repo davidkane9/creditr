@@ -42,35 +42,27 @@
 #' require(CDS)
 #' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
-CDS <- function(## name stuff
-  name = NULL,
-  contract = "SNAC", 
-  RED = NULL,
+CDS <- function(name = NULL,
+                contract = "SNAC",
+                RED = NULL,
+                date = Sys.Date(),
+                spread = NULL,
+                maturity = NULL,
+                tenor = NULL,
+                coupon = 100,
+                recovery.rate = 0.4,
+                currency = "USD",
+                notional = 1e7,
+                upfront = NULL,
+                ptsUpfront = NULL){
   
-  date = Sys.Date(),
-  spread = NULL,
-  maturity = NULL,
-  tenor = NULL,
-  coupon = 100,
-  recovery.rate = 0.4,
-  currency = "USD",
+  isPriceClean <- FALSE
   
-  notional = 1e7,
-  
-  
-  ## CDS
-  
-  upfront = NULL,
-  ptsUpfront = NULL             
-){
-  
-  isPriceClean = FALSE
-  
-  payAccruedOnDefault = TRUE
+  payAccruedOnDefault <- TRUE
   
   ## dates
   
-  dates = as.vector(data.frame(effectiveDate = NA,
+  dates <- as.vector(data.frame(effectiveDate = NA,
                                valueDate = NA,
                                benchmarkDate = NA,
                                startDate = NA, 
@@ -80,11 +72,11 @@ CDS <- function(## name stuff
                                firstcouponDate = NA,
                                pencouponDate = NA))
   
-  baseDate = as.Date(date) + 2
+  baseDate <- as.Date(date) + 2
   
   ## conventions
   
-  conventions = as.vector(data.frame(mmDCC = "ACT/360",
+  conventions <- as.vector(data.frame(mmDCC = "ACT/360",
                                      calendar = "None",
                                      fixedSwapDCC = "30/360",
                                      floatSwapDCC = "ACT/360",
@@ -96,7 +88,7 @@ CDS <- function(## name stuff
                                      badDayConvZC = "M"))
   ## interest.rates stuff
   
-  interest.rates = list(types = NULL, rates = NULL, expiries = NULL)
+  interest.rates <- list(types = NULL, rates = NULL, expiries = NULL)
   
   ## stop if date is invalid
   
@@ -202,18 +194,15 @@ CDS <- function(## name stuff
   ## create object of class CDS using the data we extracted
   
   cds <- new("CDS",
-             
              name = name,
              contract = contract,
              RED = RED,
-             
              date = date,
              maturity = maturity,
              tenor = as.numeric(tenor),
              coupon = coupon,
              recovery.rate = recovery.rate,
              currency = currency,
-             
              notional = notional)
   
   ## if spread is given, calculate principal and accrual

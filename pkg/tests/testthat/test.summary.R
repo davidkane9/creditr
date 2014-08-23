@@ -24,7 +24,5 @@ test_that("test summary() method", {
   expect_that(output[5], equals("Upfront:                        -259,647   Spread DV01:                    5,022"))
   
   expect_that(output[6], equals("IR DV01:                           64.44   Rec Risk (1 pct):               87.88"))
-  
-  expect_that(output[7], equals(""))
   }
 )
