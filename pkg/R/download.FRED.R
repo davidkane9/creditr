@@ -39,21 +39,19 @@ download.FRED <- function(start = as.Date("2003-12-31"),
   ## define expiry to be twelve months. FRED does not have data
   ## for expiry over a year
   
-  expiry <- c("1M", "2M", "3M", "4M", "5M", "6M", 
-              "7M", "8M", "9M", "10M", "11M", "12M")
+  expiry <- c("1M", "2M", "3M", "6M", "1Y")
 
   ## every time the loop run below, it goes to get a new expiry
   
-  for(i in 1:12){
+  for(i in 1:5){
     
     ## Because the naming of FRED data for 1M~9M is different from
     ## that of 10M~12M, so we have to use a "if" here
     
-    if(expiry[i] %in% c("1M", "2M", "3M", "4M", "5M", "6M", "7M", 
-                        "8M", "9M")){
+    if(expiry[i] %in% c("1M", "2M", "3M", "6M")){
       FRED.symbol <- paste(currency, expiry[i], "TD156N", sep = "")
     } else{
-      FRED.symbol <- paste(currency, expiry[i], "D156N", sep = "")
+      FRED.symbol <- paste(currency, "12MD156N", sep = "")
     } 
     
     ## raw.data is to get the raw data from FRED using getSymbols()
