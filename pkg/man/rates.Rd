@@ -13,7 +13,7 @@ This data frame is created by \code{get.rates.DF} in \code{CDS} package to calcu
 data(rates)
 }
 \format{
-  A data frame with 171048 observations on the following 4 variables.
+  A data frame with 174758 observations on the following 4 variables.
   \describe{
     \item{\code{date}}{a Date}
     \item{\code{currency}}{a character containing \code{USD} \code{EUR} \code{JPY}}
@@ -49,4 +49,6 @@ rates[rates$currency == "USD" & rates$date == "2005-10-01",]
 \seealso{
  \code{\link{get.rates}}
  \code{\link{get.rates.DF}}
+ \code{\link{download.FRED}}
+ \code{\link{download.markit}}
 }
