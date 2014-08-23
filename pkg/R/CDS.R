@@ -16,14 +16,8 @@
 #' is 100 bps.
 #' @param recovery.rate in decimal. Default is 0.4.
 #' @param currency in which CDS is denominated. 
-#' @param isPriceClean refers to the type of upfront calculated. It is
-#' boolean. When \code{TRUE}, calculate principal only. When
-#' \code{FALSE}, calculate principal + accrual.
 #' @param notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM.
-#' @param payAccruedOnDefault is a partial payment of the premium made
-#' to the protection seller in the event of a default. Default is
-#' \code{TRUE}. 
+#' payments are based. Default is 1e7, i.e. 10MM. 
 #' @param upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
 #' introduced to reconcile the difference in contract value due to the
@@ -60,15 +54,19 @@ CDS <- function(## name stuff
   coupon = 100,
   recovery.rate = 0.4,
   currency = "USD",
-  isPriceClean = FALSE,
+  
   notional = 1e7,
-  payAccruedOnDefault = TRUE,
+  
   
   ## CDS
   
   upfront = NULL,
   ptsUpfront = NULL             
 ){
+  
+  isPriceClean = FALSE
+  
+  payAccruedOnDefault = TRUE
   
   ## dates
   
@@ -215,9 +213,8 @@ CDS <- function(## name stuff
              coupon = coupon,
              recovery.rate = recovery.rate,
              currency = currency,
-             inputPriceClean = isPriceClean,
-             notional = notional,
-             payAccruedOnDefault = payAccruedOnDefault)
+             
+             notional = notional)
   
   ## if spread is given, calculate principal and accrual
   

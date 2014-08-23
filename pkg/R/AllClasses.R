@@ -14,15 +14,6 @@
 #' @slot coupon quoted in bps. It specifies the payment amount from
 #' @slot recovery.rate in decimal. Default is 0.4.
 #' @slot currency in which CDS is denominated.
-#' @slot inputPriceClean records the \code{isPriceClean} argument
-#' input by the user. \code{isPriceClean} refers to the type of
-#' upfront calculated. It is boolean. When \code{TRUE}, calculate
-#' principal only. When \code{FALSE}, calculate principal + accrual.
-#' @slot notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM.
-#' @slot payAccruedOnDefault is a partial payment of the premium made
-#' to the protection seller in the event of a default. Default is
-#' \code{TRUE}.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
 #' @slot accrual is the accrued interest payment.
 #' @slot defaultProb is the approximate the default probability at
@@ -82,9 +73,7 @@ setClass("CDS",
            coupon = "numeric",
            recovery.rate = "numeric",
            currency = "character",
-           inputPriceClean = "logical",
            notional = "numeric",
-           payAccruedOnDefault = "logical",
            principal = "numeric",
            accrual = "numeric",
            defaultProb = "numeric",
@@ -116,9 +105,7 @@ setClass("CDS",
            coupon = numeric(),
            recovery.rate = numeric(),
            currency = character(),
-           inputPriceClean = logical(),
            notional = numeric(),
-           payAccruedOnDefault = logical(),
            principal = numeric(),
            accrual = numeric(),
            defaultProb = numeric(),
