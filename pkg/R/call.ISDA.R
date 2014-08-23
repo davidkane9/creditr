@@ -9,11 +9,11 @@
 #' 
 #' @return a numeric value which is the difference between the new upfront and the old one
 
-call.ISDA <- function(name,
-                      x = x,
-                      ratesInfo = ratesInfo,
-                      i = i){
-  ## define default
+call.ISDA <- function(x, name, ratesInfo, i){
+  
+  ## define CS10, IR.DV01, rec.risk.01 and spread.DV01 and set their default
+  ## to zero. If the name matches any of the four functions, then the corres-
+  ## ponding value for that function will be given value one.
   
   CS10        <- 0
   IR.DV01     <- 0
@@ -31,6 +31,8 @@ call.ISDA <- function(name,
   } else{
     warning("No change provided")
   }
+  
+  ## original upfront
   
   upfront.orig <- .Call('calcUpfrontTest',
                         baseDate_input = separate.YMD(x$baseDate[i]),
@@ -67,7 +69,7 @@ call.ISDA <- function(name,
                         notional = x$notional[i],
                         PACKAGE = "CDS")
   
-
+  ## new upfront
   
   upfront.new <- .Call('calcUpfrontTest',
                        baseDate_input = separate.YMD(x$baseDate[i]),
