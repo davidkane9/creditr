@@ -33,8 +33,8 @@ add.dates <- function(x, date.var = "date",
   
   ## You must provide either a maturity or a tenor, but not both.
 
-  stopifnot(! (is.null(x$maturity) & is.null(x$tenor)))
-  stopifnot(is.null(x$maturity) | is.null(x$tenor))
+  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
+  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
   
   baseDate <- as.Date(rep(NA, nrow(x)))
   stepinDate <- as.Date(rep(NA, nrow(x)))
@@ -52,17 +52,17 @@ add.dates <- function(x, date.var = "date",
    
     ## stop if the maturity date does not belong to the date class
     
-    if(!is.null(ret$maturity[i])){
-      stopifnot(inherits(as.Date(ret$maturity[i]), "Date"))    
+    if(!is.null(ret[[maturity.var]][i])){
+      stopifnot(inherits(as.Date(ret[[maturity.var]][i]), "Date"))    
     }
     
-    length <- ret$tenor[i]
+    length <- ret[[tenor.var]][i]
     
-    dateWday <- as.POSIXlt(ret$date[i])$wday
+    dateWday <- as.POSIXlt(ret[[date.var]][i])$wday
     
     ## calculate baseDate
     
-    baseDate <- adj.next.bus.day(ret$date[i] + 2)
+    baseDate <- adj.next.bus.day(ret[[date.var]][i] + 2)
     
     if(as.POSIXlt(baseDate)$wday == 1){ 
       baseDate <- baseDate + 1
@@ -74,7 +74,7 @@ add.dates <- function(x, date.var = "date",
     ## stepinDate is the date on which a party assumes ownership of a trade side. 
     ## it is Trade date + 1 day
     
-    stepinDate <- ret$date[i] + 1
+    stepinDate <- ret[[date.var]][i] + 1
     
     ## valueDate is the date on which a cash payment is settled.
     ## valueDate is 3 business days after the Trade Date. 
@@ -84,7 +84,7 @@ add.dates <- function(x, date.var = "date",
     
     ## startDate is the date from when the accrued amount is calculated
     
-    date.first <- as.POSIXlt(ret$date[i])
+    date.first <- as.POSIXlt(ret[[date.var]][i])
     
     ## get the remainder X after dividing it by 3 and then move back X month
     
@@ -110,7 +110,7 @@ add.dates <- function(x, date.var = "date",
     ## protection is offered. It is the firstCouponDate + tenor. So if the 
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
     
-    if(is.null(ret$maturity[i])){
+    if(is.null(ret[[maturity.var]][i])){
       endDate <- date.first
       endDate$year <- date.first$year + length
       endDate$mon <- endDate$mon + 3
@@ -118,7 +118,7 @@ add.dates <- function(x, date.var = "date",
     }
     ## if the maturity date is provided, it is the enddate.
     else{
-      endDate <- as.Date(ret$maturity[i])
+      endDate <- as.Date(ret[[maturity.var]][i])
     }
     
     ## pencouponDate is the date of the penultimate coupon payment, and it
@@ -136,7 +136,7 @@ add.dates <- function(x, date.var = "date",
     ## Since 2009 (Big Bang Protocol), the backstop date is 60 days
     ## before the trade date. Prior to 2009, it was trade date-2
     
-    backstopDate <- ret$date[i] - 60
+    backstopDate <- ret[[date.var]][i] - 60
     
     ret$stepinDate[i] <- stepinDate
     ret$startDate[i] <- startDate
