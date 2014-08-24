@@ -79,8 +79,6 @@ spread <- function(x,
     baseDate <- separate.YMD(JPY.condition(baseDate = x$baseDate[i], date = x[[date.var]][i],
                                            currency = as.character(x[[currency.var]][i])))
     
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))
-    
     x$spread[i] <- .Call('calcCdsoneSpread',
                          baseDate_input = baseDate,
                          types = paste(as.character(ratesInfo$type), collapse = ""),

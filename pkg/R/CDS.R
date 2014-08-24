@@ -261,7 +261,6 @@ CDS <- function(name = NULL,
                               currency = currency,
                               coupon = coupon,
                               upfront = upfront,
-                              ptsUpfront = ptsUpfront,
                               recovery.rate = recovery.rate,
                               maturity = maturity)
     
@@ -344,7 +343,7 @@ CDS <- function(name = NULL,
       spreadinput <- data.frame(date = date,
                                 currency = currency,
                                 coupon = coupon,
-                                upfront = upfront,,
+                                upfront = upfront,
                                 recovery.rate = recovery.rate,
                                 tenor = tenor)
       
@@ -356,7 +355,7 @@ CDS <- function(name = NULL,
       ## principal
       
       df <- data.frame(date = c(as.Date(cds@date)),
-                       spread = c(spread),
+                       spread = c(cds@spread),
                        coupon = c(cds@coupon),
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
@@ -405,7 +404,7 @@ CDS <- function(name = NULL,
   x <- data.frame(date = c(as.Date(cds@date)),
                   currency = c(cds@currency),
                   tenor = c(cds@tenor),
-                  spread = c(spread),
+                  spread = c(cds@spread),
                   coupon = c(cds@coupon),
                   recovery.rate = c(cds@recovery.rate),
                   notional = c(cds@notional))
