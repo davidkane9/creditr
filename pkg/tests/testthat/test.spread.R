@@ -7,15 +7,13 @@ test_that("test for spread", {
    truth.1 <- 105.85
   
   load("spread.test.RData")
-  
-  x1 <- data.frame(date = as.Date("2014-04-22"),
-                   currency = "USD",
-                   coupon = 100,
-                   recovery.rate = .4,
-                   tenor = 5,
-                   upfront = 18624)
-  
-  result.1 <- spread(x = x1,
+
+  result.1 <- spread(x = data.frame(date = as.Date("2014-04-22"),
+                                    currency = "USD",
+                                    coupon = 100,
+                                    recovery.rate = .4,
+                                    tenor = 5,
+                                    upfront = 18624),
                      isPriceClean = FALSE,
                      notional = 1e7,
                      freqCDS = "Q",
@@ -29,81 +27,51 @@ test_that("test for spread", {
   
   
   ## results when we don't enter the rates manually are less accurate 
-  
-  result.2 <- spread(date = as.Date("2014-04-22"),
-                     baseDate = "2014-04-22",
-                     currency = "USD",
-                     tenor = 5,
-                     
-                     dccCDS = "ACT/360",
-                     freqCDS = 'Q',		  
-                     stubCDS = "F", 		
-                     badDayConvCDS = "F",
-                     calendar = 'None',
-                     
-                     upfront = 18623.7,
-                     coupon = 100, 
-                     recovery.rate = 0.4,
-                     payAccruedAtStart = FALSE,
+   
+  result.2 <- spread(x = data.frame(date = as.Date("2014-04-22"),
+                                    currency = "USD",
+                                    coupon = 100,
+                                    recovery.rate = .4,
+                                    tenor = 5,
+                                    upfront = 18623.7),
+                     isPriceClean = FALSE,
                      notional = 1e7,
+                     freqCDS = "Q",
+                     stubCDS = "F",
+                     payAccruedAtStart = FALSE,
                      payAccruedOnDefault = TRUE)
-  
-  
+
   stopifnot(all.equal(round(result.2), round(truth.1)))
   
   
   ## test cases to make sure results of the function don't change over time
   
-   truth.2 <- spread(date = "2014-01-14",
-                    currency = "USD",
-                    tenor = 5,
-                    types = "MMMMMSSSSSSSSS",
-                    rates = c(1.550e-3, 1.993e-3, 2.344e-3, 3.320e-3, 5.552e-3, 5.130e-3, 9.015e-3, 1.3240e-2, 1.7105e-2, 2.0455e-2, 2.3205e-2, 2.5405e-2, 2.7230e-2, 2.8785e-2),
-                    expiries = c("1M", "2M", "3M", "6M", "9M", "1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y"),
-                    mmDCC = "Act/360",
-                    fixedSwapFreq = "6M",
-                    floatSwapFreq = "6M",
-                    fixedSwapDCC = "30/360",
-                    floatSwapDCC = "30/360",
-                    badDayConvZC = 'M',
-                    holidays = 'None',
+  truth.2 <- spread(x = data.frame(date = as.Date("2014-01-14"),
+                                    currency = "USD",
+                                    coupon = 100,
+                                    recovery.rate = .4,
+                                    tenor = 5,
+                                    upfront = -1e7*3.48963/100),
+                     isPriceClean = FALSE,
+                     notional = 1e7,
+                     freqCDS = "Q",
+                     stubCDS = "F",
+                     payAccruedAtStart = FALSE,
+                     payAccruedOnDefault = TRUE)
   
-                    valueDate = "2014-01-17",
-                    benchmarkDate = "2013-12-20",
-                    startDate = "2013-12-20",
-                    endDate = "2019-03-20",
-                    stepinDate = "2014-01-15",
-  
-                    dccCDS = "ACT/360",
-                    freqCDS = 'Q',  	  
-                    stubCDS = "F", 		
-                    badDayConvCDS = "F",
-                    calendar = 'None',
-  
-                    upfront = -1e7*3.48963/100,
-                   coupon = 100, 
-                    recovery.rate = .4,
-                    payAccruedAtStart = FALSE,
-                  notional = 1e7,
-                    payAccruedOnDefault = TRUE)
-  
-   truth.3 <- spread(date = "2014-01-14",
-                    baseDate = "2014-01-13",
-                    currency = "USD",
-                    tenor = 5,
-  
-                    dccCDS = "ACT/360",
-                    freqCDS = 'Q',		  
-                    stubCDS = "F", 		
-                    badDayConvCDS = "F",
-                    calendar = 'None',
-  
-                    upfront = -1e7*3.41/100,
-                    coupon = 100, 
-                    recovery.rate = .4,
-                    payAccruedAtStart = TRUE,
+  truth.2 <- spread(x = data.frame(date = as.Date("2014-01-14"),
+                                   currency = "USD",
+                                   coupon = 100,
+                                   recovery.rate = .4,
+                                   tenor = 5,
+                                   upfront = -1e7*3.41/100),
+                    isPriceClean = FALSE,
                     notional = 1e7,
+                    freqCDS = "Q",
+                    stubCDS = "F",
+                    payAccruedAtStart = TRUE,
                     payAccruedOnDefault = TRUE)
+  
   ## save(truth.1, truth.2, truth.3, file = "spread.test.RData")
   
   load("spread.test.RData")
