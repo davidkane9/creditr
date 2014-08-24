@@ -26,4 +26,7 @@ type ?rates to see it.
 build.rates(start = as.Date("2004-01-01"), end = as.Date("2014-08-23"))
 }
 }
+\seealso{
+\link{download.markit} \link{download.FRED} \link{rates}
+}
 
