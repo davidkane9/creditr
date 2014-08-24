@@ -1,27 +1,8 @@
 CDS TO-DO List
 ========================================================
-DONE: In CDS.R, check if date, tenor and maturity are compatible if all three are provided as input.
+* call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
 
-DONE: Fix the hard coded expiries problem in upfront.
-
-DONE: I don't think we need slots for inputPriceClean or payAccruedOnDefault because they always take the same value, so we can just hard code them. And then, we also don't need them as an input argument in any function. Assuming I am correct, remove the slots, remove the input arguments, and hard code the single value that each takes in the c code.
-
-DONE: Add your names as authors of the package and of CDS.Rnw.
-
-call.ISDA:
-NOT DONE, (x should be the first argument, like it almost always is, and name the second. Also, the code is fairly sloppy, don't you think? None of the arguments should have defaults. Are there any test cases? Et cetera.) 
-
-"Create call.ISDA to centralize the calling of ISDA C code from res.risk.01, spread.DV01 and CS10. Something like:
-
-call.ISDA(x, name, ...)
-
-where x is a data frame that looks like the result after add.dates() and add.conventions. name is a character like "CS10". Indeed, should be the same character string as the calling function. And the ... includes whatever other arguments you need to pass in."
-
-DONE: Fix call.ISDA so that, instead of taking in a huge data frame and an "i" for the row number, it just takes in a data frame with a single row. Isn't that obviously better? It is the job of the function which calls call.ISDA to pass in the right row each time.
-
-DONE: * Make build.rates() a separate function from get.rates. Its sole purpose is to generate rates dataframe. build.rates() should consist of download.markit() and download.FRED(). 
-
-DONE: * Change build.rates() (and associated helper functions) so that rates goes back to January 1, 2004 for all three currencies.
+* rates should go back to January 1, 2004 for all three currencies.
  
 * Better error messages of Internet Connection Problem
 
