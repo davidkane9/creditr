@@ -11,8 +11,8 @@ check.inputs(x, date.var = "date", currency.var = "currency",
 \arguments{
 \item{spread.var}{name of column in x containing  spreads in bps.}
 
-\item{date.var}{column in x containing dates when the trade
-is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
+\item{date.var}{column in x containing the date to be used for pricing and
+  other calculations.}
 
 \item{x}{data frame, contains all the relevant columns.}
 
@@ -36,8 +36,8 @@ standard recovery rate asscumption is 0.4.}
 a data frame if not stopped by errors.
 }
 \description{
-\code{check.inputs} checks whether a data frame's inputs are valid. It
-     is a minimum set of checks. Things such as recovery.rate var are
-     not checked, because some functions don't need them as input.
+\code{check.inputs} checks whether a data frame's inputs are valid. It is a
+minimum set of checks. Things such as recovery.rate var are not checked,
+because some functions don't need them as input.
 }
 
