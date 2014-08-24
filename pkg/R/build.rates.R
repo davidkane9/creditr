@@ -100,12 +100,10 @@ build.rates <- function(start = as.Date("2004-01-01"),
     x <- rbind(x.markit.USD, x.FRED.EUR, x.FRED.JPY)
   } 
   
-  ## sort the data as required: currently descending date and ascending 
-  ## currency, and ascending expiry. Notice that do not try to sort
-  ## expiry here, since download.markit and download.FRED have already
-  ## ensured that their outputs' expiry is in ascending form.
+  ## sort the data as required: currently ascending date and ascending currency.
+  ## Ought to sort by ascending expiry, but that is harder than it looks.
   
-  x <- x[order(x$date, rev(x$currency), decreasing = FALSE), ]
+  x <- x[order(x$date, x$currency, decreasing = FALSE), ]
   
   return(x)
 }
