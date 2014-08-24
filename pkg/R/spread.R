@@ -1,173 +1,120 @@
 #' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
-#' @inheritParams CDS
-#' @param types is the type of interest rate that we are using in CDS calculation
-#' @param rates is the interest rate we are using for calculating a spread.
-#'        notice that when we trade CDS on a trade date, we don't use the 
-#'        interest rate on that date to calculate the pricing; instead, we
-#'        use the interest rate of the previous business day. This is 
-#'        set by the ISDA Standard Model
-#' @param expiries is the type of CDS expiries we use to calculate. Expiries
-#'        are usually different among different currencies.
-#' @param payAccruedAtStart whether pay at start date the accrual amount
-#' @param spread in bps
-#' @param mmDCC is the day count convention of the instruments.
-#' @param fixedSwapFreq is the frequency of the fixed rate of swap
-#' being paid.
-#' @param floatSwapFreq is the frequency of the floating rate of swap
-#' being paid.
-#' @param fixedSwapDCC is the day count convention of the fixed leg.
-#' @param floatSwapDCC is the day count convention of the floating leg.
-#' @param badDayConvZC is a character indicating how non-business days
-#' are converted.
-#' @param holidays is an input for holiday files to adjust to business
-#' days.
-#' @param valueDate T+3 business days
-#' @param baseDate T + 2 calendar day
-#' @param benchmarkDate accrual begin date
-#' @param startDate start date
-#' @param endDate end date
-#' @param stepinDate T+1
-#' @param dccCDS day count convention of the CDS. Default is ACT/360.
+#' @param x data frame which contains information of date, tenor, coupon, upfront, etc.
+#' @param currency.var 
+#' @param date.var
+#' @param coupon.var
+#' @param tenor.var
+#' @param maturity.var
+#' @param RR.var
+#' @param upfront.var
+#' @param ptsUpfront.var
+#' 
+#' @param isPriceClean
+#' @param notional
 #' @param freqCDS date interval of the CDS contract.
 #' @param stubCDS is a character indicating the presence of a stub.
-#' @param badDayConvCDS refers to the bay day conversion for the CDS
-#' coupon payments. Default is "F", following.
-#' @param calendar refers to any calendar adjustment for the CDS.
+#' @param payAccruedAtStart whether pay at start date the accrual amount
+#' @param payAccruedOnDefault
 #' 
 #' @return a numeric indicating the spread.
 
-spread <- function(date,
-                   baseDate = as.Date(date) + 2,
-                   currency = "USD",
-
-                   types = NULL,
-                   rates = NULL,
-                   expiries = NULL,
-                   mmDCC = "ACT/360",
-                   fixedSwapFreq = "6M",
-                   floatSwapFreq = "3M",
-                   fixedSwapDCC = "30/360",
-                   floatSwapDCC = "ACT/360",
-                   badDayConvZC = "M",
-                   holidays = "None",
+spread <- function(x, 
+                   currency.var = "currency", 
+                   date.var = "date",
+                   coupon.var = "coupon",
+                   tenor.var = "tenor",
+                   maturity.var = "maturity",
+                   RR.var = "recovery.rate",
+                   upfront.var = "upfront",
+                   ptsUpfront.var = "ptsUpfront",
                    
-                   valueDate = NULL,
-                   benchmarkDate = NULL,
-                   startDate = NULL,
-                   endDate = NULL,
-                   stepinDate = NULL,
-                   maturity = NULL,
-                   tenor = NULL,
-                   
-                   dccCDS = "ACT/360",
+                   isPriceClean = FALSE,
+                   notional = 1e7,
                    freqCDS = "Q",
                    stubCDS = "F",
-                   badDayConvCDS = "F",
-                   calendar = "None",
-                   
-                   upfront = NULL,
-                   ptsUpfront = NULL,
-                   coupon = 100, 
-                   recovery.rate = 0.4,
                    payAccruedAtStart = FALSE,
-                   notional = 1e7,
                    payAccruedOnDefault = TRUE){
-
-    if (is.null(upfront) & is.null(ptsUpfront))
-        stop("Please input upfront or pts upfront")
+  
+  if (is.null(x[[upfront.var]]) & is.null(x[[ptsUpfront.var]]))
+    stop("Please input upfront or pts upfront")
+  
+  ## You must provide either a maturity or a tenor, but not both.
+  
+  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
+  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
+  
+  spread <- rep(NA, nrow(x))
+  
+  if (is.null(x[[ptsUpfront.var]])) {
+    x[[ptsUpfront.var]] <- x[[upfront.var]] / notional
+  } else {
+    payAccruedAtStart <- TRUE
+  }
+  
+  x <- add.conventions(add.dates(x))
+  x <- cbind(x, spread)
+  
+  for(i in 1:nrow(x)){
     
-    ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
+    dccCDS = "ACT/360"
+    badDayConvCDS = "F"
+    calendar = "None"
     
-    baseDate <- JPY.condition(baseDate = baseDate, date = date, 
-                              currency = currency)
-        
-    ## rates Date is the date for which interest rates will be calculated. get.rates 
-    ## function will return the rates of the previous day
-    
-    ratesDate <- as.Date(date)
-    
-    if (is.null(ptsUpfront)) {
-        ptsUpfront <- upfront / notional
-    } else {
-        payAccruedAtStart <- TRUE
+    if(is.null(x[[coupon.var]][i])){
+      coupon <- 100 
+    } else{
+      coupon <- x[[coupon.var]][i]
     }
     
-    if(is.null(maturity)){
-      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), tenor = tenor,
-                                       currency = currency)))
-    }
-    else if(is.null(tenor)){
-      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), 
-                           maturity = as.Date(maturity),
-                           currency = currency)))
+    if(is.null(x[[RR.var]][i])){
+      recovery.rate <- 0.4
+    } else{
+      recovery.rate <- x[[RR.var]][i]
     }
     
-    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
-    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate         <- cdsDates$startDate
-    if (is.null(endDate)) endDate             <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
-
-    baseDate      <- separate.YMD(baseDate)
-    today         <- separate.YMD(date)
-    valueDate     <- separate.YMD(valueDate)
-    benchmarkDate <- separate.YMD(benchmarkDate)
-    startDate     <- separate.YMD(startDate)
-    endDate       <- separate.YMD(endDate)
-    stepinDate    <- separate.YMD(stepinDate)
-
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
-    if ((is.null(types) | is.null(rates) | is.null(expiries))){
-        
-        ratesInfo <- get.rates(date = ratesDate, currency = as.character(currency))
-        types     <- paste(as.character(ratesInfo$type), collapse = "")
-        rates     <- as.numeric(as.character(ratesInfo$rate))
-        expiries  <- as.character(ratesInfo$expiry)
-        mmDCC     <- as.character(cdsDates$mmDCC)
-        
-        fixedSwapFreq <- as.character(cdsDates$fixedFreq)
-        floatSwapFreq <- as.character(cdsDates$floatFreq)
-        fixedSwapDCC  <- as.character(cdsDates$fixedDCC)
-        floatSwapDCC  <- as.character(cdsDates$floatDCC)
-        badDayConvZC  <- as.character(cdsDates$badDayConvention)
-        holidays      <- as.character(cdsDates$swapCalendars)
-    }
-
+    ratesInfo <- get.rates(date = as.Date(x[[date.var]][i]),
+                           currency = as.character(x[[currency.var]][i]))
     
-    .Call('calcCdsoneSpread',
-          baseDate_input = baseDate,
-          types = types,
-          rates = rates,
-          expiries = expiries,
-          mmDCC = mmDCC,
-          
-          fixedSwapFreq = fixedSwapFreq,
-          floatSwapFreq = floatSwapFreq,
-          fixedSwapDCC = fixedSwapDCC,
-          floatSwapDCC = floatSwapDCC,
-          badDayConvZC = badDayConvZC,
-          holidays = holidays,
-
-          todayDate_input = today,
-          valueDate_input = valueDate,
-          benchmarkDate_input = benchmarkDate,
-          startDate_input = startDate,
-          endDate_input = endDate,
-          stepinDate_input = stepinDate,
-          
-          couponRate_input = coupon / 1e4,
-          payAccruedOnDefault_input = payAccruedOnDefault,
-          
-          dccCDS = dccCDS,
-          dateInterval = freqCDS,
-          stubType = stubCDS,
-          badDayConv_input = badDayConvCDS,
-          calendar_input = calendar,
-
-          upfrontCharge_input = ptsUpfront,
-          recoveryRate_input = recovery.rate,
-          payAccruedAtStart_input = payAccruedAtStart,
-          PACKAGE = "CDS")
-
+    baseDate <- separate.YMD(JPY.condition(baseDate = x$baseDate[i], date = x[[date.var]][i],
+                                           currency = as.character(x[[currency.var]][i])))
+    
+    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))
+    
+    x$spread[i] <- .Call('calcCdsoneSpread',
+                         baseDate_input = baseDate,
+                         types = paste(as.character(ratesInfo$type), collapse = ""),
+                         rates = as.numeric(as.character(ratesInfo$rate)),
+                         expiries = as.character(ratesInfo$expiry),
+                         mmDCC = x$mmDCC[i],
+                         
+                         fixedSwapFreq = x$fixedFreq[i],
+                         floatSwapFreq = x$floatFreq[i],
+                         fixedSwapDCC = x$fixedDCC[i],
+                         floatSwapDCC = x$floatDCC[i],
+                         badDayConvZC = x$badDayConvention[i],
+                         holidays = x$swapCalendars[i],
+                         
+                         todayDate_input = separate.YMD(x[[date.var]][i]),
+                         valueDate_input = separate.YMD(x$valueDate[i]),
+                         benchmarkDate_input = separate.YMD(x$startDate[i]),
+                         startDate_input = separate.YMD(x$startDate[i]),
+                         endDate_input = separate.YMD(x$endDate[i]),
+                         stepinDate_input = separate.YMD(x$stepinDate[i]),
+                         
+                         couponRate_input = coupon / 1e4,
+                         payAccruedOnDefault_input = payAccruedOnDefault,
+                         
+                         dccCDS = dccCDS,
+                         dateInterval = freqCDS,
+                         stubType = stubCDS,
+                         badDayConv_input = badDayConvCDS,
+                         calendar_input = calendar,
+                         
+                         upfrontCharge_input = x[[ptsUpfront.var]][i],
+                         recoveryRate_input = recovery.rate,
+                         payAccruedAtStart_input = payAccruedAtStart,
+                         PACKAGE = "CDS")                       
+  }
+  return(x$spread)
 }
