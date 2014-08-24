@@ -75,7 +75,7 @@ download.FRED <- function(start = as.Date("2004-01-01"),
     ## Be sure to set env = NULL because if you store the data in an
     ## environment, error will occur.
     
-    raw.data <- suppressWarnings(getSymbols(Symbols = FRED.symbol, 
+    raw.data <- suppressWarnings(quantmod::getSymbols(Symbols = FRED.symbol, 
                                             warnings = FALSE, src='FRED', 
                                             env = NULL))
     
