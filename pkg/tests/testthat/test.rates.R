@@ -66,27 +66,31 @@ test_that("test that weekends are covered correctly", {
   
 })
 
-## Test to show there are no missing dates.
 
-## This test case is currently not possible. Because when we get data from
-## Markit, the data seem to be missing already.
+test_that("Test to show there are no missing dates", {
+  
+  expect_equal(length(unique(rates$date)), 
+               as.numeric(max(rates$date) - min(rates$date) + 1))
+  
+})
 
-## Test to show that, within a given currency and a given expiry, no interest
-## changes by more than 5% from one day to the next.
 
-test_that("test that no rates change more than 5% given currency and expiry", {
+test_that("test that rates don't move `too much' day-over-day", {
 
-    sample.df=rates[rates$currency == "EUR" & rates$expiry == "20Y",]
+  ## Problem with this test is that what is `too much' movement depends on the
+  ## expiry. 
     
-    sample.date <- sample(sample.df$date, size = 1)
-    sample.date.next <- sample.date + 1
+  sample.df=rates[rates$currency == "EUR" & rates$expiry == "20Y",]
     
-    rates.1 <- rates[rates$date == sample.date & rates$currency == "EUR" & 
+  sample.date <- sample(sample.df$date, size = 1)
+  sample.date.next <- sample.date + 1
+    
+  rates.1 <- rates[rates$date == sample.date & rates$currency == "EUR" & 
                        rates$expiry == "20Y", ]$rate
     
-    rates.2 <- rates[rates$date == sample.date.next & rates$currency == "EUR" & 
+  rates.2 <- rates[rates$date == sample.date.next & rates$currency == "EUR" & 
                        rates$expiry == "20Y", ]$rate
     
-    expect_true(abs(rates.2-rates.1)/rates.1 < 0.05)
+  expect_true(abs(rates.2-rates.1)/rates.1 < 0.05)
 })
 
