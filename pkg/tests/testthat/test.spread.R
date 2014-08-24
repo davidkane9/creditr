@@ -72,10 +72,6 @@ test_that("test for spread", {
                     payAccruedAtStart = TRUE,
                     payAccruedOnDefault = TRUE)
   
-  ## save(truth.1, truth.2, truth.3, file = "spread.test.RData")
-  
-  load("spread.test.RData")
-  
   result.3 <- spread(x = data.frame(date = as.Date("2014-01-14"),
                                    currency = "USD",
                                    coupon = 100,
