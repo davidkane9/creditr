@@ -1,8 +1,8 @@
 CDS TO-DO List
 ========================================================
-* call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
+DONE: * rates should go back to January 1, 2004 for all three currencies.
 
-* rates should go back to January 1, 2004 for all three currencies.
+* call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
  
 * Better error messages of Internet Connection Problem
 
