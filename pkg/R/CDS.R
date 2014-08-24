@@ -220,6 +220,27 @@ CDS <- function(name = NULL,
              currency = currency,
              notional = notional)
   
+  ## if tenor is NULL, we determine the tenor using the maturity date
+  
+  if(is.null(tenor)){
+    
+    lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
+    monnb1 <- lt1$year*12 + lt1$mon
+    
+    lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
+    monnb2 <- lt2$year*12 + lt2$mon
+    
+    tenor.mondf <- monnb2 - monnb1
+    
+    cds@tenor <- as.numeric(tenor.mondf)/12
+  }
+  
+  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
+  
+  if(is.null(maturity)){
+    cds@maturity = dates['endDate']
+  }
+  
   ## if spread is given, calculate principal and accrual
   
   if (!is.null(spread)){
@@ -340,12 +361,12 @@ CDS <- function(name = NULL,
       
       ## par Spread
       
-      spreadinput <- data.frame(date = date,
-                                currency = currency,
-                                coupon = coupon,
-                                upfront = upfront,
-                                recovery.rate = recovery.rate,
-                                tenor = tenor)
+      spreadinput <- data.frame(date = as.Date(cds@date),
+                                currency = cds@currency,
+                                coupon = cds@coupon,
+                                upfront = cds@upfront,
+                                recovery.rate = cds@recovery.rate,
+                                tenor = cds@tenor)
       
       cds@spread <- spread(x = spreadinput,
                            notional = notional,
@@ -376,27 +397,6 @@ CDS <- function(name = NULL,
   ## accrual amount
   
   cds@accrual <- cds@upfront - cds@principal
-  
-  ## if tenor is NULL, we determine the tenor using the maturity date
-  
-  if(is.null(tenor)){
-    
-    lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
-    monnb1 <- lt1$year*12 + lt1$mon
-    
-    lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
-    monnb2 <- lt2$year*12 + lt2$mon
-    
-    tenor.mondf <- monnb2 - monnb1
-    
-    cds@tenor <- as.numeric(tenor.mondf)/12
-  }
-  
-  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
-  
-  if(is.null(maturity)){
-    cds@maturity = dates['endDate']
-  }
   
   ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
   ## note: this is a hack; must fix
