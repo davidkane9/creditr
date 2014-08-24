@@ -1,14 +1,14 @@
 #' Check whether inputs from the data frame are valid
 #' 
-#' \code{check.inputs} checks whether a data frame's inputs are valid. It
-#'      is a minimum set of checks. Things such as recovery.rate var are
-#'      not checked, because some functions don't need them as input. 
+#' \code{check.inputs} checks whether a data frame's inputs are valid. It is a
+#' minimum set of checks. Things such as recovery.rate var are not checked,
+#' because some functions don't need them as input.
 #' 
 #' @inheritParams CS10
 #' @param spread.var name of column in x containing  spreads in bps.
-#' @param date.var column in x containing dates when the trade 
-#' is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
-#' 
+#' @param date.var column in x containing the date to be used for pricing and
+#'   other calculations.
+#'   
 #' @return a data frame if not stopped by errors.
 
 check.inputs <- function(x,
