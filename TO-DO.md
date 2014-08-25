@@ -1,14 +1,14 @@
 CDS TO-DO List
 ========================================================
-DONE: * Current version has some miscelaneous warnings. Please fix them (other than the ones that are my fault).
+DONE: Current version has some miscelaneous warnings. Please fix them (other than the ones that are my fault).
 
-* Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
+DONE: get.rates should first consult the stored rates dataframe. If the date is not there,  try markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
+
+DONE: Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
 
 * call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
  
 * Better error messages of Internet Connection Problem
-
-* get.rates should first consult the stored rates dataframe. If the date is not there,  try markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
 
 * Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
 
