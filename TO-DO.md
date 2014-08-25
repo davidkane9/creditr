@@ -2,8 +2,6 @@ CDS TO-DO List
 ========================================================
 * Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
 
-DONE: call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
- 
 * Better error messages of Internet Connection Problem
 
 * Things to fix in CDS.Rnw
