@@ -12,6 +12,19 @@
 
 call.ISDA <- function(x, name, ratesInfo){
   
+  ## error checking
+  
+  stopifnot(is.data.frame(x))
+  stopifnot(c("date", "currency", "tenor", "spread", "coupon",
+              "recovery.rate", "notional", "stepinDate", "valueDate",
+              "startDate", "firstcouponDate", "pencouponDate", "endDate",
+              "backstopDate", "baseDate", "badDayConvention", "mmDCC",
+              "mmCalendars", "fixedDCC", "floatDCC", "fixedFreq",
+              "floatFreq", "swapCalendars") %in% names(x))
+  
+  stopifnot(is.data.frame(ratesInfo))
+  stopifnot(c("expiry", "rate", "type") %in% names(ratesInfo))
+  
   ## define CS10, IR.DV01, rec.risk.01 and spread.DV01 and set their default
   ## to zero. If the name matches any of the four functions, then the corres-
   ## ponding value for that function will be given value one.
