@@ -19,7 +19,7 @@
 #'
 #' @export
 #' 
-#' @seealso \link{download.markit} \link{build.ratessssssssssssssss}
+#' @seealso \link{download.markit} \link{build.rates}
 #' 
 #' @examples
 #' \dontrun{
