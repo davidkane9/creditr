@@ -70,46 +70,18 @@ upfront <- function(x,
     
     rates <- copy
     
-    ## subset out the rates of the relevant currency
-    
-    ## change expiries depending on currency
-    ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
-    ## getRates would download the data from the internet
-    
-    mmDCC <- x$mmDCC 
-    fixedSwapFreq <- x$fixedFreq 
-    floatSwapFreq <- x$floatFreq
-    fixedSwapDCC <- x$fixedDCC
-    floatSwapDCC <- x$floatDCC 
-    badDayConvZC <- x$badDayConvention  
-    holidays <- "NONE"
-    calendar <- "NONE"
-    
-    ## if tenor is just a number i.e. written as just 5, then we turn it to the string "5Y"
-    
-    if(!is.null(x[[tenor.var]])) {  ## if tenor is provided
+    if(!is.null(x[[tenor.var]])) {
       x[i, tenor.var] <- as.numeric(x[i, tenor.var])      
       tenor <- x[i, tenor.var]
     } else {
       tenor <- NULL
     }
     
-    date <- x[i, date.var]
-    currency <- x[i, currency.var]
-    maturity <- x[i, maturity.var]
-    dccCDS <- "ACT/360"
-    freqCDS <- "1Q"
-    stubCDS <- "F"
-    badDayConvCDS <- "F"
+    date <- as.Date(x[i, date.var])
     spread <- x[i, spread.var]
     coupon <- x[i, coupon.var]
     recovery.rate <- x[i, recovery.var]
     isPriceClean <- isPriceClean
-    payAccruedOnDefault <- TRUE
-    
-    ## stop if date is invalid
-    
-    date <- as.Date(date)
     
     ## basedate is T + 2 weekdays .    
     
@@ -123,7 +95,7 @@ upfront <- function(x,
     
     ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
     
-    baseDate <- JPY.condition(baseDate = baseDate, date = date, currency = currency)
+    baseDate <- JPY.condition(baseDate = baseDate, date = date, currency = x[i, currency.var])
     
     ## rates Date is the date for which interest rates will be calculated. get.rates 
     ## function will return the rates of the previous day
@@ -135,12 +107,12 @@ upfront <- function(x,
     
     if(is.null(tenor)){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
-                                                       maturity = as.Date(maturity),
-                                                       currency = currency)))
+                                                       maturity = as.Date(x[i, maturity.var]),
+                                                       currency = x[i, currency.var])))
     }
-    else if(is.null(maturity)){
+    else if(is.null(x[i, maturity.var])){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date), tenor = tenor,
-                                                       currency = currency)))
+                                                       currency = x[i, currency.var])))
     }
     
     ## if these dates are not entered, they are extracted using add.dates
@@ -153,7 +125,7 @@ upfront <- function(x,
     
     ## if any of these three are null, we extract them using get.rates
       
-    ratesInfo <- get.rates(date = ratesDate, currency = currency)
+    ratesInfo <- get.rates(date = ratesDate, currency = x[i, currency.var])
     effectiveDate <- adj.next.bus.day(date)
       
     ## extract relevant variables like mmDCC, expiries from the get.rates function 
@@ -169,13 +141,13 @@ upfront <- function(x,
                         rates = rates,
                         expiries = expiries,
                         
-                        mmDCC = mmDCC,
-                        fixedSwapFreq = fixedSwapFreq,
-                        floatSwapFreq = floatSwapFreq,
-                        fixedSwapDCC = fixedSwapDCC,
-                        floatSwapDCC = floatSwapDCC,
-                        badDayConvZC = badDayConvZC,
-                        holidays = holidays,
+                        mmDCC = x$mmDCC,
+                        fixedSwapFreq = x$fixedFreq,
+                        floatSwapFreq = x$floatFreq,
+                        fixedSwapDCC = x$fixedDCC,
+                        floatSwapDCC = x$floatDCC ,
+                        badDayConvZC = x$badDayConvention,
+                        holidays = "NONE",
                         
                         todayDate_input = separate.YMD(date),
                         valueDate_input = separate.YMD(valueDate),
@@ -184,17 +156,17 @@ upfront <- function(x,
                         endDate_input = separate.YMD(endDate),
                         stepinDate_input = separate.YMD(stepinDate),
                         
-                        dccCDS = dccCDS,
-                        ivlCDS = freqCDS,
-                        stubCDS = stubCDS,
-                        badDayConvCDS = badDayConvCDS,
-                        calendar = calendar,
+                        dccCDS = "ACT/360",
+                        ivlCDS = "1Q",
+                        stubCDS = "F",
+                        badDayConvCDS = "F",
+                        calendar = "NONE",
                         
                         parSpread = spread,
                         couponRate = coupon,
                         recoveryRate = recovery.rate,
                         isPriceClean_input = isPriceClean,
-                        payAccruedOnDefault_input = payAccruedOnDefault,
+                        payAccruedOnDefault_input = TRUE,
                         notional = notional,
                         PACKAGE = "CDS")
   } 
