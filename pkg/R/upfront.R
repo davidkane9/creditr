@@ -29,8 +29,8 @@ upfront <- function(x,
                     recovery.var = "recovery",
                     isPriceClean = FALSE){
   
-  stopifnot(! (is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
-  stopifnot(   is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
+  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
+  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
   
   ## stop if not all the relevant variables are contained in x
   
@@ -76,10 +76,6 @@ upfront <- function(x,
     ## feeding in expiries, types (and rates) instead of extracting from getRates saves time as
     ## getRates would download the data from the internet
     
-    
-    expiries <- get.rates(date = x[[date.var]][i], currency = x[[currency.var]][[i]])$expiry
-    types <-  paste(as.character(get.rates(date = x[[date.var]][i],
-                                           currency = x[[currency.var]][[i]])$type), collapse = "")
     mmDCC <- x$mmDCC 
     fixedSwapFreq <- x$fixedFreq 
     floatSwapFreq <- x$floatFreq
@@ -100,13 +96,6 @@ upfront <- function(x,
     
     date <- x[i, date.var]
     currency <- x[i, currency.var]
-    rates <- rates$rates[rates$date == as.Date(x[i,date.var]) & 
-                           rates$currency == as.character(x[i, currency.var])]                                     
-    valueDate <- NULL
-    benchmarkDate <- NULL
-    startDate <- NULL
-    endDate <- NULL
-    stepinDate <- NULL
     maturity <- x[i, maturity.var]
     dccCDS <- "ACT/360"
     freqCDS <- "1Q"
@@ -156,39 +145,23 @@ upfront <- function(x,
     
     ## if these dates are not entered, they are extracted using add.dates
     
-    if (is.null(valueDate)) valueDate         <- cdsDates$valueDate
-    if (is.null(benchmarkDate)) benchmarkDate <- cdsDates$startDate
-    if (is.null(startDate)) startDate         <- cdsDates$startDate
-    if (is.null(endDate)) endDate             <- cdsDates$endDate
-    if (is.null(stepinDate)) stepinDate       <- cdsDates$stepinDate
-    
-    ## stop if number of rates != number of expiries != length of types
-    
-    stopifnot(all.equal(length(rates), length(expiries), nchar(types)))    
+    valueDate      <- cdsDates$valueDate
+    benchmarkDate  <- cdsDates$startDate
+    startDate      <- cdsDates$startDate
+    endDate        <- cdsDates$endDate
+    stepinDate     <- cdsDates$stepinDate
     
     ## if any of these three are null, we extract them using get.rates
-    
-    if ((is.null(types) | is.null(rates) | is.null(expiries))){
       
-      ratesInfo <- get.rates(date = ratesDate, currency = currency)
-      effectiveDate <- adj.next.bus.day(date)
+    ratesInfo <- get.rates(date = ratesDate, currency = currency)
+    effectiveDate <- adj.next.bus.day(date)
       
-      ## extract relevant variables like mmDCC, expiries from the get.rates function 
-      ## if they are not entered
+    ## extract relevant variables like mmDCC, expiries from the get.rates function 
+    ## if they are not entered
       
-      if (is.null(types)) types       <- paste(as.character(ratesInfo$type), collapse = "")
-      if (is.null(rates)) rates       <- as.numeric(as.character(ratesInfo$rate))
-      if (is.null(expiries)) expiries <- as.character(ratesInfo$expiry)
-      if (is.null(mmDCC)) mmDCC       <- as.character(cdsDates$mmDCC)
-      
-      if (is.null(fixedSwapFreq)) fixedSwapFreq <- as.character(cdsDates$fixedFreq)
-      if (is.null(floatSwapFreq)) floatSwapFreq <- as.character(cdsDates$floatFreq)
-      if (is.null(fixedSwapDCC)) fixedSwapDCC   <- as.character(cdsDates$fixedDCC)
-      if (is.null(floatSwapDCC)) floatSwapDCC   <- as.character(cdsDates$floatDCC)
-      if (is.null(badDayConvZC)) badDayConvZC   <- as.character(cdsDates$badDayConvention)
-      if (is.null(holidays)) holidays           <- as.character(cdsDates$swapCalendars)
-    }
-    
+    types       <- paste(as.character(ratesInfo$type), collapse = "")
+    rates       <- as.numeric(as.character(ratesInfo$rate))
+    expiries    <- as.character(ratesInfo$expiry)
     
     results[i] <- .Call('calcUpfrontTest',
                         baseDate_input = separate.YMD(baseDate),
@@ -223,8 +196,7 @@ upfront <- function(x,
                         isPriceClean_input = isPriceClean,
                         payAccruedOnDefault_input = payAccruedOnDefault,
                         notional = notional,
-                        PACKAGE = "CDS")  
+                        PACKAGE = "CDS")
   } 
-  
   return(results)
 }
