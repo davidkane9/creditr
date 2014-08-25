@@ -18,6 +18,8 @@ spread(x, currency.var = "currency", date.var = "date",
 
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
+\item{upfront.var}{is the character name of upfront column}
+
 \item{payAccruedOnDefault}{whether pay in default scenario the accrual amount}
 
 \item{x}{data frame, contains all the relevant columns.}

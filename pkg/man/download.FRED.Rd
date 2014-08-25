@@ -7,13 +7,9 @@ download.FRED(start = as.Date("2004-01-01"), end = as.Date("2005-01-04"),
   currency = "JPY")
 }
 \arguments{
-\item{date}{is the Trade date.
-The rates for a trade date T are published on T-1 weekday.
-This date refers to the day on which we want the CDS to be
-priced, not the date for the interest rates as the interest
-rates will be used is the day before the trade date. Eg. If we
-are trying to find the rates used to price a CDS on 2014-04-22,
-it will return the rates of 2014-04-21}
+\item{start}{is the start date of the data frame we want}
+
+\item{end}{is the end date of the data frame we want}
 
 \item{currency}{is the three-letter currency code. As of now, it works
        for USD, EUR, and JPY. The default is JPY.}

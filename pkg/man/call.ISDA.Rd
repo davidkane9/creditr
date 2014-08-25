@@ -19,6 +19,6 @@ a numeric value which is the difference between the new upfront and the old one
 \code{call.ISDA} call ISDA function
 }
 \seealso{
-\link{CS.10} \link{rec.risk.01} \link{IR.DV01} \link{spread.DV01}
+\link{CS10} \link{rec.risk.01} \link{IR.DV01} \link{spread.DV01}
 }
 

@@ -5,6 +5,7 @@
 #' @param isPriceClean a boolean variable indicating whether the upfront is clean or dirty
 #' @param notional numeric variable indicating the notional value of the CDS contract
 #' @param payAccruedAtStart whether pay at start date the accrual amount
+#' @param upfront.var is the character name of upfront column
 #' @param payAccruedOnDefault whether pay in default scenario the accrual amount
 #' 
 #' @return a numeric indicating the spread.
