@@ -4,8 +4,6 @@
 #' @param ptsUpfront.var
 #' @param isPriceClean
 #' @param notional
-#' @param freqCDS date interval of the CDS contract.
-#' @param stubCDS is a character indicating the presence of a stub.
 #' @param payAccruedAtStart whether pay at start date the accrual amount
 #' @param payAccruedOnDefault
 #' 
@@ -23,8 +21,6 @@ spread <- function(x,
                    
                    isPriceClean = FALSE,
                    notional = 1e7,
-                   freqCDS = "Q",
-                   stubCDS = "F",
                    payAccruedAtStart = FALSE,
                    payAccruedOnDefault = TRUE){
   
@@ -96,8 +92,8 @@ spread <- function(x,
                          payAccruedOnDefault_input = payAccruedOnDefault,
                          
                          dccCDS = dccCDS,
-                         dateInterval = freqCDS,
-                         stubType = stubCDS,
+                         dateInterval = "Q",
+                         stubType = "F",
                          badDayConv_input = badDayConvCDS,
                          calendar_input = calendar,
                          
