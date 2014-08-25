@@ -6,7 +6,7 @@ DONE: get.rates should first consult the stored rates dataframe. If the date is 
 
 DONE: Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
 
-* call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
+DONE: call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
  
 * Better error messages of Internet Connection Problem
 
