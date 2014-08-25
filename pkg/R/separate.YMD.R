@@ -4,6 +4,7 @@
 #'  year, month, and day.
 #'
 #' @param d is an input date.
+#' 
 #' @return an array contains year, month, date of the input date
 #' \code{d}.
 

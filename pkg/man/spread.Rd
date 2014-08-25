@@ -11,22 +11,6 @@ spread(x, currency.var = "currency", date.var = "date",
   payAccruedOnDefault = TRUE)
 }
 \arguments{
-\item{x}{data frame which contains information of date, tenor, coupon, upfront, etc.}
-
-\item{currency.var}{}
-
-\item{date.var}{}
-
-\item{coupon.var}{}
-
-\item{tenor.var}{}
-
-\item{maturity.var}{}
-
-\item{RR.var}{}
-
-\item{upfront.var}{}
-
 \item{ptsUpfront.var}{}
 
 \item{isPriceClean}{}
@@ -40,6 +24,23 @@ spread(x, currency.var = "currency", date.var = "date",
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
 \item{payAccruedOnDefault}{}
+
+\item{x}{data frame, contains all the relevant columns.}
+
+\item{currency.var}{character, column in x containing currency.}
+
+\item{date.var}{character, column in x containing date variable.}
+
+\item{coupon.var}{character, column in x containing coupon rates in basis
+points. It specifies the payment amount from the protection buyer to the
+seller on an annual basis.}
+
+\item{tenor.var}{character, column in x containing tenors.}
+
+\item{maturity.var}{character, column in x containing maturity date.}
+
+\item{RR.var}{character, column in x containing recovery rates. ISDA model
+standard recovery rate asscumption is 0.4.}
 }
 \value{
 a numeric indicating the spread.

@@ -33,4 +33,7 @@ download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"),
               currency = "JPY")
 }
 }
+\seealso{
+\link{download.markit} \link{build.ratessssssssssssssss}
+}
 

@@ -5,8 +5,11 @@
 #'
 #' @inheritParams CS10
 #' 
+#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+#' 
 #' @return a vector containing the change in upfront when there is a 1
-#' percent increase in recovery rate, for each corresponding CDS contract.
+#'   percent increase in recovery rate, for each corresponding CDS contract.
+#' 
 #' @examples 
 #' x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
 #' currency = c("USD", "EUR"),
@@ -18,14 +21,14 @@
 #' result <- rec.risk.01(x)
 
 rec.risk.01 <- function(x,
-                    date.var     = "date",
-                    currency.var = "currency",
-                    maturity.var = "maturity",
-                    tenor.var    = "tenor",
-                    spread.var   = "spread",
-                    coupon.var   = "coupon",
-                    RR.var       = "recovery.rate",
-                    notional.var = "notional"){
+                        date.var     = "date",
+                        currency.var = "currency",
+                        maturity.var = "maturity",
+                        tenor.var    = "tenor",
+                        spread.var   = "spread",
+                        coupon.var   = "coupon",
+                        RR.var       = "recovery.rate",
+                        notional.var = "notional"){
   
   ## check if certain variables are contained in x
   

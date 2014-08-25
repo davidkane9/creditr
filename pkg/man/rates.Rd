@@ -7,7 +7,7 @@
 Historic Interest Rates
 }
 \description{
-This data frame is created by \code{get.rates.DF} in \code{CDS} package to calculate the CDS pricing. It covers three currencies: USD, EUR, and JPY. The interest rates date from 2003-01-02 to 2014-08-21. Rates on holidays and weekends are available as well as business days. 
+This data frame is created by \code{build.rates} in \code{CDS} package to calculate the CDS pricing. It covers three currencies: USD, EUR, and JPY. The interest rates date from 2003-01-02 to 2014-08-21. Rates on holidays and weekends are available as well as business days. 
 }
 \usage{
 data(rates)

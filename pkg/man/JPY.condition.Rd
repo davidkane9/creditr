@@ -12,7 +12,7 @@ JPY.condition(currency = "USD", date, baseDate)
 is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".}
 
 \item{baseDate}{is the start date for the IR curve. Default is date + 2 weekdays.
-Format must be YYYY-MM-DD.}
+       Format must be YYYY-MM-DD.}
 }
 \value{
 updated \code{baseDate}
@@ -20,5 +20,8 @@ updated \code{baseDate}
 \description{
 \code{JPY.condition} examines whether the currency is JPY, and adjusts base
    date accordingly if so
+}
+\seealso{
+\link{adj.next.bus.day}
 }
 

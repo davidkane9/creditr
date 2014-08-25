@@ -6,7 +6,7 @@
 #' 
 #' @param x data frame containing the principal, spread, coupon and notional
 #' @param principal.var name of the column containing the principal or 
-#' clean upfront values of the CDS
+#'        clean upfront values of the CDS
 #' @param spread.var name of the column containing the CDS contract in basis points
 #' @param coupon.var name of the column containing the CDS contract in basis points
 #' @param notional.var name of the column containing the notional amount (in currency terms).

@@ -49,4 +49,7 @@ recovery.rate = c(0.4, 0.4),
 notional = c(1e7, 1e7))
 result <- IR.DV01(x)
 }
+\seealso{
+\link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+}
 

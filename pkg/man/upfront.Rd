@@ -15,11 +15,6 @@ each instrument.}
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}
 
-\item{date.var}{name of column in x containing dates when the trade
-is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.}
-
-\item{spread.var}{name of column in x containing  par spreads in bps.}
-
 \item{recovery.var}{f column in x containing recovery
 rates in decimal.}
 
@@ -30,6 +25,10 @@ rates in decimal.}
 \item{x}{data frame, contains all the relevant columns.}
 
 \item{currency.var}{character, column in x containing currency.}
+
+\item{date.var}{character, column in x containing date variable.}
+
+\item{spread.var}{character, column in x containing spread in basis points.}
 
 \item{coupon.var}{character, column in x containing coupon rates in basis
 points. It specifies the payment amount from the protection buyer to the

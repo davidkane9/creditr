@@ -5,6 +5,8 @@
 #'
 #' @inheritParams CS10
 #' 
+#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+#' 
 #' @return a vector containing the change in upfront when there is a 1/1e4
 #' increase in interest rate, for each corresponding CDS contract.
 #' 
@@ -19,14 +21,14 @@
 #' result <- IR.DV01(x)
 
 IR.DV01 <- function(x,
-                        date.var     = "date",
-                        currency.var = "currency",
-                        maturity.var = "maturity",
-                        tenor.var    = "tenor",
-                        spread.var   = "spread",
-                        coupon.var   = "coupon",
-                        RR.var       = "recovery.rate",
-                        notional.var = "notional"){
+                    date.var     = "date",
+                    currency.var = "currency",
+                    maturity.var = "maturity",
+                    tenor.var    = "tenor",
+                    spread.var   = "spread",
+                    coupon.var   = "coupon",
+                    RR.var       = "recovery.rate",
+                    notional.var = "notional"){
   
   ## check if certain variables are contained in x
   

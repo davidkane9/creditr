@@ -16,8 +16,7 @@
 
 \item{spread}{is the new spread in bps.}
 
-\item{isPriceClean}{specifies whether it is a dirty or clean
-upfront.}
+\item{isPriceClean}{specifies whether it is a dirty or clean upfront.}
 
 \item{...}{Additional arguments to the call, or arguments with
    changed values. Use \code{name = NULL} to remove the argument \code{name}.}

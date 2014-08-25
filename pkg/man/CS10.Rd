@@ -49,4 +49,7 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
                 notional = c(1e7, 1e7))
 result <- CS10(x)
 }
+\seealso{
+\link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+}
 

@@ -21,7 +21,9 @@
 #' @export
 #' 
 #' @examples
+#' \dontrun{
 #' get.rates(as.Date("2014-05-07"), currency = "USD")
+#' }
 
 get.rates <- function(date = Sys.Date(), currency = "USD"){
 

@@ -5,9 +5,11 @@
 #' 
 #' @param currency in which CDS is denominated.
 #' @param date is when the trade is executed, denoted as T. Default
-#' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
+#'        is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
 #' @param baseDate is the start date for the IR curve. Default is date + 2 weekdays.
-#' Format must be YYYY-MM-DD.
+#'        Format must be YYYY-MM-DD.
+#' 
+#' @seealso \link{adj.next.bus.day}
 #' 
 #' @return updated \code{baseDate}
 

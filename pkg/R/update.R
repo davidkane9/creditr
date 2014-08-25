@@ -6,14 +6,13 @@
 #' @param upfront is the new upfront payment amount.
 #' @param ptsUpfront is the new pts upfront. It's in decimal.
 #' @param spread is the new spread in bps.
-#' @param isPriceClean specifies whether it is a dirty or clean
-#' upfront.
+#' @param isPriceClean specifies whether it is a dirty or clean upfront.
+#' 
 #' @return a \code{CDS} class object
 #'
 #' @export
 #'
 #' @examples
-#'
 #' ## build a CDS class object
 #' cds1 <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 #'

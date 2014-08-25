@@ -1,15 +1,7 @@
 #' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
-#' @param x data frame which contains information of date, tenor, coupon, upfront, etc.
-#' @param currency.var 
-#' @param date.var
-#' @param coupon.var
-#' @param tenor.var
-#' @param maturity.var
-#' @param RR.var
-#' @param upfront.var
+#' @inheritParams CS10
 #' @param ptsUpfront.var
-#' 
 #' @param isPriceClean
 #' @param notional
 #' @param freqCDS date interval of the CDS contract.

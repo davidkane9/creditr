@@ -5,6 +5,9 @@
 #' @param name character function name within which call.ISDA is called
 #' @param x dataframe which contains relevant dates and convention info
 #' @param ratesInfo dataframe which contains relevant rates data
+#' 
+#' @seealso \link{CS.10} \link{rec.risk.01} \link{IR.DV01} \link{spread.DV01}
+#' 
 #' @return a numeric value which is the difference between the new upfront and the old one
 
 call.ISDA <- function(x, name, ratesInfo){

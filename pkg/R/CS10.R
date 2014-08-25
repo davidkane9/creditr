@@ -20,6 +20,8 @@
 #' @return a vector containing the change in upfront in units of currency.var
 #'   when spread increase by 10%, for each corresponding CDS contract.
 #'   
+#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront} 
+#'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 #'                 currency = c("USD", "EUR"),
@@ -31,14 +33,14 @@
 #' result <- CS10(x)
 
 CS10 <- function(x,
-                        date.var     = "date",
-                        currency.var = "currency",
-                        maturity.var = "maturity",
-                        tenor.var    = "tenor",
-                        spread.var   = "spread",
-                        coupon.var   = "coupon",
-                        RR.var       = "recovery.rate",
-                        notional.var = "notional"){
+                 date.var     = "date",
+                 currency.var = "currency",
+                 maturity.var = "maturity",
+                 tenor.var    = "tenor",
+                 spread.var   = "spread",
+                 coupon.var   = "coupon",
+                 RR.var       = "recovery.rate",
+                 notional.var = "notional"){
   
   ## check if certain variables are contained in x
   

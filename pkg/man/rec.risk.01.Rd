@@ -33,7 +33,7 @@ standard recovery rate asscumption is 0.4.}
 }
 \value{
 a vector containing the change in upfront when there is a 1
-percent increase in recovery rate, for each corresponding CDS contract.
+  percent increase in recovery rate, for each corresponding CDS contract.
 }
 \description{
 \code{rec.risk.01} calculate the amount of change in upfront when there is a 1%
@@ -48,5 +48,8 @@ coupon = c(100, 100),
 recovery.rate = c(0.4, 0.4),
 notional = c(1e7, 1e7))
 result <- rec.risk.01(x)
+}
+\seealso{
+\link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
 }
 

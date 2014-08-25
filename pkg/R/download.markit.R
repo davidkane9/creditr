@@ -14,6 +14,8 @@
 #'   the column reads 2014-04-22, the corresponding rates are actually for 
 #'   2014-04-21.
 #'   
+#' @seealso link{download.FRED} \link{build.rates}
+#'   
 #' @examples
 #' \dontrun{
 #' download.markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"), 

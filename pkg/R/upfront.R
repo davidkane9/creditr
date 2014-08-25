@@ -9,9 +9,6 @@
 #'        each instrument.
 #' @param notional is the amount of the underlying asset on which the
 #'        payments are based. Default is 1e7, i.e. 10MM.
-#' @param date.var name of column in x containing dates when the trade 
-#'        is executed, denoted as T. Default is \code{Sys.Date}  + 2 weekdays.
-#' @param spread.var name of column in x containing  par spreads in bps.
 #' @param recovery.var f column in x containing recovery 
 #'        rates in decimal.
 #' @param isPriceClean refers to the type of upfront calculated. It is
