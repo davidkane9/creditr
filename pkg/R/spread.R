@@ -1,11 +1,11 @@
 #' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
 #' 
 #' @inheritParams CS10
-#' @param ptsUpfront.var
-#' @param isPriceClean
-#' @param notional
+#' @param ptsUpfront.var character name of ptsUpfront column
+#' @param isPriceClean a boolean variable indicating whether the upfront is clean or dirty
+#' @param notional numeric variable indicating the notional value of the CDS contract
 #' @param payAccruedAtStart whether pay at start date the accrual amount
-#' @param payAccruedOnDefault
+#' @param payAccruedOnDefault whether pay in default scenario the accrual amount
 #' 
 #' @return a numeric indicating the spread.
 
