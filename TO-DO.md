@@ -1,6 +1,6 @@
 CDS TO-DO List
 ========================================================
-* Current version has some miscelaneous warnings. Please fix them (other than the ones that are my fault).
+DONE: * Current version has some miscelaneous warnings. Please fix them (other than the ones that are my fault).
 
 * Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
 
