@@ -1,18 +1,18 @@
 CDS TO-DO List
 ========================================================
-DONE: * Clean up build.rates(). First, make use of seealso in the documentation, including, obviously, download.markit, download.FRED and rates. Second, there are no comments! Why are those dates hard-coded? (I know that it is because Markit only goes back so far, but you need to explain that.) Also, you should at least mention that the date you are getting from markit is the date as it appeared in markit but that the date you are getting from FRED is adjusted. (You don't have to repeat all the comments that give the details, but it is wise to at least mention the date issue.) Third, add some error checking. It is fine if you restrict the function to only working with a start before 2004 and a finish after 2006 (or whatever) but, right now, I think (?) it blows up if, for example, end is in 2004. You don't have to handle all possible usages (that would be a big bother) but you should prevent the user from using the function in bad ways by checking and stopifnot the inputs.
+DONE: Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
-DONE: * rates.RData should be sorted, first by date descending, then, within date, by currency ascending and then, finally, by expiry ascending with months first and then years in the right order. This last sort may be hard to do since it is not a natural sort. temporarily changing expiry to an ordered factor, sorting, and then changing it back to character, is one approach. This all goes at the end of build.rates()
+DONE: Clean up build.rates(). First, make use of seealso in the documentation, including, obviously, download.markit, download.FRED and rates. Second, there are no comments! Why are those dates hard-coded? (I know that it is because Markit only goes back so far, but you need to explain that.) Also, you should at least mention that the date you are getting from markit is the date as it appeared in markit but that the date you are getting from FRED is adjusted. (You don't have to repeat all the comments that give the details, but it is wise to at least mention the date issue.) Third, add some error checking. It is fine if you restrict the function to only working with a start before 2004 and a finish after 2006 (or whatever) but, right now, I think (?) it blows up if, for example, end is in 2004. You don't have to handle all possible usages (that would be a big bother) but you should prevent the user from using the function in bad ways by checking and stopifnot the inputs.
 
-DONE: * Take a tour of all functions and add whatever seealso documentation seems like a good idea. (Don't add things just for the sake of adding them. Only add them when it makes sense to do so.)
+DONE: rates.RData should be sorted, first by date descending, then, within date, by currency ascending and then, finally, by expiry ascending with months first and then years in the right order. This last sort may be hard to do since it is not a natural sort. temporarily changing expiry to an ordered factor, sorting, and then changing it back to character, is one approach. This all goes at the end of build.rates()
+
+DONE: Take a tour of all functions and add whatever seealso documentation seems like a good idea. (Don't add things just for the sake of adding them. Only add them when it makes sense to do so.)
 
 * Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
 
 * call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
  
 * Better error messages of Internet Connection Problem
-
-* Make spread and upfront similar format as CS10 which take dataframe and return vectors.
 
 * On the other hand, get.rates should first consult the stored rates dataframe before trying markit. If still no rates, it fails. It does not check FRED (because that is too complex and/or requires making too many assumptions about what expiries exist).
 
