@@ -45,11 +45,13 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
                                         stop = nchar(ratesx$expiry))),
                          stringsAsFactors = FALSE)
     
+    if(nrow(ratesx) != 0){
     for(k in 1:length(ratesx$type)){
       if(ratesx$type[k] == "Y") ratesx$type[k] <- "S"
     }
     
     ratesx$type[which(ratesx$expiry == "1Y")] <- "M"
+    }
     
     ## if the wanted rates are not in rates.RData, then go get rates
     ## from the internet
