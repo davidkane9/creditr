@@ -32,11 +32,9 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     stopifnot(toupper(as.character(currency)) %in% 
     c( "USD", "GBP", "EUR", "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
 
-    ## CDS for Trade Date will use rates from Trade Date - 1 
-
-    date <- as.Date(date) - 1
-    
     ## check rates.RData first, before get rates from the internet.
+    
+    date <- as.Date(date)
     
     data(rates)
     ratesx <- rates[which(rates$date == date),]
@@ -57,6 +55,11 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
     ## from the internet
     
     if(nrow(ratesx) == 0){
+      
+      ## CDS for Trade Date will use rates from Trade Date - 1 
+      
+      date <- as.Date(date) - 1
+      
       dateWday <- as.POSIXlt(date)$wday
       
       ## change date to the most recent weekday if necessary i.e. change date to 
