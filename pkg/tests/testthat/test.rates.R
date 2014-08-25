@@ -86,7 +86,7 @@ test_that("test that rates don't move `too much' day-over-day", {
   ## Problem with this test is that what is `too much' movement depends on the
   ## expiry. 
     
-  sample.df=rates[rates$currency == "EUR" & rates$expiry == "20Y",]
+  sample.df <- rates[rates$currency == "EUR" & rates$expiry == "20Y",]
     
   sample.date <- sample(sample.df$date, size = 1)
   sample.date.next <- sample.date + 1
