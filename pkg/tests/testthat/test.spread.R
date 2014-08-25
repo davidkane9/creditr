@@ -16,8 +16,6 @@ test_that("test for spread", {
                                     upfront = 18624),
                      isPriceClean = FALSE,
                      notional = 1e7,
-                     freqCDS = "Q",
-                     stubCDS = "F",
                      payAccruedAtStart = FALSE,
                      payAccruedOnDefault = TRUE)
   
@@ -36,8 +34,6 @@ test_that("test for spread", {
                                     upfront = 18623.7),
                      isPriceClean = FALSE,
                      notional = 1e7,
-                     freqCDS = "Q",
-                     stubCDS = "F",
                      payAccruedAtStart = FALSE,
                      payAccruedOnDefault = TRUE)
 
@@ -54,8 +50,6 @@ test_that("test for spread", {
                                     upfront = -1e7*3.48963/100),
                      isPriceClean = FALSE,
                      notional = 1e7,
-                     freqCDS = "Q",
-                     stubCDS = "F",
                      payAccruedAtStart = FALSE,
                      payAccruedOnDefault = TRUE)
   
@@ -67,8 +61,6 @@ test_that("test for spread", {
                                    upfront = -1e7*3.41/100),
                     isPriceClean = FALSE,
                     notional = 1e7,
-                    freqCDS = "Q",
-                    stubCDS = "F",
                     payAccruedAtStart = TRUE,
                     payAccruedOnDefault = TRUE)
   
@@ -80,8 +72,6 @@ test_that("test for spread", {
                                    upfront = -1e7*3.48963/100),
                     isPriceClean = FALSE,
                     notional = 1e7,
-                    freqCDS = "Q",
-                    stubCDS = "F",
                     payAccruedAtStart = FALSE,
                     payAccruedOnDefault = TRUE)
   
@@ -96,8 +86,6 @@ test_that("test for spread", {
                                     upfront = -1e7*3.41/100),
                      isPriceClean = FALSE,
                      notional = 1e7,
-                     freqCDS = "Q",
-                     stubCDS = "F",
                      payAccruedAtStart = TRUE,
                      payAccruedOnDefault = TRUE)
   

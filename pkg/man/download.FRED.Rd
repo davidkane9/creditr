@@ -34,6 +34,6 @@ download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"),
 }
 }
 \seealso{
-\link{download.markit} \link{build.ratessssssssssssssss}
+\link{download.markit} \link{build.rates}
 }
 

@@ -7,8 +7,7 @@ spread(x, currency.var = "currency", date.var = "date",
   coupon.var = "coupon", tenor.var = "tenor", maturity.var = "maturity",
   RR.var = "recovery.rate", upfront.var = "upfront",
   ptsUpfront.var = "ptsUpfront", isPriceClean = FALSE, notional = 1e+07,
-  freqCDS = "Q", stubCDS = "F", payAccruedAtStart = FALSE,
-  payAccruedOnDefault = TRUE)
+  payAccruedAtStart = FALSE, payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{ptsUpfront.var}{}
@@ -16,10 +15,6 @@ spread(x, currency.var = "currency", date.var = "date",
 \item{isPriceClean}{}
 
 \item{notional}{}
-
-\item{freqCDS}{date interval of the CDS contract.}
-
-\item{stubCDS}{is a character indicating the presence of a stub.}
 
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
