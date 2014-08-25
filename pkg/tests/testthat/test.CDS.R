@@ -1,3 +1,15 @@
+## result.1 match:
+## spreadDV01
+
+## result.2 match:
+## IRDV01, price, defaultExpo, spreadDV01
+
+## result.3 match:
+## everything except RecRisk01
+
+## result.4 match:
+## ptsUpfront, spreadDV01
+
 context("Test CDS")
 
 ## CDS.R test case for Caesars Entertainment Operating Co Inc using data obtainined from Bloomberg.
