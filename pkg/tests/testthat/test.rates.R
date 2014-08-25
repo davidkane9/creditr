@@ -32,8 +32,10 @@ test_that("test that holidays are covered in rates.RData", {
   ## true interest rate of 2012-07-03, because we have to adjust one
   ## business day after 2012-07-03 in rates.RData
   
-  rate.holi.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-05"),]$rate[1]
-  rate.holi.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-04"),]$rate[1]
+  rate.holi.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-05") & 
+                       rates$expiry == "1M", ]$rate
+  rate.holi.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-07-04") & 
+                         rates$expiry == "1M", ]$rate
   expect_equal(rate.holi.1, rate.holi.2)
 })
 
@@ -48,20 +50,24 @@ test_that("test that weekends are covered correctly", {
   ## saturday, 2014-08-09, because their previous business days are both
   ## friday, 2014-08-08.
   
-  rate.weekend.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-10"),]$rate[1]
-  rate.weekend.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2014-08-09"),]$rate[1]
+  rate.weekend.1 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-08-12") & 
+                            rates$expiry == "1M", ]$rate
+  rate.weekend.2 <- rates[rates$currency == "USD" & rates$date == as.Date("2012-08-11") & 
+                            rates$expiry == "1M", ]$rate
   expect_equal(rate.weekend.1, rate.weekend.2)
-
   ## a random weekend for JPY
   
-  rate.weekend.3 <- rates[rates$currency == "JPY" & rates$date == as.Date("2014-08-03"),]$rate[1]
-  rate.weekend.4 <- rates[rates$currency == "JPY" & rates$date == as.Date("2014-08-02"),]$rate[1]
+  rate.weekend.3 <- rates[rates$currency == "JPY" & rates$date == as.Date("2012-08-05") & 
+                            rates$expiry == "1M", ]$rate
+  rate.weekend.4 <- rates[rates$currency == "JPY" & rates$date == as.Date("2012-08-04") & 
+                            rates$expiry == "1M", ]$rate
   expect_equal(rate.weekend.3, rate.weekend.4)
+  ## a random weekend for EUR
   
-  ## a random weekend for JPY
-  
-  rate.weekend.5 <- rates[rates$currency == "EUR" & rates$date == as.Date("2014-08-17"),]$rate[1]
-  rate.weekend.6 <- rates[rates$currency == "EUR" & rates$date == as.Date("2014-08-16"),]$rate[1]
+  rate.weekend.5 <- rates[rates$currency == "EUR" & rates$date == as.Date("2012-08-25") & 
+                            rates$expiry == "1M", ]$rate
+  rate.weekend.6 <- rates[rates$currency == "EUR" & rates$date == as.Date("2012-08-26") & 
+                            rates$expiry == "1M", ]$rate
   expect_equal(rate.weekend.5, rate.weekend.6)
   
 })

@@ -31,13 +31,18 @@ get.rates <- function(date = Sys.Date(), currency = "USD"){
   
     stopifnot(toupper(as.character(currency)) %in% 
     c( "USD", "GBP", "EUR", "JPY", "CHF", "CAD" , "AUD", "NZD", "SGD", "HKD"))
-    
-    #stopifnot(is.character(currency))
 
     ## CDS for Trade Date will use rates from Trade Date - 1 
 
     date <- as.Date(date) - 1
-
+    
+    ## check rates.RData first, before get rates from the internet.
+    
+    
+    
+    ## if the wanted rates are not in rates.RData, then go get rates
+    ## from the internet
+    
     ## 0 is Sunday, 6 is Saturday
 
     dateWday <- as.POSIXlt(date)$wday
