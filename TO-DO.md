@@ -4,9 +4,9 @@ DONE: * Clean up build.rates(). First, make use of seealso in the documentation,
 
 DONE: * rates.RData should be sorted, first by date descending, then, within date, by currency ascending and then, finally, by expiry ascending with months first and then years in the right order. This last sort may be hard to do since it is not a natural sort. temporarily changing expiry to an ordered factor, sorting, and then changing it back to character, is one approach. This all goes at the end of build.rates()
 
-* Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
+DONE: * Take a tour of all functions and add whatever seealso documentation seems like a good idea. (Don't add things just for the sake of adding them. Only add them when it makes sense to do so.)
 
-* Take a tour of all functions and add whatever seealso documentation seems like a good idea. (Don't add things just for the sake of adding them. Only add them when it makes sense to do so.)
+* Examples and tests take FOREVER to run. This makes the package way too hard to work on. Use Rprofile and other tools to figure out where the delays comes from and then fix them. You can use dontrun on any example that takes too long, like build.rates().
 
 * call.ISDA should have the usual error-checking. x is a data frame, with all the appropriate variable names and so on.
  
