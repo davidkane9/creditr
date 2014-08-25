@@ -10,15 +10,15 @@ spread(x, currency.var = "currency", date.var = "date",
   payAccruedAtStart = FALSE, payAccruedOnDefault = TRUE)
 }
 \arguments{
-\item{ptsUpfront.var}{}
+\item{ptsUpfront.var}{character name of ptsUpfront column}
 
-\item{isPriceClean}{}
+\item{isPriceClean}{a boolean variable indicating whether the upfront is clean or dirty}
 
-\item{notional}{}
+\item{notional}{numeric variable indicating the notional value of the CDS contract}
 
 \item{payAccruedAtStart}{whether pay at start date the accrual amount}
 
-\item{payAccruedOnDefault}{}
+\item{payAccruedOnDefault}{whether pay in default scenario the accrual amount}
 
 \item{x}{data frame, contains all the relevant columns.}
 
