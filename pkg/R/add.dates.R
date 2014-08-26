@@ -62,7 +62,9 @@ add.dates <- function(x, date.var = "date",
     
     ## calculate baseDate
     
-    baseDate <- adj.next.bus.day(ret[[date.var]][i] + 2)
+    ## baseDate should be T + 2 weekdayS instead of business days?
+    ## baseDate <- adj.next.bus.day(ret[[date.var]][i] + 2)
+    baseDate <- ret[[date.var]][i] + 2
     
     ## if(as.POSIXlt(baseDate)$wday == 1){ 
     ##   baseDate <- baseDate + 1
@@ -79,8 +81,8 @@ add.dates <- function(x, date.var = "date",
     ## valueDate is the date on which a cash payment is settled.
     ## valueDate is 3 business days after the Trade Date. 
     
-    valueDate <- stepinDate
-    for (j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
+    valueDate <- adj.next.bus.day(ret[[date.var]][i] + 1)
+    for(j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
     

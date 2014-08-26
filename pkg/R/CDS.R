@@ -275,6 +275,8 @@ CDS <- function(name = NULL,
     
     ## calculate par spread if not provided
     
+    ## need to calculate upfront first 
+    
     spreadinput <- data.frame(date = date,
                               currency = currency,
                               coupon = coupon,

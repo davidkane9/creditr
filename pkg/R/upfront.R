@@ -47,7 +47,7 @@ upfront <- function(x,
   results <- rep(NA, nrow(x))
   
   x <- add.conventions(add.dates(x))
-  
+  ## browser()
   for(i in 1:nrow(x)){
     
     ratesInfo <- get.rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
