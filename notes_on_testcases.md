@@ -1,6 +1,12 @@
 Caesars
 ========================================================
-Input spread, price, accrual, spreadDV01, rec risk match
+price and pts upfront match with Bloomberg
+
+upfront 5707436 supposed to be 5707438
+
+RecRisk -95439.69 supposed to be -95430.32
+
+spreadDV01 21 supposed to be 21.15
 
 Principal 5,744,936 supposed to be 5,744,938.
 
