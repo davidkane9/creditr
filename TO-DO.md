@@ -1,8 +1,8 @@
 CDS TO-DO List
 ========================================================
-* Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
+DONE?: (Actually, check.inputs is only used by CS10 and its three other friends who all have similar structures. In all these four functions, date.var, currency.var, maturity.var, tenor.var, spread.var, coupon.var, notional.var, RR.var all need to be checked because they will have to be fed into add.dates or add.conventions, or call.ISDA. Since check.inputs is only used in these places, it seems that there should be little incentive to generalize check.inputs) Or maybe check.inputs is smart enough to know that it only checks and passes back the variables that you pass in. So, if you call check.inputs with date.var = 'date' and tenor.var = 'tenor' --- and no other arguments, it gives you back a data frame with just two variables: date and tenor. Might also need to have an extra.var argument which would be a list of variables to also pass back, without any checking done on them.
 
-* Or maybe check.inputs is smart enough to know that it only checks and passes back the variables that you pass in. So, if you call check.inputs with date.var = 'date' and tenor.var = 'tenor' --- and no other arguments, it gives you back a data frame with just two variables: date and tenor. Might also need to have an extra.var argument which would be a list of variables to also pass back, without any checking done on them.
+* Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
 
 * Thoughts on spread(). Not saying you have to change these, but I wanted to mention them. ptsUpfront.var should be points.var. Why isn't there a notional.var? That is how we do things elsewhere. Why is there JPY.condition gibberish still in the function. Isn't this logic now in add.dates()? Maybe a better name for this function would be points.to.spread()? After all, that is the fundamental transformation that is happening. I give the function the points for a CDS, and it tells me the spread. (This is consistent with spread.to.pd().) 
 
@@ -21,7 +21,3 @@ CDS TO-DO List
 ** If we can't make all the above automatic, then we could, instead, still get the package on CRAN by making the process as easy as possible. That is, we still don't distribute the c code, but we provide step-by-step instructions in what to do after you have downloaded the package. This is non-trivial because it would require re-compiling the package after the user gets the c code. But it is still not a bad answer. In fact, doing this is probably a good idea because it will show you all the steps that need to be added to the Makefile.
 
 * Fix all line wraps by reformatting code.
-
-
-
-
