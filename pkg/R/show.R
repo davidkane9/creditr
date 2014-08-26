@@ -47,7 +47,7 @@ setMethod("show",
             
             cat(sprintf(paste("price:", round(object@price, 2),
                               sep = paste0(rep(" ", 40-nchar(as.character("price:")) -
-                                                 nchar(as.character(round(object@price, 2)))), collapse = ""))), "\n",
+                                                 nchar(as.character(round(object@price, 2)))), collapse = ""))),
                 
                 sprintf(paste("Spread:",
                               format(round(object@spread, 4), big.mark = ",",
@@ -56,14 +56,6 @@ setMethod("show",
                                                40-nchar(as.character("Spread:")) -
                                                  nchar(as.character(format(round(object@spread, 4), big.mark = ",",
                                                                            scientific = F)))),
-                                           collapse = ""))),
-                sprintf(paste("   Pts Upfront:",
-                              format(round(object@ptsUpfront, 4), big.mark=",",
-                                     scientific=F),
-                              sep = paste0(rep(" ", 40-nchar(as.character("   Pts Upfront:")) -
-                                                 nchar(as.character(
-                                                   format(round(object@ptsUpfront, 4), big.mark=",",
-                                                          scientific=F)))),
                                            collapse = ""))), "\n",
                 
                 sprintf(paste("Principal:",

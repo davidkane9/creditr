@@ -233,7 +233,7 @@ CDS <- function(name = NULL,
                            isPriceClean = FALSE)
   }
   
-  ## if pts upfront and spread are both provided, then we have to calculate the spread
+  ## if upfront is provided, then we have to calculate the spread
   
   else {        
     if (isPriceClean == TRUE) {
