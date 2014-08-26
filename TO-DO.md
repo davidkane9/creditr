@@ -1,13 +1,12 @@
 CDS TO-DO List
 ========================================================
-DONE: * Make implied.RR() more like other functions. For example, argument "data" should be "x". "end.date"" should be "maturity.var". "date.var" should be the first argument after x. And so on. Might also consider allowing for a "tenor.var" in place of a maturity.var since that is the more common usage.
+DONE: Make implied.RR() more like other functions. For example, argument "data" should be "x". "end.date"" should be "maturity.var". "date.var" should be the first argument after x. And so on. Might also consider allowing for a "tenor.var" in place of a maturity.var since that is the more common usage.
 
-DONE: * PV.01() should be PV01(). Also, it should no coerce variables like principal.var to numeric. It should stopifnot they aren't numeric.
+DONE: PV.01() should be PV01(). Also, it should no coerce variables like principal.var to numeric. It should stopifnot they aren't numeric.
 
+DONE: upfront.R is very different than the other functions. For example, instead of using add.dates() and add.conventions(), it does a bunch of stuff by-hand. This seems undesirable. Is there a reason it has to be this way? If so, that reason should be documented in the code! If not, then we should change it. Also, recovery.var = "recovery" is not consistent with our other usage. Elsewhere, it is RR.var = "recovery.rate". We need to be consistent and this second convention seems better.
 
 * Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
-
-* upfront.R is very different than the other functions. For example, instead of using add.dates() and add.conventions(), it does a bunch of stuff by-hand. This seems undesirable. Is there a reason it has to be this way? If so, that reason should be documented in the code! If not, then we should change it. Also, recovery.var = "recovery" is not consistent with our other usage. Elsewhere, it is RR.var = "recovery.rate". We need to be consistent and this second convention seems better.
 
 * I think that the convention of changing all the variable names works OK:
 
