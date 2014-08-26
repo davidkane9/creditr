@@ -26,7 +26,7 @@ test_that("test for upfront", {
                                  tenor = 5,
                                  spread = 105.8,
                                  coupon = 100,
-                                 recovery = 0.4), rates = rates.1, isPriceClean = FALSE)
+                                 recovery = 0.4), isPriceClean = FALSE)
   
   ## Note: test case passes when rounded to the nearest tenth.
   ## Difference of 3.39 (0.02094072 %) from actual value

@@ -3,15 +3,12 @@
 \alias{upfront}
 \title{Calculate Upfront Payments}
 \usage{
-upfront(x, rates, currency.var = "currency", notional = 1e+07,
-  date.var = "date", spread.var = "spread", coupon.var = "coupon",
-  tenor.var = "tenor", maturity.var = "maturity",
-  recovery.var = "recovery", isPriceClean = FALSE)
+upfront(x, currency.var = "currency", notional = 1e+07, date.var = "date",
+  spread.var = "spread", coupon.var = "coupon", tenor.var = "tenor",
+  maturity.var = "maturity", recovery.var = "recovery",
+  isPriceClean = FALSE)
 }
 \arguments{
-\item{rates}{is an array of numeric values indicating the rate of
-each instrument.}
-
 \item{notional}{is the amount of the underlying asset on which the
 payments are based. Default is 1e7, i.e. 10MM.}
 
