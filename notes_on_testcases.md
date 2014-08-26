@@ -8,16 +8,15 @@ Rec Risk -95430.32 supposed to be -330.19!!??
 Def Expo 5,712,542 supposed to be 255062
 
 ```{r}
-library(CDS)
-result.1 <- CDS(date = as.Date("2014-04-15"),
+> library(CDS)
+> result.1 <- CDS(date = as.Date("2014-04-15"),
                    currency = "USD",
                    maturity = as.Date("2019-06-20"),                    
                    spread = 12354.529,
                    coupon = 500,
                    recovery.rate = 0.4,
                    notional = 1e7)
-result.1
-```
+> result.1
 CDS Contract 
 Contract Type:                      SNAC   Currency:                         USD
 Entity Name:                          NA   RED:                               NA
@@ -30,3 +29,4 @@ Principal:                     5,744,936   Spread DV01:                       21
 Accrual:                         -37,500   IR DV01:                      -271.16
 Upfront:                       5,707,436   Rec Risk (1 pct):          -95,439.69
 Default Prob:                          1   Default Expo:                 255,064
+```
