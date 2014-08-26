@@ -14,18 +14,18 @@
 #' @return Vector containing the PV01 values using the formula: 
 #' (principal/notional)*(10000/(spread-coupon))
 
-PV.01 <- function(x, 
-                  principal.var = "principal", 
-                  spread.var = "spread", 
-                  coupon.var = "coupon", 
-                  notional.var = "notional"){
+PV01 <- function(x, 
+                 principal.var = "principal", 
+                 spread.var = "spread", 
+                 coupon.var = "coupon", 
+                 notional.var = "notional"){
   
   stopifnot(c(principal.var, spread.var, coupon.var, notional.var) %in% names(x))
   
-  principal <- as.numeric(x[[principal.var]])
-  notional  <- as.numeric(x[[notional.var]])
-  spread <- as.numeric(x[[spread.var]])
-  coupon    <- as.numeric(x[[coupon.var]])
+  stopifnot(is.numeric(x[[principal.var]]))
+  stopifnot(is.numeric(x[[notional.var]]))
+  stopifnot(is.numeric(x[[spread.var]]))
+  stopifnot(is.numeric(x[[coupon.var]]))
   
   PV01 <- (abs(principal)/notional)*(10000/abs(spread-coupon))
   
