@@ -4,13 +4,11 @@ when we are comparing CDS R's outcome with Bloomberg's, be sure not to use the p
 
 Caesars
 ========================================================
-accrual, price and pts upfront match with Bloomberg
+spreadDV01, accrual, price and pts upfront match with Bloomberg
 
 upfront 5707436 supposed to be 5707438
 
 RecRisk -95439.69 supposed to be -95430.32
-
-spreadDV01 21 supposed to be 21.15
 
 Principal 5,744,936 supposed to be 5,744,938.
 
@@ -52,7 +50,7 @@ IRDV01 -169.3 supposed to be -169.33
 
 RecRisk -1123.53 supposed to be -1106.34
 
-spreadDV01 4318 supposed to be 4317.54
+spreadDV01 4318.342 supposed to be 4317.54
 
 
 ```{r}
