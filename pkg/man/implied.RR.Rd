@@ -3,22 +3,21 @@
 \alias{implied.RR}
 \title{Calculates Implied Recovery Rate}
 \usage{
-implied.RR(data, spread.var = "spread", pd.var = "pd",
-  end.date.var = "end.date", date.var = "date")
+implied.RR(x, date.var = "date", tenor.var = "tenor",
+  maturity.var = "maturity", spread.var = "spread", pd.var = "pd")
 }
 \arguments{
-\item{data}{dataframe containing the 1. probability of default (pd) over a a
-certain tenor period, 2. id and 3. spread}
-
-\item{spread.var}{name of the column containing the spread}
-
-\item{end.date.var}{name of the column containing the end dates or maturity
-dates. This is when the contract expires and protection ends. Any default
-after this date does not trigger a payment.}
-
-\item{date.var}{name of the column containing the trade dates.}
-
 \item{pd.var}{name of the column containing the probability of default rates.}
+
+\item{x}{data frame, contains all the relevant columns.}
+
+\item{date.var}{character, column in x containing date variable.}
+
+\item{tenor.var}{character, column in x containing tenors.}
+
+\item{maturity.var}{character, column in x containing maturity date.}
+
+\item{spread.var}{character, column in x containing spread in basis points.}
 }
 \value{
 implied recovery rate in percentage based on the general

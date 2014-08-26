@@ -22,11 +22,11 @@ test_that("test for implied recovery rate", {
   
   # 3 is the column number for spread and 2 is the column number for pd, 1 for id
   
-  result <- implied.RR(data = df, 
+  result <- implied.RR(x = df, 
+                       date.var = "date",
                        spread.var = "spread", 
                        pd.var = "pd", 
-                       end.date.var = "endDate", 
-                       date.var = "date")
+                       maturity.var = "endDate")
   
   truth <- c(40, 40, 40, 40, 35, 40, 40)
   
