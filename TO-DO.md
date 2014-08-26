@@ -6,13 +6,14 @@ DONE: PV.01() should be PV01(). Also, it should no coerce variables like princip
 
 DONE: upfront.R is very different than the other functions. For example, instead of using add.dates() and add.conventions(), it does a bunch of stuff by-hand. This seems undesirable. Is there a reason it has to be this way? If so, that reason should be documented in the code! If not, then we should change it. Also, recovery.var = "recovery" is not consistent with our other usage. Elsewhere, it is RR.var = "recovery.rate". We need to be consistent and this second convention seems better.
 
-* Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
-
-* I think that the convention of changing all the variable names works OK:
+DONE: I think that the convention of changing all the variable names works OK:
 
   colnames(x)[which(colnames(x) == date.var)] <- "date"
   
 But we do this in a bunch of places. Better to encapsulate this code in check.inputs(). That is, check.inputs should do this renaming for us, returning a data frame with just the variables we need, named the way we want them to be named. This makes spread.DV01 and friends even easier to understand/maintain. The main complexity, of course, is that not every function needs the same set of variables, so there might need to be one or two that are left out of check.inputs. That is OK. Those could be handled by hand in whichever functions need them. 
+
+
+* Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
 
 * Or maybe check.inputs is smart enough to know that it only checks and passes back the variables that you pass in. So, if you call check.inputs with date.var = 'date' and tenor.var = 'tenor' --- and no other arguments, it gives you back a data frame with just two variables: date and tenor. Might also need to have an extra.var argument which would be a list of variables to also pass back, without any checking done on them.
 
