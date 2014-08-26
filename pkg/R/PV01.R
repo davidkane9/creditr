@@ -1,18 +1,22 @@
 #' Calculate PV01
 #' 
-#' \code{PV01} to calculate present value 01 or present value of a stream of 1bp payments
+#' \code{PV01} to calculate present value 01 or present value of a stream of 1bp
+#' payments
 #' 
 #' @name PV01
-#' 
+#'   
 #' @param x data frame containing the principal, spread, coupon and notional
-#' @param principal.var name of the column containing the principal or 
-#'        clean upfront values of the CDS
-#' @param spread.var name of the column containing the CDS contract in basis points
-#' @param coupon.var name of the column containing the CDS contract in basis points
-#' @param notional.var name of the column containing the notional amount (in currency terms).
-#' 
+#' @param principal.var name of the column containing the principal or clean
+#'   upfront values of the CDS
+#' @param spread.var name of the column containing the CDS contract in basis
+#'   points
+#' @param coupon.var name of the column containing the CDS contract in basis
+#'   points
+#' @param notional.var name of the column containing the notional amount (in
+#'   currency terms).
+#'   
 #' @return Vector containing the PV01 values using the formula: 
-#' (principal/notional)*(10000/(spread-coupon))
+#'   (principal/notional)*(10000/(spread-coupon))
 
 PV01 <- function(x, 
                  principal.var = "principal", 
