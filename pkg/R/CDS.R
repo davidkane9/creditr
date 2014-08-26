@@ -101,9 +101,6 @@ CDS <- function(name = NULL,
                                      dccCDS = "ACT/360",
                                      badDayConvCDS = "F",
                                      badDayConvZC = "M"))
-  ## interest.rates stuff
-  
-  interest.rates <- list(types = NULL, rates = NULL, expiries = NULL)
   
   ## stop if date is invalid
   
@@ -147,37 +144,15 @@ CDS <- function(name = NULL,
   
   ## if these dates are not entered, we extract that from cdsdates
   
-  if (is.na(dates['valueDate'])) dates['valueDate']      <- as.Date(cdsDates$valueDate)
+  if (is.na(dates['valueDate'])) dates['valueDate']         <- as.Date(cdsDates$valueDate)
   if (is.na(dates['benchmarkDate'])) dates['benchmarkDate'] <- as.Date(cdsDates$startDate)
   if (is.na(dates['startDate'])) dates['startDate']         <- as.Date(cdsDates$startDate)
   if (is.na(dates['endDate'])) dates['endDate']             <- as.Date(cdsDates$endDate)
   if (is.na(dates['stepinDate'])) dates['stepinDate']       <- as.Date(cdsDates$stepinDate)
-  if (is.null(maturity)) maturity           <- as.Date(cdsDates$endDate)
-  
-  ## stop if the number of interest rates is not the same as number of expiries
-  
-  stopifnot(all.equal(length(interest.rates$rates), length(interest.rates$expiries), nchar(interest.rates$types)))  
-  
-  ## if the rates are not entered, we extract them using get.rates, and store them
-  ## in ratesinfo 
-  
-  if ((is.null(interest.rates$types) | is.null(interest.rates$rates) | is.null(interest.rates$expiries))){
-    
-    ratesInfo     <- get.rates(date = date, currency = currency)
-    dates['effectiveDate'] <- adj.next.bus.day(date)
-    
-    ## extract relevant variables like mmDCC, expiries from the get.rates function 
-    ## if they are not entered
-    
-    ## interest.rates stuff
-    
-    if (is.null(interest.rates$types)){ 
-      interest.rates$types <- paste(as.character(ratesInfo$type), collapse = "")}
-    if (is.null(interest.rates$rates)){
-      interest.rates$rates <- as.numeric(as.character(ratesInfo$rate))}
-    if (is.null(interest.rates$expiries)){
-      interest.rates$expiries <- as.character(ratesInfo$expiry)}
-    
+  if (is.null(maturity)) maturity                           <- as.Date(cdsDates$endDate)
+
+  dates['effectiveDate'] <- adj.next.bus.day(date)
+
     ## conventions stuff
     
     if (is.null(conventions['mmDCC'])){
@@ -194,7 +169,7 @@ CDS <- function(name = NULL,
       conventions['badDayConvZC']   <- as.character(cdsDates$badDayConvention)}
     if (is.null(conventions['holidays'])){ 
       conventions['holidays']       <- as.character(cdsDates$swapCalendars)}
-  }
+  
   
   ## if entity name and/or RED code is not provided, we set it as NA
   
