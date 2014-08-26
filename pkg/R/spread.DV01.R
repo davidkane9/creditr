@@ -39,13 +39,13 @@ spread.DV01 <- function(x,
   
   ## change the column names anyway
   
-  colnames(x)[which(colnames(x) == date.var)] <- "date"
+  colnames(x)[which(colnames(x) == date.var)]     <- "date"
   colnames(x)[which(colnames(x) == currency.var)] <- "currency"
   colnames(x)[which(colnames(x) == maturity.var)] <- "maturity"
-  colnames(x)[which(colnames(x) == tenor.var)] <- "tenor"
-  colnames(x)[which(colnames(x) == spread.var)] <- "spread"
-  colnames(x)[which(colnames(x) == coupon.var)] <- "coupon"
-  colnames(x)[which(colnames(x) == RR.var)] <- "recovery.rate"
+  colnames(x)[which(colnames(x) == tenor.var)]    <- "tenor"
+  colnames(x)[which(colnames(x) == spread.var)]   <- "spread"
+  colnames(x)[which(colnames(x) == coupon.var)]   <- "coupon"
+  colnames(x)[which(colnames(x) == RR.var)]       <- "recovery.rate"
   colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
   
   spread.DV01 <- rep(NA, nrow(x))
