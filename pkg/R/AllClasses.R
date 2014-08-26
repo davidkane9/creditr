@@ -30,12 +30,6 @@
 #' upfront, a.k.a. Cash Settlement Amount, refers to the market value
 #' of a CDS contract. Clean upfront is dirty upfront less any accrued
 #' interest payment, and is also called the Principal.
-#' @slot ptsUpfront is quoted as a percentage of the notional
-#' amount. They represent the upfront payment excluding the accrual
-#' payment. High Yield (HY) CDS contracts are often quoted in points
-#' upfront. The protection buyer pays the upfront payment if points
-#' upfront are positive, and the buyer is paid by the seller if the
-#' points are negative.
 #' @slot spreadDV01 measures the sensitivity of a CDS contract
 #' mark-to-market to a parallel shift in the term structure of the par
 #' spread.
@@ -83,7 +77,6 @@ setClass("CDS",
            ## calculated amount
            
            upfront = "numeric",
-           ptsUpfront = "numeric",
            spreadDV01 = "numeric",
            IRDV01 = "numeric",
            RecRisk01 = "numeric"  
@@ -115,7 +108,6 @@ setClass("CDS",
            ## calculated amount
            
            upfront = numeric(),
-           ptsUpfront = numeric(),
            spreadDV01 = numeric(),
            IRDV01 = numeric(),
            RecRisk01 = numeric()

@@ -47,8 +47,6 @@ test_that("test for the CDS", {
   
   expect_equal(round(21.15,2), round(result.1@spreadDV01,2))
   
-  expect_equal(round(0.5745,4), round(result.1@ptsUpfront,4))
-  
   
   ## CDS.R test case for Chorus Ltd. (Australian company)
   
@@ -76,8 +74,7 @@ test_that("test for the CDS", {
   expect_equal(round(5341920), round(result.2@defaultExpo))
   
   expect_equal(round(4317.54), round(result.2@spreadDV01))
-  
-  expect_equal(round(0.065808, 4), round(result.2@ptsUpfront, 4))
+
   
   
   ## CDS.R test case for Electrolux AB corporation
@@ -109,9 +106,7 @@ test_that("test for the CDS", {
   expect_equal(6004924, result.3@defaultExpo)
   
   expect_equal(round(4923.93), round(result.3@spreadDV01))
-  
-  expect_equal(round(-0.00049239, 4), round(result.3@ptsUpfront, 4))
-  
+
   
   ## CDS.R test case for Norske Skogindustrier ASA (European company)
   
@@ -140,8 +135,7 @@ test_that("test for the CDS", {
   expect_equal(round(1550000, -3), round(result.4@defaultExpo, -3))
   
   expect_equal(round(731.48), round(result.4@spreadDV01))
-  
-  expect_equal(round(0.445, 2), round(result.4@ptsUpfront, 2))
+
   
   ## CDS.R test case for RadioShack Corp
   
@@ -169,8 +163,6 @@ test_that("test for the CDS", {
   expect_equal(round(350176, -1), round(result.5@defaultExpo, -1))
   
   expect_equal(round(40.86, 1), round(result.5@spreadDV01, 1))
-  
-  expect_equal(round(0.5649, 2), round(result.5@ptsUpfront, 2))
   
   
   ## CDS.R test case for Tokyo Electric Power Co. Inc.
@@ -201,8 +193,6 @@ test_that("test for the CDS", {
   
   expect_equal(round(4448.92), round(result.6@spreadDV01))
   
-  expect_equal(round(0.0709, 3), round(result.6@ptsUpfront, 3))
-  
   
   ## CDS.R test case for Toys R Us Inc
   
@@ -232,8 +222,6 @@ test_that("test for the CDS", {
   
   expect_equal(round(1580.31), round(result.7@spreadDV01))
   
-  expect_equal(0.3275, round(result.7@ptsUpfront,4))
-  
   ## CDS.R test case for Xerox corporation
   
   result.8 <- CDS(date = as.Date("2014-04-22"),
@@ -258,7 +246,5 @@ test_that("test for the CDS", {
   
   expect_equal(round(5971932), round(result.8@defaultExpo))
   
-  expect_equal(round(4825.49, 2), round(result.8@spreadDV01, 2))
-  
-  expect_equal(round(0.002806821, 4), round(result.8@ptsUpfront, 4))}
+  expect_equal(round(4825.49, 2), round(result.8@spreadDV01, 2))}
 )

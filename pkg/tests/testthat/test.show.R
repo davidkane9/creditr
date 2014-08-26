@@ -22,9 +22,9 @@ test_that("test show() method", {
   
   expect_that(output[6], equals("Calculation "))
   
-  expect_that(output[7], equals("price:                            102.46"))
+  expect_that(output[7], equals("price:                            102.46   Spread:                            50"))
   
-  expect_that(output[8], equals("Spread:                               50   Pts Upfront:                  -0.0246"))
+  expect_that(output[8], equals("Principal:                      -246,036   Spread DV01:                    5,022"))
   
   ## Actually, hard coding doesn't matter here since we are dealing with this
   ## specific case.
@@ -32,14 +32,11 @@ test_that("test show() method", {
   ## All we have to make sure is that after we redesign the class these prints
   ## still look the same
   
-  expect_that(output[9], equals("Principal:                      -246,036   Spread DV01:                    5,022"))
+  expect_that(output[9], equals("Accrual:                         -13,611   IR DV01:                        64.44"))
   
-  expect_that(output[10], equals("Accrual:                         -13,611   IR DV01:                        64.44"))
+  expect_that(output[10], equals("Upfront:                        -259,647   Rec Risk (1 pct):               87.88"))
   
-  expect_that(output[11], equals("Upfront:                        -259,647   Rec Risk (1 pct):               87.88"))
+  expect_that(output[11], equals("Default Prob:                     0.0424   Default Expo:               6,246,036"))
   
-  expect_that(output[12], equals("Default Prob:                     0.0424   Default Expo:               6,246,036"))
-  
-  expect_that(output[13], equals(""))
-}
-  )
+  expect_that(output[12], equals(""))}
+)

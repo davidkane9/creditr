@@ -4,7 +4,6 @@
 #'
 #' @param object is a \code{CDS} class object.
 #' @param upfront is the new upfront payment amount.
-#' @param ptsUpfront is the new pts upfront. It's in decimal.
 #' @param spread is the new spread in bps.
 #' @param isPriceClean specifies whether it is a dirty or clean upfront.
 #' 
@@ -26,27 +25,19 @@ setMethod("update",
           function(object,
                    upfront = NULL,
                    isPriceClean = FALSE,
-                   ptsUpfront = NULL,
                    spread = NULL,
                    ...){
 
               if ((as.numeric(!is.null(upfront)) + 
-                   as.numeric(!is.null(ptsUpfront)) + 
                    as.numeric(!is.null(spread))) > 1)
                   stop ("Please only update one option -- upfront, ptsUpfront or spread")
               
               if (!is.null(upfront)){
                   newSpread <- NULL
                   newUpfront <- upfront
-                  newPtsUpfront <- NULL
-              } else if (!is.null(ptsUpfront)){
-                  newSpread <- NULL
-                  newUpfront <- NULL
-                  newPtsUpfront <- ptsUpfront
               } else if (!is.null(spread)){
                   newSpread <- spread
                   newUpfront <- NULL
-                  newPtsUpfront <- NULL
               }
                   newCDS <- CDS(contract = object@contract,
                                 name = object@name,
@@ -59,7 +50,6 @@ setMethod("update",
                                 coupon = object@coupon,
                                 recovery.rate = object@recovery.rate,
                                 upfront = newUpfront,
-                                ptsUpfront = newPtsUpfront,
                                 notional = object@notional)
                   
                   return(newCDS)

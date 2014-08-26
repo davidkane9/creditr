@@ -26,12 +26,6 @@
 #' upfront, a.k.a. Cash Settlement Amount, refers to the market value
 #' of a CDS contract. Clean upfront is dirty upfront less any accrued
 #' interest payment, and is also called the Principal.
-#' @param ptsUpfront is quoted as a percentage of the notional
-#' amount. They represent the upfront payment excluding the accrual
-#' payment. High Yield (HY) CDS contracts are often quoted in points
-#' upfront. The protection buyer pays the upfront payment if points
-#' upfront are positive, and the buyer is paid by the seller if the
-#' points are negative.
 #' 
 #' @return a \code{CDS} class object including the input informtion on
 #' the contract as well as the valuation results of the contract.
@@ -53,8 +47,7 @@ CDS <- function(name = NULL,
                 recovery.rate = 0.4,
                 currency = "USD",
                 notional = 1e7,
-                upfront = NULL,
-                ptsUpfront = NULL){
+                upfront = NULL){
   
   ## if all three of date, tenor and maturity are given as input,
   ## then we need to check if the three are compatible
@@ -78,29 +71,29 @@ CDS <- function(name = NULL,
   ## dates
   
   dates <- as.vector(data.frame(effectiveDate = NA,
-                               valueDate = NA,
-                               benchmarkDate = NA,
-                               startDate = NA, 
-                               endDate = NA, 
-                               stepinDate = NA,
-                               backstopDate = NA,
-                               firstcouponDate = NA,
-                               pencouponDate = NA))
+                                valueDate = NA,
+                                benchmarkDate = NA,
+                                startDate = NA, 
+                                endDate = NA, 
+                                stepinDate = NA,
+                                backstopDate = NA,
+                                firstcouponDate = NA,
+                                pencouponDate = NA))
   
   baseDate <- as.Date(date) + 2
   
   ## conventions
   
   conventions <- as.vector(data.frame(mmDCC = "ACT/360",
-                                     calendar = "None",
-                                     fixedSwapDCC = "30/360",
-                                     floatSwapDCC = "ACT/360",
-                                     fixedSwapFreq = "6M",
-                                     floatSwapFreq = "3M",
-                                     holidays = "None",
-                                     dccCDS = "ACT/360",
-                                     badDayConvCDS = "F",
-                                     badDayConvZC = "M"))
+                                      calendar = "None",
+                                      fixedSwapDCC = "30/360",
+                                      floatSwapDCC = "ACT/360",
+                                      fixedSwapFreq = "6M",
+                                      floatSwapFreq = "3M",
+                                      holidays = "None",
+                                      dccCDS = "ACT/360",
+                                      badDayConvCDS = "F",
+                                      badDayConvZC = "M"))
   
   ## stop if date is invalid
   
@@ -109,7 +102,7 @@ CDS <- function(name = NULL,
   
   ## if none of the three are entered
   
-  if ((is.null(upfront)) & (is.null(ptsUpfront)) & (is.null(spread)))
+  if ((is.null(upfront)) & (is.null(spread)))
     stop("Please input spread, upfront or pts upfront")
   
   ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
@@ -150,25 +143,25 @@ CDS <- function(name = NULL,
   if (is.na(dates['endDate'])) dates['endDate']             <- as.Date(cdsDates$endDate)
   if (is.na(dates['stepinDate'])) dates['stepinDate']       <- as.Date(cdsDates$stepinDate)
   if (is.null(maturity)) maturity                           <- as.Date(cdsDates$endDate)
-
+  
   dates['effectiveDate'] <- adj.next.bus.day(date)
-
-    ## conventions stuff
-    
-    if (is.null(conventions['mmDCC'])){
-      conventions['mmDCC']    <- as.character(cdsDates$mmDCC)}
-    if (is.null(conventions['fixedSwapFreq'])){ 
-      conventions['fixedSwapFreq'] <- as.character(cdsDates$fixedFreq)}
-    if (is.null(conventions['floatSwapFreq'])){ 
-      conventions['floatSwapFreq'] <- as.character(cdsDates$floatFreq)}
-    if (is.null(conventions['fixedSwapDCC'])){ 
-      conventions['fixedSwapDCC']   <- as.character(cdsDates$fixedDCC)}
-    if (is.null(conventions['floatSwapDCC'])){ 
-      conventions['floatSwapDCC']   <- as.character(cdsDates$floatDCC)}
-    if (is.null(conventions['badDayConvZC'])){ 
-      conventions['badDayConvZC']   <- as.character(cdsDates$badDayConvention)}
-    if (is.null(conventions['holidays'])){ 
-      conventions['holidays']       <- as.character(cdsDates$swapCalendars)}
+  
+  ## conventions stuff
+  
+  if (is.null(conventions['mmDCC'])){
+    conventions['mmDCC']    <- as.character(cdsDates$mmDCC)}
+  if (is.null(conventions['fixedSwapFreq'])){ 
+    conventions['fixedSwapFreq'] <- as.character(cdsDates$fixedFreq)}
+  if (is.null(conventions['floatSwapFreq'])){ 
+    conventions['floatSwapFreq'] <- as.character(cdsDates$floatFreq)}
+  if (is.null(conventions['fixedSwapDCC'])){ 
+    conventions['fixedSwapDCC']   <- as.character(cdsDates$fixedDCC)}
+  if (is.null(conventions['floatSwapDCC'])){ 
+    conventions['floatSwapDCC']   <- as.character(cdsDates$floatDCC)}
+  if (is.null(conventions['badDayConvZC'])){ 
+    conventions['badDayConvZC']   <- as.character(cdsDates$badDayConvention)}
+  if (is.null(conventions['holidays'])){ 
+    conventions['holidays']       <- as.character(cdsDates$swapCalendars)}
   
   
   ## if entity name and/or RED code is not provided, we set it as NA
@@ -230,60 +223,17 @@ CDS <- function(name = NULL,
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
-      
+    
     cds@principal <- upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
-    
-    ## points upfront
-    
-    cds@ptsUpfront <- cds@principal / notional
     
     ## dirty upfront
     
     cds@upfront <- upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
-  } else if (!is.null(ptsUpfront)){
-    
-    ## points upfront
-    
-    cds@ptsUpfront <- ptsUpfront
-    
-    ## calculate par spread if not provided
-    
-    ## need to calculate upfront first 
-    
-    spreadinput <- data.frame(date = date,
-                              currency = currency,
-                              coupon = coupon,
-                              upfront = upfront,
-                              recovery.rate = recovery.rate,
-                              maturity = maturity)
-    
-    cds@spread <- spread(x = spreadinput,
-                         notional = notional,
-                         payAccruedAtStart = isPriceClean,
-                         payAccruedOnDefault = payAccruedOnDefault)
-    
-    ## calculate principal or clean upfront using ptsUpfront
-    
-    cds@principal <- notional * ptsUpfront
-    
-    ## calculate  dirty upfront
-    
-    df <- data.frame(date = c(as.Date(cds@date)),
-                     spread = c(spread),
-                     coupon = c(cds@coupon),
-                     maturity = c(cds@maturity),
-                     currency = c(cds@currency),
-                     recovery = c(cds@recovery.rate))
-    
-    
-    cds@principal <- upfront(x = df, notional = cds@notional,
-                             isPriceClean = FALSE)
-    
-  } 
+  }
   
-  ## if pts upfront and spread are both provided, then we have to calculate the spread
+  ## if upfront is provided, then we have to calculate the spread
   
   else {        
     if (isPriceClean == TRUE) {
@@ -292,16 +242,12 @@ CDS <- function(name = NULL,
       
       cds@principal <- upfront
       
-      ## points upfront
-      
-      cds@ptsUpfront <- upfront / notional
-      
       ## calculate spread if only clean upfront (principal) and ptsUpfront are provided
       
       spreadinput <- data.frame(date = date,
                                 currency = currency,
                                 coupon = coupon,
-                                ptsUpfront = cds@ptsUpfront,
+                                ptsUpfront =  upfront / notional,
                                 recovery.rate = recovery.rate,
                                 tenor = tenor)
       
@@ -341,7 +287,7 @@ CDS <- function(name = NULL,
                            notional = notional,
                            payAccruedAtStart = FALSE,
                            payAccruedOnDefault = payAccruedOnDefault)
-
+      
       ## principal
       
       df <- data.frame(date = c(as.Date(cds@date)),
@@ -350,13 +296,9 @@ CDS <- function(name = NULL,
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
-       
+      
       cds@principal <- upfront(x = df, notional = cds@notional,
                                isPriceClean = TRUE)
-      
-      ## ptsUpfront
-      
-      cds@ptsUpfront <- cds@principal / notional
     }
   }
   

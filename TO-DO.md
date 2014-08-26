@@ -4,16 +4,16 @@ CDS TO-DO List
 
 * I think that the convention of changing all the variable names works OK:
 
+DONE: I think that the convention of changing all the variable names works OK:
+
+
   colnames(x)[which(colnames(x) == date.var)] <- "date"
   
 But we do this in a bunch of places. Better to encapsulate this code in check.inputs(). That is, check.inputs should do this renaming for us, returning a data frame with just the variables we need, named the way we want them to be named. This makes spread.DV01 and friends even easier to understand/maintain. The main complexity, of course, is that not every function needs the same set of variables, so there might need to be one or two that are left out of check.inputs. That is OK. Those could be handled by hand in whichever functions need them. 
 
 * Or maybe check.inputs is smart enough to know that it only checks and passes back the variables that you pass in. So, if you call check.inputs with date.var = 'date' and tenor.var = 'tenor' --- and no other arguments, it gives you back a data frame with just two variables: date and tenor. Might also need to have an extra.var argument which would be a list of variables to also pass back, without any checking done on them.
 
-* upfront and ptsUpfront are both slots. Does that make sense? Isn't one a direct mathetical function of the other? If so, we should only keep one. Also, would "points" might be a better name than ptsUpfront.
-
 * Thoughts on spread(). Not saying you have to change these, but I wanted to mention them. ptsUpfront.var should be points.var. Why isn't there a notional.var? That is how we do things elsewhere. Why is there JPY.condition gibberish still in the function. Isn't this logic now in add.dates()? Maybe a better name for this function would be points.to.spread()? After all, that is the fundamental transformation that is happening. I give the function the points for a CDS, and it tells me the spread. (This is consistent with spread.to.pd().) 
-
 
 * Better error messages of Internet Connection Problem
 

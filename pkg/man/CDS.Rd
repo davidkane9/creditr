@@ -7,7 +7,7 @@ contract.}
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
   recovery.rate = 0.4, currency = "USD", notional = 1e+07,
-  upfront = NULL, ptsUpfront = NULL)
+  upfront = NULL)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -44,13 +44,6 @@ spread. There are two types of upfront, dirty and clean. Dirty
 upfront, a.k.a. Cash Settlement Amount, refers to the market value
 of a CDS contract. Clean upfront is dirty upfront less any accrued
 interest payment, and is also called the Principal.}
-
-\item{ptsUpfront}{is quoted as a percentage of the notional
-amount. They represent the upfront payment excluding the accrual
-payment. High Yield (HY) CDS contracts are often quoted in points
-upfront. The protection buyer pays the upfront payment if points
-upfront are positive, and the buyer is paid by the seller if the
-points are negative.}
 }
 \value{
 a \code{CDS} class object including the input informtion on
