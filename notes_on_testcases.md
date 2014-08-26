@@ -1,6 +1,10 @@
+Important Notice: 
+when we are comparing CDS R's outcome with Bloomberg's, be sure not to use the printed out version which does rounding internally. Instead, just show the slots value. For example, when I check spread.DV01, if I just compare the spread.DV01 in show(result.1) with Bloomberg, it seems a big difference: 21.15 (Bloomberg) and 21 (R show). But if I compare result.1@spreadDV01 with Bloomberg, our result seems correct: 21.15 (Bloomberg) and 21.15226 (R slot). Be careful about this.
+
+
 Caesars
 ========================================================
-price and pts upfront match with Bloomberg
+accrual, price and pts upfront match with Bloomberg
 
 upfront 5707436 supposed to be 5707438
 
@@ -40,10 +44,15 @@ Default Prob:                          1   Default Expo:                 255,064
 
 Chorus
 ========================================================
-Principal, accrual, ptsUpfront, default expo match.
+price, upfront, Principal, accrual, ptsUpfront, default expo match.
 
 default prob 0.1919 supposed to be 0.1915
+
 IRDV01 -169.3 supposed to be -169.33
+
+RecRisk -1123.53 supposed to be -1106.34
+
+spreadDV01 4318 supposed to be 4317.54
 
 
 ```{r}
