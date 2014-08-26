@@ -3,8 +3,11 @@ Caesars
 Input spread, price, accrual, spreadDV01
 
 Principal 5,744,936 supposed to be 5,744,938.
+
 IRDV01 -75.64 supposed to be -271.18
+
 Rec Risk -95430.32 supposed to be -330.19!!??
+
 Def Expo 5,712,542 supposed to be 255062
 
 ```{r}
