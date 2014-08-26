@@ -49,11 +49,11 @@ setMethod("show",
                               sep = paste0(rep(" ", 40-nchar(as.character("price:")) -
                                                  nchar(as.character(round(object@price, 2)))), collapse = ""))),
                 
-                sprintf(paste("Spread:",
+                sprintf(paste("   Spread:",
                               format(round(object@spread, 4), big.mark = ",",
                                      scientific = F),
                               sep = paste0(rep(" ",
-                                               40-nchar(as.character("Spread:")) -
+                                               40-nchar(as.character("   spread:")) -
                                                  nchar(as.character(format(round(object@spread, 4), big.mark = ",",
                                                                            scientific = F)))),
                                            collapse = ""))), "\n",
