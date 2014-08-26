@@ -64,9 +64,9 @@ add.dates <- function(x, date.var = "date",
     
     baseDate <- adj.next.bus.day(ret[[date.var]][i] + 2)
     
-    if(as.POSIXlt(baseDate)$wday == 1){ 
-      baseDate <- baseDate + 1
-    }
+    ## if(as.POSIXlt(baseDate)$wday == 1){ 
+    ##   baseDate <- baseDate + 1
+    ## }
     
     baseDate <- JPY.condition(baseDate = baseDate, date = x[[date.var]][i], 
                               currency = x[[currency.var]][i])[[1]]

@@ -255,11 +255,8 @@ CDS <- function(name = NULL,
                      maturity = c(cds@maturity),
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
-    
-    ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                          expiries = interest.rates$expiries, rates = interest.rates$rates)
-    
-    cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
+      
+    cds@principal <- upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
     
     ## points upfront
@@ -268,7 +265,7 @@ CDS <- function(name = NULL,
     
     ## dirty upfront
     
-    cds@upfront <- upfront(x = df, rates = ratesdf, notional = cds@notional,
+    cds@upfront <- upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
   } else if (!is.null(ptsUpfront)){
     
@@ -303,10 +300,8 @@ CDS <- function(name = NULL,
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
     
-    ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                          expiries = interest.rates$expiries, rates = interest.rates$rates)
     
-    cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
+    cds@principal <- upfront(x = df, notional = cds@notional,
                              isPriceClean = FALSE)
     
   } 
@@ -346,10 +341,7 @@ CDS <- function(name = NULL,
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
       
-      ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                            expiries = interest.rates$expiries, rates = interest.rates$rates)
-      
-      cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
+      cds@principal <- upfront(x = df, notional = cds@notional,
                                isPriceClean = FALSE)
       
       
@@ -381,11 +373,8 @@ CDS <- function(name = NULL,
                        maturity = c(cds@maturity),
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
-      
-      ratesdf <- data.frame(date = as.Date(cds@date), currency = cds@currency,
-                            expiries = interest.rates$expiries, rates = interest.rates$rates)
-      
-      cds@principal <- upfront(x = df, rates = ratesdf, notional = cds@notional,
+       
+      cds@principal <- upfront(x = df, notional = cds@notional,
                                isPriceClean = TRUE)
       
       ## ptsUpfront
