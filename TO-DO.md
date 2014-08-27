@@ -1,10 +1,10 @@
 CDS TO-DO List
 ========================================================
+DONE: * Better error messages of Internet Connection Problem
+
 * Examine a test case for CDS (maybe Caesar's) very closely. We should be able to match every item on the screen shot perfectly. The only rounding that should be necessary should be rounding to match the rounding that Bloomberg uses. If we can't match it perfectly, then presumably we are doing something wrong, probably to do with dates and/or rates. Find the bug and fix it.
 
 * Thoughts on spread(). Not saying you have to change these, but I wanted to mention them. ptsUpfront.var should be points.var. Why isn't there a notional.var? That is how we do things elsewhere. Why is there JPY.condition gibberish still in the function. Isn't this logic now in add.dates()? Maybe a better name for this function would be points.to.spread()? After all, that is the fundamental transformation that is happening. I give the function the points for a CDS, and it tells me the spread. (This is consistent with spread.to.pd().) 
-
-* Better error messages of Internet Connection Problem
 
 * Things to fix in CDS.Rnw
 ** Read and completely understand the current version three times.
