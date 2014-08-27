@@ -1,18 +1,44 @@
 Check this tmrw with server results
 ```
-yang@ubuntu:~/CDS/isda_cds_model_c_v1.8.2/examples/c/build/linux$ make clean; make; ./cds 
+yang@ubuntu:~/CDS/isda_cds_model_c_v1.8.2/examples/c/build/linux$ make clean; make; ./cds
 rm -rf cds main.o  *_pure_*.o
 /usr/bin/gcc -o main.o -g -c -DUNIX -DLINUX -DVERSION="1.8.2" -I../../../../lib/include/isda -I/usr/include "../../../../examples/c/src/main.c"
 /usr/bin/g++ -lm -o cds main.o ../../../../lib/build/lib/linux/cds.a  -lc
 chmod u+x cds
-starting...
-CDS version 1.8.2
 enabling logging...
-building zero curve...
 calling JpmcdsBuildIRZeroCurve...
 
 
-Upfront charge @ cpn = 500bps =  5707435.925488
+Spread at 12354.529600
+Upfront charge @ cpn = 500bps =  5707436.128567
+
+Error log contains:
+------------------:
+yang@ubuntu:~/CDS/isda_cds_model_c_v1.8.2/examples/c/build/linux$ make clean; make; ./cds
+rm -rf cds main.o  *_pure_*.o
+/usr/bin/gcc -o main.o -g -c -DUNIX -DLINUX -DVERSION="1.8.2" -I../../../../lib/include/isda -I/usr/include "../../../../examples/c/src/main.c"
+/usr/bin/g++ -lm -o cds main.o ../../../../lib/build/lib/linux/cds.a  -lc
+chmod u+x cds
+enabling logging...
+calling JpmcdsBuildIRZeroCurve...
+
+
+Spread at 12354.529000
+Upfront charge @ cpn = 500bps =  5707436.115875
+
+Error log contains:
+------------------:
+yang@ubuntu:~/CDS/isda_cds_model_c_v1.8.2/examples/c/build/linux$ make clean; make; ./cds
+rm -rf cds main.o  *_pure_*.o
+/usr/bin/gcc -o main.o -g -c -DUNIX -DLINUX -DVERSION="1.8.2" -I../../../../lib/include/isda -I/usr/include "../../../../examples/c/src/main.c"
+/usr/bin/g++ -lm -o cds main.o ../../../../lib/build/lib/linux/cds.a  -lc
+chmod u+x cds
+enabling logging...
+calling JpmcdsBuildIRZeroCurve...
+
+
+Spread at 12354.530000
+Upfront charge @ cpn = 500bps =  5707436.137029
 
 Error log contains:
 ------------------:

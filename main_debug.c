@@ -124,12 +124,13 @@ double CalcUpfrontCharge(TCurve* curve, double couponRate)
     TDateInterval ivl;
     TStubMethod   stub;
     long          dcc;
-    double        parSpread = 12354.52;
+    double        parSpread = 12354.530;
     double        recoveryRate = 0.4;
     TBoolean      isPriceClean = FALSE;
     double        notional = 1e7;
     double        result = -1.0;
 
+    printf("Spread at %f\n", parSpread);
     if (curve == NULL)
     {
         JpmcdsErrMsg("CalcUpfrontCharge: NULL IR zero curve passed\n");
@@ -191,9 +192,9 @@ int main(int argc, char** argv)
     if (JpmcdsVersionString(version) != SUCCESS)
         goto done;
 
-    /* print library version */
-    printf("starting...\n");
-    printf("%s\n", version);
+    /* /\* print library version *\/ */
+    /* printf("starting...\n"); */
+    /* printf("%s\n", version); */
     
     /* enable logging */
     printf("enabling logging...\n");
@@ -201,7 +202,7 @@ int main(int argc, char** argv)
         goto done;
 
     /* construct IR zero curve */
-    printf("building zero curve...\n");
+    // printf("building zero curve...\n");
     zerocurve = BuildExampleZeroCurve();
     if (zerocurve == NULL)
         goto done;
@@ -215,6 +216,7 @@ int main(int argc, char** argv)
     /* get upfront charge */
     printf("\n");
     //printf("Upfront charge @ cpn = 0bps    =  %f\n", CalcUpfrontCharge(zerocurve, 0));
+
     printf("Upfront charge @ cpn = 500bps =  %f\n", CalcUpfrontCharge(zerocurve, 500));
     //printf("Upfront charge @ cpn = 7200bps = %f\n", CalcUpfrontCharge(zerocurve, 7200));
     
