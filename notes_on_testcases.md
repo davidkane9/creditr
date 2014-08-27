@@ -1,3 +1,23 @@
+Check this tmrw with server results
+```
+yang@ubuntu:~/CDS/isda_cds_model_c_v1.8.2/examples/c/build/linux$ make clean; make; ./cds 
+rm -rf cds main.o  *_pure_*.o
+/usr/bin/gcc -o main.o -g -c -DUNIX -DLINUX -DVERSION="1.8.2" -I../../../../lib/include/isda -I/usr/include "../../../../examples/c/src/main.c"
+/usr/bin/g++ -lm -o cds main.o ../../../../lib/build/lib/linux/cds.a  -lc
+chmod u+x cds
+starting...
+CDS version 1.8.2
+enabling logging...
+building zero curve...
+calling JpmcdsBuildIRZeroCurve...
+
+
+Upfront charge @ cpn = 500bps =  5707435.925488
+
+Error log contains:
+------------------:
+```
+
 Important Notice: 
 when we are comparing CDS R's outcome with Bloomberg's, be sure not to use the printed out version which does rounding internally. Instead, just show the slots value. For example, when I check spread.DV01, if I just compare the spread.DV01 in show(result.1) with Bloomberg, it seems a big difference: 21.15 (Bloomberg) and 21 (R show). But if I compare result.1@spreadDV01 with Bloomberg, our result seems correct: 21.15 (Bloomberg) and 21.15226 (R slot). Be careful about this.
 
