@@ -1,7 +1,8 @@
-#' \code{spread} to calculate conventional spread using the upfront or ptsUpfront values
+#' \code{upfront.to.spread} to calculate conventional spread using the upfront 
+#' or ptsUpfront values
 #' 
 #' @inheritParams CS10
-#' @param ptsUpfront.var character name of ptsUpfront column
+#' @param points.var character name of points Upfront column
 #' @param isPriceClean a boolean variable indicating whether the upfront is clean or dirty
 #' @param notional numeric variable indicating the notional value of the CDS contract
 #' @param payAccruedAtStart whether pay at start date the accrual amount
@@ -10,7 +11,7 @@
 #' 
 #' @return a numeric indicating the spread.
 
-spread <- function(x, 
+upfront.to.spread <- function(x, 
                    currency.var = "currency", 
                    date.var = "date",
                    coupon.var = "coupon",
@@ -18,14 +19,14 @@ spread <- function(x,
                    maturity.var = "maturity",
                    RR.var = "recovery.rate",
                    upfront.var = "upfront",
-                   ptsUpfront.var = "ptsUpfront",
+                   points.var = "ptsUpfront",
                    
                    isPriceClean = FALSE,
                    notional = 1e7,
                    payAccruedAtStart = FALSE,
                    payAccruedOnDefault = TRUE){
   
-  if (is.null(x[[upfront.var]]) & is.null(x[[ptsUpfront.var]]))
+  if (is.null(x[[upfront.var]]) & is.null(x[[points.var]]))
     stop("Please input upfront or pts upfront")
   
   ## You must provide either a maturity or a tenor, but not both.
@@ -35,8 +36,8 @@ spread <- function(x,
   
   spread <- rep(NA, nrow(x))
   
-  if (is.null(x[[ptsUpfront.var]])) {
-    x[[ptsUpfront.var]] <- x[[upfront.var]] / notional
+  if (is.null(x[[points.var]])) {
+    x[[points.var]] <- x[[upfront.var]] / notional
   } else {
     payAccruedAtStart <- TRUE
   }
@@ -65,11 +66,10 @@ spread <- function(x,
     ratesInfo <- get.rates(date = as.Date(x[[date.var]][i]),
                            currency = as.character(x[[currency.var]][i]))
     
-    baseDate <- separate.YMD(JPY.condition(baseDate = x$baseDate[i], date = x[[date.var]][i],
-                                           currency = as.character(x[[currency.var]][i])))
+    baseDate <- x$baseDate[i]
     
     x$spread[i] <- .Call('calcCdsoneSpread',
-                         baseDate_input = baseDate,
+                         baseDate_input = separate.YMD(baseDate),
                          types = paste(as.character(ratesInfo$type), collapse = ""),
                          rates = as.numeric(as.character(ratesInfo$rate)),
                          expiries = as.character(ratesInfo$expiry),
@@ -98,7 +98,7 @@ spread <- function(x,
                          badDayConv_input = badDayConvCDS,
                          calendar_input = calendar,
                          
-                         upfrontCharge_input = x[[ptsUpfront.var]][i],
+                         upfrontCharge_input = x[[points.var]][i],
                          recoveryRate_input = recovery.rate,
                          payAccruedAtStart_input = payAccruedAtStart,
                          PACKAGE = "CDS")                       

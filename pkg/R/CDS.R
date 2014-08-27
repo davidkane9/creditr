@@ -251,10 +251,10 @@ CDS <- function(name = NULL,
                                 recovery.rate = recovery.rate,
                                 tenor = tenor)
       
-      cds@spread <- spread(x = spreadinput,
-                           notional = notional,
-                           payAccruedAtStart = TRUE,
-                           payAccruedOnDefault = payAccruedOnDefault)
+      cds@spread <- upfront.to.spread(x = spreadinput,
+                                      notional = notional,
+                                      payAccruedAtStart = TRUE,
+                                      payAccruedOnDefault = payAccruedOnDefault)
       ## dirty upfront
       
       df <- data.frame(date = c(as.Date(cds@date)),
@@ -283,10 +283,10 @@ CDS <- function(name = NULL,
                                 recovery.rate = cds@recovery.rate,
                                 tenor = cds@tenor)
       
-      cds@spread <- spread(x = spreadinput,
-                           notional = notional,
-                           payAccruedAtStart = FALSE,
-                           payAccruedOnDefault = payAccruedOnDefault)
+      cds@spread <- upfront.to.spread(x = spreadinput,
+                                      notional = notional,
+                                      payAccruedAtStart = FALSE,
+                                      payAccruedOnDefault = payAccruedOnDefault)
       
       ## principal
       
