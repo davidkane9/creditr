@@ -5,7 +5,8 @@
 #'
 #' @inheritParams CS10
 #' 
-#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} 
+#'          \link{spread.to.upfront}
 #' 
 #' @return a vector containing the change in upfront when there is a 1
 #'   percent increase in recovery rate, for each corresponding CDS contract.

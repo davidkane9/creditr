@@ -224,12 +224,12 @@ CDS <- function(name = NULL,
                      currency = c(cds@currency),
                      recovery = c(cds@recovery.rate))
     
-    cds@principal <- upfront(x = df, notional = cds@notional,
+    cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
     
     ## dirty upfront
     
-    cds@upfront <- upfront(x = df, notional = cds@notional,
+    cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
   }
   
@@ -264,7 +264,7 @@ CDS <- function(name = NULL,
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
       
-      cds@principal <- upfront(x = df, notional = cds@notional,
+      cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = FALSE)
       
       
@@ -297,7 +297,7 @@ CDS <- function(name = NULL,
                        currency = c(cds@currency),
                        recovery = c(cds@recovery.rate))
       
-      cds@principal <- upfront(x = df, notional = cds@notional,
+      cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = TRUE)
     }
   }

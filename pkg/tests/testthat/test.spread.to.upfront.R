@@ -1,4 +1,4 @@
-context("Test upfront")
+context("Test spread.to.upfront")
 
 ## Test. In the following test cases we compare the results of 
 ## our upront functions for different data with results from markit.com using
@@ -17,12 +17,12 @@ test_that("test for upfront", {
   
   ## truth.1 <- 18624
   
-  result.1 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 tenor = 5,
-                                 spread = 105.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.1 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           tenor = 5,
+                                           spread = 105.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## Note: test case passes when rounded to the nearest tenth.
   ## Difference of 3.39 (0.02094072 %) from actual value
@@ -38,12 +38,12 @@ test_that("test for upfront", {
   ## truth.2 <- -9444
   ## calculated value
   
-  result.2 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 tenor = 5,
-                                 spread = 100,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.2 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           tenor = 5,
+                                           spread = 100,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when the values are rounded off till the nearest whole
@@ -59,12 +59,12 @@ test_that("test for upfront", {
   ## truth.3 <- -474755
   ## calculated value
   
-  result.3 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 tenor = 5,
-                                 spread = 105.8,
-                                 coupon = 200,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.3 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           tenor = 5,
+                                           spread = 105.8,
+                                           coupon = 200,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when results are rounded off the nearest 100
@@ -79,12 +79,12 @@ test_that("test for upfront", {
   ## truth.4 <- 265313
   ## calculated value
   
-  result.4 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 tenor = 5,
-                                 spread = 105.8,
-                                 coupon = 50,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.4 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           tenor = 5,
+                                           spread = 105.8,
+                                           coupon = 50,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when results are rounded off the nearest 100
@@ -98,13 +98,13 @@ test_that("test for upfront", {
   ## actual value
   ## truth.5 <- 20718
   ## calculated value
- 
-  result.5 <- upfront(data.frame(date = as.Date("2014-04-15"),
-                                 currency = "USD",
-                                 maturity = "2019-06-20",
-                                 spread = 105.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  
+  result.5 <- spread.to.upfront(data.frame(date = as.Date("2014-04-15"),
+                                           currency = "USD",
+                                           maturity = "2019-06-20",
+                                           spread = 105.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded to the nearest 10
@@ -119,12 +119,12 @@ test_that("test for upfront", {
   ## truth.6 <- 16582
   #calculated value
   
-  result.6 <- upfront(data.frame(date = as.Date("2014-04-29"),
-                                 currency = "USD",
-                                 maturity = "2019-06-20",
-                                 spread = 105.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.6 <- spread.to.upfront(data.frame(date = as.Date("2014-04-29"),
+                                           currency = "USD",
+                                           maturity = "2019-06-20",
+                                           spread = 105.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded of to the nearest tenth
@@ -137,13 +137,13 @@ test_that("test for upfront", {
   ## actual value when maturity is 2019-09-20 instead of 2019-06-20
   ## truth.7 <- 17395
   #calculated value
- 
-  result.7 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 maturity = "2019-03-20",
-                                 spread = 105.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  
+  result.7 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           maturity = "2019-03-20",
+                                           spread = 105.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   
@@ -156,12 +156,12 @@ test_that("test for upfront", {
   ## truth.8 <- 19836
   ## calculated value
   
-  result.8 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 maturity = "2019-09-20",
-                                 spread = 105.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  result.8 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           maturity = "2019-09-20",
+                                           spread = 105.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   
   ## comparing the results with markit data
@@ -174,13 +174,13 @@ test_that("test for upfront", {
   ## actual value
   ## truth.9 <- 254985
   ## calculated value
- 
-  result.9 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                 currency = "USD",
-                                 tenor = 5,
-                                 spread = 155.8,
-                                 coupon = 100,
-                                 recovery = 0.4), isPriceClean = FALSE)
+  
+  result.9 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                           currency = "USD",
+                                           tenor = 5,
+                                           spread = 155.8,
+                                           coupon = 100,
+                                           recovery = 0.4), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded to nearest 1000
@@ -194,12 +194,12 @@ test_that("test for upfront", {
   ## truth.10 <- -227912
   ## calculated value
   
-  result.10 <- upfront(data.frame(date = as.Date("2014-04-22"),
-                                  currency = "USD",
-                                  tenor = 5,
-                                  spread = 55.8,
-                                  coupon = 100,
-                                  recovery = 0.4), isPriceClean = FALSE)
+  result.10 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+                                            currency = "USD",
+                                            tenor = 5,
+                                            spread = 55.8,
+                                            coupon = 100,
+                                            recovery = 0.4), isPriceClean = FALSE)
   
   
   ## comparing the results with markit data
@@ -214,13 +214,13 @@ test_that("test for upfront", {
   ## truth.11 <- 0
   ## calculated value
   ## 
- 
-  result.11 <- upfront(data.frame(date = as.Date("2013-09-20"),
-                                  currency = "USD",
-                                  maturity = "2013-09-20",
-                                  spread = 105.8,
-                                  coupon = 100,
-                                  recovery = 0.4), isPriceClean = FALSE)
+  
+  result.11 <- spread.to.upfront(data.frame(date = as.Date("2013-09-20"),
+                                            currency = "USD",
+                                            maturity = "2013-09-20",
+                                            spread = 105.8,
+                                            coupon = 100,
+                                            recovery = 0.4), isPriceClean = FALSE)
   
   
   # comparing the results with markit data
@@ -237,13 +237,13 @@ test_that("test for upfront", {
   ## maturity date
   
   ## test for different Japanese dates
- 
-  result.13 <- upfront(data.frame(date = as.Date("2009-03-18"),
-                                  currency = "JPY",
-                                  maturity = "2014-03-20",
-                                  spread = 105.8,
-                                  coupon = 100,
-                                  recovery = 0.35), isPriceClean = FALSE)
+  
+  result.13 <- spread.to.upfront(data.frame(date = as.Date("2009-03-18"),
+                                            currency = "JPY",
+                                            maturity = "2014-03-20",
+                                            spread = 105.8,
+                                            coupon = 100,
+                                            recovery = 0.35), isPriceClean = FALSE)
   
   truth.13 <- 3487
   
@@ -263,9 +263,9 @@ test_that("test for upfront", {
                     currency = c("EUR", "EUR"),
                     recovery = c(0.4, 0.4))
   
-  result.1 <- upfront(x = x.1, tenor.var = "tenor")
+  result.1 <- spread.to.upfront(x = x.1, tenor.var = "tenor")
   expect_that(round(result.1, -2), equals(c(4412500, round(-14368, -2))))
   
-  result.2 <- upfront(x.2, tenor = "tenor")
+  result.2 <- spread.to.upfront(x.2, tenor = "tenor")
   expect_that(round(result.2, -2), equals(c(4412500, round(-14368, -2))))
 })

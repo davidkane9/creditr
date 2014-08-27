@@ -20,7 +20,8 @@
 #' @return a vector containing the change in upfront in units of currency.var
 #'   when spread increase by 10%, for each corresponding CDS contract.
 #'   
-#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront} 
+#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} 
+#'          \link{spread.to.upfront} 
 #'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),

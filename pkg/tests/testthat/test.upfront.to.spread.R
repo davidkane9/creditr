@@ -1,4 +1,4 @@
-context("Test spread")
+context("Test upfront.to.spread")
 
 ## upfront.to.spread() test case with data from Xerox corporation
 

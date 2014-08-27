@@ -1,7 +1,7 @@
 #' Calculate Upfront Payments
 #' 
-#' \code{upfront} takes a dataframe of variables on CDSs to return a vector of
-#' upfront values. Note that all CDS in the data frame must be denominated in 
+#' \code{spread.to.upfront} takes a dataframe of variables on CDSs to return 
+#' a vector of upfront values. Note that all CDS in the data frame must be denominated in 
 #' the same currency.
 #' 
 #' @inheritParams CS10
@@ -15,16 +15,16 @@
 #'        
 #' @return vector of upfront values (with accrual) in the same order
 
-upfront <- function(x, 
-                    currency.var = "currency", 
-                    notional = 1e7,
-                    date.var = "date", 
-                    spread.var = "spread",
-                    coupon.var = "coupon",
-                    tenor.var = "tenor",
-                    maturity.var = "maturity",
-                    recovery.var = "recovery",
-                    isPriceClean = FALSE){
+spread.to.upfront <- function(x, 
+                              currency.var = "currency", 
+                              notional = 1e7,
+                              date.var = "date", 
+                              spread.var = "spread",
+                              coupon.var = "coupon",
+                              tenor.var = "tenor",
+                              maturity.var = "maturity",
+                              recovery.var = "recovery",
+                              isPriceClean = FALSE){
   
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
   stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
