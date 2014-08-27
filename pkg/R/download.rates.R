@@ -25,9 +25,22 @@ download.rates <- function(URL, verbose = FALSE){
   if (class(a) == "character"){
     return(a)
   } else {
-    files <- unzip(tf , exdir = td)
+    
+    ## add suppressWarnings here because otherwise the stop message of
+    ## Internet Connection Problem looks confusing.
+    
+    files <- suppressWarnings(unzip(tf , exdir = td))
     
     ## the 2nd file of the unzipped directory contains the rates info
+    
+    ## add clearer message of Internet Connection Problem
+    
+    if(length(files) == 0){
+      stop(
+        "Either an internet connection problem occurs or the data
+        of the required date is unavailable on the internet. Try 
+        again later.")
+    }
     
     doc <- xmlTreeParse(files[grep(".xml", files)], getDTD = F)
     return(xmlRoot(doc))
