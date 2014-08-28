@@ -155,22 +155,25 @@ test_that("test for the CDS", {
                   recovery.rate = 0.4,
                   notional = 1e7)
   
-  ## comparing results with true values from Bloomberg
-  ## The results have to be rounded off as there are marginal differences
-  
-  expect_equal(round(5612324, -1),round(result.5@upfront, -1))
-  
-  expect_equal(round(-361.62, 0), round(result.5@IRDV01, 0))
+  ## The following results match perfectly with Bloomberg
   
   expect_equal(43.5, round(result.5@price, 1))
   
-  expect_equal(round(5649824, -1), round(result.5@principal, -1))
+  ## The following results do not match exactly, so we will check
+  ## to see if our calcualted results are within an acceptable range
+  ## of the true values from Bloomberg
   
-  expect_equal(round(-93430.52, -3), round(result.5@RecRisk01, -3))
+  expect_true(rel.diff(5612324, result.5@upfront))
   
-  expect_equal(round(350176, -1), round(result.5@defaultExpo, -1))
+  expect_true(rel.diff(-361.62, result.5@IRDV01))
+
+  expect_true(rel.diff(5649824, result.5@principal))
   
-  expect_equal(round(40.86, 1), round(result.5@spreadDV01, 1))
+  expect_true(rel.diff(-93430.52, result.5@RecRisk01))
+  
+  expect_true(rel.diff(350176, result.5@defaultExpo))
+  
+  expect_true(rel.diff(40.86, result.5@spreadDV01))
   
   
   ## CDS.R test case for Tokyo Electric Power Co. Inc.
@@ -184,22 +187,25 @@ test_that("test for the CDS", {
                   recovery.rate = 0.35,
                   notional = 1e7)
   
-  ## comparing result.6 with true values from Bloomberg
-  ## The result.6 have to be rounded off as there are marginal differences
-  
-  expect_equal(round(701502, -1), round(result.6@upfront, -1))
-  
-  expect_equal(round(-184.69), round(result.6@IRDV01))
+  ## The following results match perfectly with Bloomberg
   
   expect_equal(92.91, round(result.6@price, 2))
   
-  expect_equal(round(709002, -1), round(result.6@principal, -1))
+  expect_equal(701502, round(result.6@upfront))
   
-  expect_equal(round(-1061.74, -2), round(result.6@RecRisk01, -2))
+  ## The following results do not match exactly, so we will check
+  ## to see if our calcualted results are within an acceptable range
+  ## of the true values from Bloomberg
   
-  expect_equal(round(5790998, -1), round(result.6@defaultExpo, -1))
+  expect_true(rel.diff(-184.69, result.6@IRDV01))
+
+  expect_true(rel.diff(709002, result.6@principal))
   
-  expect_equal(round(4448.92), round(result.6@spreadDV01))
+  expect_true(rel.diff(-1061.74, result.6@RecRisk01))
+  
+  expect_true(rel.diff(5790998, result.6@defaultExpo))
+  
+  expect_true(rel.diff(4448.92, result.6@spreadDV01))
   
   
   ## CDS.R test case for Toys R Us Inc
@@ -213,22 +219,25 @@ test_that("test for the CDS", {
                   recovery.rate = 0.40,
                   notional = 1e7)
   
-  ## comparing results with true values from Bloomberg
-  ## The results have to be rounded off as there are marginal differences
+  ## The following results match perfectly with Bloomberg
   
-  expect_equal(round(3237500), round(result.7@upfront))
+  expect_equal(3237500, round(result.7@upfront))
   
-  expect_equal(round(-648.12), round(result.7@IRDV01))
+  expect_equal(3275000, round(result.7@principal))
   
-  expect_equal(round(67.25), round(result.7@price))
+  expect_equal(2725000, round(result.7@defaultExpo))
   
-  expect_equal(round(3275000), round(result.7@principal))
+  ## The following results do not match exactly, so we will check
+  ## to see if our calcualted results are within an acceptable range
+  ## of the true values from Bloomberg
   
-  expect_equal(round(-30848.67, -3), round(result.7@RecRisk01, -3))
+  expect_true(rel.diff(-648.12, result.7@IRDV01))
   
-  expect_equal(round(2725000), round(result.7@defaultExpo))
-  
-  expect_equal(round(1580.31), round(result.7@spreadDV01))
+  expect_true(rel.diff(67.25, result.7@price))
+
+  expect_true(rel.diff(-30848.67, result.7@RecRisk01))
+
+  expect_true(rel.diff(1580.31, result.7@spreadDV01))
   
   ## CDS.R test case for Xerox corporation
   
@@ -239,20 +248,23 @@ test_that("test for the CDS", {
                   recovery.rate = 0.4,
                   notional = 1e7)
   
-  ## comparing results with true values from Bloomberg
-  ## The results have to be rounded off as there are marginal differences
+  ## The following results match perfectly with Bloomberg
   
-  expect_equal(round(18624), round(result.8@upfront))
+  expect_equal(18624, round(result.8@upfront))
   
-  expect_equal(round(-7.36, 1), round(result.8@IRDV01, 1))
+  expect_equal(28068, round(result.8@principal))
   
-  expect_equal(round(99.71931785,2), round(result.8@price, 2))
+  ## The following results do not match exactly, so we will check
+  ## to see if our calcualted results are within an acceptable range
+  ## of the true values from Bloomberg
   
-  expect_equal(round(28068), round(result.8@principal))
+  expect_true(rel.diff(-7.36, result.8@IRDV01))
   
-  expect_equal(round(-20.85), round(result.8@RecRisk01))
+  expect_true(rel.diff(99.71931785, result.8@price))
   
-  expect_equal(round(5971932), round(result.8@defaultExpo))
+  expect_true(rel.diff(-20.85, result.8@RecRisk01))
   
-  expect_equal(round(4825.49, 2), round(result.8@spreadDV01, 2))}
+  expect_true(rel.diff(5971932, result.8@defaultExpo))
+  
+  expect_true(rel.diff(4825.49, result.8@spreadDV01))}
 )
