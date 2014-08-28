@@ -16,11 +16,8 @@
 #' @slot currency in which CDS is denominated.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
 #' @slot accrual is the accrued interest payment.
-#' @slot defaultProb is the approximate the default probability at
+#' @slot pd is the approximate the default probability at
 #' time t given the \code{spread}.
-#' @slot defaultExpo calculates the default exposure of a CDS contract
-#' based on the formula: Default Exposure: (1-Recovery Rate)*Notional
-#' - Principal.
 #' @slot price
 #' @slot upfront is quoted in the currency amount. Since a standard
 #' contract is traded with fixed coupons, upfront payment is
@@ -30,16 +27,16 @@
 #' upfront, a.k.a. Cash Settlement Amount, refers to the market value
 #' of a CDS contract. Clean upfront is dirty upfront less any accrued
 #' interest payment, and is also called the Principal.
-#' @slot spreadDV01 measures the sensitivity of a CDS contract
+#' @slot spread.DV01 measures the sensitivity of a CDS contract
 #' mark-to-market to a parallel shift in the term structure of the par
 #' spread.
-#' @slot IRDV01 is the change in value of a CDS contract for a 1 bp
+#' @slot IR.DV01 is the change in value of a CDS contract for a 1 bp
 #' parallel increase in the interest rate curve. \code{IRDV01} is,
 #' typically, a much smaller dollar value than \code{spreadDV01}
 #' because moves in overall interest rates have a much smaller effect
 #' on the value of a CDS contract than does a move in the CDS spread
 #' itself.
-#' @slot RecRisk01 is the dollar value change in market value if the
+#' @slot rec.risk.01 is the dollar value change in market value if the
 #' recovery rate used in the CDS valuation were increased by 1\%.
 #' 
 #' @name CDS, CDS-class
@@ -70,16 +67,15 @@ setClass("CDS",
            notional = "numeric",
            principal = "numeric",
            accrual = "numeric",
-           defaultProb = "numeric",
-           defaultExpo = "numeric",
+           pd = "numeric",
            price = "numeric",
            
            ## calculated amount
            
            upfront = "numeric",
-           spreadDV01 = "numeric",
-           IRDV01 = "numeric",
-           RecRisk01 = "numeric"  
+           spread.DV01 = "numeric",
+           IR.DV01 = "numeric",
+           rec.risk.01 = "numeric"  
          ),
          prototype = prototype(
           
@@ -101,15 +97,14 @@ setClass("CDS",
            notional = numeric(),
            principal = numeric(),
            accrual = numeric(),
-           defaultProb = numeric(),
-           defaultExpo = numeric(),
+           pd = numeric(),
            price = numeric(),
            
            ## calculated amount
            
            upfront = numeric(),
-           spreadDV01 = numeric(),
-           IRDV01 = numeric(),
-           RecRisk01 = numeric()
+           spread.DV01 = numeric(),
+           IR.DV01 = numeric(),
+           rec.risk.01 = numeric()
          )
 )

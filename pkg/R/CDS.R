@@ -302,7 +302,7 @@ CDS <- function(name = NULL,
   
   cds@accrual <- cds@upfront - cds@principal
   
-  ## spreadDV01, IRDV01, RecRisk01, default probability, default exposure and price 
+  ## spread.DV01, IR.DV01, rec.risk.01, default probability, default exposure and price 
   ## note: this is a hack; must fix
   
   x <- data.frame(date = c(as.Date(cds@date)),
@@ -313,10 +313,10 @@ CDS <- function(name = NULL,
                   recovery.rate = c(cds@recovery.rate),
                   notional = c(cds@notional))
   
-  cds@spreadDV01  <- spread.DV01(x)
-  cds@IRDV01      <- IR.DV01(x) 
-  cds@RecRisk01   <- rec.risk.01(x)
-  cds@defaultProb <- spread.to.pd(spread = cds@spread,
+  cds@spread.DV01  <- spread.DV01(x)
+  cds@IR.DV01      <- IR.DV01(x) 
+  cds@rec.risk.01   <- rec.risk.01(x)
+  cds@pd <- spread.to.pd(spread = cds@spread,
                                   time = as.numeric(dates['endDate'][[1]] -
                                                       as.Date(date))/360,
                                   recovery.rate = recovery.rate)
@@ -324,7 +324,6 @@ CDS <- function(name = NULL,
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
   
-  cds@defaultExpo <- (1-recovery.rate) * notional - cds@principal
   cds@price       <- (1 - cds@principal / notional) * 100
   
   ## return object with all the calculated data
