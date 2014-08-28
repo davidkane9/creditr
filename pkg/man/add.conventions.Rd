@@ -27,6 +27,7 @@ x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency
 add.conventions(x)
 }
 \references{
-http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
+\url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
+}
 }
 

@@ -36,12 +36,8 @@ is \code{Sys.Date}.}
 
 \item{\code{accrual}}{is the accrued interest payment.}
 
-\item{\code{defaultProb}}{is the approximate the default probability at
+\item{\code{pd}}{is the approximate the default probability at
 time t given the \code{spread}.}
-
-\item{\code{defaultExpo}}{calculates the default exposure of a CDS contract
-based on the formula: Default Exposure: (1-Recovery Rate)*Notional
-- Principal.}
 
 \item{\code{price}}{}
 
@@ -54,18 +50,18 @@ upfront, a.k.a. Cash Settlement Amount, refers to the market value
 of a CDS contract. Clean upfront is dirty upfront less any accrued
 interest payment, and is also called the Principal.}
 
-\item{\code{spreadDV01}}{measures the sensitivity of a CDS contract
+\item{\code{spread.DV01}}{measures the sensitivity of a CDS contract
 mark-to-market to a parallel shift in the term structure of the par
 spread.}
 
-\item{\code{IRDV01}}{is the change in value of a CDS contract for a 1 bp
+\item{\code{IR.DV01}}{is the change in value of a CDS contract for a 1 bp
 parallel increase in the interest rate curve. \code{IRDV01} is,
 typically, a much smaller dollar value than \code{spreadDV01}
 because moves in overall interest rates have a much smaller effect
 on the value of a CDS contract than does a move in the CDS spread
 itself.}
 
-\item{\code{RecRisk01}}{is the dollar value change in market value if the
+\item{\code{rec.risk.01}}{is the dollar value change in market value if the
 recovery rate used in the CDS valuation were increased by 1\%.}
 }}
 

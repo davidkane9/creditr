@@ -29,8 +29,8 @@ seller on an annual basis.}
 \item{notional.var}{character, column in x containing the amount of the
 underlying asset on which the payments are based.}
 
-\item{notional}{numeric, the notional amount for all pricing if there
-  isn't a notional.var}
+\item{notional}{numeric, the notional amount for all pricing if there isn't a
+  notional.var}
 
 \item{RR.var}{character, column in x containing recovery rates. ISDA model
 standard recovery rate asscumption is 0.4.}

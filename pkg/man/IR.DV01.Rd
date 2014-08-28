@@ -31,8 +31,8 @@ standard recovery rate asscumption is 0.4.}
 \item{notional.var}{character, column in x containing the amount of the
 underlying asset on which the payments are based.}
 
-\item{notional}{numeric, the notional amount for all pricing if there
-  isn't a notional.var}
+\item{notional}{numeric, the notional amount for all pricing if there isn't a
+  notional.var}
 }
 \value{
 a vector containing the change in upfront when there is a 1/1e4
