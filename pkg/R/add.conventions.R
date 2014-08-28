@@ -21,57 +21,43 @@
 #' add.conventions(x)
 
 add.conventions <- function(x, currency.var = "currency"){
-  
-  ## You must provide a currency.
-  
+
   stopifnot(! (is.null(x[[currency.var]])))
   
-  badDayConvention <- rep(NA, nrow(x))
-  mmDCC            <- rep(NA, nrow(x))
-  mmCalendars      <- rep(NA, nrow(x))
-  fixedDCC         <- rep(NA, nrow(x))
-  floatDCC         <- rep(NA, nrow(x))
-  fixedFreq        <- rep(NA, nrow(x))
-  floatFreq        <- rep(NA, nrow(x))
-  swapCalendars    <- rep(NA, nrow(x))
-  
-  ret <- cbind(x, badDayConvention, mmDCC, mmCalendars,
-               fixedDCC, floatDCC, fixedFreq, floatFreq, swapCalendars)
-  
-  for(i in 1:nrow(ret)){
+  for(i in 1:nrow(x)){
     
-    ret$badDayConvention[i] <- "M"
-    ret$mmDCC[i] <- "ACT/360"
-    ret$floatDCC[i] <- "ACT/360"
+    x$badDayConvention[i] <- "M"
+    x$mmDCC[i] <- "ACT/360"
+    x$floatDCC[i] <- "ACT/360"
 
-    if(ret[[currency.var]][i] == "USD"){
+    if(x[[currency.var]][i] == "USD"){
       
-      ret$mmCalendars[i] <- "none"
-      ret$fixedDCC[i] <- "30/360"
-      ret$fixedFreq[i] <- "6M"
-      ret$floatFreq[i] <- "3M"
-      ret$swapCalendars[i] <- "none"
+      x$mmCalendars[i] <- "none"
+      x$fixedDCC[i] <- "30/360"
+      x$fixedFreq[i] <- "6M"
+      x$floatFreq[i] <- "3M"
+      x$swapCalendars[i] <- "none"
     } else{
       
-      if(ret[[currency.var]][i] == "JPY"){
+      if(x[[currency.var]][i] == "JPY"){
         
-        ret$mmCalendars[i] <- "TYO"
-        ret$fixedDCC[i] <- "ACT/365"
-        ret$fixedFreq[i] <- "6M"
-        ret$floatFreq[i] <- "6M"
-        ret$swapCalendars[i] <- "TYO"
+        x$mmCalendars[i] <- "TYO"
+        x$fixedDCC[i] <- "ACT/365"
+        x$fixedFreq[i] <- "6M"
+        x$floatFreq[i] <- "6M"
+        x$swapCalendars[i] <- "TYO"
       } else{
         
-        if(ret[[currency.var]][i] == "EUR"){
+        if(x[[currency.var]][i] == "EUR"){
           
-          ret$mmCalendars[i] <- "none"
-          ret$fixedDCC[i] <- "30/360"
-          ret$fixedFreq[i] <- "1Y"
-          ret$floatFreq[i] <- "6M"
-          ret$swapCalendars[i] <- "none"
+          x$mmCalendars[i] <- "none"
+          x$fixedDCC[i] <- "30/360"
+          x$fixedFreq[i] <- "1Y"
+          x$floatFreq[i] <- "6M"
+          x$swapCalendars[i] <- "none"
         }
       }
     }
   }
-  return(ret)
+  return(x)
 }
