@@ -29,14 +29,21 @@ IR.DV01 <- function(x,
                     spread.var   = "spread",
                     coupon.var   = "coupon",
                     RR.var       = "recovery.rate",
-                    notional.var = "notional"){
+                    notional.var = "notional",
+                    notional     = 1e7){
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x, date.var = date.var, currency.var = currency.var,
-                    maturity.var = maturity.var, tenor.var = tenor.var,
-                    spread.var = spread.var, coupon.var = coupon.var,
-                    notional.var = notional.var, RR.var = RR.var)
+  x <- check.inputs(x,
+                    date.var     = date.var,
+                    currency.var = currency.var,
+                    maturity.var = maturity.var,
+                    tenor.var    = tenor.var,
+                    spread.var   = spread.var,
+                    coupon.var   = coupon.var,
+                    notional.var = notional.var,
+                    notional     = notional,
+                    RR.var       = RR.var)
  
   IR.DV01 <- rep(NA, nrow(x))
   

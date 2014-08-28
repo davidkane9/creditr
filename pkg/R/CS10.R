@@ -47,15 +47,15 @@ CS10 <- function(x,
   ## check if certain variables are contained in x
   
   x <- check.inputs(x,
-                    date.var = date.var,
+                    date.var     = date.var,
                     currency.var = currency.var,
                     maturity.var = maturity.var,
-                    tenor.var = tenor.var,
-                    spread.var = spread.var,
-                    coupon.var = coupon.var,
+                    tenor.var    = tenor.var,
+                    spread.var   = spread.var,
+                    coupon.var   = coupon.var,
                     notional.var = notional.var,
-                    notional = notional,
-                    RR.var = RR.var)
+                    notional     = notional,
+                    RR.var       = RR.var)
 
   CS10 <- rep(NA, nrow(x))
   
