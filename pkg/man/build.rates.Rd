@@ -21,8 +21,8 @@ a data frame that contains the CDS pricing date, the currency, the
 \code{build.rates} can create a data frame of interest rates from a start
 date to an end date, which are specified by the user. The interest rates will
 be later used in CDS pricing. \code{build.rates} also builds the rates.RData
-in the package. \code{build.rates} mainly consists download.markit and
-download.FRED. The two sources are Markit website and FRED website.
+in the package. \code{build.rates} mainly consists \code{download.markit} and
+\code{download.FRED}. The two sources are Markit website and FRED website.
 }
 \details{
 since Markit wesite has the interest rates back to th 1990s, download.markit
@@ -50,8 +50,8 @@ already for the convenience of CDS pricing, so we don't have to worry here.
 \dontrun{
 ## Running this example will take more than two hours.
 
-build.rates(start.date = as.Date("2004-01-01"), end.date = as.Date("2014-08-23"))
-}
+build.rates(start.date = as.Date("2004-01-01"),
+            end.date = as.Date("2014-08-23"))}
 }
 \references{
 \url{http://www.markit.com/}

@@ -11,17 +11,16 @@ download.FRED(start = as.Date("2004-01-01"), end = as.Date("2005-01-04"),
 
 \item{end}{is the end date of the data frame we want}
 
-\item{currency}{is the three-letter currency code. As of now, it works
-       for USD, EUR, and JPY. The default is JPY.}
+\item{currency}{is the three-letter currency code. As of now, it works for
+  USD, EUR, and JPY. The default is JPY.}
 }
 \value{
-a data frame that contains the rates based on the ISDA
-        pecifications
+a data frame that contains the rates based on the ISDA pecifications
 }
 \description{
-\code{download.FRED} returns the deposits and swap rates for the day
-input, along with the date conventions for that specific currency.
-The source is FRED.
+\code{download.FRED} returns the deposits and swap rates for the day input,
+along with the date conventions for that specific currency. The source is
+FRED.
 }
 \examples{
 \dontrun{
