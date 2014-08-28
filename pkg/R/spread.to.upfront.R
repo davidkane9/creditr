@@ -50,15 +50,15 @@ spread.to.upfront <- function(x,
  
   for(i in 1:nrow(x)){
     
-    ratesInfo <- get.rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
+    rates.info <- get.rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
     
    
     
     results[i] <- .Call('calcUpfrontTest',
                         baseDate_input = separate.YMD(x$baseDate[i]),
-                        types = paste(as.character(ratesInfo$type), collapse = ""),
-                        rates = as.numeric(as.character(ratesInfo$rate)),
-                        expiries = as.character(ratesInfo$expiry),
+                        types = paste(as.character(rates.info$type), collapse = ""),
+                        rates = as.numeric(as.character(rates.info$rate)),
+                        expiries = as.character(rates.info$expiry),
                         
                         mmDCC = x$mmDCC[i],
                         fixedSwapFreq = x$fixedFreq[i],

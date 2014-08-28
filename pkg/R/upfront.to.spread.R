@@ -63,16 +63,16 @@ upfront.to.spread <- function(x,
       recovery.rate <- x[[RR.var]][i]
     }
     
-    ratesInfo <- get.rates(date = as.Date(x[[date.var]][i]),
+    rates.info <- get.rates(date = as.Date(x[[date.var]][i]),
                            currency = as.character(x[[currency.var]][i]))
     
     baseDate <- x$baseDate[i]
     
     x$spread[i] <- .Call('calcCdsoneSpread',
                          baseDate_input = separate.YMD(baseDate),
-                         types = paste(as.character(ratesInfo$type), collapse = ""),
-                         rates = as.numeric(as.character(ratesInfo$rate)),
-                         expiries = as.character(ratesInfo$expiry),
+                         types = paste(as.character(rates.info$type), collapse = ""),
+                         rates = as.numeric(as.character(rates.info$rate)),
+                         expiries = as.character(rates.info$expiry),
                          mmDCC = x$mmDCC[i],
                          
                          fixedSwapFreq = x$fixedFreq[i],

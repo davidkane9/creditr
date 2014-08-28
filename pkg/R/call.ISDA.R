@@ -4,13 +4,14 @@
 #' 
 #' @param name character function name within which call.ISDA is called
 #' @param x dataframe which contains relevant dates and convention info
-#' @param ratesInfo dataframe which contains relevant rates data
-#' 
+#' @param rates.info dataframe which contains relevant rates data
+#'   
 #' @seealso \link{CS10} \link{rec.risk.01} \link{IR.DV01} \link{spread.DV01}
-#' 
-#' @return a numeric value which is the difference between the new upfront and the old one
+#'   
+#' @return a numeric value which is the difference between the new upfront and
+#'   the old one
 
-call.ISDA <- function(x, name, ratesInfo){
+call.ISDA <- function(x, name, rates.info){
   
   ## error checking
   
@@ -22,8 +23,8 @@ call.ISDA <- function(x, name, ratesInfo){
               "mmCalendars", "fixedDCC", "floatDCC", "fixedFreq",
               "floatFreq", "swapCalendars") %in% names(x))
   
-  stopifnot(is.data.frame(ratesInfo))
-  stopifnot(c("expiry", "rate", "type") %in% names(ratesInfo))
+  stopifnot(is.data.frame(rates.info))
+  stopifnot(c("expiry", "rate", "type") %in% names(rates.info))
   
   ## define CS10, IR.DV01, rec.risk.01 and spread.DV01 and set their default
   ## to zero. If the name matches any of the four functions, then the corres-
@@ -50,9 +51,9 @@ call.ISDA <- function(x, name, ratesInfo){
   
   upfront.orig <- .Call('calcUpfrontTest',
                         baseDate_input = separate.YMD(x$baseDate),
-                        types = paste(as.character(ratesInfo$type), collapse = ""),
-                        rates = as.numeric(as.character(ratesInfo$rate)),
-                        expiries = as.character(ratesInfo$expiry),
+                        types = paste(as.character(rates.info$type), collapse = ""),
+                        rates = as.numeric(as.character(rates.info$rate)),
+                        expiries = as.character(rates.info$expiry),
                         
                         mmDCC = as.character(x$mmDCC),
                         fixedSwapFreq = as.character(x$fixedFreq),
@@ -87,9 +88,9 @@ call.ISDA <- function(x, name, ratesInfo){
   
   upfront.new <- .Call('calcUpfrontTest',
                        baseDate_input = separate.YMD(x$baseDate),
-                       types = paste(as.character(ratesInfo$type), collapse = ""),
-                       rates = as.numeric(as.character(ratesInfo$rate)) + IR.DV01 * 1/1e4,
-                       expiries = as.character(ratesInfo$expiry),
+                       types = paste(as.character(rates.info$type), collapse = ""),
+                       rates = as.numeric(as.character(rates.info$rate)) + IR.DV01 * 1/1e4,
+                       expiries = as.character(rates.info$expiry),
                        
                        mmDCC = as.character(x$mmDCC),
                        fixedSwapFreq = as.character(x$fixedFreq),

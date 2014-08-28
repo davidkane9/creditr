@@ -70,9 +70,9 @@ CS10 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    CS10[i] <- call.ISDA(name = "CS10", x = x[i,], ratesInfo = ratesInfo)
+    CS10[i] <- call.ISDA(name = "CS10", x = x[i,], rates.info = rates.info)
   }
   
   return(CS10)

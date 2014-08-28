@@ -3,17 +3,18 @@
 \alias{call.ISDA}
 \title{call ISDA c function}
 \usage{
-call.ISDA(x, name, ratesInfo)
+call.ISDA(x, name, rates.info)
 }
 \arguments{
 \item{name}{character function name within which call.ISDA is called}
 
 \item{x}{dataframe which contains relevant dates and convention info}
 
-\item{ratesInfo}{dataframe which contains relevant rates data}
+\item{rates.info}{dataframe which contains relevant rates data}
 }
 \value{
-a numeric value which is the difference between the new upfront and the old one
+a numeric value which is the difference between the new upfront and
+  the old one
 }
 \description{
 \code{call.ISDA} call ISDA function

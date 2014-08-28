@@ -56,9 +56,9 @@ spread.DV01 <- function(x,
     ## extract currency specific interest rate data and date conventions using
     ## get.rates()
     
-    ratesInfo <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x[i,], ratesInfo = ratesInfo)
+    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x[i,], rates.info = rates.info)
   }
   
   return(spread.DV01)

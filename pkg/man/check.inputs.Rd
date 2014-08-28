@@ -6,7 +6,7 @@
 check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", notional.var = "notional", notional = 1e+07,
-  RR.var = "recovery.rate")
+  RR.var = "recovery.rate", recovery.rate = 0.4)
 }
 \arguments{
 \item{spread.var}{name of column in x containing  spreads in bps.}
