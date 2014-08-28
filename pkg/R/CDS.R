@@ -104,12 +104,7 @@ CDS <- function(name = NULL,
   
   if ((is.null(upfront)) & (is.null(spread)))
     stop("Please input spread, upfront or pts upfront")
-  
-  ## for JPY, the baseDate is date + 2 bus days, whereas for the rest it is date + 2 weekdays
-  
-  baseDate <- JPY.condition(baseDate = baseDate, date = date, 
-                            currency = currency)
-  
+
   ## rates Date is the date for which interest rates will be calculated. get.rates 
   ## function will return the rates of the previous day
   
@@ -143,6 +138,7 @@ CDS <- function(name = NULL,
   if (is.na(dates['endDate'])) dates['endDate']             <- as.Date(cdsDates$endDate)
   if (is.na(dates['stepinDate'])) dates['stepinDate']       <- as.Date(cdsDates$stepinDate)
   if (is.null(maturity)) maturity                           <- as.Date(cdsDates$endDate)
+  if (is.null(baseDate)) baseDate                           <- as.Date(cdsDates$baseDate)
   
   dates['effectiveDate'] <- adj.next.bus.day(date)
   
