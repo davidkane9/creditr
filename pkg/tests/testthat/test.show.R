@@ -36,7 +36,7 @@ test_that("test show() method", {
   
   expect_that(output[10], equals("Upfront:                        -259,647   Rec Risk (1 pct):               87.88"))
   
-  expect_that(output[11], equals("Default Prob:                     0.0424   Default Expo:               6,246,036"))
+  expect_that(output[11], equals("Default Prob:                     0.0424"))
   
   expect_that(output[12], equals(""))}
 )
