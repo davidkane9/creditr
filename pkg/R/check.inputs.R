@@ -19,6 +19,7 @@ check.inputs <- function(x,
                          spread.var = "spread",
                          coupon.var = "coupon",
                          notional.var = "notional",
+                         notional = 1e7,
                          RR.var = "recovery.rate"){
 
   ## check if certain variables are contained in x
@@ -26,7 +27,7 @@ check.inputs <- function(x,
   stopifnot(c(currency.var, spread.var, coupon.var) %in% names(x))
   
   if(!notional.var %in% names(x)){
-    x <- cbind(x, notional = 1e7)
+    x <- cbind(x, notional)
   }
   
   if(!RR.var %in% names(x)){
