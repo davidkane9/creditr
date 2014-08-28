@@ -4,20 +4,17 @@
 #' the same data frame with eight other columns of accounting conventions added to it.
 #' 
 #' @param x a data frame containing all necessary information
-#' @param currency.var character column name of currency variable
+#' @param currency.var a character indicating the name of currency column
 #' 
-#' @return a date frame with 8 other variables: badDayConvention,
+#' @return a data frame with eight more columns of accounting conventions: badDayConvention,
 #' mmDCC, mmCalendars, fixedDCC, floatDCC, fixedFreq, floatFreq and swapCalendars
 #' 
 #' @references
 #' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
 #' 
-#' @examples
-#' x1 <- data.frame(date = as.Date("2014-05-07"), currency = "USD")
-#' add.conventions(x1)
-#' 
-#' x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
-#' add.conventions(x2)
+#' @examples 
+#' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
+#' add.conventions(x)
 
 add.conventions <- function(x, currency.var = "currency"){
   
