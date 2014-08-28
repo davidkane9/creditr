@@ -21,6 +21,21 @@ data(rates)
 ## directory. 
 
 test_that("test for the CDS", {
+  
+  ## rel.diff is a function which determines if the relative difference
+  ## between the first argument (benchmark) and the second (real) is within
+  ## an acceptable range.
+  
+  rel.diff <- function(benchmark,
+                       real,
+                       range = 0.01){
+    if(abs(real - benchmark) / benchmark < range){
+      return TRUE
+    } else{
+      return FALSE
+    }
+  }
+  
   result.1 <- CDS(date = as.Date("2014-04-15"),
                   currency = "USD",
                   maturity = as.Date("2019-06-20"),                    
