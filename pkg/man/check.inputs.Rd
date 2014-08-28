@@ -11,10 +11,9 @@ check.inputs(x, date.var = "date", currency.var = "currency",
 \arguments{
 \item{spread.var}{name of column in x containing  spreads in bps.}
 
-\item{date.var}{column in x containing the date to be used for pricing and
-  other calculations.}
-
 \item{x}{data frame, contains all the relevant columns.}
+
+\item{date.var}{character, column in x containing date variable.}
 
 \item{currency.var}{character, column in x containing currency.}
 
@@ -42,5 +41,15 @@ a data frame if not stopped by errors.
 \code{check.inputs} checks whether a data frame's inputs are valid. It is a
 minimum set of checks. Things such as recovery.rate var are not checked,
 because some functions don't need them as input.
+}
+\examples{
+x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
+                currency = c("USD", "EUR"),
+                tenor = c(5, 5),
+                spread = c(120, 110),
+                coupon = c(100, 100),
+                recovery.rate = c(0.4, 0.4),
+                notional = c(1e7, 1e7))
+x <- check.inputs(x)
 }
 

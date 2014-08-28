@@ -1,15 +1,23 @@
 #' Check whether inputs from the data frame are valid
 #' 
-#' \code{check.inputs} checks whether a data frame's inputs are valid. It is a
-#' minimum set of checks. Things such as recovery.rate var are not checked,
+#' \code{check.inputs} checks whether a data frame's inputs are valid. It is a 
+#' minimum set of checks. Things such as recovery.rate var are not checked, 
 #' because some functions don't need them as input.
 #' 
 #' @inheritParams CS10
 #' @param spread.var name of column in x containing  spreads in bps.
-#' @param date.var column in x containing the date to be used for pricing and
-#'   other calculations.
 #'   
 #' @return a data frame if not stopped by errors.
+#' 
+#' @examples 
+#' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
+#'                 currency = c("USD", "EUR"),
+#'                 tenor = c(5, 5),
+#'                 spread = c(120, 110),
+#'                 coupon = c(100, 100),
+#'                 recovery.rate = c(0.4, 0.4),
+#'                 notional = c(1e7, 1e7))
+#' x <- check.inputs(x)
 
 check.inputs <- function(x,
                          date.var = "date", 
@@ -23,6 +31,8 @@ check.inputs <- function(x,
                          RR.var = "recovery.rate",
                          recovery.rate = 0.4){
 
+  stopifnot(is.data.frame(x))
+  
   ## check if certain variables are contained in x
   
   stopifnot(c(currency.var, spread.var, coupon.var) %in% names(x))
