@@ -7,6 +7,10 @@ setMethod("summary",
           function(object,
                    ...){
             
+            endDate <- add.dates(data.frame(date = as.Date(object@date),
+                                            tenor = object@tenor,
+                                            currency = object@currency))$endDate
+            
             cat(sprintf(paste("Contract Type:", object@contract,
                               sep = paste0(rep(" ",
                                                40-nchar(as.character("Contract Type:")) -
@@ -27,7 +31,10 @@ setMethod("summary",
                 sprintf(paste("Currency:", object@currency,
                               sep = paste0(rep(" ",
                                                40-nchar(as.character("Currency:")) -
-                                                 nchar(as.character(object@currency))), collapse = ""))), "\n",
+                                                 nchar(as.character(object@currency))), collapse = ""))),
+                sprintf(paste("   End Date:", endDate,
+                              sep = paste0(rep(" ", 40-nchar(as.character("   End Date:")) -
+                                                 nchar(as.character(endDate))), collapse = ""))), "\n",
                 sprintf(paste("Spread:",
                               format(round(object@spread, 4),big.mark = ",",
                                      scientific=F),
