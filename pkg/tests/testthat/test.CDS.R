@@ -1,19 +1,17 @@
-## result.1 match:
-## spreadDV01
-
-## result.2 match:
-## IRDV01, price, defaultExpo, spreadDV01
-
-## result.3 match:
-## everything except RecRisk01
-
-## result.4 match:
-## ptsUpfront, spreadDV01
-
 context("Test CDS")
 
 ## CDS.R test case for Caesars Entertainment Operating Co Inc using data obtainined from Bloomberg.
 ## The .png files containing these results are in tests/sources
+
+## rel.diff is a function which determines if the relative difference
+## between the first argument (truth) and the second (calculated) is within
+## a designated acceptable range (threshold).
+
+rel.diff <- function(truth,
+                     calculated,
+                     threshold = 0.01){
+  return (abs(calculated - truth) / truth < threshold)
+}
 
 data(rates)
 
@@ -21,20 +19,6 @@ data(rates)
 ## directory. 
 
 test_that("test for the CDS", {
-  
-  ## rel.diff is a function which determines if the relative difference
-  ## between the first argument (benchmark) and the second (real) is within
-  ## a designated acceptable range (range).
-  
-  rel.diff <- function(benchmark,
-                       real,
-                       range = 0.01){
-    if(abs(real - benchmark) / benchmark < range){
-      return (TRUE)
-    } else{
-      return (FALSE)
-    }
-  }
   
   result.1 <- CDS(date = as.Date("2014-04-15"),
                   currency = "USD",

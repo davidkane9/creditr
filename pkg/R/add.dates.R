@@ -25,9 +25,9 @@
 #' add.dates(x)
 
 add.dates <- function(x, 
-                      date.var = "date",
+                      date.var     = "date",
                       maturity.var = "maturity",
-                      tenor.var = "tenor",
+                      tenor.var    = "tenor",
                       currency.var = "currency"){
   
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
@@ -137,7 +137,9 @@ add.dates <- function(x,
       endDate$mon <- endDate$mon + 3
       endDate <- as.Date(endDate)
     }
-    ## if the maturity date is provided, it is the enddate.
+    
+    ## if the maturity date is provided, it is the endDate.
+    
     else{
       endDate <- as.Date(x[[maturity.var]][i])
     }
@@ -155,7 +157,7 @@ add.dates <- function(x,
     ## date, the protection seller has the obligation to make the 
     ## protection payment.
     ## Since 2009 (Big Bang Protocol), the backstop date is 60 days
-    ## before the trade date. Prior to 2009, it was trade date-2
+    ## before the trade date. Prior to 2009, it was trade date - 2
     
     backstopDate <- x[[date.var]][i] - 60
     
