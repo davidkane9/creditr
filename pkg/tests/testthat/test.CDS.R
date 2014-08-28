@@ -24,15 +24,15 @@ test_that("test for the CDS", {
   
   ## rel.diff is a function which determines if the relative difference
   ## between the first argument (benchmark) and the second (real) is within
-  ## an acceptable range.
+  ## a designated acceptable range (range).
   
   rel.diff <- function(benchmark,
                        real,
                        range = 0.01){
     if(abs(real - benchmark) / benchmark < range){
-      return TRUE
+      return (TRUE)
     } else{
-      return FALSE
+      return (FALSE)
     }
   }
   
@@ -44,23 +44,22 @@ test_that("test for the CDS", {
                   recovery.rate = 0.4,
                   notional = 1e7)
   
-  ## comparing results with true values from Bloomberg
-  ## The results have to be rounded off as there are marginal differences
+  ## check to see if our calcualted results are within an acceptable range
+  ## of the true values from Bloomberg
+ 
+  expect_true(rel.diff(5707438, result.1@upfront))
   
-  #true result is 5707438 whereas the package returns 5707436
-  expect_equal(round(5707438, -1), round(result.1@upfront,-1))
+  expect_true(rel.diff(-271.18, result.1@IRDV01))
   
-  expect_equal(round(-271.18, 1), round(result.1@IRDV01,1))
+  expect_true(rel.diff(42.55, result.1@price))
   
-  expect_equal(42.55, round(result.1@price, 2))
+  expect_true(rel.diff(5744938, result.1@principal))
   
-  expect_equal(round(5744938, -1), round(result.1@principal, -1))
+  expect_true(rel.diff(-95430.32, result.1@RecRisk01))
   
-  expect_equal(round(-95430.32, -2), round(result.1@RecRisk01, -2))
+  expect_true(rel.diff(255062, result.1@defaultExpo))
   
-  expect_equal(round(255062,-1), round(result.1@defaultExpo,-1))
-  
-  expect_equal(round(21.15,2), round(result.1@spreadDV01,2))
+  expect_true(rel.diff(21.15, result.1@spreadDV01))
   
   
   ## CDS.R test case for Chorus Ltd. (Australian company)
