@@ -62,30 +62,30 @@ setMethod("summary",
                                                           big.mark=",", scientific=F)))),
                                            collapse = ""))),
                 sprintf(paste("   Spread DV01:",
-                              format(round(object@spreadDV01, 0), big.mark = ",",
+                              format(round(object@spread.DV01, 0), big.mark = ",",
                                      scientific=F),
                               sep = paste0(rep(" ", 40-nchar(as.character("   Spread DV01:")) -
                                                  nchar(as.character(
-                                                   format(round(object@spreadDV01, 0), big.mark=",",
+                                                   format(round(object@spread.DV01, 0), big.mark=",",
                                                           scientific=F)))),
                                            collapse = ""))), "\n",
                 
                 sprintf(paste("IR DV01:",
-                              format(round(object@IRDV01, 2),big.mark=",",
+                              format(round(object@IR.DV01, 2),big.mark=",",
                                      scientific=F),
                               sep = paste0(rep(" ",
                                                40-nchar(as.character("IR DV01:")) -
                                                  nchar(as.character(
-                                                   format(round(object@IRDV01, 2), big.mark=",",
+                                                   format(round(object@IR.DV01, 2), big.mark=",",
                                                           scientific=F)))),
                                            collapse = ""))),
                 sprintf(paste("   Rec Risk (1 pct):",
-                              format(round(object@RecRisk01, 2),big.mark=",",
+                              format(round(object@rec.risk.01, 2),big.mark=",",
                                      scientific=F),
                               sep = paste0(rep(" ", 
                                                40-nchar(as.character("   Rec Risk (1 pct):")) -
                                                  nchar(as.character(
-                                                   format(round(object@RecRisk01, 2),
+                                                   format(round(object@rec.risk.01, 2),
                                                           big.mark=",",
                                                           scientific=F)))),
                                            collapse = ""))), "\n",

@@ -51,8 +51,6 @@ setMethod("update",
                                 recovery.rate = object@recovery.rate,
                                 upfront = newUpfront,
                                 notional = object@notional)
-                  
                   return(newCDS)
-
           }
           )
