@@ -27,33 +27,33 @@ add.conventions <- function(x, currency.var = "currency"){
   for(i in 1:nrow(x)){
     
     x$badDayConvention[i] <- "M"
-    x$mmDCC[i] <- "ACT/360"
-    x$floatDCC[i] <- "ACT/360"
+    x$mmDCC[i]            <- "ACT/360"
+    x$floatDCC[i]         <- "ACT/360"
 
     if(x[[currency.var]][i] == "USD"){
       
-      x$mmCalendars[i] <- "none"
-      x$fixedDCC[i] <- "30/360"
-      x$fixedFreq[i] <- "6M"
-      x$floatFreq[i] <- "3M"
+      x$mmCalendars[i]   <- "none"
+      x$fixedDCC[i]      <- "30/360"
+      x$fixedFreq[i]     <- "6M"
+      x$floatFreq[i]     <- "3M"
       x$swapCalendars[i] <- "none"
     } else{
       
       if(x[[currency.var]][i] == "JPY"){
         
-        x$mmCalendars[i] <- "TYO"
-        x$fixedDCC[i] <- "ACT/365"
-        x$fixedFreq[i] <- "6M"
-        x$floatFreq[i] <- "6M"
+        x$mmCalendars[i]   <- "TYO"
+        x$fixedDCC[i]      <- "ACT/365"
+        x$fixedFreq[i]     <- "6M"
+        x$floatFreq[i]     <- "6M"
         x$swapCalendars[i] <- "TYO"
       } else{
         
         if(x[[currency.var]][i] == "EUR"){
           
-          x$mmCalendars[i] <- "none"
-          x$fixedDCC[i] <- "30/360"
-          x$fixedFreq[i] <- "1Y"
-          x$floatFreq[i] <- "6M"
+          x$mmCalendars[i]   <- "none"
+          x$fixedDCC[i]      <- "30/360"
+          x$fixedFreq[i]     <- "1Y"
+          x$floatFreq[i]     <- "6M"
           x$swapCalendars[i] <- "none"
         }
       }
