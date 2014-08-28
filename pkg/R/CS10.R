@@ -36,28 +36,30 @@
 #' result <- CS10(x)
 
 CS10 <- function(x,
-                 date.var     = "date",
-                 currency.var = "currency",
-                 maturity.var = "maturity",
-                 tenor.var    = "tenor",
-                 spread.var   = "spread",
-                 coupon.var   = "coupon",
-                 RR.var       = "recovery.rate",
-                 notional.var = "notional",
-                 notional     = 1e7){
+                 date.var      = "date",
+                 currency.var  = "currency",
+                 maturity.var  = "maturity",
+                 tenor.var     = "tenor",
+                 spread.var    = "spread",
+                 coupon.var    = "coupon",
+                 RR.var        = "recovery.rate",
+                 notional.var  = "notional",
+                 notional      = 1e7,
+                 recovery.rate = 0.4){
   
   ## check if certain variables are contained in x
   
   x <- check.inputs(x,
-                    date.var     = date.var,
-                    currency.var = currency.var,
-                    maturity.var = maturity.var,
-                    tenor.var    = tenor.var,
-                    spread.var   = spread.var,
-                    coupon.var   = coupon.var,
-                    notional.var = notional.var,
-                    notional     = notional,
-                    RR.var       = RR.var)
+                    date.var      = date.var,
+                    currency.var  = currency.var,
+                    maturity.var  = maturity.var,
+                    tenor.var     = tenor.var,
+                    spread.var    = spread.var,
+                    coupon.var    = coupon.var,
+                    notional.var  = notional.var,
+                    notional      = notional,
+                    RR.var        = RR.var,
+                    recovery.rate = recovery.rate)
 
   CS10 <- rep(NA, nrow(x))
   
