@@ -1,9 +1,9 @@
 #' Return accounting conventions
 #' 
-#' \code{add.conventions} Given a dataframe which contains currency
-#' the function returns appropriate accounting conventions used in pricing a CDS contract. 
+#' \code{add.conventions} takes a data frame with a currency.var column and returns
+#' the same data frame with eight other columns of accounting conventions added to it.
 #' 
-#' @param x a dataframe containing all necessary information
+#' @param x a data frame containing all necessary information
 #' @param currency.var character column name of currency variable
 #' 
 #' @return a date frame with 8 other variables: badDayConvention,
