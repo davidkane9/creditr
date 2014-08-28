@@ -6,24 +6,25 @@
 add.conventions(x, currency.var = "currency")
 }
 \arguments{
-\item{x}{a dataframe containing all necessary information}
+\item{x}{a data frame containing all necessary information}
 
-\item{currency.var}{character column name of currency variable}
+\item{currency.var}{a character indicating the name of currency column}
 }
 \value{
-a date frame with 8 other variables: badDayConvention,
-mmDCC, mmCalendars, fixedDCC, floatDCC, fixedFreq, floatFreq and swapCalendars
+a data frame with eight more columns of accounting conventions: badDayConvention
+(a character indicating how non-business days are converted), mmDCC (the day count convention
+of the instruments), mmCalendars (any calendar adjustment for the CDS), fixedDCC (the day count
+convention of the fixed leg), floatDCC (the day count convention of the floating leg), fixedFreq
+(the frequency of the fixed rate of swap being paid), floatFreq (the frequency of the floating
+rate of swap being paid) and swapCalendars (any calendar adjustment for swap rate)
 }
 \description{
-\code{add.conventions} Given a dataframe which contains currency
-the function returns appropriate accounting conventions used in pricing a CDS contract.
+\code{add.conventions} takes a data frame with a currency.var column and returns
+the same data frame with eight other columns of accounting conventions added to it.
 }
 \examples{
-x1 <- data.frame(date = as.Date("2014-05-07"), currency = "USD")
-add.conventions(x1)
-
-x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
-add.conventions(x2)
+x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
+add.conventions(x)
 }
 \references{
 http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf

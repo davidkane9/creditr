@@ -1,15 +1,16 @@
-#' Return CDS dates
+#' Return CDS dates.
 #' 
-#' \code{add.dates} Given a dataframe which contains dates, tenor (or maturity) and/or currency
-#' the function returns appropriate dates used in pricing a CDS contract. 
+#' \code{add.dates} takes a data frame which contains dates, tenor (or maturity) and currency
+#' and returns the appropriate dates for pricing a CDS contract. 
 #' 
-#' @param x a dataframe containing all necessary information
-#' @param date.var character column name of date variable
-#' @param maturity.var character column name of maturity variable
-#' @param tenor.var character column name of tenor variable
-#' @param currency.var character column name of currency variable
+#' @param x a data frame, containing all necessary information
+#' @param date.var character, column name of date variable
+#' @param maturity.var character, column name of maturity variable
+#' @param tenor.var character, column name of tenor variable
+#' @param currency.var character, column name of currency variable
 #' 
-#' @return a date frame with 8 variables: step-in date (T+1), value date (T+3 business days),
+#' @return a date frame containing all the input variables, as well as 
+#'   8 morevariables: step-in date (T+1), value date (T+3 business days),
 #'   start date (accrual begin date), end date (maturity), backstop date (T-60 
 #'   day look back from which 'protection' is effective), pen coupon date 
 #'   (second to last coupon date)
@@ -18,75 +19,88 @@
 #' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
 #' 
 #' @examples
-#' x1 <- data.frame(date = as.Date("2014-05-07"), tenor = 5, currency = "USD")
-#' add.dates(x1)
-#' 
-#' x2 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
-#' tenor = rep(5, 2),
-#' currency = "JPY")
-#' add.dates(x2)
+#' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
+#' tenor = rep(5, 2), currency = c("JPY", "USD"))
+#' add.dates(x)
 
-add.dates <- function(x, date.var = "date",
-                     maturity.var = "maturity",
-                     tenor.var = "tenor",
-                     currency.var = "currency"){
-  
-  ## You must provide either a maturity or a tenor, but not both.
+add.dates <- function(x, 
+                      date.var = "date",
+                      maturity.var = "maturity",
+                      tenor.var = "tenor",
+                      currency.var = "currency"){
 
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
   stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
   
-  baseDate <- as.Date(rep(NA, nrow(x)))
-  stepinDate <- as.Date(rep(NA, nrow(x)))
-  valueDate <- as.Date(rep(NA, nrow(x)))
-  startDate <- as.Date(rep(NA, nrow(x)))
-  firstcouponDate <- as.Date(rep(NA, nrow(x)))
-  pencouponDate <- as.Date(rep(NA, nrow(x)))
-  endDate <- as.Date(rep(NA, nrow(x)))
-  backstopDate <- as.Date(rep(NA, nrow(x)))
+  ## call JPY.holidays data frame for dates settings later
   
-  ret <- cbind(x, stepinDate, valueDate, startDate, firstcouponDate,
-               pencouponDate, endDate, backstopDate, baseDate)
+  data(JPY.holidays, package = "CDS")
   
-  for(i in 1:nrow(ret)){
+  x$baseDate        <- as.Date(NA)
+  x$stepinDate      <- as.Date(NA)
+  x$valueDate       <- as.Date(NA)
+  x$startDate       <- as.Date(NA)
+  x$firstcouponDate <- as.Date(NA)
+  x$pencouponDate   <- as.Date(NA)
+  x$endDate         <- as.Date(NA)
+  x$backstopDate    <- as.Date(NA)
+  x$baseDate        <- as.Date(NA)
+  
+  for(i in 1:nrow(x)){
    
     ## stop if the maturity date does not belong to the date class
     
-    if(!is.null(ret[[maturity.var]][i])){
-      stopifnot(inherits(as.Date(ret[[maturity.var]][i]), "Date"))    
+    if(!is.null(x[[maturity.var]][i])){
+      stopifnot(inherits(as.Date(x[[maturity.var]][i]), "Date"))    
     }
     
-    length <- ret[[tenor.var]][i]
+    length <- x[[tenor.var]][i]
     
-    dateWday <- as.POSIXlt(ret[[date.var]][i])$wday
+    ## find out which date is trade date so that we can determine baseDate
     
-    ## calculate baseDate
+    dateWday <- as.POSIXlt(x[[date.var]][i])$wday
     
-    ## baseDate should be T + 2 weekdayS instead of business days?
-    ## baseDate <- adj.next.bus.day(ret[[date.var]][i] + 2)
-    baseDate <- ret[[date.var]][i] + 2
+    ## baseDate is the biggest confusing date, because of JPY's difference
     
-    ## if(as.POSIXlt(baseDate)$wday == 1){ 
-    ##   baseDate <- baseDate + 1
-    ## }
+    ## Also notice that the below code is not perfect; if extreme cases 
+    ## like five holidays in a row happen, the below code will fail
+    ## if inaccuracy problem (compared with Bloomberg) still happens,
+    ## ALWAYS re-consider problems in baseDate and valueDate FIRST!!!
     
-    baseDate <- JPY.condition(baseDate = baseDate, date = x[[date.var]][i], 
-                              currency = x[[currency.var]][i])[[1]]
+    if(x[[currency.var]][i] != "JPY"){
+        baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+        baseDate <- adj.next.bus.day(baseDate + 1)
+    } else{
+        baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+        while(baseDate %in% JPY.holidays){
+          baseDate <- adj.next.bus.day(baseDate + 1)
+        }
+        baseDate <- adj.next.bus.day(baseDate + 1)
+        while(baseDate %in% JPY.holidays){
+          baseDate <- adj.next.bus.day(baseDate + 1)
+        }
+      }
   
     ## stepinDate is the date on which a party assumes ownership of a trade side. 
     ## it is Trade date + 1 day
     
-    stepinDate <- ret[[date.var]][i] + 1
+    stepinDate <- x[[date.var]][i] + 1
     
     ## valueDate is the date on which a cash payment is settled.
     ## valueDate is 3 business days after the Trade Date. 
     
-    valueDate <- adj.next.bus.day(ret[[date.var]][i] + 1)
+    ## if valueDate is 3 "business" days after the Trade Date,
+    ## then shouldn't we consider US, EUR and JP holidays as well?
+    ## but we don't have the data frame now for these holidays!
+    ## The below code only plus three weekdays to valueDate!
+    ## this is wrong!!!
+    
+    valueDate <- adj.next.bus.day(x[[date.var]][i] + 1)
     for(j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
     
-    date.first <- as.POSIXlt(ret[[date.var]][i])
+    date.first <- as.POSIXlt(x[[date.var]][i])
     
     ## get the remainder X after dividing it by 3 and then move back X month
     
@@ -112,7 +126,7 @@ add.dates <- function(x, date.var = "date",
     ## protection is offered. It is the firstCouponDate + tenor. So if the 
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
     
-    if(is.null(ret[[maturity.var]][i])){
+    if(is.null(x[[maturity.var]][i])){
       endDate <- date.first
       endDate$year <- date.first$year + length
       endDate$mon <- endDate$mon + 3
@@ -120,7 +134,7 @@ add.dates <- function(x, date.var = "date",
     }
     ## if the maturity date is provided, it is the enddate.
     else{
-      endDate <- as.Date(ret[[maturity.var]][i])
+      endDate <- as.Date(x[[maturity.var]][i])
     }
     
     ## pencouponDate is the date of the penultimate coupon payment, and it
@@ -138,18 +152,18 @@ add.dates <- function(x, date.var = "date",
     ## Since 2009 (Big Bang Protocol), the backstop date is 60 days
     ## before the trade date. Prior to 2009, it was trade date-2
     
-    backstopDate <- ret[[date.var]][i] - 60
+    backstopDate <- x[[date.var]][i] - 60
     
-    ret$stepinDate[i] <- stepinDate
-    ret$startDate[i] <- startDate
-    ret$firstcouponDate[i] <- firstcouponDate
-    ret$pencouponDate[i] <- pencouponDate
-    ret$endDate[i] <- endDate
-    ret$backstopDate[i] <- backstopDate
-    ret$valueDate[i] <- valueDate
-    ret$baseDate[i] <- baseDate
+    x$stepinDate[i]      <- stepinDate
+    x$startDate[i]       <- startDate
+    x$firstcouponDate[i] <- firstcouponDate
+    x$pencouponDate[i]   <- pencouponDate
+    x$endDate[i]         <- endDate
+    x$backstopDate[i]    <- backstopDate
+    x$valueDate[i]       <- valueDate
+    x$baseDate[i]        <- baseDate
   }
   
-  return(ret)
+  return(x)
   
 }

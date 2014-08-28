@@ -5,7 +5,7 @@
 \usage{
 check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", notional.var = "notional",
+  coupon.var = "coupon", notional.var = "notional", notional = 1e+07,
   RR.var = "recovery.rate")
 }
 \arguments{
@@ -27,7 +27,10 @@ points. It specifies the payment amount from the protection buyer to the
 seller on an annual basis.}
 
 \item{notional.var}{character, column in x containing the amount of the
-  underlying asset on which the payments are based.}
+underlying asset on which the payments are based.}
+
+\item{notional}{numeric, the notional amount for all pricing if there
+  isn't a notional.var}
 
 \item{RR.var}{character, column in x containing recovery rates. ISDA model
 standard recovery rate asscumption is 0.4.}

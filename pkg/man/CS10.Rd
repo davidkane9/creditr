@@ -6,7 +6,7 @@
 CS10(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", RR.var = "recovery.rate",
-  notional.var = "notional")
+  notional.var = "notional", notional = 1e+07)
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}
@@ -29,7 +29,10 @@ seller on an annual basis.}
 standard recovery rate asscumption is 0.4.}
 
 \item{notional.var}{character, column in x containing the amount of the
-  underlying asset on which the payments are based.}
+underlying asset on which the payments are based.}
+
+\item{notional}{numeric, the notional amount for all pricing if there
+  isn't a notional.var}
 }
 \value{
 a vector containing the change in upfront in units of currency.var
