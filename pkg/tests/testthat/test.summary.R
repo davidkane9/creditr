@@ -17,7 +17,7 @@ test_that("test summary() method", {
   
   expect_that(output[2], equals("Entity Name:                          NA   RED:                               NA"))
   
-  expect_that(output[3], equals("Currency:                            USD"))
+  expect_that(output[3], equals("Currency:                            USD   End Date:                  2019-06-20"))
   
   expect_that(output[4], equals("Spread:                               50   Coupon:                           100"))
   
