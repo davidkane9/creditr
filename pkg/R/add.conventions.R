@@ -22,7 +22,7 @@
 
 add.conventions <- function(x, currency.var = "currency"){
 
-  stopifnot(! (is.null(x[[currency.var]])))
+  stopifnot(currency.var %in% names(x))
   
   for(i in 1:nrow(x)){
     
