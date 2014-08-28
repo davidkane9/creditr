@@ -18,8 +18,6 @@
 #' the rates based on the ISDA specifications; the second contains all
 #' the dcc and calendar specifications of the curve.
 #'
-#' @export
-#' 
 #' @examples
 #' \dontrun{
 #' get.rates(as.Date("2014-05-07"), currency = "USD")

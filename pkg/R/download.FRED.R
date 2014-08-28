@@ -11,8 +11,6 @@
 #' 
 #' @return a data frame that contains the rates based on the ISDA 
 #'         pecifications
-#'
-#' @export
 #' 
 #' @seealso \link{download.markit} \link{build.rates}
 #' 

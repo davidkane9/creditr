@@ -16,14 +16,14 @@
 #'   standard recovery rate asscumption is 0.4.
 #' @param notional.var character, column in x containing the amount of the 
 #'   underlying asset on which the payments are based.
-#' @param notional numeric, the notional amount for all pricing if there
-#'   isn't a notional.var
+#' @param notional numeric, the notional amount for all pricing if there isn't a
+#'   notional.var
 #'   
-#' @return a vector containing the change in upfront in units of currency.var
+#' @return a vector containing the change in upfront in units of currency.var 
 #'   when spread increase by 10%, for each corresponding CDS contract.
 #'   
 #' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} 
-#'          \link{spread.to.upfront} 
+#'   \link{spread.to.upfront}
 #'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),

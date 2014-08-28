@@ -14,8 +14,9 @@
 #' rate of swap being paid) and swapCalendars (any calendar adjustment for swap rate)
 #' 
 #' @references
-#' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
-#'
+#' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
+#' }
+#' 
 #' @examples 
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
 #' add.conventions(x)

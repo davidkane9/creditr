@@ -26,8 +26,8 @@ spread.to.upfront <- function(x,
                               recovery.var = "recovery",
                               isPriceClean = FALSE){
   
-  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) ## stop if both are null
-  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]])) ## stop if neither of them are NULL
+  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) 
+  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
   
   ## stop if not all the relevant variables are contained in x
   

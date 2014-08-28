@@ -17,7 +17,8 @@
 #' to last coupon date), and baseDate (the starting date for the IR curve)
 #' 
 #' @references
-#' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
+#' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
+#' }
 #' 
 #' @examples
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
@@ -132,10 +133,10 @@ add.dates <- function(x,
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
     
     if(is.null(x[[maturity.var]][i])){
-      endDate <- date.first
+      endDate      <- date.first
       endDate$year <- date.first$year + length
-      endDate$mon <- endDate$mon + 3
-      endDate <- as.Date(endDate)
+      endDate$mon  <- endDate$mon + 3
+      endDate      <- as.Date(endDate)
     }
     
     ## if the maturity date is provided, it is the endDate.
