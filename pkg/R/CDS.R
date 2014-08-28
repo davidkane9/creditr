@@ -1,39 +1,33 @@
-#' Build a \code{CDS} class object given the input about a CDS
-#' contract.
+#' Build a \code{CDS} class object given the input about a CDS contract.
 #' 
 #' @name CDS
-#' 
+#'   
 #' @param name is the name of the reference entity. Optional.
 #' @param contract is the contract type, default SNAC
 #' @param RED alphanumeric code assigned to the reference entity. Optional.
-#' @param date is when the trade is executed, denoted as T. Default
-#' is \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
+#' @param date is when the trade is executed, denoted as T. Default is
+#'   \code{Sys.Date}. The date format should be in "YYYY-MM-DD".
 #' @param spread CDS par spread in bps.
 #' @param maturity date of the CDS contract.
 #' @param tenor of contract. By default is set as 5
-#' @param coupon quoted in bps. It specifies the payment amount from
-#' the protection buyer to the seller on a regular basis. The default
-#' is 100 bps.
+#' @param coupon quoted in bps. It specifies the payment amount from the
+#'   protection buyer to the seller on a regular basis. The default is 100 bps.
 #' @param recovery.rate in decimal. Default is 0.4.
-#' @param currency in which CDS is denominated. 
-#' @param notional is the amount of the underlying asset on which the
-#' payments are based. Default is 1e7, i.e. 10MM. 
-#' @param upfront is quoted in the currency amount. Since a standard
-#' contract is traded with fixed coupons, upfront payment is
-#' introduced to reconcile the difference in contract value due to the
-#' difference between the fixed coupon and the conventional par
-#' spread. There are two types of upfront, dirty and clean. Dirty
-#' upfront, a.k.a. Cash Settlement Amount, refers to the market value
-#' of a CDS contract. Clean upfront is dirty upfront less any accrued
-#' interest payment, and is also called the Principal.
-#' 
-#' @return a \code{CDS} class object including the input informtion on
-#' the contract as well as the valuation results of the contract.
-#' 
-#' @export
+#' @param currency in which CDS is denominated.
+#' @param notional is the amount of the underlying asset on which the payments
+#'   are based. Default is 1e7, i.e. 10MM.
+#' @param upfront is quoted in the currency amount. Since a standard contract is
+#'   traded with fixed coupons, upfront payment is introduced to reconcile the
+#'   difference in contract value due to the difference between the fixed coupon
+#'   and the conventional par spread. There are two types of upfront, dirty and
+#'   clean. Dirty upfront, a.k.a. Cash Settlement Amount, refers to the market
+#'   value of a CDS contract. Clean upfront is dirty upfront less any accrued 
+#'   interest payment, and is also called the Principal.
+#'   
+#' @return a \code{CDS} class object including the input informtion on the
+#'   contract as well as the valuation results of the contract.
+#'   
 #' @examples
-#' # Build a simple CDS class object
-#' require(CDS)
 #' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
 CDS <- function(name = NULL,
@@ -213,12 +207,12 @@ CDS <- function(name = NULL,
     
     ## clean upfront or principal
     
-    df <- data.frame(date = c(as.Date(cds@date)),
-                     spread = c(spread),
-                     coupon = c(cds@coupon),
-                     maturity = c(cds@maturity),
-                     currency = c(cds@currency),
-                     recovery = c(cds@recovery.rate))
+    df <- data.frame(date     = as.Date(cds@date),
+                     spread   = spread,
+                     coupon   = cds@coupon,
+                     maturity = cds@maturity,
+                     currency = cds@currency,
+                     recovery = cds@recovery.rate)
     
     cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
@@ -253,12 +247,12 @@ CDS <- function(name = NULL,
                                       payAccruedOnDefault = payAccruedOnDefault)
       ## dirty upfront
       
-      df <- data.frame(date = c(as.Date(cds@date)),
-                       spread = c(spread),
-                       coupon = c(cds@coupon),
-                       tenor = c(cds@tenor),
-                       currency = c(cds@currency),
-                       recovery = c(cds@recovery.rate))
+      df <- data.frame(date     = as.Date(cds@date),
+                       spread   = spread,
+                       coupon   = cds@coupon,
+                       tenor    = cds@tenor,
+                       currency = cds@currency,
+                       recovery = cds@recovery.rate)
       
       cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = FALSE)
@@ -286,12 +280,12 @@ CDS <- function(name = NULL,
       
       ## principal
       
-      df <- data.frame(date = c(as.Date(cds@date)),
-                       spread = c(cds@spread),
-                       coupon = c(cds@coupon),
-                       maturity = c(cds@maturity),
-                       currency = c(cds@currency),
-                       recovery = c(cds@recovery.rate))
+      df <- data.frame(date = as.Date(cds@date),
+                       spread = cds@spread,
+                       coupon = cds@coupon,
+                       maturity = cds@maturity,
+                       currency = cds@currency,
+                       recovery = cds@recovery.rate)
       
       cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = TRUE)
@@ -305,13 +299,13 @@ CDS <- function(name = NULL,
   ## spread.DV01, IR.DV01, rec.risk.01, default probability, default exposure and price 
   ## note: this is a hack; must fix
   
-  x <- data.frame(date = c(as.Date(cds@date)),
-                  currency = c(cds@currency),
-                  tenor = c(cds@tenor),
-                  spread = c(cds@spread),
-                  coupon = c(cds@coupon),
-                  recovery.rate = c(cds@recovery.rate),
-                  notional = c(cds@notional))
+  x <- data.frame(date          = as.Date(cds@date),
+                  currency      = cds@currency,
+                  tenor         = cds@tenor,
+                  spread        = cds@spread,
+                  coupon        = cds@coupon,
+                  recovery.rate = cds@recovery.rate,
+                  notional      = cds@notional)
   
   cds@spread.DV01  <- spread.DV01(x)
   cds@IR.DV01      <- IR.DV01(x) 
