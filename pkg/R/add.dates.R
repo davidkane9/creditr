@@ -1,7 +1,7 @@
 #' Return CDS dates.
 #' 
 #' \code{add.dates} takes a data frame which contains dates, tenor (or maturity) and currency
-#' and returns the appropriate dates for pricing a CDS contract. 
+#' and returns appropriate dates for pricing a CDS contract. 
 #' 
 #' @param x a data frame, containing all necessary information
 #' @param date.var character, column name of date variable
@@ -9,11 +9,12 @@
 #' @param tenor.var character, column name of tenor variable
 #' @param currency.var character, column name of currency variable
 #' 
-#' @return a date frame containing all the input variables, as well as 
-#'   8 morevariables: step-in date (T+1), value date (T+3 business days),
-#'   start date (accrual begin date), end date (maturity), backstop date (T-60 
-#'   day look back from which 'protection' is effective), pen coupon date 
-#'   (second to last coupon date)
+#' @return a date frame containing all the input columns, as well as 
+#' eight more columns: stepinDate (T+1), valueDate (T+3 business days),
+#' startDate (accrual begin date), endDate (maturity), backstopDate (T-60 
+#' day look back from which 'protection' is effective), firstcouponDate
+#' (the date on which the first coupon is paid), pencouponDate (second 
+#' to last coupon date), and baseDate (the starting date for the IR curve)
 #' 
 #' @references
 #' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
@@ -28,7 +29,7 @@ add.dates <- function(x,
                       maturity.var = "maturity",
                       tenor.var = "tenor",
                       currency.var = "currency"){
-
+  
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
   stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
   
@@ -47,7 +48,7 @@ add.dates <- function(x,
   x$baseDate        <- as.Date(NA)
   
   for(i in 1:nrow(x)){
-   
+    
     ## stop if the maturity date does not belong to the date class
     
     if(!is.null(x[[maturity.var]][i])){
@@ -68,19 +69,23 @@ add.dates <- function(x,
     ## ALWAYS re-consider problems in baseDate and valueDate FIRST!!!
     
     if(x[[currency.var]][i] != "JPY"){
-        baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-        baseDate <- adj.next.bus.day(baseDate + 1)
+      
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj.next.bus.day(baseDate + 1)
+      
     } else{
-        baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-        while(baseDate %in% JPY.holidays){
-          baseDate <- adj.next.bus.day(baseDate + 1)
-        }
+      
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      while(baseDate %in% JPY.holidays){
         baseDate <- adj.next.bus.day(baseDate + 1)
-        while(baseDate %in% JPY.holidays){
-          baseDate <- adj.next.bus.day(baseDate + 1)
-        }
       }
-  
+      
+      baseDate <- adj.next.bus.day(baseDate + 1)
+      while(baseDate %in% JPY.holidays){
+        baseDate <- adj.next.bus.day(baseDate + 1)
+      }
+    }
+    
     ## stepinDate is the date on which a party assumes ownership of a trade side. 
     ## it is Trade date + 1 day
     

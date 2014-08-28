@@ -129,7 +129,7 @@ CDS <- function(name = NULL,
                                                        currency = currency)))
     }
   }
-  
+  browser()
   ## if these dates are not entered, we extract that from cdsdates
   
   if (is.na(dates['valueDate'])) dates['valueDate']         <- as.Date(cdsDates$valueDate)
