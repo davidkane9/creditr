@@ -3,8 +3,7 @@
 \alias{build.rates}
 \title{Build a data frame containing interest rates for CDS pricing}
 \usage{
-build.rates(start.date = as.Date("2004-01-01"),
-  end.date = as.Date("2005-01-04"))
+build.rates(start.date, end.date)
 }
 \arguments{
 \item{start.date}{is the start date of the data frame; it is the earliest CDS

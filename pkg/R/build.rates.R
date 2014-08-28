@@ -48,36 +48,12 @@
 #' build.rates(start.date = as.Date("2004-01-01"), 
 #'             end.date = as.Date("2014-08-23"))}
 
-build.rates <- function(start.date = as.Date("2004-01-01"), 
-                        end.date = as.Date("2005-01-04")){
+build.rates <- function(start.date, end.date){
   
   ## Don't run the example of this function, since it will take more than two
   ## hours
   
-  stopifnot(inherits(start, "Date") & inherits(end, "Date"))
-  
-  ## First, know some basics: since Markit wesite has the interest rates back to
-  ## th 1990s, download.markit is responsible for building up all the USD
-  ## interest rate data frame; for EUR and JPY, markit can only get from
-  ## 2005-01-05 to now. But the biggest advantage of using download.markit is
-  ## that, since Markit website only lists the rate expiries that are actually 
-  ## used for CDS pricing, download.markit can get the exact type of expiries of
-  ## rates needed to price CDS. Also, it has expiry over 1Y to 30Y. In contrast,
-  ## FRED is only complementary to markit data. Since download.markit can get
-  ## any rates for USD, we don't use FRED for USD. Then we want to get data for
-  ## EUR and JPY before 2005-01-04 (the limit of markit). FRED has almost all
-  ## data for any date, which is its biggest advantage. But its biggest
-  ## disadvantage is that it doesn't know which expiry type is suitable for
-  ## which time, since FRED website has expiry of all types below a year; also
-  ## it doesn't have expiry over 1Y.So we hardcoded the dates below, to combine
-  ## markit and FRED in the most suitable way.
-  
-  ## another note is that, the rates on both Markit website and FRED website
-  ## have not been adjusted to the previous business day. In other words, the
-  ## rates from both website is the exact rate on that day, rather than on the
-  ## previous business day. But download.markit and download.FRED have adjusted 
-  ## the days already for the convenience of CDS pricing, so we don't have to
-  ## worry here.
+  stopifnot(inherits(start.date, "Date") & inherits(end.date, "Date"))
   
   ## If start date is before and end date is after 2005-01-05,
   ## then we have to use markit for USD, and both markit and FRED for

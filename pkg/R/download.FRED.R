@@ -20,7 +20,7 @@
 #' }             
 
 download.FRED <- function(start = as.Date("2004-01-01"), 
-                             end = as.Date("2005-01-04"), currency = "JPY"){
+                          end = as.Date("2005-01-04"), currency = "JPY"){
     
   ## We make start date and end date go back one day, because we use the 
   ## previous business day's interest rate for trading date pricing. By making
@@ -133,8 +133,8 @@ download.FRED <- function(start = as.Date("2004-01-01"),
   
   ## convert factor type to character type.
   
-  x$currency <- as.character(x$currency)
-  x$expiry   <- as.character(x$expiry)
+  rate.complete.df$currency <- as.character(rate.complete.df$currency)
+  rate.complete.df$expiry   <- as.character(rate.complete.df$expiry)
   
   return(rate.complete.df)
 }
