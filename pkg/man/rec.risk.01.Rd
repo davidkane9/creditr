@@ -50,6 +50,7 @@ notional = c(1e7, 1e7))
 result <- rec.risk.01(x)
 }
 \seealso{
-\link{add.conventions} \link{add.dates} \link{call.ISDA} \link{upfront}
+\link{add.conventions} \link{add.dates} \link{call.ISDA}
+         \link{spread.to.upfront}
 }
 
