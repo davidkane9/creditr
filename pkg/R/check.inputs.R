@@ -20,7 +20,8 @@ check.inputs <- function(x,
                          coupon.var = "coupon",
                          notional.var = "notional",
                          notional = 1e7,
-                         RR.var = "recovery.rate"){
+                         RR.var = "recovery.rate",
+                         recovery.rate = 0.4){
 
   ## check if certain variables are contained in x
   
@@ -31,7 +32,7 @@ check.inputs <- function(x,
   }
   
   if(!RR.var %in% names(x)){
-    x <- cbind(x, recovery.rate = 0.4)
+    x <- cbind(x, recovery.rate)
   }
   
   if(!date.var %in% names(x)){

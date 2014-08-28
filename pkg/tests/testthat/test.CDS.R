@@ -13,8 +13,6 @@ rel.diff <- function(truth,
   return (abs(calculated - truth) / truth < threshold)
 }
 
-data(rates)
-
 ## we use rates for the relevant date and currency, extracted from the rates data frame, stored in the data 
 ## directory. 
 
@@ -38,15 +36,13 @@ test_that("test for the CDS", {
  
   expect_true(rel.diff(5707438, result.1@upfront))
   
-  expect_true(rel.diff(-271.18, result.1@IRDV01))
+  expect_true(rel.diff(-271.18, result.1@IR.DV01))
   
   expect_true(rel.diff(5744938, result.1@principal))
   
-  expect_true(rel.diff(-95430.32, result.1@RecRisk01))
+  expect_true(rel.diff(-95430.32, result.1@rec.risk.01))
   
-  expect_true(rel.diff(255062, result.1@defaultExpo))
-  
-  expect_true(rel.diff(21.15, result.1@spreadDV01))
+  expect_true(rel.diff(21.15, result.1@spread.DV01))
   
   
   ## CDS.R test case for Chorus Ltd. (Australian company)
@@ -65,19 +61,17 @@ test_that("test for the CDS", {
   
   expect_equal(658080, round(result.2@principal))
   
-  expect_equal(5341920, round(result.2@defaultExpo))
-  
   ## The following results do not match exactly, so we will check
   ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
   
-  expect_true(rel.diff(-169.33, result.2@IRDV01))
+  expect_true(rel.diff(-169.33, result.2@IR.DV01))
   
   expect_true(rel.diff(93.42, result.2@price))
   
-  expect_true(rel.diff(-1106.34, result.2@RecRisk01))
+  expect_true(rel.diff(-1106.34, result.2@rec.risk.01))
   
-  expect_true(rel.diff(4317.54, result.2@spreadDV01))
+  expect_true(rel.diff(4317.54, result.2@spread.DV01))
 
   
   
@@ -100,17 +94,15 @@ test_that("test for the CDS", {
   
   expect_equal(100.05, round(result.3@price, 2))
   
-  expect_equal(6004924, result.3@defaultExpo)
-  
   ## The following results do not match exactly, so we will check
   ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
   
-  expect_true(rel.diff(1.29, result.3@IRDV01))
+  expect_true(rel.diff(1.29, result.3@IR.DV01))
   
-  expect_true(rel.diff(3.46, result.3@RecRisk01, threshold = 0.1))
+  expect_true(rel.diff(3.46, result.3@rec.risk.01, threshold = 0.1))
 
-  expect_true(rel.diff(4923.93, result.3@spreadDV01))
+  expect_true(rel.diff(4923.93, result.3@spread.DV01))
 
   
   ## CDS.R test case for Norske Skogindustrier ASA (European company)
@@ -134,15 +126,13 @@ test_that("test for the CDS", {
   
   expect_true(rel.diff(4412500, result.4@upfront))
   
-  expect_true(rel.diff(-727.47, result.4@IRDV01))
+  expect_true(rel.diff(-727.47, result.4@IR.DV01))
 
   expect_true(rel.diff(4450000, result.4@principal))
   
-  expect_true(rel.diff(-56413.77, result.4@RecRisk01))
+  expect_true(rel.diff(-56413.77, result.4@rec.risk.01))
   
-  expect_true(rel.diff(1550000, result.4@defaultExpo))
-  
-  expect_true(rel.diff(731.48, result.4@spreadDV01))
+  expect_true(rel.diff(731.48, result.4@spread.DV01))
 
   
   ## CDS.R test case for RadioShack Corp
@@ -165,15 +155,13 @@ test_that("test for the CDS", {
   
   expect_true(rel.diff(5612324, result.5@upfront))
   
-  expect_true(rel.diff(-361.62, result.5@IRDV01))
+  expect_true(rel.diff(-361.62, result.5@IR.DV01))
 
   expect_true(rel.diff(5649824, result.5@principal))
   
-  expect_true(rel.diff(-93430.52, result.5@RecRisk01))
+  expect_true(rel.diff(-93430.52, result.5@rec.risk.01))
   
-  expect_true(rel.diff(350176, result.5@defaultExpo))
-  
-  expect_true(rel.diff(40.86, result.5@spreadDV01))
+  expect_true(rel.diff(40.86, result.5@spread.DV01))
   
   
   ## CDS.R test case for Tokyo Electric Power Co. Inc.
@@ -197,15 +185,13 @@ test_that("test for the CDS", {
   ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
   
-  expect_true(rel.diff(-184.69, result.6@IRDV01))
+  expect_true(rel.diff(-184.69, result.6@IR.DV01))
 
   expect_true(rel.diff(709002, result.6@principal))
   
-  expect_true(rel.diff(-1061.74, result.6@RecRisk01))
+  expect_true(rel.diff(-1061.74, result.6@rec.risk.01))
   
-  expect_true(rel.diff(5790998, result.6@defaultExpo))
-  
-  expect_true(rel.diff(4448.92, result.6@spreadDV01))
+  expect_true(rel.diff(4448.92, result.6@spread.DV01))
   
   
   ## CDS.R test case for Toys R Us Inc
@@ -225,19 +211,17 @@ test_that("test for the CDS", {
   
   expect_equal(3275000, round(result.7@principal))
   
-  expect_equal(2725000, round(result.7@defaultExpo))
-  
   ## The following results do not match exactly, so we will check
   ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
   
-  expect_true(rel.diff(-648.12, result.7@IRDV01))
+  expect_true(rel.diff(-648.12, result.7@IR.DV01))
   
   expect_true(rel.diff(67.25, result.7@price))
 
-  expect_true(rel.diff(-30848.67, result.7@RecRisk01))
+  expect_true(rel.diff(-30848.67, result.7@rec.risk.01))
 
-  expect_true(rel.diff(1580.31, result.7@spreadDV01))
+  expect_true(rel.diff(1580.31, result.7@spread.DV01))
   
   ## CDS.R test case for Xerox corporation
   
@@ -258,13 +242,11 @@ test_that("test for the CDS", {
   ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
   
-  expect_true(rel.diff(-7.36, result.8@IRDV01))
+  expect_true(rel.diff(-7.36, result.8@IR.DV01))
   
   expect_true(rel.diff(99.71931785, result.8@price))
   
-  expect_true(rel.diff(-20.85, result.8@RecRisk01))
-  
-  expect_true(rel.diff(5971932, result.8@defaultExpo))
-  
-  expect_true(rel.diff(4825.49, result.8@spreadDV01))}
+  expect_true(rel.diff(-20.85, result.8@rec.risk.01))
+
+  expect_true(rel.diff(4825.49, result.8@spread.DV01))}
 )
