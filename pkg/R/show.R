@@ -67,11 +67,11 @@ setMethod("show",
                                                    format(round(object@principal, 0), big.mark = "F", scientific = F)))),
                                            collapse = ""))),
                 sprintf(paste("   Spread DV01:",
-                              format(round(object@spreadDV01, 0), big.mark=",",
+                              format(round(object@spread.DV01, 0), big.mark=",",
                                      scientific=F),
                               sep = paste0(rep(" ", 40-nchar(as.character("   Spread DV01:")) -
                                                  nchar(as.character(
-                                                   format(round(object@spreadDV01, 0), big.mark=",",
+                                                   format(round(object@spread.DV01, 0), big.mark=",",
                                                           scientific=F)))),
                                            collapse = ""))), "\n",
                 
@@ -84,12 +84,12 @@ setMethod("show",
                                                    format(round(object@accrual, 0), big.mark = ",",
                                                           scientific=F)))),
                                            collapse = ""))), 
-                sprintf(paste("   IR DV01:", format(round(object@IRDV01, 2),big.mark=",",
+                sprintf(paste("   IR DV01:", format(round(object@IR.DV01, 2),big.mark=",",
                                                     scientific=F),
                               sep = paste0(rep(" ",
                                                40-nchar(as.character("   IR DV01:")) -
                                                  nchar(as.character(
-                                                   format(round(object@IRDV01, 2), big.mark=",",
+                                                   format(round(object@IR.DV01, 2), big.mark=",",
                                                           scientific=F)))),
                                            collapse = ""))), "\n",
                 
@@ -103,27 +103,18 @@ setMethod("show",
                                                           scientific=F)))),
                                            collapse = ""))), 
                 sprintf(paste("   Rec Risk (1 pct):",
-                              format(round(object@RecRisk01, 2),big.mark=",",
+                              format(round(object@rec.risk.01, 2),big.mark=",",
                                      scientific=F),
                               sep = paste0(rep(" ", 40-nchar(as.character("   Rec Risk (1 pct):")) -
                                                  nchar(as.character(
-                                                   format(round(object@RecRisk01, 2),
+                                                   format(round(object@rec.risk.01, 2),
                                                           big.mark=",", scientific=F)))),
                                            collapse = ""))), "\n",
                 
-                sprintf(paste("Default Prob:", round(object@defaultProb, 4),
+                sprintf(paste("Default Prob:", round(object@pd, 4),
                               sep = paste0(rep(" ",
                                                40-nchar(as.character("Default Prob:")) -
-                                                 nchar(as.character(round(object@defaultProb, 4)))),
-                                           collapse = ""))), 
-                sprintf(paste("   Default Expo:",
-                              format(round(object@defaultExpo, 0),big.mark=",",
-                                     scientific=F),
-                              sep = paste0(rep(" ", 40-nchar(as.character("   Default Expo:")) -
-                                                 nchar(as.character(
-                                                   format(round(object@defaultExpo, 0),
-                                                          big.mark=",",
-                                                          scientific=F)))),
+                                                 nchar(as.character(round(object@pd, 4)))),
                                            collapse = ""))), "\n",
                 
                 sep = ""
