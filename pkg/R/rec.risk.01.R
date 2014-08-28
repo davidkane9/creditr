@@ -29,7 +29,7 @@ rec.risk.01 <- function(x,
                         spread.var    = "spread",
                         coupon.var    = "coupon",
                         RR.var        = "recovery.rate",
-                        recovery.rate = 0.4
+                        recovery.rate = 0.4,
                         notional.var  = "notional",
                         notional      = 1e7){
   
