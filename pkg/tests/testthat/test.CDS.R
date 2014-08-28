@@ -44,14 +44,17 @@ test_that("test for the CDS", {
                   recovery.rate = 0.4,
                   notional = 1e7)
   
-  ## check to see if our calcualted results are within an acceptable range
+  ## The following result matches perfectly with Bloomberg
+  
+  expect_equal(42.55, round(result.1@price, 2))
+  
+  ## The following results do not match exactly, so we will check
+  ## to see if our calcualted results are within an acceptable range
   ## of the true values from Bloomberg
  
   expect_true(rel.diff(5707438, result.1@upfront))
   
   expect_true(rel.diff(-271.18, result.1@IRDV01))
-  
-  expect_true(rel.diff(42.55, result.1@price))
   
   expect_true(rel.diff(5744938, result.1@principal))
   
