@@ -1,3 +1,11 @@
+context("Test illegal input to add.conventions")
+
+test_that("error should occur if there is no currency.var ",{
+  
+  x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")))
+  expect_error(add.conventions(x))
+  })
+
 context("Test add.conventions")
 
 test_that("test add conventions", {
@@ -19,5 +27,4 @@ test_that("test add conventions", {
   
   x2 <- add.dates(x2)
   result2 <- add.conventions(x2)
-  
-})
+  })
