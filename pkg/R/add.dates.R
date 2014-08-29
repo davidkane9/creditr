@@ -50,6 +50,31 @@ add.dates <- function(x,
       "2016-03-21", "2017-03-20", "2020-03-20", "2020-09-21", "2020-09-22")
     )
   
+  ## This is a collection of comments from KM. We should parse them and clarify
+  ## them. 
+  
+  ## maturity date (endDate) does not need to be a weekday. It remains unfixed,
+  ## and has to be roll date. coupondate must be a weekday; if the roll date is
+  ## a weekend day, coupon date has to be adjusted to business day. Accrual
+  ## Start Date must be a weekday. if the rolldate before trade date is a
+  ## weekend day, accrual start date must be adjusted to next business day. 
+  ## Accrual End Date (not end date or maturity date, which must be fixed) does 
+  ## not have to be a weekday: for example, if the second coupon payment date is
+  ## Mon 6/22/2009 (because 6/20/2009 is a weekend day), then the Accrual end 
+  ## date is 6/21/2009, a Sunday. So according to ISDA date convention pdf, 
+  ## start date and benchmark start date is the same as accrual begin date, this
+  ## means that startDate and benchmarkDate must be weekdays. Also, there exists
+  ## a confusion for valueDate: if you check out ISDA date convention pdf, you 
+  ## will find that if you are calculating "cash settlement from spread" or 
+  ## "spread from upfront", then valueDate = Trade date + 3, which also means 
+  ## that valueDate can also be a weekend. else if you are "building a yield 
+  ## curve", then valueDate = Trade Date + 2 weekdays (Non-JPY) or Trade Date + 
+  ## 2 business days (JPY), which also means that valueDate can be a weekend. 
+  ## But right now, in our CDS package, I "think" we are treating valueDate = 
+  ## Trade Date + 2 business days/weekdays everywhere And I "think" we are 
+  ## coercing valueDate to be a business day.
+  
+  
   x$baseDate        <- as.Date(NA)
   x$stepinDate      <- as.Date(NA)
   x$valueDate       <- as.Date(NA)
