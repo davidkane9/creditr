@@ -17,7 +17,8 @@
 #'                 spread = c(120, 110),
 #'                 coupon = c(100, 100),
 #'                 recovery = c(0.4, 0.4),
-#'                 notional = c(1e7, 1e7))
+#'                 notional = c(1e7, 1e7),
+#'                 stringsAsFactors = FALSE)
 #' IR.DV01(x)
 
 IR.DV01 <- function(x,
