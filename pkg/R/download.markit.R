@@ -1,8 +1,7 @@
 #' Get rates from Markit
 #' 
 #' \code{download.markit} takes a data frame of dates and returns a data frame 
-#' with the yields for different maturities. Note year must be entered as 
-#' YYYY-MM-DD.
+#' with the yields for different maturities. 
 #' 
 #' @param start date for gathering interest rates. Must be a Date type
 #' @param end date for gathering interest rates. Must be a Date type

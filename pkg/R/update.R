@@ -12,10 +12,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' ## build a CDS class object
 #' cds1 <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 #'
-#' ## update
 #' update(cds1, spread = 55)
 #' }
 

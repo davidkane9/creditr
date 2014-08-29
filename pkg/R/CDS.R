@@ -234,7 +234,7 @@ CDS <- function(name = NULL,
   cds@rec.risk.01 <- rec.risk.01(x)
   cds@pd          <- spread.to.pd(spread   = cds@spread,
                                   time     = as.numeric(dates['endDate'][[1]] -
-                                                      as.Date(date))/360,
+                                                          as.Date(date))/360,
                                   recovery = recovery)
   
   ## calculate the default exposure of a CDS contract based on the

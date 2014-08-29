@@ -1,6 +1,5 @@
 #' \code{summary} method displays only the essential info about the CDS
 #' class object.
-#' 
 
 setMethod("summary",
           signature(object = "CDS"),

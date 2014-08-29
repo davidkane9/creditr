@@ -1,17 +1,20 @@
 #' Calculate spread with Default Probability
 #' 
-#' \code{pd.to.spread} to calculate spread using the probability of default, tenor and 
-#' recovery rate.
+#' \code{pd.to.spread} to calculate spread using the probability of default,
+#' tenor and recovery rate.
 #' 
-#' @param x dataset containing the recovery rate, tenor (in years), probability
-#' of default and trade date.
-#' @param recovery.var name of the column containing the recovery rate in decimals.
-#' @param pd.var name of the column containing the probability of default in decimals.
+#' @param x dataset containing the recovery rate, tenor (in years), probability 
+#'   of default and trade date.
+#' @param recovery.var name of the column containing the recovery rate in
+#'   decimals.
+#' @param pd.var name of the column containing the probability of default in
+#'   decimals.
 #' @param tenor.var name of the column containing the tenor in years.
-#' @param date.var name of the column containing the trade date. 
-#' 
-#' @return vector containing the spread values in basis points, calculated by inverting 
-#' the formula for probability of default given in the Bloomberg Manual
+#' @param date.var name of the column containing the trade date.
+#'   
+#' @return vector containing the spread values in basis points, calculated by
+#'   inverting the formula for probability of default given in the Bloomberg
+#'   Manual
 
 pd.to.spread <- function(x, 
                          recovery.var = "recovery", 

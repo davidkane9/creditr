@@ -1,28 +1,28 @@
 #' Return CDS dates.
 #' 
-#' \code{add.dates} takes a data frame which contains dates, tenor (or maturity) and currency
-#' and returns appropriate dates for pricing a CDS contract. 
+#' \code{add.dates} takes a data frame which contains dates, tenor (or maturity)
+#' and currency and returns appropriate dates for pricing a CDS contract.
 #' 
 #' @param x a data frame, containing all necessary information
 #' @param date.var character, column name of date variable
 #' @param maturity.var character, column name of maturity variable
 #' @param tenor.var character, column name of tenor variable
 #' @param currency.var character, column name of currency variable
-#' 
-#' @return a date frame containing all the input columns, as well as 
-#' eight more columns: stepinDate (T+1), valueDate (T+3 business days),
-#' startDate (accrual begin date), endDate (maturity), backstopDate (T-60 
-#' day look back from which 'protection' is effective), firstcouponDate
-#' (the date on which the first coupon is paid), pencouponDate (second 
-#' to last coupon date), and baseDate (the starting date for the IR curve)
-#' 
-#' @references
-#' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf   
+#'   
+#' @return a date frame containing all the input columns, as well as eight more
+#'   columns: stepinDate (T+1), valueDate (T+3 business days), startDate
+#'   (accrual begin date), endDate (maturity), backstopDate (T-60 day look back
+#'   from which 'protection' is effective), firstcouponDate (the date on which
+#'   the first coupon is paid), pencouponDate (second to last coupon date), and
+#'   baseDate (the starting date for the IR curve)
+#'   
+#' @references 
+#' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
 #' }
 #' 
 #' @examples
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
-#' tenor = rep(5, 2), currency = c("JPY", "USD"))
+#'                 tenor = rep(5, 2), currency = c("JPY", "USD"))
 #' add.dates(x)
 
 add.dates <- function(x, 
@@ -32,7 +32,7 @@ add.dates <- function(x,
                       currency.var = "currency"){
   
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
-  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
+  stopifnot(is.null(x[[maturity.var]])   | is.null(x[[tenor.var]]))
   
   ## call JPY.holidays data frame for dates settings later
   

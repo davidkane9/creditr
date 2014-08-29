@@ -5,6 +5,7 @@
 #' @param spread in bps
 #' @param time in years
 #' @param recovery in decimal. Default is 0.4.
+#' 
 #' @return default probability in decimals
 
 spread.to.pd <- function(spread, time, recovery = 0.4){
