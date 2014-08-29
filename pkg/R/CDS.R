@@ -63,11 +63,7 @@ CDS <- function(name = NULL,
   
   if ((is.null(spread)))
     stop("Please input spread")
-
-  ## rates Date is the date for which interest rates will be calculated. get.rates 
-  ## function will return the rates of the previous day
-
-  
+ 
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
   
@@ -148,6 +144,7 @@ CDS <- function(name = NULL,
                    maturity         = cds@maturity,
                    currency         = cds@currency,
                    recovery         = cds@recovery,
+                   notional         = cds@notional,
                    stringsAsFactors = FALSE)
     
   cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
@@ -157,25 +154,12 @@ CDS <- function(name = NULL,
     
   cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
-  ## accrual amount
-  
+
   cds@accrual <- cds@upfront - cds@principal
   
-  ## spread.DV01, IR.DV01, rec.risk.01, default probability, default exposure and price 
-  ## note: this is a hack; must fix
-  
-  x <- data.frame(date             = as.Date(cds@date),
-                  currency         = cds@currency,
-                  tenor            = cds@tenor,
-                  spread           = cds@spread,
-                  coupon           = cds@coupon,
-                  recovery         = cds@recovery,
-                  notional         = cds@notional,
-                  stringsAsFactors = FALSE)
-  
-  cds@spread.DV01 <- spread.DV01(x)
-  cds@IR.DV01     <- IR.DV01(x) 
-  cds@rec.risk.01 <- rec.risk.01(x)
+  cds@spread.DV01 <- spread.DV01(df)
+  cds@IR.DV01     <- IR.DV01(df) 
+  cds@rec.risk.01 <- rec.risk.01(df)
   cds@pd          <- spread.to.pd(spread   = cds@spread,
                                   time     = as.numeric(endDate - as.Date(date))/360,
                                   recovery = recovery)
