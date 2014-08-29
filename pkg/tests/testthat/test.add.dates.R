@@ -26,7 +26,7 @@ test_that("test for add.dates", {
   ## different dates for a CDS with a 10-year maturity
   
   ## Test case with CDS from April 15, 2014 (Caesar's Entertainment Corporation)
-    
+  
   load("add.dates.test.RData")
   
   result.1 <- add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5, currency = "USD"))
@@ -53,15 +53,9 @@ test_that("test for add.dates", {
   
   ## if the trade date is a Monday
   
-  ## for this test, something unexpected happened:
-  ## if the trade date is 2011-06-03, and the tenor is 1 year,
-  ## then the end date should be 2012-06-20. Notice that 2012-06-20
-  ## is not a weekend day, but somehow add.dates() still changes the
-  ## end date to 2012-06-21. This needs further investigation, and the
-  ## following test is commented out first.
-  
-  # expect_equal(add.dates(data.frame(date = as.Date("2011-06-03"), tenor = 1))$endDate, 
-    #            as.Date("2012-06-20"))
+  expect_equal(add.dates(data.frame(date = as.Date("2011-06-03"), 
+                                    tenor = 1, currency = "USD"))$endDate, 
+               as.Date("2012-06-20"))
   
   ## if the trade date is only one day before the maturity date,
   ## add.dates() should give a warning because it's impossible
@@ -78,13 +72,9 @@ test_that("test for add.dates", {
   ## return a weekend day, instead of adjust it to the next weekeday
   
   ## for example, if we let trade date be "2010-06-18", then the
-  ## maturity date should be "2015-06-20", a Saturday. As can be
-  ## tested with Markit calculator
+  ## maturity date should be "2015-06-20", a Saturday.
   
-  ## However, currently add.dates() coerce the endDate (maturity date)
-  ## to be a weekend. Have to fix it later; for now we comment out
-  ## the below test case
-  
-  # x <- add.dates(data.frame(date = as.Date("2010-06-18"), tenor = 5))
-  # expect_equal(x$endDate, as.Date("2015-06-20"))
+   x <- add.dates(data.frame(date = as.Date("2010-06-18"), tenor = 5, 
+                             currency = "USD"))
+  expect_equal(x$endDate, as.Date("2015-06-20"))
 })
