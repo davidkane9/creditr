@@ -26,11 +26,13 @@ returns the same data frame with eight other columns of accounting
 conventions added to it.
 }
 \examples{
-x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
+x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
+currency = c("USD", "JPY"))
 add.conventions(x)
 }
 \references{
-\url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
+\url{
+http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
 }
 }
 
