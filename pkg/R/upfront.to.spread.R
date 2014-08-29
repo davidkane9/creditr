@@ -1,4 +1,4 @@
-#' Calculate spread with a given upfront
+#' Calculate Spread with a Given Upfront
 #' 
 #' \code{upfront.to.spread} calculates conventional spread using the upfront 
 #' or ptsUpfront values.

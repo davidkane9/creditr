@@ -1,6 +1,6 @@
-#' Calculate recovery rate changes
+#' Calculate Recovery Rate Changes
 #' 
-#' \code{rec.risk.01} calculate the amount of change in upfront when there is a 
+#' \code{rec.risk.01} calculates the amount of change in upfront when there is a 
 #' 1% increase in recovery rate for a data frame of CDS contracts.
 #' 
 #' @inheritParams CS10

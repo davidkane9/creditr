@@ -1,6 +1,6 @@
-#' Show method
+#' Show Method
 #' 
-#' \code{show} method for CDS class
+#' \code{show} shows a CDS class object.
 #' 
 #' @name show
 #' @aliases show,CDS-method
