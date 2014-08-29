@@ -64,7 +64,9 @@ CDS <- function(name = NULL,
                                                        maturity = as.Date(maturity),
                                                        currency = currency)))
     }
+
     ## if both are entered, we arbitrarily use one of them
+    
     if((!is.null(tenor) & !is.null(maturity))){
       cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
                                                        maturity = as.Date(maturity),
@@ -85,7 +87,8 @@ CDS <- function(name = NULL,
     tenor <- as.numeric((lt2$year*12 + lt2$mon) - (lt1$year*12 + lt1$mon))/12
   }
   
-  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
+  ## if maturity date is NULL, we set maturity date as the endDate, which
+  ## obtained using add.dates.
   
   if(is.null(maturity)) maturity = as.Date(cdsDates$endDate)
 

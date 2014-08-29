@@ -17,11 +17,11 @@
 
 spread.to.upfront <- function(x, 
                               currency.var = "currency", 
-                              notional = 1e7,
-                              date.var = "date", 
-                              spread.var = "spread",
-                              coupon.var = "coupon",
-                              tenor.var = "tenor",
+                              notional     = 1e7,
+                              date.var     = "date", 
+                              spread.var   = "spread",
+                              coupon.var   = "coupon",
+                              tenor.var    = "tenor",
                               maturity.var = "maturity",
                               recovery.var = "recovery",
                               isPriceClean = FALSE){
