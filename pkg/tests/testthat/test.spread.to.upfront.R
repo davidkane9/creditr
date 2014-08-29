@@ -6,7 +6,7 @@ context("Test spread.to.upfront")
 
 library(CDS)
 
-test_that("test for upfront", {
+test_that("test for spread.to.upfront", {
   
   ## test case to see if our function gives the same result as markit.com
   ## all cases use data from Xerox Corporation for 2014-04-22. 

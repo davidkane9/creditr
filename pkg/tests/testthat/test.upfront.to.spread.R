@@ -2,7 +2,7 @@ context("Test upfront.to.spread")
 
 ## upfront.to.spread() test case with data from Xerox corporation
 
-test_that("test for spread", {
+test_that("test for upfront.to.spread", {
   ## actual spread value from Bloomberg for Xerox Corp.
    truth.1 <- 105.85
   
