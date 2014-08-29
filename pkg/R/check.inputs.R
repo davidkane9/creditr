@@ -67,7 +67,7 @@ check.inputs <- function(x,
   if(maturity.var %in% names(x) & tenor.var %in% names(x)){
     stop("do not provide both maturity and tenor")
   }else if(maturity.var %in% names(x)){
-    stopifnot(inherits(x[[maturity.var]], "Dates"))
+    stopifnot(inherits(x[[maturity.var]], "Date"))
   }else if(tenor.var %in% names(x)){
     stopifnot(is.numeric(x[[tenor.var]]))
   }else{

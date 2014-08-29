@@ -17,11 +17,13 @@
 #'   and swapCalendars (any calendar adjustment for swap rate)
 #'   
 #' @references 
-#' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
+#' \url{
+#' http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
 #' }
 #' 
 #' @examples 
-#' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
+#' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
+#' currency = c("USD", "JPY"))
 #' add.conventions(x)
 
 add.conventions <- function(x, currency.var = "currency"){
@@ -29,18 +31,18 @@ add.conventions <- function(x, currency.var = "currency"){
   stopifnot(currency.var %in% names(x))
   
   for(i in 1:nrow(x)){
-    
-    x$badDayConvention[i] <- "M"
-    x$mmDCC[i]            <- "ACT/360"
-    x$floatDCC[i]         <- "ACT/360"
+
+    x$badDayConvention[i] <- "M"        ## how non-business days are converted
+    x$mmDCC[i]            <- "ACT/360"  ## day count convention of the instruments
+    x$floatDCC[i]         <- "ACT/360"  ## day count convention of the floating leg
 
     if(x[[currency.var]][i] == "USD"){
       
-      x$mmCalendars[i]   <- "none"
-      x$fixedDCC[i]      <- "30/360"
-      x$fixedFreq[i]     <- "6M"
-      x$floatFreq[i]     <- "3M"
-      x$swapCalendars[i] <- "none"
+      x$mmCalendars[i]   <- "none"     ## calendar adjustment for the CDS
+      x$fixedDCC[i]      <- "30/360"   ## day count convention of the fixed leg
+      x$fixedFreq[i]     <- "6M"       ## frequency of the fixed rate of swap being paid
+      x$floatFreq[i]     <- "3M"       ## frequency of the floating rate of swap being paid.
+      x$swapCalendars[i] <- "none"     ## input for holiday files to adjust to business days.
     } else{
       
       if(x[[currency.var]][i] == "JPY"){
