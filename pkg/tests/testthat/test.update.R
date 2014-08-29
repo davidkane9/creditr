@@ -2,7 +2,7 @@ context("Test update")
 
 ## test case for update using CDS of Xerox
 
-test_that("test for spread", {
+test_that("test update", {
    ## object of class CDS
    object <- CDS(date = as.Date("2014-04-22"),
                 tenor = 5, 

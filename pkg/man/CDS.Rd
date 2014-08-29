@@ -5,7 +5,7 @@
 \usage{
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
-  recovery = 0.4, currency = "USD", notional = 1e+07, upfront = NULL)
+  recovery = 0.4, currency = "USD", notional = 1e+07)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -31,15 +31,7 @@ protection buyer to the seller on a regular basis. The default is 100 bps.}
 \item{currency}{in which CDS is denominated.}
 
 \item{notional}{is the amount of the underlying asset on which the payments
-are based. Default is 1e7, i.e. 10MM.}
-
-\item{upfront}{is quoted in the currency amount. Since a standard contract is
-  traded with fixed coupons, upfront payment is introduced to reconcile the
-  difference in contract value due to the difference between the fixed coupon
-  and the conventional par spread. There are two types of upfront, dirty and
-  clean. Dirty upfront, a.k.a. Cash Settlement Amount, refers to the market
-  value of a CDS contract. Clean upfront is dirty upfront less any accrued
-  interest payment, and is also called the Principal.}
+  are based. Default is 1e7, i.e. 10MM.}
 }
 \value{
 a \code{CDS} class object including the input informtion on the
@@ -49,6 +41,6 @@ a \code{CDS} class object including the input informtion on the
 Build a \code{CDS} class object given the input about a CDS contract.
 }
 \examples{
-cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
+x <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100)
 }
 

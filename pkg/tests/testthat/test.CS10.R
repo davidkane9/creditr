@@ -13,4 +13,3 @@ test_that("test case for CS10", {
   result <- CS10(x)
   ## we don't have any thing to test this against at the moment
 })
-
