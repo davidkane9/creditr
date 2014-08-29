@@ -17,7 +17,7 @@ upfront.to.spread <- function(x,
                    coupon.var = "coupon",
                    tenor.var = "tenor",
                    maturity.var = "maturity",
-                   RR.var = "recovery",
+                   recovery.var = "recovery",
                    upfront.var = "upfront",
                    points.var = "ptsUpfront",
                    
@@ -57,10 +57,10 @@ upfront.to.spread <- function(x,
       coupon <- x[[coupon.var]][i]
     }
     
-    if(is.null(x[[RR.var]][i])){
+    if(is.null(x[[recovery.var]][i])){
       recovery <- 0.4
     } else{
-      recovery <- x[[RR.var]][i]
+      recovery <- x[[recovery.var]][i]
     }
     
     rates.info <- get.rates(date = as.Date(x[[date.var]][i]),

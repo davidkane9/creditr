@@ -28,7 +28,7 @@ check.inputs <- function(x,
                          coupon.var = "coupon",
                          notional.var = "notional",
                          notional = 1e7,
-                         RR.var = "recovery",
+                         recovery.var = "recovery",
                          recovery = 0.4){
 
   stopifnot(is.data.frame(x))
@@ -41,7 +41,7 @@ check.inputs <- function(x,
     x <- cbind(x, notional)
   }
   
-  if(!RR.var %in% names(x)){
+  if(!recovery.var %in% names(x)){
     x <- cbind(x, recovery)
   }
   
@@ -85,7 +85,7 @@ check.inputs <- function(x,
   colnames(x)[which(colnames(x) == tenor.var)]    <- "tenor"
   colnames(x)[which(colnames(x) == spread.var)]   <- "spread"
   colnames(x)[which(colnames(x) == coupon.var)]   <- "coupon"
-  colnames(x)[which(colnames(x) == RR.var)]       <- "recovery"
+  colnames(x)[which(colnames(x) == recovery.var)]       <- "recovery"
   colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
 
   return(x)

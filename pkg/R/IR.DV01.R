@@ -27,7 +27,7 @@ IR.DV01 <- function(x,
                     tenor.var     = "tenor",
                     spread.var    = "spread",
                     coupon.var    = "coupon",
-                    RR.var        = "recovery",
+                    recovery.var        = "recovery",
                     notional.var  = "notional",
                     notional      = 1e7,
                     recovery      = 0.4){
@@ -43,7 +43,7 @@ IR.DV01 <- function(x,
                     coupon.var    = coupon.var,
                     notional.var  = notional.var,
                     notional      = notional,
-                    RR.var        = RR.var,
+                    recovery.var        = recovery.var,
                     recovery      = recovery)
  
   IR.DV01 <- rep(NA, nrow(x))

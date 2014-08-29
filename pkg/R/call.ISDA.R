@@ -8,13 +8,11 @@
 #'   
 #' @seealso \link{CS10} \link{rec.risk.01} \link{IR.DV01} \link{spread.DV01}
 #'   
-#' @return a numeric value which is the difference between the new upfront and
+#' @return a numeric value which is the difference between the new upfront and 
 #'   the old one
 
 call.ISDA <- function(x, name, rates.info){
-  
-  ## error checking
-  
+
   stopifnot(is.data.frame(x))
   stopifnot(c("date", "currency", "tenor", "spread", "coupon",
               "recovery", "notional", "stepinDate", "valueDate",

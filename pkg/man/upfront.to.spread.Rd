@@ -6,9 +6,9 @@ or ptsUpfront values}
 \usage{
 upfront.to.spread(x, currency.var = "currency", date.var = "date",
   coupon.var = "coupon", tenor.var = "tenor", maturity.var = "maturity",
-  RR.var = "recovery", upfront.var = "upfront", points.var = "ptsUpfront",
-  isPriceClean = FALSE, notional = 1e+07, payAccruedAtStart = FALSE,
-  payAccruedOnDefault = TRUE)
+  recovery.var = "recovery", upfront.var = "upfront",
+  points.var = "ptsUpfront", isPriceClean = FALSE, notional = 1e+07,
+  payAccruedAtStart = FALSE, payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{points.var}{character name of points Upfront column}
@@ -37,7 +37,7 @@ seller on an annual basis.}
 
 \item{maturity.var}{character, column in x containing maturity date.}
 
-\item{RR.var}{character, column in x containing recovery rates. ISDA model
+\item{recovery.var}{character, column in x containing recovery rates. ISDA model
 standard recovery rate asscumption is 0.4.}
 }
 \value{

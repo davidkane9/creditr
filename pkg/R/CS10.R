@@ -12,14 +12,14 @@
 #' @param coupon.var character, column in x containing coupon rates in basis 
 #'   points. It specifies the payment amount from the protection buyer to the 
 #'   seller on an annual basis.
-#' @param RR.var character, column in x containing recovery rates. ISDA model 
+#' @param recovery.var character, column in x containing recovery rates. ISDA model 
 #'   standard recovery rate asscumption is 0.4.
 #' @param notional.var character, column in x containing the amount of the 
 #'   underlying asset on which the payments are based.
 #' @param notional numeric, the notional amount for all pricing if there isn't a
 #'   notional.var
 #' @param recovery numeric, the recovery rate for all pricing if there isn't a 
-#'   RR.var
+#'   recovery.var
 #'   
 #' @return a vector containing the change in upfront in units of currency.var 
 #'   when spread increase by 10%, for each corresponding CDS contract.
@@ -43,7 +43,7 @@ CS10 <- function(x,
                  tenor.var     = "tenor",
                  spread.var    = "spread",
                  coupon.var    = "coupon",
-                 RR.var        = "recovery",
+                 recovery.var        = "recovery",
                  notional.var  = "notional",
                  notional      = 1e7,
                  recovery      = 0.4){
@@ -59,7 +59,7 @@ CS10 <- function(x,
                     coupon.var    = coupon.var,
                     notional.var  = notional.var,
                     notional      = notional,
-                    RR.var        = RR.var,
+                    recovery.var        = recovery.var,
                     recovery      = recovery)
 
   CS10 <- rep(NA, nrow(x))
