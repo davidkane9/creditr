@@ -54,5 +54,4 @@ test_that("test for check.input", {
   x7 <- x0
   x7$notional <- c("10000000", "10000000")
   expect_error(check.inputs(x7))
-  
 })
