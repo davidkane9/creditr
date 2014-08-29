@@ -9,16 +9,16 @@
 #' @param tenor.var character, column name of tenor variable
 #' @param currency.var character, column name of currency variable
 #'   
-#' @return a date frame containing all the input columns, as well as eight more
-#'   columns: stepinDate (T+1), valueDate (T+3 business days), startDate
-#'   (accrual begin date), endDate (maturity), backstopDate (T-60 day look back
-#'   from which 'protection' is effective), firstcouponDate (the date on which
-#'   the first coupon is paid), pencouponDate (second to last coupon date), and
+#' @return a date frame containing all the input columns, as well as eight more 
+#'   columns: stepinDate (T+1), valueDate (T+3 business days), startDate 
+#'   (accrual begin date), endDate (maturity), backstopDate (T-60 day look back 
+#'   from which 'protection' is effective), firstcouponDate (the date on which 
+#'   the first coupon is paid), pencouponDate (second to last coupon date), and 
 #'   baseDate (the starting date for the IR curve)
 #'   
 #' @references 
 #' \url{http://www.cdsmodel.com/cdsmodel/assets/cds-model/docs/c-code%20Key%20Functions-v1.pdf
-#' }
+#' } 
 #' \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard%20CDS%20Examples.pdf
 #' }
 #' 

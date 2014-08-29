@@ -36,13 +36,13 @@ pd.to.spread <- function(x,
   
   x <- add.dates(x)
   
-  ## calculate the exact time from the trade date till the maturity date
-  ## Note: this 'time' is different from tenor. Let's say the trade date April 15, 2014
-  ## and the tenor is 5 years. Then the maturity date is June 20, 2019. So the time
-  ## used to calculate the spread is the time between June 20, 2019 and April 15, 2014,
-  ## which is 5.255556 years.
+  ## calculate the exact time from the trade date till the maturity date Note:
+  ## this 'time' is different from tenor. Let's say the trade date April 15,
+  ## 2014 and the tenor is 5 years. Then the maturity date is June 20, 2019. So
+  ## the time used to calculate the spread is the time between June 20, 2019 and
+  ## April 15, 2014, which is 5.255556 years.
 
-  time <- as.numeric(x$endDate - x$date)/360
+  time <- as.numeric(x$endDate - x$date) / 360
   
   ## calculate the spread by inverting the formula for probability of default
   
