@@ -88,7 +88,7 @@ CDS <- function(name = NULL,
   
   ## if none of the three are entered
   
-  if ((is.null(upfront)) & (is.null(spread)))
+  if ((is.null(spread)))
     stop("Please input spread, upfront or pts upfront")
 
   ## rates Date is the date for which interest rates will be calculated. get.rates 
@@ -204,7 +204,8 @@ CDS <- function(name = NULL,
                      coupon   = cds@coupon,
                      maturity = cds@maturity,
                      currency = cds@currency,
-                     recovery = cds@recovery)
+                     recovery = cds@recovery,
+                     stringsAsFactors = FALSE)
     
     cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
@@ -213,75 +214,6 @@ CDS <- function(name = NULL,
     
     cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
-  }
-  
-  ## if upfront is provided, then we have to calculate the spread
-  
-  else {        
-    if (isPriceClean == TRUE) {
-      
-      ## principal or clean upfront
-      
-      cds@principal <- upfront
-      
-      ## calculate spread if only clean upfront (principal) and ptsUpfront are provided
-      
-      spreadinput <- data.frame(date = date,
-                                currency = currency,
-                                coupon = coupon,
-                                ptsUpfront =  upfront / notional,
-                                recovery = recovery,
-                                tenor = tenor)
-      
-      cds@spread <- upfront.to.spread(x = spreadinput,
-                                      notional = notional,
-                                      payAccruedAtStart = TRUE,
-                                      payAccruedOnDefault = payAccruedOnDefault)
-      ## dirty upfront
-      
-      df <- data.frame(date     = as.Date(cds@date),
-                       spread   = spread,
-                       coupon   = cds@coupon,
-                       tenor    = cds@tenor,
-                       currency = cds@currency,
-                       recovery = cds@recovery)
-      
-      cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
-                               isPriceClean = FALSE)
-      
-      
-    } else {
-      
-      ## dirty upfront
-      
-      cds@upfront <- upfront
-      
-      ## par Spread
-      
-      spreadinput <- data.frame(date = as.Date(cds@date),
-                                currency = cds@currency,
-                                coupon = cds@coupon,
-                                upfront = cds@upfront,
-                                recovery = cds@recovery,
-                                tenor = cds@tenor)
-      
-      cds@spread <- upfront.to.spread(x = spreadinput,
-                                      notional = notional,
-                                      payAccruedAtStart = FALSE,
-                                      payAccruedOnDefault = payAccruedOnDefault)
-      
-      ## principal
-      
-      df <- data.frame(date = as.Date(cds@date),
-                       spread = cds@spread,
-                       coupon = cds@coupon,
-                       maturity = cds@maturity,
-                       currency = cds@currency,
-                       recovery = cds@recovery)
-      
-      cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
-                               isPriceClean = TRUE)
-    }
   }
   
   ## accrual amount
@@ -296,8 +228,9 @@ CDS <- function(name = NULL,
                   tenor         = cds@tenor,
                   spread        = cds@spread,
                   coupon        = cds@coupon,
-                  recovery = cds@recovery,
-                  notional      = cds@notional)
+                  recovery      = cds@recovery,
+                  notional      = cds@notional,
+                  stringsAsFactors = FALSE)
   
   cds@spread.DV01  <- spread.DV01(x)
   cds@IR.DV01      <- IR.DV01(x) 
