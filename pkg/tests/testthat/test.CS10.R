@@ -7,7 +7,8 @@ test_that("test case for CS10", {
                   spread = c(105.8, 99),
                   coupon = c(100, 100),
                   recovery = c(0.4, 0.4),
-                  notional = c(1e7, 1e7))
+                  notional = c(1e7, 1e7),
+                  stringsAsFactors = FALSE)
   
   result <- CS10(x)
   ## we don't have any thing to test this against at the moment
