@@ -22,7 +22,9 @@ test_that("test for upfront", {
                                            tenor = 5,
                                            spread = 105.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE),
+                                isPriceClean = FALSE)
   
   ## Note: test case passes when rounded to the nearest tenth.
   ## Difference of 3.39 (0.02094072 %) from actual value
@@ -43,7 +45,8 @@ test_that("test for upfront", {
                                            tenor = 5,
                                            spread = 100,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when the values are rounded off till the nearest whole
@@ -64,7 +67,8 @@ test_that("test for upfront", {
                                            tenor = 5,
                                            spread = 105.8,
                                            coupon = 200,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when results are rounded off the nearest 100
@@ -84,7 +88,8 @@ test_that("test for upfront", {
                                            tenor = 5,
                                            spread = 105.8,
                                            coupon = 50,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when results are rounded off the nearest 100
@@ -104,7 +109,8 @@ test_that("test for upfront", {
                                            maturity = "2019-06-20",
                                            spread = 105.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded to the nearest 10
@@ -124,7 +130,8 @@ test_that("test for upfront", {
                                            maturity = "2019-06-20",
                                            spread = 105.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded of to the nearest tenth
@@ -143,7 +150,8 @@ test_that("test for upfront", {
                                            maturity = "2019-03-20",
                                            spread = 105.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   
@@ -161,7 +169,8 @@ test_that("test for upfront", {
                                            maturity = "2019-09-20",
                                            spread = 105.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   
   ## comparing the results with markit data
@@ -180,7 +189,8 @@ test_that("test for upfront", {
                                            tenor = 5,
                                            spread = 155.8,
                                            coupon = 100,
-                                           recovery = 0.4), isPriceClean = FALSE)
+                                           recovery = 0.4,
+                                           stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   ## comparing the results with markit data
   ## Note: test case passes when rounded to nearest 1000
@@ -199,7 +209,8 @@ test_that("test for upfront", {
                                             tenor = 5,
                                             spread = 55.8,
                                             coupon = 100,
-                                            recovery = 0.4), isPriceClean = FALSE)
+                                            recovery = 0.4,
+                                            stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   
   ## comparing the results with markit data
@@ -220,7 +231,8 @@ test_that("test for upfront", {
                                             maturity = "2013-09-20",
                                             spread = 105.8,
                                             coupon = 100,
-                                            recovery = 0.4), isPriceClean = FALSE)
+                                            recovery = 0.4,
+                                            stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   
   # comparing the results with markit data
@@ -243,7 +255,8 @@ test_that("test for upfront", {
                                             maturity = "2014-03-20",
                                             spread = 105.8,
                                             coupon = 100,
-                                            recovery = 0.35), isPriceClean = FALSE)
+                                            recovery = 0.35,
+                                            stringsAsFactors = FALSE), isPriceClean = FALSE)
   
   truth.13 <- 3487
   
@@ -254,14 +267,16 @@ test_that("test for upfront", {
                     coupon = c(500, 100), 
                     spread = c(2785.8889, 99),
                     currency = c("EUR", "EUR"),
-                    recovery = c(0.4, 0.4))
+                    recovery = c(0.4, 0.4),
+                    stringsAsFactors = FALSE)
   
   x.2 <- data.frame(date = c(as.Date("2014-04-15"), as.Date("2014-04-22")),  
                     maturity = c(as.Date("2019-06-20"), as.Date("2019-06-20")), 
                     coupon = c(500, 100), 
                     spread = c(2785.8889, 99),
                     currency = c("EUR", "EUR"),
-                    recovery = c(0.4, 0.4))
+                    recovery = c(0.4, 0.4),
+                    stringsAsFactors = FALSE)
   
   result.1 <- spread.to.upfront(x = x.1, tenor.var = "tenor")
   expect_that(round(result.1, -2), equals(c(4412500, round(-14368, -2))))
