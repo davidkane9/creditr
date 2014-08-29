@@ -6,7 +6,7 @@
 upfront.to.spread(x, currency.var = "currency", date.var = "date",
   coupon.var = "coupon", tenor.var = "tenor", maturity.var = "maturity",
   recovery.var = "recovery", upfront.var = "upfront",
-  points.var = "ptsUpfront", isPriceClean = FALSE, notional = 1e+07,
+  points.var = "ptsUpfront", isPriceClean = FALSE, notional = 10000000,
   payAccruedAtStart = FALSE, payAccruedOnDefault = TRUE)
 }
 \arguments{
