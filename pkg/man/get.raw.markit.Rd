@@ -11,7 +11,9 @@ get.raw.markit(date, currency)
 \item{currency}{numeric, is the currency that the CDS is traded in.}
 }
 \value{
-a xml file crawled from the \code{URL}.
+a data frame that contains CDS pricing date, currency, interest
+ rate expiry and interest rate. The data frame is created with data
+ from Markit website
 }
 \description{
 \code{get.raw.markit} downloads the rates zip file from Markit website,

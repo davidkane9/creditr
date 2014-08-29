@@ -6,7 +6,9 @@
 #' @param date Date type, is the CDS pricing date.
 #' @param currency numeric, is the currency that the CDS is traded in.
 #'   
-#' @return a xml file crawled from the \code{URL}.
+#' @return a data frame that contains CDS pricing date, currency, interest
+#'  rate expiry and interest rate. The data frame is created with data
+#'  from Markit website
 
 get.raw.markit <- function(date, currency){
   
