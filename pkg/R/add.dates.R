@@ -34,9 +34,19 @@ add.dates <- function(x,
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
   stopifnot(is.null(x[[maturity.var]])   | is.null(x[[tenor.var]]))
   
-  ## call JPY.holidays data frame for dates settings later
+  ## List of Japanese holidays through 2020. These dates are necessary in 
+  ## determining the interest rate curves. If the trade date (T) lies on the day
+  ## before a holiday we won't use the curve on T-1, but the last business day,
+  ## which in this case will be T-2 (assuming T-2 is also a weekday)
   
-  data(JPY.holidays, package = "CDS")
+  ## https://www.markit.com/news/JPY.holidays
+  
+  JPY.holidays <- as.Date(
+    c("2009-03-20", "2009-09-21", "2009-09-22", "2009-09-23", 
+      "2010-03-22", "2010-09-20", "2011-03-21", "2012-03-20",
+      "2013-03-20", "2015-09-21", "2015-09-22", "2015-09-23", 
+      "2016-03-21", "2017-03-20", "2020-03-20", "2020-09-21", "2020-09-22")
+    )
   
   x$baseDate        <- as.Date(NA)
   x$stepinDate      <- as.Date(NA)
