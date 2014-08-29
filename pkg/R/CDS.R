@@ -25,12 +25,12 @@
 
 CDS <- function(name = NULL,
                 contract = "SNAC",
-                RED = NULL,
-                date = Sys.Date(),
-                spread = NULL,
+                RED      = NULL,
+                date     = Sys.Date(),
+                spread   = NULL,
                 maturity = NULL,
-                tenor = NULL,
-                coupon = 100,
+                tenor    = NULL,
+                coupon   = 100,
                 recovery = 0.4,
                 currency = "USD",
                 notional = 1e7){
@@ -56,15 +56,15 @@ CDS <- function(name = NULL,
   
   ## dates
   
-  dates <- as.vector(data.frame(effectiveDate = NA,
-                                valueDate = NA,
-                                benchmarkDate = NA,
-                                startDate = NA, 
-                                endDate = NA, 
-                                stepinDate = NA,
-                                backstopDate = NA,
+  dates <- as.vector(data.frame(effectiveDate   = NA,
+                                valueDate       = NA,
+                                benchmarkDate   = NA,
+                                startDate       = NA, 
+                                endDate         = NA, 
+                                stepinDate      = NA,
+                                backstopDate    = NA,
                                 firstcouponDate = NA,
-                                pencouponDate = NA))
+                                pencouponDate   = NA))
   
   baseDate <- as.Date(date) + 2
   
