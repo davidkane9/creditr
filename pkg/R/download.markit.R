@@ -14,7 +14,7 @@
 #'   the column reads 2014-04-22, the corresponding rates are actually for 
 #'   2014-04-21.
 #'   
-#' @seealso link{download.FRED} \link{build.rates}
+#' @seealso \link{download.FRED} \link{build.rates}
 #'   
 #' @examples
 #' \dontrun{
