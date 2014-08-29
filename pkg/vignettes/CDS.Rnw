@@ -1090,14 +1090,14 @@ Currently, a market participant can conduct CDS-related calculations by using th
 In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an object of a class \texttt{CDS}. Below we show an example of how to construct a CDS contract in the package.
 
 <<>>=
-#library(CDS)
-#cds <- CDS(name = "Alcoa",
- #          RED = "49EB20",
-  #         date = "2014-06-24",
-   #        tenor = "5Y",
-    #       notional = 1e7,
-     #      coupon = 100,
-      #     spread = 160)
+library(CDS)
+cds <- CDS(name = "Alcoa",
+           RED = "49EB20",
+           date = as.Date("2014-06-24"),
+           tenor = 5,
+           notional = 1e7,
+           coupon = 100,
+           spread = 160)
 @
 
 Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{spread}, and \texttt{maturity} information,

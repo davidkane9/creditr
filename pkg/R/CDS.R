@@ -129,10 +129,11 @@ CDS <- function(name = NULL,
   cds@spread.DV01 <- spread.DV01(df)
   cds@IR.DV01     <- IR.DV01(df) 
   cds@rec.risk.01 <- rec.risk.01(df)
-  cds@pd          <- spread.to.pd(spread   = cds@spread,
-                                  time     = as.numeric(as.Date(cdsDates$endDate)
-                                                        - as.Date(date))/360,
-                                  recovery = recovery)
+  cds@pd          <- spread.to.pd(data.frame(spread = cds@spread,
+                                             currency = cds@currency,
+                                             recovery = recovery,
+                                             tenor = cds@tenor,
+                                             date = cds@date))
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal
