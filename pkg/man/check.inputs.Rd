@@ -9,8 +9,6 @@ check.inputs(x, date.var = "date", currency.var = "currency",
   recovery.var = "recovery", recovery = 0.4)
 }
 \arguments{
-\item{spread.var}{name of column in x containing  spreads in bps.}
-
 \item{x}{data frame, contains all the relevant columns.}
 
 \item{date.var}{character, column in x containing date variable.}
@@ -20,6 +18,8 @@ check.inputs(x, date.var = "date", currency.var = "currency",
 \item{maturity.var}{character, column in x containing maturity date.}
 
 \item{tenor.var}{character, column in x containing tenors.}
+
+\item{spread.var}{character, column in x containing spread in basis points.}
 
 \item{coupon.var}{character, column in x containing coupon rates in basis
 points. It specifies the payment amount from the protection buyer to the

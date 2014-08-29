@@ -5,7 +5,6 @@
 #' because some functions don't need them as input.
 #' 
 #' @inheritParams CS10
-#' @param spread.var name of column in x containing  spreads in bps.
 #'   
 #' @return a data frame if not stopped by errors.
 #'   
@@ -20,16 +19,16 @@
 #' x <- check.inputs(x)
 
 check.inputs <- function(x,
-                         date.var = "date", 
+                         date.var     = "date", 
                          currency.var = "currency",
                          maturity.var = "maturity",
-                         tenor.var = "tenor",
-                         spread.var = "spread",
-                         coupon.var = "coupon",
+                         tenor.var    = "tenor",
+                         spread.var   = "spread",
+                         coupon.var   = "coupon",
                          notional.var = "notional",
-                         notional = 1e7,
+                         notional     = 1e7,
                          recovery.var = "recovery",
-                         recovery = 0.4){
+                         recovery     = 0.4){
 
   stopifnot(is.data.frame(x))
   
@@ -85,7 +84,7 @@ check.inputs <- function(x,
   colnames(x)[which(colnames(x) == tenor.var)]    <- "tenor"
   colnames(x)[which(colnames(x) == spread.var)]   <- "spread"
   colnames(x)[which(colnames(x) == coupon.var)]   <- "coupon"
-  colnames(x)[which(colnames(x) == recovery.var)]       <- "recovery"
+  colnames(x)[which(colnames(x) == recovery.var)] <- "recovery"
   colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
 
   return(x)

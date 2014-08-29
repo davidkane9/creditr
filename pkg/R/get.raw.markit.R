@@ -3,8 +3,8 @@
 #' \code{get.raw.markit} downloads the rates zip file from Markit website,
 #' unzips and parses the XML
 #' 
-#' @param URL is the link containing the rates.
-#' @param verbose option. Default \code{FALSE}.
+#' @param date Date type, is the CDS pricing date.
+#' @param currency numeric, is the currency that the CDS is traded in.
 #'   
 #' @return a xml file crawled from the \code{URL}.
 

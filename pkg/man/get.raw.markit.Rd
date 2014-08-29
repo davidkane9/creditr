@@ -6,9 +6,9 @@
 get.raw.markit(date, currency)
 }
 \arguments{
-\item{URL}{is the link containing the rates.}
+\item{date}{Date type, is the CDS pricing date.}
 
-\item{verbose}{option. Default \code{FALSE}.}
+\item{currency}{numeric, is the currency that the CDS is traded in.}
 }
 \value{
 a xml file crawled from the \code{URL}.

@@ -43,7 +43,7 @@ CS10 <- function(x,
                  tenor.var     = "tenor",
                  spread.var    = "spread",
                  coupon.var    = "coupon",
-                 recovery.var        = "recovery",
+                 recovery.var  = "recovery",
                  notional.var  = "notional",
                  notional      = 1e7,
                  recovery      = 0.4){
@@ -59,7 +59,7 @@ CS10 <- function(x,
                     coupon.var    = coupon.var,
                     notional.var  = notional.var,
                     notional      = notional,
-                    recovery.var        = recovery.var,
+                    recovery.var  = recovery.var,
                     recovery      = recovery)
 
   CS10 <- rep(NA, nrow(x))
