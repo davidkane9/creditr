@@ -6,7 +6,7 @@
 IR.DV01(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", recovery.var = "recovery",
-  notional.var = "notional", notional = 10000000, recovery = 0.4)
+  notional.var = "notional", notional = 1e+07, recovery = 0.4)
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}

@@ -74,14 +74,15 @@ test_that("test for add.dates", {
   ## for example, if we let trade date be "2010-06-18", then the
   ## maturity date should be "2015-06-20", a Saturday.
   
-   x <- add.dates(data.frame(date = as.Date("2010-06-18"), tenor = 5, 
-                             currency = "USD"))
+  x <- add.dates(data.frame(date = as.Date("2010-06-18"), tenor = 5, 
+                            currency = "USD"))
   expect_equal(x$endDate, as.Date("2015-06-20"))
 })
 
 context("JPY holidays baseDate test")
 
 test_that("Test JPY holidays",{
+  
   x <- data.frame(date = as.Date("2015-09-20"), tenor = 5, currency = "JPY")
   
   ## "2015-09-21", "2015-09-22" and "2015-09-23" are all Japanese holidays, 

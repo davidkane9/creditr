@@ -6,7 +6,7 @@
 rec.risk.01(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
   coupon.var = "coupon", recovery.var = "recovery",
-  notional.var = "notional", recovery = 0.4, notional = 10000000)
+  notional.var = "notional", recovery = 0.4, notional = 1e+07)
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}
