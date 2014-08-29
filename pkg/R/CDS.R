@@ -16,19 +16,12 @@
 #' @param currency in which CDS is denominated.
 #' @param notional is the amount of the underlying asset on which the payments
 #'   are based. Default is 1e7, i.e. 10MM.
-#' @param upfront is quoted in the currency amount. Since a standard contract is
-#'   traded with fixed coupons, upfront payment is introduced to reconcile the
-#'   difference in contract value due to the difference between the fixed coupon
-#'   and the conventional par spread. There are two types of upfront, dirty and
-#'   clean. Dirty upfront, a.k.a. Cash Settlement Amount, refers to the market
-#'   value of a CDS contract. Clean upfront is dirty upfront less any accrued 
-#'   interest payment, and is also called the Principal.
 #'   
 #' @return a \code{CDS} class object including the input informtion on the
 #'   contract as well as the valuation results of the contract.
 #'   
 #' @examples
-#' cds <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
+#' x <- CDS(date = as.Date("2014-05-07"), tenor = 5, spread = 50, coupon = 100) 
 
 CDS <- function(name = NULL,
                 contract = "SNAC",
@@ -40,8 +33,7 @@ CDS <- function(name = NULL,
                 coupon = 100,
                 recovery = 0.4,
                 currency = "USD",
-                notional = 1e7,
-                upfront = NULL){
+                notional = 1e7){
   
   ## if all three of date, tenor and maturity are given as input,
   ## then we need to check if the three are compatible
