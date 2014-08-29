@@ -52,8 +52,8 @@ CDS <- function(name = NULL,
 
   if ((is.null(spread))) stop("Please input spread")
  
-  ## if maturity date is not given we use the tenor and vice-versa, to get dates using
-  ## add.dates function. Results are stored in cdsdates
+  ## if maturity date is not given we use the tenor and vice-versa, to get dates
+  ## using add.dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
     cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
