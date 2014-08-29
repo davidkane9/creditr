@@ -70,16 +70,16 @@ CDS <- function(name = NULL,
   
   ## conventions
   
-  conventions <- as.vector(data.frame(mmDCC = "ACT/360",
-                                      calendar = "None",
-                                      fixedSwapDCC = "30/360",
-                                      floatSwapDCC = "ACT/360",
+  conventions <- as.vector(data.frame(mmDCC         = "ACT/360",
+                                      calendar      = "None",
+                                      fixedSwapDCC  = "30/360",
+                                      floatSwapDCC  = "ACT/360",
                                       fixedSwapFreq = "6M",
                                       floatSwapFreq = "3M",
-                                      holidays = "None",
-                                      dccCDS = "ACT/360",
+                                      holidays      = "None",
+                                      dccCDS        = "ACT/360",
                                       badDayConvCDS = "F",
-                                      badDayConvZC = "M"))
+                                      badDayConvZC  = "M"))
   
   ## stop if date is invalid
   
@@ -131,19 +131,19 @@ CDS <- function(name = NULL,
   ## conventions stuff
   
   if (is.null(conventions['mmDCC'])){
-    conventions['mmDCC']    <- as.character(cdsDates$mmDCC)}
+    conventions['mmDCC']         <- as.character(cdsDates$mmDCC)}
   if (is.null(conventions['fixedSwapFreq'])){ 
     conventions['fixedSwapFreq'] <- as.character(cdsDates$fixedFreq)}
   if (is.null(conventions['floatSwapFreq'])){ 
     conventions['floatSwapFreq'] <- as.character(cdsDates$floatFreq)}
   if (is.null(conventions['fixedSwapDCC'])){ 
-    conventions['fixedSwapDCC']   <- as.character(cdsDates$fixedDCC)}
+    conventions['fixedSwapDCC']  <- as.character(cdsDates$fixedDCC)}
   if (is.null(conventions['floatSwapDCC'])){ 
-    conventions['floatSwapDCC']   <- as.character(cdsDates$floatDCC)}
+    conventions['floatSwapDCC']  <- as.character(cdsDates$floatDCC)}
   if (is.null(conventions['badDayConvZC'])){ 
-    conventions['badDayConvZC']   <- as.character(cdsDates$badDayConvention)}
+    conventions['badDayConvZC']  <- as.character(cdsDates$badDayConvention)}
   if (is.null(conventions['holidays'])){ 
-    conventions['holidays']       <- as.character(cdsDates$swapCalendars)}
+    conventions['holidays']      <- as.character(cdsDates$swapCalendars)}
   
   
   ## if entity name and/or RED code is not provided, we set it as NA
@@ -152,20 +152,20 @@ CDS <- function(name = NULL,
   
   if (is.null(RED)) RED <- "NA"
   
-  dates['backstopDate'] <- cdsDates$backstopDate
+  dates['backstopDate']    <- cdsDates$backstopDate
   dates['firstcouponDate'] <- cdsDates$firstcouponDate
-  dates['pencouponDate'] <- cdsDates$pencouponDate
+  dates['pencouponDate']   <- cdsDates$pencouponDate
   
   ## create object of class CDS using the data we extracted
   
   cds <- new("CDS",
-             name = name,
+             name     = name,
              contract = contract,
-             RED = RED,
-             date = date,
+             RED      = RED,
+             date     = date,
              maturity = maturity,
-             tenor = as.numeric(tenor),
-             coupon = coupon,
+             tenor    = as.numeric(tenor),
+             coupon   = coupon,
              recovery = recovery,
              currency = currency,
              notional = notional)
@@ -191,30 +191,27 @@ CDS <- function(name = NULL,
     cds@maturity = dates['endDate']
   }
   
-  ## if spread is given, calculate principal and accrual
-  
-  if (!is.null(spread)){
+  ## With a given spread is given, calculate principal and accrual
+
+  cds@spread <- spread
     
-    cds@spread <- spread
+  ## clean upfront or principal
     
-    ## clean upfront or principal
+  df <- data.frame(date             = as.Date(cds@date),
+                   spread           = spread,
+                   coupon           = cds@coupon,
+                   maturity         = cds@maturity,
+                   currency         = cds@currency,
+                   recovery         = cds@recovery,
+                   stringsAsFactors = FALSE)
     
-    df <- data.frame(date     = as.Date(cds@date),
-                     spread   = spread,
-                     coupon   = cds@coupon,
-                     maturity = cds@maturity,
-                     currency = cds@currency,
-                     recovery = cds@recovery,
-                     stringsAsFactors = FALSE)
-    
-    cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
+  cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
     
-    ## dirty upfront
+  ## dirty upfront
     
-    cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
+  cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
-  }
   
   ## accrual amount
   
@@ -223,20 +220,20 @@ CDS <- function(name = NULL,
   ## spread.DV01, IR.DV01, rec.risk.01, default probability, default exposure and price 
   ## note: this is a hack; must fix
   
-  x <- data.frame(date          = as.Date(cds@date),
-                  currency      = cds@currency,
-                  tenor         = cds@tenor,
-                  spread        = cds@spread,
-                  coupon        = cds@coupon,
-                  recovery      = cds@recovery,
-                  notional      = cds@notional,
+  x <- data.frame(date             = as.Date(cds@date),
+                  currency         = cds@currency,
+                  tenor            = cds@tenor,
+                  spread           = cds@spread,
+                  coupon           = cds@coupon,
+                  recovery         = cds@recovery,
+                  notional         = cds@notional,
                   stringsAsFactors = FALSE)
   
-  cds@spread.DV01  <- spread.DV01(x)
-  cds@IR.DV01      <- IR.DV01(x) 
-  cds@rec.risk.01   <- rec.risk.01(x)
-  cds@pd <- spread.to.pd(spread = cds@spread,
-                                  time = as.numeric(dates['endDate'][[1]] -
+  cds@spread.DV01 <- spread.DV01(x)
+  cds@IR.DV01     <- IR.DV01(x) 
+  cds@rec.risk.01 <- rec.risk.01(x)
+  cds@pd          <- spread.to.pd(spread   = cds@spread,
+                                  time     = as.numeric(dates['endDate'][[1]] -
                                                       as.Date(date))/360,
                                   recovery = recovery)
   
