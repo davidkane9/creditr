@@ -18,12 +18,13 @@
 #'   underlying asset on which the payments are based.
 #' @param notional numeric, the notional amount for all pricing if there isn't a
 #'   notional.var
+#' @param recovery numeric, the recovery rate for all pricing if there isn't a 
+#'   RR.var
 #'   
 #' @return a vector containing the change in upfront in units of currency.var 
 #'   when spread increase by 10%, for each corresponding CDS contract.
 #'   
-#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} 
-#'   \link{spread.to.upfront}
+#' @seealso \link{call.ISDA} 
 #'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -33,7 +34,7 @@
 #'                 coupon = c(100, 100),
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(1e7, 1e7))
-#' result <- CS10(x)
+#' CS10(x)
 
 CS10 <- function(x,
                  date.var      = "date",
@@ -45,7 +46,7 @@ CS10 <- function(x,
                  RR.var        = "recovery",
                  notional.var  = "notional",
                  notional      = 1e7,
-                 recovery = 0.4){
+                 recovery      = 0.4){
   
   ## check if certain variables are contained in x
   
@@ -59,7 +60,7 @@ CS10 <- function(x,
                     notional.var  = notional.var,
                     notional      = notional,
                     RR.var        = RR.var,
-                    recovery = recovery)
+                    recovery      = recovery)
 
   CS10 <- rep(NA, nrow(x))
   

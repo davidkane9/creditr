@@ -32,7 +32,10 @@ standard recovery rate asscumption is 0.4.}
 underlying asset on which the payments are based.}
 
 \item{notional}{numeric, the notional amount for all pricing if there isn't a
-  notional.var}
+notional.var}
+
+\item{recovery}{numeric, the recovery rate for all pricing if there isn't a
+  RR.var}
 }
 \value{
 a vector containing the change in upfront in units of currency.var
@@ -50,10 +53,9 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
                 coupon = c(100, 100),
                 recovery = c(0.4, 0.4),
                 notional = c(1e7, 1e7))
-result <- CS10(x)
+CS10(x)
 }
 \seealso{
-\link{add.conventions} \link{add.dates} \link{call.ISDA}
-  \link{spread.to.upfront}
+\link{call.ISDA}
 }
 

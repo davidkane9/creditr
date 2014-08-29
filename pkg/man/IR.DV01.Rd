@@ -32,28 +32,30 @@ standard recovery rate asscumption is 0.4.}
 underlying asset on which the payments are based.}
 
 \item{notional}{numeric, the notional amount for all pricing if there isn't a
-  notional.var}
+notional.var}
+
+\item{recovery}{numeric, the recovery rate for all pricing if there isn't a
+  RR.var}
 }
 \value{
 a vector containing the change in upfront when there is a 1/1e4
-increase in interest rate, for each corresponding CDS contract.
+  increase in interest rate, for each corresponding CDS contract.
 }
 \description{
-\code{IR.DV01} calculate the amount of change in upfront when there is a 1/1e4
-increase in interest rate for a data frame of CDS contracts.
+\code{IR.DV01} calculate the amount of change in upfront when there is a
+1/1e4 increase in interest rate for a data frame of CDS contracts.
 }
 \examples{
 x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
-currency = c("USD", "EUR"),
-tenor = c(5, 5),
-spread = c(120, 110),
-coupon = c(100, 100),
-recovery = c(0.4, 0.4),
-notional = c(1e7, 1e7))
-result <- IR.DV01(x)
+                currency = c("USD", "EUR"),
+                tenor = c(5, 5),
+                spread = c(120, 110),
+                coupon = c(100, 100),
+                recovery = c(0.4, 0.4),
+                notional = c(1e7, 1e7))
+IR.DV01(x)
 }
 \seealso{
-\link{add.conventions} \link{add.dates} \link{call.ISDA}
-         \link{spread.to.upfront}
+\link{call.ISDA}
 }
 

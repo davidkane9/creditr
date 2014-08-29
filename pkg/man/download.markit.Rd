@@ -21,13 +21,14 @@ data frame containing the rates from every day from start to end
   2014-04-21.
 }
 \description{
-\code{download.markit} takes a data frame of dates and returns a data frame with
-the yields for different maturities. Note year must be entered as YYYY-MM-DD.
+\code{download.markit} takes a data frame of dates and returns a data frame
+with the yields for different maturities. Note year must be entered as
+YYYY-MM-DD.
 }
 \examples{
 \dontrun{
 download.markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"),
-              currency = "JPY")
+                currency = "JPY")
 }
 }
 \seealso{

@@ -1,24 +1,23 @@
 #' Calculate Spread Change
 #' 
-#' \code{spread.DV01} calculates the spread DV01 or change in upfront 
-#' value when the spread rises by 1 basis point
+#' \code{spread.DV01} calculates the spread DV01 or change in upfront value when
+#' the spread rises by 1 basis point
 #' 
 #' @inheritParams CS10
-#' 
-#' @seealso \link{add.conventions} \link{add.dates} \link{call.ISDA} 
-#'          \link{spread.to.upfront}
-#' 
-#' @return a vector containing the change in upfront when there is a 1
-#' basis point increase in spread, for each corresponding CDS contract.
-#' 
+#'   
+#' @seealso \link{call.ISDA}
+#'   
+#' @return a vector containing the change in upfront when there is a 1 basis
+#'   point increase in spread, for each corresponding CDS contract.
+#'   
 #' @examples 
 #' x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
-#' currency = c("USD", "EUR"),
-#' tenor = c(5, 5),
-#' spread = c(120, 110),
-#' coupon = c(100, 100),
-#' recovery = c(0.4, 0.4),
-#' notional = c(1e7, 1e7))
+#'                 currency = c("USD", "EUR"),
+#'                 tenor = c(5, 5),
+#'                 spread = c(120, 110),
+#'                 coupon = c(100, 100),
+#'                 recovery = c(0.4, 0.4),
+#'                 notional = c(1e7, 1e7))
 #' spread.DV01(x)
 
 spread.DV01 <- function(x,
@@ -31,7 +30,7 @@ spread.DV01 <- function(x,
                         RR.var        = "recovery",
                         notional.var  = "notional",
                         notional      = 1e7,
-                        recovery = 0.4){
+                        recovery      = 0.4){
   
   ## check if certain variables are contained in x
   
@@ -45,7 +44,7 @@ spread.DV01 <- function(x,
                     notional.var  = notional.var,
                     notional      = notional,
                     RR.var        = RR.var,
-                    recovery = recovery)
+                    recovery      = recovery)
   
   spread.DV01 <- rep(NA, nrow(x))
   
