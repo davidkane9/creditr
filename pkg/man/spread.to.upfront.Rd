@@ -3,7 +3,7 @@
 \alias{spread.to.upfront}
 \title{Calculate Upfront Payments}
 \usage{
-spread.to.upfront(x, currency.var = "currency", notional = 1e+07,
+spread.to.upfront(x, currency.var = "currency", notional = 10000000,
   date.var = "date", spread.var = "spread", coupon.var = "coupon",
   tenor.var = "tenor", maturity.var = "maturity",
   recovery.var = "recovery", isPriceClean = FALSE)
