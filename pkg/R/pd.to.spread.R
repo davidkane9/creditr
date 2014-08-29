@@ -39,15 +39,8 @@ pd.to.spread <- function(x,
   ## used to calculate the spread is the time between June 20, 2019 and April 15, 2014,
   ## which is 5.255556 years.
   
-  time <- rep(NA, nrow(x))
-  
-  for(i in 1:nrow(x)){
-    
-    ## set currency to "USD" so that add.dates can be used properly
-    
-    time[i] <- as.numeric((add.dates(data.frame(date = x[[date.var]][i], 
-    tenor = x[[tenor.var]][i], currency = "USD"))$endDate)-x[[date.var]][i])/360    
-  }
+  time <- as.numeric((add.dates(data.frame(date = x[[date.var]], tenor = x[[tenor.var]],
+          currency = "USD", stringsAsFactors = FALSE))$endDate)-x[[date.var]])/360    
   
   ## calculate the spread by inverting the formula for probability of default
   spread <- 1e4*(x[[recovery.var]]-1)*log(1-x[[pd.var]])/time
