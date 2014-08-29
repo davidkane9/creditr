@@ -1,4 +1,4 @@
-#' Get Rates
+#' Get interest rates from rates.RData or the Markit website
 #' 
 #' \code{get.rates} returns the deposits and swap rates for the day input, along
 #' with the date conventions for that specific currency. The day input should be
@@ -12,9 +12,7 @@
 #' @param currency the three-letter currency code. As of now, it works for USD,
 #'   EUR, and JPY. The default is USD.
 #'   
-#' @return a list with two data frames. The first data frame contains the rates
-#'   based on the ISDA specifications; the second contains all the dcc and
-#'   calendar specifications of the curve.
+#' @return a data frame that contains date (the CDS pricing date), 
 #'   
 #' @examples
 #' \dontrun{
@@ -23,7 +21,7 @@
 
 get.rates <- function(date, currency){
   
-  stopifnot(inherits(date, "Date") & is.character(currency))
+  stopifnot(inherits(date, "Date"))
   stopifnot(currency %in% c( "USD", "EUR", "JPY"))
   
   ## check rates.RData first, before get rates from the internet.
@@ -42,66 +40,22 @@ get.rates <- function(date, currency){
   }
   
   ## if the wanted rates are not in rates.RData, then go get rates
-  ## from the internet
+  ## from the Markit website, using download.markit
   
   if(nrow(x) == 0){
     
-    ## CDS for Trade Date will use rates from Trade Date - 1 
+    x <- download.markit(start = date, end = date, currency = currency)    
+    x$type <- as.character(substr(x$expiry, start = nchar(x$expiry), 
+                                  stop = nchar(x$expiry)))
+    ## if maturity is 1Y, it is of type M
     
-    date <- date - 1
-    
-    dateWday <- as.POSIXlt(date)$wday
-    
-    ## change date to the most recent weekday if necessary i.e. change date to 
-    ## Friday if the day we are pricing CDSs is Saturday or Sunday
-    
-    if (dateWday == 0){
-      date <- date - 2
-    } else if (dateWday == 6) {
-      date <- date - 1
+    if(nrow(x) != 0){
+      for(k in 1:length(x$type)){
+        if(x$type[k] == "Y") x$type[k] <- "S"
+      }
+      
+      x$type[which(x$expiry == "1Y")] <- "M"
     }
-    
-    ## convert date to numeric
-    
-    dateInt <- format(date, "%Y%m%d")
-    
-    ## markit rates URL
-    
-    ratesURL <- paste("https://www.markit.com/news/InterestRates_",
-                      currency, "_", dateInt, ".zip", sep ="")
-    
-    ## XML file from the internet, which contains the rates data
-    
-    xmlParsedIn <- download.rates(ratesURL)
-    
-    ## rates data extracted from XML file
-    
-    rates <- xmlSApply(xmlParsedIn, function(x) xmlSApply(x, xmlValue))
-    
-    ## extracts the 'M' or 'Y' of the expiry and stores it in curveRates
-    
-    curveRates <- c(rates$deposits[names(rates$deposits) == "curvepoint"],
-                    rates$swaps[names(rates$swaps) == "curvepoint"])
-    
-    ## split the numbers from the 'M' and 'Y'
-    
-    x <- do.call(rbind, strsplit(curveRates, split = "[MY]", perl = TRUE))
-    rownames(x) <- NULL
-    x <- cbind(x, "Y")
-    
-    ## attacg M to money month rates
-    
-    x[1: (max(which(x[,1] == 1)) - 1), 3] <- "M"
-    
-    ## data frame with Interest Rates, maturity, type, expiry
-    
-    x <- data.frame(expiry = paste(x[,1], x[,3], sep = ""),
-                         rate = substring(x[,2], 11),
-                         
-                         ## if maturity is 1Y, it is of type M
-                         
-                         type = c(rep("M", sum(names(rates$deposits) == "curvepoint")),
-                                  rep("S", sum(names(rates$swaps) == "curvepoint"))))
     
     x$expiry <- as.character(x$expiry)
   }

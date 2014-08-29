@@ -24,7 +24,7 @@ test_that("test for get.rates",{
   
   #rates column from the package's getRates function
   
-  rates <- get.rates(date = "2014-04-15")$rate
+  rates <- get.rates(date = as.Date("2014-04-15"), currency = "USD")$rate
  
   stopifnot(all.equal(truth.1, rates))
 })

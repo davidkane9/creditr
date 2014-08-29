@@ -30,7 +30,7 @@ download.markit <- function(start, end, currency = "USD"){
   
   ## start date must be smaller than end date
   
-  stopifnot(end > start)
+  stopifnot(end >= start)
   
   ## Our loop will just append to x each time through.
   
