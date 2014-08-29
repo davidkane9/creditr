@@ -1,5 +1,7 @@
 CDS TO-DO List
 ========================================================
+* valueDate is incorrect. See add.dates() for details, but this could be the reason for (some of) the small discrepancies we have seen. Problem arises when there is a holiday on T + 3.
+
 * check.inputs should be re-worked. 
 ** We want it to work for all the different functions even though not all of them actually require all the possible input arguments. That is, if there is a need for tenor.var then check.inputs should make sure that it is in x, that it is numeric and then rename it as "tenor". If, however, tenor.var has no use, then won't be there and should be ignored. I don't think (?) that we want the output of check.inputs to provide a tenor if a tenor is not needed, although I guess that isn't doing any harm.
 ** Handle the incompatible options correctly. The calling function can have a recovery or a recovery.var argument. It should not have both. Same with maturity.var and tenor.var. Also, notional and notional.var.
