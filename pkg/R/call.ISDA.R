@@ -14,7 +14,7 @@
 call.ISDA <- function(x, name, rates.info){
 
   stopifnot(is.data.frame(x))
-  stopifnot(c("date", "currency", "tenor", "spread", "coupon",
+  stopifnot(c("date", "currency", "spread", "coupon",
               "recovery", "notional", "stepinDate", "valueDate",
               "startDate", "firstcouponDate", "pencouponDate", "endDate",
               "backstopDate", "baseDate", "badDayConvention", "mmDCC",
