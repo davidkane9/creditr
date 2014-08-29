@@ -24,7 +24,8 @@ PV01 <- function(x,
   stopifnot(is.numeric(x[[spread.var]]))
   stopifnot(is.numeric(x[[coupon.var]]))
   
-  PV01 <- (abs(principal)/notional)*(10000/abs(spread-coupon))
+  PV01 <- (abs(x[[principal.var]]) / x[[notional.var]])*
+    (10000 / abs(x[[spread.var]] - x[[coupon.var]]))
   
   return(PV01)
 }
