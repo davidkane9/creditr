@@ -5,6 +5,8 @@ CDS TO-DO List
 ** Handle the incompatible options correctly. The calling function can have a recovery or a recovery.var argument. It should not have both. Same with maturity.var and tenor.var. Also, notional and notional.var.
 ** Maybe check.inputs only returns the variables that you specify. That is, if you only pass in a date.var, spread.var and tenor.var, then the return data frame has three columns, date, spread and tenor. This give less freedome since you can't pass in a bunch of other variables, but I don't think (?) that any of our functions need that freedom.
 
+* Of all the variables, Rec Risk 01 was the most problematic, which is strange because its code is almost identical to IR.DV01 and spread.DV01. Perhaps it is that the default recovery rate is different in different indices. Seems to be 0.4 in the US but 0.35 in Japan.
+
 * Things to fix in CDS.Rnw
 ** Read and completely understand the current version three times.
 ** There is too much cruft, too many LaTeX packages and so on. Delete everything (e.g., \usepackage{Sweave}) that is not being used.
@@ -18,16 +20,5 @@ CDS TO-DO List
 ** If we can't make all the above automatic, then we could, instead, still get the package on CRAN by making the process as easy as possible. That is, we still don't distribute the c code, but we provide step-by-step instructions in what to do after you have downloaded the package. This is non-trivial because it would require re-compiling the package after the user gets the c code. But it is still not a bad answer. In fact, doing this is probably a good idea because it will show you all the steps that need to be added to the Makefile.
 
 
-Kanishka's note on what test cases to add
-========================================================
 
-
-
-
-* Rec Risk 01 was problematic. More test cases needed there (ask for BB screenshots from Dave).
-(RecRisk shouldn't be more problematic, because its code is almost identical to IR.DV01 and spread.DV01,
-maybe it's just that the effect of change in RecRisk is bigger than other variable, so it seems that 
-the code of RecRisk is more problematic)
-
-* PV.01 test case if George provides the true values to test against.
 
