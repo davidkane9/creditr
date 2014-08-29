@@ -28,7 +28,7 @@ spread.DV01 <- function(x,
                         tenor.var     = "tenor",
                         spread.var    = "spread",
                         coupon.var    = "coupon",
-                        recovery.var        = "recovery",
+                        recovery.var  = "recovery",
                         notional.var  = "notional",
                         notional      = 1e7,
                         recovery      = 0.4){
@@ -44,12 +44,12 @@ spread.DV01 <- function(x,
                     coupon.var    = coupon.var,
                     notional.var  = notional.var,
                     notional      = notional,
-                    recovery.var        = recovery.var,
+                    recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  spread.DV01 <- rep(NA, nrow(x))
-  
   x <- add.conventions(add.dates(x))
+  
+  spread.DV01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
@@ -58,7 +58,7 @@ spread.DV01 <- function(x,
     
     rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    spread.DV01[i] <- call.ISDA(name = "spread.DV01", x = x[i,], rates.info = rates.info)
+    spread.DV01[i] <- call.ISDA(x = x[i, ], name = "spread.DV01", rates.info = rates.info)
   }
   
   return(spread.DV01)

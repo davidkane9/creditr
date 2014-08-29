@@ -1,13 +1,13 @@
 #' Calculate recovery rate changes
 #' 
-#' \code{rec.risk.01} calculate the amount of change in upfront when there is a
+#' \code{rec.risk.01} calculate the amount of change in upfront when there is a 
 #' 1% increase in recovery rate for a data frame of CDS contracts.
 #' 
 #' @inheritParams CS10
 #'   
 #' @seealso \link{call.ISDA}
 #'   
-#' @return a vector containing the change in upfront when there is a 1 percent
+#' @return a vector containing the change in upfront when there is a 1 percent 
 #'   increase in recovery rate, for each corresponding CDS contract.
 #'   
 #' @examples 
@@ -28,9 +28,9 @@ rec.risk.01 <- function(x,
                         tenor.var     = "tenor",
                         spread.var    = "spread",
                         coupon.var    = "coupon",
-                        recovery.var        = "recovery",
-                        recovery      = 0.4,
+                        recovery.var  = "recovery",
                         notional.var  = "notional",
+                        recovery      = 0.4,
                         notional      = 1e7){
   
   ## check if certain variables are contained in x
@@ -44,12 +44,12 @@ rec.risk.01 <- function(x,
                     coupon.var    = coupon.var,
                     notional.var  = notional.var,
                     notional      = notional,
-                    recovery.var        = recovery.var,
+                    recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  rec.risk.01 <- rep(NA, nrow(x))
-  
   x <- add.conventions(add.dates(x))
+  
+  rec.risk.01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
@@ -58,7 +58,7 @@ rec.risk.01 <- function(x,
     
     rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    rec.risk.01[i] <- call.ISDA(name = "rec.risk.01", x = x[i,], rates.info = rates.info)
+    rec.risk.01[i] <- call.ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
   }
   
   return(rec.risk.01)

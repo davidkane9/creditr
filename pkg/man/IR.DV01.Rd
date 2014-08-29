@@ -25,8 +25,8 @@ IR.DV01(x, date.var = "date", currency.var = "currency",
 points. It specifies the payment amount from the protection buyer to the
 seller on an annual basis.}
 
-\item{recovery.var}{character, column in x containing recovery rates. ISDA model
-standard recovery rate asscumption is 0.4.}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
 
 \item{notional.var}{character, column in x containing the amount of the
 underlying asset on which the payments are based.}

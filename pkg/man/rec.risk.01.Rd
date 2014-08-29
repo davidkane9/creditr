@@ -5,8 +5,8 @@
 \usage{
 rec.risk.01(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", recovery.var = "recovery", recovery = 0.4,
-  notional.var = "notional", notional = 1e+07)
+  coupon.var = "coupon", recovery.var = "recovery",
+  notional.var = "notional", recovery = 0.4, notional = 1e+07)
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}
@@ -25,14 +25,14 @@ rec.risk.01(x, date.var = "date", currency.var = "currency",
 points. It specifies the payment amount from the protection buyer to the
 seller on an annual basis.}
 
-\item{recovery.var}{character, column in x containing recovery rates. ISDA model
-standard recovery rate asscumption is 0.4.}
-
-\item{recovery}{numeric, the recovery rate for all pricing if there isn't a
-  recovery.var}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
 
 \item{notional.var}{character, column in x containing the amount of the
 underlying asset on which the payments are based.}
+
+\item{recovery}{numeric, the recovery rate for all pricing if there isn't a
+  recovery.var}
 
 \item{notional}{numeric, the notional amount for all pricing if there isn't a
 notional.var}

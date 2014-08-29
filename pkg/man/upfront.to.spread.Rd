@@ -37,8 +37,8 @@ seller on an annual basis.}
 
 \item{maturity.var}{character, column in x containing maturity date.}
 
-\item{recovery.var}{character, column in x containing recovery rates. ISDA model
-standard recovery rate asscumption is 0.4.}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
 }
 \value{
 a numeric indicating the spread.

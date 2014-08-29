@@ -12,8 +12,8 @@
 #' @param coupon.var character, column in x containing coupon rates in basis 
 #'   points. It specifies the payment amount from the protection buyer to the 
 #'   seller on an annual basis.
-#' @param recovery.var character, column in x containing recovery rates. ISDA model 
-#'   standard recovery rate asscumption is 0.4.
+#' @param recovery.var character, column in x containing recovery rates. ISDA
+#'   model standard recovery rate asscumption is 0.4.
 #' @param notional.var character, column in x containing the amount of the 
 #'   underlying asset on which the payments are based.
 #' @param notional numeric, the notional amount for all pricing if there isn't a
@@ -24,7 +24,7 @@
 #' @return a vector containing the change in upfront in units of currency.var 
 #'   when spread increase by 10%, for each corresponding CDS contract.
 #'   
-#' @seealso \link{call.ISDA} 
+#' @seealso \link{call.ISDA}
 #'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -63,9 +63,9 @@ CS10 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
 
-  CS10 <- rep(NA, nrow(x))
-  
   x <- add.conventions(add.dates(x))
+  
+  CS10 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
@@ -74,7 +74,7 @@ CS10 <- function(x,
     
     rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    CS10[i] <- call.ISDA(name = "CS10", x = x[i,], rates.info = rates.info)
+    CS10[i] <- call.ISDA(x = x[i,], name = "CS10", rates.info = rates.info)
   }
   
   return(CS10)

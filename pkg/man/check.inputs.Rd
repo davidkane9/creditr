@@ -31,8 +31,8 @@ underlying asset on which the payments are based.}
 \item{notional}{numeric, the notional amount for all pricing if there isn't a
 notional.var}
 
-\item{recovery.var}{character, column in x containing recovery rates. ISDA model
-standard recovery rate asscumption is 0.4.}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
 
 \item{recovery}{numeric, the recovery rate for all pricing if there isn't a
   recovery.var}

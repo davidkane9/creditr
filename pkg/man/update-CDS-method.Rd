@@ -4,13 +4,10 @@
 \alias{update,CDS-method}
 \title{Update with New CDS}
 \usage{
-\S4method{update}{CDS}(object, upfront = NULL, isPriceClean = FALSE,
-  spread = NULL, ...)
+\S4method{update}{CDS}(object, isPriceClean = FALSE, spread = NULL, ...)
 }
 \arguments{
 \item{object}{is a \code{CDS} class object.}
-
-\item{upfront}{is the new upfront payment amount.}
 
 \item{spread}{is the new spread in bps.}
 
