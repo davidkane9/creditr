@@ -18,20 +18,20 @@ add.dates(x, date.var = "date", maturity.var = "maturity",
 \item{currency.var}{character, column name of currency variable}
 }
 \value{
-a date frame containing all the input columns, as well as
-eight more columns: stepinDate (T+1), valueDate (T+3 business days),
-startDate (accrual begin date), endDate (maturity), backstopDate (T-60
-day look back from which 'protection' is effective), firstcouponDate
-(the date on which the first coupon is paid), pencouponDate (second
-to last coupon date), and baseDate (the starting date for the IR curve)
+a date frame containing all the input columns, as well as eight more
+  columns: stepinDate (T+1), valueDate (T+3 business days), startDate
+  (accrual begin date), endDate (maturity), backstopDate (T-60 day look back
+  from which 'protection' is effective), firstcouponDate (the date on which
+  the first coupon is paid), pencouponDate (second to last coupon date), and
+  baseDate (the starting date for the IR curve)
 }
 \description{
-\code{add.dates} takes a data frame which contains dates, tenor (or maturity) and currency
-and returns appropriate dates for pricing a CDS contract.
+\code{add.dates} takes a data frame which contains dates, tenor (or maturity)
+and currency and returns appropriate dates for pricing a CDS contract.
 }
 \examples{
 x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
-tenor = rep(5, 2), currency = c("JPY", "USD"))
+                tenor = rep(5, 2), currency = c("JPY", "USD"))
 add.dates(x)
 }
 \references{

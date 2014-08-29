@@ -22,8 +22,7 @@ data frame containing the rates from every day from start to end
 }
 \description{
 \code{download.markit} takes a data frame of dates and returns a data frame
-with the yields for different maturities. Note year must be entered as
-YYYY-MM-DD.
+with the yields for different maturities.
 }
 \examples{
 \dontrun{
