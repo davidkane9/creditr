@@ -11,16 +11,19 @@ add.conventions(x, currency.var = "currency")
 \item{currency.var}{a character indicating the name of currency column}
 }
 \value{
-a data frame with eight more columns of accounting conventions: badDayConvention
-(a character indicating how non-business days are converted), mmDCC (the day count convention
-of the instruments), mmCalendars (any calendar adjustment for the CDS), fixedDCC (the day count
-convention of the fixed leg), floatDCC (the day count convention of the floating leg), fixedFreq
-(the frequency of the fixed rate of swap being paid), floatFreq (the frequency of the floating
-rate of swap being paid) and swapCalendars (any calendar adjustment for swap rate)
+a data frame with eight more columns of accounting conventions:
+  badDayConvention (a character indicating how non-business days are
+  converted), mmDCC (the day count convention of the instruments),
+  mmCalendars (any calendar adjustment for the CDS), fixedDCC (the day count
+  convention of the fixed leg), floatDCC (the day count convention of the
+  floating leg), fixedFreq (the frequency of the fixed rate of swap being
+  paid), floatFreq (the frequency of the floating rate of swap being paid)
+  and swapCalendars (any calendar adjustment for swap rate)
 }
 \description{
-\code{add.conventions} takes a data frame with a currency.var column and returns
-the same data frame with eight other columns of accounting conventions added to it.
+\code{add.conventions} takes a data frame with a currency.var column and
+returns the same data frame with eight other columns of accounting
+conventions added to it.
 }
 \examples{
 x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))

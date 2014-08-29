@@ -17,8 +17,8 @@ Class definition for the \code{CDS-Class}
 
 \item{\code{RED}}{alphanumeric code assigned to the reference entity. Optional.}
 
-\item{\code{date}}{is when the trade is executed, denoted as T. Default
-is \code{Sys.Date}.}
+\item{\code{date}}{is when the trade is executed, denoted as T. Default is
+\code{Sys.Date}.}
 
 \item{\code{spread}}{CDS par spread in bps.}
 
@@ -36,32 +36,29 @@ is \code{Sys.Date}.}
 
 \item{\code{accrual}}{is the accrued interest payment.}
 
-\item{\code{pd}}{is the approximate the default probability at
-time t given the \code{spread}.}
+\item{\code{pd}}{is the approximate the default probability at time t given the
+\code{spread}.}
 
 \item{\code{price}}{}
 
-\item{\code{upfront}}{is quoted in the currency amount. Since a standard
-contract is traded with fixed coupons, upfront payment is
-introduced to reconcile the difference in contract value due to the
-difference between the fixed coupon and the conventional par
-spread. There are two types of upfront, dirty and clean. Dirty
-upfront, a.k.a. Cash Settlement Amount, refers to the market value
-of a CDS contract. Clean upfront is dirty upfront less any accrued
+\item{\code{upfront}}{is quoted in the currency amount. Since a standard contract is
+traded with fixed coupons, upfront payment is introduced to reconcile the
+difference in contract value due to the difference between the fixed coupon
+and the conventional par spread. There are two types of upfront, dirty and
+clean. Dirty upfront, a.k.a. Cash Settlement Amount, refers to the market
+value of a CDS contract. Clean upfront is dirty upfront less any accrued
 interest payment, and is also called the Principal.}
 
-\item{\code{spread.DV01}}{measures the sensitivity of a CDS contract
-mark-to-market to a parallel shift in the term structure of the par
-spread.}
+\item{\code{spread.DV01}}{measures the sensitivity of a CDS contract mark-to-market
+to a parallel shift in the term structure of the par spread.}
 
-\item{\code{IR.DV01}}{is the change in value of a CDS contract for a 1 bp
-parallel increase in the interest rate curve. \code{IRDV01} is,
-typically, a much smaller dollar value than \code{spreadDV01}
-because moves in overall interest rates have a much smaller effect
-on the value of a CDS contract than does a move in the CDS spread
-itself.}
+\item{\code{IR.DV01}}{is the change in value of a CDS contract for a 1 bp parallel
+increase in the interest rate curve. \code{IRDV01} is, typically, a much
+smaller dollar value than \code{spreadDV01} because moves in overall
+interest rates have a much smaller effect on the value of a CDS contract
+than does a move in the CDS spread itself.}
 
-\item{\code{rec.risk.01}}{is the dollar value change in market value if the
-recovery rate used in the CDS valuation were increased by 1\%.}
+\item{\code{rec.risk.01}}{is the dollar value change in market value if the recovery
+  rate used in the CDS valuation were increased by 1\%.}
 }}
 

@@ -22,8 +22,7 @@ data frame containing the rates from every day from start to end
 }
 \description{
 \code{download.markit} takes a data frame of dates and returns a data frame
-with the yields for different maturities. Note year must be entered as
-YYYY-MM-DD.
+with the yields for different maturities.
 }
 \examples{
 \dontrun{
@@ -32,6 +31,6 @@ download.markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"),
 }
 }
 \seealso{
-link{download.FRED} \link{build.rates}
+\link{download.FRED} \link{build.rates}
 }
 
