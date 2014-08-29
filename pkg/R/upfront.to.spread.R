@@ -49,10 +49,6 @@ upfront.to.spread <- function(x,
   
   for(i in 1:nrow(x)){
     
-    dccCDS = "ACT/360"
-    badDayConvCDS = "F"
-    calendar = "None"
-    
     if(is.null(x[[coupon.var]][i])){
       coupon <- 100 
     } else{
@@ -68,10 +64,8 @@ upfront.to.spread <- function(x,
     rates.info <- get.rates(date = as.Date(x[[date.var]][i]),
                            currency = as.character(x[[currency.var]][i]))
     
-    baseDate <- x$baseDate[i]
-    
     x$spread[i] <- .Call('calcCdsoneSpread',
-                         baseDate_input = separate.YMD(baseDate),
+                         baseDate_input = separate.YMD(x$baseDate[i]),
                          types = paste(as.character(rates.info$type), collapse = ""),
                          rates = as.numeric(as.character(rates.info$rate)),
                          expiries = as.character(rates.info$expiry),
@@ -94,11 +88,11 @@ upfront.to.spread <- function(x,
                          couponRate_input = coupon / 1e4,
                          payAccruedOnDefault_input = payAccruedOnDefault,
                          
-                         dccCDS = dccCDS,
+                         dccCDS = "ACT/360",
                          dateInterval = "Q",
                          stubType = "F",
-                         badDayConv_input = badDayConvCDS,
-                         calendar_input = calendar,
+                         badDayConv_input = "F",
+                         calendar_input = "None",
                          
                          upfrontCharge_input = x[[points.var]][i],
                          recoveryRate_input = recovery,
