@@ -13,3 +13,24 @@ CDS TO-DO List
 ** If we can't make all the above automatic, then we could, instead, still get the package on CRAN by making the process as easy as possible. That is, we still don't distribute the c code, but we provide step-by-step instructions in what to do after you have downloaded the package. This is non-trivial because it would require re-compiling the package after the user gets the c code. But it is still not a bad answer. In fact, doing this is probably a good idea because it will show you all the steps that need to be added to the Makefile.
 
 * Fix all line wraps by reformatting code.
+
+Kanishka's note on what test cases to add
+========================================================
+
+
+* maturity date （endDate) does not need to be a weekday. It remains unfixed, and has to be roll date.
+* coupondate must be a weekday; if the roll date is a weekend day, coupon date has to be adjusted to business day.
+* Accrual Start Date must be a weekday. if the rolldate before trade date is a weekend day, accrual start date must be adjusted to next business day.
+*Accrual End Date (not end date or maturity date, which must be fixed) does not have to be a weekday: for example, if the second coupon payment date is Mon 6/22/2009 (because 6/20/2009 is a weekend day), then the Accrual end date is 6/21/2009, a Sunday.
+* So according to ISDA date convention pdf, start date and benchmark start date is the same as accrual begin date, this means that startDate and benchmarkDate must be weekdays.
+* Also, there exists a confusion for valueDate: if you check out ISDA date convention pdf, you will find that if you are calculating "cash settlement from spread" or "spread from upfront", then valueDate = Trade date + 3, which also means that valueDate can also be a weekend. else if you are "building a yield curve", then valueDate = Trade Date + 2 weekdays (Non-JPY) or Trade Date + 2 business days (JPY), which also means that valueDate can be a weekend.
+* But right now, in our CDS package, I "think" we are treating valueDate = Trade Date + 2 business days/weekdays everywhere
+* And I "think" we are coercing valueDate to be a business day. 
+
+* Rec Risk 01 was problematic. More test cases needed there (ask for BB screenshots from Dave).
+(RecRisk shouldn't be more problematic, because its code is almost identical to IR.DV01 and spread.DV01,
+maybe it's just that the effect of change in RecRisk is bigger than other variable, so it seems that 
+the code of RecRisk is more problematic)
+
+* PV.01 test case if George provides the true values to test against.
+
