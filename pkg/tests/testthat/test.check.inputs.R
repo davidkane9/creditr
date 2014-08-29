@@ -4,20 +4,18 @@ test_that("test for check.input", {
   
   ## define a valid data frame of inputs. The test below just modifies it.
   
-  x0 <- data.frame(dates    = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
+  x0 <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                    currency = c("USD", "EUR"),
                    maturity = c(as.Date("2019-04-22"), as.Date("2019-04-22")),
-                   tenor    = c(5, 5),
-                   spread   = c(120, 110),
-                   coupon   = c(100, 100),
+                   tenor = c(5, 5),
+                   spread = c(120, 110),
+                   coupon = c(100, 100),
                    recovery = c(0.4, 0.4),
-                   notional = c(1e7, 1e7),
-                   pd       = c(0.2, 0.2))
+                   notional = c(1e7, 1e7))
   
-  ## if pd is not numeric
+  ## if inputs are missing, it should return an error
   
-  x1 <- x0
-  x1$pd <- c("0.2", "0.2")
+  x1 <- data.frame(dates = c(as.Date("2014-04-22"), as.Date("2014-04-22")))
   expect_error(check.inputs(x1))
   
   ## if date is not a Date class

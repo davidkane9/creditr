@@ -26,12 +26,15 @@ check.inputs <- function(x,
                          spread.var   = "spread",
                          coupon.var   = "coupon",
                          notional.var = "notional",
-                         recovery.var = "recovery",
-                         pd.var       = "pd",
                          notional     = 1e7,
+                         recovery.var = "recovery",
                          recovery     = 0.4){
-  
+
   stopifnot(is.data.frame(x))
+  
+  ## check if certain variables are contained in x
+  
+  stopifnot(c(currency.var, spread.var, coupon.var) %in% names(x))
   
   if(!notional.var %in% names(x)){
     x <- cbind(x, notional)
@@ -55,13 +58,9 @@ check.inputs <- function(x,
   ## whether a variable is of class "Date", we use
   ## inherits() instead. We don't want other packages.
   
-  if(date.var %in% names(x)){
-    stopifnot(inherits(x[[date.var]], "Date"))
-  }
+  stopifnot(inherits(x[[date.var]], "Date"))
   
-  if(currency.var %in% names(x)){
-    x[[currency.var]] <- as.character(x[[currency.var]])
-  }
+  x[[currency.var]] <- as.character(x[[currency.var]])
   
   ## check maturity OR tenor
   
@@ -75,23 +74,11 @@ check.inputs <- function(x,
     stop("provide either tenor OR maturity")
   }
   
-  if(spread.var %in% names(x)){
-    stopifnot(is.numeric(x[[spread.var]])   & !(is.integer(x[[spread.var]])))
-  }
+  stopifnot(is.numeric(x[[spread.var]])   & !(is.integer(x[[spread.var]])))
+  stopifnot(is.numeric(x[[coupon.var]])   & !(is.integer(x[[coupon.var]])))
+  stopifnot(is.numeric(x[[notional.var]]) & !(is.integer(x[[notional.var]])))
   
-  if(coupon.var %in% names(x)){
-    stopifnot(is.numeric(x[[coupon.var]])   & !(is.integer(x[[coupon.var]])))
-  }
-  
-  if(notional.var %in% names(x)){
-    stopifnot(is.numeric(x[[notional.var]]) & !(is.integer(x[[notional.var]])))
-  }
-  
-  if(pd.var %in% names(x)){
-    stopifnot(is.numeric(x[[pd.var]]))
-  }
-  
-  ## change the column names
+  ## change the column names anyway
   
   colnames(x)[which(colnames(x) == date.var)]     <- "date"
   colnames(x)[which(colnames(x) == currency.var)] <- "currency"
@@ -101,6 +88,6 @@ check.inputs <- function(x,
   colnames(x)[which(colnames(x) == coupon.var)]   <- "coupon"
   colnames(x)[which(colnames(x) == recovery.var)] <- "recovery"
   colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
-  
+
   return(x)
 }
