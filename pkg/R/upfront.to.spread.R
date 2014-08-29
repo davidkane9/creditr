@@ -35,8 +35,7 @@ upfront.to.spread <- function(x,
   
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
   stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
-  
-  spread <- rep(NA, nrow(x))
+
   
   if (is.null(x[[points.var]])) {
     x[[points.var]] <- x[[upfront.var]] / notional
@@ -45,26 +44,15 @@ upfront.to.spread <- function(x,
   }
   
   x <- add.conventions(add.dates(x))
-  x <- cbind(x, spread)
+  
+  spread <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
-    
-    if(is.null(x[[coupon.var]][i])){
-      coupon <- 100 
-    } else{
-      coupon <- x[[coupon.var]][i]
-    }
-    
-    if(is.null(x[[recovery.var]][i])){
-      recovery <- 0.4
-    } else{
-      recovery <- x[[recovery.var]][i]
-    }
     
     rates.info <- get.rates(date = as.Date(x[[date.var]][i]),
                            currency = as.character(x[[currency.var]][i]))
     
-    x$spread[i] <- .Call('calcCdsoneSpread',
+    spread[i] <- .Call('calcCdsoneSpread',
                          baseDate_input = separate.YMD(x$baseDate[i]),
                          types = paste(as.character(rates.info$type), collapse = ""),
                          rates = as.numeric(as.character(rates.info$rate)),
@@ -99,5 +87,5 @@ upfront.to.spread <- function(x,
                          payAccruedAtStart_input = payAccruedAtStart,
                          PACKAGE = "CDS")                       
   }
-  return(x$spread)
+  return(spread)
 }
