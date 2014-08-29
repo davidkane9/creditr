@@ -6,9 +6,9 @@
 call.ISDA(x, name, rates.info)
 }
 \arguments{
-\item{name}{character function name within which call.ISDA is called}
-
 \item{x}{dataframe which contains relevant dates and convention info}
+
+\item{name}{character function name within which call.ISDA is called}
 
 \item{rates.info}{dataframe which contains relevant rates data}
 }
