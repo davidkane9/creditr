@@ -54,7 +54,6 @@ CDS <- function(name = NULL,
   
   payAccruedOnDefault <- TRUE
   
-  
   baseDate <- as.Date(date) + 2
 
   ## stop if date is invalid
@@ -158,7 +157,6 @@ CDS <- function(name = NULL,
     
   cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
                            isPriceClean = FALSE)
-  
   ## accrual amount
   
   cds@accrual <- cds@upfront - cds@principal
