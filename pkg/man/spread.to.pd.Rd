@@ -3,19 +3,32 @@
 \alias{spread.to.pd}
 \title{Calcualte Default Probability with Spread}
 \usage{
-spread.to.pd(spread, time, recovery = 0.4)
+spread.to.pd(x, recovery.var = "recovery", currency.var = "currency",
+  tenor.var = "tenor", date.var = "date", spread.var = "spread")
 }
 \arguments{
-\item{spread}{in bps}
+\item{x}{data frame, contains all the relevant columns.}
 
-\item{time}{in years}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
 
-\item{recovery}{in decimal. Default is 0.4.}
+\item{currency.var}{character, column in x containing currency.}
+
+\item{tenor.var}{character, column in x containing tenors.}
+
+\item{date.var}{character, column in x containing date variable.}
+
+\item{spread.var}{character, column in x containing spread in basis points.}
 }
 \value{
-default probability in decimals
+vector containing the probability of default, calculated by using the
+  formula for probability of default given in the Bloomberg Manual
 }
 \description{
-\code{spread.to.pd} approximates the default probability at time given the spread
+\code{spread.to.pd} approximates the default probability at time given the
+spread
+}
+\seealso{
+\link{pd.to.spread}
 }
 

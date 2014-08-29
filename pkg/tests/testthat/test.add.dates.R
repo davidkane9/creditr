@@ -6,6 +6,7 @@ context("Test add.dates")
 library(CDS)
 
 test_that("test for add.dates", {
+  
   ## Should return an error when no tenor or maturity date is given
   
   expect_error(add.dates(data.frame(date = as.Date("2014-04-15"), currency = "USD")))

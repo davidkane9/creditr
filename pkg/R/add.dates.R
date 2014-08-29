@@ -50,37 +50,12 @@ add.dates <- function(x,
       "2016-03-21", "2017-03-20", "2020-03-20", "2020-09-21", "2020-09-22")
     )
   
-  ## This is a collection of comments from KM. We should parse them and clarify
-  ## them. 
-  
-  ## coupondate must be a weekday; if the roll date is 
-  ## a weekend day, coupon date has to be adjusted to business day. Accrual 
-  ## Start Date must be a weekday. if the rolldate before trade date is a 
-  ## weekend day, accrual start date must be adjusted to next business day. 
-  ## Accrual End Date (not end date or maturity date, which must be fixed) does 
-  ## not have to be a weekday: for example, if the second coupon payment date is
-  ## Mon 6/22/2009 (because 6/20/2009 is a weekend day), then the Accrual end 
-  ## date is 6/21/2009, a Sunday. So according to ISDA date convention pdf, 
-  ## start date and benchmark start date is the same as accrual begin date, this
-  ## means that startDate and benchmarkDate must be weekdays. Also, there exists
-  ## a confusion for valueDate: if you check out ISDA date convention pdf, you 
-  ## will find that if you are calculating "cash settlement from spread" or 
-  ## "spread from upfront", then valueDate = Trade date + 3, which also means 
-  ## that valueDate can also be a weekend. else if you are "building a yield 
-  ## curve", then valueDate = Trade Date + 2 weekdays (Non-JPY) or Trade Date + 
-  ## 2 business days (JPY), which also means that valueDate can be a weekend. 
-  ## But right now, in our CDS package, I "think" we are treating valueDate = 
-  ## Trade Date + 2 business days/weekdays everywhere And I "think" we are 
-  ## coercing valueDate to be a business day.
-  
-  
-  x$baseDate        <- as.Date(NA)
   x$stepinDate      <- as.Date(NA)
   x$valueDate       <- as.Date(NA)
-  x$startDate       <- as.Date(NA)
+  x$startDate       <- as.Date(NA)  ## also called as Accrual Start Date
   x$firstcouponDate <- as.Date(NA)
   x$pencouponDate   <- as.Date(NA)
-  x$endDate         <- as.Date(NA)
+  x$endDate         <- as.Date(NA)  ## also called maturity (date)
   x$backstopDate    <- as.Date(NA)
   x$baseDate        <- as.Date(NA)
   
@@ -98,12 +73,12 @@ add.dates <- function(x,
     
     dateWday <- as.POSIXlt(x[[date.var]][i])$wday
     
-    ## baseDate is the biggest confusing date, because of JPY's difference
+    ## baseDate is the confusing  because of JPY's difference
     
-    ## Also notice that the below code is not perfect; if extreme cases 
-    ## like five holidays in a row happen, the below code will fail
-    ## if inaccuracy problem (compared with Bloomberg) still happens,
-    ## ALWAYS re-consider problems in baseDate and valueDate FIRST!!!
+    ## Also notice that the below code is not perfect; if extreme cases like 
+    ## five holidays in a row happen, the below code will fail if inaccuracy 
+    ## problem (compared with Bloomberg) still happens, ALWAYS re-consider 
+    ## problems in baseDate and valueDate FIRST!!!
     
     if(x[[currency.var]][i] != "JPY"){
       
@@ -123,19 +98,25 @@ add.dates <- function(x,
       }
     }
     
-    ## stepinDate is the date on which a party assumes ownership of a trade side. 
-    ## it is Trade date + 1 day
+    ## stepinDate is the date on which a party assumes ownership of a trade
+    ## side. it is Trade date + 1 day
     
     stepinDate <- x[[date.var]][i] + 1
     
-    ## valueDate is the date on which a cash payment is settled.
-    ## valueDate is 3 business days after the Trade Date. 
+    ## valueDate is the date on which a cash payment is settled. valueDate is 3
+    ## business days after the Trade Date.
     
-    ## if valueDate is 3 "business" days after the Trade Date,
-    ## then shouldn't we consider US, EUR and JP holidays as well?
-    ## but we don't have the data frame now for these holidays!
-    ## The below code only plus three weekdays to valueDate!
-    ## this is wrong!!!
+    ## Also be aware that, if you check ISDA documentation on valueDate, it will
+    ## give you two ways of calculation calculating the valueDate. Remember that
+    ## we are using valueDate here for calculating upfront with spread or
+    ## calculating spread with upfront, so valueDate in our code = trade date +
+    ## 3 business day. (Don't bother looking at the valueDate = trade date + 2
+    ## weekday/business day stuff; it's for building the yield curve.)
+    
+    ## IMPORTANT ERROR OF VALUEDATE: if valueDate is 3 "business" days after the
+    ## Trade Date, then shouldn't we consider US, EUR and JP holidays as well?
+    ## but we don't have the data frame now for these holidays! The below code
+    ## only plus three weekdays to valueDate! this is wrong!!!
     
     valueDate <- adj.next.bus.day(x[[date.var]][i] + 1)
     for(j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
@@ -153,6 +134,10 @@ add.dates <- function(x,
       date.first$mon <- date.first$mon - (as.numeric(format(date.first, "%m")) %% 3)
     }
     date.first$mday <- 20
+    
+    ## Accrual Start Date must be a weekday. If the rolldate before trade date
+    ## is a weekend day, accrual start date must be adjusted to next business
+    ## day.
     
     startDate <- adj.next.bus.day(as.Date(as.POSIXct(date.first)))
     
@@ -210,6 +195,16 @@ add.dates <- function(x,
     x$valueDate[i]       <- valueDate
     x$baseDate[i]        <- baseDate
   }
+  
+  ## Accrual End Date is also a date defined on ISDA documentation. Although we 
+  ## don't use currently use it in our code, I think I may clarify it for 
+  ## precaution. Accural End Day does not have to be a weekday: for example, if 
+  ## the second coupon payment date is Mon 6/22/2009 (because 6/20/2009 is a 
+  ## weekend day), then the Accrual end date is 6/21/2009, a Sunday.
+  
+  ## Also, we don't have benchmarkDate here in add.dates(). According to ISDA
+  ## date convention documentation, benchmark start date is the same as accrual
+  ## begin date, this means that benchmarkDate must be a weekday.
   
   return(x)
   

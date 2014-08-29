@@ -7,18 +7,19 @@ pd.to.spread(x, recovery.var = "recovery", currency.var = "currency",
   tenor.var = "tenor", date.var = "date", pd.var = "pd")
 }
 \arguments{
-\item{x}{dataset containing the recovery rate, tenor (in years), probability
-of default and trade date.}
-
-\item{recovery.var}{name of the column containing the recovery rate in
-decimals.}
-
 \item{pd.var}{name of the column containing the probability of default in
-decimals.}
+  decimals.}
 
-\item{tenor.var}{name of the column containing the tenor in years.}
+\item{x}{data frame, contains all the relevant columns.}
 
-\item{date.var}{name of the column containing the trade date.}
+\item{recovery.var}{character, column in x containing recovery rates. ISDA
+model standard recovery rate asscumption is 0.4.}
+
+\item{currency.var}{character, column in x containing currency.}
+
+\item{tenor.var}{character, column in x containing tenors.}
+
+\item{date.var}{character, column in x containing date variable.}
 }
 \value{
 vector containing the spread values in basis points, calculated by
@@ -28,5 +29,8 @@ vector containing the spread values in basis points, calculated by
 \description{
 \code{pd.to.spread} to calculate spread using the probability of default,
 tenor and recovery rate.
+}
+\seealso{
+\link{spread.to.pd}
 }
 

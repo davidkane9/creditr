@@ -2,15 +2,21 @@ context("Test spread.to.pd")
 
 test_that("spread.to.pd.test.R", {
   
-  ## This is NOT even a test case!!!!!
+  ## test case from Bloomberg screenshots of Chorus
   
-   truth <- spread.to.pd(spread = 32, time = 5.25, recovery = 0.4)
+  data <- data.frame(date = as.Date("2014-04-15"),
+                     tenor = 5,
+                     recovery = 0.4,
+                     spread = 243.2800,
+                     currency = "USD")
+
+  truth <- 0.1915
+
+  result <- spread.to.pd(data)
   
-  ## save(truth, file = "spread.to.pd.test.RData")
+  ## currently the test case cannot be matched for 100%, so we need rounding
+  ## here
   
-  
-  result <- spread.to.pd(spread = 32, time = 5.25, recovery = 0.4)
-  
-  stopifnot(all.equal(result, truth))
+  stopifnot(all.equal(round(result, 3), round(truth, 3)))
   
 })
