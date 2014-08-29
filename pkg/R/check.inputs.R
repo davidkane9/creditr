@@ -60,6 +60,8 @@ check.inputs <- function(x,
   
   stopifnot(inherits(x[[date.var]], "Date"))
   
+  x[[currency.var]] <- as.character(x[[currency.var]])
+  
   ## check maturity OR tenor
   
   if(maturity.var %in% names(x) & tenor.var %in% names(x)){

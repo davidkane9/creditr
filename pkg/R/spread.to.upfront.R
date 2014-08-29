@@ -26,6 +26,8 @@ spread.to.upfront <- function(x,
                               recovery.var = "recovery",
                               isPriceClean = FALSE){
   
+  x[[currency.var]] <- as.character(x[[currency.var]])
+  
   stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) 
   stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
   

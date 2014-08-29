@@ -26,6 +26,8 @@ upfront.to.spread <- function(x,
                    payAccruedAtStart = FALSE,
                    payAccruedOnDefault = TRUE){
   
+  x[[currency.var]] <- as.character(x[[currency.var]])
+  
   if (is.null(x[[upfront.var]]) & is.null(x[[points.var]]))
     stop("Please input upfront or pts upfront")
   
