@@ -49,20 +49,8 @@ CDS <- function(name = NULL,
     
     stopifnot(maturity == maturityshouldbe) 
   }
-  
-  isPriceClean <- FALSE
-  
-  payAccruedOnDefault <- TRUE
-  
-  baseDate <- as.Date(date) + 2
 
-  ## stop if date is invalid
-  
-  stopifnot(is.character(contract))
-  stopifnot(is.character(currency))
-  
-  if ((is.null(spread)))
-    stop("Please input spread")
+  if ((is.null(spread))) stop("Please input spread")
  
   ## if maturity date is not given we use the tenor and vice-versa, to get dates using
   ## add.dates function. Results are stored in cdsdates
@@ -84,18 +72,22 @@ CDS <- function(name = NULL,
     }
   }
 
-  ## if these dates are not entered, we extract that from cdsdates
-
-  endDate                         <- as.Date(cdsDates$endDate)
-  if (is.null(maturity)) maturity <- as.Date(cdsDates$endDate)
-  if (is.null(baseDate)) baseDate <- as.Date(cdsDates$baseDate)
-  
-  effectiveDate <- adj.next.bus.day(date)
-
   ## if entity name and/or RED code is not provided, we set it as NA
   
   if (is.null(name)) name <- "NA"
   if (is.null(RED)) RED <- "NA"
+
+  ## if tenor is NULL, we determine the tenor using the maturity date
+  
+  if(is.null(tenor)){
+    lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
+    lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
+    tenor <- as.numeric((lt2$year*12 + lt2$mon) - (lt1$year*12 + lt1$mon))/12
+  }
+  
+  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
+  
+  if(is.null(maturity)) maturity = as.Date(cdsDates$endDate)
 
   ## create object of class CDS using the data we extracted
   
@@ -109,51 +101,25 @@ CDS <- function(name = NULL,
              coupon   = coupon,
              recovery = recovery,
              currency = currency,
-             notional = notional)
-  
-  ## if tenor is NULL, we determine the tenor using the maturity date
-  
-  if(is.null(tenor)){
-    
-    lt1 <- as.POSIXlt(as.Date(date, origin="1900-01-01"))
-    monnb1 <- lt1$year*12 + lt1$mon
-    
-    lt2 <- as.POSIXlt(as.Date(maturity, origin="1900-01-01"))
-    monnb2 <- lt2$year*12 + lt2$mon
-    
-    tenor.mondf <- monnb2 - monnb1
-    
-    cds@tenor <- as.numeric(tenor.mondf)/12
-  }
-  
-  ## if maturity date is NULL, we set maturity date as the endDate, which obtained using add.dates.
-  
-  if(is.null(maturity)){
-    cds@maturity = endDate
-  }
+             notional = notional,
+             spread   = spread)
   
   ## With a given spread is given, calculate principal and accrual
 
-  cds@spread <- spread
-    
-  ## clean upfront or principal
-    
   df <- data.frame(date             = as.Date(cds@date),
                    spread           = spread,
                    coupon           = cds@coupon,
-                   maturity         = cds@maturity,
+                   maturity         = as.Date(cds@maturity),
                    currency         = cds@currency,
                    recovery         = cds@recovery,
                    notional         = cds@notional,
                    stringsAsFactors = FALSE)
     
-  cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
-                             isPriceClean = TRUE)
+  cds@principal <- spread.to.upfront(x = df, notional = cds@notional, isPriceClean = TRUE)
     
   ## dirty upfront
     
-  cds@upfront <- spread.to.upfront(x = df, notional = cds@notional,
-                           isPriceClean = FALSE)
+  cds@upfront <- spread.to.upfront(x = df, notional = cds@notional, isPriceClean = FALSE)
 
   cds@accrual <- cds@upfront - cds@principal
   
@@ -161,7 +127,8 @@ CDS <- function(name = NULL,
   cds@IR.DV01     <- IR.DV01(df) 
   cds@rec.risk.01 <- rec.risk.01(df)
   cds@pd          <- spread.to.pd(spread   = cds@spread,
-                                  time     = as.numeric(endDate - as.Date(date))/360,
+                                  time     = as.numeric(as.Date(cdsDates$endDate)
+                                                        - as.Date(date))/360,
                                   recovery = recovery)
   
   ## calculate the default exposure of a CDS contract based on the
