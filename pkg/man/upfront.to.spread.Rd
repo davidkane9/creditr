@@ -6,9 +6,9 @@ or ptsUpfront values}
 \usage{
 upfront.to.spread(x, currency.var = "currency", date.var = "date",
   coupon.var = "coupon", tenor.var = "tenor", maturity.var = "maturity",
-  RR.var = "recovery.rate", upfront.var = "upfront",
-  points.var = "ptsUpfront", isPriceClean = FALSE, notional = 1e+07,
-  payAccruedAtStart = FALSE, payAccruedOnDefault = TRUE)
+  RR.var = "recovery", upfront.var = "upfront", points.var = "ptsUpfront",
+  isPriceClean = FALSE, notional = 1e+07, payAccruedAtStart = FALSE,
+  payAccruedOnDefault = TRUE)
 }
 \arguments{
 \item{points.var}{character name of points Upfront column}

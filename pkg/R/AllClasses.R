@@ -12,7 +12,7 @@
 #' @slot maturity date of the CDS contract.
 #' @slot tenor of contract in number of years - 5, 3
 #' @slot coupon quoted in bps. It specifies the payment amount from
-#' @slot recovery.rate in decimal. Default is 0.4.
+#' @slot recovery in decimal. Default is 0.4.
 #' @slot currency in which CDS is denominated.
 #' @slot principal is the dirty \code{upfront} less the \code{accrual}.
 #' @slot accrual is the accrued interest payment.
@@ -62,7 +62,7 @@ setClass("CDS",
            maturity = "Date",
            tenor = "numeric",
            coupon = "numeric",
-           recovery.rate = "numeric",
+           recovery = "numeric",
            currency = "character",
            notional = "numeric",
            principal = "numeric",
@@ -92,7 +92,7 @@ setClass("CDS",
            maturity = character(),
            tenor = numeric(),
            coupon = numeric(),
-           recovery.rate = numeric(),
+           recovery = numeric(),
            currency = character(),
            notional = numeric(),
            principal = numeric(),

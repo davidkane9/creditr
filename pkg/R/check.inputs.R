@@ -1,21 +1,21 @@
-#' Check whether inputs from the data frame are valid
+#' Check whether inputs from the data frame are valid.
 #' 
 #' \code{check.inputs} checks whether a data frame's inputs are valid. It is a 
-#' minimum set of checks. Things such as recovery.rate var are not checked, 
+#' minimum set of checks. Things such as recovery var are not checked, 
 #' because some functions don't need them as input.
 #' 
 #' @inheritParams CS10
 #' @param spread.var name of column in x containing  spreads in bps.
 #'   
 #' @return a data frame if not stopped by errors.
-#' 
+#'   
 #' @examples 
 #' x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 #'                 currency = c("USD", "EUR"),
 #'                 tenor = c(5, 5),
 #'                 spread = c(120, 110),
 #'                 coupon = c(100, 100),
-#'                 recovery.rate = c(0.4, 0.4),
+#'                 recovery = c(0.4, 0.4),
 #'                 notional = c(1e7, 1e7))
 #' x <- check.inputs(x)
 
@@ -28,8 +28,8 @@ check.inputs <- function(x,
                          coupon.var = "coupon",
                          notional.var = "notional",
                          notional = 1e7,
-                         RR.var = "recovery.rate",
-                         recovery.rate = 0.4){
+                         RR.var = "recovery",
+                         recovery = 0.4){
 
   stopifnot(is.data.frame(x))
   
@@ -42,7 +42,7 @@ check.inputs <- function(x,
   }
   
   if(!RR.var %in% names(x)){
-    x <- cbind(x, recovery.rate)
+    x <- cbind(x, recovery)
   }
   
   if(!date.var %in% names(x)){
@@ -73,19 +73,19 @@ check.inputs <- function(x,
     stop("provide either tenor OR maturity")
   }
   
-  stopifnot(is.numeric(x[[spread.var]]) & !(is.integer(x[[spread.var]])))
-  stopifnot(is.numeric(x[[coupon.var]]) & !(is.integer(x[[coupon.var]])))
+  stopifnot(is.numeric(x[[spread.var]])   & !(is.integer(x[[spread.var]])))
+  stopifnot(is.numeric(x[[coupon.var]])   & !(is.integer(x[[coupon.var]])))
   stopifnot(is.numeric(x[[notional.var]]) & !(is.integer(x[[notional.var]])))
   
   ## change the column names anyway
   
-  colnames(x)[which(colnames(x) == date.var)] <- "date"
+  colnames(x)[which(colnames(x) == date.var)]     <- "date"
   colnames(x)[which(colnames(x) == currency.var)] <- "currency"
   colnames(x)[which(colnames(x) == maturity.var)] <- "maturity"
-  colnames(x)[which(colnames(x) == tenor.var)] <- "tenor"
-  colnames(x)[which(colnames(x) == spread.var)] <- "spread"
-  colnames(x)[which(colnames(x) == coupon.var)] <- "coupon"
-  colnames(x)[which(colnames(x) == RR.var)] <- "recovery.rate"
+  colnames(x)[which(colnames(x) == tenor.var)]    <- "tenor"
+  colnames(x)[which(colnames(x) == spread.var)]   <- "spread"
+  colnames(x)[which(colnames(x) == coupon.var)]   <- "coupon"
+  colnames(x)[which(colnames(x) == RR.var)]       <- "recovery"
   colnames(x)[which(colnames(x) == notional.var)] <- "notional" 
 
   return(x)

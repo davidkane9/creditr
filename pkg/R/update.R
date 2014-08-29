@@ -48,7 +48,7 @@ setMethod("update",
                                 tenor = object@tenor,                               
                                 spread = newSpread,
                                 coupon = object@coupon,
-                                recovery.rate = object@recovery.rate,
+                                recovery = object@recovery,
                                 upfront = newUpfront,
                                 notional = object@notional)
                   return(newCDS)

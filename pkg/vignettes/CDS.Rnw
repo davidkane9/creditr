@@ -326,7 +326,7 @@ Eventually, we get:
 Solving for "P", we get .91\% (rounded to the nearest hundreth). Since both parties agreed to this CDS in an environment where the interest rate is 10\%, we can say that the portfolio manager's prediction for the probability of default is at least .91\%, and JPM's prediction for the probability of default is at most .91\%. 
 
 \subsubsection{Recovery Rate}
-\label{sec:recovery.rate}
+\label{sec:recovery}
 
 Recall that in our property insurance example, we mentioned that some cases---such as a house fire that burns half of a house---may not merit a full payment equal to the notional amount (in that case, \$100,000). Similarly, when a company defaults, an \textbf{auction} occurs in which some of the company's bondholders come to sell their bonds, and prospective buyers come to buy the bonds at, usually, lower prices. We note this because the price at which bonds can be sold after default affects the protection leg payment in a CDS contract.
 
@@ -342,13 +342,13 @@ So, we need to factor the recovery rate into our calculation of expected cash fl
  \begin{aligned}
  {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows}
     \end{aligned}
-\label{eqn:recovery.rate}
+\label{eqn:recovery}
 \end{equation}
 \begin{equation}
  \begin{aligned}
    {\rm - C + (P * V * (1 - RR)) = C - (P * V * (1 - RR))}
     \end{aligned}
-\label{eqn:recovery.rate}
+\label{eqn:recovery}
 \end{equation}
 
 Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled "V" by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just "RR"). Another term for this amount is the loss given default (LGD):
@@ -357,7 +357,7 @@ Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePerio
  \begin{aligned}
    {\rm (1 - RR) = LGD}
     \end{aligned}
-\label{eqn:recovery.rate}
+\label{eqn:recovery}
 \end{equation}
 
 We'll stick to using "RR" instead of the LGD for now.
@@ -625,7 +625,7 @@ We have introduced a simple one-period CDS between a portfolio manager and JPM, 
 
 In a real-world scenario, we'd have to look at \emph{all} these factors at the same time, and come up with a way to model cash flows that take all factors into account.
 
-Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery.rate} and \ref{eqn:Upfront}, we get a master equation that accounts for interest rate ("i"), recovery rate ("RR"), and upfront payment ("U"). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, "C" stands for the coupon payment, "P" for the probability of default, and "V" for the notional value.)
+Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfront}, we get a master equation that accounts for interest rate ("i"), recovery rate ("RR"), and upfront payment ("U"). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, "C" stands for the coupon payment, "P" for the probability of default, and "V" for the notional value.)
 
 \begin{equation}
  \begin{aligned}
@@ -1271,7 +1271,7 @@ Function to calculate the increase in the upfront value when the recovery rate i
   #        tenor = "5Y",
    #       spread = 160,
     #      coupon = 100,
-     #     recovery.rate = 0.4,
+     #     recovery = 0.4,
       #    notional = 1e7)
 @ 
 
@@ -1285,7 +1285,7 @@ Function to calculate the increase in the upfront value when the interest rate o
       #            tenor = "5Y",
        #           spread = 160,
         #          coupon = 100,
-         #         recovery.rate = 0.4,
+         #         recovery = 0.4,
           #        notional = 1e7)
 @
 
@@ -1300,7 +1300,7 @@ Function to calculate the increase in the upfront value when the spread increase
   #         tenor = "5Y",
    #        spread = 160,
     #       coupon = 100,
-     #      recovery.rate = 0.4,
+     #      recovery = 0.4,
       #     notional = 1e7)
 @
 
@@ -1319,7 +1319,7 @@ Function to calculate the default exposure.
 Probability of default calculated using the function provided in the Bloomberg manual.
 
 <<echo = FALSE>>=
-#default.prob(spread = 160, t = 5, recovery.rate = 0.4)
+#default.prob(spread = 160, t = 5, recovery = 0.4)
 @
 
 \section{Conclusion}

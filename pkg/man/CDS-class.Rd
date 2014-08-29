@@ -28,7 +28,7 @@ is \code{Sys.Date}.}
 
 \item{\code{coupon}}{quoted in bps. It specifies the payment amount from}
 
-\item{\code{recovery.rate}}{in decimal. Default is 0.4.}
+\item{\code{recovery}}{in decimal. Default is 0.4.}
 
 \item{\code{currency}}{in which CDS is denominated.}
 

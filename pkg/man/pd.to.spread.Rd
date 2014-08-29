@@ -3,14 +3,14 @@
 \alias{pd.to.spread}
 \title{Calculate spread with Default Probability}
 \usage{
-pd.to.spread(x, recovery.rate.var = "recovery.rate", tenor.var = "tenor",
+pd.to.spread(x, recovery.var = "recovery", tenor.var = "tenor",
   date.var = "date", pd.var = "PD")
 }
 \arguments{
 \item{x}{dataset containing the recovery rate, tenor (in years), probability
 of default and trade date.}
 
-\item{recovery.rate.var}{name of the column containing the recovery rate in decimals.}
+\item{recovery.var}{name of the column containing the recovery rate in decimals.}
 
 \item{pd.var}{name of the column containing the probability of default in decimals.}
 

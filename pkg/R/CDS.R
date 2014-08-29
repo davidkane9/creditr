@@ -12,7 +12,7 @@
 #' @param tenor of contract. By default is set as 5
 #' @param coupon quoted in bps. It specifies the payment amount from the
 #'   protection buyer to the seller on a regular basis. The default is 100 bps.
-#' @param recovery.rate in decimal. Default is 0.4.
+#' @param recovery in decimal. Default is 0.4.
 #' @param currency in which CDS is denominated.
 #' @param notional is the amount of the underlying asset on which the payments
 #'   are based. Default is 1e7, i.e. 10MM.
@@ -38,7 +38,7 @@ CDS <- function(name = NULL,
                 maturity = NULL,
                 tenor = NULL,
                 coupon = 100,
-                recovery.rate = 0.4,
+                recovery = 0.4,
                 currency = "USD",
                 notional = 1e7,
                 upfront = NULL){
@@ -174,7 +174,7 @@ CDS <- function(name = NULL,
              maturity = maturity,
              tenor = as.numeric(tenor),
              coupon = coupon,
-             recovery.rate = recovery.rate,
+             recovery = recovery,
              currency = currency,
              notional = notional)
   
@@ -212,7 +212,7 @@ CDS <- function(name = NULL,
                      coupon   = cds@coupon,
                      maturity = cds@maturity,
                      currency = cds@currency,
-                     recovery = cds@recovery.rate)
+                     recovery = cds@recovery)
     
     cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                              isPriceClean = TRUE)
@@ -238,7 +238,7 @@ CDS <- function(name = NULL,
                                 currency = currency,
                                 coupon = coupon,
                                 ptsUpfront =  upfront / notional,
-                                recovery.rate = recovery.rate,
+                                recovery = recovery,
                                 tenor = tenor)
       
       cds@spread <- upfront.to.spread(x = spreadinput,
@@ -252,7 +252,7 @@ CDS <- function(name = NULL,
                        coupon   = cds@coupon,
                        tenor    = cds@tenor,
                        currency = cds@currency,
-                       recovery = cds@recovery.rate)
+                       recovery = cds@recovery)
       
       cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = FALSE)
@@ -270,7 +270,7 @@ CDS <- function(name = NULL,
                                 currency = cds@currency,
                                 coupon = cds@coupon,
                                 upfront = cds@upfront,
-                                recovery.rate = cds@recovery.rate,
+                                recovery = cds@recovery,
                                 tenor = cds@tenor)
       
       cds@spread <- upfront.to.spread(x = spreadinput,
@@ -285,7 +285,7 @@ CDS <- function(name = NULL,
                        coupon = cds@coupon,
                        maturity = cds@maturity,
                        currency = cds@currency,
-                       recovery = cds@recovery.rate)
+                       recovery = cds@recovery)
       
       cds@principal <- spread.to.upfront(x = df, notional = cds@notional,
                                isPriceClean = TRUE)
@@ -304,7 +304,7 @@ CDS <- function(name = NULL,
                   tenor         = cds@tenor,
                   spread        = cds@spread,
                   coupon        = cds@coupon,
-                  recovery.rate = cds@recovery.rate,
+                  recovery = cds@recovery,
                   notional      = cds@notional)
   
   cds@spread.DV01  <- spread.DV01(x)
@@ -313,7 +313,7 @@ CDS <- function(name = NULL,
   cds@pd <- spread.to.pd(spread = cds@spread,
                                   time = as.numeric(dates['endDate'][[1]] -
                                                       as.Date(date))/360,
-                                  recovery.rate = recovery.rate)
+                                  recovery = recovery)
   
   ## calculate the default exposure of a CDS contract based on the
   ## formula: Default Exposure: (1-Recovery Rate)*Notional - Principal

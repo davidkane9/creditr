@@ -5,8 +5,8 @@
 \usage{
 IR.DV01(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", RR.var = "recovery.rate",
-  notional.var = "notional", notional = 1e+07, recovery.rate = 0.4)
+  coupon.var = "coupon", RR.var = "recovery", notional.var = "notional",
+  notional = 1e+07, recovery = 0.4)
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}
@@ -48,7 +48,7 @@ currency = c("USD", "EUR"),
 tenor = c(5, 5),
 spread = c(120, 110),
 coupon = c(100, 100),
-recovery.rate = c(0.4, 0.4),
+recovery = c(0.4, 0.4),
 notional = c(1e7, 1e7))
 result <- IR.DV01(x)
 }

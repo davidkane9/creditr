@@ -10,7 +10,7 @@ test_that("test for check.input", {
                    tenor = c(5, 5),
                    spread = c(120, 110),
                    coupon = c(100, 100),
-                   recovery.rate = c(0.4, 0.4),
+                   recovery = c(0.4, 0.4),
                    notional = c(1e7, 1e7))
   
   ## if inputs are missing, it should return an error

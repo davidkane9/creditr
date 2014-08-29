@@ -17,7 +17,7 @@ call.ISDA <- function(x, name, rates.info){
   
   stopifnot(is.data.frame(x))
   stopifnot(c("date", "currency", "tenor", "spread", "coupon",
-              "recovery.rate", "notional", "stepinDate", "valueDate",
+              "recovery", "notional", "stepinDate", "valueDate",
               "startDate", "firstcouponDate", "pencouponDate", "endDate",
               "backstopDate", "baseDate", "badDayConvention", "mmDCC",
               "mmCalendars", "fixedDCC", "floatDCC", "fixedFreq",
@@ -97,7 +97,7 @@ call.ISDA <- function(x, name, rates.info){
                        ## is changed by adding 1%. otherwise it remains
                        ## unchanged
                        
-                       recoveryRate = x$recovery.rate + 0.01 * rec.risk.01,
+                       recoveryRate = x$recovery + 0.01 * rec.risk.01,
                        isPriceClean_input = FALSE,
                        payAccruedOnDefault_input = TRUE,
                        notional = x$notional,
@@ -132,7 +132,7 @@ call.ISDA <- function(x, name, rates.info){
                         
                         parSpread = x$spread,
                         couponRate = x$coupon,
-                        recoveryRate = x$recovery.rate,
+                        recoveryRate = x$recovery,
                         isPriceClean_input = FALSE,
                         payAccruedOnDefault_input = TRUE,
                         notional = x$notional,

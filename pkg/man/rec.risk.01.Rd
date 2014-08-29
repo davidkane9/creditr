@@ -5,7 +5,7 @@
 \usage{
 rec.risk.01(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", RR.var = "recovery.rate", recovery.rate = 0.4,
+  coupon.var = "coupon", RR.var = "recovery", recovery = 0.4,
   notional.var = "notional", notional = 1e+07)
 }
 \arguments{
@@ -48,7 +48,7 @@ currency = c("USD", "EUR"),
 tenor = c(5, 5),
 spread = c(120, 110),
 coupon = c(100, 100),
-recovery.rate = c(0.4, 0.4),
+recovery = c(0.4, 0.4),
 notional = c(1e7, 1e7))
 result <- rec.risk.01(x)
 }

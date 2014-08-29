@@ -6,7 +6,7 @@ test_that("test case for CS10", {
                   tenor = c(5, 5),
                   spread = c(105.8, 99),
                   coupon = c(100, 100),
-                  recovery.rate = c(0.4, 0.4),
+                  recovery = c(0.4, 0.4),
                   notional = c(1e7, 1e7))
   
   result <- CS10(x)

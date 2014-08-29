@@ -3,14 +3,14 @@
 \alias{spread.to.pd}
 \title{Calcualte Default Probability with Spread}
 \usage{
-spread.to.pd(spread, time, recovery.rate = 0.4)
+spread.to.pd(spread, time, recovery = 0.4)
 }
 \arguments{
 \item{spread}{in bps}
 
 \item{time}{in years}
 
-\item{recovery.rate}{in decimal. Default is 0.4.}
+\item{recovery}{in decimal. Default is 0.4.}
 }
 \value{
 default probability in decimals

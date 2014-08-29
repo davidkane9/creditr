@@ -5,8 +5,7 @@
 \usage{
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
-  recovery.rate = 0.4, currency = "USD", notional = 1e+07,
-  upfront = NULL)
+  recovery = 0.4, currency = "USD", notional = 1e+07, upfront = NULL)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -27,7 +26,7 @@ CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
 \item{coupon}{quoted in bps. It specifies the payment amount from the
 protection buyer to the seller on a regular basis. The default is 100 bps.}
 
-\item{recovery.rate}{in decimal. Default is 0.4.}
+\item{recovery}{in decimal. Default is 0.4.}
 
 \item{currency}{in which CDS is denominated.}
 

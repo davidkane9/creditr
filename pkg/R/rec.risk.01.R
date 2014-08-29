@@ -17,7 +17,7 @@
 #' tenor = c(5, 5),
 #' spread = c(120, 110),
 #' coupon = c(100, 100),
-#' recovery.rate = c(0.4, 0.4),
+#' recovery = c(0.4, 0.4),
 #' notional = c(1e7, 1e7))
 #' result <- rec.risk.01(x)
 
@@ -28,8 +28,8 @@ rec.risk.01 <- function(x,
                         tenor.var     = "tenor",
                         spread.var    = "spread",
                         coupon.var    = "coupon",
-                        RR.var        = "recovery.rate",
-                        recovery.rate = 0.4,
+                        RR.var        = "recovery",
+                        recovery = 0.4,
                         notional.var  = "notional",
                         notional      = 1e7){
   
@@ -45,7 +45,7 @@ rec.risk.01 <- function(x,
                     notional.var  = notional.var,
                     notional      = notional,
                     RR.var        = RR.var,
-                    recovery.rate = recovery.rate)
+                    recovery = recovery)
   
   rec.risk.01 <- rep(NA, nrow(x))
   

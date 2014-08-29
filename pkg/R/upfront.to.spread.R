@@ -17,7 +17,7 @@ upfront.to.spread <- function(x,
                    coupon.var = "coupon",
                    tenor.var = "tenor",
                    maturity.var = "maturity",
-                   RR.var = "recovery.rate",
+                   RR.var = "recovery",
                    upfront.var = "upfront",
                    points.var = "ptsUpfront",
                    
@@ -58,9 +58,9 @@ upfront.to.spread <- function(x,
     }
     
     if(is.null(x[[RR.var]][i])){
-      recovery.rate <- 0.4
+      recovery <- 0.4
     } else{
-      recovery.rate <- x[[RR.var]][i]
+      recovery <- x[[RR.var]][i]
     }
     
     rates.info <- get.rates(date = as.Date(x[[date.var]][i]),
@@ -99,7 +99,7 @@ upfront.to.spread <- function(x,
                          calendar_input = calendar,
                          
                          upfrontCharge_input = x[[points.var]][i],
-                         recoveryRate_input = recovery.rate,
+                         recoveryRate_input = recovery,
                          payAccruedAtStart_input = payAccruedAtStart,
                          PACKAGE = "CDS")                       
   }
