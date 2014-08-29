@@ -53,10 +53,9 @@ add.dates <- function(x,
   ## This is a collection of comments from KM. We should parse them and clarify
   ## them. 
   
-  ## maturity date (endDate) does not need to be a weekday. It remains unfixed,
-  ## and has to be roll date. coupondate must be a weekday; if the roll date is
-  ## a weekend day, coupon date has to be adjusted to business day. Accrual
-  ## Start Date must be a weekday. if the rolldate before trade date is a
+  ## coupondate must be a weekday; if the roll date is 
+  ## a weekend day, coupon date has to be adjusted to business day. Accrual 
+  ## Start Date must be a weekday. if the rolldate before trade date is a 
   ## weekend day, accrual start date must be adjusted to next business day. 
   ## Accrual End Date (not end date or maturity date, which must be fixed) does 
   ## not have to be a weekday: for example, if the second coupon payment date is
@@ -165,9 +164,12 @@ add.dates <- function(x,
     firstcouponDate$mon <- firstcouponDate$mon + 3
     firstcouponDate     <- as.Date(adj.next.bus.day(firstcouponDate))
     
-    ## endDate is the maturity date of the contract or the date up till when
+    ## endDate is the maturity date of the contract or the date up till when 
     ## protection is offered. It is the firstCouponDate + tenor. So if the 
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
+    
+    ## maturity date (endDate) does not need to be a weekday. It has to be on
+    ## one of the four roll dates.
     
     if(is.null(x[[maturity.var]][i])){
       endDate      <- date.first
