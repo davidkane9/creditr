@@ -3,7 +3,6 @@
 #' \code{update} spread or ptsUpfront or upfront based on a new CDS class object.
 #'
 #' @param object is a \code{CDS} class object.
-#' @param upfront is the new upfront payment amount.
 #' @param spread is the new spread in bps.
 #' @param isPriceClean specifies whether it is a dirty or clean upfront.
 #' 
@@ -23,22 +22,14 @@
 setMethod("update",
           signature(object = "CDS"),
           function(object,
-                   upfront = NULL,
                    isPriceClean = FALSE,
                    spread = NULL,
                    ...){
+            
+                  ## must provide new spread for an update
 
-              if ((as.numeric(!is.null(upfront)) + 
-                   as.numeric(!is.null(spread))) > 1)
-                  stop ("Please only update one option -- upfront, ptsUpfront or spread")
-              
-              if (!is.null(upfront)){
-                  newSpread <- NULL
-                  newUpfront <- upfront
-              } else if (!is.null(spread)){
-                  newSpread <- spread
-                  newUpfront <- NULL
-              }
+                  stopifnot (!is.null(spread))
+
                   newCDS <- CDS(contract = object@contract,
                                 name = object@name,
                                 RED = object@RED,
@@ -46,10 +37,9 @@ setMethod("update",
                                 currency = object@currency,
                                 maturity = object@maturity,
                                 tenor = object@tenor,                               
-                                spread = newSpread,
+                                spread = spread,
                                 coupon = object@coupon,
                                 recovery = object@recovery,
-                                upfront = newUpfront,
                                 notional = object@notional)
                   return(newCDS)
           }
