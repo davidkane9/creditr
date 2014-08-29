@@ -27,7 +27,7 @@ conventions added to it.
 }
 \examples{
 x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
-currency = c("USD", "JPY"))
+                currency = c("USD", "JPY"))
 add.conventions(x)
 }
 \references{
