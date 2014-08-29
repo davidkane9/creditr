@@ -1,5 +1,7 @@
-#' \code{upfront.to.spread} to calculate conventional spread using the upfront 
-#' or ptsUpfront values
+#' Calculate spread with a given upfront
+#' 
+#' \code{upfront.to.spread} calculates conventional spread using the upfront 
+#' or ptsUpfront values.
 #' 
 #' @inheritParams CS10
 #' @param points.var character name of points Upfront column
