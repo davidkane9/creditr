@@ -1188,7 +1188,7 @@ The default settings of valuing a CDS contract in the \textbf{CDS} package follo
 A user can call \texttt{summary} on a \texttt{cds1} to view essential information on the contract.
 
 <<>>=
-#summary(cds1)
+summary(cds)
 @
 
 In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{name} in the package) refers to the entity name of the CDS contract and is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
@@ -1205,7 +1205,7 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 \label{sec:showMethod}
 
 <<>>=
-#cds1
+cds
 @
 
 \subsection{CDS Pricing Related Functions}
@@ -1216,32 +1216,23 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
 
-<<>>=
-#cds1.CS10 <- CS10(cds1)
-#cds1.CS10
-@ 
-
 \subsubsection{get.rates function}
 \label{sec:get.ratesFunction}
 
 This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
 
 <<>>=
-#cds3Rates <- get.rates(date = "2014-06-24")
+cds3Rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
 The output from the get.rates function below consists of two list objects. The first list contains rates of various maturities. They are directly obtained from the Markit website based on the specifications \citep{rates}.
 
 
 <<echo = FALSE>>=
-#cds3Rates[[1]]
+cds3Rates
 @ 
 
 The second list reports the specific day count conventions and payment frequencies regarding the interest rate curve used. 
-
-<<echo = FALSE>>=
-#t(cds3Rates[[2]])
-@ 
 
 \subsection{Risk-related Functions}
 \label{sec:riskFunctions}
@@ -1252,13 +1243,13 @@ Function to calculate the increase in the upfront value when the recovery rate i
 
 
 <<echo = FALSE>>=
-#rec.risk.01(date = "2014-06-24",
- #         currency = "USD",
-  #        tenor = "5Y",
-   #       spread = 160,
-    #      coupon = 100,
-     #     recovery = 0.4,
-      #    notional = 1e7)
+rec.risk.01(data.frame(date = as.Date("2014-06-24"),
+                       currency = "USD",
+                       tenor = 5,
+                       spread = 160,
+                       coupon = 100,
+                       recovery = 0.4,
+                       notional = 1e7))
 @ 
 
 \subsubsection{IRDV01}
@@ -1266,13 +1257,13 @@ Function to calculate the increase in the upfront value when the recovery rate i
 Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
 <<echo = FALSE>>=
-    #    IR.DV.01(data.frame(date = "2014-04-22",
-     #             currency = "USD",
-      #            tenor = "5Y",
-       #           spread = 160,
-        #          coupon = 100,
-         #         recovery = 0.4,
-          #        notional = 1e7)
+IR.DV01(data.frame(date = as.Date("2014-04-22"),
+                  currency = "USD",
+                  tenor = 5,
+                  spread = 160,
+                  coupon = 100,
+                  recovery = 0.4,
+                  notional = 1e7))
 @
 
 
@@ -1281,22 +1272,13 @@ Function to calculate the increase in the upfront value when the interest rate o
 Function to calculate the increase in the upfront value when the spread increase by one basis point.
 
 <<echo = FALSE>>=
-#spread.DV.01(date = "2014-04-22",
- #          currency = "USD",
-  #         tenor = "5Y",
-   #        spread = 160,
-    #       coupon = 100,
-     #      recovery = 0.4,
-      #     notional = 1e7)
-@
-
-
-\subsubsection{defaultExpo}
-
-Function to calculate the default exposure.
-
-<<echo = FALSE>>=
-#default.expo(principal = 279311)
+spread.DV01(data.frame(date = as.Date("2014-04-22"),
+                       currency = "USD",
+                       tenor    = 5,
+                       spread   = 160,
+                       coupon   = 100,
+                       recovery = 0.4,
+                       notional = 1e7))
 @
 
 
@@ -1305,7 +1287,7 @@ Function to calculate the default exposure.
 Probability of default calculated using the function provided in the Bloomberg manual.
 
 <<echo = FALSE>>=
-#default.prob(spread = 160, t = 5, recovery = 0.4)
+spread.to.pd(data.frame(date = Sys.Date(), spread = 160, tenor = 5, recovery = 0.4, currency = "USD"))
 @
 
 \section{Conclusion}
