@@ -5,7 +5,7 @@
 \usage{
 check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", notional.var = "notional", notional = 10000000,
+  coupon.var = "coupon", notional.var = "notional", notional = 1e+07,
   recovery.var = "recovery", recovery = 0.4)
 }
 \arguments{

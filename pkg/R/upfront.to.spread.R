@@ -73,7 +73,7 @@ upfront.to.spread <- function(x,
                          endDate_input = separate.YMD(x$endDate[i]),
                          stepinDate_input = separate.YMD(x$stepinDate[i]),
                          
-                         couponRate_input = coupon / 1e4,
+                         couponRate_input = x[[coupon.var]][i] / 1e4,
                          payAccruedOnDefault_input = payAccruedOnDefault,
                          
                          dccCDS = "ACT/360",
@@ -83,7 +83,7 @@ upfront.to.spread <- function(x,
                          calendar_input = "None",
                          
                          upfrontCharge_input = x[[points.var]][i],
-                         recoveryRate_input = recovery,
+                         recoveryRate_input = x[[recovery.var]][i],
                          payAccruedAtStart_input = payAccruedAtStart,
                          PACKAGE = "CDS")                       
   }

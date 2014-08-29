@@ -3,8 +3,8 @@
 \alias{pd.to.spread}
 \title{Calculate spread with Default Probability}
 \usage{
-pd.to.spread(x, recovery.var = "recovery", tenor.var = "tenor",
-  date.var = "date", pd.var = "PD")
+pd.to.spread(x, recovery.var = "recovery", currency.var = "currency",
+  tenor.var = "tenor", date.var = "date", pd.var = "pd")
 }
 \arguments{
 \item{x}{dataset containing the recovery rate, tenor (in years), probability
