@@ -38,7 +38,7 @@ add.dates <- function(x,
   
   ## List of Japanese holidays through 2020. These dates are necessary in 
   ## determining the interest rate curves. If the trade date (T) lies on the day
-  ## before a holiday we won't use the curve on T-1, but the last business day,
+  ## before a holiday we won't use the curve on T-1, but the last business day, 
   ## which in this case will be T-2 (assuming T-2 is also a weekday)
   
   ## https://www.markit.com/news/JPY.holidays

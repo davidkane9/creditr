@@ -3,18 +3,15 @@
 #' \code{pd.to.spread} to calculate spread using the probability of default,
 #' tenor and recovery rate.
 #' 
-#' @param x dataset containing the recovery rate, tenor (in years), probability 
-#'   of default and trade date.
-#' @param recovery.var name of the column containing the recovery rate in
-#'   decimals.
+#' @inheritParams CS10
 #' @param pd.var name of the column containing the probability of default in
 #'   decimals.
-#' @param tenor.var name of the column containing the tenor in years.
-#' @param date.var name of the column containing the trade date.
 #'   
 #' @return vector containing the spread values in basis points, calculated by
 #'   inverting the formula for probability of default given in the Bloomberg
 #'   Manual
+#'   
+#' @seealso \link{spread.to.pd}
 
 pd.to.spread <- function(x, 
                          recovery.var = "recovery", 
@@ -23,6 +20,8 @@ pd.to.spread <- function(x,
                          date.var     = "date", 
                          pd.var       = "pd"){
   
+  stopifnot(is.data.frame(x))
+    
   ## stop if the required variables are not contained in the data frame 
   
   stopifnot(c(recovery.var, tenor.var, currency.var, date.var, pd.var) 
@@ -46,6 +45,7 @@ pd.to.spread <- function(x,
   time <- as.numeric(x$endDate - x$date)/360
   
   ## calculate the spread by inverting the formula for probability of default
+  
   spread <- 1e4*(x[[recovery.var]]-1)*log(1-x[[pd.var]])/time
   
   return(spread)

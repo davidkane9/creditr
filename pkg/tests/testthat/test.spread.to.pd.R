@@ -2,6 +2,8 @@ context("Test spread.to.pd")
 
 test_that("spread.to.pd.test.R", {
   
+  ## This is NOT even a test case!!!!!
+  
    truth <- spread.to.pd(spread = 32, time = 5.25, recovery = 0.4)
   
   ## save(truth, file = "spread.to.pd.test.RData")
