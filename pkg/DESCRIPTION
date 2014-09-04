@@ -26,7 +26,7 @@ Depends:
     xts
 Imports:
     quantmod
-Maintainer: Kanishka Malik <kanishkamalik@gmail.com>
+Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
 Description: CDS package provides useful tools for pricing credit
