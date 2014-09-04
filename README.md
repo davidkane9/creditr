@@ -1,4 +1,4 @@
-CDS
+Authors
 ========================================================
 Heidi Chen 
 s.heidi.chen at gmail.com
@@ -21,7 +21,7 @@ skylar.smith at williams.edu
 Zijie Zhu
 zijie.miller.zhu at gmail.com
 
-CDS Package
+About
 --------------------------------------------------------
 A Credit Default Swap (CDS) is a financial swap agreement between two
 counterparties in which the buyer pays a fixed periodic coupon to the
@@ -34,3 +34,8 @@ spread and upfront payments, and build the yield curve of a CDS. The
 **CDS** package implements the Standard Model, allowing users to
 value credit default swaps and to calculate various risk measures
 associated with these instruments.
+
+Maintaining
+--------------------------------------------------------
+For questions or advice regarding this CDS package, please email
+Yuanchu Dang at Yuanchu.Dang@williams.edu.
