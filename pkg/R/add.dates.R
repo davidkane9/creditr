@@ -50,7 +50,7 @@ add.dates <- function(x,
       "2016-03-21", "2017-03-20", "2020-03-20", "2020-09-21", "2020-09-22")
     )
   
-  US.holidays <- as.Date(
+  USD.holidays <- as.Date(
     c("2015-01-01", "2014-12-25", "2014-11-27", "2014-11-11",
       "2014-10-13", "2014-09-01", "2014-07-04", "2014-05-26",
       "2014-04-18", "2014-02-17", "2014-01-20", "2014-01-01",
@@ -97,12 +97,7 @@ add.dates <- function(x,
     ## problem (compared with Bloomberg) still happens, ALWAYS re-consider 
     ## problems in baseDate and valueDate FIRST!!!
     
-    if(x[[currency.var]][i] != "JPY"){
-      
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-      baseDate <- adj.next.bus.day(baseDate + 1)
-      
-    } else{
+    if(x[[currency.var]][i] == "JPY"){
       
       baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
       while(baseDate %in% JPY.holidays){
@@ -113,6 +108,20 @@ add.dates <- function(x,
       while(baseDate %in% JPY.holidays){
         baseDate <- adj.next.bus.day(baseDate + 1)
       }
+    } else if(x[[currency.var]][i] == "USD"){
+      
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      while(baseDate %in% USD.holidays){
+        baseDate <- adj.next.bus.day(baseDate + 1)
+      }
+      
+      baseDate <- adj.next.bus.day(baseDate + 1)
+      while(baseDate %in% USD.holidays){
+        baseDate <- adj.next.bus.day(baseDate + 1)
+      }
+    } else{   
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj.next.bus.day(baseDate + 1)
     }
     
     ## stepinDate is the date on which a party assumes ownership of a trade
