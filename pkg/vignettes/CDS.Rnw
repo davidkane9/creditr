@@ -47,15 +47,17 @@ concordance=TRUE
 \setkeys{Gin}{width=0.95\textwidth}
 
 \begin{abstract}
-A credit default swap (CDS) is an bilateral agreement between two parties (the protection buyer and the protection seller) with regards to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. This paper explains the basics of CDS by beginning with a simplified example of property insurance and progressing to increasingly complicated examples of a one-period, two-period, and n-period CDS. We introduce Markit and Bloomberg as two sources of financial data that take the CDS attributes discussed in the previous section as inputs to determine CDS pricing. After the reader can understand basic CDS pricing calculations and concepts, the paper explores the CDS package --- a program written in R that allows users to calculate information regarding a CDS. 
+A credit default swap (CDS) is an bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. We, first, explain the basics of CDS, starting with a simplified example of property insurance and then progressing to increasingly complicated examples of a one-period, two-period, and n-period CDS. Second, we introduce Markit and Bloomberg, the two primary sources of CDS data and analysis. Third, we describe the CDS package --- a program written in R that allows users to calculate credit default swap information. 
 \end{abstract}
 
 \section{Introduction}
 \label{sec:Introduction}
 
-This paper explains the mechanics of Credit Default Swaps (CDS), a type of \textbf{credit derivative} that allows finanical institutions to pass on \textbf{credit risk} to investors who accept that risk in exchange for interest. In other words, a CDS allows one party to purchase protection on a certain investment from another party. The paper introduces simplied CDS examples in which a portfolio manager passes on risk to J.P. Morgan in a one-period CDS, a two-period CDS, and an n-period CDS. With each example, we gradually introduce complications that alter pricing calculations. We make several assumptions, some of which we account for in later calculations, and some of which we maintain throughout the paper. A reader with minimal previous knowledge of CDS should be able to understand these fundamental CDS concepts. 
+%% Introduction should have three paragraphs, mimicing the three sentences above that give the first, second, and third goal of the paper. Each paragraph expands the details for that sentence. It is here that we mention, at least once, the 5 to 10 key bolded terms like spread, upfront, risk-neutral and so on.
 
-Once the reader understands how CDS work and the basic concepts of CDS pricing, we look at data from Bloomberg and Markit that applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make.
+This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. A CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. The paper introduces simplied CDS examples in which a portfolio manager passes on risk to J.P. Morgan in a one-period CDS, a two-period CDS, and an n-period CDS. With each example, we gradually introduce complications that alter pricing calculations. We make several assumptions, some of which we account for in later calculations, and some of which we maintain throughout the paper. A reader with minimal previous knowledge of CDS should be able to understand these fundamental CDS concepts. 
+
+Once the reader understands how CDS work and the basic concepts of CDS pricing, we look at data from Bloomberg and Markit that applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make. 
 
 Finally, once the reader has seen how to apply these concepts to pricing in the CDS market, we introduce the CDS package, which allows users to calculate information regarding a particular CDS.
 
@@ -65,11 +67,13 @@ Finally, once the reader has seen how to apply these concepts to pricing in the 
 \subsection{An Example: Property Insurance}
 \label{sec:PropInsurance}
 
+%% No need to have labels unless those labels are used.
+
 Consider a simpler form of purchasing protection: property insurance. 
 
-Suppose that a homeowner wants to purchase \$100,000 worth of property insurance on her house from January 1 to December 31. For one year of coverage, an insurance company charges a fee of \$1,000. Call this \$1,000 the premium. In exchange for the premium, the insurance company agrees to pay \$100,000 to the homeowner if there is any property damage during that year. If damage does not occur, then the insurance company pockets the \$1,000 premium and doesn't pay anything to the homeowner. 
+Suppose that a homeowner wants to purchase \$100,000 worth of property insurance on her house, covering the period from January 1 through December 31. For one year of coverage, an insurance company charges a fee of \$1,000. Call this \$1,000 the \textbf{premium}. In exchange for the premium, the insurance company agrees to pay \$100,000 to the homeowner if there is any property damage during that year. If damage does not occur, then the insurance company pockets the \$1,000 premium and doesn't pay anything to the homeowner. 
 
-In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate (discussed in Section \ref{sec:InterestRate}) is 0\%.
+In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate is 0\%.
 
 The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ("P" refers to the homeowner's prediction of probability of the property damage.)
 
