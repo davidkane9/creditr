@@ -35,7 +35,7 @@ spread and upfront payments, and build the yield curve of a CDS. The
 value credit default swaps and to calculate various risk measures
 associated with these instruments.
 
-Maintaining
+Maintainence
 --------------------------------------------------------
 For questions or advice regarding this CDS package, please email
 Yuanchu Dang at Yuanchu.Dang@williams.edu.
