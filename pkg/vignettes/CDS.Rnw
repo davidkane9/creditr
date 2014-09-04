@@ -46,10 +46,6 @@ concordance=TRUE
 
 \setkeys{Gin}{width=0.95\textwidth}
 
-\newpage
-\tableofcontents
-\newpage
-
 \begin{abstract}
 This paper explains the basics of Credit Defaults Swaps (CDS) by beginning with a simplified example of property insurance and progressing to increasingly complicated examples of a one-period CDS, two-period CDS, and n-period CDS. These examples consider cases in which two parties have agreed to a particular CDS; based on the agreement, we, as outside observers, are able to infer different attributes about that CDS. Following these examples, the paper introduces Markit and Bloomberg as two sources of financial data that take the CDS attributes discussed in the previous section as inputs to determine CDS pricing. In other words, the paper discusses fundamental CDS concepts and then explores how to apply these concepts to pricing in the CDS market. After the reader can understand basic CDS pricing calculations and concepts, the paper explores the CDS package---a program written in R that allows users to calculate information regarding a specific CDS. 
 \end{abstract}
