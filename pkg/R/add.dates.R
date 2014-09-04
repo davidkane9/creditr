@@ -50,6 +50,23 @@ add.dates <- function(x,
       "2016-03-21", "2017-03-20", "2020-03-20", "2020-09-21", "2020-09-22")
     )
   
+  USD.holidays <- as.Date(
+    c("2015-01-01", "2014-12-25", "2014-11-27", "2014-11-11",
+      "2014-10-13", "2014-09-01", "2014-07-04", "2014-05-26",
+      "2014-04-18", "2014-02-17", "2014-01-20", "2014-01-01",
+      "2013-12-25", "2013-11-28", "2013-11-11", "2013-10-14",
+      "2013-09-02", "2013-07-04", "2013-05-27", "2013-03-29",
+      "2013-02-18", "2013-01-21", "2013-01-01", "2012-12-25",
+      "2012-11-22", "2012-11-12", "2012-10-30", "2012-10-08",
+      "2012-09-03", "2012-07-04", "2012-05-28", "2012-02-20",
+      "2012-01-16", "2012-01-02", "2011-12-26", "2011-11-24",
+      "2011-11-11", "2011-10-10", "2011-09-05", "2011-07-04",
+      "2011-05-30", "2011-04-22", "2011-02-21", "2011-01-17",
+      "2010-12-24", "2010-11-25", "2010-11-11", "2010-10-11",
+      "2010-09-06", "2010-07-05", "2010-05-31", "2010-02-15",
+      "2010-01-18", "2010-01-01")
+    )
+  
   x$stepinDate      <- as.Date(NA)
   x$valueDate       <- as.Date(NA)
   x$startDate       <- as.Date(NA)  ## also called as Accrual Start Date
@@ -80,12 +97,7 @@ add.dates <- function(x,
     ## problem (compared with Bloomberg) still happens, ALWAYS re-consider 
     ## problems in baseDate and valueDate FIRST!!!
     
-    if(x[[currency.var]][i] != "JPY"){
-      
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-      baseDate <- adj.next.bus.day(baseDate + 1)
-      
-    } else{
+    if(x[[currency.var]][i] == "JPY"){
       
       baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
       while(baseDate %in% JPY.holidays){
@@ -96,6 +108,20 @@ add.dates <- function(x,
       while(baseDate %in% JPY.holidays){
         baseDate <- adj.next.bus.day(baseDate + 1)
       }
+    } else if(x[[currency.var]][i] == "USD"){
+      
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      while(baseDate %in% USD.holidays){
+        baseDate <- adj.next.bus.day(baseDate + 1)
+      }
+      
+      baseDate <- adj.next.bus.day(baseDate + 1)
+      while(baseDate %in% USD.holidays){
+        baseDate <- adj.next.bus.day(baseDate + 1)
+      }
+    } else{   
+      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj.next.bus.day(baseDate + 1)
     }
     
     ## stepinDate is the date on which a party assumes ownership of a trade

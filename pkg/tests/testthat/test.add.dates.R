@@ -92,3 +92,16 @@ test_that("Test JPY holidays",{
   expect_that(add.dates(x)$baseDate, equals(as.Date("2015-09-25")))
   
 })
+
+context("USD holidays baseDate test")
+
+test_that("Test USD holidays",{
+  
+  x <- data.frame(date = as.Date("2014-12-24"), tenor = 5, currency = "USD")
+  
+  ## "2014-12-25" is a USD holiday, "2014-12-27" and "2014-12-28" are weekends, 
+  ## so baseDate should be "2014-12-29"
+  
+  expect_that(add.dates(x)$baseDate, equals(as.Date("2014-12-29")))
+  
+})  
