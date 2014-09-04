@@ -75,7 +75,7 @@ Suppose that a homeowner wants to purchase \$100,000 worth of property insurance
 
 In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate is 0\%.
 
-The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ("P" refers to the homeowner's prediction of probability of the property damage.)
+The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ($P_h$ refers to the homeowner's estimate of probability of the property damage.)
 
 \begin{equation}
  \begin{aligned}
