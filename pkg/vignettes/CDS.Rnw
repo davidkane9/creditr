@@ -1094,7 +1094,7 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an o
 
 <<>>=
 library(CDS)
-cds <- CDS(name = "Alcoa",
+cds1 <- CDS(name = "Alcoa",
            RED = "49EB20",
            date = as.Date("2014-06-24"),
            tenor = 5,
@@ -1121,12 +1121,12 @@ cds2 <- CDS(date = as.Date("2014-06-24"),
 A user can call \texttt{summary} on a \texttt{cds1} to view essential information on the contract.
 
 <<>>=
-summary(cds)
+summary(cds1)
 @
 
 In the summary output, it shows that the type of the CDS contract is "SNAC". This means that the CDS contract follows the Standard North American Corporate (SNAC) CDS Contract specifications.\footnote{See \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard\%20CDS\%20Contract\%20Specification.pdf} for details.}  \texttt{date} refers to the trade date which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'', ``JPY'' and ``EUR''. \texttt{End Date} is the same as maturity and is the date on which the CDS contract expires. Recall from previous sections that \texttt{End Date} can only fall on one of the four standard dates. In our example, the \texttt{End Date} is ``2019-09-20''. \texttt{spread} shows that the quoted spread for the contract is 160 bps and the coupon is 100 bps as shown in the \texttt{coupon} field. \texttt{upfront} indicates the dirty upfront payment in dollars or the cash settlement amount which, in this example, is \$286,069.
 
-The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. In \texttt{cds}, the Spread DV01 is \$4,667; the IR DV01 is \$-75.64; the Rec Risk (1 pct) is \$-330.19.
+The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. In \texttt{cds1}, the Spread DV01 is \$4,667; the IR DV01 is \$-75.64; the Rec Risk (1 pct) is \$-330.19.
 
 Besides calling the \texttt{summary} method, one can type in the name of the \texttt{CDS} class object in the current \textbf{R} Session and obtain a full description of the CDS contract.
 
@@ -1134,7 +1134,7 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 \label{sec:showMethod}
 
 <<>>=
-cds
+cds1
 @
 
 \subsection{CDS Pricing Related Functions}
