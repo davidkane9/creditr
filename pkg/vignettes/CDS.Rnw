@@ -79,25 +79,23 @@ The \textbf{expected cash flows} for the agreement depend on the probability of 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P * {\$100,000})}
+   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ($P_h$ * {\$100,000})}
     \end{aligned}
     \label{eqn:homeownerECF}
 \end{equation}
 
-Since the insurance company will receive the \$1,000 premium and will potentially pay \$100,000---if the house gets damaged---the insurance company's expected cash flows are as follows. ("P" refers to the insurance company's prediction of the probability of property damage.)
+Since the insurance company will receive the \$1,000 premium and will potentially pay \$100,000---if the house gets damaged---the insurance company's expected cash flows are as follows. ($P_c$ refers to the insurance company's estimate of the probability of property damage.)
 
 \begin{equation}
  \begin{aligned}
-   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P * {\$100,000})}
+   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ($P_c$ * {\$100,000})}
     \end{aligned}
     \label{eqn:companyECF}
 \end{equation}
 
-Note that the values for "P" in Equations \ref{eqn:homeownerECF} and \ref{eqn:companyECF} do \emph{not} have to be the same. The homeowner and the insurance company may have two different predictions for the probability that the house will get damaged during that year. The homeowner doesn't know the insurance company's prediction for the probability of damage, and the insurance company doesn't know the homeowner's prediction for the probability of damage. In fact, an outside third party would not be able to determine the two parties' predictions, either. 
+Note that $P_h$ and $P_c$ do \emph{not} have to be the same. The homeowner and the insurance company may have two different estimates of the probability that the house will get damaged during the year. The homeowner doesn't know the insurance company's estimate, and the insurance company doesn't know the homeowner's estimate. In fact, an outside third party does not know either $P_h$ or $P_c$. 
 
-Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they do not account for risk. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides---the \$1 and the 1\% chance of \$100---as equal. 
-
-Assume also that the homeowner and the insurance company can only agree on deals in which the expected cash flows are equal; otherwise, the party with the lesser expected cash flow will refuse to agree to the deal. By looking at Equations \ref{eqn:homeownerECF} and \ref{eqn:companyECF}, we can deduce that "P" must represent the same probability in both expected cash flows if those cash flows are equal. 
+Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they only care about expected cash flows. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides --- the \$1 and the 1\% chance of \$100 --- as equal in value. Most investors are not risk-neutral. They would prefer a guaranteed \$1 over a 1\% chance of winning \$100. Assume also that the homeowner and the insurance company can only agree on deals in which the expected cash flows are equal; otherwise, the party with the lesser expected cash flow will refuse to agree to the deal. By looking at Equations \ref{eqn:homeownerECF} and \ref{eqn:companyECF}, we can deduce that "P" must represent the same probability in both expected cash flows if those cash flows are equal. 
 
 Consider that both parties agree to the above insurance agreement. What does this imply about "P", the probability of damage that equates the expected cash flows?
 
