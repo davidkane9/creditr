@@ -97,7 +97,10 @@ Note that $P_h$ and $P_c$ do \emph{not} have to be the same. The homeowner and t
 
 Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they only care about expected cash flows. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides --- the \$1 and the 1\% chance of \$100 --- as equal in value. Most investors are not risk-neutral. They would prefer a guaranteed \$1 over a 1\% chance of winning \$100. Assumethat both parties agree to the above insurance agreement. What does this imply about $P_h$ and $P_c$? 
 
-The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would mean that her expected cash flows were negative and, by assumption, we know that neither the homeowner or the insurance company will enter an agreement with negative expected cash flows. For the same reasons, if the insurance company agrees to the deal, then $P_c \leq 0.01$. Neither of these facts allow us to conclude anything about $P_true$, the true probability of damage. Either the homeowner or the insurance company or both could be wrong in their estimates. However, we can now define $P$ as \textbf{risk-neutral estimate of the probability of property damage} as the value of both $P_h$ and $P_c$ which makes the expected cash flows identical:
+The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would mean that her expected cash flows were negative and, by assumption, we know that neither the homeowner or the insurance company will enter an agreement with negative expected cash flows. For the same reasons, if the insurance company agrees to the deal, then $P_c \leq 0.01$. Neither of these facts allow us to conclude anything about $P_true$, the true probability of damage. Either the homeowner or the insurance company or both could be wrong in their estimates. However, we can now define $P$ --- \textbf{risk-neutral estimate of the probability of property damage} --- as the single value for both $P_h$ and $P_c$ which makes the expected cash flows identical. Mathematically:
+
+%% There are much more elegant ways of setting up a series of equations in LaTeX. Please figure them out.
+%% And apply them throughout the document. For example, we want alignment on the = signs here.
 
 \begin{equation}
  \begin{aligned}
@@ -113,12 +116,16 @@ The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would 
 \begin{equation}
  \begin{aligned}
    {\rm P * {\$100,000}  = \$1,000}
+{\rm P  = 0.01}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+      {\rm P  = 0.01}
     \end{aligned}
 \end{equation}
 
-Therefore, the risk-neutral probability of property damage is 1\%. Based on this calculation, we can determine that the homeowner's prediction for the probability of damage is at \emph{least} 1\%, and the insurance company's prediction for the probability of damage is at \emph{most} 1\%. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal that assumes a damage probability of 1\% because, in that case, she would be paying the same coupon for a stronger likelihood that she will receive the \$100,000. If her prediction was at or above 1\%, she would be willing to make a deal that assumed a damage probability of 1\%.
-
-Conversely, say that the insurance company believes that there is a 0.5\% chance that the house will get damaged. The company would want to make a deal that assumed a damage probability of 1\% because, in that case, it would be receiving the same coupon payment for a smaller likelihood that it'll have to pay \$100,000. If its prediction was at or below 1\%, it would be willing to make a deal that assumes a damage probability of 1\%.
+Therefore, the risk-neutral probability of property damage is 1\%. Note that this number does not tell us anything about either $P_h$ and $P_c$. The homeowner's estimate for the probability of damage is at \emph{least} 1\% because she refuses any agreement with negative expected cash flow. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal in which the risk-neutral probability of damage was 1\% because her expected cash flows are positive.  The same analysis applies to the insurance company. 
 
 Clearly, 1\%---the risk neutral probability of property damage---is a very important value for this agreement. We need to note, however, that this value is not necessarily the \emph{true} probability of property damage, nor are the parties' predictions for the probability of damage. Consider an extreme example: what if, as the two parties initiate the agreement, an asteriod sets on a course to crash into the house in six months. In such a case, the probability of damage is 100\%. However, neither party has forseen this occurence, so the risk-neutral value of "P" (1\%) and the parties' predictions of "P" (1.5\% and 0.5\%) are certainly not equal to the true value of "P" (100\%).
 
