@@ -1103,80 +1103,14 @@ cds <- CDS(name = "Alcoa",
            spread = 160)
 @
 
-Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{spread}, and \texttt{maturity} information,
-the valuation of the contract will be the same.
+Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
 
-%% No we haven't!
-
-%% Need to figure out which section the below sentence is referring to.
-
-%% Biggest flaw of the current version of the paper is that you 
-%% do not walk the reader through this specific example. Having shown 
-%% this summary, you need to --- now! --- explain each element in the 
-%% presentation. Tell us, now, what Spread DV01 of 5,086 means. Don't
-%% wait five pages and then not even mention this specific number! If you
-%% need to do preliminary work before hand, then, fine, do that work and
-%% wait to do the summary.
-
-%% Note that we could use a lot more detail, both before we get to concepts 
-%% like recovery rate and in explaining just why they matter.
-
-%% This is very sloppy. First, you should go through everything in the
-%% summary item by item. Second, it should be in the same order as the
-%% summary. Third, it should use the same lingo. Is "date" the same
-%% as Trade Date? How am I supposed to know that. Fourth, it should
-%% mention the values from the summary.
-
-%% In other words, this section is not about what an "An ISDA standard 
-%% CDS contract specifies"! It is about the summary you have just shown. 
-
-\subsubsection{Default Settings of the CDS Contract}
-\label{sec:DefaultSettings}
-
-The default settings of valuing a CDS contract in the \textbf{CDS} package follow the Standard North American Corporate (SNAC) CDS Contract specifications.\footnote{See
-  \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard\%20CDS\%20Contract\%20Specification.pdf}
-  for details.} Below we list the ISDA specifications implemented in the \textbf{CDS} package. Additional default settings in the package which are not specified by the Standard Model, such as the default notional amount, are also listed.
-
-\begin{itemize}
-\item Currency: USD.
-\item Trade Date (T): the current business day.
-\item CDS Date: Mar/Jun/Sep/Dec 20th of a year.
-\item Maturity: five years.
-\item Maturity Date (End Date): It falls on a CDS date without
-  adjustment.
-\item Coupon Rate: 100 bps.
-\item Notional Amount (MM): 10MM.
-\item Recovery Rate (\%): 40\% for senior debts.
-\item Premium Leg:
-  \begin{itemize}
-    \item Payment Frequency: quarterly
-    \item DCC: ACT/360
-    \item Pay Accrued On Default: It determines whether accrued
-      interest is paid on a default. If a company defaults between
-      payment dates, there is a certain amount of accrued payment that
-      is owed to the protection seller. ``True'' means that this
-      accrued will need to be paid by the protection buyer, ``False''
-      otherwise. The defalt is ``True,''
-    \item Adjusted CDS Dates: ``F.'' It means that it assumes the next
-      available business day when a CDS date falls on a non-business day
-      except the maturity date.
-    \item First Coupon Payment: It is the earliest Adjusted CDS Date
-      after T + 1.
-    \item Accrual Begin Date (Start Date): It is the latest Adjusted
-      CDS Date on or before T + 1.
-    \item Accrual Period: It is from previous accrual date (inclusive)
-      to the next accrual date (exclusive), except for the last
-      accrual period where the accrual end date (Maturity Date) is
-      included.
-  \end{itemize}
-\item Protection Leg:
-  \begin{itemize}
-  \item Protection Effective Date (Backdrop Date): T - 60 calendar
-    days for credit events.
-  \item Protection Maturity Date: Maturity Date.
-  \item Protection Payoff: Par minus Recovery.
-  \end{itemize}
-\end{itemize}
+<<>>=
+library(CDS)
+cds <- CDS(date = as.Date("2014-06-24"),
+           maturity = as.Date("2019-06-20"),
+           spread = 160)
+@
 
 \subsection{Generic Methods}
 \label{sec:GenericMethods}
@@ -1197,7 +1131,6 @@ The remaining three items from the \texttt{summary} output  are \texttt{Spread D
 (1 pct)} as shown in the \texttt{summary} output, is the dollar value change in market value if the recovery rate used in the CDS valuation were increased by 1\%. It is \$90.03 in \texttt{cds1}.
 
 Besides calling the \texttt{summary} method, one can type in the name of the \texttt{CDS} class object in the current \textbf{R} Session and obtain a full description of the CDS contract.
-
 
 
 \subsubsection{show method}
