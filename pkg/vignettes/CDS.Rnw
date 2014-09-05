@@ -1151,13 +1151,13 @@ cds1
 This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
 
 <<>>=
-cds3Rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
+cds1.rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
 The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
 
 <<echo = FALSE>>=
-cds3Rates
+cds1.rates
 @ 
 
 \subsection{Risk-related Functions}
