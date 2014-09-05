@@ -14,9 +14,9 @@ setMethod("summary",
                               sep = paste0(rep(" ",
                                 40-nchar(as.character("Contract Type:")) -
                                    nchar(as.character(object@contract))), collapse = ""))),
-                sprintf(paste("   date:", object@date,
+                sprintf(paste("   Date:", object@date,
                               sep = paste0(rep(" ", 
-                                40-nchar(as.character("   date:")) -
+                                40-nchar(as.character("   Date:")) -
                                    nchar(as.character(object@date))), collapse = ""))), "\n",
                 
                 
