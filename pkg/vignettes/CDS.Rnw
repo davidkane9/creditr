@@ -1110,8 +1110,6 @@ the valuation of the contract will be the same.
 
 %% Need to figure out which section the below sentence is referring to.
 
-
-
 %% Biggest flaw of the current version of the paper is that you 
 %% do not walk the reader through this specific example. Having shown 
 %% this summary, you need to --- now! --- explain each element in the 
@@ -1212,7 +1210,7 @@ cds
 \subsection{CDS Pricing Related Functions}
 \label{sec:CDSpricingFunctions}
 
-\subsubsection{CS 10}
+\subsubsection{CS10}
 \label{sec:CS10}
 
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
@@ -1226,7 +1224,7 @@ This is a function used to obtain the interest rate curve for a given currency o
 cds3Rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the get.rates function below consists of two list objects. The first list contains rates of various maturities. They are directly obtained from the Markit website based on the specifications \citep{rates}.
+The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
 
 
 <<echo = FALSE>>=
