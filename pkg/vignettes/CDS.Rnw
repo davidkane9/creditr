@@ -1107,7 +1107,7 @@ Here the user enters the CDS contract with "Alcoa" as the underlying entity and 
 
 <<>>=
 library(CDS)
-cds <- CDS(date = as.Date("2014-06-24"),
+cds2 <- CDS(date = as.Date("2014-06-24"),
            maturity = as.Date("2019-06-20"),
            spread = 160)
 @
@@ -1124,7 +1124,7 @@ A user can call \texttt{summary} on a \texttt{cds1} to view essential informatio
 summary(cds)
 @
 
-In the summary output, it shows that the type of the CDS contract is "SNAC". \texttt{Trade Date} refers to the trade date and is April 15, 2014. Reference Entity (called \texttt{name} in the package) refers to the entity name of the CDS contract and is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
+In the summary output, it shows that the type of the CDS contract is "SNAC". This means that the CDS contract follows the Standard North American Corporate (SNAC) CDS Contract specifications.\footnote{See \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard\%20CDS\%20Contract\%20Specification.pdf} for details.}  \texttt{date} refers to the trade date which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'', ``JPY'' and ``EUR''. \texttt{End Date} is the same as maturity date and is the date on which the CDS contract expires. In our example, the \texttt{End Date} is ``2019-09-20''. \texttt{spread} shows that the quoted spread for the contract is 50 bps and the coupon is 100 bps as shown in the
 \texttt{coupon} field. \texttt{upfront} indicates the dirty upfront payment in dollars or the cash settlement amount. 
 
 The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. In \texttt{cds1},the IR DV01 is \$66.14. \textbf{Recovery Risk 01} or \texttt{Rec Risk
