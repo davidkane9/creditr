@@ -1226,12 +1226,9 @@ cds3Rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 
 The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
 
-
 <<echo = FALSE>>=
 cds3Rates
 @ 
-
-The second list reports the specific day count conventions and payment frequencies regarding the interest rate curve used. 
 
 \subsection{Risk-related Functions}
 \label{sec:riskFunctions}
