@@ -1106,8 +1106,6 @@ cds <- CDS(name = "Alcoa",
 Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{Trade Date}, \texttt{spread}, and \texttt{maturity} information,
 the valuation of the contract will be the same.
 
-Besides \texttt{spread}, a market paricipant can choose to specify either \texttt{ptsUpfront} or \texttt{upfront} to construct a \texttt{CDS} class object.\footnote{See Section \ref{sec:CashFlows1} for definitions on both terms.} One of the three arguments has to be specified in order to construct the \texttt{CDS} class object.
-
 %% No we haven't!
 
 %% Need to figure out which section the below sentence is referring to.
