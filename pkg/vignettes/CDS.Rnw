@@ -79,7 +79,7 @@ The \textbf{expected cash flows} for the agreement depend on the probability of 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ($P_h$ * {\$100,000})}
+   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P_h * {\$100,000})}
     \end{aligned}
     \label{eqn:homeownerECF}
 \end{equation}
@@ -88,7 +88,7 @@ Since the insurance company will receive the \$1,000 premium and will potentiall
 
 \begin{equation}
  \begin{aligned}
-   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ($P_c$ * {\$100,000})}
+   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P_c * {\$100,000})}
     \end{aligned}
     \label{eqn:companyECF}
 \end{equation}
@@ -101,18 +101,18 @@ The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would 
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + ($P$ * {\$100,000})  = \$1,000 - ($P$ * {\$100,000})}
+   {\rm -\hspace{3pt}\$1,000 + (P * {\$100,000})  = \$1,000 - (P * {\$100,000})}
     \end{aligned}
 \label{eqn:PropertyInsurance}
 \end{equation}
 \begin{equation}
  \begin{aligned}
-   {\rm (2 * $P$ * {\$100,000})  =  (2 * \$1,000)}
+   {\rm (2 * P * {\$100,000})  =  (2 * \$1,000)}
     \end{aligned}
 \end{equation}
 \begin{equation}
  \begin{aligned}
-   {\rm $P$ * {\$100,000}  = \$1,000}
+   {\rm P * {\$100,000}  = \$1,000}
     \end{aligned}
 \end{equation}
 
