@@ -1145,7 +1145,7 @@ cds1
 
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
 
-\subsubsection{get.rates function}
+\subsubsection{get.rates}
 \label{sec:get.ratesFunction}
 
 This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
@@ -1165,7 +1165,7 @@ cds1.rates
 
 \subsubsection{rec.risk.01}
 
-Function to calculate the increase in the upfront value when the recovery rate increase by one percentage point.
+\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
 
 <<echo = FALSE>>=
 rec.risk.01(data.frame(date = as.Date("2014-06-24"),
@@ -1179,7 +1179,7 @@ rec.risk.01(data.frame(date = as.Date("2014-06-24"),
 
 \subsubsection{IR.DV01}
 
-Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
+\texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
 <<echo = FALSE>>=
 IR.DV01(data.frame(date = as.Date("2014-04-22"),
@@ -1194,7 +1194,7 @@ IR.DV01(data.frame(date = as.Date("2014-04-22"),
 
 \subsubsection{spread.DV01}
 
-Function to calculate the increase in the upfront value when the spread increase by one basis point.
+\texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
 <<echo = FALSE>>=
 spread.DV01(data.frame(date = as.Date("2014-04-22"),
@@ -1209,7 +1209,7 @@ spread.DV01(data.frame(date = as.Date("2014-04-22"),
 
 \subsubsection{spread.to.pd}
 
-Probability of default calculated using the function provided in the Bloomberg manual.
+\texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
 
 <<echo = FALSE>>=
 spread.to.pd(data.frame(date = Sys.Date(), spread = 160, tenor = 5, recovery = 0.4, currency = "USD"))
