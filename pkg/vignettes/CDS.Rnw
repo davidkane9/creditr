@@ -1248,7 +1248,7 @@ rec.risk.01(data.frame(date = as.Date("2014-06-24"),
                        notional = 1e7))
 @ 
 
-\subsubsection{IRDV01}
+\subsubsection{IR.DV01}
 
 Function to calculate the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. 
 
@@ -1263,7 +1263,7 @@ IR.DV01(data.frame(date = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{spread.DV.01}
+\subsubsection{spread.DV01}
 
 Function to calculate the increase in the upfront value when the spread increase by one basis point.
 
@@ -1278,7 +1278,7 @@ spread.DV01(data.frame(date = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{defaultProb}
+\subsubsection{spread.to.pd}
 
 Probability of default calculated using the function provided in the Bloomberg manual.
 
