@@ -95,26 +95,24 @@ Since the insurance company will receive the \$1,000 premium and will potentiall
 
 Note that $P_h$ and $P_c$ do \emph{not} have to be the same. The homeowner and the insurance company may have two different estimates of the probability that the house will get damaged during the year. The homeowner doesn't know the insurance company's estimate, and the insurance company doesn't know the homeowner's estimate. In fact, an outside third party does not know either $P_h$ or $P_c$. 
 
-Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they only care about expected cash flows. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides --- the \$1 and the 1\% chance of \$100 --- as equal in value. Most investors are not risk-neutral. They would prefer a guaranteed \$1 over a 1\% chance of winning \$100. Assume also that the homeowner and the insurance company can only agree on deals in which the expected cash flows are equal; otherwise, the party with the lesser expected cash flow will refuse to agree to the deal. By looking at Equations \ref{eqn:homeownerECF} and \ref{eqn:companyECF}, we can deduce that "P" must represent the same probability in both expected cash flows if those cash flows are equal. 
+Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they only care about expected cash flows. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides --- the \$1 and the 1\% chance of \$100 --- as equal in value. Most investors are not risk-neutral. They would prefer a guaranteed \$1 over a 1\% chance of winning \$100. Assumethat both parties agree to the above insurance agreement. What does this imply about $P_h$ and $P_c$? 
 
-Consider that both parties agree to the above insurance agreement. What does this imply about "P", the probability of damage that equates the expected cash flows?
-
-Even though the expected cash flows must be equal in order for the parties to strike a deal, this does not mean that the homeowner and the insurance company conveniently hold the same prediction for the probability of damage. Even if they have reached a deal, the homeowner does not even necessarily know the insurance company's prediction for the probability of damage, nor does the insurance company know that of the homeowner. Instead, since both parties conceded to the deal, we can infer that the parties were willing to assume or compromise on a certain value of "P"---the \textbf{risk-neutral probability of property damage}---even if that value was not the same as their own prediction for the probability of damage. We calculate the risk-neutral probability of damage by equating the expected cash flows in Equations \ref{eqn:homeownerECF} and \ref{eqn:companyECF}, since that is the condition upon which the parties will agree:
+The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would mean that her expected cash flows were negative and, by assumption, we know that neither the homeowner or the insurance company will enter an agreement with negative expected cash flows. For the same reasons, if the insurance company agrees to the deal, then $P_c \leq 0.01$. Neither of these facts allow us to conclude anything about $P_true$, the true probability of damage. Either the homeowner or the insurance company or both could be wrong in their estimates. However, we can now define $P$ as \textbf{risk-neutral estimate of the probability of property damage} as the value of both $P_h$ and $P_c$ which makes the expected cash flows identical:
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + (P * {\$100,000})  = \$1,000 - (P * {\$100,000})}
+   {\rm -\hspace{3pt}\$1,000 + ($P$ * {\$100,000})  = \$1,000 - ($P$ * {\$100,000})}
     \end{aligned}
 \label{eqn:PropertyInsurance}
 \end{equation}
 \begin{equation}
  \begin{aligned}
-   {\rm (2 * P * {\$100,000})  =  (2 * \$1,000)}
+   {\rm (2 * $P$ * {\$100,000})  =  (2 * \$1,000)}
     \end{aligned}
 \end{equation}
 \begin{equation}
  \begin{aligned}
-   {\rm P * {\$100,000}  = \$1,000}
+   {\rm $P$ * {\$100,000}  = \$1,000}
     \end{aligned}
 \end{equation}
 
