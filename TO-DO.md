@@ -1,5 +1,18 @@
 CDS TO-DO List
 ========================================================
+* Things to fix in CDS.Rnw. (I am also making lots of comments in the text of CDS.Rnw with directions.)
+** Read and completely understand the current version three times.
+** There is too much cruft, too many LaTeX packages and so on. Delete everything (e.g., \usepackage{Sweave}) that is not being used.
+** Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
+** Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
+** I think that the equation formatting in the first section is flawed. Seems like a hack. We want the equal signs to line up vertically, for example. Learn about the multiple equation environment in LaTeX and fix it.
+** The current quotations of variable symbols is wrong. It should not be:
+so the risk-neutral value of "P" (1\%) and the parties'
+But instead
+so the risk-neutral value of $P$ (1\%) and the parties'
+That is, we put every mathematical variable in its down math environment. I am pretty sure that this is standard, but, if you disaggree, speak up.
+
+
 * valueDate is incorrect. See add.dates() for details, but this could be the reason for (some of) the small discrepancies we have seen. Problem arises when there is a holiday on T + 3.
 
 * check.inputs should be re-worked. 
@@ -9,11 +22,6 @@ CDS TO-DO List
 
 * Of all the variables, Rec Risk 01 was the most problematic, which is strange because its code is almost identical to IR.DV01 and spread.DV01. Perhaps it is that the default recovery rate is different in different indices. Seems to be 0.4 in the US but 0.35 in Japan.
 
-* Things to fix in CDS.Rnw. (I am also making lots of comments in the text of CDS.Rnw with directions.)
-** Read and completely understand the current version three times.
-** There is too much cruft, too many LaTeX packages and so on. Delete everything (e.g., \usepackage{Sweave}) that is not being used.
-** Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
-** Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
 
 
 * We want to put the package on CRAN. To do that, we can't include the c code (all the items in /src). So, how can we solve this? (Might be useful to post a question about this on stackoverflow. But Google a bunch first.) Idea: Have the package automatically go a get the files on installation and/or loading. Complications:
