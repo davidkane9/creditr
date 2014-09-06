@@ -729,7 +729,7 @@ Since this is a simplified example, we have excluded aspects of the CDS market t
 
 2. In this example, we essentially assumed that we can just add probabilities: a probability of default of 1\% during year one and a probability of default of 1\% during year two equals a probability of default of 2\% over the two years. But in real life, the probability of default over a big period may not just be a simple summation of different probabilities in separate small periods. For example, what is the probability of default of the two-year period if the probabilities of default in the first and second year are different?
 
-3. In this example, we also assume that the interest rate is constant over the two years, but that's far from the reality. In real life, the interest rates we use for CDS pricing often change, so how should we calculate the discount factor and re-do CDS pricing?
+3. In this example, we also assume that the interest rate is zero over the two years. But in real life, interest rates should always be taken into consideration. For example, how will the CDS pricing change if there's a constant interest rate of 2\% over the two years? Moreover, how will the CDS pricing change if the interest rate is not constant at all? In real life, the interest rates we use for CDS pricing often change over the period, so how should we calculate the discount factor and re-do CDS pricing?
 
 \subsubsection{Non-constant Probability of Default}
 
@@ -769,7 +769,7 @@ However, note that in year one, JPM's expected cash flows are \$1,000 greater th
 
 What it's reversed: what if the risk-neutral probability of default for year one is 0\% and that of year two is 2\%?
 
-%% Need to finish this section
+%% Need to finish this section: Non-constant Interest Rate
 
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
