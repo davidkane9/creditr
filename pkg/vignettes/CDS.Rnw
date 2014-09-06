@@ -809,7 +809,30 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-So far we have only discussed pricing of CDS contracts across two periods. Let's say that our Alcoa CDS now has a tenor of five years and that each coupon payment is made quarterly, on the Roll Dates. If we look at Figure \ref{AlcoaIncCDS} below, we can see the details of an actual CDS contract on Alcoa priced on June 23, 2014.
+Having understood a simple one and two period pricing exercise, and having reviewed the basics of spreads, upfronts, accruals, coupons and credit events, we can now consider the N-period case. For concreteness, we will start with a five year on-the-run Alcoa CDS. Assume that today is June 20, 2014 and we are pricing an Alcoa CDS with a \$10 million notional value that matures on September 20, 2019. The CDS pays a 100 bps coupon.
+
+%% Now, do everything that we did in the two period case, but with the algebra expanded to 5 years. Note that we are not using any Bloomberg screen shots in this section, only algebra. But we are using the same numbers as will appear when we show the Bloomberg screen shot in the next section.
+
+%% At this point, we 
+%% a) Reference the two period equation from above. This is the central mathematical trick in CDS pricing: premium leg must equal protection leg. We can't remind the reader of this too often. 
+%% b) Create a 20 period version of this equation. Do this carefully, paying close attention to all the relevant subscripts. The probability of default is different in each period, as is the interest rate.
+%% c) Simplify the formula but making the assumptions that the ISDA standard model makes about constant proprobility of default and agree discount rates derived from the ISDA rates.
+%% d) Complexify the model a bit (or at least mention the complexities) to handle things like not having to pay the coupon after a credit event.
+
+%% Note the main trick here is to use June 20 as the start date. That means no accruals and other stuff is much simpler too. I think that this is a good simplification which we will relax when we look at the Bloomberg screen shot.
+
+
+
+
+\section{Bloomberg and Markit}
+
+%% Perhaps of this section is to go through almost every details of the Bloomberg and Markit screen shots, explaining all the relevant details, tying them together to the concepts we discussed above and laying the groudwork for showing off the CDS package later.
+
+%% Right now, unfortunately, this section is a mix of that stuff (which should stay) and materials that really belongs in the N-period section above.
+
+Figure \ref{AlcoaIncCDS} shows the details of an actual CDS contract on Alcoa priced on June 23, 2014.
+
+
 
 \begin{figure}[H]
 \centering
