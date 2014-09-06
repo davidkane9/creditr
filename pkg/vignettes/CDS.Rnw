@@ -231,9 +231,7 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PnL) of the Citadel portfolio manager and JPM change from January 1 to December 31. 
-
-%% Assume that Alcoa does not default during that year.
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PnL) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
 
 We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
@@ -265,10 +263,6 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-mark
 As we can see in Table \ref{table.1}, the risk-neutral "P" decreases from 1\% on January 1 to 0\% on December 31. On June 30, the risk-neutral "P" has dropped to 0.5\% because only half of a year remains for Alcoa to default during the contract---and thus the risk-neutral "P" is half of its initial value. This demonstrates the direct relationship between the risk-neutral "P" and the contract duration. 
 
 In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. We can observe in Table \ref{table.1} that the spread decreases from 100 bps to 0 bps over the year---a reflection of the fact that, at the end of the contract, JPM has earned and been paid the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
-
-%% Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
-
-%% The way in which the value of the upfront payment drops over the life of the CDS contract can be called the \textbf{pull to par}.
 
 \subsubsection{Simple One-Period Case Complications}
 \label{OnePeriodComp}
