@@ -331,8 +331,6 @@ Suppose that Alcoa defaults during the simple-one period CDS, and a bond that ha
 
 In this case, the \textbf{recovery rate}---the rate representing the amount of value a bond retains after default---is 55\%. As such, JPM would only have to pay 45\% of the notional amount---\$45,000---instead of the notional amount of \$100,000 because bondholders who have purchased protection are able to retain 55\% of their bonds' worth. 
 
-%% The ratio of the amount a bondholder receives after a company's default compared to the amount the bondholder \emph{should} have received (with no default) is known as the \textbf{recovery rate}. So, in the example described above, the recovery rate is 50\%.
-
 So, we need to factor the recovery rate into our calculation of expected cash flows because it changes the value of the protection leg in the simple one-period CDS. Since the portfolio manager and JPM will only both agree to this CDS if the expected cash flows are equal, we set the portfolio manager's expected cash flows and JPM's expected cash flows equal to each other. ("RR" refers to the recovery rate and, as before, "P" is the risk-neutral probability of default, "C" is the coupon payment, and "V" is the notional value.)
 
 \begin{equation}
@@ -615,6 +613,8 @@ As such, on June 30, the value of the upfront payment is \$1,000---which is what
 
 Note that in Equation \ref{eqn:Upfront}, "C" and "V" are known or pre-determined values, since "C" is standardized by the ISDA and "V" is agreed upon by the protection buyer and seller. As such, "P" and "U" can be considered the unknown variables; one needs to know the value of "P" to determine the value of "U", and vice versa.
 
+Also, it is important to distinguish between two upfront payments: the \textbf{dirty upfront} and \textbf{clean upfront}. However, the the difference of the two upfront payments involves the concept of \textbf{accrued interest rates} which will be introduced in the N-period CDS example. For readeres who are familiar with this concept, dirty upfront payment takes accrued interest rates into account, while clean upfront payment does not. Therefore, dirty upfront payment is the actual upfront payment that one party pays to the other.
+
 \subsubsection{One-Period Summary}
 \label{sec:Sum}
 
@@ -641,11 +641,6 @@ Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfr
 \end{equation}
 
 Note that for any standard CDS contract, the two unknown variables are "P" and "U", since "C" and "RR" are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and "V" is agreed upon by the two parties (essentially fixed). As such, if we know "P", we can calculate "U" and vice versa.
-
-%% Need to explain dirty upfront and clean upfront. See text below.
-
-%% \textbf{dirty upfront}, since it specifies the actual upfront payment that one party will pay the other party. The \textbf{clean upfront}, on the other hand, does not take accrued interest into account, and (in this case) is equal to \$495. Note that the portion of the upfront payment that accounts for a lower probability of default than 1\% is discounted by the discount rate, and the portion that accounts for the accured interest is not."
-
 
 \subsection{Two-Period Case}
 \label{sec:TwoPeriod}
@@ -832,7 +827,7 @@ Once again, the coupon is a 100 basis points and the spread is 160 basis points.
     \end{aligned}
 \end{equation}
 
-\subsubsection{Calculating the Upfront Payment in an N-period Case}
+Also remember that, the difference between dirty upfront payment and clean upfront payment is that, dirty upfront payment takes accrued interest rates into account while clean upfront payment does not.
 
 \subsubsection{Discount Factor}
 
