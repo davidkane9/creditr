@@ -1,11 +1,13 @@
 CDS TO-DO List
 ========================================================
+
+DONE: ** I think that the equation formatting in the first section is flawed. Seems like a hack. We want the equal signs to line up vertically, for example. Learn about the multiple equation environment in LaTeX and fix it.
+
 * Things to fix in CDS.Rnw. (I am also making lots of comments in the text of CDS.Rnw with directions.)
 ** Read and completely understand the current version three times.
 ** There is too much cruft, too many LaTeX packages and so on. Delete everything (e.g., \usepackage{Sweave}) that is not being used.
 ** Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
 ** Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
-** I think that the equation formatting in the first section is flawed. Seems like a hack. We want the equal signs to line up vertically, for example. Learn about the multiple equation environment in LaTeX and fix it.
 ** The current quotations of variable symbols is wrong. It should not be:
 so the risk-neutral value of "P" (1\%) and the parties'
 But instead
