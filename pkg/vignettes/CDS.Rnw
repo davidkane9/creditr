@@ -305,18 +305,11 @@ In this case, the \textbf{recovery rate}---the rate representing the amount of v
 
 So, we need to factor the recovery rate into our calculation of expected cash flows because it changes the value of the protection leg in the simple one-period CDS. Since the portfolio manager and JPM will only both agree to this CDS if the expected cash flows are equal, we set the portfolio manager's expected cash flows and JPM's expected cash flows equal to each other. ("RR" refers to the recovery rate and, as before, "P" is the risk-neutral probability of default, "C" is the coupon payment, and "V" is the notional value.)
 
-\begin{equation}
- \begin{aligned}
- {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows}
-    \end{aligned}
 \label{eqn:recovery}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm - C + (P * V * (1 - RR)) = C - (P * V * (1 - RR))}
-    \end{aligned}
-\label{eqn:recovery}
-\end{equation}
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+  \rm - C + (P * V * (1 - RR)) &= C - (P * V * (1 - RR))
+\end{align}
 
 Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled "V" by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just "RR"). Another term for this amount is the loss given default (LGD):
 
@@ -489,18 +482,11 @@ First, review the expected cash flows we had in the previous section with a coup
 
 Since the difference between the protection buyer's desired coupon payment (\$3,000 at 3\%) and the payment she has to make due to CDS market convention (\$1,000 at 1\%) is \$2,000, the portfolio manager's upfront payment to JPM should be \$2,000. The best way of thinking about an upfront payment is to consider the difference in expected cash flows between the two parties. Since the portfolio manager's expected cash flow is larger than that of JPM, the upfront payment ("U") is negative on the left side of the equation (the portfolio manager's expected cash flow) and positive on the other side (JPM's expected cash flow) so as to equate the two sides. (As before, "C" designates the coupon payment, "P" is the risk-neutral probability of default, and "V" is the notional value.)
 
-\begin{equation}
- \begin{aligned}
-   {\rm Premium\hspace{3pt}leg = Protection\hspace{3pt}leg}
-    \end{aligned}
 \label{eqn:Upfront}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}U - C + (P * V) = U + C - (P * V)}
-    \end{aligned}
-\label{eqn:Upfront}
-\end{equation}
+\begin{align}
+   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
+   \rm -\hspace{3pt}U - C + (P * V) &= \rm U + C - (P * V)
+\end{align}
 
 Plugging in known values:
 
@@ -512,17 +498,11 @@ Plugging in known values:
 
 Simplifying:
 
-\begin{equation}
- \begin{aligned}
-   {\rm (2 * \$3,000) = (2 * \$1,000) + (2 * U)}
-    \end{aligned}
-\end{equation}
 
-\begin{equation}
- \begin{aligned}
-   {\rm \$3,000 - \$1,000 = U}
-    \end{aligned}
-\end{equation}
+\begin{align}
+   \rm 2 * \$3,000 &= \rm 2 * \$1,000 + 2 * U \\
+   \rm \$3,000 - \$1,000 &= \rm U
+\end{align}
 
 This verifies that the correct upfront payment in this scenario is \$2,000. 
 
@@ -590,7 +570,7 @@ Note that for any standard CDS contract, the two unknown variables are "P" and "
 \subsection{Two-Period Case}
 \label{sec:TwoPeriod}
 
-%% In the simple two-period case section, explore scenarios in which “P” changes from one year to the next, and in which “i” changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
+%% In the simple two-period case section, explore scenarios in which “P�? changes from one year to the next, and in which “i�? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
 
 Thus far, we have described a simple one-period CDS with one coupon payment on January 1. However, as mentioned in Section \ref{sec:AccruedCoupon}, CDS have four coupon payments each year. Before we get into the exact mechanics of a four-period or more case, consider a simple two-period CDS that has a duration of two years and 
 two coupon payments: one on January 1 of year one and one on January 1 of year two. The interest rate is 0\%, and the probability of default is constant for both years of the contract. Like the simple one-period CDS, the notional amount is \$100,000 and the coupon is 1\%. Note that the term "coupon" refers to the protection buyer's \emph{annual} payment. So, the buyer will make two \$1,000 coupon payments, thus paying a total of \$2,000 over the two years. The protection buyer is still the portfolio manager and the protection seller is still JPM. 
@@ -867,11 +847,11 @@ Using the concept of PV01, we show the calculation of the main risks (exposures)
 
 It measures the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. DV01 should always be positive for a protection buyer since he or she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
 
-\begin{eqnarray}
-  PV = (S - C) * PV01 \nonumber \\
-  DV01 = \frac{\partial PV}{\partial S} \nonumber \\
-  = PV01 + (S - C) \frac{\partial PV01}{\partial S},\nonumber
-\end{eqnarray}
+\begin{align*}
+  PV &= (S - C) * PV01 \\
+  DV01 &= \frac{\partial PV}{\partial S} \\
+  &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
+\end{align*}
 
 where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread
 equals the coupon.
