@@ -99,31 +99,13 @@ Assume that both the homeowner and the insurance company are \textbf{risk-neutra
 
 The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would mean that her expected cash flows were negative and, by assumption, we know that neither the homeowner or the insurance company will enter an agreement with negative expected cash flows. For the same reasons, if the insurance company agrees to the deal, then $P_c \leq 0.01$. Neither of these facts allow us to conclude anything about $P_true$, the true probability of damage. Either the homeowner or the insurance company or both could be wrong in their estimates. However, we can now define $P$ --- \textbf{risk-neutral estimate of the probability of property damage} --- as the single value for both $P_h$ and $P_c$ which makes the expected cash flows identical. Mathematically:
 
-%% There are much more elegant ways of setting up a series of equations in LaTeX. Please figure them out.
-%% And apply them throughout the document. For example, we want alignment on the = signs here.
-
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + (P * {\$100,000})  = \$1,000 - (P * {\$100,000})}
-    \end{aligned}
 \label{eqn:PropertyInsurance}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm (2 * P * {\$100,000})  =  (2 * \$1,000)}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm P * {\$100,000}  = \$1,000}
-{\rm P  = 0.01}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-      {\rm P  = 0.01}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm -\hspace{3pt}\$1,000 + P * {\$100,000}  &= \rm \$1,000 - P * {\$100,000} \\
+  \rm 2 * P * {\$100,000}  &=  \rm 2 * \$1,000 \\
+  \rm P * {\$100,000}  &= \rm {\$1,000} \\
+  \rm P  &= \rm 0.01
+\end{align}
 
 Therefore, the risk-neutral probability of property damage is 1\%. Note that this number does not tell us anything about either $P_h$ and $P_c$. The homeowner's estimate for the probability of damage is at \emph{least} 1\% because she refuses any agreement with negative expected cash flow. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal in which the risk-neutral probability of damage was 1\% because her expected cash flows are positive.  The same analysis applies to the insurance company. 
 
@@ -198,22 +180,12 @@ We will again assume that both parties in the CDS are risk-neutral and that both
 
 Consider that a deal is reached: both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of "P" implied by the deal. Note that an alternate definition of this probability is the value of "P" at which the premium leg equals the protection leg:
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm Premium\hspace{3pt}leg = Protection\hspace{3pt}leg}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}C + (P * V)  = C - (P * V)}
-    \end{aligned}
 \label{eqn:SimpleOnePeriod}
-\end{equation}
+\begin{align}
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
+   \rm -\hspace{3pt}C + (P * V)  &= \rm C - (P * V)
+\end{align}
 
 The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, "C", but could receive the protection leg of "V", depending on "P". The right indicates the converse: JPM will receive the coupon payment, "C", but could potentially have to pay the protection leg of "V", depending on "P".
 Plugging in known values ("C" = \$1,000 and "V" = \$100,000), we get:
@@ -578,36 +550,19 @@ Date & Risk-neutral "P" & Mark-to-market & Upfront Payment \\
 
 Earlier, we calculated the upfront payment using the following equation:
 
-\begin{equation}
- \begin{aligned}
-   {\rm Premium\hspace{3pt}leg = Protection\hspace{3pt}leg}
-    \end{aligned}
 \label{eqn:Upfront}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}U - C + (P * V) = U + C - (P * V)}
-    \end{aligned}
-\label{eqn:Upfront}
-\end{equation}
+\begin{align}
+  \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
+  \rm -\hspace{3pt}U - C + (P * V) &= \rm U + C - (P * V)
+\end{align}
 
 We can verify that the upfront payment values in Table \ref{tbl:upfrontValue} are correct by inputting the risk-neutral probability of default as "P" and by inputting the mark-to-market value as "C". For example, take June 30 (where, according to Table \ref{tbl:upfrontValue}, the risk-neutral "P" is 1.5\% and the mark-to-market value is \$500.)
 
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}U - \$500 + (.0015 * \$100,000) = \hspace{3pt}U + \$500 - (.0015 * \$100,000)}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm (2 * \$1,500) = (2 * \$500) + (2 * U)}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm \$1,500 - \$500 = U}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm -\hspace{3pt}U - \$500 + (.0015 * \$100,000) &= \rm \hspace{3pt}U + \$500 - (.0015 * \$100,000) \\
+  \rm 2 * \$1,500 &= \rm 2 * \$500 + 2 * U \\
+  \rm U &= \rm\$1000
+\end{align}
 
 As such, on June 30, the value of the upfront payment is \$1,000---which is what Table \ref{tbl:upfrontValue} indicates, as well.
 
@@ -624,21 +579,11 @@ In a real-world scenario, we'd have to look at \emph{all} these factors at the s
 
 Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfront}, we get a master equation that accounts for interest rate ("i"), recovery rate ("RR"), and upfront payment ("U"). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, "C" stands for the coupon payment, "P" for the probability of default, and "V" for the notional value.)
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm Premium\hspace{3pt}leg = Protection\hspace{3pt}leg}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm U -\hspace{3pt}\frac{C}{(1 + i)} + (P * V * (1 - RR))  = -\hspace{3pt}U + \frac{C}{(1 + i)} - (P * V * (1 - RR))}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+  \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
+  \rm U -\hspace{3pt}\frac{C}{(1 + i)} + (P * V * (1 - RR))  &= \rm -\hspace{3pt}U + \frac{C}{(1 + i)} - (P * V * (1 - RR)) 
+\end{align}
 
 Note that for any standard CDS contract, the two unknown variables are "P" and "U", since "C" and "RR" are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and "V" is agreed upon by the two parties (essentially fixed). As such, if we know "P", we can calculate "U" and vice versa.
 
@@ -654,66 +599,39 @@ Consider that both parties agree to this deal.
 
 The risk-neutral probability of default---the default that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows for year one of the CDS contract:
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P * {\$100,000})}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P * {\$100,000})}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + (P * {\$100,000}) \\
+  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - (P * {\$100,000})
+\end{align}
 
 The expected cash flows for the portfolio manager and for JPM are the same for year two. 
 
 In order to find the risk-neutral probability of default for each year, we must equate the expected cash flows:
 
-\begin{equation}
- \begin{aligned}
-   {\rm -\hspace{3pt}C + (P * V)  = C - (P * V)}
-    \end{aligned}
 \label{eqn:SimpleTwoPeriod}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-  {\rm - \$1,000 + (P * \$100,000) = \$1,000 - (P * \$100,000)} 
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm P * {\$100,000}  = \$1,000}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm -\hspace{3pt}C + (P * V)  &= \rm C - (P * V) \\
+  \rm - \$1,000 + (P * \$100,000) &= \rm \$1,000 - (P * \$100,000) \\
+  \rm P * {\$100,000}  &= \rm \$1,000
+\end{align}
+
 
 Thus, the risk-neutral probability of default for year one (or for year two, since the expected cash flows are the same) is 1\%. 
 
 Now that we have considered the expected cash flows and risk-neutral probability of default for each year, we may want consider what those values for both years combined. What are the overall expected cash flows and the overall risk-neutral "P"?
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -(\hspace{3pt}\$1,000 + \$1,000) + (P * {\$100,000})}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}(\$1,000 + \$1,000) - (P * {\$100,000})}
-    \end{aligned}
-\end{equation}
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -(\hspace{3pt}\$1,000 + \$1,000) + (P * {\$100,000}) \\
+  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}(\$1,000 + \$1,000) - (P * {\$100,000})
+  \end{align}
 
 In order to find the risk-neutral probability of default for both years combined, we need to equate the two expected cash flows:
 
-\begin{equation}
- \begin{aligned}
-  {\rm - (\$1,000 + \$1,000) + (P * \$100,000) = (\$1,000 + \$1,000) - (P * \$100,000)} 
-    \end{aligned}
-    \label{eqn:twoPeriod}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm P * {\$100,000}  = \$2,000}
-    \end{aligned}
-\end{equation}
+\label{eqn:twoPeriod}
+\begin{align}
+  \rm - (\$1,000 + \$1,000) + (P * \$100,000) &= \rm (\$1,000 + \$1,000) - (P * \$100,000) \\
+  \rm P * {\$100,000}  &= \rm \$2,000
+\end{align}
 
 The risk-neutral probability of default for the two-year contract is 2\%. Note that the risk-neutral probability of default in the simple one-period CDS was 1\%. The only reason that this probability is different is because the portfolio manager's coupon payment in the two-period case is double that of the one-period case.
 
@@ -737,31 +655,19 @@ In the simple two-period CDS, the overall probability of default is 2\%. Since w
 
 In such a case, the expected cash flows for year one (where "P" = 2\%) are as follows:
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ((P = 2\%) * {\$100,000})}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ((P = 2\%) * {\$100,000})}
-    \end{aligned}
-\end{equation}
+\begin{align}
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 2\%) * {\$100,000}) \\
+    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 2\%) * {\$100,000})
+\end{align}
 
 Note that these expected cash flows are \emph{not} be equal. We will address this fact soon.
 
 Now consider the expected cash flows for year two (where "P" = 0\%):
 
-\begin{equation}
- \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ((P = 0\%) * {\$100,000})}
-    \end{aligned}
-\end{equation}
-\begin{equation}
- \begin{aligned}
-   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ((P = 0\%) * {\$100,000})}
-    \end{aligned}
-\end{equation}
+\begin{align}
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 0\%) * {\$100,000}) \\
+    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 0\%) * {\$100,000}) 
+\end{align}
 
 Clearly, the expected cash flows for the portfolio manager and JPM during year one are not equal, and the expected cash flows for the portfolio manager and JPM during year two are not equal, either.
 
