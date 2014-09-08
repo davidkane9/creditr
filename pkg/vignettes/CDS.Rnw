@@ -465,7 +465,7 @@ For example, investment banks like JPM often buy protection for one CDS and sell
 So, in 2009, a regulatory organization known as the International Swaps and Derivates Association (ISDA) 
 introduced new CDS market conventions in North America which required buyers and sellers to trade at coupons of 100 bps or 500 bps. This, along with a number of other regulatory changes, came to be known as the `Big Bang Protocol`. Since then, the spread of a CDS no longer signifies the coupon at which the CDS is traded; instead, the spread is the coupon that the CDS \emph{would} be traded at in a market without standardized coupons---or the coupon that the CDS would have been traded at before 2009. In order to account for the discrepancy between the spread and the standardized coupon at which a CDS must trade, protection buyers and sellers use \textbf{upfront payments}, discussed in the next section.
 
-\subsubsection{Upfront payment}
+\subsubsection{Upfront Payment}
 \label{sec:Upfront}
 
 An \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1)---compensates for the difference between the spread that both parties \emph{want} to trade at and the standardized coupon that they \emph{have} to trade at. Suppose that, like in the previous example, both parties want to trade at a coupon of 3\%. Clearly, they have to trade at a coupon of 1\% or 5\%---assume they choose 1\%. They will only make a deal that acts \emph{as if} they traded at a coupon of 3\%. 
@@ -570,7 +570,7 @@ Note that for any standard CDS contract, the two unknown variables are "P" and "
 \subsection{Two-Period Case}
 \label{sec:TwoPeriod}
 
-%% In the simple two-period case section, explore scenarios in which “P�? changes from one year to the next, and in which “i�? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
+%% In the simple two-period case section, explore scenarios in which “P??? changes from one year to the next, and in which “i??? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
 
 Thus far, we have described a simple one-period CDS with one coupon payment on January 1. However, as mentioned in Section \ref{sec:AccruedCoupon}, CDS have four coupon payments each year. Before we get into the exact mechanics of a four-period or more case, consider a simple two-period CDS that has a duration of two years and 
 two coupon payments: one on January 1 of year one and one on January 1 of year two. The interest rate is 0\%, and the probability of default is constant for both years of the contract. Like the simple one-period CDS, the notional amount is \$100,000 and the coupon is 1\%. Note that the term "coupon" refers to the protection buyer's \emph{annual} payment. So, the buyer will make two \$1,000 coupon payments, thus paying a total of \$2,000 over the two years. The protection buyer is still the portfolio manager and the protection seller is still JPM. 
@@ -836,7 +836,7 @@ We can use the formula above for PV01 to calculate the principal amount (clean u
 
 % cite http://developers.opengamma.com/quantitative-research/Pricing-and-Risk-Management-of-Credit-Default-Swaps-OpenGamma.pdf
 
-\subsection{Risk Measures and other CDS related variables}
+\subsection{Risk Measures and Other CDS Related Variables}
 \label{sec:RiskMeasures}
 
 \subsubsection{Spread DV01}
@@ -949,7 +949,7 @@ These index products trade in high volumes and are very liquid. In this vignette
 
 
 \newpage
-\section{Using the CDS package}
+\section{Using the CDS Package}
 \label{CDSpkg}
 
 In this section, we will demonstrate the use of the \textbf{CDS} package in detail and provide a series of examples. The \textbf{CDS} package implements the Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
@@ -1028,7 +1028,7 @@ The remaining three items from the \texttt{summary} output  are \texttt{Spread D
 
 Besides calling the \texttt{summary} method, one can type in the name of the \texttt{CDS} class object in the current \textbf{R} Session and obtain a full description of the CDS contract.
 
-\subsubsection{show method}
+\subsubsection{Show Method}
 \label{sec:showMethod}
 
 <<>>=
@@ -1043,7 +1043,7 @@ cds1
 
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
 
-\subsubsection{get.rates}
+\subsubsection{``get.rates'' Function}
 \label{sec:get.ratesFunction}
 
 This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
@@ -1058,10 +1058,10 @@ The output from the get.rates function is a data frame which contains rates of v
 cds1.rates
 @ 
 
-\subsection{Risk-related Functions}
+\subsection{Risk Related Functions}
 \label{sec:riskFunctions}
 
-\subsubsection{rec.risk.01}
+\subsubsection{``rec.risk.01'' Function}
 
 \texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
 
@@ -1075,7 +1075,7 @@ rec.risk.01(data.frame(date = as.Date("2014-06-24"),
                        notional = 1e7))
 @ 
 
-\subsubsection{IR.DV01}
+\subsubsection{``IR.DV01'' Function}
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
@@ -1090,7 +1090,7 @@ IR.DV01(data.frame(date = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{spread.DV01}
+\subsubsection{``spread.DV01'' Function}
 
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
