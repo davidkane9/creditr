@@ -1105,7 +1105,7 @@ spread.DV01(data.frame(date = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{spread.to.pd}
+\subsubsection{``spread.to.pd'' Function}
 
 \texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
 
