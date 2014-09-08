@@ -992,22 +992,22 @@ In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an o
 
 <<>>=
 library(CDS)
-cds1 <- CDS(name = "Alcoa",
-           RED = "49EB20",
-           date = as.Date("2014-06-24"),
-           tenor = 5,
-           notional = 1e7,
-           coupon = 100,
-           spread = 160)
+cds1 <- CDS(name     = "Alcoa",
+            RED      = "49EB20",
+            date     = as.Date("2014-06-24"),
+            tenor    = 5,
+            notional = 1e7,
+            coupon   = 100,
+            spread   = 160)
 @
 
 Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
 
 <<>>=
 library(CDS)
-cds2 <- CDS(date = as.Date("2014-06-24"),
-           maturity = as.Date("2019-06-20"),
-           spread = 160)
+cds2 <- CDS(date     = as.Date("2014-06-24"),
+            maturity = as.Date("2019-06-20"),
+            spread   = 160)
 @
 
 \subsection{Generic Methods}
@@ -1066,11 +1066,11 @@ cds1.rates
 \texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
 
 <<echo = FALSE>>=
-rec.risk.01(data.frame(date = as.Date("2014-06-24"),
+rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
                        currency = "USD",
-                       tenor = 5,
-                       spread = 160,
-                       coupon = 100,
+                       tenor    = 5,
+                       spread   = 160,
+                       coupon   = 100,
                        recovery = 0.4,
                        notional = 1e7))
 @ 
@@ -1080,13 +1080,13 @@ rec.risk.01(data.frame(date = as.Date("2014-06-24"),
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
 <<echo = FALSE>>=
-IR.DV01(data.frame(date = as.Date("2014-04-22"),
-                  currency = "USD",
-                  tenor = 5,
-                  spread = 160,
-                  coupon = 100,
-                  recovery = 0.4,
-                  notional = 1e7))
+IR.DV01(data.frame(date     = as.Date("2014-04-22"),
+                   currency = "USD",
+                   tenor    = 5,
+                   spread   = 160,
+                   coupon   = 100,
+                   recovery = 0.4,
+                   notional = 1e7))
 @
 
 
@@ -1095,7 +1095,7 @@ IR.DV01(data.frame(date = as.Date("2014-04-22"),
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
 <<echo = FALSE>>=
-spread.DV01(data.frame(date = as.Date("2014-04-22"),
+spread.DV01(data.frame(date     = as.Date("2014-04-22"),
                        currency = "USD",
                        tenor    = 5,
                        spread   = 160,
@@ -1110,7 +1110,11 @@ spread.DV01(data.frame(date = as.Date("2014-04-22"),
 \texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
 
 <<echo = FALSE>>=
-spread.to.pd(data.frame(date = Sys.Date(), spread = 160, tenor = 5, recovery = 0.4, currency = "USD"))
+spread.to.pd(data.frame(date     = Sys.Date(),
+                        spread   = 160,
+                        tenor    = 5,
+                        recovery = 0.4,
+                        currency = "USD"))
 @
 
 \section{Conclusion}
