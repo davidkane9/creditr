@@ -1127,40 +1127,9 @@ of complexity, however, \texttt{CDS} provides a good starting point for valuing 
 
 \end{document}
 
-%%\begin{figure}[H]
-%%  \caption{\label{fig:cashFlow} Mechanics of a CDS contract}
-%%\begin{center}
-%%\begin{tikzpicture}[
-%%squarednode/.style={rectangle, draw=black!60, fill=none, thick, 
-%%  minimum height =12mm, minimum width = 35mm},
-%%]
-%%  \tikzset{mylabel/.style = {text centered}
-%%  }
-
-%%\vspace{2cm}
-  %%  \node [squarednode](A) at (0,0) {Protection Buyer};
-    %%\node [squarednode](B) at (7,0) {Protection Seller};
-
-    %%\draw[transform canvas={yshift=3mm},-stealth, thick] (A) -- (B);
-    %%\draw[transform canvas={yshift=-3mm},-stealth, thick] (B) -- (A);
-    %%\node[mylabel] at (3.5, 0.9) {Premium Leg};
-    %%\node[mylabel] at (3.5, -0.9) {Protection Leg};
-    
-%%\end{tikzpicture} 
-%%\end{center}
-%%\end{figure}
-
 %% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
 
 %% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
 
 
 %The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=4.6in, height=3.4in]{images/CDSnoevent.png}
-%\caption{CDS cash flows when there is no credit event.}
-%\label{fig:CDSnoevent}
-%\end{figure}
-
