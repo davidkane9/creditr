@@ -708,18 +708,19 @@ Although the number of periods has increased dramatically from two to twenty, th
 A simple 20-period CDS will then have the below mathematic expression:
 
 \begin{align}
-  \rm \hspace{3pt}- \frac{C}{(1 + int_i)} * 20 + [ P * V * (1 - RR) ]  &= \rm \hspace{3pt}\frac{C}{(1 + int_i)} * 20 - [ P * V * (1 - RR) ] 
+  \rm \hspace{3pt}- \frac{C}{(1 + int)} * 20 + [ P * V * (1 - RR) ]  &= \rm \hspace{3pt}\frac{C}{(1 + int)} * 20 - [ P * V * (1 - RR) ] 
 \end{align}
 
-where $int$ stands for constant interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. If we specify that $V = 100,000$, $RR = 0.4$, and $C = 1000$, then we can easily calculate that $P = 33.333\% $ for the whole 20 periods.
+where $int$ stands for constant interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. If we specify that $int = 1/3\%$, $V = 1,000,000$, $RR = 0.4$, and $C = 1000$, then we can easily calculate that $P = 10\% $ for the whole 20 periods.
 
-If we continue to add complications of non-constant interest rate $int$, non-constant probability of default $P$, the above equation can be mathematically expressed as:
+If, however, the probability of default is not constant over different periods, then the above equation should be mathematically expressed as:
 
 \begin{align}
-  \rm \hspace{3pt}\frac{C}{(1 + int_i)} + [ P_i * V * (1 - RR) ]  &= \rm \hspace{3pt} \frac{C}{(1 + int_i)} - [ P_i * V * (1 - RR) ] 
+  \rm \hspace{3pt}\frac{C}{(1 + int)} + [ P_i * V * (1 - RR) ]  &= \rm \hspace{3pt} \frac{C}{(1 + int)} - [ P_i * V * (1 - RR) ] 
 \end{align}
 
-where $i$ denotes different periods from one to twenty. Since the overall probability of default should sum to 33.333\%, we 
+where $i$ denotes different periods from one to twenty. Since the overall probability of default should sum to 10\%, we can assign: $P_{1-4} = 0.00$, $P_{5-8} = 0.25$, $P_{9-12} = 0.50$, $P_{13-16} = 0.75$, $P_{17-20} = 1.00$. As can be easily proved, the expected cash flows are still equal to each other, as long as $\sum\limits_{i=1}^{20} P_i = 10\%$.
+
 
 %% Now, do everything that we did in the two period case, but with the algebra expanded to 5 years. Note that we are not using any Bloomberg screen shots in this section, only algebra. But we are using the same numbers as will appear when we show the Bloomberg screen shot in the next section.
 
