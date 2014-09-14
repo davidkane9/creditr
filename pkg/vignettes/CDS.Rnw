@@ -695,7 +695,16 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-Having understood a simple one and two period pricing exercise, and having reviewed the basics of spreads, upfronts, accruals, coupons and credit events, we can now consider the N-period case. For concreteness, we will start with a five year on-the-run Alcoa CDS. Assume that today is June 20, 2014 and we are pricing an Alcoa CDS with a \$10 million notional value that matures on September 20, 2019. The CDS pays a 100 bps coupon.
+Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from JP Morgan a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after five years, the CDS protection ends (or \textbf(matures)) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we pick the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more later.
+
+Since there are four payment dates in one year and the tenor is five years, this is a 20-period example of CDS.
+Although the number of periods has increased dramatically from two to twenty, the central mathematics remains unchanged: 
+\begin{align}
+  \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg
+\end{align}
+
+
+For concreteness, we will start with a five year on-the-run Alcoa CDS. Assume that today is June 20, 2014 and we are pricing an Alcoa CDS with a \$10 million notional value that matures on September 20, 2019. The CDS pays a 100 bps coupon.
 
 %% Now, do everything that we did in the two period case, but with the algebra expanded to 5 years. Note that we are not using any Bloomberg screen shots in this section, only algebra. But we are using the same numbers as will appear when we show the Bloomberg screen shot in the next section.
 
