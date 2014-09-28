@@ -1150,6 +1150,16 @@ of complexity, however, \texttt{CDS} provides a good starting point for valuing 
 
 \newpage
 \bibliography{CDS}
+\cite{barclays}
+\cite{bloomberg}
+\cite{openGamma}
+\cite{glossary}
+\cite{cdsOrigins}
+\cite{blythe}
+\cite{jk}
+\cite{rates}
+\cite{kane:david}
+\cite{creditDerivatives}
 
 \end{document}
 
