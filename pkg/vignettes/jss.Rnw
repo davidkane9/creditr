@@ -1,0 +1,124 @@
+\documentclass[article]{jss}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% almost as usual
+\author{
+Heidi Chen,
+Yuanchu Dang, 
+David Kane, 
+Yang Lu, 
+Kanishka Malik, 
+Skylar Smith,
+Zijie Zhu}
+\title{Credit Default Swaps with R}
+
+%% for pretty printing and a nice hypersummary also set:
+\Plainauthor{Achim Zeileis, Second Author} %% comma-separated
+\Plaintitle{Credit Default Swaps with R} %% without formatting
+\Shorttitle{Credit Default Swaps with R} %% a short title (if necessary)
+
+%% an abstract and keywords
+\Abstract{
+ A credit default swap (CDS) is an bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. We, first, explain the basics of CDS, starting with a simplified example of property insurance and then progressing to increasingly complicated examples of a one-period, two-period, and n-period CDS. Second, we introduce Markit and Bloomberg, the two primary sources of CDS data and analysis. Third, we describe the CDS package --- a program written in R that allows users to calculate credit default swap information.
+}
+\Keywords{credit default swap, pricing, {\bf R} package}
+\Plainkeywords{credit default swap, pricing, {\bf R} package} %% without formatting
+%% at least one keyword must be supplied
+
+%% publication information
+%% NOTE: Typically, this can be left commented and will be filled out by the technical editor
+%% \Volume{50}
+%% \Issue{9}
+%% \Month{June}
+%% \Year{2012}
+%% \Submitdate{2012-06-04}
+%% \Acceptdate{2012-06-04}
+
+%% The address of (at least) one author should be given
+%% in the following format:
+\Address{
+  Yuanchu Dang\\
+  Department of Mathematics and Statistics\\
+  Williams College\\
+  1136 Paresky Center, Williamstown, MA 01267, USA\\
+  Telephone: +1/413/346-7821
+  E-mail: \email{Yuanchu.Dang@williams.edu}
+}
+%% It is also possible to add a telephone and fax number
+%% before the e-mail in the following format:
+%% Telephone: +43/512/507-7103
+%% Fax: +43/512/507-2851
+
+%% for those who use Sweave please include the following line (with % symbols):
+%% need no \usepackage{Sweave.sty}
+
+%% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\SweaveOpts{concordance = FALSE}
+
+%% include your article here, just as usual
+%% Note that you should use the \pkg{}, \proglang{} and \code{} commands.
+
+<<include=FALSE, echo=FALSE>>=
+library(knitr)
+opts_chunk$set(
+echo = TRUE, results='markup', tidy=FALSE
+)
+@
+
+\bibliographystyle{abbrvnat}
+
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{knitr::knitr}
+%\VignetteIndexEntry{Credit Default Swaps with R}
+
+<<include=FALSE, echo=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE
+)
+@
+
+
+
+\section{Introduction}
+\label{sec:Introduction}
+
+%% Introduction should have three paragraphs, mimicing the three sentences above that give the first, second, and third goal of the paper. Each paragraph expands the details for that sentence. It is here that we mention, at least once, the 5 to 10 key bolded terms like spread, upfront, risk-neutral and so on.
+
+  This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. First, we introduces the concept of CDS with an analogy to housing insurance, and highlights that a CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. We then introduce some simplified examples of one-period and two-period CDS in which a portfolio manager passes on risk to J.P. Morgan. Many important concepts are introduced, such as \textbf{notional amount}, \textbf{coupon}, \textbf{spread}. We also gradually introduce complications that alter CDS pricing calculations, such as \textbf{interest rates}, \textbf{recovery rate}, \textbf{accrued coupon}, and \textbf{upfront payment}. In the two-period CDS example, we also introduce complications such as non-constant probability of defaults and non-constant interest rates.
+
+Second, we introduce the N-period CDS with a look at real data from Bloomberg and Markit CDS Calculator which applie these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make. In the N-period CDS example, we introduce more concepts, such as \textbf{tenor}, \textbf{maturity}, \textbf{principal} and \textbf{conventions}. After the readers have a more holistic sense of CDS, we introduce more complications with actual Bloomberg and Markit screenshots. These material should help readers apply the concepts and complications they learned to CDS pricing.
+
+Third, we introduce the CDS package, which allows users to calculate information regarding a particular CDS with R. The CDS package uses the same ISDA Standard Model that Bloomberg and Markit CDS Calculator use, and provide generic methods to show the calculation results in a way that is similar to Bloomberg and Markit Calculator. We also introduce some key functions which users are likely to call individually.
+\section{CDS Basics}
+\label{sec:CDSBasics}
+
+\subsection{An Example: Property Insurance}
+\label{sec:PropInsurance}
+
+%% No need to have labels unless those labels are used.
+
+Consider a simpler form of purchasing protection: property insurance. 
+
+Suppose that a homeowner wants to purchase \$100,000 worth of property insurance on her house, covering the period from January 1 through December 31. For one year of coverage, an insurance company charges a fee of \$1,000. Call this \$1,000 the \textbf{premium}. In exchange for the premium, the insurance company agrees to pay \$100,000 to the homeowner if there is any property damage during that year. If damage does not occur, then the insurance company pockets the \$1,000 premium and doesn't pay anything to the homeowner. 
+
+In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate is 0\%.
+
+The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ($P_h$ refers to the homeowner's estimate of probability of the property damage.)
+
+
+
+
+
+
+
+
+
+\end{document}
