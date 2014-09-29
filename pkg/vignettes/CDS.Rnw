@@ -14,11 +14,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 %% almost as usual
 \author{
@@ -35,6 +34,7 @@ Kanishka Malik
 Skylar Smith
 \And
 Zijie Zhu}
+
 \title{Credit Default Swaps with R}
 
 %% for pretty printing and a nice hypersummary also set:
