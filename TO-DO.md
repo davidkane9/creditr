@@ -7,8 +7,8 @@ CDS TO-DO List
 Some very specific formatting issues:
 
 1. Multiple authors are overlapping
-   Figure out a way to implement this: http://www.jstatsoft.org/v59/c03/paper
-   If we want separate lines in Author Block, it seems that we can't use \And. So I rewrote it without \And
+   Figure out a way to implement this: http://www.jstatsoft.org/v59/c03/paper.  
+(If we want separate lines in Author Block, it seems that we can't use \And. So I rewrote it without \And)
 
 2. Need to fix figure one section reference error (the “??” error)
 
@@ -27,7 +27,7 @@ DONE: 6. Equation (62) which has too much spacing above it right now
 7. Bibliography should be standardized more and Knitr should be added
 
 8. Everyone fills in the affiliation
---------- Do we all have to say our affiliation? this can be done just by adding: James Bond\\Williams, which is specifically designed for affliation; to create a new line for author, we can't simply use \\
+--------- Do we all have to say our affiliation? this can be done just by adding: "James Bond\\Williams", which is specifically designed for affliation; to create a new line for author, we can't simply use "\\"
 
 * Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
 
