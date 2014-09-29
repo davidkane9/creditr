@@ -4,6 +4,24 @@ CDS TO-DO List
 
 * Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
 
+Some very specific formatting issue:
+
+1. Multiple authors are overlapping
+
+2. Need to fix figure one section reference error (the “??” error)
+
+3. Formatting table one (which is too long right now)
+
+4. Formatting table four (which is too long right now)
+
+5. Equation (61) which has too much spacing above it right now
+
+6. Equation (62) which has too much spacing above it right now
+
+7. Bibliography should be standardized more and Knitr should be added
+
+8. Everyone fills in the affiliation
+
 * Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
 
 * The current quotations of variable symbols is wrong. It should not be:
