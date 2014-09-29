@@ -16,7 +16,7 @@ Some very specific formatting issues:
 
 4. Formatting table four (which is too long right now)
 
-Check whether the blank after Equation 61 and 62 are okay?
+Check whether the blank after Equation 61 and 62 are okay? (Answer: Spacing is fixed by starting a new page for now, but other sections still do not start on a new page. Should figure out a way of fixing the spacing without starting on a new page because other JSS articles do not have new page for different sections)
 
 DONE: 5. Equation (61) which has too much spacing above it right now
 -------- This is because we have a Bloomberg picture right after the equation, and LaTex cannot fit them in one page. 
@@ -27,7 +27,7 @@ DONE: 6. Equation (62) which has too much spacing above it right now
 7. Bibliography should be standardized more and Knitr should be added
 
 8. Everyone fills in the affiliation
---------- Do we all have to say our affiliation? this can be done just by adding: "James Bond\\Williams", which is specifically designed for affliation; to create a new line for author, we can't simply use "\\"
+--------- Do we all have to say our affiliation? (Answer: JSS requires the affiliation of at least one author provided in the format I did. Technically, it is fine now if you do not wish to give yours, but affiliation needs to be given this way. This is what JSS formats dictates...)
 
 * Delete all the images (both their inclusion and the raw image installed in the package) that do not come from our acceptable three sources: Bloomberg screenshots; Markit screen shots and the JPM powerpoint slides. This may require the replacement of lots of those images with JPM images, but the JPM images all seem better to me.
 
