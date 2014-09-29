@@ -21,20 +21,14 @@
 
 %% almost as usual
 \author{
-Heidi Chen
-\And
-Yuanchu Dang
-\And 
-David Kane
-\And
-Yang Lu 
-\And
-Kanishka Malik
-\And 
-Skylar Smith
-\And
-Zijie Zhu}
-
+\fontsize{12pt}{14.4} \textbf{Heidi Chen} \hspace{10pt} 
+\fontsize{12pt}{14.4} \textbf{Yuanchu Dang} \hspace{10pt} 
+\fontsize{12pt}{14.4} \textbf{David Kane} \hspace{10pt} 
+\fontsize{12pt}{14.4} \textbf{Yang Lu} \hspace{10pt} 
+\\ 
+\fontsize{12pt}{14.4} \textbf{Kanishka Malik} \hspace{10pt} 
+\fontsize{12pt}{14.4} \textbf{Skylar Smith} \hspace{10pt} 
+\fontsize{12pt}{14.4} \textbf{Zijie Zhu} \hspace{10pt} }
 \title{Credit Default Swaps with R}
 
 %% for pretty printing and a nice hypersummary also set:
