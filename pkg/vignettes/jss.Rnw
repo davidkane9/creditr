@@ -134,10 +134,14 @@ The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would 
 \begin{equation}
 \label{eqn:PropertyInsurance}
   \rm -\hspace{3pt}\$1,000 + P * {\$100,000}  = \rm \$1,000 - P * {\$100,000}
-    \end{equation}
+  \end{equation}
 \begin{equation}
   \rm 2 * P * {\$100,000}  =  \rm 2 * \$1,000 \\
+  \end{equation}
+\begin{equation}
   \rm P * {\$100,000}  = \rm {\$1,000} \\
+  \end{equation}
+\begin{equation}
   \rm P  = \rm 0.01
   \end{equation}
 
