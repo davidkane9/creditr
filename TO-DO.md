@@ -7,7 +7,7 @@ CDS TO-DO List
 Some very specific formatting issues:
 
 1. Multiple authors are overlapping
-------- Seems that this cannot be solved by reduce space between authors. Can we just put authors into two lines?
+   Figure out a way to implement this: http://www.jstatsoft.org/v59/c03/paper
 
 2. Need to fix figure one section reference error (the “??” error)
 
