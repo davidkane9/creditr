@@ -16,8 +16,10 @@ Some very specific formatting issues:
 4. Formatting table four (which is too long right now)
 
 5. Equation (61) which has too much spacing above it right now
+-------- This is because we have a Bloomberg picture right after the equation, and LaTex cannot fit them in one page. 
 
 6. Equation (62) which has too much spacing above it right now
+-------- This is because we have a Markit picture right after the equation, and LaTex cannot fit them in one page. 
 
 7. Bibliography should be standardized more and Knitr should be added
 
