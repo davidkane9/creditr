@@ -4,7 +4,7 @@ CDS TO-DO List
 
 * Format it to meet the requirements of submission for the Journal of Statistical Software. This is hard an may require a lot of fiddling. But don't start this until you have deleted all the cruft above since you want the cleanest possible starting place.
 
-Some very specific formatting issue:
+Some very specific formatting issues:
 
 1. Multiple authors are overlapping
 
