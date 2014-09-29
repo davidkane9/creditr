@@ -18,14 +18,22 @@
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 %% almost as usual
 \author{
-Heidi Chen,
-Yuanchu Dang, 
-David Kane, 
-Yang Lu, 
-Kanishka Malik, 
-Skylar Smith,
+Heidi Chen
+\And
+Yuanchu Dang
+\And 
+David Kane
+\And
+Yang Lu
+\And
+Kanishka Malik
+\And 
+Skylar Smith
+\And
 Zijie Zhu}
 \title{Credit Default Swaps with R}
 
@@ -758,9 +766,6 @@ where $i$ denotes different periods from one to twenty. Since the overall probab
 %% d) Complexify the model a bit (or at least mention the complexities) to handle things like not having to pay the coupon after a credit event.
 
 %% Note the main trick here is to use June 20 as the start date. That means no accruals and other stuff is much simpler too. I think that this is a good simplification which we will relax when we look at the Bloomberg screen shot.
-
-
-
 
 \section{Bloomberg and Markit}
 
