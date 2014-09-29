@@ -1,4 +1,4 @@
-\documentclass[article]{jss}
+\documentclass{jss}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +112,276 @@ Suppose that a homeowner wants to purchase \$100,000 worth of property insurance
 In this simplified insurance agreement, the homeowner pays the premium on January 1, the beginning of the coverage period. If the property is damaged, the insurance company pays the \$100,000 on December 31, regardless of when the damage occured. The interest rate is 0\%.
 
 The \textbf{expected cash flows} for the agreement depend on the probability of property damage. Since the homeowner will pay the \$1,000 premium and will potentially receive \$100,000---if the house gets damaged---the homeowner's expected cash flows are as follows. ($P_h$ refers to the homeowner's estimate of probability of the property damage.)
+
+\begin{equation}
+   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P_h * {\$100,000})}
+    \label{eqn:homeownerECF}
+\end{equation}
+
+Since the insurance company will receive the \$1,000 premium and will potentially pay \$100,000---if the house gets damaged---the insurance company's expected cash flows are as follows. ($P_c$ refers to the insurance company's estimate of the probability of property damage.)
+
+\begin{equation}
+   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P_c * {\$100,000})}
+    \label{eqn:companyECF}
+\end{equation}
+
+Note that $P_h$ and $P_c$ do \emph{not} have to be the same. The homeowner and the insurance company may have two different estimates of the probability that the house will get damaged during the year. The homeowner doesn't know the insurance company's estimate, and the insurance company doesn't know the homeowner's estimate. In fact, an outside third party does not know either $P_h$ or $P_c$. 
+
+Assume that both the homeowner and the insurance company are \textbf{risk-neutral}, meaning that they only care about expected cash flows. For example, a risk-neutral investor would be willing to pay \$1 for a 1\% chance of a \$100 payment and would view the two sides --- the \$1 and the 1\% chance of \$100 --- as equal in value. Most investors are not risk-neutral. They would prefer a guaranteed \$1 over a 1\% chance of winning \$100. Assumethat both parties agree to the above insurance agreement. What does this imply about $P_h$ and $P_c$? 
+
+The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would mean that her expected cash flows were negative and, by assumption, we know that neither the homeowner or the insurance company will enter an agreement with negative expected cash flows. For the same reasons, if the insurance company agrees to the deal, then $P_c \leq 0.01$. Neither of these facts allow us to conclude anything about $P_true$, the true probability of damage. Either the homeowner or the insurance company or both could be wrong in their estimates. However, we can now define $P$ --- \textbf{risk-neutral estimate of the probability of property damage} --- as the single value for both $P_h$ and $P_c$ which makes the expected cash flows identical. Mathematically:
+
+\begin{equation}
+\label{eqn:PropertyInsurance}
+  \rm -\hspace{3pt}\$1,000 + P * {\$100,000}  = \rm \$1,000 - P * {\$100,000}
+    \end{equation}
+\begin{equation}
+  \rm 2 * P * {\$100,000}  =  \rm 2 * \$1,000 \\
+  \rm P * {\$100,000}  = \rm {\$1,000} \\
+  \rm P  = \rm 0.01
+  \end{equation}
+
+Therefore, the risk-neutral probability of property damage is 1\%. Note that this number does not tell us anything about either $P_h$ and $P_c$. The homeowner's estimate for the probability of damage is at \emph{least} 1\% because she refuses any agreement with negative expected cash flow. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal in which the risk-neutral probability of damage was 1\% because her expected cash flows are positive.  The same analysis applies to the insurance company. 
+
+Clearly, 1\%---the risk neutral probability of property damage---is a very important value for this agreement. We need to note, however, that this value is not necessarily the \emph{true} probability of property damage, nor are the parties' predictions for the probability of damage. Consider an extreme example: what if, as the two parties initiate the agreement, an asteriod sets on a course to crash into the house in six months. In such a case, the probability of damage is 100\%. However, neither party has forseen this occurence, so the risk-neutral value of "P" (1\%) and the parties' predictions of "P" (1.5\% and 0.5\%) are certainly not equal to the true value of "P" (100\%).
+
+\subsubsection{Property Insurance Complications}
+\label{sec:PIComplications}
+
+Unfortunately, the above insurance purchase---although relatively simple---made several assumptions that excluded real aspects of the insurance market. Some of these aspects are parallel to aspects in the CDS market that we will assume and exclude from calculations in all sections of this paper. Below we list such assumptions:
+
+1. We assumed that the homeowner was risk-neutral when, in reality, homeowners who purchase property insurance are generally risk-adverse. Since they want to avoid risk, they view the process of purchasing insurance as more of a necessity than an option. They are willing to pay more (i.e. a larger coupon payment) than required for the expected cash flows to be equal. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%.
+
+2. We assumed that both parties would only concede to the insurance agreement if the expected cash flows were equal. As the above assumption demonstrated, an insurance buyer is generally willing to have a smaller expected cash flow than the insurance company. Conversely, insurance companies need to have higher expected cash flows than their clients (the insurance buyers) because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company. 
+
+3. We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occured? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage. 
+
+While the above assumptions represent assumptions that we will maintain throughout the paper, the following assumptions are one that this paper will, in fact, account for in parallel situations regarding CDS. We list them below:
+
+1. The insurance agreement assumed that any damage would merit the insurance payment of \$100,000. However, what if, for example, the toaster caught on fire and damaged only the toaster? What types of \textbf{events} does the insurance company define as "damage"? These questions highlight the importance of a detailed insurance contract that specifies these terms.
+
+2. The agreement considered only the following two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes we need to account for. For example, what if only half of the house was damaged? In that case, it would not make sense for the insurance company to pay \$100,000; instead, the company should compensate only for the damaged section of the house by paying \$50,000. 
+
+3. We stated in the beginning of the property insurance example that the interest rate was 0\%. Clearly, this is not the case in the insurance market, so we would need to account for that change in our calculations (which we'll discuss in Section \ref{sec:InterestRate}).
+
+4. We largely simplified the insurance agreement by creating a one-year agreement from January 1 to December 31. This, too, does not have to be the case in the insurance market. The agreement could be longer or shorter than a year and does not need to fit neatly within a calendar year.
+
+5. The insurance agreement included one premium payment of \$1,000. However, there are cases in the insurance market where there are multiple premium payments on different dates. We did not account for that possibility in our example, but we will account for parallel situations in the CDS market.
+
+\subsection{Simple One-Period CDS}
+\label{sec:OnePeriod}
+
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
+\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
+\label{fig:AlcoaBond}
+\end{figure}
+
+CDS are used for the purpose of hedging against the \textbf{credit risk} associated with bonds. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
+
+Keep the same timeline (January 1 to December 31) and numerical figures from our property insurance example. The interest rate is still 0\%. In exchange for protection on the \$100,000, the portfolio manager agrees to pay a \textbf{coupon} (equivalent to the premium in our property insurance example) of 1\% of the notional amount. The coupon payment of \$1,000 is paid on January 1, the beginning of the coverage period. This side of the CDS is called the \textbf{premium leg}, and the portfolio manager is known as the \textbf{protection buyer}, since she is purchasing protection.
+
+The other side of the CDS agreement is known as the \textbf{protection leg}, since it involves protection payment in case of default, and involves JPM, called the \textbf{protection seller}. If Alcoa defaults, JPM pays the notional amount of \$100,000 to the portfolio manager on December 31, the end of the coverage period. Alcoa is known as the \textbf{reference entity} in this CDS since the protection buyer desires protection for Alcoa. 
+
+Note that we are using the terms "premium" and "coupon" synonymously. Premium is commonly used to describe the periodic fee paid by the protection buyer, which is why this side of a CDS is called the premium leg. However, even though the coupon is commonly used to describe the periodic fee paid to a bondholder, coupon can also be used to describe the periodic fee in a CDS context. For clarity, we will just use coupon in this paper when referring to the periodic fee paid by the protection buyer.
+
+Since the portfolio manager makes money if Alcoa deteriorates, she can be said to be \textbf{short} credit. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since JPM loses money if Alcoa collapses, JPM can be said to be \textbf{long} credit. In other words, JPM's returns are similar to those of a person who owns Alcoa bonds. If Alcoa does well, JPM does well, and if Alcoa doesn't, then JPM doesn't either.
+
+The expected cash flows for the agreement depend on the probability of default. Since the portfolio manager will pay the \$1,000 premium and will potentially receive \$100,000 if Alcoa defaults, the portfolio manager's expected cash flows---which represent the premium leg---are as follows. ("P" refers to the portfolio manager’s prediction of probability of default.)
+
+\begin{equation}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P * {\$100,000})}
+    \label{eqn:portfolioECF}
+\end{equation}
+
+Since JPM will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, JPM's expected cash flows---which represent the protection leg---are as follows. ("P" refers to JPM’s prediction of probability of default.)
+
+\begin{equation}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P * {\$100,000})}
+    \label{eqn:jpmECF}
+\end{equation}
+
+Note that the portfolio manager's expected cash flows are the same as that of the homeowner in the property insurance example, and JPM's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same.
+
+We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are equal.
+
+Consider that a deal is reached: both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of "P" implied by the deal. Note that an alternate definition of this probability is the value of "P" at which the premium leg equals the protection leg:
+
+\label{eqn:SimpleOnePeriod}
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \rm JPM's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+   \rm Premium\hspace{3pt}leg = \rm Protection\hspace{3pt}leg \\
+   \rm -\hspace{3pt}C + (P * V)  = \rm C - (P * V)
+
+The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, "C", but could receive the protection leg of "V", depending on "P". The right indicates the converse: JPM will receive the coupon payment, "C", but could potentially have to pay the protection leg of "V", depending on "P".
+Plugging in known values ("C" = \$1,000 and "V" = \$100,000), we get:
+
+\begin{equation}
+   {\rm -\hspace{3pt}\$1,000 + (P * {\$100,000})  = \$1,000 - (P * {\$100,000})}
+\end{equation}
+
+Since this is the same equation and the same numerical figures from the property insurance example, we know that P = 1\%. Note that 1\% only represents the risk-neutral value of "P"; it does not indicate the values of "P" that the two parties believe to be true, nor does it indicate the true value of "P". Parallel to the property insurance example, we can infer (given both parties have agreed to the CDS) that the portfolio manager's prediction of "P" must be at least 1\%, and JPM's prediction of "P" must be at most 1\%. In fact, from here on out, when we mention the risk-neutral probability of default for a CDS example, we can take this to mean that the protection buyer's prediction of "P" is at least the risk-neutral value, and the protection seller's prediction of "P" is at most that risk-neutral value.
+
+We will call the above CDS example the simple one-period CDS.
+
+\subsubsection{One-Period Case Over Time}
+\label{sec:OnePeriodOverTime}
+
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral "P"), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (PnL) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
+
+We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
+
+We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in Section {sec:nonStandardCoupon}). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
+
+PnL represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the PnL of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's PnL measures what JPM earns each day that it provides protection during that year.
+
+Here is a table that considers what happens to the above-mentioned variables as the contract matures from January 1 to December 31. Note that we are considering the case in which Alcoa does not default during the one-year contract.
+
+\begin{table}[H]
+\centering
+{\footnotesize
+\begin{tabular}{llllllll}
+  \hline
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral "P" & Mark-to-market & Spread & PnL (Citadel) & PnL (JPM) \\ 
+  \hline
+  Jan 1  -\$1,000  \$1,000  1\%  \$1,000  100 bps  \$0  \$0 \\ 
+  Mar 31  \$0  \$0  .75\%  \$750  75 bps  -\$250  \$250 \\ 
+  Jun 30  \$0  \$0  .50\%  \$500  50 bps  -\$500  \$500 \\ 
+  Dec 31  \$0  \$0  0\%  \$0  0 bps  -\$1,000  \$1,000 \\
+   \hline
+\end{tabular}
+}
+
+\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of "P", the mark-to-market value of the contract, the spread, and the PnL for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of "P" decreases from 1\% to 0\% as the contract matures, a process we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the PnL of both parties is 0.} 
+\label{table.1}
+\end{table}
+
+As we can see in Table \ref{table.1}, the risk-neutral "P" decreases from 1\% on January 1 to 0\% on December 31. On June 30, the risk-neutral "P" has dropped to 0.5\% because only half of a year remains for Alcoa to default during the contract---and thus the risk-neutral "P" is half of its initial value. This demonstrates the direct relationship between the risk-neutral "P" and the contract duration. 
+
+In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. We can observe in Table \ref{table.1} that the spread decreases from 100 bps to 0 bps over the year---a reflection of the fact that, at the end of the contract, JPM has earned and been paid the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
+
+\subsubsection{Simple One-Period Case Complications}
+\label{OnePeriodComp}
+
+Similar to the property insurance example, we made several assumptions in our simple one-period CDS that are not consistent with the CDS market. 
+
+1. Similar to the property insurance example, we assumed that the protection buyer was risk-neutral, when she could very well be risk-adverse. She may be willing to pay a coupon larger than 1\% even if she predicts the probability of default to be 1\% because she strongly desires to have protection on Alcoa.
+
+2. Also like the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were equal. This could very well not be the case if, for example, JPM is selling protection in many CDS agreements and needs or wants to make a profit.
+
+3. In the simple one-period CDS, we assumed that the protection leg would only be paid out in the case of default and bankruptcy. However, depending on the particular CDS, the protection leg could be paid out even if the reference entity defaults and doesn't go bankrupt. In fact, there are several scenarios that can be considered \textbf{credit events}---occurences that merit the payout of the protection leg in a CDS. Besides default and bankruptcy, common credit events include failure to return money to bondholders within a certain amount of time, a credit rating downgrade (explained in Section \ref{sec:RiskBonds}) and the confiscation of assets, among other events.
+
+Because we made many more assumptions and failed to address many aspects of a CDS, we have split up the following simple one-period CDs complications into five separate sections that address interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment. 
+
+\subsubsection{Interest Rates}
+\label{sec:InterestRate}
+
+Up until now, we have assumed that the interest rate is 0\% in the simple one-period CDS. The \textbf{interest rate} is a benchmark rate that participants in the CDS market use to discount cash flows. How might the cash flows in the CDS agreement change if the interest rate was \emph{not} 0\%?
+
+First, look at our CDS agreement: the portfolio manager pays the premium on January 1 and JPM pays the \$100,000 (if Alcoa defaults) on December 31. JPM receives the \$1,000 coupon a full \emph{year} before the portfolio manager would receive the \$100,000 payment if Alcoa defaults. In an environment where the interest rate is 10\%, JPM could theoretically invest the \$1,000 sum starting January 1 and earn interest for that year:
+
+\begin{equation}
+  {\rm Coupon\hspace{3pt}with\hspace{3pt}Interest = {\$1,000}*{(1 + .10)} = \$1,100} 
+\end{equation}
+
+By December 31, the \$1,000 would grow to \$1,100, which gives JPM an extra \$100 that renders the expected cash flows unequal. In order to equate them, we need to discount the payment made by the protection buyer on January 1 by the interest rate---known as the \textbf{discount rate} in this context. In other words, the payment made by the protection buyer on January 1 should be an amount that, if invested at an interest rate of 10\% for one year, would equal the coupon payment of \$1,000. The current value of a future payment is known as the \textbf{present value}. This payment, which we will call the discounted coupon, can be calculated as follows. ("C" is the coupon payment and "i" is the interest rate.)
+
+\begin{equation}
+  {\rm Discounted\hspace{3pt}Coupon = \frac{C}{(1 + i)}} 
+\end{equation}
+
+Here are the expected cash flows for a generic case. ("P" refers to the risk-neutral probability of default; "V" represents the notional value; "i" stands for the interest rate; and "C" is the coupon payment).
+
+\begin{equation}
+  {\rm -\hspace{3pt}\frac{C}{(1 + i)} + (P * V) = \frac{C}{(1 + i)} - (P * V)} 
+\label{eqn:InterestRate}
+\end{equation}
+
+How might a discounted coupon affect "P", the risk-neutral probability of default which, by definition, equates the expected cash flows? Plugging in known values:
+\begin{equation}
+  {\rm -\hspace{3pt}\frac{\$1,000}{(1 + .10)} + (P * \$100,000) = \frac{\$1,000}{(1 + .10)} - (P * \$100,000)} 
+\end{equation}
+Eventually, we get:
+\begin{equation}
+  {\rm (P * \$100,000) = \$909.09}  
+\end{equation}
+
+Solving for "P", we get .91\% (rounded to the nearest hundreth). Since both parties agreed to this CDS in an environment where the interest rate is 10\%, we can say that the portfolio manager's prediction for the probability of default is at least .91\%, and JPM's prediction for the probability of default is at most .91\%. 
+
+\subsubsection{Recovery Rate}
+\label{sec:recovery}
+
+Recall that in our property insurance example, we mentioned that some cases---such as a house fire that burns half of a house---may not merit a full payment equal to the notional amount (in that case, \$100,000). Similarly, when a company defaults, an \textbf{auction} occurs in which some of the company's bondholders come to sell their bonds, and prospective buyers come to buy the bonds at, usually, lower prices. We note this because the price at which bonds can be sold after default affects the protection leg payment in a CDS contract.
+
+Suppose that Alcoa defaults during the simple-one period CDS, and a bond that had a face value of \$100 can now be sold at the auction for a price of \$55. (Note for each complication in the simple one-period CDS, we are ignoring the effects of the other complications. For example, we assume that that there is an interest rate of 0\% in this example.)
+
+In this case, the \textbf{recovery rate}---the rate representing the amount of value a bond retains after default---is 55\%. As such, JPM would only have to pay 45\% of the notional amount---\$45,000---instead of the notional amount of \$100,000 because bondholders who have purchased protection are able to retain 55\% of their bonds' worth. 
+
+So, we need to factor the recovery rate into our calculation of expected cash flows because it changes the value of the protection leg in the simple one-period CDS. Since the portfolio manager and JPM will only both agree to this CDS if the expected cash flows are equal, we set the portfolio manager's expected cash flows and JPM's expected cash flows equal to each other. ("RR" refers to the recovery rate and, as before, "P" is the risk-neutral probability of default, "C" is the coupon payment, and "V" is the notional value.)
+
+\label{eqn:recovery}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+  \rm - C + (P * V * (1 - RR)) = C - (P * V * (1 - RR))
+
+Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled "V" by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just "RR"). Another term for this amount is the loss given default (LGD):
+
+\begin{equation}
+   {\rm (1 - RR) = LGD}
+\label{eqn:recovery}
+\end{equation}
+
+We'll stick to using "RR" instead of the LGD for now.
+
+To solve for the risk-neutral probability of default, we plug in known values ("C" = \$1,000, "V" = \$100,000, and "RR" = 0.55)
+
+\begin{equation}
+   {\rm - \$1,000 + (P * \$100,000 * (1 - 0.55)) = \$1,000 - (P * \$100,000 * (1 - 0.55))}
+\end{equation}
+After combining like terms, dividing both sides by 2 and simplifying, we get:
+\begin{equation}
+   {\rm P * \$55,000 = \$1,000}
+\end{equation}
+
+Therefore, "P" is 1.8\% (rounded to the nearest tenth) in this scenario where the recovery rate is 55\%.
+
+\subsubsection{Accrued Coupon}
+\label{sec:AccruedCoupon}
+
+Back to our simple one-period CDS example---0\% interest rate, 0\% recovery rate. For this scenario, both the premium leg and the protection leg are paid on December 31. We have so far assumed that our CDS agreement between the portfolio manager and JPM begins on January 1 and ends on December 31 of the same year. However, what if this agreement wasn't made exactly on January 1? What if it was made on March 31, one quarter through the year? Using our simple one-period CDS example, this implies that the portfolio manager would have to pay the same coupon of 1\% (\$1,000) on December 31 for only receiving nine months (instead of one year) of protection coverage.
+
+Assume that both parties agreed to a deal under these conditions. 
+
+Since the risk-neutral probability of default decreases as the contract duration decreases (see \ref{table.1}), the risk-neutral probability that Alcoa will default in nine months is less than the risk-neutral probability that it will default in twelve. As such, the expected cash flows are no longer equal and therefore the two parties must have accounted for this discrepancy---otherwise the portfolio manager would not have agreed to the above CDS. In other words, given that the agreement was made, JPM must have paid an additional sum to the portfolio manager to compensate for the fact that she is paying the coupon for one-year coverage and is only receiving nine months.
+
+In order to determine this sum, we need to calculate the fraction of the coupon she is unfairly paying, or the fraction of the coupon that accounts for the first three months of the year (January 1 to March 31). This fraction of the coupon payment is known as the \textbf{accrued coupon}.
+
+\begin{equation}
+  {\rm Accrued = \frac{90}{360}*\frac{1.0}{100}*\$100,000 = \$250}
+\end{equation}
+
+In order to determine the accrued coupon, we multiply the coupon (1\%) by the notional amount (\$100,000) to get the coupon payment (\$1,000), and then we multiply the coupon payment by the fraction of the year that the portfolio manager did not receive coverage for---in this case, 90/360 or one fourth. 
+
+Note that we are dividing 90 by 360 instead of 365 in the above calculation. This particular CDS contract can be said to have a 30/360 \textbf{day count convention}, which means that the accrued coupon calculations are based on the assumptions that there are 30 days in a month and 360 days in a year. For example, if we are trying to find the number of days between date one, $M_1$/$D_1$/$Y_1$, and date two, $M_2$/$D_2$/$Y_2$, using the 30/360 convention, we use the following formula with exceptions listed below:
+
+\begin{equation}
+  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 * (Y_{2} - Y_{1}) + 30 * (M_{2} - M_{1}) + (D_{2} - D_{1})}
+\end{equation}
+
+Exceptions:
+
+1. If $D_1$ is 31, assume that $D_1$ is 30.
+
+2. If $D_2$ is 31 and $D_1$ is 30 or 31, assume that $D_2$ is 30.
+
+3. If $M_1$ is 2, and $D_1$ is 28 (not in a leap year) or 29, assume that $D_1$ is 30.
+
+For example, according to this convention, if the simple one-period CDS agreement was initiated on February 28 (during a non-leap year), then we would calculate the number of days between 01/01/$Y_a$ and 02/28/$Y_a$ (where $Y_a$ is a specific year) to be 59, since we consider February 28 to be the last day in a 30-day month (according to exception 3 above):
+
+\begin{equation}
+  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 * (0) + 30 * (2 - 1) + (30 - 1) = 59}
+\end{equation}
 
 
 
