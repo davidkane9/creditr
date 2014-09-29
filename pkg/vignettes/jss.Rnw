@@ -214,10 +214,16 @@ We will again assume that both parties in the CDS are risk-neutral and that both
 
 Consider that a deal is reached: both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of "P" implied by the deal. Note that an alternate definition of this probability is the value of "P" at which the premium leg equals the protection leg:
 
+\begin{equation}
 \label{eqn:SimpleOnePeriod}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \rm JPM's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
-   \rm Premium\hspace{3pt}leg = \rm Protection\hspace{3pt}leg \\
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \rm JPM's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows
+   \end{equation}
+\begin{equation}
+   \rm Premium\hspace{3pt}leg = \rm Protection\hspace{3pt}leg
+   \end{equation}
+\begin{equation}
    \rm -\hspace{3pt}C + (P * V)  = \rm C - (P * V)
+   \end{equation}
 
 The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, "C", but could receive the protection leg of "V", depending on "P". The right indicates the converse: JPM will receive the coupon payment, "C", but could potentially have to pay the protection leg of "V", depending on "P".
 Plugging in known values ("C" = \$1,000 and "V" = \$100,000), we get:
