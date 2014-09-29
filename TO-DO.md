@@ -7,6 +7,7 @@ CDS TO-DO List
 Some very specific formatting issues:
 
 1. Multiple authors are overlapping
+------- Seems that this cannot be solved by reduce space between authors. Can we just put authors into two lines?
 
 2. Need to fix figure one section reference error (the “??” error)
 
