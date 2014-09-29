@@ -755,7 +755,6 @@ If, however, the probability of default is not constant over different periods, 
 
 where $i$ denotes different periods from one to twenty. Since the overall probability of default should sum to 10\%, we can assign: $P_{1-4} = 0.00$, $P_{5-8} = 0.25$, $P_{9-12} = 0.50$, $P_{13-16} = 0.75$, $P_{17-20} = 1.00$. As can be easily proved, the expected cash flows are still equal to each other, as long as $\sum\limits_{i=1}^{20} P_i = 10\%$.
 
-
 %% Now, do everything that we did in the two period case, but with the algebra expanded to 5 years. Note that we are not using any Bloomberg screen shots in this section, only algebra. But we are using the same numbers as will appear when we show the Bloomberg screen shot in the next section.
 
 %% At this point, we 
@@ -767,6 +766,10 @@ where $i$ denotes different periods from one to twenty. Since the overall probab
 
 %% Note the main trick here is to use June 20 as the start date. That means no accruals and other stuff is much simpler too. I think that this is a good simplification which we will relax when we look at the Bloomberg screen shot.
 
+%% newpage command to make a new page; otherwise the equation looks ugly because of the Bloomberg picture following it
+
+\newpage
+
 \section{Bloomberg and Markit}
 
 %% Perhaps of this section is to go through almost every details of the Bloomberg and Markit screen shots, explaining all the relevant details, tying them together to the concepts we discussed above and laying the groudwork for showing off the CDS package later.
@@ -775,15 +778,12 @@ where $i$ denotes different periods from one to twenty. Since the overall probab
 
 Figure \ref{AlcoaIncCDS} shows the details of an actual CDS contract on Alcoa priced on June 23, 2014.
 
-
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in, height=3.8in]{images/AlcoaIncCDS.jpg}
 \caption{CDS figures from Bloomberg for Alcoa. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and the \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa". The label \textbf{Debt type}, marked as "Senior", refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN in Figure \ref{fig:AlcoaBond}. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.}
 \label{AlcoaIncCDS}
 \end{figure}
-
 
 Once again, the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. The mark-to-market value or \textbf{principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
 
@@ -798,6 +798,8 @@ Also remember that, the difference between dirty upfront payment and clean upfro
 \subsubsection{Discount Factor}
 
 So far we have assumed that the interest is 0\%. In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day}, and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa
+
+\newpage
 
 \begin{figure}[H]
 \centering
