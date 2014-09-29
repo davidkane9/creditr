@@ -1174,5 +1174,24 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 In this paper, we describe the basics of a CDS contract and the ISDA Standard Model. We also provide a simple collection of tools to implement the Standard Model in \textbf{R} with the \texttt{CDS} package. Moreover, the flexibility of \textbf{R} itself allows users to extend and modify this package to suit their own needs and/or create their preferred models for valuing CDS contracts. An \textbf{R} package, \texttt{backtest} \cite{kane:david}, provides facilities to explore portfolio-based conjectures about credit default swaps. It is possible to use the \texttt{backtest} package based on the output from the \texttt{CDS} package. Before reaching that level
 of complexity, however, \texttt{CDS} provides a good starting point for valuing credit default swaps.
 
+\newpage
+\bibliography{CDS}
+\cite{barclays}
+\cite{bloomberg}
+\cite{openGamma}
+\cite{glossary}
+\cite{cdsOrigins}
+\cite{blythe}
+\cite{jk}
+\cite{rates}
+\cite{kane:david}
+\cite{creditDerivatives}
 
 \end{document}
+
+%% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
+
+%% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
+
+
+%The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
