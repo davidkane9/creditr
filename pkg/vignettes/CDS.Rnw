@@ -774,12 +774,28 @@ Figure \ref{AlcoaIncCDS} shows the details of an actual CDS contract on Alcoa pr
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{CDS figures from Bloomberg for Alcoa. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and the \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa". The label \textbf{Debt type}, marked as "Senior", refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN in Figure \ref{fig:AlcoaBond}. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.}
+\includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
+\caption{This is a Bloomberg Screenshot. We can see that there are three sections, the \ref{Deal section}, \ref{Calculator section}, and the \ref{Market section}. Below, we will examine each section carefully.}
 \label{AlcoaIncCDS}
 \end{figure}
 
-Once again, the coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. The mark-to-market value or \textbf{principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+First, let's take a look at the \ref{Deal section}.
+\label{Deal section}
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDSDeal.jpg}
+\caption{This figure shows a CDS transaction for Alcoa. \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and the \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code. Each entity also has a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa". The label \textbf{Debt type}, marked as "Senior", refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. \textbf{Maturity} refers to the \textbf{tenor}, or length, of the contract. Also note that this contract is of the type \textbf{SNAC}, or \text{Standard North American Contract}, which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract. The coupon is a 100 basis points and the spread is 160 basis points. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. }
+\end{figure}
+
+\label{Calculator section}
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDSCalculator.jpg}
+\caption{
+The mark-to-market value or \textbf{principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+}
+\label{AlcoaIncCDSCalculator}
+\end{figure}
 
 \begin{equation}
  \begin{aligned}
@@ -788,6 +804,16 @@ Once again, the coupon is a 100 basis points and the spread is 160 basis points.
 \end{equation}
 
 Also remember that, the difference between dirty upfront payment and clean upfront payment is that, dirty upfront payment takes accrued interest rates into account while clean upfront payment does not.
+
+\label{Calculator section}
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDSMarket.jpg}
+\caption{
+Here will be expanded more...
+}
+\label{AlcoaIncCDSMarket}
+\end{figure}
 
 \subsubsection{Discount Factor}
 
