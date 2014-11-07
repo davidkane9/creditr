@@ -235,7 +235,7 @@ In order to fully understand the nature of a CDS, we should look at what happens
 
 We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
-We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in Section {sec:nonStandardCoupon}). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
+We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupon). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
 
 PnL represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the PnL of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's PnL measures what JPM earns each day that it provides protection during that year.
 
