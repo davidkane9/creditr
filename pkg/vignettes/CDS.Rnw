@@ -415,7 +415,7 @@ Since a \$250 cash flow from JPM to the portfolio manager compensates for the am
     \end{aligned}
 \end{equation}
 
-What do these expected cash flows imply about $P$, the risk-neutral probability of default? Solving for $P$, we get:
+Again, as neutral observer of the market (neither the buyer nor the seller), we are interested in how these expected cash flows affect $P$, the risk-neutral probability of default? Solving for $P$, we get:
 
 \begin{equation}
  \begin{aligned}
