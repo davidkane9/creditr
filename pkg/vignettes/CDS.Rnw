@@ -301,20 +301,14 @@ Here are the expected cash flows for a generic case. ($P$ refers to the risk-neu
 \label{eqn:InterestRate}
 \end{equation}
 
-How might a discounted coupon affect $P$, the risk-neutral probability of default which, by definition, equates the expected cash flows? Plugging in known values:
+How might a discounted credit loss affect $P$, the risk-neutral probability of default which, by definition, equates the expected cash flows? Plugging in known values:
 \begin{equation}
  \begin{aligned}
-  {\rm -\hspace{3pt}\frac{\$1,000}{(1 + .10)} + (P * \$100,000) = \frac{\$1,000}{(1 + .10)} - (P * \$100,000)} 
-    \end{aligned}
-\end{equation}
-Eventually, we get:
-\begin{equation}
- \begin{aligned}
-  {\rm (P * \$100,000) = \$909.09}  
+  {\rm -\hspace{3pt}\$1,000 + \frac{P * \$100,000}{(1 + 0.1)} = \$1,000} - \frac{P * \$100,000}{(1 + 0.1)} 
     \end{aligned}
 \end{equation}
 
-Solving for $P$, we get .91\% (rounded to the nearest hundreth). Since both parties agreed to this CDS in an environment where the interest rate is 10\%, we can say that the portfolio manager's prediction for the probability of default is at least .91\%, and JPM's prediction for the probability of default is at most .91\%. 
+Solving for $P$, we get 1.1\%. Since both parties agreed to this CDS in an environment where the interest rate is 10\%, we can say that the portfolio manager's prediction for the probability of default is at least 1.1\%, and JPM's prediction for the probability of default is at most 1.1\%. 
 
 \subsubsection{Recovery Rate}
 \label{sec:recovery}
