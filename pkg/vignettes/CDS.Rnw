@@ -578,7 +578,7 @@ Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfr
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-  \rm U -\hspace{3pt}\frac{C}{(1 + i)} + (P * V * (1 - RR))  &= \rm -\hspace{3pt}U + \frac{C}{(1 + i)} - (P * V * (1 - RR)) 
+  \rm U -\hspace{3pt}C + \frac{P * V * (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P * V * (1 - RR)}{(1 + i)}
 \end{align}
 
 Note that for any standard CDS contract, the two unknown variables are $P$ and $U$, since $C$ and $RR$ are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and $V$ is agreed upon by the two parties (essentially fixed). As such, if we know $P$, we can calculate $U$ and vice versa.
