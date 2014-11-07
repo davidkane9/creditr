@@ -290,19 +290,13 @@ First, look at our CDS agreement: the portfolio manager pays the premium on Janu
     \end{aligned}
 \end{equation}
 
-By December 31, the \$1,000 would grow to \$1,100, which gives JPM an extra \$100 that renders the expected cash flows unequal. In order to equate them, we need to discount the payment made by the protection buyer on January 1 by the interest rate---known as the \textbf{discount rate} in this context. In other words, the payment made by the protection buyer on January 1 should be an amount that, if invested at an interest rate of 10\% for one year, would equal the coupon payment of \$1,000. The current value of a future payment is known as the \textbf{present value}. This payment, which we will call the discounted coupon, can be calculated as follows. ($C$ is the coupon payment and $i$ is the interest rate.)
-
-\begin{equation}
- \begin{aligned}
-  {\rm Discounted\hspace{3pt}Coupon = \frac{C}{(1 + i)}} 
-    \end{aligned}
-\end{equation}
+Not just coupon grows at the interest rate. Similar discounting effect applies to potential credit loss as well. If a credit event triggers a loss in the future, then we must discount the loss amount by a proper effective interest rate $i$ to get the present value, before we can set up the equality and solve for the risk-neutral $P$.
 
 Here are the expected cash flows for a generic case. ($P$ refers to the risk-neutral probability of default; $V$ represents the notional value; $i$ stands for the interest rate; and $C$ is the coupon payment).
 
 \begin{equation}
  \begin{aligned}
-  {\rm -\hspace{3pt}\frac{C}{(1 + i)} + (P * V) = \frac{C}{(1 + i)} - (P * V)} 
+  {\rm -\hspace{3pt}C} + \frac{P * V}{(1 + i)} = C - \frac{P * V}{(1 + i)} 
     \end{aligned}
 \label{eqn:InterestRate}
 \end{equation}
