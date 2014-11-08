@@ -581,7 +581,11 @@ Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfr
   \rm U -\hspace{3pt}C + \frac{P * V * (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P * V * (1 - RR)}{(1 + i)}
 \end{align}
 
-Note that for any standard CDS contract, the two unknown variables are $P$ and $U$, since $C$ and $RR$ are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and $V$ is agreed upon by the two parties (essentially fixed). As such, if we know $P$, we can calculate $U$ and vice versa.
+Note that for any standard CDS contract, the two unknown variables are $P$ and $U$, since $C$ and $RR$ are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and $V$ is agreed upon by the two parties (essentially fixed). As such, if we know $P$, we can calculate $U$ and vice versa. At last, we will conclude this subsection with a numeric example. For instance, if we choose a standardized coupon of $\$1000$ and agree upon an effective interest rate of $0.1$, a risk-neutral $P$ of $1.5\%$ and a recovery rate of $0.55$, we can apply formula (42) to calculate the necessary upfront payment. \\
+
+$$U - 1000 + \frac{1.5\%*100000*(1 - 0.55)}{(1 + 0.1)} = - U + 1000 - \frac{1.5\%*100000*(1 - 0.55)}{(1 + 0.1)}$$
+
+Solving the equation, we get $U = 386.37$. \\
 
 \subsection{Two-Period Case}
 \label{sec:TwoPeriod}
