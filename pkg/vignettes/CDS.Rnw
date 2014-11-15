@@ -876,12 +876,17 @@ After defining "default", we can now explain the "Default Exposure". "Default Ex
 \label{Market section}
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.5in, height=3.8in]{images/AlcoaIncCDSMarket.jpg}
+\includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-Here will be expanded more...
+This figure is the Market section cropped from Figure 2. It contains much information about the interest rate curve we use to price CDS, and the term structure.
 }
 \label{AlcoaIncCDSMarket}
 \end{figure}
+
+\subsubsection{Curve Date}
+First, the \textbf{Curve Date} means the date of interest rate we use to price CDS. As we recall, the trade date of this CDS trading is Jun. 24, 2014, and we see the Curve Date is also Jun. 24, 2014. However, this does not mean that we actually use the interest rates on Jun. 24, 2014; we are actually using interest rates on Jun. 23, 2014. For CDS pricing, we use the interest rates on the day before the trade date. And if the day before trade date is not a business day, we adjust to the nearest business day before. Therefore, if the trade date is Jun. 24, 2014, then we will use interest rates on Jun. 23, 2014 (Monday). If the trade date is Jun. 23, 2014, then we will use interest rates on Jun. 20, 2014 (Friday), since Jun. 22 is a Sunday. In Bloomberg Terminal, these all taken into account, so the Curve Date on screen shows Jun. 24 while actually is Jun. 23.
+
+\subsubsection{Term Structure}
 
 \subsection{Markit CDS Calculator Overview}
 \label{Markit}
