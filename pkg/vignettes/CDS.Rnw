@@ -898,6 +898,29 @@ So far we have assumed that the interest is 0\%. In the actual CDS world we woul
 
 \subsubsection{Curve Date}
 \textbf{Curve Date} is the date of interest rate we use to price CDS. As we recall, the trade date of this CDS trading is Jun. 24, 2014, and we see the Curve Date is also Jun. 24, 2014. However, this does not mean that we actually use the interest rates on Jun. 24, 2014; we are actually using interest rates on Jun. 23, 2014. For CDS pricing, we use the interest rates on the day before the trade date. And if the day before trade date is not a business day, we adjust to the nearest business day before. Therefore, if the trade date is Jun. 24, 2014, then we will use interest rates on Jun. 23, 2014 (Monday). If the trade date is Jun. 23, 2014, then we will use interest rates on Jun. 20, 2014 (Friday), since Jun. 22 is a Sunday. In Bloomberg Terminal, these all taken into account, so the Curve Date on screen shows Jun. 24 while actually is Jun. 23.
+\\
+\subsubsection{Default Probability or Probability of Default (PD)}
+\label{sec:DefaultProb}
+
+On the screenshot, the "prob" cell refers to \textbf{Default Probability}, which is the default probability which is the estimated probability of default for each maturity by a given time. It can be approximated by
+\begin{equation}
+  \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
+\end{equation}
+where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we should familiarize ourselves with the actions in an event of default.
+
+\subsubsection{Types of Settlements in the Case of a Default}
+\label{sec:SettlementType}
+
+Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds. This is more likely to happen when there is a large number of outstanding CDS contracts. 
+
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate can often prove to be an issue. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
+
+\subsubsection{Counterparty Risk of Default}
+\label{sec:CounterpartyRisk}
+
+When a counterparty such as the hedge fund sells protection on a bond, there is always the possibility that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
+
+After learning much about the event of default, let's go back to the screenshot and study another important element in the Market section: \textbf{Term Structure}.
 
 \subsubsection{Term Structure}
 \begin{figure}[H]
@@ -951,37 +974,10 @@ First, notice that in the upper-left corner, we have an entry called "Trade Leve
 
 Second, let's move to section "Calculation Results," where several terms are different from Bloomberg's: "Cash Settlement" is same as \textbf{Cash Amount}, "Clean Price" is same as \textbf{Price}, the "Accured Amount" in Markit and Bloomberg has different signs (one is positive while the other negative), and "Credit DV01" is same as \textbf{Spread DV01}.
 
-
-
-
-
 %When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
-\subsubsection{Default Probability or Probability of Default (PD)}
-\label{sec:DefaultProb}
-
-\textbf{Default Probability} refers to the default probability which is the estimated probability of default for each maturity by a given time. It can be approximated by
-\begin{equation}
-  \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
-\end{equation}
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate.
 
 
-\subsection{In the Event of a Default}
-
-\subsubsection{What Constitutes a Default?}
-
-\subsubsection{Types of Settlements in the Case of a Default}
-\label{sec:SettlementType}
-
-Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds. This is more likely to happen when there is a large number of outstanding CDS contracts. 
-
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate can often prove to be an issue. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
-
-\subsubsection{Counterparty Risk}
-\label{sec:CounterpartyRisk}
-
-When a counterparty such as the hedge fund sells protection on a bond, there is always the possibility that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
 
 \subsection{CDS Indices}
 \label{sec:CDSIndices}
