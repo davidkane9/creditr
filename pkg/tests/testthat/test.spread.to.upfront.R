@@ -106,7 +106,7 @@ test_that("test for spread.to.upfront", {
   
   result.5 <- spread.to.upfront(data.frame(date = as.Date("2014-04-15"),
                                            currency = "USD",
-                                           maturity = as.Date("2019-06-20"),
+                                           maturity = "2019-06-20",
                                            spread = 105.8,
                                            coupon = 100,
                                            recovery = 0.4,
@@ -127,7 +127,7 @@ test_that("test for spread.to.upfront", {
   
   result.6 <- spread.to.upfront(data.frame(date = as.Date("2014-04-29"),
                                            currency = "USD",
-                                           maturity = as.Date("2019-06-20"),
+                                           maturity = "2019-06-20",
                                            spread = 105.8,
                                            coupon = 100,
                                            recovery = 0.4,
@@ -147,7 +147,7 @@ test_that("test for spread.to.upfront", {
   
   result.7 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
                                            currency = "USD",
-                                           maturity = as.Date("2019-03-20"),
+                                           maturity = "2019-03-20",
                                            spread = 105.8,
                                            coupon = 100,
                                            recovery = 0.4,
@@ -166,7 +166,7 @@ test_that("test for spread.to.upfront", {
   
   result.8 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
                                            currency = "USD",
-                                           maturity = as.Date("2019-09-20"),
+                                           maturity = "2019-09-20",
                                            spread = 105.8,
                                            coupon = 100,
                                            recovery = 0.4,
@@ -228,7 +228,7 @@ test_that("test for spread.to.upfront", {
   
   result.11 <- spread.to.upfront(data.frame(date = as.Date("2013-09-20"),
                                             currency = "USD",
-                                            maturity = as.Date("2013-09-20"),
+                                            maturity = "2013-09-20",
                                             spread = 105.8,
                                             coupon = 100,
                                             recovery = 0.4,
@@ -252,7 +252,7 @@ test_that("test for spread.to.upfront", {
   
   result.13 <- spread.to.upfront(data.frame(date = as.Date("2009-03-18"),
                                             currency = "JPY",
-                                            maturity = as.Date("2014-03-20"),
+                                            maturity = "2014-03-20",
                                             spread = 105.8,
                                             coupon = 100,
                                             recovery = 0.35,
@@ -262,7 +262,7 @@ test_that("test for spread.to.upfront", {
   
   expect_true(abs(result.13 - truth.13) < 5)
   
-  x.1 <- data.frame(date = as.Date(c("2014-04-15", "2014-04-22")),  
+  x.1 <- data.frame(date = c(as.Date("2014-04-15"), as.Date("2014-04-22")),  
                     tenor = c(5, 5), 
                     coupon = c(500, 100), 
                     spread = c(2785.8889, 99),
@@ -270,8 +270,8 @@ test_that("test for spread.to.upfront", {
                     recovery = c(0.4, 0.4),
                     stringsAsFactors = FALSE)
   
-  x.2 <- data.frame(date = as.Date(c("2014-04-15", "2014-04-22")),
-                    maturity = as.Date(c("2019-06-20", "2019-06-20")),
+  x.2 <- data.frame(date = c(as.Date("2014-04-15"), as.Date("2014-04-22")),  
+                    maturity = c(as.Date("2019-06-20"), as.Date("2019-06-20")), 
                     coupon = c(500, 100), 
                     spread = c(2785.8889, 99),
                     currency = c("EUR", "EUR"),
