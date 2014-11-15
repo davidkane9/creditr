@@ -793,7 +793,7 @@ This figure is the Calculation section cropped from Figure 2, and it contains mu
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-In the Calculator section, the mark-to-market value or \textbf{Principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+First, in the upper-right corner, we choose to use ISDA Standard Upfront Model to calculate CDS pricing. In the Calculator section, the mark-to-market value or \textbf{Principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
@@ -985,6 +985,8 @@ Instead of holding Alcoa bonds with a face value of \$10 million, say our portfo
 Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDS based on sectors such as automobiles or consumer goods.
 
 These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDS and do not delve into the more complex world of multi-name CDS. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
+
+
 
 %% What is an auction?
 %% Explain MM and XR
