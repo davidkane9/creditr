@@ -795,11 +795,11 @@ Finally, let's focus on those various types of dates. The \textbf{Trade Date} on
 \centering
 \includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the Calculation section cropped from Figure 2, and it contains much important pricing information of the CDS. The CDS Calculator depends heavily on the information provided in Deal section. Several familiar terms, such as Price, Principle, Cash Amount, and other interesting results.}
+This figure is the Calculation section cropped from Figure 2, and it contains much important pricing information of the CDS. The CDS Calculator depends heavily on the information provided in Deal section. There are several familiar terms, such as Price, Principle, Cash Amount.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-First, in the upper-right corner, we choose to use ISDA Standard Upfront Model to calculate CDS pricing. In the Calculator section, the mark-to-market value or \textbf{Principal} of this contract is \$287458. As explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+First, in the upper-right corner, we choose to use ISDA Standard Upfront Model to calculate CDS pricing. In the Calculator section, the mark-to-market value or \textbf{Principal} of this contract is \$287458. As is explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
@@ -807,12 +807,21 @@ First, in the upper-right corner, we choose to use ISDA Standard Upfront Model t
     \end{aligned}
 \end{equation}
 
-Then, let's focus on the bottom-right corner where four interesting calculations are listed, which are Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, before we begin explaining these four concepts, another concept must be introduced first, so we will start with PV01 first.
+Then, let's focus on the bottom-right corner where four interesting calculations are listed, which are Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
 
 \subsubsection{PV01}
 \label{sec:PV01}
 
-\textbf{PV01} literally stands for "Present Value 01." The principal payment can also be equated in the terms of PV01, which is the present value of a stream of 1 basis points of payments. It can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
+\textbf{PV01} stands for "Present Value 01." The principal payment can also be equated in terms of PV01, which is the present value of a stream of 1 basis points of payments. 
+We can use the formula below to calculate the principal amount (clean upfront payment) with PV01:
+
+\begin{equation}
+ \begin{aligned}
+   (Coupon - Spread)*(PV01)*(Notional)
+    \end{aligned}
+\end{equation}
+
+PV01 can also be used to calculate the cash flows and risk measures of a CDS. It is sometimes referred to as the \textbf{CDS duration} or \textbf{risky duration}. Analytically, PV01 can be calculated by
 
 \begin{displaymath}
 PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
@@ -825,15 +834,7 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \item $S(t_i) =$ survival probability until $t_i$,
 \end{itemize}
 
-As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment.Before go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon 360 or 365, depending on the day count convention of that CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation.
-
-We can use the formula above for PV01 to calculate the principal amount (clean upfront payment) paid from the protection buyer to the seller using the following formula:
-
-\begin{equation}
- \begin{aligned}
-   (Coupon - Spread)*(PV01)*(Notional)
-    \end{aligned}
-\end{equation}
+As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment. Before we go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon, such as 360 or 365, depending on the day count convention of the CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation, and we will explain them together with \textbf{Term Structure} in Market section.
 
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
