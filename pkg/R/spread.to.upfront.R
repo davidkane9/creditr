@@ -26,10 +26,14 @@ spread.to.upfront <- function(x,
                               recovery.var = "recovery",
                               isPriceClean = FALSE){
   
-  x[[currency.var]] <- as.character(x[[currency.var]])
+  has.maturity.var <- !(is.null(maturity.var) || is.null(x[[maturity.var]]))
+  has.tenor.var <- !(is.null(tenor.var) || is.null(x[[tenor.var]]))
+  stopifnot(xor(has.maturity.var, has.tenor.var))
   
-  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]]))) 
-  stopifnot(is.null(x[[maturity.var]]) | is.null(x[[tenor.var]]))
+  ## Coerce to desired classes
+  
+  x[[currency.var]] <- as.character(x[[currency.var]])
+  x[[date.var]] <- as.Date(x[[date.var]])
   
   ## stop if not all the relevant variables are contained in x
   
@@ -37,24 +41,26 @@ spread.to.upfront <- function(x,
   
   ## stop if the relevant variables are not of the appropriate type 
   
-  stopifnot(inherits(as.Date(x[[date.var]]), "Date"))
-  if(!is.null(x[[maturity.var]])){
-    stopifnot(inherits(as.Date(x[[maturity.var]]), "Date"))
-  }
-  stopifnot(inherits(as.character(x[[currency.var]]), "character"))
-  
+  stopifnot(!has.maturity.var || inherits(x[[maturity.var]], "Date"))
+  stopifnot(is.character(x[[currency.var]]))
   stopifnot(is.numeric(notional))
   stopifnot(is.numeric(x[[coupon.var]]))
   
   results <- rep(NA, nrow(x))
   
-  x <- add.conventions(add.dates(x))
- 
+  x <- add.dates(x,
+                 date.var = date.var,
+                 maturity.var = maturity.var,
+                 tenor.var = tenor.var,
+                 currency.var = currency.var)
+  
+  x <- add.conventions(x)
+  
   for(i in 1:nrow(x)){
     
     rates.info <- get.rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
     
-   
+    
     
     results[i] <- .Call('calcUpfrontTest',
                         baseDate_input = separate.YMD(x$baseDate[i]),

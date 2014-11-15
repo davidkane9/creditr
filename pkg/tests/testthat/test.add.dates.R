@@ -14,9 +14,10 @@ test_that("test for add.dates", {
   ## Should return an error when both tenor and maturity date are given; only one
   ## should be entered
   
-  expect_error(add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5,
-                                    maturity = as.Date("2016-06-20",
-                                                       currency = "USD"))))
+  expect_error(add.dates(data.frame(date = as.Date("2014-04-15"),
+                                    tenor = 5,
+                                    maturity = as.Date("2016-06-20"),
+                                    currency = "USD")))
   
   ## Should return an error when maturity is not of type date
   
@@ -32,7 +33,8 @@ test_that("test for add.dates", {
   
   result.1 <- add.dates(data.frame(date = as.Date("2014-04-15"), tenor = 5, currency = "USD"))
   result.2 <- add.dates(data.frame(date = as.Date("2014-04-15"),
-                                   maturity = "2019-06-20", currency = "USD")) 
+                                   maturity = as.Date("2019-06-20"),
+                                   currency = "USD")) 
   
   ## expect_that(result.1, is_identical_to(truth.1))
   ## expect_that(result.2, is_identical_to(truth.1))
@@ -40,7 +42,8 @@ test_that("test for add.dates", {
   ## if the trade date is right after roll date, then the endDate 
   ## should go to next roll date
   
-  result.3 <- add.dates(data.frame(date = as.Date("2011-06-21"), tenor = 5,
+  result.3 <- add.dates(data.frame(date = as.Date("2011-06-21"),
+                                   tenor = 5,
                                    currency = "USD"))
   ## expect_that(result.3, is_identical_to(truth.2))
   
@@ -92,16 +95,3 @@ test_that("Test JPY holidays",{
   expect_that(add.dates(x)$baseDate, equals(as.Date("2015-09-25")))
   
 })
-
-context("USD holidays baseDate test")
-
-test_that("Test USD holidays",{
-  
-  x <- data.frame(date = as.Date("2014-12-24"), tenor = 5, currency = "USD")
-  
-  ## "2014-12-25" is a USD holiday, "2014-12-27" and "2014-12-28" are weekends, 
-  ## so baseDate should be "2014-12-29"
-  
-  expect_that(add.dates(x)$baseDate, equals(as.Date("2014-12-29")))
-  
-})  

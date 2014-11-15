@@ -17,15 +17,16 @@ Author: c(person("Heidi", "Chen", role = c("aut"),
     person("Zijie", "Zhu", role = c("aut"),
     email = "zijie.miller.zhu@gmail.com"))
 Depends:
+    R (>= 2.10)
+Imports:
+    methods,
+    quantmod,
     grid,
-    R (>= 2.10),methods,
     Rcpp (>= 0.10.6),
     RCurl,
     XML,
     testthat,
     xts
-Imports:
-    quantmod
 Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
