@@ -865,7 +865,7 @@ equals the coupon.
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
 
-Default Exposure is to the expoure to the default of a CDS contract. It can be calculated with Recovery Rate, Notional Amount, and Principal:
+Default Exposure refers to the expoure to default of a CDS contract. It can be calculated with Recovery Rate, Notional Amount, and Principal:
 
 \begin{equation}
   \text{Default Exposure} = (1 - \text{Recovery Rate})*\text{Notional}
@@ -878,26 +878,14 @@ Default Exposure is to the expoure to the default of a CDS contract. It can be c
 \centering
 \includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-This figure is the Market section cropped from Figure 2. It contains much information about the interest rate curve we use to price CDS. We will discuss Curve Date, points upfront, default probability, and term structure. In addition, we will introduce some concepts that are not on the screenshot, such as hazard rates, discount factor, and CDS indices.
+This figure is the Market section cropped from Figure 2. It contains much information about the interest rate curve we use to price CDS. We will discuss Curve Date, points upfront, default probability, and term structure. In addition, we will introduce the concept of hazard rates, which is not on the screenshot.
 }
+
 \label{AlcoaIncCDSMarket}
 \end{figure}
 
-To understand Market section, we first have to know why we want to take interest rates into consideration when we are pricing a CDS. We have learned the discount factor in an one-period simple case, and we will apply that concept to this real case. Therefore, before introducing any terms on the screenshot, let's first understand \textbf{Discount Factor} in a real-life N-period case.
-
-\subsubsection{Discount Factor}
-
-In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day} (this will be further explained later in "Curve Date" section), and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{Risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
-\label{fig:AlcoaRates}
-\end{figure} 
-
 \subsubsection{Curve Date}
-\textbf{Curve Date} is the date of interest rate we use to price CDS. As we recall, the trade date of this CDS trading is Jun. 24, 2014, and we see the Curve Date is also Jun. 24, 2014. However, this does not mean that we actually use the interest rates on Jun. 24, 2014; we are actually using interest rates on Jun. 23, 2014. For CDS pricing, we use the interest rates on the day before the trade date. And if the day before trade date is not a business day, we adjust to the nearest business day before. Therefore, if the trade date is Jun. 24, 2014, then we will use interest rates on Jun. 23, 2014 (Monday). If the trade date is Jun. 23, 2014, then we will use interest rates on Jun. 20, 2014 (Friday), since Jun. 22 is a Sunday. In Bloomberg Terminal, these all taken into account, so the Curve Date on screen shows Jun. 24 while we are actually using interest rates on Jun. 23.
+\textbf{Curve Date} is the date of interest rate we use to price CDS. As we recall, the trade date of this CDS trading is Jun. 24, 2014, and we see the Curve Date is also Jun. 24, 2014. However, this does not mean that we actually use the interest rates on Jun. 24, 2014; we are actually using interest rates on Jun. 23, 2014. For CDS pricing, we use the interest rates on the day before the trade date. And if the day before trade date is not a business day, we adjust to the nearest business day before. Therefore, if the trade date is Jun. 24, 2014, then we will use interest rates on Jun. 23, 2014 (Monday). If the trade date is Jun. 23, 2014, then we will use interest rates on Jun. 20, 2014 (Friday), since Jun. 22 is a Sunday. In Bloomberg Terminal, this adjustment is already taken into account, so the Curve Date on screen shows Jun. 24 while we are actually using interest rates on Jun. 23.
 \\
 \subsubsection{Default Probability or Probability of Default (PD)}
 \label{sec:DefaultProb}
@@ -906,32 +894,33 @@ On the screenshot, the "prob" cell refers to \textbf{Default Probability}, which
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the actions in an event of default.
+where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the event of default, especially different types of settlements.
 
 \subsubsection{Types of Settlements in the Case of a Default}
 \label{sec:SettlementType}
 
-Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds. This is more likely to happen when there is a large number of outstanding CDS contracts. 
+Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
 
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate can often prove to be an issue. One approach the ISDA has been using lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 
-\subsubsection{Counterparty Risk of Default}
-\label{sec:CounterpartyRisk}
+%% the below introduction is not relevant to what we are discussing in Bloomberg and Markit, so I commented it out (Miller Zhu)
+%\subsubsection{Counterparty Risk of Default}
+%\label{sec:CounterpartyRisk}
 
-When a counterparty such as the hedge fund sells protection on a bond, there is always the possibility that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
+%When a counterparty sells protection on a bond, there is always the probability that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
 
 
-After learning much about the event of default, let's go back to the screenshot and study another important element in the Market section: \textbf{Term Structure}.
+Now let's go back to the screenshot and study another important element in the Market section: \textbf{Term Structure}.
 
 \subsubsection{Term Structure}
 \begin{figure}[H]
 \centering
 \includegraphics[width=4in, height=3in]{images/CDScurve.png}
-\caption{Term-structure of CDS rates for Alcoa on June 24, 2014}
+\caption{Term Structure of CDS rates for Alcoa on June 24, 2014}
 \label{fig:CDScurveAlcoa}
 \end{figure} 
 
-A CDS curve is similar to the interest rate curve in that it is a curve with the fair spreads of CDS contracts for different maturities. For reference names that are liquid, these rates are available quite easily; however, if the CDS is not liquid we can use the underlying bond's price to determine the hazard rates. Moreover, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment. From CDS curve, we can also do some other important calculations, such as hazard rates and risky discount factor.
+A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment. With a CDS term structure, we can also calculate hazard rates and risky discount factor.
 
 \subsubsection{Hazard Rates and Risky Discount Factor}
 
