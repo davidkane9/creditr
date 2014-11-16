@@ -872,6 +872,7 @@ Default Exposure refers to the expoure to default of a CDS contract. It can be c
   - \text{Principal}. \nonumber
 \end{equation} 
 
+\newpage
 \subsection{Market Section}
 \label{Market section}
 \begin{figure}[H]
@@ -896,8 +897,10 @@ On the screenshot, the "prob" cell refers to \textbf{Default Probability}, which
 \end{equation}
 where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the event of default, especially different types of settlements.
 
-\subsubsection{Types of Settlements in the Case of a Default}
+\subsubsection{In the Case of a Default}
 \label{sec:SettlementType}
+
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
 Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
 
@@ -939,19 +942,45 @@ S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \centering
 \includegraphics[width=6.3in, height=4.8in]{images/MarkitCDSAlcoa.jpg}
 \caption{
-This is a screenshot of the Markit CDS Calculator which is available online. It calculates prices for the same CDS trading as the Bloomberg screenshot above.  We will not go into each section on the screenshot and explain every details, but we will notice some key terminology differences and distinctive features of Markit.
+This is a screenshot of the Markit CDS Calculator which is available online. It calculates prices for the same CDS trading as the Bloomberg screenshot above.  We will not go into each section on the screenshot and explain every details, but we will notice some key terminology differences and distinctive features of Markit. In addition, since Markit Calculator shows us explicitly the swap curves, so we will introduce the concept of Discount Factor and Risky Discount Factor. In the end, we will also mention the concept of CDS indices.
 }
 \end{figure}
 
 \subsubsection{Terminology Differences}
-First, notice that in the upper-left corner, we have an entry called "Trade Level," which is the same as \textbf{spread}. Also notice that unlikely in Bloomberg, where spread is usually presented in basis points, here in Markit we can actually select whether to present spread in basis points ("bp") or percentages. Then in section "CDS Contract Terms," "Running Cpn" just means \textbf{coupon}. Also, in section "Advanced Terms," there is an entry called "Holiday Code", where we can select "none" or "JPY" (This is because the Japanese CDS trading follows a different rules of dates, and the main difference is the trading conventions on holidays).
+First, notice that in the upper-left corner, we have a slot called "Trade Level," which means the same as \textbf{spread}. Also notice that unlike Bloomberg, where spread is usually presented in basis points, here in Markit we can actually select whether to present spread in basis points ("bp") or percentages. Then in section "CDS Contract Terms," "Running Cpn" just means \textbf{coupon}. Also, in section "Advanced Terms," there is an e slot called "Holiday Code", where we can select "none" or "JPY" (This is because the Japanese CDS trading follows a different rules of dates, and the main difference is the trading conventions on holidays).
 
-Second, let's move to section "Calculation Results," where several terms are different from Bloomberg's: "Cash Settlement" is same as \textbf{Cash Amount}, "Clean Price" is same as \textbf{Price}, the "Accured Amount" in Markit and Bloomberg has different signs (one is positive while the other negative), and "Credit DV01" is same as \textbf{Spread DV01}.
+Second, let's move to section "Calculation Results," where several terms are different from Bloomberg's: "Cash Settlement" is the same as \textbf{Cash Amount} in Bloomberg, "Clean Price" is same as \textbf{Price}, the "Accured Amount" in Markit and Bloomberg has different signs (one is positive while the other negative), and "Credit DV01" is same as \textbf{Spread DV01}.
 
-%When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
+\subsection{Yield Curve Section and Discount Factor}
 
+In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day} (this will be further explained later in "Curve Date" section), and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa.
 
+\newpage %% have to start a new page so that there won't be awkward blank
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
+\caption{This figure is the Yield Curve section of the Markit CDS Calculator. It shows the risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
+\label{fig:AlcoaRates}
+\end{figure} 
 
+\subsubsection{Risky Discount Factor}
+
+Together, the discount factor and the survival probability are known as the \textbf{risky discount factor}. The discount factor is used in calculating the upfront value for a CDS maturing over \textit{n} periods. Therefore the principal or mark-to-market value can be calculated using the formula below:
+
+\begin{equation}
+ \begin{aligned}
+   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
+    \end{aligned}
+\end{equation}
+
+%% the below equation has no difference from the above equation??? So I commented it out (Miller Zhu)
+%The above equation does not account for the accrued amount that a protection buyer would not have to pay. If we account for that, the equation would be:
+
+%\begin{equation}
+% \begin{aligned}
+%   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
+%    \end{aligned}
+%\end{equation}
 
 \subsection{CDS Indices}
 \label{sec:CDSIndices}
