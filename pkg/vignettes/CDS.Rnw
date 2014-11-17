@@ -673,8 +673,6 @@ Clearly, the expected cash flows for the portfolio manager and JPM during year o
 
 However, note that in year one, JPM's expected cash flows are \$1,000 greater than that of JPM, and in year two, JPM's expected cash flows are \$1,000 less than that of JPM. As such, the overall expected cash flows (which are the same as Equation \ref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
 
-What it's reversed: what if the risk-neutral probability of default for year one is 0\% and that of year two is 2\%?
-
 %% Need to finish this section: Non-constant Interest Rate
 
 \subsubsection{Non-constant interest rate}
