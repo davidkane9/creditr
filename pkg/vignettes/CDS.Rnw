@@ -643,7 +643,7 @@ We will call the above CDS example the simple two-period CDS.
 
 Since this is a simplified example, we have excluded aspects of the CDS market that are worth noting.
 
-1. We again assumed that both parties are risk-neutral when, in fact, this may not be the case. 
+1. We again assumed that both parties are risk-neutral, whereas this may not be the actual case. In reality, portfolio managers are prone to be more risk-averse and would be willing to pay a higher premium than entailed by the risk neutral assumption, while insurance providers can make a profit from this risk aversion.
 
 2. In this example, we essentially assumed that we can just add probabilities: a probability of default of 1\% during year one and a probability of default of 1\% during year two equals a probability of default of 2\% over the two years. But in real life, the probability of default over a big period may not just be a simple summation of different probabilities in separate small periods. For example, what is the probability of default of the two-year period if the probabilities of default in the first and second year are different?
 
