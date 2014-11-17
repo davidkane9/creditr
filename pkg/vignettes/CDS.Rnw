@@ -635,7 +635,7 @@ In order to find the risk-neutral probability of default for both years combined
 
 The risk-neutral probability of default for the two-year contract is 2\%. Note that the risk-neutral probability of default in the simple one-period CDS was 1\%. The only reason that this probability is different is because the portfolio manager's coupon payment in the two-period case is double that of the one-period case.
 
-Recall how we discussed in Section \ref{sec:OnePeriodOverTime} that the probability of default within the context of a CDS decreases to 0\% as the contract matures. Based on our calculations above, we can verify this relationship; sfter one year of the two-year contract, the probability of default has decreased from 2\% at the beginning of the contract to 1\% midway through the contract.
+Recall how we discussed in Section \ref{sec:OnePeriodOverTime} that the probability of default within the context of a CDS decreases to 0\% as the contract matures. Based on our calculations above, we can verify this relationship; after one year of the two-year contract, the probability of default has decreased from 2\% at the beginning of the contract to 1\% midway through the contract.
 
 We will call the above CDS example the simple two-period CDS.
 
