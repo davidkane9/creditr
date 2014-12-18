@@ -795,11 +795,11 @@ Finally, let's focus on different dates. On the left, \textbf{Trade Date} is the
 \centering
 \includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the Calculation section cropped from Figure 2, and it contains much important pricing information of the CDS. The CDS Calculator depends heavily on the information provided in Deal section. There are several familiar terms, such as Price, Principle, Cash Amount.}
+This figure is the Calculation section cropped from Figure 2, and it shows the calculation results, using information provided in Deal Section. There are several familiar terms, such as Price, Principle, Cash Amount.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-First, in the upper-right corner, we choose to use ISDA Standard Upfront Model to calculate CDS pricing. In the Calculator section, the mark-to-market value or \textbf{Principal} of this contract is \$287458. As is explained earlier, this amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, the portfolio manager would not want (and is not obligated) to pay interest for the 5 days she has not received protection for. The \textbf{accrued interest} can be calculated using the equation below:
+On the upper right, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued Interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
@@ -807,7 +807,7 @@ First, in the upper-right corner, we choose to use ISDA Standard Upfront Model t
     \end{aligned}
 \end{equation}
 
-Then, let's focus on the bottom-right corner where four interesting calculations are listed, which are Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
+Then, let's focus on the labels on the bottom right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
 
 \subsubsection{PV01}
 \label{sec:PV01}
