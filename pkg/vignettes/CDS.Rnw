@@ -1125,7 +1125,19 @@ cds1
 \subsubsection{CS10}
 \label{sec:CS10}
 
-\texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2.
+\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. Or you can calculate CS10 by inputing a dataframe. 
+
+<<>>=
+x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
+                currency = c("USD", "EUR"),
+                tenor = c(5, 5),
+                spread = c(120, 110),
+                coupon = c(100, 100),
+                recovery = c(0.4, 0.4),
+                notional = c(1e7, 1e7),
+                stringsAsFactors = FALSE)
+CS10(x)
+@
 
 \subsubsection{``get.rates'' Function}
 \label{sec:get.ratesFunction}
@@ -1138,7 +1150,7 @@ cds1.rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 
 The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
 
-<<echo = FALSE>>=
+<<>>=
 cds1.rates
 @ 
 
@@ -1149,7 +1161,7 @@ cds1.rates
 
 \texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
 
-<<echo = FALSE>>=
+<<>>=
 rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
                        currency = "USD",
                        tenor    = 5,
@@ -1163,7 +1175,7 @@ rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
-<<echo = FALSE>>=
+<<>>=
 IR.DV01(data.frame(date     = as.Date("2014-04-22"),
                    currency = "USD",
                    tenor    = 5,
@@ -1178,7 +1190,7 @@ IR.DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
-<<echo = FALSE>>=
+<<>>=
 spread.DV01(data.frame(date     = as.Date("2014-04-22"),
                        currency = "USD",
                        tenor    = 5,
@@ -1193,7 +1205,7 @@ spread.DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
 
-<<echo = FALSE>>=
+<<>>=
 spread.to.pd(data.frame(date     = Sys.Date(),
                         spread   = 160,
                         tenor    = 5,
