@@ -795,7 +795,7 @@ Finally, let's focus on different dates. On the left, \textbf{Trade Date} is the
 \centering
 \includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the Calculation section cropped from Figure 2, and it shows the calculation results, using information provided in Deal Section. There are several familiar terms, such as Price, Principle, Cash Amount.}
+This figure is the Calculation section cropped from Figure 2 It shows calculation results from information in Deal Section. There are several familiar terms, such as Price, Principle, Cash Amount.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
@@ -812,8 +812,7 @@ Then, let's focus on the labels on the bottom right: Spread DV01, IR DV01, Recov
 \subsubsection{PV01}
 \label{sec:PV01}
 
-\textbf{PV01} stands for "Present Value 01." The principal payment can also be equated in terms of PV01, which is the present value of a stream of 1 basis points of payments. 
-We can use the formula below to calculate the principal amount (clean upfront payment) with PV01:
+\textbf{PV01} stands for "Present Value 01", which is the present value of a stream of 1 basis points of payments. We can also use the formula below to calculate the principal amount (clean upfront payment) with PV01:
 
 \begin{equation}
  \begin{aligned}
@@ -828,22 +827,20 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \end{displaymath}
 \begin{itemize}
 \item $i =$ coupon index,
-\item $t_i =$ coupon date,
-\item $B(t_i) =$ day count fraction at $t_i$.
+\item $t_i =$ coupon date: date on which coupon payments are made
+\item $B(t_i) =$ day count fraction at $t_i$: fraction of the day on which the coupon payment is made upon, such as 360 or 365, depending on the day count convention of the CDS
 \item $Df(f_i) =$ discount factor until $t_i$,
 \item $S(t_i) =$ survival probability until $t_i$,
 \end{itemize}
 
-As we can see in the equation above, we need the coupon index, coupon dates, the day count fraction, discount factor for each date, and survival probability until the date of the respective coupon payment. Before we go into the details of how PV01 is used in determining the market price or the risk measures, it is essential to understand the different components used to calculate it. Coupon dates refer to the dates on which coupon payments are made. Day count fraction is the fraction of the day on which the coupon payment is made upon, such as 360 or 365, depending on the day count convention of the CDS. While the first three components of the above equation seem straightforward, the other two - survivial probability and discount factor require more explanation, and we will explain them together with \textbf{Term Structure} in Market section.
-
-Since we now understand PV01, we can proceed to study the four parameteres on the screenshot. We will begin with "Spread DV01".
+We will explain \textbf{discount} and \textbf{survival probability} later in Market section.
 
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
 
-\textbf{Spread DV01}, also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}, stands for "Spread Dollar Value 01." It measures the change of upfront payment if spread increases by 1, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
+\textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for "Spread Dollar Value 01." It measures the change of upfront payment if spread increases by 1, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
 
-DV01 should always be positive for a protection buyer since he or she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
+DV01 should always be positive for a protection buyer since she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
 
 \begin{align*}
   PV &= (S - C) * PV01 \\
@@ -851,21 +848,19 @@ DV01 should always be positive for a protection buyer since he or she is short c
   &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
 \end{align*}
 
-where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread
-equals the coupon.
+where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread equals the coupon.
 
 \subsubsection{IR DV01}
 \label{sec:IRDV01}
 \textbf{IR DV01} stands for "Interest Rate Dollar Value 01." It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
 
 \subsubsection{Rec Risk (1\%)}
-\textbf{Rec Risk (1\%)} literally stands for "Recovery Risk 1\%." It measures the change of upfront payment if the recovery risk increases by 1\%.
-
+\textbf{Rec Risk (1\%)} stands for "Recovery Risk 1\%." It measures the change of upfront payment if the recovery risk increases by 1\%.
 
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
 
-Default Exposure refers to the expoure to default of a CDS contract. It can be calculated with Recovery Rate, Notional Amount, and Principal:
+Default Exposure refers to the expoure to default of a CDS contract. It can be calculated with Recovery Rate, Notional Amount, and Principal as below:
 
 \begin{equation}
   \text{Default Exposure} = (1 - \text{Recovery Rate})*\text{Notional}
