@@ -686,9 +686,11 @@ $$-\$1000 - \frac{\$ 1000}{e^{0.1}} + \frac{P \times 100000}{e^{2\times 0.1}} = 
 
 Solving for $P$, we can get a risk-neutral $P = 0.0232$.
 
-%% Need to introduce a two-period example with a non-zero (but constant) interest rate.
+Further complication involves a non-constant interest rate. Now suppose the continuous risk-free rate takes a linear drop from $0.1$ to $0.05$ through the two years. In other words, let $r = 0.1 - 0.025t$ where $t \in [0, 2]$. Then,  equation (50) needs to be rewritten as:
 
-%% Then introduce a two-period example with a non-zero and non-constant interest rate.
+$$-\$1000 - \frac{\$ 1000}{e^{\int_0^1 0.1 - 0.025t dt}} + \frac{P \times 100000}{e^{\int_0^2 0.1 - 0.025t dt}} = \$1000 + \frac{\$ 1000}{e^{\int_0^1 0.1 - 0.025t dt}} - \frac{P \times 100000}{e^{\int_0^2 0.1 - 0.025t dt}}$$
+
+Solving for $P$, we can get a new $P = 0.0206$, which is smaller than the risk-neutral probability in the constant interest rate example. Note again that as in previous cases, this risk-neutral probability is purely a mathematical concept which has nothing to do with the real probability of a credit event.
 
 \subsubsection{Two-Period Case Over Time}
 
