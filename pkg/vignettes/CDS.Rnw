@@ -733,10 +733,10 @@ Although the number of periods has increased dramatically from two to twenty, th
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg
 \end{align}
 
-A simple 20-period CDS will then have the below mathematic expression:
+Assume a constant risk free interest of $r$. Then a simple 20-period CDS will then have the below mathematic expression:
 
 \begin{align}
-  \rm \hspace{3pt}- \frac{C}{(1 + int)} \times 20 + [ P \times V \times (1 - RR) ]  &= \rm \hspace{3pt}\frac{C}{(1 + int)} \times 20 - [ P \times V \times (1 - RR) ] 
+  \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + \frac{P \times V \times (1 - RR)}{e^{5r}}  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - \frac{P \times V \times (1 - RR)}{e^{5r}} 
 \end{align}
 
 where $int$ stands for constant interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. If we specify that $int = 1/3\%$, $V = 1,000,000$, $RR = 0.4$, and $C = 1000$, then we can easily calculate that $P = 10\% $ for the whole 20 periods.
@@ -754,7 +754,6 @@ where $i$ denotes different periods from one to twenty. Since the overall probab
 %% At this point, we 
 %% a) Reference the two period equation from above. This is the central mathematical trick in CDS pricing: premium leg must equal protection leg. We can't remind the reader of this too often. 
 %% b) Create a 20 period version of this equation. Do this carefully, paying close attention to all the relevant subscripts. The probability of default is different in each period, as is the interest rate.
-%% (Miller: ) Also have to add the case of non-constant interest rate to two-period case, since it doesn't have that complication now.
 %% c) Simplify the formula but making the assumptions that the ISDA standard model makes about constant proprobility of default and agree discount rates derived from the ISDA rates.
 %% d) Complexify the model a bit (or at least mention the complexities) to handle things like not having to pay the coupon after a credit event.
 
