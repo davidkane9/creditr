@@ -107,7 +107,7 @@ The \textbf{expected cash flows} for the agreement depend on the probability of 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P_h * {\$100,000})}
+   {\rm Homeowner's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P_h \times {\$100,000})}
     \end{aligned}
     \label{eqn:homeownerECF}
 \end{equation}
@@ -116,7 +116,7 @@ Since the insurance company will receive the \$1,000 premium and will potentiall
 
 \begin{equation}
  \begin{aligned}
-   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P_c * {\$100,000})}
+   {\rm Insurance\hspace{3pt}company's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P_c \times {\$100,000})}
     \end{aligned}
     \label{eqn:companyECF}
 \end{equation}
@@ -129,9 +129,9 @@ The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would 
 
 \label{eqn:PropertyInsurance}
 \begin{align}
-  \rm -\hspace{3pt}\$1,000 + P * {\$100,000}  &= \rm \$1,000 - P * {\$100,000} \\
-  \rm 2 * P * {\$100,000}  &=  \rm 2 * \$1,000 \\
-  \rm P * {\$100,000}  &= \rm {\$1,000} \\
+  \rm -\hspace{3pt}\$1,000 + P \times {\$100,000}  &= \rm \$1,000 - P \times {\$100,000} \\
+  \rm 2 \times P \times {\$100,000}  &=  \rm 2 \times \$1,000 \\
+  \rm P \times {\$100,000}  &= \rm {\$1,000} \\
   \rm P  &= \rm 0.01
 \end{align}
 
@@ -188,7 +188,7 @@ The expected cash flows for the agreement depend on the probability of default. 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P * {\$100,000})}
+   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P \times {\$100,000})}
     \end{aligned}
     \label{eqn:portfolioECF}
 \end{equation}
@@ -197,7 +197,7 @@ Since JPM will receive the \$1,000 premium and will potentially pay \$100,000 if
 
 \begin{equation}
  \begin{aligned}
-   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P * {\$100,000})}
+   {\rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P \times {\$100,000})}
     \end{aligned}
     \label{eqn:jpmECF}
 \end{equation}
@@ -212,7 +212,7 @@ Consider that a deal is reached: both parties agree to the CDS. As in the proper
 \begin{align}
    \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
    \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-   \rm -\hspace{3pt}C + (P * V)  &= \rm C - (P * V)
+   \rm -\hspace{3pt}C + (P \times V)  &= \rm C - (P \times V)
 \end{align}
 
 The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, $C$, but could receive the protection leg of $V$, depending on $P$. The right indicates the converse: JPM will receive the coupon payment, $C$, but could potentially have to pay the protection leg of $V$, depending on $P$.
@@ -220,7 +220,7 @@ Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + (P * {\$100,000})  = \$1,000 - (P * {\$100,000})}
+   {\rm -\hspace{3pt}\$1,000 + (P \times {\$100,000})  = \$1,000 - (P \times {\$100,000})}
     \end{aligned}
 \end{equation}
 
@@ -286,7 +286,7 @@ First, look at our CDS agreement: the portfolio manager pays the premium on Janu
 
 \begin{equation}
  \begin{aligned}
-  {\rm Coupon\hspace{3pt}with\hspace{3pt}Interest = {\$1,000}*{(1 + .10)} = \$1,100} 
+  {\rm Coupon\hspace{3pt}with\hspace{3pt}Interest = {\$1,000}\times{(1 + .10)} = \$1,100} 
     \end{aligned}
 \end{equation}
 
@@ -296,7 +296,7 @@ Here are the expected cash flows for a generic case. ($P$ refers to the risk-neu
 
 \begin{equation}
  \begin{aligned}
-  {\rm -\hspace{3pt}C} + \frac{P * V}{(1 + i)} = C - \frac{P * V}{(1 + i)} 
+  {\rm -\hspace{3pt}C} + \frac{P \times V}{(1 + i)} = C - \frac{P \times V}{(1 + i)} 
     \end{aligned}
 \label{eqn:InterestRate}
 \end{equation}
@@ -304,7 +304,7 @@ Here are the expected cash flows for a generic case. ($P$ refers to the risk-neu
 How might a discounted credit loss affect $P$, the risk-neutral probability of default which, by definition, equates the expected cash flows? Plugging in known values:
 \begin{equation}
  \begin{aligned}
-  {\rm -\hspace{3pt}\$1,000 + \frac{P * \$100,000}{(1 + 0.1)} = \$1,000} - \frac{P * \$100,000}{(1 + 0.1)} 
+  {\rm -\hspace{3pt}\$1,000 + \frac{P \times \$100,000}{(1 + 0.1)} = \$1,000} - \frac{P \times \$100,000}{(1 + 0.1)} 
     \end{aligned}
 \end{equation}
 
@@ -324,7 +324,7 @@ So, we need to factor the recovery rate into our calculation of expected cash fl
 \label{eqn:recovery}
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
-  \rm - C + (P * V * (1 - RR)) &= C - (P * V * (1 - RR))
+  \rm - C + (P \times V \times (1 - RR)) &= C - (P \times V \times (1 - RR))
 \end{align}
 
 Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled $V$ by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just $RR$). Another term for this amount is the loss given default (LGD):
@@ -342,13 +342,13 @@ To solve for the risk-neutral probability of default, we plug in known values ($
 
 \begin{equation}
  \begin{aligned}
-   {\rm - \$1,000 + (P * \$100,000 * (1 - 0.55)) = \$1,000 - (P * \$100,000 * (1 - 0.55))}
+   {\rm - \$1,000 + (P \times \$100,000 \times (1 - 0.55)) = \$1,000 - (P \times \$100,000 \times (1 - 0.55))}
     \end{aligned}
 \end{equation}
 After combining like terms, dividing both sides by 2 and simplifying, we get:
 \begin{equation}
  \begin{aligned}
-   {\rm P * \$55,000 = \$1,000}
+   {\rm P \times \$55,000 = \$1,000}
     \end{aligned}
 \end{equation}
 
@@ -357,7 +357,7 @@ Therefore, $P$ is 1.8\% (rounded to the nearest tenth) in this scenario where th
 \subsubsection{Accrued Coupon}
 \label{sec:AccruedCoupon}
 
-Back to our simple one-period CDS example---0\% interest rate, 0\% recovery rate. For this scenario, both the premium leg and the protection leg are paid on December 31. We have so far assumed that our CDS agreement between the portfolio manager and JPM begins on January 1 and ends on December 31 of the same year. However, what if this agreement wasn't made exactly on January 1? What if it was made on March 31, one quarter through the year? Using our simple one-period CDS example, this implies that the portfolio manager would have to pay the same coupon of 1\% (\$1,000) on December 31 for only receiving nine months (instead of one year) of protection coverage.
+Back to our simple one-period CDS example---0\% interest rate, 0\% recovery rate. For this scenario, both the premium leg and the protection leg are paid on December 31. We have so far assumed that our CDS agreement between the portfolio manager and JPM begins on January 1 and ends on December 31 of the same year. However, what if this agreement wasn't made exactly on January 1? What if it was made on March 31, one quarter through the year? Using our simple one-period CDS example, this implies that the portfolio manager would have to pay the same coupon of $1\% \times (\$1,000)$ on December 31 for only receiving nine months (instead of one year) of protection coverage.
 
 Assume that both parties agreed to a deal under these conditions. 
 
@@ -367,7 +367,7 @@ In order to determine this sum, we need to calculate the fraction of the coupon 
 
 \begin{equation}
  \begin{aligned}
-  {\rm Accrued = \frac{90}{360}*\frac{1.0}{100}*\$100,000 = \$250}
+  {\rm Accrued = \frac{90}{360}\times\frac{1.0}{100}\times\$100,000 = \$250}
     \end{aligned}
 \end{equation}
 
@@ -377,7 +377,7 @@ Note that we are dividing 90 by 360 instead of 365 in the above calculation. Thi
 
 \begin{equation}
  \begin{aligned}
-  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 * (Y_{2} - Y_{1}) + 30 * (M_{2} - M_{1}) + (D_{2} - D_{1})}
+  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 \times (Y_{2} - Y_{1}) + 30 \times (M_{2} - M_{1}) + (D_{2} - D_{1})}
     \end{aligned}
 \end{equation}
 
@@ -393,7 +393,7 @@ For example, according to this convention, if the simple one-period CDS agreemen
 
 \begin{equation}
  \begin{aligned}
-  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 * (0) + 30 * (2 - 1) + (30 - 1) = 59}
+  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 \times (0) + 30 \times (2 - 1) + (30 - 1) = 59}
     \end{aligned}
 \end{equation}
 
@@ -401,7 +401,7 @@ If a CDS agreement was initiated on October 31, then we would calculate the numb
 
 \begin{equation}
  \begin{aligned}
-  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 * (0) + 30 * (10 - 1) + (31 - 1) = 300}
+  {\rm Number\hspace{3pt}of\hspace{3pt}days = 360 \times (0) + 30 \times (10 - 1) + (31 - 1) = 300}
     \end{aligned}
 \end{equation}
 
@@ -411,7 +411,7 @@ Since a \$250 cash flow from JPM to the portfolio manager compensates for the am
 
 \begin{equation}
  \begin{aligned}
-   {\rm - \$1,000 + (P * \$100,000) + \$250 = \$1,000 - (P * \$100,000) - \$250}
+   {\rm - \$1,000 + (P \times \$100,000) + \$250 = \$1,000 - (P \times \$100,000) - \$250}
     \end{aligned}
 \end{equation}
 
@@ -419,7 +419,7 @@ Again, as neutral observer of the market (neither the buyer nor the seller), we 
 
 \begin{equation}
  \begin{aligned}
-   {\rm P * \$100,000 = \$750}
+   {\rm P \times \$100,000 = \$750}
     \end{aligned}
 \end{equation}
 
@@ -459,7 +459,7 @@ In all of our CDS examples, we have assumed a coupon of 1\%. We have done so bec
 
 \begin{equation}
  \begin{aligned}
-   {\rm - \$1,000 + ((P = 1\%) * \$100,000) = \$1,000 - ((P = 1\%) * \$100,000)}
+   {\rm - \$1,000 + ((P = 1\%) \times \$100,000) = \$1,000 - ((P = 1\%) \times \$100,000)}
     \end{aligned}
 \end{equation}
 
@@ -471,7 +471,7 @@ In such a case, the expected cash flows would only be equal if the coupon paymen
 
 \begin{equation}
  \begin{aligned}
-   {\rm - \$3,000 + ((P = 3\%) * \$100,000) = \$3,000 - ((P = 3\%) * \$100,000)}
+   {\rm - \$3,000 + ((P = 3\%) \times \$100,000) = \$3,000 - ((P = 3\%) \times \$100,000)}
     \end{aligned}
 \end{equation}
 
@@ -494,7 +494,7 @@ First, review the expected cash flows we had in the previous section with a coup
 
 \begin{equation}
  \begin{aligned}
-   {\rm - \$3,000 + ((P = 3\%) * \$100,000) = \$3,000 - ((P = 3\%) * \$100,000)}
+   {\rm - \$3,000 + ((P = 3\%) \times \$100,000) = \$3,000 - ((P = 3\%) \times \$100,000)}
     \end{aligned}
 \end{equation}
 
@@ -503,14 +503,14 @@ Since the difference between the protection buyer's desired coupon payment (\$3,
 \label{eqn:Upfront}
 \begin{align}
    \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-   \rm -\hspace{3pt}U - C + (P * V) &= \rm U + C - (P * V)
+   \rm -\hspace{3pt}U - C + (P \times V) &= \rm U + C - (P \times V)
 \end{align}
 
 Plugging in known values:
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}U - \$1,000 + (.03 * \$100,000) = \hspace{3pt}U + \$1,000 - (.03 * \$100,000)}
+   {\rm -\hspace{3pt}U - \$1,000 + (.03 \times \$100,000) = \hspace{3pt}U + \$1,000 - (.03 \times \$100,000)}
     \end{aligned}
 \end{equation}
 
@@ -518,7 +518,7 @@ Simplifying:
 
 
 \begin{align}
-   \rm 2 * \$3,000 &= \rm 2 * \$1,000 + 2 * U \\
+   \rm 2 \times \$3,000 &= \rm 2 \times \$1,000 + 2 \times U \\
    \rm \$3,000 - \$1,000 &= \rm U
 \end{align}
 
@@ -551,14 +551,14 @@ Earlier, we calculated the upfront payment using the following equation:
 \label{eqn:Upfront}
 \begin{align}
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-  \rm -\hspace{3pt}U - C + (P * V) &= \rm U + C - (P * V)
+  \rm -\hspace{3pt}U - C + (P \times V) &= \rm U + C - (P \times V)
 \end{align}
 
 We can verify that the upfront payment values in Table \ref{tbl:upfrontValue} are correct by inputting the risk-neutral probability of default as $P$ and by inputting the mark-to-market value as $C$. For example, take June 30 (where, according to Table \ref{tbl:upfrontValue}, the risk-neutral $P$ is 1.5\% and the mark-to-market value is \$500.)
 
 \begin{align}
-  \rm -\hspace{3pt}U - \$500 + (.0015 * \$100,000) &= \rm \hspace{3pt}U + \$500 - (.0015 * \$100,000) \\
-  \rm 2 * \$1,500 &= \rm 2 * \$500 + 2 * U \\
+  \rm -\hspace{3pt}U - \$500 + (.0015 \times \$100,000) &= \rm \hspace{3pt}U + \$500 - (.0015 \times \$100,000) \\
+  \rm 2 \times \$1,500 &= \rm 2 \times \$500 + 2 \times U \\
   \rm U &= \rm\$1000
 \end{align}
 
@@ -580,12 +580,12 @@ Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfr
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-  \rm U -\hspace{3pt}C + \frac{P * V * (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P * V * (1 - RR)}{(1 + i)}
+  \rm U -\hspace{3pt}C + \frac{P \times V \times (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P \times V \times (1 - RR)}{(1 + i)}
 \end{align}
 
 Note that for any standard CDS contract, the two unknown variables are $P$ and $U$, since $C$ and $RR$ are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and $V$ is agreed upon by the two parties (essentially fixed). As such, if we know $P$, we can calculate $U$ and vice versa. At last, we will conclude this subsection with a numeric example. For instance, if we choose a standardized coupon of $\$1000$ and agree upon an effective interest rate of $0.1$, a risk-neutral $P$ of $1.5\%$ and a recovery rate of $0.55$, we can apply formula (42) to calculate the necessary upfront payment. \\
 
-$$U - 1000 + \frac{1.5\%*100000*(1 - 0.55)}{(1 + 0.1)} = - U + 1000 - \frac{1.5\%*100000*(1 - 0.55)}{(1 + 0.1)}$$
+$$U - 1000 + \frac{1.5\% \times 100000\times (1 - 0.55)}{(1 + 0.1)} = - U + 1000 - \frac{1.5\%\times100000\times(1 - 0.55)}{(1 + 0.1)}$$
 
 Solving the equation, we get $U = 386.37$. \\
 
@@ -602,8 +602,8 @@ Consider that both parties agree to this deal.
 The risk-neutral probability of default---the default that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows for year one of the CDS contract:
 
 \begin{align}
-  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + (P * {\$100,000}) \\
-  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - (P * {\$100,000})
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + (P \times {\$100,000}) \\
+  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - (P \times {\$100,000})
 \end{align}
 
 The expected cash flows for the portfolio manager and for JPM are the same for year two. 
@@ -612,9 +612,9 @@ In order to find the risk-neutral probability of default for each year, we must 
 
 \label{eqn:SimpleTwoPeriod}
 \begin{align}
-  \rm -\hspace{3pt}C + (P * V)  &= \rm C - (P * V) \\
-  \rm - \$1,000 + (P * \$100,000) &= \rm \$1,000 - (P * \$100,000) \\
-  \rm P * {\$100,000}  &= \rm \$1,000
+  \rm -\hspace{3pt}C + (P \times V)  &= \rm C - (P t\times V) \\
+  \rm - \$1,000 + (P \times \$100,000) &= \rm \$1,000 - (P \times \$100,000) \\
+  \rm P \times {\$100,000}  &= \rm \$1,000
 \end{align}
 
 
@@ -623,16 +623,16 @@ Thus, the risk-neutral probability of default for year one (or for year two, sin
 Now that we have considered the expected cash flows and risk-neutral probability of default for each year, we may want consider what those values for both years combined. What are the overall expected cash flows and the overall risk-neutral $P$?
 
 \begin{align}
-  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -(\hspace{3pt}\$1,000 + \$1,000) + (P * {\$100,000}) \\
-  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}(\$1,000 + \$1,000) - (P * {\$100,000})
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -(\hspace{3pt}\$1,000 + \$1,000) + (P \times {\$100,000}) \\
+  \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}(\$1,000 + \$1,000) - (P \times {\$100,000})
   \end{align}
 
 In order to find the risk-neutral probability of default for both years combined, we need to equate the two expected cash flows:
 
 \label{eqn:twoPeriod}
 \begin{align}
-  \rm - (\$1,000 + \$1,000) + (P * \$100,000) &= \rm (\$1,000 + \$1,000) - (P * \$100,000) \\
-  \rm P * {\$100,000}  &= \rm \$2,000
+  \rm - (\$1,000 + \$1,000) + (P \times \$100,000) &= \rm (\$1,000 + \$1,000) - (P \times \$100,000) \\
+  \rm P \times {\$100,000}  &= \rm \$2,000
 \end{align}
 
 The risk-neutral probability of default for the two-year contract is 2\%. Note that the risk-neutral probability of default in the simple one-period CDS was 1\%. The only reason that this probability is different is because the portfolio manager's coupon payment in the two-period case is double that of the one-period case.
@@ -658,8 +658,8 @@ In the simple two-period CDS, the overall probability of default is 2\%. Since w
 In such a case, the expected cash flows for year one (where $P$ = 2\%) are as follows:
 
 \begin{align}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 2\%) * {\$100,000}) \\
-    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 2\%) * {\$100,000})
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 2\%) \times {\$100,000}) \\
+    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 2\%) \times {\$100,000})
 \end{align}
 
 Note that these expected cash flows are \emph{not} be equal. We will address this fact soon.
@@ -667,8 +667,8 @@ Note that these expected cash flows are \emph{not} be equal. We will address thi
 Now consider the expected cash flows for year two (where $P$ = 0\%):
 
 \begin{align}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 0\%) * {\$100,000}) \\
-    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 0\%) * {\$100,000}) 
+   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 0\%) \times {\$100,000}) \\
+    \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 0\%) \times {\$100,000}) 
 \end{align}
 
 Clearly, the expected cash flows for the portfolio manager and JPM during year one are not equal, and the expected cash flows for the portfolio manager and JPM during year two are not equal, either.
@@ -734,7 +734,7 @@ Although the number of periods has increased dramatically from two to twenty, th
 A simple 20-period CDS will then have the below mathematic expression:
 
 \begin{align}
-  \rm \hspace{3pt}- \frac{C}{(1 + int)} * 20 + [ P * V * (1 - RR) ]  &= \rm \hspace{3pt}\frac{C}{(1 + int)} * 20 - [ P * V * (1 - RR) ] 
+  \rm \hspace{3pt}- \frac{C}{(1 + int)} \times 20 + [ P \times V \times (1 - RR) ]  &= \rm \hspace{3pt}\frac{C}{(1 + int)} \times 20 - [ P \times V \times (1 - RR) ] 
 \end{align}
 
 where $int$ stands for constant interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. If we specify that $int = 1/3\%$, $V = 1,000,000$, $RR = 0.4$, and $C = 1000$, then we can easily calculate that $P = 10\% $ for the whole 20 periods.
@@ -742,7 +742,7 @@ where $int$ stands for constant interest rate, $V$ stands for notional value, $R
 If, however, the probability of default is not constant over different periods, then the above equation should be mathematically expressed as:
 
 \begin{align}
-  \rm \hspace{3pt}\frac{C}{(1 + int)} + [ P_i * V * (1 - RR) ]  &= \rm \hspace{3pt} \frac{C}{(1 + int)} - [ P_i * V * (1 - RR) ] 
+  \rm \hspace{3pt}\frac{C}{(1 + int)} + [ P_i \times V \times (1 - RR) ]  &= \rm \hspace{3pt} \frac{C}{(1 + int)} - [ P_i \times V \times (1 - RR) ] 
 \end{align}
 
 where $i$ denotes different periods from one to twenty. Since the overall probability of default should sum to 10\%, we can assign: $P_{1-4} = 0.00$, $P_{5-8} = 0.25$, $P_{9-12} = 0.50$, $P_{13-16} = 0.75$, $P_{17-20} = 1.00$. As can be easily proved, the expected cash flows are still equal to each other, as long as $\sum\limits_{i=1}^{20} P_i = 10\%$.
@@ -811,7 +811,7 @@ On the upper right, we choose \textbf{ISDA Standard Upfront Model} to calculate 
 
 \begin{equation}
  \begin{aligned}
-  {\rm Accrued = \frac{5}{360}*\frac{1}{100}*\$10000000 = \$1,389}
+  {\rm Accrued = \frac{5}{360} \times \frac{1}{100} \times \$10000000 = \$1,389}
     \end{aligned}
 \end{equation}
 
