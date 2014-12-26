@@ -446,9 +446,11 @@ Date & Mark-to-market & PnL (Citadel) & PnL (JPM) & Accrued Coupon \\
 
 As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
 
-%% INCLUDE ACCRUED SWAP IN NEXT SECTION!!!!!!
-
 Note that accrued coupon only becomes relevant when the contract does not initiate on a coupon payment date. In the real-world CDS market, there are four dates each year---instead of, in our example, the one date of January 1---when coupon payments can be made. These dates are known as \textbf{roll dates} and comprise the following: March 20, June 20, September 20, and December 20. As we proceed with our simple CDS example, however, we'll continue with the assumption that January 1 is the one and only "roll date."  
+
+There is also another related but different concept called accrued payment, which is paid by the protection buyer to the protection seller once a credit event happens. This payment is meant for the protection received between the last coupon date and the event date, since credit events might well not happen on a coupon date.
+
+Both these ``accrued'' amounts serve as necessary adjustment to the payment of CDS transactions.
 
 \subsubsection{Non-standard Coupon and Big Bang Protocol}
 \label{sec:nonStandardCoupon}
