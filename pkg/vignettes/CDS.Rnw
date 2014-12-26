@@ -680,6 +680,12 @@ However, note that in year one, JPM's expected cash flows are \$1,000 greater th
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
 
+Now, let us give an example of a CDS which assumes a constant interest rate. Suppose the annual continuous risk-free rate is $r = 0.1$ (such that the annual effective rate is $e^{0.1}$). For simplicity purpose, further assume that the probable credit event can only take place at the end of the second year. Then redoing the two period case described by equation (50), we end up having:
+
+$$-\$1000 - \frac{\$ 1000}{e^{0.1}} + \frac{P \times 100000}{e^{2\times 0.1}} = \$1000 + \frac{\$ 1000}{e^{0.1}} - \frac{P \times 100000}{e^{2\times 0.1}}$$
+
+Solving for $P$, we can get a risk-neutral $P = 0.0232$.
+
 %% Need to introduce a two-period example with a non-zero (but constant) interest rate.
 
 %% Then introduce a two-period example with a non-zero and non-constant interest rate.
