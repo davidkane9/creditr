@@ -865,10 +865,22 @@ where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV0
 
 \subsubsection{IR DV01}
 \label{sec:IRDV01}
-\textbf{IR DV01} stands for "Interest Rate Dollar Value 01." It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
+\textbf{IR DV01} stands for "Interest Rate Dollar Value 01." It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. Formula given below.
+
+\begin{align*}
+  \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
+\end{align*}
+
+A multiple of $0.0001$ appears in the formula, because we are calculating the change of upfront payment with a 1 bp increase in the interest rate.
 
 \subsubsection{Rec Risk (1\%)}
-\textbf{Rec Risk (1\%)} stands for "Recovery Risk 1\%." It measures the change of upfront payment if the recovery risk increases by 1\%.
+\textbf{Rec Risk (1\%)} stands for "Recovery Risk 1\%." It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
+
+\begin{align*}
+  \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
+\end{align*}
+
+A multiple of $0.01$ appears in the formula, because we are calculating the change of upfront payment with a $1\%$ increase in the recovery rate.
 
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
