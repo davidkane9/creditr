@@ -809,7 +809,7 @@ Finally, let's focus on different dates. On the left, \textbf{Trade Date} is the
 \centering
 \includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the ``Calculation'' section cropped from Figure 2 It shows calculation results from information in Deal Section. There are several familiar terms, such as \textbf{price}, \textbf{principle}, and \textbf{cash amount}.}
+This figure is the ``Calculation'' section cropped from Figure 2. It shows calculation results from information in Deal Section, such as \textbf{price}, \textbf{principle}, and \textbf{cash amount}. There are also measurements that represent the change of principal if one parameter change by a small amount, such as \textbf{spread DV01}, \textbf{IR DV01}, \textbf{Rec Risk 1\%}. ``Calculator'' section is usually the most important section traders look at, because it contains the calculation results and risk measurements.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
