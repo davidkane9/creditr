@@ -152,7 +152,7 @@ Unfortunately, the above insurance purchase---although relatively simple---made 
 
 While the above assumptions represent assumptions that we will maintain throughout the paper, the following assumptions are one that this paper will, in fact, account for in parallel situations regarding CDS. We list them below:
 
-1. The insurance agreement assumed that any damage would merit the insurance payment of \$100,000. However, what if, for example, the toaster caught on fire and damaged only the toaster? What types of \textbf{events} does the insurance company define as "damage"? These questions highlight the importance of a detailed insurance contract that specifies these terms.
+1. The insurance agreement assumed that any damage would merit the insurance payment of \$100,000. However, what if, for example, the toaster caught on fire and damaged only the toaster? What types of \textbf{events} does the insurance company define as ``damage''? These questions highlight the importance of a detailed insurance contract that specifies these terms.
 
 2. The agreement considered only the following two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes we need to account for. For example, what if only half of the house was damaged? In that case, it would not make sense for the insurance company to pay \$100,000; instead, the company should compensate only for the damaged section of the house by paying \$50,000. 
 
@@ -165,12 +165,12 @@ While the above assumptions represent assumptions that we will maintain througho
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under "Bond Ratings," we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under ``Bond Ratings,'' we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see "Announcement Date"). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company ("name"), industry, seniority ("rank"), the value of the coupon payments ("coupon"), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
+\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see ``Announcement Date''). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company (``name''), industry, seniority (``rank''), the value of the coupon payments (``coupon''), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
 \label{fig:AlcoaBond}
 \end{figure}
 
@@ -790,17 +790,17 @@ The figure below shows the details of an actual CDS contract on Alcoa priced on 
 \label{deal}
 \end{figure}
 
-In Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code, and a "preferred reference obligation," which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input "014B98" is the six-digit RED Pair Code for "Alcoa". The label \textbf{Debt type}, marked as "Senior", refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. The label \textbf{Restructuring} refers to which term of debt restructuring we agree on: For example, U.S. traders usually don't accept debt restructuring as CDS payment, and debt restructuring is often considered as bankcrupcy. Therefore, when trading CDS in U.S., we usually specify Restructuring to "NR," which stands for "No Restructuring." In Europe, however, traders usually consider certain types of debt restructuring acceptable and different from bankcrupcy, so European traders usually specify Restructuring to "MMR" which stands for Modified "Modified Restructuring". 
+In Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code, and a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input ``014B98'' is the six-digit RED Pair Code for ``Alcoa''. The label \textbf{Debt type}, marked as ``Senior,'' refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. The label \textbf{Restructuring} refers to which term of debt restructuring we agree on: For example, U.S. traders usually do not accept debt restructuring as CDS payment, and debt restructuring is often considered as bankcrupcy. Therefore, when trading CDS in U.S., we usually specify Restructuring to ``NR,'' which stands for ``No Restructuring.'' In Europe, however, traders usually consider certain types of debt restructuring acceptable and different from bankcrupcy, so European traders usually specify Restructuring to ``MMR'' which stands for Modified ``Modified Restructuring''. 
 
 On upper left, we see the CDS contract type is \textbf{SNAC} (\textbf{Standard North American Contract}), which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
-On bottom right, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. "5M". The second slot is \textbf{maturity date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
+On bottom right, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. ``5M''. The second slot is \textbf{maturity date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
 
 On the right side, \textbf{Trd Sprd (bp)} is just \textbf{spread}. Here the spread is equal to 160 basis points, but notice that spread can also be denoted in percentage. \textbf{Coupon (bp)} refers to \textbf{coupon} in basis points, which is equal to 100 basis points here. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. 
 
-On the bottom left, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} ("Day Cnt") denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
+On the bottom left, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} (``Day Cnt'') denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
 
-Finally, let's focus on different dates. On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} ("1st Accr Start") is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} ("1st Coupon") is the date when first coupon payment are paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} ("Pen Coupon") is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
+Finally, let's focus on different dates. On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment are paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
 
 \subsection{Calculator Section}
 \label{Calculator section}
@@ -825,7 +825,7 @@ Then, let's focus on the labels on the bottom right: Spread DV01, IR DV01, Recov
 \subsubsection{PV01}
 \label{sec:PV01}
 
-\textbf{PV01} stands for "Present Value 01", which is the present value of a stream of 1 basis points of payments. We can also use the formula below to calculate the principal amount (clean upfront payment) with PV01:
+\textbf{PV01} stands for ``Present Value 01'', which is the present value of a stream of 1 basis points of payments. We can also use the formula below to calculate the principal amount (clean upfront payment) with PV01:
 
 \begin{equation}
  \begin{aligned}
@@ -851,7 +851,7 @@ We will explain \textbf{discount} and \textbf{survival probability} later in Mar
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
 
-\textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for "Spread Dollar Value 01." It measures the change of upfront payment if spread increases by 1, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
+\textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for ``Spread Dollar Value 01.'' It measures the change of upfront payment if spread increases by 1, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
 
 DV01 should always be positive for a protection buyer since she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
 
@@ -865,7 +865,7 @@ where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV0
 
 \subsubsection{IR DV01}
 \label{sec:IRDV01}
-\textbf{IR DV01} stands for "Interest Rate Dollar Value 01." It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. Formula given below.
+\textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. Formula given below.
 
 \begin{align*}
   \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
@@ -874,7 +874,7 @@ where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV0
 A multiple of $0.0001$ appears in the formula, because we are calculating the change of upfront payment with a 1 bp increase in the interest rate.
 
 \subsubsection{Rec Risk (1\%)}
-\textbf{Rec Risk (1\%)} stands for "Recovery Risk 1\%." It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
+\textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
 
 \begin{align*}
   \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
@@ -911,7 +911,7 @@ This figure is the Market section cropped from Figure 2. It contains information
 \subsubsection{Default Probability}
 \label{sec:DefaultProb}
 
-On the screenshot, the "prob" cell refers to \textbf{Default Probability}, which is the estimated probability of default for each maturity by a given time. It can be approximated by
+On the screenshot, the ``prob'' label refers to \textbf{Default Probability}, which is the estimated probability of default for each maturity by a given time. It can be approximated by
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
@@ -921,7 +921,7 @@ where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery ra
 \subsubsection{In the Case of a Default}
 \label{sec:SettlementType}
 
-When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the "Big Bang" protocol in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
 Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
 
@@ -965,7 +965,7 @@ In ``Calculation Results,'' \textbf{Cash Settlement} is the same as \textbf{Cash
 
 \subsection{Yield Curve Section and Discount Factor}
 
-In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day} (this will be further explained later in "Curve Date" section), and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa.
+In the actual CDS world we would have to discount each of the 15 bp payments by the interest rates that apply for the same maturity. This is known as the discount factor. In the risk-neutral valuation framework, the risk free curve is the discount factor used in the calculation of the present value of CDS. In calculating the price of a CDS, we use the swap curve of the \textit{previous day} (this will be further explained later in ``Curve Date'' section), and use the rates for the corresponding currency. So for CDS denominated in USD, we will use the US treasury rates, and for those in GBP we will use UK Government bond yields, and so on. If we look at Figure \ref{fig:AlcoaRates}, we can see the yields for different treasury bonds at 4pm EST on June 23, 2014, which will be used for pricing the CDS of Alcoa.
 
 \newpage %% have to start a new page so that there won't be awkward blank
 \begin{figure}[H]
@@ -1005,7 +1005,7 @@ In this section, we will demonstrate the use of the \textbf{CDS} package in deta
 \subsection{ISDA Standard Model}
 \label{sec:ISDAStMod}
 
-The ISDA has created the "Standard Model," which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
+The ISDA has created the ``Standard Model,'' which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
 
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
@@ -1049,7 +1049,7 @@ cds1 <- CDS(name     = "Alcoa",
             spread   = 160)
 @
 
-Here the user enters the CDS contract with "Alcoa" as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
+Here the user enters the CDS contract with ``Alcoa'' as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
 
 <<>>=
 library(CDS)
@@ -1070,7 +1070,7 @@ A user can call \texttt{summary} on a \texttt{cds1} to view essential informatio
 summary(cds1)
 @
 
-In the summary output, it shows that the type of the CDS contract is "SNAC". This means that the CDS contract follows the Standard North American Corporate (SNAC) CDS Contract specifications.\footnote{See \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard\%20CDS\%20Contract\%20Specification.pdf} for details.}  \texttt{Date} refers to the trade date which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is "Alcoa". The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'', ``JPY'' and ``EUR''. \texttt{End Date} is the same as maturity and is the date on which the CDS contract expires. Recall from previous sections that \texttt{End Date} can only fall on one of the four standard dates. In our example, the \texttt{End Date} is ``2019-09-20''. \texttt{spread} shows that the quoted spread for the contract is 160 bps and the coupon is 100 bps as shown in the \texttt{Coupon} field. \texttt{Upfront} indicates the dirty upfront payment in dollars or the cash settlement amount which, in this example, is \$286,069.
+In the summary output, it shows that the type of the CDS contract is ``SNAC''. This means that the CDS contract follows the Standard North American Corporate (SNAC) CDS Contract specifications.\footnote{See \url{http://www.cdsmodel.com/assets/cds-model/docs/Standard\%20CDS\%20Contract\%20Specification.pdf} for details.}  \texttt{Date} refers to the trade date which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is ``Alcoa''. The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'', ``JPY'' and ``EUR''. \texttt{End Date} is the same as maturity and is the date on which the CDS contract expires. Recall from previous sections that \texttt{End Date} can only fall on one of the four standard dates. In our example, the \texttt{End Date} is ``2019-09-20''. \texttt{spread} shows that the quoted spread for the contract is 160 bps and the coupon is 100 bps as shown in the \texttt{Coupon} field. \texttt{Upfront} indicates the dirty upfront payment in dollars or the cash settlement amount which, in this example, is \$286,069.
 
 The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. Spread DV01 is the increase in the upfront value when the spread increase by one basis point. In \texttt{cds1}, the Spread DV01 is \$4,667. IR DV01 is the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point which, in our example, is \$-75.64. Rec Risk (1 pct) is the increase in the upfront value when the recovery rate increase by one percentage point. In \texttt{cds1}, the Rec Risk (1 pct) is \$-330.19.
 
