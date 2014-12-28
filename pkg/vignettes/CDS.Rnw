@@ -829,7 +829,7 @@ Then, let's focus on the labels on the bottom right: Spread DV01, IR DV01, Recov
 
 \begin{equation}
  \begin{aligned}
-   (Coupon - Spread)*(PV01)*(Notional)
+  Principal = |Coupon - Spread|*PV01*Notional
     \end{aligned}
 \end{equation}
 
