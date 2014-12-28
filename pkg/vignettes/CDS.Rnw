@@ -829,7 +829,7 @@ Then, let's focus on the labels on the bottom right: Spread DV01, IR DV01, Recov
 
 \begin{equation}
  \begin{aligned}
-  Principal = |Coupon - Spread|*PV01*Notional
+  Principal = |Coupon - Spread| \times PV01 \times Notional
     \end{aligned}
 \end{equation}
 
@@ -856,7 +856,7 @@ We will explain \textbf{discount} and \textbf{survival probability} later in Mar
 DV01 should always be positive for a protection buyer since she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
 
 \begin{align*}
-  PV &= (S - C) * PV01 \\
+  PV &= (S - C) \times PV01 \\
   DV01 &= \frac{\partial PV}{\partial S} \\
   &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
 \end{align*}
@@ -888,7 +888,7 @@ A multiple of $0.01$ appears in the formula, because we are calculating the chan
 Default Exposure refers to the expoure to default of a CDS contract. It can be calculated with Recovery Rate, Notional Amount, and Principal as below:
 
 \begin{equation}
-  \text{Default Exposure} = (1 - \text{Recovery Rate})*\text{Notional}
+  \text{Default Exposure} = (1 - \text{Recovery Rate}) \times \text{Notional}
   - \text{Principal}. \nonumber
 \end{equation} 
 
@@ -924,7 +924,7 @@ When a default does occur, the protection seller would owe the protection buyer 
 
 Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
 
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: (notional amount)*(1-recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: $(notional amount) \times (1-recovery rate)$. Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 
 %% the below introduction is not relevant to what we are discussing in Bloomberg and Markit, so I commented it out (Miller Zhu)
 %\subsubsection{Counterparty Risk of Default}
@@ -989,7 +989,7 @@ Together, the discount factor and the survival probability are known as the \tex
 
 \begin{equation}
  \begin{aligned}
-   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
+   \displaystyle\sum_{i=1}^{n}|Coupon - Spread| \times (1-q(t)) \times D(0, t(i))
     \end{aligned}
 \end{equation}
 
