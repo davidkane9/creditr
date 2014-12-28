@@ -446,7 +446,7 @@ Date & Mark-to-market & PnL (Citadel) & PnL (JPM) & Accrued Coupon \\
 
 As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
 
-Note that accrued coupon only becomes relevant when the contract does not initiate on a coupon payment date. In the real-world CDS market, there are four dates each year---instead of, in our example, the one date of January 1---when coupon payments can be made. These dates are known as \textbf{roll dates} and comprise the following: March 20, June 20, September 20, and December 20. As we proceed with our simple CDS example, however, we'll continue with the assumption that January 1 is the one and only "roll date."  
+Note that accrued coupon only becomes relevant when the contract does not initiate on a coupon payment date. In the real-world CDS market, there are four dates each year---instead of, in our example, the one date of January 1---when coupon payments can be made. These dates are known as \textbf{roll dates} and comprise the following: March 20, June 20, September 20, and December 20. As we proceed with our simple CDS example, however, we'll continue with the assumption that January 1 is the one and only ``roll date.''  
 
 There is also another related but different concept called accrued payment, which is paid by the protection buyer to the protection seller once a credit event happens. This payment is meant for the protection received between the last coupon date and the event date, since credit events might well not happen on a coupon date.
 
@@ -899,7 +899,7 @@ Default Exposure refers to the expoure to default of a CDS contract. It can be c
 \centering
 \includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-This figure is the Market section cropped from Figure 2. It contains much information about the interest rate curve we use to price CDS. We will discuss Curve Date, points upfront, default probability, and term structure. In addition, we will introduce the concept of hazard rates, which is not on the screenshot.
+This figure is the Market section cropped from Figure 2. It contains information such as Default Probability and Term Structure. Other important concepts that can be obtained from Market Section, though not directly displayed on screen, will also be introduced here, such as Hazard Rates and Survival Probability.
 }
 
 \label{AlcoaIncCDSMarket}
@@ -908,13 +908,14 @@ This figure is the Market section cropped from Figure 2. It contains much inform
 \subsubsection{Curve Date}
 \textbf{Curve Date} is the date of interest rate we use to price CDS. As we recall, the trade date of this CDS trading is Jun. 24, 2014, and we see the Curve Date is also Jun. 24, 2014. However, this does not mean that we actually use the interest rates on Jun. 24, 2014; we are actually using interest rates on Jun. 23, 2014. For CDS pricing, we use the interest rates on the day before the trade date. And if the day before trade date is not a business day, we adjust to the nearest business day before. Therefore, if the trade date is Jun. 24, 2014, then we will use interest rates on Jun. 23, 2014 (Monday). If the trade date is Jun. 23, 2014, then we will use interest rates on Jun. 20, 2014 (Friday), since Jun. 22 is a Sunday. In Bloomberg Terminal, this adjustment is already taken into account, so the Curve Date on screen shows Jun. 24 while we are actually using interest rates on Jun. 23.
 \\
-\subsubsection{Default Probability or Probability of Default (PD)}
+\subsubsection{Default Probability}
 \label{sec:DefaultProb}
 
 On the screenshot, the "prob" cell refers to \textbf{Default Probability}, which is the estimated probability of default for each maturity by a given time. It can be approximated by
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
+
 where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the event of default, especially different types of settlements.
 
 \subsubsection{In the Case of a Default}
@@ -924,16 +925,7 @@ When a default does occur, the protection seller would owe the protection buyer 
 
 Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
 
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: $(notional amount) \times (1-recovery rate)$. Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
-
-%% the below introduction is not relevant to what we are discussing in Bloomberg and Markit, so I commented it out (Miller Zhu)
-%\subsubsection{Counterparty Risk of Default}
-%\label{sec:CounterpartyRisk}
-
-%When a counterparty sells protection on a bond, there is always the probability that, in case of a default, the counterparty may not be able to pay the protection payment to the protection buyer. Or, conversely, perhaps our portfolio manager is unable to make her periodic payments. The risk of either of these eventualities taking place is known as \textbf{counterparty risk}.
-
-
-Now let's go back to the screenshot and study another important element in the Market section: \textbf{Term Structure}.
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 
 \subsubsection{Term Structure}
 \begin{figure}[H]
@@ -943,7 +935,7 @@ Now let's go back to the screenshot and study another important element in the M
 \label{fig:CDScurveAlcoa}
 \end{figure} 
 
-A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve. We will not go into the details of how  these curves are derived but simply note that they are used in calculating the present value of the two legs and the upfront payment. With a CDS term structure, we can also calculate hazard rates and risky discount factor.
+A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve.
 
 \subsubsection{Hazard Rates and Survival Probability}
 
@@ -962,14 +954,14 @@ S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \centering
 \includegraphics[width=6.3in, height=4.8in]{images/MarkitCDSAlcoa.jpg}
 \caption{
-This is a screenshot of the Markit CDS Calculator which is available online. It calculates prices for the same CDS trading as the Bloomberg screenshot above.  We will not go into each section on the screenshot and explain every details, but we will notice some key terminology differences and distinctive features of Markit. In addition, since Markit Calculator shows us explicitly the swap curves, so we will introduce the concept of Discount Factor and Risky Discount Factor. In the end, we will also mention the concept of CDS indices.
+This is a screenshot of the online Markit CDS Calculator. It calculates prices for the same CDS trading as the Bloomberg screenshot above.  In this section, we will notice some key terminology differences between Markit and Bloomberg. We will also introduce the Discount Factor, Risky Discount Factor, and CDS indices.
 }
 \end{figure}
 
 \subsubsection{Terminology Differences}
-First, notice that in the upper-left corner, we have a slot called "Trade Level," which means the same as \textbf{spread}. Also notice that unlike Bloomberg, where spread is usually presented in basis points, here in Markit we can actually select whether to present spread in basis points ("bp") or percentages. Then in section "CDS Contract Terms," "Running Cpn" just means \textbf{coupon}. Also, in section "Advanced Terms," there is an e slot called "Holiday Code", where we can select "none" or "JPY" (This is because the Japanese CDS trading follows a different rules of dates, and the main difference is the trading conventions on holidays).
+On the upper left, \textbf{Trade Level} means the same as \textbf{spread}. We can present spread in either basis points (``bp'') or percentages. In ``CDS Contract Terms,'' \textbf{Running Cpn} just means \textbf{coupon}. In ``Advanced Terms,'' \textbf{Holiday Code} refers to the holiday convention we are using. As we recall, CDS trading in JPY follows a different holiday convention than in other currencies. Therefore, we can select either ``none'' or ``JPY'' for ``Holiday Code.''
 
-Second, let's move to section "Calculation Results," where several terms are different from Bloomberg's: "Cash Settlement" is the same as \textbf{Cash Amount} in Bloomberg, "Clean Price" is same as \textbf{Price}, the "Accured Amount" in Markit and Bloomberg has different signs (one is positive while the other negative), and "Credit DV01" is same as \textbf{Spread DV01}.
+In ``Calculation Results,'' \textbf{Cash Settlement} is the same as \textbf{Cash Amount} in Bloomberg, \textbf{Clean Price} is same as \textbf{Price}, the \textbf{Accured Amount} in Markit and Bloomberg has different signs (one is positive while the other negative), and \textbf{Credit DV01} is same as \textbf{Spread DV01}.
 
 \subsection{Yield Curve Section and Discount Factor}
 
@@ -993,64 +985,16 @@ Together, the discount factor and the survival probability are known as the \tex
     \end{aligned}
 \end{equation}
 
-%% the below equation has no difference from the above equation??? So I commented it out (Miller Zhu)
-%The above equation does not account for the accrued amount that a protection buyer would not have to pay. If we account for that, the equation would be:
-
-%\begin{equation}
-% \begin{aligned}
-%   \displaystyle\sum_{i=1}^{n}(Coupon - Spread)*(1-q(t)) D(0, t(i))
-%    \end{aligned}
-%\end{equation}
-
 \subsection{CDS Indices}
 \label{sec:CDSIndices}
 
-Holding a disproportionate number of Alcoa bonds in a portfolio is naturally a risky idea. It is akin to putting all your eggs in one basket, as the saying goes. In the real world, most successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
+Holding a disproportionate number of Alcoa bonds in a portfolio is naturally a risky idea. Successful portfolio managers prefer to distribute their risk by holding a portfolio with hundreds, if not thousands, of different positions. 
 
 Instead of holding Alcoa bonds with a face value of \$10 million, say our portfolio manager decides to take on less risk by holding bonds of 100 different IG companies. This is known as \textbf{diversification}. Although this strategy reduces her exposure to the credit risk of any particular company, she hasn't reduced her exposure to factors that might affect a wide variety of assets simulatenously, such as interest rate risk or political risk. Fortunately, in the modern financial world, she has the option of purchasing multi-name CDS, or CDS indices, which contain a basket of CDS. The two most common indices are CDX and iTraxx, which represent North American CDS and European CDS, respectively.
  
 Moreover, if our portfolio manager has a high-risk appetite and wants to earn a higher return for her investors, she may invest a portion of her portfolio in bonds that have a lower credit rating but provide a higher yield. She may hedge this position by investing in a tranche of CDS indices such as the North American High Yield CDS index, which specifially offers protection on high yield bonds of 100 different companies. CDX and iTraxx are broken into smaller CDS based on sectors such as automobiles or consumer goods.
 
 These index products trade in high volumes and are very liquid. In this vignette, we only discuss the pricing mechanisms of single-name CDS and do not delve into the more complex world of multi-name CDS. However, it is important to understand their relevance as most CDS contracts involve companies in these indices.
-
-
-
-%% What is an auction?
-%% Explain MM and XR
-
-%% I am not so sure. I think that the standard terms are 
-%% things like XR and MM, strict definitions for credit events, auction
-%% proceedures and so on. I think that the Standard Model just refers to the
-%% math. But perhaps this is too confusing a distinction (and I might be 
-%% wrong), so leave it for the next version.
-
-%% Cite the Markit webpage. Leave nothing out.
-
-%% Start with a bond portfolio manager who owns a specific bond,
-%% something that is a reference obligation for a member of CDX IG. 
-%% That PM is concerned about the credit worthiness of the company,
-%% at least over the next year or two. But selling the bond is too
-%% expensive or annoying. So, he can buy some CDS protection on 
-%% the bond. And so on. Describe all the cash flows, both from his
-%% point of view, and the point of view of the hedge fund that sells
-%% the protection. Better yet, have the exercise occur in the past,
-%% but use a bond that actually defaulted. Then we can talk about the
-%% auction, recovery rate and so on.
-
-
-
-%Moreover we also have to discount each of the contingent payments with a discount factor, which is the interest rate curve explained earlier. Therefore, the present value of the premium leg can be calculated using the formula:
-
-%% \begin{displaymath}
-%% PV(Premium) =  C*\sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
-%% \end{displaymath}
-
-%The protection leg is the present value of the expected contingent protection payment of (1-recovery rate) from the protection seller to the protection buyer. We will weight this contingent protection payment in each time period with the \textbf{default probability}, which is essentially the difference in the survival probabities between two time periods. Therefore, the present value of the protection leg is:
-
-%% \begin{displaymath}
-%% PV(Protection) =  (1-R)*\int_0^T Df(t)dQ(t)\, \nonumber\\
-%% \end{displaymath}
-
 
 \newpage
 \section{Using the CDS Package}
