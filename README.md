@@ -19,7 +19,7 @@ Skylar Smith
 skylar.smith at williams.edu
 
 Zijie Zhu
-zijie.miller.zhu at gmail.com
+zijie.zhu at williams.edu
 
 About
 --------------------------------------------------------
