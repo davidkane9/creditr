@@ -931,12 +931,6 @@ Should a bond (that is the reference obligation in a CDS agreement) default, the
 The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 
 \subsubsection{Term Structure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=4in, height=3in]{images/CDScurve.png}
-\caption{Term Structure of CDS rates for Alcoa on June 24, 2014}
-\label{fig:CDScurveAlcoa}
-\end{figure} 
 
 A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve.
 
