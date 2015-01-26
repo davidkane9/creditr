@@ -14,6 +14,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
+\usepackage{tabularx}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,7 +172,7 @@ Instead of buying insurance against property damage, consider buying insurance a
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see ``Announcement Date''). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company (``name''), industry, seniority (``rank''), the value of the coupon payments (``coupon''), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Sections \ref{sec:RiskBonds} and \ref{sec:BondPricing}.)}
+\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see ``Announcement Date''). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company (``name''), industry, seniority (``rank''), the value of the coupon payments (``coupon''), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Section \ref{sec:BloombergMarkit}.)}
 \label{fig:AlcoaBond}
 \end{figure}
 
@@ -273,7 +275,7 @@ Similar to the property insurance example, we made several assumptions in our si
 
 2. Also like the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were equal. This could very well not be the case if, for example, JPM is selling protection in many CDS agreements and needs or wants to make a profit.
 
-3. In the simple one-period CDS, we assumed that the protection leg would only be paid out in the case of default and bankruptcy. However, depending on the particular CDS, the protection leg could be paid out even if the reference entity defaults and doesn't go bankrupt. In fact, there are several scenarios that can be considered \textbf{credit events}---occurences that merit the payout of the protection leg in a CDS. Besides default and bankruptcy, common credit events include failure to return money to bondholders within a certain amount of time, a credit rating downgrade (explained in Section \ref{sec:RiskBonds}) and the confiscation of assets, among other events.
+3. In the simple one-period CDS, we assumed that the protection leg would only be paid out in the case of default and bankruptcy. However, depending on the particular CDS, the protection leg could be paid out even if the reference entity defaults and doesn't go bankrupt. In fact, there are several scenarios that can be considered \textbf{credit events}---occurences that merit the payout of the protection leg in a CDS. Besides default and bankruptcy, common credit events include failure to return money to bondholders within a certain amount of time, a credit rating downgrade (explained in Section \ref{sec:BloombergMarkit}) and the confiscation of assets, among other events.
 
 Because we made many more assumptions and failed to address many aspects of a CDS, we have split up the following simple one-period CDs complications into five separate sections that address interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment. 
 
@@ -768,16 +770,17 @@ $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_
 \newpage
 
 \section{Bloomberg and Markit}
+\label{sec:BloombergMarkit}
 
 In this section, we will explain CDS contract with Bloomberg and Markit CDS Calculator, the two frequently used CDS calculator.
 
 \subsection{Bloomberg Overview}
-The figure below shows the details of an actual CDS contract on Alcoa priced on June 24, 2014.
+\label{subsec:Bloomberg}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{This is a Bloomberg screenshot that shows a CDS transaction for Alcoa. There are three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section contains the details of the CDS trade, such as trade date, entity, spread, coupon, and maturity, etc. The Calculator section shows the calculation results of the CDS contract, such as price, principal, ConUpfront, and spread DV01, etc. The Market section shows CDS term structure and default probability.}
+\caption{This is a Bloomberg screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The sreenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date}, \textbf{entity}, \textbf{spread}, \textbf{coupon}, and \textbf{maturity}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The calculation results include \textbf{price}, \textbf{principal amount}, \textbf{Cash Amount}, \textbf{spread DV01}, \textbf{IR DV01}, \textbf{Rec Risk 1\%}, \textbf{Default Exposure}, etc. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{curve date}, \textbf{swap curve}, \textbf{recovery rate}, \textbf{points upfront}, \textbf{default probability} and \textbf{CDS term structure}.}
 \label{AlcoaIncCDS}
 \end{figure}
 
