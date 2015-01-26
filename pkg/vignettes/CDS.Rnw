@@ -944,6 +944,8 @@ The probability of a company surviving till the end of period \textit{n} is the 
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \end{displaymath}
 
+\newpage
+
 \subsection{Markit CDS Calculator Overview}
 \label{Markit}
 
@@ -951,7 +953,7 @@ S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \centering
 \includegraphics[width=6.3in, height=4.8in]{images/MarkitCDSAlcoa.jpg}
 \caption{
-This is a screenshot of the online Markit CDS Calculator. It calculates prices for the same CDS trading as the Bloomberg screenshot above.  In this section, we will notice some key terminology differences between Markit and Bloomberg. We will also introduce the Discount Factor, Risky Discount Factor, and CDS indices.
+This is a screenshot of the online Markit CDS Calculator. It shows the same trade as the above Bloomberg screenshot: a purhcase of senior debt protection of Alcoa Inc with a tenor of five years on Jun. 24, 2014. The layout is divided into four sections: Contract section (left), Credit Curve section (center up), Calculation section (center down), and Yield Curve section (right). In Contract section, the fields are similar to those in Deal section in Bloomberg, except that we have to manually set holiday code (in Bloomberg this is automatically set according to users' input). Credit Curve section shows the term structure in a table, while in Bloomberg term structure is shown in a graph. Notice that we have the advantage of viewing default probabilities at different maturities in Markit, but advantage of viewing different spread levels in Bloomberg. our contract choice is highlighted in blue. The Calculation section is very similar to that in Bloomberg, with small differences explained below. The Yield Curve section shows the LIBOR rates (discount factor) we use, and notice that curve date is adjusted here.
 }
 \end{figure}
 
@@ -968,7 +970,7 @@ In the actual CDS world we would have to discount each of the 15 bp payments by 
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.4in, height=5in]{images/YieldCurve.png}
-\caption{This figure is the Yield Curve section of the Markit CDS Calculator. It shows the risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency}
+\caption{This figure is the Yield Curve section of the Markit CDS Calculator. It shows the risk-free rates with their day count conventions on June 23, 2014 at 4pm EST. These are the rates that will be used to price the CDS of Alcoa on June 24, 2014. \textbf{MM DCC}, \textbf{Floating DCC} and \textbf{Swap DCC} refer to the Day Count Conventions being used to calculate the different kinds of rates. A \textbf{Swap Interval} of `6M' implies that interest is paid every six months or semi-annually. These conventions are different for each currency.}
 \label{fig:AlcoaRates}
 \end{figure} 
 
