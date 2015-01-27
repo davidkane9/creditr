@@ -664,7 +664,7 @@ In such a case, the expected cash flows for year one (where $P$ = 2\%) are as fo
     \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 2\%) \times {\$100,000})
 \end{align}
 
-Note that these expected cash flows are \emph{not} be equal. We will address this fact soon.
+Note that these expected cash flows are \emph{not} equal. We will address this fact soon.
 
 Now consider the expected cash flows for year two (where $P$ = 0\%):
 
@@ -795,13 +795,13 @@ In this section, we will explain CDS contract with Bloomberg and Markit CDS Calc
 
 In Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code, and a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input ``014B98'' is the six-digit RED Pair Code for ``Alcoa''. The label \textbf{Debt type}, marked as ``Senior,'' refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. The label \textbf{Restructuring} refers to which term of debt restructuring we agree on: For example, U.S. traders usually do not accept debt restructuring as CDS payment, and debt restructuring is often considered as bankcrupcy. Therefore, when trading CDS in U.S., we usually specify Restructuring to ``NR,'' which stands for ``No Restructuring.'' In Europe, however, traders usually consider certain types of debt restructuring acceptable and different from bankcrupcy, so European traders usually specify Restructuring to ``MMR'' which stands for Modified ``Modified Restructuring''. 
 
-On upperleft, the CDS contract type is \textbf{SNAC} (\textbf{Standard North American Contract}), which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
+At the top left, we see the CDS contract type is \textbf{SNAC} (\textbf{Standard North American Contract}), which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
-On bottomright, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. ``5M''. The second slot is \textbf{maturity date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
+At the lower right, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. ``5M''. The second slot is \textbf{maturity date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
 
 On the right side, \textbf{Trd Sprd (bp)} is just \textbf{spread}. Here the spread is equal to 160 basis points, but notice that spread can also be denoted in percentage. \textbf{Coupon (bp)} refers to \textbf{coupon} in basis points, which is equal to 100 basis points here. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. 
 
-On bottomleft, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} (``Day Cnt'') denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
+At the lower left, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} (``Day Cnt'') denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
 
 Finally, let's focus on the dates. On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment are paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
 
@@ -815,7 +815,7 @@ This figure is the Calculation section cropped from Figure 2. We can see here th
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-On upperright, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued interest} can be calculated using the equation below:
+At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
@@ -823,7 +823,7 @@ On upperright, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS p
     \end{aligned}
 \end{equation}
 
-Then, let's focus on the labels on bottomright: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
+Then, let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
 
 \subsubsection{PV01}
 \label{sec:PV01}
@@ -913,11 +913,16 @@ This figure is the ``Market'' section cropped from Figure 2. Market section is a
 \subsubsection{Default Probability}
 \label{sec:DefaultProb}
 
-On the screenshot, the ``prob'' label refers to \textbf{default probability}, which is the estimated probability of default for each maturity by a given time. It can be approximated by
+On the screenshot, the ``prob'' label refers to \textbf{default probability}, which is the estimated probability of default for each maturity by a given time. If we assume that 
+
+
+It can be approximated by
 
 \begin{equation}
   \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
 \end{equation}
+
+
 
 where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the event of default, especially different types of settlements.
 
