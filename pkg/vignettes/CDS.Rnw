@@ -766,7 +766,14 @@ FOr conclusion, we point out that this buyer-seller equality has direct applicat
 
 $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
 
+\subsubsection{In the Case of a Default}
+\label{sec:SettlementType}
 
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
+
+Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
+
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 \newpage
 
 \section{Bloomberg and Markit}
@@ -797,14 +804,15 @@ In Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of th
 
 At the top left, we see the CDS contract type is \textbf{SNAC} (\textbf{Standard North American Contract}), which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
-At the lower right, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. ``5M''. The second slot is \textbf{maturity date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
+At the lower right, we see \textbf{Maturity} has two slots. The first slot is the \textbf{tenor}, or length, of the contract. This means that the buyer is protected for 5 years in this case. Tenor can also be denoted in months, e.g. ``5M''. The second slot is \textbf{Maturity Date}, or \textbf{end date}, of the contract. This refers to when the protection is over. 
 
-On the right side, \textbf{Trd Sprd (bp)} is just \textbf{spread}. Here the spread is equal to 160 basis points, but notice that spread can also be denoted in percentage. \textbf{Coupon (bp)} refers to \textbf{coupon} in basis points, which is equal to 100 basis points here. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years. 
+On the right side, \textbf{Trd Sprd (bp)} is just \textbf{spread}. Recall that spread is the ``coupon'' that we \textit{trade} on before the Big Bang Protocol. Here the spread is equal to 160 basis points, but notice that spread can also be denoted in percentage. \textbf{Coupon (bp)} refers to \textbf{coupon} in basis points, which is equal to 100 basis points here. The protection buyer will have to make an upfront payment to account for the extra 60 basis points paid quarterly (15 bp per quarter) over a period of five years.
 
 At the lower left, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} (``Day Cnt'') denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
 
 Finally, let's focus on the dates. On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment are paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
 
+\newpage
 \subsection{Calculator Section}
 \label{Calculator section}
 \begin{figure}[H]
@@ -815,7 +823,17 @@ This figure is the Calculation section cropped from Figure 2. We can see here th
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued interest} can be calculated using the equation below:
+At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. Recall that in a simple one-period case, the upfront can be calculated as below, given that we know the default probability:
+
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+  \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
+  \rm U -\hspace{3pt}C + \frac{P \times V \times (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P \times V \times (1 - RR)}{(1 + i)}
+\end{align}
+
+where U is upfront payment, C is coupon, P is default probability, V is notional amount, RR is recovery rate, i is interest rate. However, in practice to calculate upfront payment is much harder due to complications of non-constant interest rates and default probability. Fortunately, ISDA Standard Model has standardized the calculation of upfront payment for us.
+
+The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
@@ -823,7 +841,7 @@ At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS
     \end{aligned}
 \end{equation}
 
-Then, let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
+Now let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. These four parameters indicate the change of upfront if small adjustments are made to the trade. For example, Spread DV01 measures how much upfront payment would change if spread was set a little higher. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
 
 \subsubsection{PV01}
 \label{sec:PV01}
@@ -848,8 +866,6 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \item $Df(f_i) =$ discount factor until $t_i$,
 \item $S(t_i) =$ survival probability until $t_i$,
 \end{itemize}
-
-We will explain \textbf{discount} and \textbf{survival probability} later in ``Market'' section.
 
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
@@ -895,14 +911,13 @@ Default Exposure refers to the expoure to default of a CDS contract. It can be c
   - \text{Principal}. \nonumber
 \end{equation} 
 
-\newpage
 \subsection{Market Section}
 \label{Market section}
 \begin{figure}[H]
 \centering
 \includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-This figure is the ``Market'' section cropped from Figure 2. Market section is another field where traders views information of market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS (see below for important clarifications), and \textbf{Swap Curve} is the yield curve of the swap. \textbf{Recovery rate}, \textbf{points upfront}, \textbf{spread}, and \textbf{default probability} are also listed here. We can also view \textbf{term structure} on the window (X-axis is maturity and Y-axis is spread). The green line with little yellow dots is the ``AA USD Senior Curve'', which means we are buying senior debt protection in USD of Alcoa Inc (stock symbol AA). The big yellow dot is the CDS contract we buy, here at 5-year maturity and 160 basis points of spread. We will also introduce the concepts of \textbf{hazard rates} and \textbf{survival probability} here.}
+This figure is the ``Market'' section cropped from Figure 2. Market section is another field where traders views information of market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS (see below for important clarifications), and \textbf{Swap Curve} is the yield curve of the swap. \textbf{Recovery rate}, \textbf{points upfront}, \textbf{spread}, and \textbf{default probability} are also listed here. We can also view \textbf{term structure} on the window (X-axis is maturity and Y-axis is spread). The green line with little yellow dots is the ``AA USD Senior Curve'', which means we are buying senior debt protection in USD of Alcoa Inc (stock symbol AA). The big yellow dot is the CDS contract we buy, here at 5-year maturity and 160 basis points of spread.}
 
 \label{AlcoaIncCDSMarket}
 \end{figure}
@@ -913,34 +928,6 @@ This figure is the ``Market'' section cropped from Figure 2. Market section is a
 \subsubsection{Default Probability}
 \label{sec:DefaultProb}
 
-On the screenshot, the ``prob'' label refers to \textbf{default probability}, which is the estimated probability of default for each maturity by a given time. If we assume that 
-
-
-It can be approximated by
-
-\begin{equation}
-  \text{Default Prob} \approx \left [1 - exp \left (\frac{rt}{1-R} \right ) \right ], \nonumber
-\end{equation}
-
-
-
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. Since we now know the calculation of default probability, we also should familiarize ourselves with the event of default, especially different types of settlements.
-
-\subsubsection{In the Case of a Default}
-\label{sec:SettlementType}
-
-When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
-
-Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
-
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
-
-\subsubsection{Term Structure}
-
-A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve.
-
-\subsubsection{Hazard Rates and Survival Probability}
-
 As we did in the two-period case, we also have to account for the probability of default for each period. The probability of a company defaulting is different across time period, and we assume the probability is constant within a specific time period. The term structure of these probabilities are known as the \textbf{hazard rates} and the hazard rate function is piecewise constant.  
 
 The probability of a company surviving till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. This is known as the \textbf{survival probability}. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default as below,
@@ -948,6 +935,34 @@ The probability of a company surviving till the end of period \textit{n} is the 
 \begin{displaymath}
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \end{displaymath}
+
+Here on the screenshot, the ``prob'' label refers to \textbf{default probability}. Recall in the simple one-period case, the default probability can be calculated as below:
+
+\label{eqn:recovery}
+\begin{align}
+  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+  \rm - C + (P \times V \times (1 - RR)) &= C - (P \times V \times (1 - RR))
+\end{align}
+
+where $RR$ refers to the recovery rate and, as before, $P$ is the risk-neutral probability of default, $C$ is the coupon payment, and $V$ is the notional value. However, in reality the non-default probability in a certain time-period, say from $t_i$ to $t_j$, decays exponentially with multiplier determined by the current spread at time $t$, time $t$ itself, and the recovery rate. In other words, the default probability is non-constant but can be mathematically expressed as below:
+
+\begin{equation}
+  \text{Non-Default Probability} \approx e ^ {\frac{rt}{1-R}}, 
+\end{equation}
+
+So the default probability at time $t$ is:
+
+\begin{equation}
+  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-R}}, \nonumber
+\end{equation}
+
+where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. 
+
+\subsubsection{Term Structure}
+
+A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve.
+
+
 
 \newpage
 
