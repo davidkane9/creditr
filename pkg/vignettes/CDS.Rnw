@@ -40,7 +40,7 @@
 
 %% an abstract and keywords
 \Abstract{
- A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfronts and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the CDS R package, an open source tool which allows users to calculate credit default swap information.
+ A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like probability of default, coupon, spread, notional, recovery rate, upfronts and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the CDS R package, an open source tool which allows users to calculate credit default swap information.
 }
 \Keywords{credit default swap, pricing, {\bf R} package}
 \Plainkeywords{credit default swap, pricing, {\bf R} package} %% without formatting
@@ -64,6 +64,13 @@
   1136 Paresky Center, Williamstown, MA 01267, USA\\
   Telephone: +1/413/346-7821
   E-mail: \email{Yuanchu.Dang@williams.edu}
+  
+  Zijie Zhu\\
+  Department of Computer Science and Department of Statistics\\
+  Williams College\\
+  3162 Paresky Center, Williamstown, MA 01267, USA\\
+  Telephone: +1/413/329-9960
+  E-mail: \email{Zijie.Zhu@williams.edu}
 }
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:
@@ -85,7 +92,7 @@
 
 %% Introduction should have three paragraphs, mimicing the three sentences above that give the first, second, and third goal of the paper. Each paragraph expands the details for that sentence. It is here that we mention, at least once, the 5 to 10 key bolded terms like spread, upfront, risk-neutral and so on.
 
-  This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. First, we introduces the concept of CDS with an analogy to housing insurance, and highlights that a CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. We then introduce some simplified examples of one-period and two-period CDS in which a portfolio manager passes on risk to J.P. Morgan. Many important concepts are introduced, such as \textbf{notional amount}, \textbf{coupon}, \textbf{spread}. We also gradually introduce complications that alter CDS pricing calculations, such as \textbf{interest rates}, \textbf{recovery rate}, \textbf{accrued coupon}, and \textbf{upfront payment}. In the two-period CDS example, we also introduce complications such as non-constant probability of defaults and non-constant interest rates.
+  This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. First, we introduces the concept of CDS with an analogy to housing insurance, and highlights that a CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. We then introduce some simplified examples of one-period and two-period CDS in which a portfolio manager passes on risk to J.P. Morgan. Many important concepts are introduced, such as \textbf{probability of default}, \textbf{notional amount}, \textbf{coupon}, \textbf{spread}. We also gradually introduce complications that alter CDS pricing calculations, such as \textbf{interest rates}, \textbf{recovery rate}, \textbf{accrued coupon}, and \textbf{upfront payment}. In the two-period CDS example, we also introduce complications such as non-constant probability of defaults and non-constant interest rates.
 
 Second, we introduce the N-period CDS with a look at real data from Bloomberg and Markit CDS Calculator which applie these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make. In the N-period CDS example, we introduce more concepts, such as \textbf{tenor}, \textbf{maturity}, \textbf{principal} and \textbf{conventions}. After the readers have a more holistic sense of CDS, we introduce more complications with actual Bloomberg and Markit screenshots. These material should help readers apply the concepts and complications they learned to CDS pricing.
 
@@ -355,6 +362,15 @@ After combining like terms, dividing both sides by 2 and simplifying, we get:
 \end{equation}
 
 Therefore, $P$ is 1.8\% (rounded to the nearest tenth) in this scenario where the recovery rate is 55\%.
+
+\subsubsection{In the Case of a Default}
+\label{sec:SettlementType}
+
+When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
+
+Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
+
+The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
 
 \subsubsection{Accrued Coupon}
 \label{sec:AccruedCoupon}
@@ -766,15 +782,6 @@ FOr conclusion, we point out that this buyer-seller equality has direct applicat
 
 $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
 
-\subsubsection{In the Case of a Default}
-\label{sec:SettlementType}
-
-When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
-
-Should a bond (that is the reference obligation in a CDS agreement) default, the counterparties can compensate accordingly in two ways. The first is a \textbf{physical settlement} in which the buyer will actually deliver the defaulted bonds to seller, and the seller will then pay the face value of those bonds. The disadvantage to this particular transcation is that the buyer(s) of protection will have to find and deliver those bonds to the seller even if they don't own the bonds themselves. This may artificially drive up the price of the bonds, and is more likely to happen when there is a large number of outstanding CDS contracts. 
-
-The alternative to a physical settlement is a \textbf{cash settlement}, in which the seller simply pays the following to the buyer: notional amount $\times$ (1 - recovery rate). Unfortunately, determining a recovery rate is often an issue. One approach the ISDA has adopted lately is an \textbf{auction} style process in which major dealers submit their bids for the value they place on a company's debt.  CDS contracts for corporate bonds generally assume a 40\% recovery rate for valuation purposes.
-\newpage
 
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
