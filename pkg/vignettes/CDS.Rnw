@@ -1134,7 +1134,11 @@ cds1.rates
 
 \subsubsection{``rec.risk.01'' Function}
 
-\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
+\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
+
+\begin{align*}
+  \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
+\end{align*}
 
 <<>>=
 rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
@@ -1150,6 +1154,13 @@ rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
+Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula given below.
+
+\begin{align*}
+  \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
+\end{align*}
+
+
 <<>>=
 IR.DV01(data.frame(date     = as.Date("2014-04-22"),
                    currency = "USD",
@@ -1164,6 +1175,14 @@ IR.DV01(data.frame(date     = as.Date("2014-04-22"),
 \subsubsection{``spread.DV01'' Function}
 
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
+
+Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measures the risk duration of a CDS trade. 
+
+\begin{align*}
+  PV &= (S - C) \times PV01 \\
+  DV01 &= \frac{\partial PV}{\partial S} \\
+  &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
+\end{align*}
 
 <<>>=
 spread.DV01(data.frame(date     = as.Date("2014-04-22"),
