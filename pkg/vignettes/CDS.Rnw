@@ -782,6 +782,8 @@ FOr conclusion, we point out that this buyer-seller equality has direct applicat
 
 $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
 
+Notice that all these calculus complications in the N-period case are simply provided for the interest of more serious readers, which are neither necessary nor required for the comprehension of latter sections.
+
 
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
