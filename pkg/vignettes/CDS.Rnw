@@ -193,7 +193,7 @@ Note that we are using the terms "premium" and "coupon" synonymously. Premium is
 
 Since the portfolio manager makes money if Alcoa deteriorates, she can be said to be \textbf{short} credit. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since JPM loses money if Alcoa collapses, JPM can be said to be \textbf{long} credit. In other words, JPM's returns are similar to those of a person who owns Alcoa bonds. If Alcoa does well, JPM does well, and if Alcoa doesn't, then JPM doesn't either.
 
-The expected cash flows for the agreement depend on the probability of default. Since the portfolio manager will pay the \$1,000 premium and will potentially receive \$100,000 if Alcoa defaults, the portfolio manager's expected cash flows---which represent the premium leg---are as follows. ($P$ refers to the portfolio manager’s prediction of probability of default.)
+The expected cash flows for the agreement depend on the probability of default. Since the portfolio manager will pay the \$1,000 premium and will potentially receive \$100,000 if Alcoa defaults, the portfolio manager's expected cash flows---which represent the premium leg---are as follows. (the below $P$ refers to the portfolio manager’s prediction of probability of default.)
 
 \begin{equation}
  \begin{aligned}
@@ -202,7 +202,7 @@ The expected cash flows for the agreement depend on the probability of default. 
     \label{eqn:portfolioECF}
 \end{equation}
 
-Since JPM will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, JPM's expected cash flows---which represent the protection leg---are as follows. ($P$ refers to JPM’s prediction of probability of default.)
+Since JPM will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, JPM's expected cash flows---which represent the protection leg---are as follows. (the below $P$ refers to JPM’s prediction of probability of default.)
 
 \begin{equation}
  \begin{aligned}
