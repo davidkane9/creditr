@@ -778,7 +778,7 @@ Further complications arise when we relax the assumption of a constant interest 
 
 where $S(t) = 1 - Q(t)$ is the survival probability until time $t$. This is our final version of buyer-seller equality for this section. Notice that other minor adjustment such as money market basis can still be made for finer modeling and will be introduced in the next section.
 
-FOr conclusion, we point out that this buyer-seller equality has direct application in the pricing of CDS contract. The value of a CDS is just the difference in present value between the credit event leg and the premium leg, which can be expressed by the following formula:
+For conclusion, we point out that this buyer-seller equality has direct application in the pricing of CDS contract. The value of a CDS is just the difference in present value between the credit event leg and the premium leg, which can be expressed by the following formula:
 
 $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
 
