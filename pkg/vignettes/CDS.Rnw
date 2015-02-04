@@ -40,7 +40,7 @@
 
 %% an abstract and keywords
 \Abstract{
- A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfronts, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the CDS R package, an open source tool which allows users to calculate credit default swap information.
+ A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfront, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the CDS R package, an open source tool which allows users to calculate credit default swap information.
 }
 \Keywords{credit default swap, pricing, {\bf R} package}
 \Plainkeywords{credit default swap, pricing, {\bf R} package} %% without formatting
