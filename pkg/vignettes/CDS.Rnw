@@ -1211,9 +1211,6 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 
 \section{Conclusion}
 
-In this paper, we describe the basics of a CDS contract and the ISDA Standard Model. We also provide a simple collection of tools to implement the Standard Model in \textbf{R} with the \texttt{CDS} package. Moreover, the flexibility of \textbf{R} itself allows users to extend and modify this package to suit their own needs and/or create their preferred models for valuing CDS contracts. An \textbf{R} package, \texttt{backtest} \cite{kane:david}, provides facilities to explore portfolio-based conjectures about credit default swaps. It is possible to use the \texttt{backtest} package based on the output from the \texttt{CDS} package. Before reaching that level
-of complexity, however, \texttt{CDS} provides a good starting point for valuing credit default swaps.
-
 \newpage
 \bibliography{CDS}
 \cite{barclays}
