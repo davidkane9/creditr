@@ -786,7 +786,9 @@ Notice that all these calculus complications in the N-period case are simply pro
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
 
-In this section, we will explain CDS contract with Bloomberg Terminal and Markit CDS Calculator, the two frequently used CDS calculator. Bloomberg L.P. is a financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. 
+In this section, we will explain CDS contract with Bloomberg Terminal and Markit CDS Calculator, the two frequently used CDS calculator. Bloomberg L.P. is a global financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. The Bloomberg Terminal is a tool to monitor and analyze real-time market data for many financial products, and the service charges a subscription fee.
+
+Markit Ltd. is also a global financial company, and it specializes in credit derivative pricing. Moreover, it was founded in 2003 to actually provide credit default swap pricing. The online Markit CDS Calculator is free and can be accessed at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.
 
 \subsection{Overview  of CDS in Bloomberg Terminal}
 \label{subsec:Bloomberg}
