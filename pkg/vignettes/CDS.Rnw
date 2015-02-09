@@ -65,6 +65,10 @@
   Telephone: +1/413/346-7821
   E-mail: \email{Yuanchu.Dang@williams.edu}
   
+  David Kane\\
+  Hutchin Hill Capital\\
+  E-mail: \email{dave.kane@gmail.com}
+  
   Zijie Zhu\\
   Department of Computer Science and Department of Statistics\\
   Williams College\\
