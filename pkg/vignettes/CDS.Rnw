@@ -61,7 +61,7 @@
 
   David Kane\\
   Hutchin Hill Capital\\
-  E-mail: \email{dave.kane@gmail.com}
+  E-mail: \email{Dave.Kane@gmail.com}
 
   Yuanchu Dang\\
   Department of Mathematics and Statistics\\
@@ -179,14 +179,7 @@ While the above assumptions represent assumptions that we will maintain througho
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under ``Bond Ratings,'' we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see ``Announcement Date''). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company (``name''), industry, seniority (``rank''), the value of the coupon payments (``coupon''), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Section \ref{sec:BloombergMarkit}.)}
-\label{fig:AlcoaBond}
-\end{figure}
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}, and there are certain \textbf{credit ratings} provided by rating agencies such as Moody's, S\&P and Fitch. Companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
 
 CDS are used for the purpose of hedging against the \textbf{credit risk} associated with bonds. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
 
@@ -793,15 +786,15 @@ Notice that all these calculus complications in the N-period case are simply pro
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
 
-In this section, we will explain CDS contract with Bloomberg and Markit CDS Calculator, the two frequently used CDS calculator.
+In this section, we will explain CDS contract with Bloomberg Terminal and Markit CDS Calculator, the two frequently used CDS calculator. Bloomberg L.P. is a financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. 
 
-\subsection{Bloomberg Overview}
+\subsection{Overview  of CDS in Bloomberg Terminal}
 \label{subsec:Bloomberg}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{This is a Bloomberg screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
+\caption{This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
 \label{AlcoaIncCDS}
 \end{figure}
 
@@ -970,7 +963,7 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 
 \newpage
 
-\subsection{Markit CDS Calculator Overview}
+\subsection{Overview of Markit CDS Calculator}
 \label{Markit}
 
 \begin{figure}[H]
