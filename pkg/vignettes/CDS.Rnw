@@ -58,16 +58,17 @@
 %% The address of (at least) one author should be given
 %% in the following format:
 \Address{
+
+  David Kane\\
+  Hutchin Hill Capital\\
+  E-mail: \email{dave.kane@gmail.com}
+
   Yuanchu Dang\\
   Department of Mathematics and Statistics\\
   Williams College\\
   1136 Paresky Center, Williamstown, MA 01267, USA\\
   Telephone: +1/413/346-7821
   E-mail: \email{Yuanchu.Dang@williams.edu}
-  
-  David Kane\\
-  Hutchin Hill Capital\\
-  E-mail: \email{dave.kane@gmail.com}
   
   Zijie Zhu\\
   Department of Computer Science and Department of Statistics\\
@@ -96,11 +97,11 @@
 
 %% Introduction should have three paragraphs, mimicing the three sentences above that give the first, second, and third goal of the paper. Each paragraph expands the details for that sentence. It is here that we mention, at least once, the 5 to 10 key bolded terms like spread, upfront, risk-neutral and so on.
 
-This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. First, we introduces the concept of CDS with an analogy to housing insurance, and highlights that a CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. We then introduce some simplified examples of one-period and two-period CDS in which a portfolio manager passes on risk to J.P. Morgan. Many important concepts are introduced, such as \textbf{notional amount}, \textbf{coupon}, \textbf{spread}. We also gradually introduce complications that alter CDS pricing calculations, such as \textbf{interest rates}, \textbf{recovery rate}, \textbf{probability of default}, \textbf{accrued coupon}, and \textbf{upfront payment}. In the two-period CDS example, we also introduce complications such as non-constant probability of defaults and non-constant interest rates. Then we will look at the N-period CDS as a more accurate modelling of real transactions. Further complications like calculus for the continuous case will be introduced, as a culmination for this theoretical section.
+This paper explains the mechanics of credit default swaps (CDS), a type of \textbf{credit derivative} that transfers \textbf{credit risk} from one group of investors to another, in exchange for payment. First, we introduces the concept of CDS with an analogy to housing insurance, and highlights that a CDS allows one party to purchase insurance (called ``protection'') on a certain investment from another party. We then introduce some simplified examples of one-period and two-period CDS in which a portfolio manager passes on risk to J.P. Morgan. Many important concepts are introduced, such as \textbf{notional amount}, \textbf{coupon}, \textbf{spread}. We also gradually introduce complications that alter CDS pricing calculations, such as \textbf{interest rates}, \textbf{recovery rate}, \textbf{probability of default}, \textbf{accrued coupon}, and \textbf{upfront payment}. In the two-period CDS example, we also introduce complications such as non-constant probability of defaults and non-constant interest rates. Then we will look at the N-period CDS as a more accurate model of real transactions. Further complications such as calculus for the continuous case will be introduced, as a culmination for this theoretical section.
   
-The next section focuses on real world data from Bloomberg and Markit CDS Calculator and applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make. For Bloomberg, we will dive into specifics of Deal Section, Calculator Section and Market Section to see how theoretical concepts about CDS are translated into indicators on the screenshot and thereby reinforce our understanding of them. Likewise, Markit CDS Calculator will be taught, with an emphasis on the terminology differences from Bloomberg as well as useful CDS indices.
+The second section focuses on real world data from Bloomberg and Markit CDS Calculator and applies these concepts to price CDS. Bloomberg and Markit are two sources that investors can use to determine what kinds of CDS agreements they may want to make. For Bloomberg, we will dive into the specifics of Deal Section, Calculator Section and Market Section to see how theoretical concepts about CDS are translated into different indicators on the screenshot and thereby reinforce our understanding of them. Likewise, Markit CDS Calculator will be taught, with an emphasis on the terminology differences from Bloomberg, as well as useful CDS indices.
 
-Third, we introduce the CDS package, which allows users to calculate information regarding a particular CDS with R. The CDS package uses the same ISDA Standard Model that Bloomberg and Markit CDS Calculator use, and provide generic methods to show the calculation results in a way that is similar to Bloomberg and Markit Calculator. We also introduce some key functions which users are likely to call individually.
+Third, we will introduce the CDS package, which allows users to calculate information regarding a particular CDS with R. The CDS package uses the same ISDA Standard Model that Bloomberg and Markit CDS Calculator use, and provide generic methods to show the calculation results in a way that is similar to Bloomberg and Markit Calculator. We also introduce some key functions which users are likely to call individually.
 
 \section{CDS Basics}
 \label{sec:CDSBasics}
@@ -1227,7 +1228,6 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 \cite{rates}
 \cite{kane:david}
 \cite{creditDerivatives}
-
 \end{document}
 
 %% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
