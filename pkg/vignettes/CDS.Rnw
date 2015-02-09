@@ -245,13 +245,13 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P&L) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
 
 We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
 We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupon). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
 
-P&L represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P&L of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's P&L measures what JPM earns each day that it provides protection during that year.
+P\&L represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P\&L of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's P\&L measures what JPM earns each day that it provides protection during that year.
 
 Here is a table that considers what happens to the above-mentioned variables as the contract matures from January 1 to December 31. Note that we are considering the case in which Alcoa does not default during the one-year contract.
 
@@ -260,7 +260,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P&L (Citadel) & P&L (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (JPM) \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -270,7 +270,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-mark
 \end{tabular}
 }
 
-\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P&L of both parties is 0.} 
+\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P\&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P\&L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
@@ -455,7 +455,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS o
 {\footnotesize
 \begin{tabular}{lllll}
   \hline
-Date & Mark-to-market & P&L (Citadel) & P&L (JPM) & Accrued Coupon \\ 
+Date & Mark-to-market & P\&L (Citadel) & P\&L (JPM) & Accrued Coupon \\ 
   \hline
   Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
   Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
@@ -464,7 +464,7 @@ Date & Mark-to-market & P&L (Citadel) & P&L (JPM) & Accrued Coupon \\
    \hline
 \end{tabular}
 }
-\caption{This table measures the mark-to-market value, the P&L for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's P&L is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
+\caption{This table measures the mark-to-market value, the P\&L for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's P\&L is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
 \end{table}
 
 As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
@@ -717,14 +717,14 @@ Solving for $P$, we can get a new $P = 0.0206$, which is smaller than the risk-n
 
 \subsubsection{Two-Period Case Over Time}
 
-Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P&L of both parties as the two-year contract matures.
+Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties as the two-year contract matures.
 
 \begin{table}[H]
 \centering
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P&L (Citadel) & P&L (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (JPM) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
@@ -736,7 +736,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-mark
    \hline
 \end{tabular}
 }
-\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P&L of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
+\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
 \end{table}
 
 Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
@@ -1233,6 +1233,5 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 %% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
 
 %% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
-
 
 %The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
