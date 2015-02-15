@@ -937,27 +937,18 @@ The probability of a company surviving till the end of period \textit{n} is the 
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \end{displaymath}
 
-Here on the screenshot, the ``prob'' label refers to \textbf{default probability}. Recall in the simple one-period case, the default probability can be calculated as below:
-
-\label{eqn:recovery}
-\begin{align}
-  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
-  \rm - C + (P \times V \times (1 - RR)) &= C - (P \times V \times (1 - RR))
-\end{align}
-
-where $RR$ refers to the recovery rate and, as before, $P$ is the risk-neutral probability of default, $C$ is the coupon payment, and $V$ is the notional value. However, in reality the non-default probability in a certain time-period, say from $t_i$ to $t_j$, decays exponentially with multiplier determined by the current spread at time $t$, time $t$ itself, and the recovery rate. In other words, the default probability is non-constant but can be mathematically expressed as below:
+Here on the screenshot, the ``prob'' label refers to \textbf{default probability}. The non-default probability in a certain time-period, say from $t_i$ to $t_j$, decays exponentially with multiplier determined by the current spread $r$ at time $t$, time $t$ itself, and the recovery rate. In other words, the default probability is non-constant but can be mathematically expressed as below:
 
 \begin{equation}
-  \text{Non-Default Probability} \approx e ^ {\frac{rt}{1-R}}, 
+  \text{Non-Default Probability} \approx e ^ {\frac{rt}{1-RR}}, 
 \end{equation}
-
-So the default probability at time $t$ is:
+where $r$ is the spread, $t$ is the time to maturity, and $RR$ is the recovery rate. So the default probability at time $t$ is:
 
 \begin{equation}
-  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-R}}, \nonumber
+  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
 \end{equation}
 
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. 
+
 
 \subsubsection{Term Structure}
 
@@ -1199,7 +1190,13 @@ spread.DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \subsubsection{``spread.to.pd'' Function}
 
-\texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
+\texttt{spread.to.pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
+ 
+\begin{equation}
+  \text{Probability of Default} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
+\end{equation}
+
+and thus we can calculate probability of default using spread at time $t$.
 
 <<>>=
 spread.to.pd(data.frame(date     = Sys.Date(),
@@ -1224,9 +1221,3 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 \cite{kane:david}
 \cite{creditDerivatives}
 \end{document}
-
-%% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
-
-%% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
-
-%The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}
