@@ -61,14 +61,14 @@
 
   David Kane\\
   Hutchin Hill Capital\\
-  E-mail: \email{dave.kane@gmail.com}
+  E-mail: \email{Dave.Kane@gmail.com}
 
   Yuanchu Dang\\
   Department of Mathematics and Statistics\\
   Williams College\\
   1136 Paresky Center, Williamstown, MA 01267, USA\\
   Telephone: +1/413/346-7821
-  E-mail: \email{Yuanchu.Dang@williams.edu}
+  E-mail: \email{Yuanchu.Dang@williams.edu} \\
   
   Zijie Zhu\\
   Department of Computer Science and Department of Statistics\\
@@ -179,14 +179,7 @@ While the above assumptions represent assumptions that we will maintain througho
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. In Figure \ref{fig:AlcoaBond} below, we can see details of a bond of Alcoa Inc. If we look to the right of the figure, under ``Bond Ratings,'' we can see certain symbols representing \textbf{credit ratings} that are provided by rating agencies such as Moody's, S\&P and Fitch. These symbols are indicators of a company's credit risk. We will not go into the details of how these ratings are determined, since those details are beyond the scope of this paper. What we should note is that companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in, height=3.7in]{images/AlcoaBond.png}
-\caption{Bloomberg data taken on June 24, 2014 for senior Alcoa bonds that will mature on February 23, 2019. These bonds have a duration of twelve years, since the bonds were initiated on April 2, 2007 (see ``Announcement Date''). This figure displays essential information regarding the bonds that a potential investor would need to consider, such as the company (``name''), industry, seniority (``rank''), the value of the coupon payments (``coupon''), maturity, coupon payment dates and credit ratings. (Many of these attributes and concepts will be further discussed in Section \ref{sec:BloombergMarkit}.)}
-\label{fig:AlcoaBond}
-\end{figure}
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}, and there are certain \textbf{credit ratings} provided by rating agencies such as Moody's, S\&P and Fitch. Companies that have credit ratings of BBB- or higher from S\&P or Fitch or Baa3 or higher from Moody's can be classified as \textbf{Investment Grade} (IG) bonds. Naturally, if a company's credit risk goes up, investors would demand a higher yield and consequently, a lower price. If a company is very likely to meet its debt obligations---or if it has consistently done so in the past---the company can be known as \textbf{credit worthy}.
 
 CDS are used for the purpose of hedging against the \textbf{credit risk} associated with bonds. Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (JPM)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
 
@@ -245,13 +238,13 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P&L) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Citadel portfolio manager and JPM change from January 1 to December 31, assuming that Alcoa does not default during that year.
 
 We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
 We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupon). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
 
-P&L represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P&L of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's P&L measures what JPM earns each day that it provides protection during that year.
+P\&L represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P\&L of, for example, JPM in this CDS is to consider the fraction of the coupon payment that JPM \emph{earns} each day. We know that JPM recieves a coupon payment of \$1,000 on January 1, but JPM's P\&L measures what JPM earns each day that it provides protection during that year.
 
 Here is a table that considers what happens to the above-mentioned variables as the contract matures from January 1 to December 31. Note that we are considering the case in which Alcoa does not default during the one-year contract.
 
@@ -260,7 +253,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P&L (Citadel) & P&L (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (JPM) \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -270,7 +263,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-mark
 \end{tabular}
 }
 
-\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P&L of both parties is 0.} 
+\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P\&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to JPM on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as JPM profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P\&L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
@@ -455,7 +448,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS o
 {\footnotesize
 \begin{tabular}{lllll}
   \hline
-Date & Mark-to-market & P&L (Citadel) & P&L (JPM) & Accrued Coupon \\ 
+Date & Mark-to-market & P\&L (Citadel) & P\&L (JPM) & Accrued Coupon \\ 
   \hline
   Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
   Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
@@ -464,7 +457,7 @@ Date & Mark-to-market & P&L (Citadel) & P&L (JPM) & Accrued Coupon \\
    \hline
 \end{tabular}
 }
-\caption{This table measures the mark-to-market value, the P&L for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's P&L is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
+\caption{This table measures the mark-to-market value, the P\&L for both parties, and the accrued coupon value over the life of the contract. Note that the mark-to-market values and accrued coupon values are the same for each date. In other words, the accured coupon that accounts for the time passed is equal to the price that a prospective buyer would have to pay the portfolio manager for protection for the remainder of the CDS. The absolute value of each party's P\&L is also equal to the accrued coupon value; the accrued coupon that accounts for the time passed is equal to the money the JPM has earned by providing protection for the time passed.}
 \end{table}
 
 As we can see, the accrued coupon increases as the contract matures---or, in other words, the coupon that accounts for the time in the contract that has passed \emph{increases} as the contract matures.
@@ -717,14 +710,14 @@ Solving for $P$, we can get a new $P = 0.0206$, which is smaller than the risk-n
 
 \subsubsection{Two-Period Case Over Time}
 
-Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P&L of both parties as the two-year contract matures.
+Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties as the two-year contract matures.
 
 \begin{table}[H]
 \centering
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P&L (Citadel) & P&L (JPM) \\ 
+Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (JPM) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
@@ -736,7 +729,7 @@ Date & Cash flows (Citadel) & Cash flows (JPM) & Risk-neutral $P$ & Mark-to-mark
    \hline
 \end{tabular}
 }
-\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P&L of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
+\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
 \end{table}
 
 Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the portfolio manager and JPM have to trade at 100 bps because of CDS market conventions. On January 1, the portfolio manager pays an upfront payment to JPM that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what JPM earns every day. In return for providing protection each day, JPM earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
@@ -793,15 +786,17 @@ Notice that all these calculus complications in the N-period case are simply pro
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
 
-In this section, we will explain CDS contract with Bloomberg and Markit CDS Calculator, the two frequently used CDS calculator.
+In this section, we will explain CDS contract with Bloomberg Terminal and Markit CDS Calculator, the two frequently used CDS calculator. Bloomberg L.P. is a global financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. The Bloomberg Terminal is a tool to monitor and analyze real-time market data for many financial products, and the service charges a subscription fee.
 
-\subsection{Bloomberg Overview}
+Markit Ltd. is also a global financial company, and it specializes in credit derivative pricing. Moreover, it was founded in 2003 to actually provide credit default swap pricing. The online Markit CDS Calculator is free and can be accessed at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.
+
+\subsection{Overview  of CDS in Bloomberg Terminal}
 \label{subsec:Bloomberg}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{This is a Bloomberg screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
+\caption{This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
 \label{AlcoaIncCDS}
 \end{figure}
 
@@ -942,27 +937,18 @@ The probability of a company surviving till the end of period \textit{n} is the 
 S_t = 1 - Q_t = 1 - \int_0^T q_t dt\, \nonumber\\
 \end{displaymath}
 
-Here on the screenshot, the ``prob'' label refers to \textbf{default probability}. Recall in the simple one-period case, the default probability can be calculated as below:
-
-\label{eqn:recovery}
-\begin{align}
-  \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm JPM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
-  \rm - C + (P \times V \times (1 - RR)) &= C - (P \times V \times (1 - RR))
-\end{align}
-
-where $RR$ refers to the recovery rate and, as before, $P$ is the risk-neutral probability of default, $C$ is the coupon payment, and $V$ is the notional value. However, in reality the non-default probability in a certain time-period, say from $t_i$ to $t_j$, decays exponentially with multiplier determined by the current spread at time $t$, time $t$ itself, and the recovery rate. In other words, the default probability is non-constant but can be mathematically expressed as below:
+Here on the screenshot, the ``prob'' label refers to \textbf{default probability}. The non-default probability in a certain time-period, say from $t_i$ to $t_j$, decays exponentially with multiplier determined by the current spread $r$ at time $t$, time $t$ itself, and the recovery rate. In other words, the default probability is non-constant but can be mathematically expressed as below:
 
 \begin{equation}
-  \text{Non-Default Probability} \approx e ^ {\frac{rt}{1-R}}, 
+  \text{Non-Default Probability} \approx e ^ {\frac{rt}{1-RR}}, 
 \end{equation}
-
-So the default probability at time $t$ is:
+where $r$ is the spread, $t$ is the time to maturity, and $RR$ is the recovery rate. So the default probability at time $t$ is:
 
 \begin{equation}
-  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-R}}, \nonumber
+  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
 \end{equation}
 
-where $r$ is the spread, $t$ is the time to maturity, and $R$ is the recovery rate. 
+
 
 \subsubsection{Term Structure}
 
@@ -970,7 +956,7 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 
 \newpage
 
-\subsection{Markit CDS Calculator Overview}
+\subsection{Overview of Markit CDS Calculator}
 \label{Markit}
 
 \begin{figure}[H]
@@ -1111,6 +1097,8 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 \subsubsection{Show Method}
 \label{sec:showMethod}
 
+%% add description here for show method later
+
 \begin{Schunk}
 \begin{Sinput}
 > cds1
@@ -1136,7 +1124,7 @@ Default Prob:                     0.1322
 \subsubsection{CS10}
 \label{sec:CS10}
 
-\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. Or you can calculate CS10 by inputing a dataframe. 
+\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a dataframe. 
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1158,7 +1146,7 @@ Default Prob:                     0.1322
 \subsubsection{``get.rates'' Function}
 \label{sec:get.ratesFunction}
 
-This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
+\texttt{get.rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1166,7 +1154,7 @@ This is a function used to obtain the interest rate curve for a given currency o
 \end{Sinput}
 \end{Schunk}
 
-The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
+The output from the \texttt{get.rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get.rates} downloads the data from Federal Reserve website).
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1201,7 +1189,9 @@ The output from the get.rates function is a data frame which contains rates of v
 
 \subsubsection{``rec.risk.01'' Function}
 
-\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
+\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. 
+
+Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula of calculating Rec Risk (1\%) is given below.
 
 \begin{align*}
   \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
@@ -1226,7 +1216,7 @@ The output from the get.rates function is a data frame which contains rates of v
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
-Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula given below.
+Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' and it measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula of calculating IR.DV01 is given below.
 
 \begin{align*}
   \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
@@ -1253,7 +1243,7 @@ Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It me
 
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
-Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measures the risk duration of a CDS trade. 
+Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01'' and it measures the risk duration of a CDS trade. Formula of calculting Spread DV01 is given below.
 
 \begin{align*}
   PV &= (S - C) \times PV01 \\
@@ -1279,7 +1269,13 @@ Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measu
 
 \subsubsection{``spread.to.pd'' Function}
 
-\texttt{spread.to.pd} is a function which calculates the probability of default using the model provided in the Bloomberg manual. It also takes data frame input.
+\texttt{spread.to.pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
+ 
+\begin{equation}
+  \text{Probability of Default} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
+\end{equation}
+
+and thus we can calculate probability of default using spread at time $t$.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1290,11 +1286,17 @@ Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measu
 +                         currency = "USD"))
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1291594
+[1] 0.1287722
 \end{Soutput}
 \end{Schunk}
 
 \section{Conclusion}
+
+%% conclusion for bloomberg and markit begins here
+
+In Section \ref{sec:BloombergMarkit}: Bloomberg and Markit, we have reviewed two of most used software for pricing CDS contracts. We have noted that Bloomberg Terminal provides various financial services but charges a subscription fee, while Markit specializes pricing and regulating derivatives, and its Markit CDS Online Calculator is free. 
+
+We then go into details of CDS pricing in Bloomberg Terminal. We show a screenshot of the 
 
 \newpage
 \bibliography{CDS}
@@ -1309,10 +1311,3 @@ Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measu
 \cite{kane:david}
 \cite{creditDerivatives}
 \end{document}
-
-%% Consider the following example: there exists a portfolio manager---a manager of multiple investments---who has just bought \$100,000 worth of bonds from company X. We'll discuss what a bond is in a later section, but for now just think of it as an I.O.U.; the portfolio manager lends \$100,000 to company X for a certain time period, and at the end of the period, company X returns the \$100,000 to the manager. After she buys the bonds, however, her confidence in company X's ability to make good on its obligation and return the \$100,000 begins to waiver. What should she do? 
-
-%% One popular option in today's economy is to enter a \textbf{credit default swap} (CDS) agreement with a third party. In this case, the portfolio manager could enter a CDS contract in which she pays a fee to the third party, and if company X can't pay back the sum of \$100,000, the third party will pay the remaining monetary amount. In other words, the portfolio manager pays a fee in exchange for protection against company X's inability to meet its obligation. 
-
-
-%The cash flows from the protection  buyer to the seller, when there is no credit event, would look like Figure \ref{fig:CDSnoevent}

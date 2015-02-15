@@ -68,7 +68,7 @@
   Williams College\\
   1136 Paresky Center, Williamstown, MA 01267, USA\\
   Telephone: +1/413/346-7821
-  E-mail: \email{Yuanchu.Dang@williams.edu}
+  E-mail: \email{Yuanchu.Dang@williams.edu} \\
   
   Zijie Zhu\\
   Department of Computer Science and Department of Statistics\\
@@ -1211,6 +1211,12 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 @
 
 \section{Conclusion}
+
+%% conclusion for bloomberg and markit begins here
+
+In Section \ref{sec:BloombergMarkit}: Bloomberg and Markit, we have reviewed two of most used software for pricing CDS contracts. We have noted that Bloomberg Terminal provides various financial services but charges a subscription fee, while Markit specializes pricing and regulating derivatives, and its Markit CDS Online Calculator is free. 
+
+We then go into details of CDS pricing in Bloomberg Terminal. We show a screenshot of the 
 
 \newpage
 \bibliography{CDS}
