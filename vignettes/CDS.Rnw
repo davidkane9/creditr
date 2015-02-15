@@ -1083,6 +1083,8 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 \subsubsection{Show Method}
 \label{sec:showMethod}
 
+%% add description here for show method later
+
 <<>>=
 cds1
 @
@@ -1093,7 +1095,7 @@ cds1
 \subsubsection{CS10}
 \label{sec:CS10}
 
-\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. Or you can calculate CS10 by inputing a dataframe. 
+\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a dataframe. 
 
 <<>>=
 x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -1110,13 +1112,13 @@ CS10(x)
 \subsubsection{``get.rates'' Function}
 \label{sec:get.ratesFunction}
 
-This is a function used to obtain the interest rate curve for a given currency on a given date, along with the day count convention for that currency.
+\texttt{get.rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 <<>>=
 cds1.rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the get.rates function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates}.
+The output from the \texttt{get.rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get.rates} downloads the data from Federal Reserve website).
 
 <<>>=
 cds1.rates
@@ -1127,7 +1129,9 @@ cds1.rates
 
 \subsubsection{``rec.risk.01'' Function}
 
-\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
+\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. 
+
+Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula of calculating Rec Risk (1\%) is given below.
 
 \begin{align*}
   \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
@@ -1147,7 +1151,7 @@ rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
-Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula given below.
+Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' and it measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula of calculating IR.DV01 is given below.
 
 \begin{align*}
   \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
@@ -1169,7 +1173,7 @@ IR.DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
 
-Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01.'' It measures the risk duration of a CDS trade. 
+Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01'' and it measures the risk duration of a CDS trade. Formula of calculting Spread DV01 is given below.
 
 \begin{align*}
   PV &= (S - C) \times PV01 \\
