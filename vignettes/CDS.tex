@@ -1286,11 +1286,19 @@ and thus we can calculate probability of default using spread at time $t$.
 +                         currency = "USD"))
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1287722
+[1] 0.1281912
 \end{Soutput}
 \end{Schunk}
 
 \section{Conclusion}
+
+%% conclusion start
+
+In this paper, we have walked through three distinct but closely related parts regarding credit default swaps: its theoretical background, general technology tools used for its pricing, and the CDS R package.
+
+%% conclusion for the theory part
+
+For the first part, we started out with a simplistic account of property insurance, where we established an equality between protection buyer and protection seller and derived a risk neutral probability. From there, we began our study of one-period CDS by matching the cash flows from the protection leg with those from the premium leg, which is the same technique of ``equating'' as has been applied in the insurance case. Similarly, risk neutral probability was backed out and we have also observed the day-to-day changes in crucial measures as cash flows, risk neutral probability, mark-to-market, spread, P\&L, etc. In the one-period case, mild complications regarding interest rate, recovery rate, default scenario, accrued coupon, day count convention and the Big Bang Protocol were introduced. With the one-period CDS as our foundation, we moved on to the two-period case where we have two designated coupon payments. In this subsection, we further complicated our model by dealing with non-constant probability of default, non-constant interest rate and looking at how a particular two-period example evolves over time. Finally, we came to the N-period case where multiple coupon payments are supported, and we even offered some formulas phrased in the calculus language for more conscientious readers. Complex as they may appear to be, those formulas still share the same spirit as our simple model in the initial subsection by assuming an equality of cash flows between counterparties and thus an ideal condition of non-arbitrage opportunities. 
 
 %% conclusion for bloomberg and markit begins here
 

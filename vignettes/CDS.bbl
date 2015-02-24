@@ -1,0 +1,71 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Campbell \emph{et~al.}(2007)Campbell, Enos, Gerlanc, and
+  Kane}]{kane:david}
+Campbell K, Enos J, Gerlanc D, Kane D (2007).
+\newblock \enquote{Backtests.}
+\newblock \emph{R News}, \textbf{7}(1), 36--41.
+\newblock \urlprefix\url{http://cran.r-project.org/doc/Rnews/Rnews_2007-1.pdf}.
+
+\bibitem[{Chacko \emph{et~al.}(2006)Chacko, Sjoman, Motohashi, and
+  Dessain}]{creditDerivatives}
+Chacko G, Sjoman A, Motohashi H, Dessain V (2006).
+\newblock \emph{{Credit Derivatives: A Primer on Credit Risk, Modeling, and
+  Instruments}}.
+\newblock {Wharton School Publishing}.
+
+\bibitem[{Green and Witschen(2012)}]{bloomberg}
+Green S, Witschen E (2012).
+\newblock \enquote{{Credit Derivatives}.}
+\newblock \emph{Bloomberg}.
+
+\bibitem[{Kallianiotis(2013)}]{jk}
+Kallianiotis J (2013).
+\newblock \emph{{Exchange Rates and International Financial Economics: History,
+  Theories, and Practices}}.
+\newblock {Palgrave Macmillan}.
+
+\bibitem[{Lanchester(2009)}]{blythe}
+Lanchester J (2009).
+\newblock \enquote{{Outsmarted}.}
+\newblock \emph{The New Yorker}.
+
+\bibitem[{Leeming \emph{et~al.}(2010)Leeming, Willemann, Ghosh, and
+  Hagemans}]{barclays}
+Leeming M, Willemann S, Ghosh A, Hagemans R (2010).
+\newblock \enquote{{{Standard Corporate CDS Handbook, Ongoing Evolution of the
+  CDS Market}}.}
+\newblock \emph{Barclays Capital}.
+
+\bibitem[{Lenzner(2009)}]{cdsOrigins}
+Lenzner R (2009).
+\newblock \enquote{{Who's Afraid Of Credit Default Swaps?}}
+\newblock \emph{Forbes}.
+
+\bibitem[{Markit(2009)}]{glossary}
+Markit (2009).
+\newblock \enquote{{Credit Derivatives Glossary}.}
+\newblock \emph{Markit}.
+
+\bibitem[{Markit(2013)}]{rates}
+Markit (2013).
+\newblock \enquote{{{Markit Interest Rate Curve XML Specifications Version
+  1.15}}.}
+\newblock \emph{Markit}.
+
+\bibitem[{White(2013)}]{openGamma}
+White R (2013).
+\newblock \enquote{{The Pricing and Risk Management of Credit Default Swaps,
+  with a Focus on the ISDA Model}.}
+\newblock \emph{OpenGamma}.
+
+\end{thebibliography}
