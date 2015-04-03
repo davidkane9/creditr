@@ -15,7 +15,7 @@
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
 \usepackage{tabularx}
-
+%\VignetteIndexEntry{Credit Default Swaps with R}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

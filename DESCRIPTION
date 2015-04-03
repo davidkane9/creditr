@@ -26,7 +26,8 @@ Imports:
     RCurl,
     XML,
     testthat,
-    xts
+    xts,
+    shiny
 Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
