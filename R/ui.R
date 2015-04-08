@@ -23,7 +23,8 @@ shinyUI(fluidPage(
            sliderInput("RR", label = "Recovery Rate", min = 0.0, max = 1.0, value = 0.4),
            submitButton("calculate")
            ),
-           ## actionButton("clearAll", label = "Clear All")),
+           ## do we need a clear all button?
+           ## actionButton("clearAll", label = "Clear All")), 
     
     ## Second column is still for trade details and terms
     column(1,
@@ -40,11 +41,8 @@ shinyUI(fluidPage(
     column(2,
            tableOutput("curveRates")),
     
-    ## fourth column for calculation results
-    ## column(2,
-           #tableOutput("calcTable"))
-      
-      ## First Column is for trade details and terms
+    ## First Column is for trade details and terms
+    ## the current output looks ugly, prob use data frame output
     fluidRow(
       column(2,
              p(h3(textOutput("price"))),

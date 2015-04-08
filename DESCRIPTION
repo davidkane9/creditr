@@ -27,7 +27,8 @@ Imports:
     XML,
     testthat,
     xts,
-    shiny
+    shiny,
+    zoo
 Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp

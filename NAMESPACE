@@ -2,7 +2,7 @@ useDynLib(CDS)
 
 exportPattern("^[[:alpha:]]+")
 
-import(methods, Rcpp, RCurl, XML, testthat, xts, grid, shiny)
+import(methods, Rcpp, RCurl, XML, testthat, xts, grid, shiny, zoo)
   
 exportClasses(CDS)
 exportMethods("summary",
