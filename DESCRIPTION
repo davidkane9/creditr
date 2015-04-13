@@ -1,4 +1,4 @@
-Package: CDS
+Package: CreditDefaultSwaps
 Version: 0.4-2
 Date: 2014-09-03
 Title: Credit Default Swap
@@ -29,7 +29,7 @@ Imports:
     xts,
     shiny,
     zoo
-Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>, Zijie Zhu <Zijie.Zhu@williams.edu>
+Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
 Description: CDS package provides useful tools for pricing credit
