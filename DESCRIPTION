@@ -29,7 +29,7 @@ Imports:
     xts,
     shiny,
     zoo
-Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>
+Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>, Zijie Zhu <Zijie.Zhu@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
 Description: CDS package provides useful tools for pricing credit
