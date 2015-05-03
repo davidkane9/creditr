@@ -31,11 +31,11 @@ set of standard terms for CDS contracts, the so-called ''Standard
 Model.'' This allows market participants to calculate cash settlement
 from conventional spread quotations, convert between conventional
 spread and upfront payments, and build the yield curve of a CDS. The
-**CreditDefaultSwaps** package implements the Standard Model, allowing users to
+**creditr** package implements the Standard Model, allowing users to
 value credit default swaps and to calculate various risk measures
 associated with these instruments.
 
 Maintenance
 --------------------------------------------------------
-For questions or advice regarding this CreditDefaultSwaps package, please email
+For questions or advice regarding this creditr package, please email
 Yuanchu Dang at Yuanchu.Dang@williams.edu.
