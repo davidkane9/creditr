@@ -45,13 +45,13 @@ shinyUI(fluidPage(
     ## the current output looks ugly, prob use data frame output
     fluidRow(
       column(2,
-             p(h3(textOutput("price"))),
-             p(h3(textOutput("principal"))),
-             p(h3(textOutput("accrual"))),
-             p(h3(textOutput("pd")))), 
-             p(h3(textOutput("CS10"))), 
-             p(h3(textOutput("IR.DV01"))), 
-             p(h3(textOutput("Spread.DV01"))),
-             p(h3(textOutput("rec.risk"))))
+             p(h4(textOutput("price"))),
+             p(h4(textOutput("principal"))),
+             p(h4(textOutput("accrual"))),
+             p(h4(textOutput("pd")))), 
+             p(h4(textOutput("CS10"))), 
+             p(h4(textOutput("IR.DV01"))), 
+             p(h4(textOutput("Spread.DV01"))),
+             p(h4(textOutput("rec.risk"))))
       
 )))

@@ -1,3 +1,4 @@
+library(creditr)
 data(rates)
 options(digits = 5)
 ## define a helper function of r; the one in base does not work properly in certain ways
