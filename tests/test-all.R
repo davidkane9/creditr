@@ -1,4 +1,4 @@
 library(testthat)
-library(CDS)
+library(creditr)
 
-test_check("CDS")
+test_check("creditr")

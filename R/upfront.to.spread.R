@@ -87,7 +87,7 @@ upfront.to.spread <- function(x,
                          upfrontCharge_input = x[[points.var]][i],
                          recoveryRate_input = x[[recovery.var]][i],
                          payAccruedAtStart_input = payAccruedAtStart,
-                         PACKAGE = "CDS")                       
+                         PACKAGE = "creditr")                       
   }
   return(spread)
 }

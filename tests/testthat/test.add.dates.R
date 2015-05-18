@@ -3,7 +3,7 @@ context("Test add.dates")
 ## Test cases for the add.dates function (using data from April 15, 2014 for Norske
 ## Skogindustrier ASA).
 
-library(CDS)
+library(creditr)
 
 test_that("test for add.dates", {
   

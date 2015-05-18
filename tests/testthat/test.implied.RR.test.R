@@ -3,7 +3,7 @@ context("Test implied.RR")
 ## test case for implied recovery rate using a data frame containing ids, spreads and pds of 
 ## seven different CDSs
 
-library(CDS)
+library(creditr)
 
 test_that("test for implied recovery rate", {
    ids <- c("CaesarsEntCorp", "ElectroluxAB", "Chorus", "NorskeSkogindustrier", 

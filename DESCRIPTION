@@ -32,7 +32,7 @@ Imports:
 Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>, Zijie Zhu <Zijie.Zhu@williams.edu>
 License: GPL (>= 2)
 LinkingTo: Rcpp
-Description: CDS package provides useful tools for pricing credit
+Description: creditr package provides useful tools for pricing credit
     default swaps (CDS). It enables CDS class object which has slots as
     name, contract, RED, date, spread, maturity, teno, coupon, recovery,
     currency, notional, principal, accrual, pd, price, upfront,
