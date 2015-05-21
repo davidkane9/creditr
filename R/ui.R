@@ -1,3 +1,4 @@
+
 shinyUI(fluidPage(
   titlePanel("CDS Calculator in R"),
   helpText(strong("Note: Maximize window to view properly")),
@@ -43,15 +44,14 @@ shinyUI(fluidPage(
     
     ## First Column is for trade details and terms
     ## the current output looks ugly, prob use data frame output
-    fluidRow(
-      column(2,
-             p(h4(textOutput("price"))),
-             p(h4(textOutput("principal"))),
-             p(h4(textOutput("accrual"))),
-             p(h4(textOutput("pd")))), 
-             p(h4(textOutput("CS10"))), 
-             p(h4(textOutput("IR.DV01"))), 
-             p(h4(textOutput("Spread.DV01"))),
-             p(h4(textOutput("rec.risk"))))
+    column(2,
+           p(h4(textOutput("price"))),
+           p(h4(textOutput("principal"))),
+           p(h4(textOutput("accrual"))),
+           p(h4(textOutput("pd")))), 
+           p(h4(textOutput("CS10"))), 
+           p(h4(textOutput("IR.DV01"))), 
+           p(h4(textOutput("spread.DV01"))),
+           p(h4(textOutput("rec.risk")))
       
 )))
