@@ -3,13 +3,12 @@
 \docType{methods}
 \name{show}
 \alias{show}
-\alias{show,CDS-method}
 \title{Show Method}
 \usage{
-\S4method{show}{CDS}(object)
+\\method{show}{CDS}
 }
 \arguments{
-\item{object}{the input \code{CDS} class object}
+\item{object}{the input \code{CDS} object}
 }
 \description{
 \code{show} shows a CDS class object.

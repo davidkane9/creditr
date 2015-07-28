@@ -6,7 +6,7 @@
 \usage{
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
-  recovery = 0.4, currency = "USD", notional = 1e+06)
+  recovery = 0.4, currency = "USD", notional = 1e+07)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}

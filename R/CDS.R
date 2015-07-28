@@ -33,7 +33,7 @@ CDS <- function(name = NULL,
                 coupon   = 100,
                 recovery = 0.4,
                 currency = "USD",
-                notional = 1000000){
+                notional = 10000000){
   
   ## if all three of date, tenor and maturity are given as input,
   ## then we need to check if the three are compatible

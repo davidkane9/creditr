@@ -22,7 +22,7 @@
 #' @name creditr
 #' @docType package
 #' 
-#' @useDynLib
+#' @useDynLib creditr
 #' @exportPattern "^[[:alpha:]]+"
 #'
 #' @exportClass CDS

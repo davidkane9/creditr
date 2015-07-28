@@ -1,5 +1,15 @@
+#' Summary Method
+#' 
 #' \code{summary} method displays only the essential info about the CDS
 #' class object.
+#' 
+#' @name summary
+#' @aliases summary,character,ANY-method
+#' @docType methods
+#' @rdname summary-methods
+#' @param object the input \code{CDS} object
+#' 
+#' @export
 
 setMethod("summary",
           signature(object = "CDS"),
