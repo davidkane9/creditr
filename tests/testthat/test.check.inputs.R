@@ -11,7 +11,7 @@ test_that("test for check.input", {
                    spread = c(120, 110),
                    coupon = c(100, 100),
                    recovery = c(0.4, 0.4),
-                   notional = c(1e7, 1e7))
+                   notional = c(10000000, 10000000))
   
   ## if inputs are missing, it should return an error
   

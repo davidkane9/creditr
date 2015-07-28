@@ -15,7 +15,7 @@
 #' @param recovery in decimal. Default is 0.4.
 #' @param currency in which CDS is denominated.
 #' @param notional is the amount of the underlying asset on which the payments
-#'   are based. Default is 1e7, i.e. 10MM.
+#'   are based. Default is 10000000, i.e. 10MM.
 #'   
 #' @return a \code{CDS} class object including the input informtion on the
 #'   contract as well as the valuation results of the contract.
@@ -33,7 +33,7 @@ CDS <- function(name = NULL,
                 coupon   = 100,
                 recovery = 0.4,
                 currency = "USD",
-                notional = 1e7){
+                notional = 1000000){
   
   ## if all three of date, tenor and maturity are given as input,
   ## then we need to check if the three are compatible

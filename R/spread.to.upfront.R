@@ -6,7 +6,7 @@
 #' 
 #' @inheritParams CS10
 #' @param notional is the amount of the underlying asset on which the
-#'        payments are based. Default is 1e7, i.e. 10MM.
+#'        payments are based. Default is 10000000, i.e. 10MM.
 #' @param recovery.var f column in x containing recovery 
 #'        rates in decimal.
 #' @param isPriceClean refers to the type of upfront calculated. It is
@@ -17,7 +17,7 @@
 
 spread.to.upfront <- function(x, 
                               currency.var = "currency", 
-                              notional     = 1e7,
+                              notional     = 10000000,
                               date.var     = "date", 
                               spread.var   = "spread",
                               coupon.var   = "coupon",

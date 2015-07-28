@@ -15,7 +15,7 @@ test_that("test for upfront.to.spread", {
                                                tenor = 5,
                                                upfront = 18624),
                                 isPriceClean = FALSE,
-                                notional = 1e7,
+                                notional = 10000000,
                                 payAccruedAtStart = FALSE,
                                 payAccruedOnDefault = TRUE)
   
@@ -33,7 +33,7 @@ test_that("test for upfront.to.spread", {
                                                tenor = 5,
                                                upfront = 18623.7),
                                 isPriceClean = FALSE,
-                                notional = 1e7,
+                                notional = 10000000,
                                 payAccruedAtStart = FALSE,
                                 payAccruedOnDefault = TRUE)
   
@@ -47,9 +47,9 @@ test_that("test for upfront.to.spread", {
                                               coupon = 100,
                                               recovery = .4,
                                               tenor = 5,
-                                              upfront = -1e7*3.48963/100),
+                                              upfront = -10000000*3.48963/100),
                                isPriceClean = FALSE,
-                               notional = 1e7,
+                               notional = 10000000,
                                payAccruedAtStart = FALSE,
                                payAccruedOnDefault = TRUE)
   
@@ -58,9 +58,9 @@ test_that("test for upfront.to.spread", {
                                               coupon = 100,
                                               recovery = .4,
                                               tenor = 5,
-                                              upfront = -1e7*3.41/100),
+                                              upfront = -10000000*3.41/100),
                                isPriceClean = FALSE,
-                               notional = 1e7,
+                               notional = 10000000,
                                payAccruedAtStart = TRUE,
                                payAccruedOnDefault = TRUE)
   
@@ -69,9 +69,9 @@ test_that("test for upfront.to.spread", {
                                                coupon = 100,
                                                recovery = .4,
                                                tenor = 5,
-                                               upfront = -1e7*3.48963/100),
+                                               upfront = -10000000*3.48963/100),
                                 isPriceClean = FALSE,
-                                notional = 1e7,
+                                notional = 10000000,
                                 payAccruedAtStart = FALSE,
                                 payAccruedOnDefault = TRUE)
   
@@ -83,9 +83,9 @@ test_that("test for upfront.to.spread", {
                                                coupon = 100,
                                                recovery = .4,
                                                tenor = 5,
-                                               upfront = -1e7*3.41/100),
+                                               upfront = -10000000*3.41/100),
                                 isPriceClean = FALSE,
-                                notional = 1e7,
+                                notional = 10000000,
                                 payAccruedAtStart = TRUE,
                                 payAccruedOnDefault = TRUE)
   

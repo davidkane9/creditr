@@ -24,7 +24,7 @@ test_that("test for the CDS", {
                   spread = 12354.529,
                   coupon = 500,
                   recovery = 0.4,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following result matches perfectly with Bloomberg
   
@@ -53,7 +53,7 @@ test_that("test for the CDS", {
                   spread = 243.28,
                   coupon = 100,
                   recovery = 0.40,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -84,7 +84,7 @@ test_that("test for the CDS", {
                   currency="EUR",
                   coupon = 100,
                   recovery = 0.4,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -114,7 +114,7 @@ test_that("test for the CDS", {
                   currency="EUR",
                   coupon = 500,
                   recovery = 0.4,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -143,7 +143,7 @@ test_that("test for the CDS", {
                   spread = 9106.8084,
                   coupon = 500,
                   recovery = 0.4,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -173,7 +173,7 @@ test_that("test for the CDS", {
                   currency = "JPY",
                   coupon = 100,
                   recovery = 0.35,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -203,7 +203,7 @@ test_that("test for the CDS", {
                   currency = "USD",
                   coupon = 500,
                   recovery = 0.40,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   
@@ -230,7 +230,7 @@ test_that("test for the CDS", {
                   spread = 105.8,
                   coupon = 100,
                   recovery = 0.4,
-                  notional = 1e7)
+                  notional = 10000000)
   
   ## The following results match perfectly with Bloomberg
   

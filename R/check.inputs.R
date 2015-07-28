@@ -15,7 +15,7 @@
 #'                 spread = c(120, 110),
 #'                 coupon = c(100, 100),
 #'                 recovery = c(0.4, 0.4),
-#'                 notional = c(1e7, 1e7))
+#'                 notional = c(1000000, 1000000))
 #' x <- check.inputs(x)
 
 check.inputs <- function(x,
@@ -26,7 +26,7 @@ check.inputs <- function(x,
                          spread.var   = "spread",
                          coupon.var   = "coupon",
                          notional.var = "notional",
-                         notional     = 1e7,
+                         notional     = 1000000,
                          recovery.var = "recovery",
                          recovery     = 0.4){
 

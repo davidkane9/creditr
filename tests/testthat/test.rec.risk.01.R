@@ -10,7 +10,7 @@ test_that("test for rec.risk.01", {
                   spread = c(105.8, 99),
                   coupon = c(100, 100),
                   recovery = c(0.4, 0.4),
-                  notional = c(1e7, 1e7),
+                  notional = c(10000000, 10000000),
                   stringsAsFactors = FALSE)
   
   result <- rec.risk.01(x)

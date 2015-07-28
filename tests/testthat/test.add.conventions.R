@@ -23,7 +23,7 @@ test_that("test add conventions", {
                    spread = c(120, 110),
                    coupon = c(100, 100),
                    recovery = c(0.4, 0.4),
-                   notional = c(1e7, 1e7))
+                   notional = c(10000000, 10000000))
   
   x2 <- add.dates(x2)
   result2 <- add.conventions(x2)

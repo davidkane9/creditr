@@ -1061,7 +1061,7 @@ cds1 <- CDS(name     = "Alcoa",
             RED      = "49EB20",
             date     = as.Date("2014-06-24"),
             tenor    = 5,
-            notional = 1e7,
+            notional = 10000000,
             coupon   = 100,
             spread   = 160)
 @
@@ -1117,7 +1117,7 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
                 spread = c(120, 110),
                 coupon = c(100, 100),
                 recovery = c(0.4, 0.4),
-                notional = c(1e7, 1e7),
+                notional = c(10000000, 10000000),
                 stringsAsFactors = FALSE)
 CS10(x)
 @
@@ -1157,7 +1157,7 @@ rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
                        spread   = 160,
                        coupon   = 100,
                        recovery = 0.4,
-                       notional = 1e7))
+                       notional = 10000000))
 @ 
 
 \subsubsection{``IR.DV01'' Function}
@@ -1178,7 +1178,7 @@ IR.DV01(data.frame(date     = as.Date("2014-04-22"),
                    spread   = 160,
                    coupon   = 100,
                    recovery = 0.4,
-                   notional = 1e7))
+                   notional = 10000000))
 @
 
 
@@ -1201,7 +1201,7 @@ spread.DV01(data.frame(date     = as.Date("2014-04-22"),
                        spread   = 160,
                        coupon   = 100,
                        recovery = 0.4,
-                       notional = 1e7))
+                       notional = 10000000))
 @
 
 

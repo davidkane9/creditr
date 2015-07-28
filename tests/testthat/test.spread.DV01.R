@@ -14,7 +14,7 @@ test_that("test for spread.DV01", {
                   spread = 105.8,
                   coupon = 100,
                   recovery = 0.4,
-                  notional = 1e7,
+                  notional = 10000000,
                   stringsAsFactors = FALSE)
   
   result.1 <- spread.DV01(x)

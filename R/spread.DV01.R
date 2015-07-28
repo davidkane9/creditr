@@ -17,7 +17,7 @@
 #'                 spread = c(120, 110),
 #'                 coupon = c(100, 100),
 #'                 recovery = c(0.4, 0.4),
-#'                 notional = c(1e7, 1e7),
+#'                 notional = c(10000000, 10000000),
 #'                 stringsAsFactors = FALSE)
 #' spread.DV01(x)
 
@@ -30,7 +30,7 @@ spread.DV01 <- function(x,
                         coupon.var    = "coupon",
                         recovery.var  = "recovery",
                         notional.var  = "notional",
-                        notional      = 1e7,
+                        notional      = 10000000,
                         recovery      = 0.4){
   
   ## check if certain variables are contained in x
