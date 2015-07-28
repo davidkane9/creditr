@@ -1,7 +1,7 @@
 CDS TO-DO List
 ========================================================
 
-
+1. valueDate is incorrect. See add.dates() for details, but this could be the reason for (some of) the small discrepancies we have seen. Problem arises when there is a holiday on T + 3.
 
 2. Need to fix figure one section reference error (the “??” error)
 

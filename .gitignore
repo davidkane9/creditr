@@ -11,6 +11,8 @@ vignettes/*.toc
 vignettes/*.aux
 vignettes/*.bbl
 vignettes/*.blg
+vignettes/*.sty
+vignettes/*.pdf
 src/*so
 src/*.o
 src/*.dll

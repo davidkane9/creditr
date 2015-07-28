@@ -149,32 +149,45 @@ The homeowner only agrees to the deal if $P_h \geq 0.01$. Any lower value would 
   \rm P  &= \rm 0.01
 \end{align}
 
-Therefore, the risk-neutral probability of property damage is 1\%. Note that this number does not tell us anything about either $P_h$ and $P_c$. The homeowner's estimate for the probability of damage is at \emph{least} 1\% because she refuses any agreement with negative expected cash flow. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal in which the risk-neutral probability of damage was 1\% because her expected cash flows are positive.  The same analysis applies to the insurance company. 
+The risk-neutral probability of property damage is 1\%. Based on this calculation, we can determine that the homeowner's prediction for the probability of damage is at \emph{least} 1\%, and the insurance company's prediction for the probability of damage is at \emph{most} 1\%. For example, say the homeowner believes that there is a 1.5\% chance that the house will be damaged. She would want to make a deal that assumes a damage probability of 1\% because, in that case, she would be paying the same coupon for a stronger likelihood that she will receive the \$100,000. If her prediction was at or above 1\%, she would be willing to make a deal that assumed a damage probability of 1\%.
 
-Clearly, 1\%---the risk neutral probability of property damage---is a very important value for this agreement. We need to note, however, that this value is not necessarily the \emph{true} probability of property damage, nor are the parties' predictions for the probability of damage. Consider an extreme example: what if, as the two parties initiate the agreement, an asteriod sets on a course to crash into the house in six months. In such a case, the probability of damage is 100\%. However, neither party has forseen this occurence, so the risk-neutral value of $P$ (1\%) and the parties' predictions of $P$ (1.5\% and 0.5\%) are certainly not equal to the true value of $P$ (100\%).
+Conversely, say that the insurance company believes that there is a 0.5\% chance that the house will get damaged. The company would want to make a deal that assumed a damage probability of 1\% because, in that case, it would be receiving the same coupon payment for a smaller likelihood that it'll have to pay \$100,000. If its prediction was at or below 1\%, it would be willing to make a deal that assumes a damage probability of 1\%.
+
+In other words, P --- the risk neutral probability of property damage --- is not necessarily the \emph{true} probability of property damage, nor is it either party's estimate of the  probability of damage. The value of P is that which makes the expected cash flows equal for both sides. It is a mathematical construct, with no nessary connection to the real world.
 
 \subsubsection{Property Insurance Complications}
 \label{sec:PIComplications}
 
 Unfortunately, the above insurance purchase---although relatively simple---made several assumptions that excluded real aspects of the insurance market. Some of these aspects are parallel to aspects in the CDS market that we will assume and exclude from calculations in all sections of this paper. Below we list such assumptions:
 
-1. We assumed that the homeowner was risk-neutral when, in reality, homeowners who purchase property insurance are generally risk-adverse. Since they want to avoid risk, they view the process of purchasing insurance as more of a necessity than an option. They are willing to pay more (i.e. a larger coupon payment) than required for the expected cash flows to be equal. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%.
+\begin{enumerate}
 
-2. We assumed that both parties would only concede to the insurance agreement if the expected cash flows were equal. As the above assumption demonstrated, an insurance buyer is generally willing to have a smaller expected cash flow than the insurance company. Conversely, insurance companies need to have higher expected cash flows than their clients (the insurance buyers) because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company. 
+\item We assumed that both the homeowner and the insurance company are risk-neutral when, in reality, both are likely to be risk-averse. This is especially true for individual homeowners. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%. Insurance companies, on the other hand, can diversify some of their risk by selling many policies.
 
-3. We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occured? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage. 
+\item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to have a smaller expected cash flow than the insurance company. Conversely, insurance companies need to have higher expected cash flows than their clients (the insurance buyers) because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. Someone has to pay the insurance agents, the claims adjusters and so on. 
 
-While the above assumptions represent assumptions that we will maintain throughout the paper, the following assumptions are one that this paper will, in fact, account for in parallel situations regarding CDS. We list them below:
+\item We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occured? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage.
 
-1. The insurance agreement assumed that any damage would merit the insurance payment of \$100,000. However, what if, for example, the toaster caught on fire and damaged only the toaster? What types of \textbf{events} does the insurance company define as ``damage''? These questions highlight the importance of a detailed insurance contract that specifies these terms.
+\end{enumerate}
 
-2. The agreement considered only the following two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes we need to account for. For example, what if only half of the house was damaged? In that case, it would not make sense for the insurance company to pay \$100,000; instead, the company should compensate only for the damaged section of the house by paying \$50,000. 
+We maintain these assumptions throughout the paper, as does most of the academic literature on CDS. Other assumptions, listed below, will be relaxed in the sections that follow.
 
-3. We stated in the beginning of the property insurance example that the interest rate was 0\%. Clearly, this is not the case in the insurance market, so we would need to account for that change in our calculations which we'll discuss later.
+%% We need some more relevant references in the bibliography. 
+%% Start with the ones that you have already used, like the CDS book, the Barclays and Bloomberg manuals, and so on. 
 
-4. We largely simplified the insurance agreement by creating a one-year agreement from January 1 to December 31. This, too, does not have to be the case in the insurance market. The agreement could be longer or shorter than a year and does not need to fit neatly within a calendar year.
 
-5. The insurance agreement included one premium payment of \$1,000. However, there are cases in the insurance market where there are multiple premium payments on different dates. We did not account for that possibility in our example, but we will account for parallel situations in the CDS market.
+\begin{enumerate}
+\item The insurance agreement assumed that any damage would merit the full payment of \$100,000. However, what if, for example, the toaster caught on fire and damaged only the toaster? What types of \textbf{events} does the insurance company define as ``damage?''
+
+\item The agreement considered only the following two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes we need to account for. For example, what if only half of the house was damaged? In that case, it would not make sense for the insurance company to pay \$100,000; instead, the company should compensate only for the damaged section of the house by paying \$50,000. 
+
+\item We stated in the beginning of the property insurance example that the interest rate was 0\%. Clearly, this is not the case in the insurance market, so we would need to account for that change in our calculations.
+
+\item We largely simplified the insurance agreement by creating a one-year agreement from January 1 to December 31. In reality, the agreement could be longer or shorter and does not need to fit neatly within a calendar year.
+
+\item The insurance agreement included one premium payment of \$1,000. However, there are cases in the insurance market where there are multiple premium payments on different dates. We did not account for that possibility in our example, but we will account for parallel situations in the CDS market.
+
+\end{enumerate}
 
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
