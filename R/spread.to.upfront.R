@@ -95,7 +95,7 @@ spread.to.upfront <- function(x,
                         isPriceClean_input = isPriceClean,
                         payAccruedOnDefault_input = TRUE,
                         notional = notional,
-                        PACKAGE = "CDS")
+                        PACKAGE = "creditr")
   } 
   return(results)
 }

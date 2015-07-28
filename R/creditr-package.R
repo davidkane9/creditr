@@ -1,4 +1,4 @@
-#' The CDS package.
+#' The creditr package.
 #'
 #' \code{creditr} package provides useful tools for pricing credit
 #' default swaps (CDS). It enables CDS class object which has slots as
@@ -19,7 +19,7 @@
 #' package for R users. You can find the Open Source licence of ISDA
 #' Standard Model at "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?"
 #' 
-#' @name CDS
+#' @name creditr
 #' @docType package
 #' 
 #' @useDynLib
