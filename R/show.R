@@ -3,11 +3,11 @@
 #' \code{show} shows a CDS class object.
 #' 
 #' @name show
-#' @aliases show
+#' @aliases show,CDS-method
 #' @docType methods
 #' @rdname show-methods
 #' @param object the input \code{CDS} object
-#' @usage \\method{show}{CDS}
+#' @param ... additional arguments to pass in
 #' 
 #' @export
 

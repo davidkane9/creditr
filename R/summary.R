@@ -4,10 +4,12 @@
 #' class object.
 #' 
 #' @name summary
-#' @aliases summary,character,ANY-method
+#' 
+#' @aliases summary,CDS-method
 #' @docType methods
 #' @rdname summary-methods
 #' @param object the input \code{CDS} object
+#' @param ... additional arguments to pass in
 #' 
 #' @export
 

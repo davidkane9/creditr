@@ -3,13 +3,15 @@
 \docType{methods}
 \name{summary}
 \alias{summary}
-\alias{summary,character,ANY-method}
+\alias{summary,CDS-method}
 \title{Summary Method}
 \usage{
 \S4method{summary}{CDS}(object, ...)
 }
 \arguments{
 \item{object}{the input \code{CDS} object}
+
+\item{...}{additional arguments to pass in}
 }
 \description{
 \code{summary} method displays only the essential info about the CDS
