@@ -3,19 +3,19 @@ Version: 0.4-2
 Date: 2014-09-03
 Title: Credit Default Swap
 Author: c(person("Heidi", "Chen", role = c("aut"),
-    email = "s.heidi.chen@gmail.com"),
-    person("Yuanchu", "Dang", role = c("aut"),
-    email = "yuanchu.dang@williams.edu"),
-    person("David", "Kane", role = c("aut"),
-    email = "dave.kane@gmail.com"),
-    person("Yang", "Lu", role = c("aut", "cre"),
-    email = "yang.lu2014@gmail.com"),
-    person("Skylar", "Smith", role = c("aut"),
-    email = "sws2@williams.edu"),
-    person("Kanishka", "Malik", role = c("aut"),
-    email = "kanishkamalik@gmail.com"),
-    person("Zijie", "Zhu", role = c("aut"),
-    email = "zijie.zhu@williams.com"))
+          email = "s.heidi.chen@gmail.com"),
+          person("Yuanchu", "Dang", role = c("aut"),
+          email = "yuanchu.dang@williams.edu"),
+          person("David", "Kane", role = c("aut"),
+          email = "dave.kane@gmail.com"),
+          person("Yang", "Lu", role = c("aut", "cre"),
+          email = "yang.lu2014@gmail.com"),
+          person("Skylar", "Smith", role = c("aut"),
+          email = "sws2@williams.edu"),
+          person("Kanishka", "Malik", role = c("aut"),
+          email = "kanishkamalik@gmail.com"),
+          person("Miller Zijie", "Zhu", role = c("aut"),
+          email = "zijie.zhu@williams.com"))
 Depends:
     R (>= 2.10)
 Imports:
@@ -33,20 +33,20 @@ Maintainer: Yuanchu Dang <Yuanchu.Dang@williams.edu>, Zijie Zhu <Zijie.Zhu@willi
 License: GPL (>= 2)
 LinkingTo: Rcpp
 Description: creditr package provides useful tools for pricing credit
-    default swaps (CDS). It enables CDS class object which has slots as
-    name, contract, RED, date, spread, maturity, teno, coupon, recovery,
-    currency, notional, principal, accrual, pd, price, upfront,
-    spread.DV01, IR.DV01 and rec.risk.01, with S4 methods like update,
-    show and summary. It also supports data frame input and is able to
-    provide convenient calculation of key CDS statistics through functions
-    like CS10, IR.DV01, rec.risk.01 and spread.DV01. Of other major
-    functions, spread.to.upfront and upfront.to.spread are designed to
-    compute one of spread and upfront given the other; spread.to.pd and
-    pd.to.spread, similarly, can calculate one of spread and probability
-    of default given the other; add.dates and add.conventions compute a
-    series of dates information and accounting conventions related to CDS
-    pricing. Finally, get.rates and build.rates facilitates direct
-    fetching of relevant interest rates from online sources. Thanks to 
-    ISDA Standard Model's Open Source license, we are able to create this
-    package for R users. You can find the Open Source licence of ISDA
-    Standard Model at "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?"
+             default swaps (CDS). It enables CDS class object which has slots as
+             name, contract, RED, date, spread, maturity, teno, coupon, recovery,
+             currency, notional, principal, accrual, pd, price, upfront,
+             spread.DV01, IR.DV01 and rec.risk.01, with S4 methods like update,
+             show and summary. It also supports data frame input and is able to
+             provide convenient calculation of key CDS statistics through functions
+             like CS10, IR.DV01, rec.risk.01 and spread.DV01. Of other major
+             functions, spread.to.upfront and upfront.to.spread are designed to
+             compute one of spread and upfront given the other; spread.to.pd and
+             pd.to.spread, similarly, can calculate one of spread and probability
+             of default given the other; add.dates and add.conventions compute a
+             series of dates information and accounting conventions related to CDS
+             pricing. Finally, get.rates and build.rates facilitates direct
+             fetching of relevant interest rates from online sources. Thanks to 
+             ISDA Standard Model's Open Source license, we are able to create this
+             package for R users. You can find the Open Source licence of ISDA
+             Standard Model at "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?"
