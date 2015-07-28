@@ -14,6 +14,9 @@
 #'   the column reads 2014-04-22, the corresponding rates are actually for 
 #'   2014-04-21.
 #'   
+#' @import zoo
+#' @import xts
+#'   
 #' @seealso \link{download.FRED} \link{build.rates}
 #'   
 #' @examples
@@ -72,13 +75,13 @@ download.markit <- function(start, end, currency = "USD"){
   ## convert data frame to xts object; use hte first column of the data frame as
   ## the time index of the xts object
   
-  x.xts <- xts(x[, -1], order.by = x[, 1])
+  x.xts <- xts::xts(x[, -1], order.by = x[, 1])
   
   ## Here we use "xts" package because it is good at manipulating missing dates.
   ## We define here an empty zoo object for the merge() later.
   
-  empty <- zoo(order.by = seq.Date(head(index(x.xts), 1), 
-                                   tail(index(x.xts), 1), by = "days"))
+  empty <- zoo::zoo(order.by = seq.Date(head(zoo::index(x.xts), 1), 
+                                        tail(zoo::index(x.xts), 1), by = "days"))
   
   ## merge() is a cool command that can merge two zoo objects together. Whenever
   ## merge() finds a missing row of date in raw.data, it will use the previous
@@ -88,12 +91,12 @@ download.markit <- function(start, end, currency = "USD"){
   ## this is exactly carried out by merge() and na.locf(). For further
   ## explanation, see stackoverflow.
   
-  data <- suppressWarnings(na.locf(merge(x.xts, empty)))
+  data <- suppressWarnings(zoo::na.locf(merge(x.xts, empty)))
   
   ## convert xts object to data frame; use time index of xts object as the first
   ## date column of the data frame
   
-  x <- data.frame(date = index(x.xts), coredata(x.xts))
+  x <- data.frame(date = zoo::index(x.xts), zoo::coredata(x.xts))
   
   ## convert factor type to character or numeric type Notice that converting
   ## factor type to a numeric type is a little bit more tedious, cuz if you

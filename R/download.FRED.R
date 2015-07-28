@@ -11,6 +11,8 @@
 #'   
 #' @return a data frame that contains the rates based on the ISDA pecifications
 #'   
+#' @import zoo
+#'   
 #' @seealso \link{download.markit} \link{build.rates}
 #'   
 #' @examples
@@ -21,7 +23,7 @@
 
 download.FRED <- function(start = as.Date("2004-01-01"), 
                           end = as.Date("2005-01-04"), currency = "JPY"){
-    
+
   ## We make start date and end date go back one day, because we use the 
   ## previous business day's interest rate for trading date pricing. By making
   ## them go back one day and then calculate and then make the output go forward
@@ -74,8 +76,8 @@ download.FRED <- function(start = as.Date("2004-01-01"),
     ## Here we use "xts" package because it is good at manipulating missing 
     ## dates. We define here an empty zoo object for the merge() later.
     
-    empty <- zoo(order.by = seq.Date(head(index(raw.data), 1), 
-                                   tail(index(raw.data), 1), by = "days"))
+    empty <- zoo::zoo(order.by = seq.Date(head(zoo::index(raw.data), 1), 
+                                          tail(zoo::index(raw.data), 1), by = "days"))
     
     ## merge() is a cool command that can merge two zoo objects together. the
     ## raw.data we get has missing rows, for example, 2004-01-03 is absent. So
@@ -89,15 +91,15 @@ download.FRED <- function(start = as.Date("2004-01-01"),
     ## see stackoverflow. then we use [start+time.intv], where time.intv is
     ## defined earlier, to get the dates we want from the giant data frame
     
-    data <- na.locf(merge(raw.data, empty))[start+time.intv]
+    data <- zoo::na.locf(merge(raw.data, empty))[start + time.intv]
     
     ## rate.partial.df is a data frame containing only one expiry type of rates.
     ## then later we use rbind to put it into rate.complete.df. here, we use
     ## date = index(data) to put xts object into a data frame with its date
     ## index an independent column.
     
-    rate.partial.df <- data.frame(date = index(data), currency = currency,
-                                  expiry=expiry[i], coredata(data), 
+    rate.partial.df <- data.frame(date = zoo::index(data), currency = currency,
+                                  expiry = expiry[i], zoo::coredata(data), 
                                   row.names = NULL)
     
     ## A stupid thing about using getSymbols() is that when it reads from a .csv

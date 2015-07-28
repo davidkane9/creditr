@@ -26,7 +26,6 @@ get.rates <- function(date, currency){
   
   ## check rates.RData first, before get rates from the internet.
   
-  data(rates)
   x <- rates[rates$date == date & rates$currency == currency, ]
   x$type <- as.character(substr(x$expiry, start = nchar(x$expiry), 
                                 stop = nchar(x$expiry)))

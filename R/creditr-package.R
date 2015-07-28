@@ -28,10 +28,11 @@
 #' @exportClass CDS
 #' @exportMethod summary show
 #' 
+#' @import quantmod
 #' @import methods
+#' @import zoo
 #' @import Rcpp
 #' @import RCurl
 #' @import XML
-#' @import testthat
 #' @import xts
 NULL
