@@ -5,7 +5,8 @@
 \title{Calcualte Default Probability with Spread}
 \usage{
 spread.to.pd(x, recovery.var = "recovery", currency.var = "currency",
-  tenor.var = "tenor", date.var = "date", spread.var = "spread")
+  tenor.var = "tenor", maturity.var = "maturity", date.var = "date",
+  spread.var = "spread")
 }
 \arguments{
 \item{x}{data frame, contains all the relevant columns.}
@@ -16,6 +17,8 @@ model standard recovery rate asscumption is 0.4.}
 \item{currency.var}{character, column in x containing currency.}
 
 \item{tenor.var}{character, column in x containing tenors.}
+
+\item{maturity.var}{character, column in x containing maturity date.}
 
 \item{date.var}{character, column in x containing date variable.}
 
