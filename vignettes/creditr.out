@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{Section.0.Introduction.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{Section.1.CDS Basics.1}{CDS Basics}{}% 2
+\BOOKMARK [2][-]{Subsection.2.0.An Example: Property Insurance.2}{An Example: Property Insurance}{Section.1.CDS Basics.1}% 3
+\BOOKMARK [2][-]{Subsection.2.1.Simple One-Period CDS.2}{Simple One-Period CDS}{Section.1.CDS Basics.1}% 4
+\BOOKMARK [2][-]{Subsection.2.2.Two-Period Case.2}{Two-Period Case}{Section.1.CDS Basics.1}% 5
+\BOOKMARK [2][-]{Subsection.2.3.N-period Case.2}{N-period Case}{Section.1.CDS Basics.1}% 6
+\BOOKMARK [1][-]{Section.2.Bloomberg and Markit.1}{Bloomberg and Markit}{}% 7
+\BOOKMARK [2][-]{Subsection.3.0.Overview of CDS in Bloomberg Terminal.2}{Overview of CDS in Bloomberg Terminal}{Section.2.Bloomberg and Markit.1}% 8
+\BOOKMARK [2][-]{Subsection.3.1.Deal Section.2}{Deal Section}{Section.2.Bloomberg and Markit.1}% 9
+\BOOKMARK [2][-]{Subsection.3.2.Calculator Section.2}{Calculator Section}{Section.2.Bloomberg and Markit.1}% 10
+\BOOKMARK [2][-]{Subsection.3.3.Market Section.2}{Market Section}{Section.2.Bloomberg and Markit.1}% 11
+\BOOKMARK [2][-]{Subsection.3.4.Overview of Markit CDS Calculator.2}{Overview of Markit CDS Calculator}{Section.2.Bloomberg and Markit.1}% 12
+\BOOKMARK [2][-]{Subsection.3.5.CDS Indices.2}{CDS Indices}{Section.2.Bloomberg and Markit.1}% 13
+\BOOKMARK [1][-]{Section.3.Using the CDS Package.1}{Using the CDS Package}{}% 14
+\BOOKMARK [2][-]{Subsection.4.0.ISDA Standard Model.2}{ISDA Standard Model}{Section.3.Using the CDS Package.1}% 15
+\BOOKMARK [2][-]{Subsection.4.1.CDS Class.2}{CDS Class}{Section.3.Using the CDS Package.1}% 16
+\BOOKMARK [2][-]{Subsection.4.2.Generic Methods.2}{Generic Methods}{Section.3.Using the CDS Package.1}% 17
+\BOOKMARK [2][-]{Subsection.4.3.CDS Pricing Related Functions.2}{CDS Pricing Related Functions}{Section.3.Using the CDS Package.1}% 18
+\BOOKMARK [2][-]{Subsection.4.4.Risk Related Functions.2}{Risk Related Functions}{Section.3.Using the CDS Package.1}% 19
+\BOOKMARK [1][-]{Section.4.Conclusion.1}{Conclusion}{}% 20
+\BOOKMARK [1][-]{section.5}{Bibliography}{}% 21

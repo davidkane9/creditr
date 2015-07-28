@@ -6,7 +6,7 @@
 \usage{
 CDS(name = NULL, contract = "SNAC", RED = NULL, date = Sys.Date(),
   spread = NULL, maturity = NULL, tenor = NULL, coupon = 100,
-  recovery = 0.4, currency = "USD", notional = 1e+07)
+  recovery = 0.4, currency = "USD", notional = 1e+06)
 }
 \arguments{
 \item{name}{is the name of the reference entity. Optional.}
@@ -32,7 +32,7 @@ protection buyer to the seller on a regular basis. The default is 100 bps.}
 \item{currency}{in which CDS is denominated.}
 
 \item{notional}{is the amount of the underlying asset on which the payments
-  are based. Default is 1e7, i.e. 10MM.}
+  are based. Default is 10000000, i.e. 10MM.}
 }
 \value{
 a \code{CDS} class object including the input informtion on the

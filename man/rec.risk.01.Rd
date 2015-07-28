@@ -53,7 +53,7 @@ x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                 spread = c(120, 110),
                 coupon = c(100, 100),
                 recovery = c(0.4, 0.4),
-                notional = c(1e7, 1e7),
+                notional = c(10000000, 10000000),
                 stringsAsFactors = FALSE)
 rec.risk.01(x)
 }

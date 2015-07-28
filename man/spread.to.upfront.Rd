@@ -15,7 +15,7 @@ spread.to.upfront(x, currency.var = "currency", notional = 1e+07,
 \item{currency.var}{character, column in x containing currency.}
 
 \item{notional}{is the amount of the underlying asset on which the
-payments are based. Default is 1e7, i.e. 10MM.}
+payments are based. Default is 10000000, i.e. 10MM.}
 
 \item{date.var}{character, column in x containing date variable.}
 

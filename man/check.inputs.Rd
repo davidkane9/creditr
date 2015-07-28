@@ -6,7 +6,7 @@
 \usage{
 check.inputs(x, date.var = "date", currency.var = "currency",
   maturity.var = "maturity", tenor.var = "tenor", spread.var = "spread",
-  coupon.var = "coupon", notional.var = "notional", notional = 1e+07,
+  coupon.var = "coupon", notional.var = "notional", notional = 1e+06,
   recovery.var = "recovery", recovery = 0.4)
 }
 \arguments{
@@ -53,7 +53,7 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
                 spread = c(120, 110),
                 coupon = c(100, 100),
                 recovery = c(0.4, 0.4),
-                notional = c(1e7, 1e7))
+                notional = c(1000000, 1000000))
 x <- check.inputs(x)
 }
 
