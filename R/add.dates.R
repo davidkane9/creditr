@@ -33,8 +33,14 @@ add.dates <- function(x,
                       tenor.var    = "tenor",
                       currency.var = "currency"){
   
-  stopifnot(!(is.null(x[[maturity.var]]) & is.null(x[[tenor.var]])))
-  stopifnot(is.null(x[[maturity.var]])   | is.null(x[[tenor.var]]))
+  has.maturity.var <- !(is.null(maturity.var) || is.null(x[[maturity.var]]))
+  has.tenor.var <- !(is.null(tenor.var) || is.null(x[[tenor.var]]))
+  stopifnot(xor(has.maturity.var, has.tenor.var))
+  
+  ## Coerce to desired classes
+  
+  x[[currency.var]] <- as.character(x[[currency.var]])
+  x[[date.var]] <- as.Date(x[[date.var]])
   
   ## List of Japanese holidays through 2020. These dates are necessary in 
   ## determining the interest rate curves. If the trade date (T) lies on the day
@@ -76,15 +82,11 @@ add.dates <- function(x,
   x$backstopDate    <- as.Date(NA)
   x$baseDate        <- as.Date(NA)
   
+  ## stop if the maturity date does not belong to the Date class
+  
+  stopifnot(!has.maturity.var || inherits(x[[maturity.var]], "Date"))
+  
   for(i in 1:nrow(x)){
-    
-    ## stop if the maturity date does not belong to the date class
-    
-    if(!is.null(x[[maturity.var]][i])){
-      stopifnot(inherits(as.Date(x[[maturity.var]][i]), "Date"))    
-    }
-    
-    length <- x[[tenor.var]][i]
     
     ## find out which date is trade date so that we can determine baseDate
     
@@ -182,16 +184,17 @@ add.dates <- function(x,
     ## maturity date (endDate) does not need to be a weekday. It has to be on
     ## one of the four roll dates.
     
-    if(is.null(x[[maturity.var]][i])){
+    if (has.tenor.var) {
+      length       <- x[[tenor.var]][i]
       endDate      <- date.first
       endDate$year <- date.first$year + length
       endDate$mon  <- endDate$mon + 3
       endDate      <- as.Date(endDate)
     }
-    
-    ## if the maturity date is provided, it is the endDate.
-    
     else{
+      
+      ## if the maturity date is provided, it is the endDate.
+      
       endDate <- as.Date(x[[maturity.var]][i])
     }
     
@@ -233,5 +236,4 @@ add.dates <- function(x,
   ## begin date, this means that benchmarkDate must be a weekday.
   
   return(x)
-  
 }
