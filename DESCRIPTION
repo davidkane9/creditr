@@ -1,7 +1,7 @@
 Package:     creditr
 Version:     0.4-2
-Date:        2014-09-03
-Title:       Credit Default Swap
+Date:        2015-07-29
+Title:       Credit Default Swap in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
                 person("Yuanchu", "Dang", role = c("aut"),
@@ -28,8 +28,7 @@ Imports:     quantmod,
              creditrISDA
 Suggests:    testthat
 Maintainer:  David Kane <Dave.Kane@gmail.com>
-License:     GPL (>= 2)
-LinkingTo:   Rcpp
+License:     MIT + file LICENSE
 Description: creditr package provides useful tools for pricing credit
              default swaps (CDS). It enables CDS class object which has slots as
              name, contract, RED, date, spread, maturity, teno, coupon, recovery,
@@ -48,4 +47,6 @@ Description: creditr package provides useful tools for pricing credit
              ISDA Standard Model's Open Source license, we are able to create this
              package for R users. You can find the Open Source licence of ISDA
              Standard Model at "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?"
+             The R package "creditrISDA" at "httpy://github.com/knightsay" contains
+             the R wrapper to the C code in ISDA Standard Model.
 LazyData:    true

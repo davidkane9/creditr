@@ -18,6 +18,8 @@
 #' ISDA Standard Model's Open Source license, we are able to create this
 #' package for R users. You can find the Open Source licence of ISDA
 #' Standard Model at "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?"
+#' The R package "creditrISDA" at "httpy://github.com/knightsay" contains
+#' the R wrapper to the C code in ISDA Standard Model.
 #' 
 #' @name creditr
 #' @docType package
