@@ -24,9 +24,8 @@ Imports:     quantmod,
              RCurl,
              XML,
              zoo,
-             xts,
-             creditrISDA
-Suggests:    testthat
+             xts
+Suggests:    testthat, creditrISDA
 Maintainer:  David Kane <Dave.Kane@gmail.com>
 License:     MIT + file LICENSE
 Description: creditr package provides useful tools for pricing credit
