@@ -24,9 +24,10 @@ Imports:     quantmod,
              RCurl,
              XML,
              zoo,
-             xts
+             xts,
+             creditrISDA
 Suggests:    testthat
-Maintainer:  Yuanchu Dang <Yuanchu.Dang@williams.edu>, Zijie Zhu <Zijie.Zhu@williams.edu>
+Maintainer:  David Kane <Dave.Kane@gmail.com>
 License:     GPL (>= 2)
 LinkingTo:   Rcpp
 Description: creditr package provides useful tools for pricing credit

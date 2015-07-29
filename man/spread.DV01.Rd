@@ -57,7 +57,4 @@ x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
                 stringsAsFactors = FALSE)
 spread.DV01(x)
 }
-\seealso{
-\link{call.ISDA}
-}
 

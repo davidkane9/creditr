@@ -5,8 +5,6 @@
 #' 
 #' @inheritParams CS10
 #'   
-#' @seealso \link{call.ISDA}
-#'   
 #' @return a vector containing the change in upfront when there is a 1 percent 
 #'   increase in recovery rate, for each corresponding CDS contract.
 #'   
@@ -58,7 +56,7 @@ rec.risk.01 <- function(x,
     
     rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
     
-    rec.risk.01[i] <- call.ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
+    rec.risk.01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
   }
   
   return(rec.risk.01)

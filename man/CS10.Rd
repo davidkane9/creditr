@@ -57,7 +57,4 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
                 stringsAsFactors = FALSE)
 CS10(x)
 }
-\seealso{
-\link{call.ISDA}
-}
 
