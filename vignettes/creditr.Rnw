@@ -40,7 +40,7 @@
 
 %% an abstract and keywords
 \Abstract{
- A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfront, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the CDS R package, an open source tool which allows users to calculate credit default swap information.
+ A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfront, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the creditr R package, an open source tool which allows users to calculate credit default swap information.
 }
 \Keywords{credit default swap, pricing, {\bf R} package}
 \Plainkeywords{credit default swap, pricing, {\bf R} package} %% without formatting
@@ -1069,7 +1069,6 @@ cds1 <- CDS(name     = "Alcoa",
 Here the user enters the CDS contract with ``Alcoa'' as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
 
 <<>>=
-library(creditr)
 cds2 <- CDS(date     = as.Date("2014-06-24"),
             maturity = as.Date("2019-06-20"),
             spread   = 160)
@@ -1108,7 +1107,7 @@ cds1
 \subsubsection{CS10}
 \label{sec:CS10}
 
-\texttt{``CS10''} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a dataframe. 
+\texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a dataframe. 
 
 <<>>=
 x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -1227,7 +1226,7 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 
 %% conclusion start
 
-In this paper, we have walked through three distinct but closely related parts regarding credit default swaps: its theoretical background, general technology tools used for its pricing, and the CDS R package.
+In this paper, we have walked through three distinct but closely related parts regarding credit default swaps: its theoretical background, general technology tools used for its pricing, and the creditr R package.
 
 %% conclusion for the theory part
 
@@ -1240,7 +1239,7 @@ In Section \ref{sec:BloombergMarkit}: Bloomberg and Markit, we have reviewed two
 After introducing CDS window in Bloomberg Terminal, we start to present Markit CDS Calculator. Recall again that Markit Calculator is free while Bloomberg Terminal charges a monthly fee. The Calculator is divided into four parts,  Contract section, Credit Curve section, Calculation section, and Yield Curve section. Contract section is basically the same as Deal section in Bloomberg Terminal; Credit Curve section is just the term structure in a table; Calculator section is highly similar to Bloomberg Calculator section; Yield Curve section is similar to Market section in Bloomberg. Then we move on to introduce some terminology differences, discount factors, and CDS indices.
 
 \newpage
-\bibliography{CDS}
+\bibliography{creditr}
 \cite{barclays}
 \cite{bloomberg}
 \cite{openGamma}
