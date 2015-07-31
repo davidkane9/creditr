@@ -12,6 +12,7 @@ vignettes/*.aux
 vignettes/*.bbl
 vignettes/*.blg
 vignettes/*.sty
+vignettes/*.out
 vignettes/*.pdf
 src/*so
 src/*.o
