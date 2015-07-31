@@ -34,13 +34,12 @@
 \title{Credit Default Swaps with R}
 
 %% for pretty printing and a nice hypersummary also set:
-\Plainauthor{Achim Zeileis, Second Author} %% comma-separated
 \Plaintitle{Credit Default Swaps with R} %% without formatting
 \Shorttitle{Credit Default Swaps with R} %% a short title (if necessary)
 
 %% an abstract and keywords
 \Abstract{
- A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfront, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the creditr R package, an open source tool which allows users to calculate credit default swap information.
+ A credit default swap (CDS) is a bilateral agreement between two parties (the protection buyer and the protection seller) with respect to default by a third party. Over the past two decades, CDS have been one of the fastest growing parts of the financial market. First, we explain the basics of CDS along with key concepts like coupon, spread, notional, recovery rate, upfront, probability of default and the ISDA Standard Model. Second, we introduce Markit and Bloomberg, the two primary sources for CDS data and analysis. Third, we describe the creditr \textbf{R} package, an open source tool which allows users to calculate credit default swap information.
 }
 \Keywords{credit default swap, pricing, {\bf R} package}
 \Plainkeywords{credit default swap, pricing, {\bf R} package} %% without formatting
@@ -1226,7 +1225,7 @@ spread.to.pd(data.frame(date     = Sys.Date(),
 
 %% conclusion start
 
-In this paper, we have walked through three distinct but closely related parts regarding credit default swaps: its theoretical background, general technology tools used for its pricing, and the creditr R package.
+In this paper, we have walked through three distinct but closely related parts regarding credit default swaps: its theoretical background, general technology tools used for its pricing, and the creditr \textbf{R} package.
 
 %% conclusion for the theory part
 
