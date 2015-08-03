@@ -18,10 +18,10 @@ compute one of spread and upfront given the other; spread.to.pd and
 pd.to.spread, similarly, can calculate one of spread and probability of
 default given the other; \code{add_dates} and \code{add_conventions} compute
 a series of dates information and accounting conventions related to CDS
-pricing. Finally, get.rates and build.rates facilitates direct fetching of
-relevant interest rates from online sources. Thanks to ISDA Standard Model's
-Open Source license, we are able to create this package for R users. You can
-find the Open Source licence of ISDA Standard Model at
+pricing. Finally, \code{get_rates} and \code{build_rates} facilitates direct
+fetching of relevant interest rates from online sources. Thanks to ISDA
+Standard Model's Open Source license, we are able to create this package for
+R users. You can find the Open Source licence of ISDA Standard Model at
 "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html?" The R package
 "creditrISDA" at "httpy://github.com/knightsay" contains the R wrapper to the
 C code in ISDA Standard Model.

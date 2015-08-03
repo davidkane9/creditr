@@ -17,7 +17,7 @@
 \url{https://www.markit.com/} \url{http://research.stlouisfed.org/fred2/}
 }
 \description{
-This data frame is created by \code{build.rates} in \code{CDS} package to calculate the
+This data frame is created by \code{build_rates} in \code{CDS} package to calculate the
 CDS pricing. It covers three currencies: USD, EUR, and JPY. The interest rates date from
 2004-01-01 to 2014-08-23. Rates on holidays and weekends are available as well as business
 days.
@@ -32,7 +32,7 @@ then the package calls other functions to get the needed interest rates from the
 The \code{rates.RData} is created and stored in the package for the users' convenience:
 getting interest rates from the Internet may fail due to the internet connection problem
 and may be very slow. Also, the user can build its own updated local \code{rates.RData} by
-using \code{build.rates}. For more explanation on the usage of \code{build.rates}, please
+using \code{build_rates}. For more explanation on the usage of \code{build_rates}, please
 see \bold{See Also}.
 
 Also, please notice that in the \code{rates.RData}, the \code{rate} is not the interest
@@ -80,7 +80,7 @@ rates[rates$currency == "JPY",]
 rates[rates$currency == "USD" & rates$date == "2005-10-01",]
 }
 \seealso{
-\code{\link{download.FRED}} \code{\link{download.markit}} \code{\link{build.rates}}
+\code{\link{download.FRED}} \code{\link{download.markit}} \code{\link{build_rates}}
 }
 \keyword{datasets,}
 \keyword{interest}
