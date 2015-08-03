@@ -1,6 +1,6 @@
 #' Return accounting conventions
 #' 
-#' \code{add.conventions} takes a data frame with a currency.var column and
+#' \code{add_conventions} takes a data frame with a currency.var column and
 #' returns the same data frame with eight other columns of accounting
 #' conventions added to it.
 #' 
@@ -24,9 +24,9 @@
 #' @examples 
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
 #'                 currency = c("USD", "JPY"))
-#' add.conventions(x)
+#' add_conventions(x)
 
-add.conventions <- function(x, currency.var = "currency"){
+add_conventions <- function(x, currency.var = "currency"){
 
   stopifnot(currency.var %in% names(x))
   

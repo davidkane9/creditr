@@ -61,7 +61,7 @@ CS10 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
 
-  x <- add.conventions(add.dates(x))
+  x <- add_conventions(add.dates(x))
   
   CS10 <- rep(NA, nrow(x))
   

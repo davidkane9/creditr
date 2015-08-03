@@ -1,19 +1,19 @@
-context("Test illegal input to add.conventions")
+context("Test illegal input to add_conventions")
 
 test_that("error should occur if there is no currency.var ",{
   
   x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")))
-  expect_error(add.conventions(x))
+  expect_error(add_conventions(x))
 })
 
-context("Test add.conventions")
+context("Test add_conventions")
 
 test_that("test add conventions", {
   
   ## used independently
   
   x1 <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")), currency = c("USD", "JPY"))
-  result1 <- add.conventions(x1)
+  result1 <- add_conventions(x1)
   
   ## joint usage with add.dates
   
@@ -26,5 +26,5 @@ test_that("test add conventions", {
                    notional = c(10000000, 10000000))
   
   x2 <- add.dates(x2)
-  result2 <- add.conventions(x2)
+  result2 <- add_conventions(x2)
 })

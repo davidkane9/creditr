@@ -45,7 +45,7 @@ IR.DV01 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  x <- add.conventions(add.dates(x))
+  x <- add_conventions(add.dates(x))
   
   IR.DV01 <- rep(NA, nrow(x))
   

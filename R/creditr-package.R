@@ -11,7 +11,7 @@
 #' functions, spread.to.upfront and upfront.to.spread are designed to
 #' compute one of spread and upfront given the other; spread.to.pd and
 #' pd.to.spread, similarly, can calculate one of spread and probability
-#' of default given the other; add.dates and add.conventions compute a
+#' of default given the other; add.dates and add_conventions compute a
 #' series of dates information and accounting conventions related to CDS
 #' pricing. Finally, get.rates and build.rates facilitates direct
 #' fetching of relevant interest rates from online sources. Thanks to 
