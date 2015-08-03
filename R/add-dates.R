@@ -101,29 +101,29 @@ add_dates <- function(x,
     
     if(x[[currency.var]][i] == "JPY"){
       
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
       while(baseDate %in% JPY.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
       
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
       while(baseDate %in% JPY.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
     } else if(x[[currency.var]][i] == "USD"){
       
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
       while(baseDate %in% USD.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
       
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
       while(baseDate %in% USD.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
     } else{   
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
     }
     
     ## stepinDate is the date on which a party assumes ownership of a trade
@@ -146,8 +146,8 @@ add_dates <- function(x,
     ## but we don't have the data frame now for these holidays! The below code
     ## only plus three weekdays to valueDate! this is wrong!!!
     
-    valueDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-    for(j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
+    valueDate <- adj_next_bus_day(x[[date.var]][i] + 1)
+    for(j in 1:2){valueDate <- adj_next_bus_day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
     
@@ -167,7 +167,7 @@ add_dates <- function(x,
     ## is a weekend day, accrual start date must be adjusted to next business
     ## day.
     
-    startDate <- adj.next.bus.day(as.Date(as.POSIXct(date.first)))
+    startDate <- adj_next_bus_day(as.Date(as.POSIXct(date.first)))
     
     ## firstcouponDate is the roll date after the startDate.
     ## it has to be a business day. So if the roll date happens to
@@ -175,7 +175,7 @@ add_dates <- function(x,
     
     firstcouponDate     <- as.POSIXlt(startDate)
     firstcouponDate$mon <- firstcouponDate$mon + 3
-    firstcouponDate     <- as.Date(adj.next.bus.day(firstcouponDate))
+    firstcouponDate     <- as.Date(adj_next_bus_day(firstcouponDate))
     
     ## endDate is the maturity date of the contract or the date up till when 
     ## protection is offered. It is the firstCouponDate + tenor. So if the 
@@ -204,7 +204,7 @@ add_dates <- function(x,
     
     pencouponDate     <- as.POSIXlt(endDate)
     pencouponDate$mon <- pencouponDate$mon - 3
-    pencouponDate     <- as.Date(adj.next.bus.day(pencouponDate))
+    pencouponDate     <- as.Date(adj_next_bus_day(pencouponDate))
     
     ## backstopDate is the date from which protection is effective.
     ## So if a credit event occured in the 60 days prior to the trade
