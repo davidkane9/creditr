@@ -13,7 +13,7 @@
 #'   
 #' @import zoo
 #'   
-#' @seealso \link{download.markit} \link{build.rates}
+#' @seealso \link{\code{download_markit}} \link{\code{build_rates}}
 #'   
 #' @examples
 #' \dontrun{

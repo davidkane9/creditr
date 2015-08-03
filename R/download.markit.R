@@ -17,7 +17,7 @@
 #' @import zoo
 #' @import xts
 #'   
-#' @seealso \link{download.FRED} \link{build.rates}
+#' @seealso \link{\code{download_FRED}} \link{\code{build_rates}}
 #'   
 #' @examples
 #' \dontrun{

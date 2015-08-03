@@ -1,9 +1,9 @@
 #' Build a data frame containing interest rates for CDS pricing
 #' 
-#' \code{build.rates} can create a data frame of interest rates from a start 
+#' \code{build_rates} can create a data frame of interest rates from a start 
 #' date to an end date, which are specified by the user. The interest rates will
-#' be later used in CDS pricing. \code{build.rates} also builds the rates.RData 
-#' in the package. \code{build.rates} mainly consists \code{download.markit} and
+#' be later used in CDS pricing. \code{build_rates} also builds the rates.RData 
+#' in the package. \code{build_rates} mainly consists \code{download.markit} and
 #' \code{download.FRED}. The two sources are Markit website and FRED website.
 #' 
 #' @param start.date is the start date of the data frame; it is the earliest CDS
@@ -45,10 +45,10 @@
 #' \dontrun{
 #' ## Running this example will take more than two hours.
 #' 
-#' build.rates(start.date = as.Date("2004-01-01"), 
+#' build_rates(start.date = as.Date("2004-01-01"), 
 #'             end.date = as.Date("2014-08-23"))}
 
-build.rates <- function(start.date, end.date){
+build_rates <- function(start.date, end.date){
   
   stopifnot(inherits(start.date, "Date") & inherits(end.date, "Date"))
   
