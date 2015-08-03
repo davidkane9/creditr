@@ -1,6 +1,6 @@
 #' Get raw data from Markit website.
 #' 
-#' \code{get.raw.markit} downloads the rates zip file from Markit website,
+#' \code{get_raw_markit} downloads the rates zip file from Markit website,
 #' unzips and parses the XML
 #' 
 #' @param date Date type, is the CDS pricing date.
@@ -10,7 +10,7 @@
 #'  rate expiry and interest rate. The data frame is created with data
 #'  from Markit website
 
-get.raw.markit <- function(date, currency){
+get_raw_markit <- function(date, currency){
   
   stopifnot(inherits(date, "Date") & is.character(currency))
   stopifnot(currency %in% c( "USD", "EUR", "JPY"))
