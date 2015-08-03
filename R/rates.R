@@ -77,6 +77,6 @@
 #' @docType data
 #' @name rates
 #' @keywords datasets, interest rates
-#' @seealso \code{\link{download.FRED}} \code{\link{download.markit}} \code{\link{build_rates}}
+#' @seealso \code{\link{download_FRED}} \code{\link{download.markit}} \code{\link{build_rates}}
 NULL
 #> NULL

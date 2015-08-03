@@ -22,7 +22,7 @@ a data frame that contains the CDS pricing date, the currency, the
 date to an end date, which are specified by the user. The interest rates will
 be later used in CDS pricing. \code{build_rates} also builds the rates.RData
 in the package. \code{build_rates} mainly consists \code{download.markit} and
-\code{download.FRED}. The two sources are Markit website and FRED website.
+\code{download_FRED}. The two sources are Markit website and FRED website.
 }
 \details{
 since Markit wesite has the interest rates back to th 1990s, download.markit
@@ -43,7 +43,7 @@ below, to combine markit and FRED in the most suitable way.
 Another note is that, the rates on both Markit website and FRED website have
 not been adjusted to the previous business day. In other words, the rates
 from both website is the exact rate on that day, rather than on the previous
-business day. But download.markit and download.FRED have adjusted the days
+business day. But download.markit and download_FRED have adjusted the days
 already for the convenience of CDS pricing, so we don't have to worry here.
 }
 \examples{
@@ -58,6 +58,6 @@ build_rates(start.date = as.Date("2004-01-01"),
   \url{http://research.stlouisfed.org/fred2/categories/33003/downloaddata}
 }
 \seealso{
-\link{download.markit} \link{download.FRED} \link{rates}
+\link{download.markit} \link{download_FRED} \link{rates}
 }
 

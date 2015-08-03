@@ -1,6 +1,6 @@
 #' Get Rates from FRED
 #' 
-#' \code{download.FRED} returns the deposits and swap rates for the day input,
+#' \code{download_FRED} returns the deposits and swap rates for the day input,
 #' along with the date conventions for that specific currency. The source is
 #' FRED.
 #' 
@@ -17,11 +17,11 @@
 #'   
 #' @examples
 #' \dontrun{
-#' download.FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"), 
+#' download_FRED(start = as.Date("2003-12-31"), end = as.Date("2005-01-04"), 
 #'               currency = "JPY")
 #' }             
 
-download.FRED <- function(start = as.Date("2004-01-01"), 
+download_FRED <- function(start = as.Date("2004-01-01"), 
                           end = as.Date("2005-01-04"), currency = "JPY"){
 
   ## We make start date and end date go back one day, because we use the 
