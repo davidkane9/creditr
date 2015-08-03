@@ -35,12 +35,12 @@ implied.RR <- function(x,
     if(tenor.var %in% names(x)){
       
       ## if we don't have maturity but we have tenor, we add a fake currency
-      ## to x so we can use add.dates() to get the maturity date. Note the
+      ## to x so we can use add_dates() to get the maturity date. Note the
       ## fake currency won't have any effect here, but just to pass the
-      ## JPY check in add.dates
+      ## JPY check in add_dates
       
       x$currency <- "USD"
-      x$maturity <- add.dates(x)$endDate
+      x$maturity <- add_dates(x)$endDate
       x$currency <- NULL  ## remove the fake currency
       tenor <- x$tenor    ## just use the provided tenor by the user
     }else{

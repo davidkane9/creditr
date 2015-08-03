@@ -1,6 +1,6 @@
 #' Return CDS dates.
 #' 
-#' \code{add.dates} takes a data frame which contains dates, tenor (or maturity)
+#' \code{add_dates} takes a data frame which contains dates, tenor (or maturity)
 #' and currency and returns appropriate dates for pricing a CDS contract.
 #' 
 #' @param x a data frame, containing all necessary information
@@ -25,9 +25,9 @@
 #' @examples
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
 #'                 tenor = rep(5, 2), currency = c("JPY", "USD"))
-#' add.dates(x)
+#' add_dates(x)
 
-add.dates <- function(x, 
+add_dates <- function(x, 
                       date.var     = "date",
                       maturity.var = "maturity",
                       tenor.var    = "tenor",
@@ -231,7 +231,7 @@ add.dates <- function(x,
   ## the second coupon payment date is Mon 6/22/2009 (because 6/20/2009 is a 
   ## weekend day), then the Accrual end date is 6/21/2009, a Sunday.
   
-  ## Also, we don't have benchmarkDate here in add.dates(). According to ISDA
+  ## Also, we don't have benchmarkDate here in add_dates(). According to ISDA
   ## date convention documentation, benchmark start date is the same as accrual
   ## begin date, this means that benchmarkDate must be a weekday.
   

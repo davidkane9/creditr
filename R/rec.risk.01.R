@@ -45,7 +45,7 @@ rec.risk.01 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  x <- add_conventions(add.dates(x))
+  x <- add_conventions(add_dates(x))
   
   rec.risk.01 <- rep(NA, nrow(x))
   

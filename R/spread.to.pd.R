@@ -41,7 +41,7 @@ spread.to.pd <- function(x,
   stopifnot(is.numeric(x[[spread.var]]))
   stopifnot(inherits(x[[date.var]], "Date"))
   
-  x <- add.dates(x,
+  x <- add_dates(x,
                  date.var = date.var,
                  tenor.var = tenor.var,
                  maturity.var = maturity.var,

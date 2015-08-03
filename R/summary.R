@@ -18,7 +18,7 @@ setMethod("summary",
           function(object,
                    ...){
             
-            endDate <- add.dates(data.frame(date = as.Date(object@date),
+            endDate <- add_dates(data.frame(date = as.Date(object@date),
                                             tenor = object@tenor,
                                             currency = object@currency))$endDate
             
