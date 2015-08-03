@@ -130,7 +130,7 @@ CDS <- function(name = NULL,
   cds@spread.DV01 <- spread_DV01(df)
   cds@IR.DV01     <- IR_DV01(df) 
   cds@rec.risk.01 <- rec_risk_01(df)
-  cds@pd          <- spread.to.pd(data.frame(spread = cds@spread,
+  cds@pd          <- spread_to_pd(data.frame(spread = cds@spread,
                                              currency = cds@currency,
                                              recovery = cds@recovery,
                                              tenor = cds@tenor,

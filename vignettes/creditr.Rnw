@@ -1214,7 +1214,7 @@ spread.DV01(data.frame(date     = as.Date("2014-04-22"),
 and thus we can calculate probability of default using spread at time $t$.
 
 <<>>=
-spread.to.pd(data.frame(date     = Sys.Date(),
+spread_to_pd(data.frame(date     = Sys.Date(),
                         spread   = 160,
                         tenor    = 5,
                         recovery = 0.4,

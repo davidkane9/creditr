@@ -1,6 +1,6 @@
 #' Calcualte Default Probability with Spread
 #' 
-#' \code{spread.to.pd} approximates the default probability at time given the 
+#' \code{spread_to_pd} approximates the default probability at time given the 
 #' spread
 #' 
 #' @inheritParams CS10
@@ -10,7 +10,7 @@
 #'   
 #' @seealso \link{\code{pd_to_spread}}
 
-spread.to.pd <- function(x, 
+spread_to_pd <- function(x, 
                          recovery.var = "recovery", 
                          currency.var = "currency",
                          tenor.var    = "tenor",

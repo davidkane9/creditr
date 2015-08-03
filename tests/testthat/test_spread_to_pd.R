@@ -1,6 +1,6 @@
-context("Test spread.to.pd")
+context("Test spread_to_pd")
 
-test_that("spread.to.pd.test.R", {
+test_that("spread_to_pd.test.R", {
   
   ## test case from Bloomberg screenshots of Chorus
   
@@ -12,7 +12,7 @@ test_that("spread.to.pd.test.R", {
 
   truth <- 0.1915
 
-  result <- spread.to.pd(data)
+  result <- spread_to_pd(data)
   
   ## currently the test case cannot be matched for 100%, so we need rounding
   ## here
