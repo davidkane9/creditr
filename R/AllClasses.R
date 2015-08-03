@@ -47,60 +47,60 @@ setClass("CDS",
            
            ## name stuff
            
-           name = "character",
-           contract = "character",
-           RED = "character",
+           name      = "character",
+           contract  = "character",
+           RED       = "character",
            
            ## basic info
            
-           date = "Date",
-           spread = "numeric",
-           maturity = "Date",
-           tenor = "numeric",
-           coupon = "numeric",
-           recovery = "numeric",
-           currency = "character",
-           notional = "numeric",
+           date      = "Date",
+           spread    = "numeric",
+           maturity  = "Date",
+           tenor     = "numeric",
+           coupon    = "numeric",
+           recovery  = "numeric",
+           currency  = "character",
+           notional  = "numeric",
            principal = "numeric",
-           accrual = "numeric",
-           pd = "numeric",
-           price = "numeric",
+           accrual   = "numeric",
+           pd        = "numeric",
+           price     = "numeric",
            
            ## calculated amount
            
-           upfront = "numeric",
+           upfront     = "numeric",
            spread.DV01 = "numeric",
-           IR.DV01 = "numeric",
+           IR.DV01     = "numeric",
            rec.risk.01 = "numeric" ),
          
          prototype = prototype(
            
            ## name stuff
            
-           name = character(),
+           name     = character(),
            contract = character(),
-           RED = character(),
+           RED      = character(),
            
            ## basic info
            
-           date = character(),
-           spread = numeric(),
-           maturity = character(),
-           tenor = numeric(),
-           coupon = numeric(),
-           recovery = numeric(),
-           currency = character(),
-           notional = numeric(),
+           date      = character(),
+           spread    = numeric(),
+           maturity  = character(),
+           tenor     = numeric(),
+           coupon    = numeric(),
+           recovery  = numeric(),
+           currency  = character(),
+           notional  = numeric(),
            principal = numeric(),
-           accrual = numeric(),
-           pd = numeric(),
-           price = numeric(),
+           accrual   = numeric(),
+           pd        = numeric(),
+           price     = numeric(),
            
            ## calculated amount
            
-           upfront = numeric(),
+           upfront     = numeric(),
            spread.DV01 = numeric(),
-           IR.DV01 = numeric(),
+           IR.DV01     = numeric(),
            rec.risk.01 = numeric()
          )
 )
