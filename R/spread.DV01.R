@@ -33,7 +33,7 @@ spread.DV01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x,
+  x <- check_inputs(x,
                     date.var      = date.var,
                     currency.var  = currency.var,
                     maturity.var  = maturity.var,

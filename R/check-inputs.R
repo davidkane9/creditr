@@ -1,6 +1,6 @@
 #' Check whether inputs from the data frame are valid.
 #' 
-#' \code{check.inputs} checks whether a data frame's inputs are valid. It is a 
+#' \code{check_inputs} checks whether a data frame's inputs are valid. It is a 
 #' minimum set of checks. Things such as recovery var are not checked, 
 #' because some functions don't need them as input.
 #' 
@@ -16,9 +16,9 @@
 #'                 coupon = c(100, 100),
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(1000000, 1000000))
-#' x <- check.inputs(x)
+#' x <- check_inputs(x)
 
-check.inputs <- function(x,
+check_inputs <- function(x,
                          date.var     = "date", 
                          currency.var = "currency",
                          maturity.var = "maturity",
