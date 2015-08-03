@@ -1,6 +1,6 @@
 #' Calculates Implied Recovery Rate
 #' 
-#' \code{implied.RR} that calculates the recovery rate implied by the CDS spread
+#' \code{implied_RR} that calculates the recovery rate implied by the CDS spread
 #' and probability of default (pd) by using the ISDA model. This takes a data 
 #' frame of inputs and returns a vector of the same length.
 #' 
@@ -12,7 +12,7 @@
 #'   actual calculation uses a complicated bootstrapping process, so the results
 #'   may be marginally different.
 
-implied.RR <- function(x, 
+implied_RR <- function(x, 
                        date.var     = "date",
                        tenor.var    = "tenor",
                        maturity.var = "maturity",
