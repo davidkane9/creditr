@@ -1,6 +1,6 @@
 #' Return CDS dates.
 #' 
-#' \code{add.dates} takes a data frame which contains dates, tenor (or maturity)
+#' \code{add_dates} takes a data frame which contains dates, tenor (or maturity)
 #' and currency and returns appropriate dates for pricing a CDS contract.
 #' 
 #' @param x a data frame, containing all necessary information
@@ -25,9 +25,9 @@
 #' @examples
 #' x <- data.frame(date = c(as.Date("2014-05-06"), as.Date("2014-05-07")),
 #'                 tenor = rep(5, 2), currency = c("JPY", "USD"))
-#' add.dates(x)
+#' add_dates(x)
 
-add.dates <- function(x, 
+add_dates <- function(x, 
                       date.var     = "date",
                       maturity.var = "maturity",
                       tenor.var    = "tenor",
@@ -101,29 +101,29 @@ add.dates <- function(x,
     
     if(x[[currency.var]][i] == "JPY"){
       
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
       while(baseDate %in% JPY.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
       
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
       while(baseDate %in% JPY.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
     } else if(x[[currency.var]][i] == "USD"){
       
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
       while(baseDate %in% USD.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
       
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
       while(baseDate %in% USD.holidays){
-        baseDate <- adj.next.bus.day(baseDate + 1)
+        baseDate <- adj_next_bus_day(baseDate + 1)
       }
     } else{   
-      baseDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-      baseDate <- adj.next.bus.day(baseDate + 1)
+      baseDate <- adj_next_bus_day(x[[date.var]][i] + 1)
+      baseDate <- adj_next_bus_day(baseDate + 1)
     }
     
     ## stepinDate is the date on which a party assumes ownership of a trade
@@ -146,8 +146,8 @@ add.dates <- function(x,
     ## but we don't have the data frame now for these holidays! The below code
     ## only plus three weekdays to valueDate! this is wrong!!!
     
-    valueDate <- adj.next.bus.day(x[[date.var]][i] + 1)
-    for(j in 1:2){valueDate <- adj.next.bus.day(valueDate + 1)}
+    valueDate <- adj_next_bus_day(x[[date.var]][i] + 1)
+    for(j in 1:2){valueDate <- adj_next_bus_day(valueDate + 1)}
     
     ## startDate is the date from when the accrued amount is calculated
     
@@ -167,7 +167,7 @@ add.dates <- function(x,
     ## is a weekend day, accrual start date must be adjusted to next business
     ## day.
     
-    startDate <- adj.next.bus.day(as.Date(as.POSIXct(date.first)))
+    startDate <- adj_next_bus_day(as.Date(as.POSIXct(date.first)))
     
     ## firstcouponDate is the roll date after the startDate.
     ## it has to be a business day. So if the roll date happens to
@@ -175,7 +175,7 @@ add.dates <- function(x,
     
     firstcouponDate     <- as.POSIXlt(startDate)
     firstcouponDate$mon <- firstcouponDate$mon + 3
-    firstcouponDate     <- as.Date(adj.next.bus.day(firstcouponDate))
+    firstcouponDate     <- as.Date(adj_next_bus_day(firstcouponDate))
     
     ## endDate is the maturity date of the contract or the date up till when 
     ## protection is offered. It is the firstCouponDate + tenor. So if the 
@@ -204,7 +204,7 @@ add.dates <- function(x,
     
     pencouponDate     <- as.POSIXlt(endDate)
     pencouponDate$mon <- pencouponDate$mon - 3
-    pencouponDate     <- as.Date(adj.next.bus.day(pencouponDate))
+    pencouponDate     <- as.Date(adj_next_bus_day(pencouponDate))
     
     ## backstopDate is the date from which protection is effective.
     ## So if a credit event occured in the 60 days prior to the trade
@@ -231,7 +231,7 @@ add.dates <- function(x,
   ## the second coupon payment date is Mon 6/22/2009 (because 6/20/2009 is a 
   ## weekend day), then the Accrual end date is 6/21/2009, a Sunday.
   
-  ## Also, we don't have benchmarkDate here in add.dates(). According to ISDA
+  ## Also, we don't have benchmarkDate here in add_dates(). According to ISDA
   ## date convention documentation, benchmark start date is the same as accrual
   ## begin date, this means that benchmarkDate must be a weekday.
   

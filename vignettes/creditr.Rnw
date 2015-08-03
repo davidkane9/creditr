@@ -1120,16 +1120,16 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 CS10(x)
 @
 
-\subsubsection{``get.rates'' Function}
-\label{sec:get.ratesFunction}
+\subsubsection{``get_rates'' Function}
+\label{sec:get_ratesFunction}
 
-\texttt{get.rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
+\texttt{get_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 <<>>=
-cds1.rates <- get.rates(date = as.Date("2014-06-24"), currency = "USD")
+cds1.rates <- get_rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the \texttt{get.rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get.rates} downloads the data from Federal Reserve website).
+The output from the \texttt{get_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get_rates} downloads the data from Federal Reserve website).
 
 <<>>=
 cds1.rates
@@ -1158,9 +1158,9 @@ rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
                        notional = 10000000))
 @ 
 
-\subsubsection{``IR.DV01'' Function}
+\subsubsection{``IR_DV01'' Function}
 
-\texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
+\texttt{IR_DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
 Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' and it measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. Formula of calculating IR.DV01 is given below.
 
@@ -1170,7 +1170,7 @@ Recall that \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' and i
 
 
 <<>>=
-IR.DV01(data.frame(date     = as.Date("2014-04-22"),
+IR_DV01(data.frame(date     = as.Date("2014-04-22"),
                    currency = "USD",
                    tenor    = 5,
                    spread   = 160,

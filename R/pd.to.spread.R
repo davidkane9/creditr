@@ -34,7 +34,7 @@ pd.to.spread <- function(x,
   stopifnot(is.numeric(x[[pd.var]]))
   stopifnot(inherits(x[[date.var]], "Date"))
   
-  x <- add.dates(x)
+  x <- add_dates(x)
   
   ## calculate the exact time from the trade date till the maturity date Note:
   ## this 'time' is different from tenor. Let's say the trade date April 15,

@@ -33,7 +33,7 @@ spread.DV01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x,
+  x <- check_inputs(x,
                     date.var      = date.var,
                     currency.var  = currency.var,
                     maturity.var  = maturity.var,
@@ -45,16 +45,16 @@ spread.DV01 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  x <- add.conventions(add.dates(x))
+  x <- add_conventions(add_dates(x))
   
   spread.DV01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
     ## extract currency specific interest rate data and date conventions using
-    ## get.rates()
+    ## get_rates()
     
-    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
     spread.DV01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "spread.DV01", 
                                              rates.info = rates.info)

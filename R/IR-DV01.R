@@ -1,6 +1,6 @@
 #' Calculate IR.DV01
 #' 
-#' \code{IR.DV01} calculate the amount of change in upfront when there is a
+#' \code{IR_DV01} calculate the amount of change in upfront when there is a
 #' 1/1e4 increase in interest rate for a data frame of CDS contracts.
 #' 
 #' @inheritParams CS10
@@ -17,9 +17,9 @@
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(10000000, 10000000),
 #'                 stringsAsFactors = FALSE)
-#' IR.DV01(x)
+#' IR_DV01(x)
 
-IR.DV01 <- function(x,
+IR_DV01 <- function(x,
                     date.var      = "date",
                     currency.var  = "currency",
                     maturity.var  = "maturity",
@@ -33,7 +33,7 @@ IR.DV01 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x,
+  x <- check_inputs(x,
                     date.var      = date.var,
                     currency.var  = currency.var,
                     maturity.var  = maturity.var,
@@ -45,16 +45,16 @@ IR.DV01 <- function(x,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
   
-  x <- add.conventions(add.dates(x))
+  x <- add_conventions(add_dates(x))
   
   IR.DV01 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
     ## extract currency specific interest rate data and date conventions using
-    ## get.rates()
+    ## get_rates()
     
-    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
     IR.DV01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "IR.DV01", rates.info = rates.info)
   }

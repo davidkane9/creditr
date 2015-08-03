@@ -1,6 +1,6 @@
-context("Test IR.DV01")
+context("Test IR_DV01")
 
-test_that("test for IR.DV01", {
+test_that("test for IR_DV01", {
   ## comparing IR.DV01 calculated by our package for Xerox Corp and Electrolux
   ## AB on April 22, 2014 with the results on Bloomberg
   
@@ -13,7 +13,7 @@ test_that("test for IR.DV01", {
                   notional = c(10000000, 10000000),
                   stringsAsFactors = FALSE)
   
-  result <- IR.DV01(x)
+  result <- IR_DV01(x)
   
   truth <- c(-7.36, 1.29)
   

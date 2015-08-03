@@ -1,13 +1,13 @@
 #' Adjust to next business day.
 #' 
-#' \code{adj.next.bus.day} gets the next business day following 5D bus day
+#' \code{adj_next_bus_day} gets the next business day following 5D bus day
 #' convention.
 #' 
 #' @param date, a \code{Date} type.
 #'   
 #' @return Date adjusted to the following business day
 
-adj.next.bus.day <- function(date){
+adj_next_bus_day <- function(date){
   
   for(i in 1:length(date)){
     

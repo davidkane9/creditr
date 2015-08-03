@@ -1,6 +1,6 @@
 #' Get rates from Markit
 #' 
-#' \code{download.markit} takes a data frame of dates and returns a data frame 
+#' \code{download_markit} takes a data frame of dates and returns a data frame 
 #' with the yields for different maturities. 
 #' 
 #' @param start date for gathering interest rates. Must be a Date type
@@ -17,15 +17,15 @@
 #' @import zoo
 #' @import xts
 #'   
-#' @seealso \link{download.FRED} \link{build.rates}
+#' @seealso \link{\code{download_FRED}} \link{\code{build_rates}}
 #'   
 #' @examples
 #' \dontrun{
-#' download.markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"), 
+#' download_markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"), 
 #'                 currency = "JPY")
 #' }       
 
-download.markit <- function(start, end, currency = "USD"){
+download_markit <- function(start, end, currency = "USD"){
   
   stopifnot(inherits(start, "Date"))
   stopifnot(inherits(end, "Date"))
@@ -44,10 +44,10 @@ download.markit <- function(start, end, currency = "USD"){
   
   while(end > start){
     
-    ## use get.rates with the end date and keep reducing it by 1 day store this
+    ## use get_rates with the end date and keep reducing it by 1 day store this
     ## data in Rates
     
-    Rates <- try(get.raw.markit(date = end, currency=currency))
+    Rates <- try(get_raw_markit(date = end, currency=currency))
     
     ## we use try so that if there is a date where rates are unavailable, it
     ## doesn't stop the function.

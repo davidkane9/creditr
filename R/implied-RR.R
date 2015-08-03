@@ -1,6 +1,6 @@
 #' Calculates Implied Recovery Rate
 #' 
-#' \code{implied.RR} that calculates the recovery rate implied by the CDS spread
+#' \code{implied_RR} that calculates the recovery rate implied by the CDS spread
 #' and probability of default (pd) by using the ISDA model. This takes a data 
 #' frame of inputs and returns a vector of the same length.
 #' 
@@ -12,7 +12,7 @@
 #'   actual calculation uses a complicated bootstrapping process, so the results
 #'   may be marginally different.
 
-implied.RR <- function(x, 
+implied_RR <- function(x, 
                        date.var     = "date",
                        tenor.var    = "tenor",
                        maturity.var = "maturity",
@@ -35,12 +35,12 @@ implied.RR <- function(x,
     if(tenor.var %in% names(x)){
       
       ## if we don't have maturity but we have tenor, we add a fake currency
-      ## to x so we can use add.dates() to get the maturity date. Note the
+      ## to x so we can use add_dates() to get the maturity date. Note the
       ## fake currency won't have any effect here, but just to pass the
-      ## JPY check in add.dates
+      ## JPY check in add_dates
       
       x$currency <- "USD"
-      x$maturity <- add.dates(x)$endDate
+      x$maturity <- add_dates(x)$endDate
       x$currency <- NULL  ## remove the fake currency
       tenor <- x$tenor    ## just use the provided tenor by the user
     }else{

@@ -1,4 +1,4 @@
-context("Test implied.RR")
+context("Test implied_RR")
 
 ## test case for implied recovery rate using a data frame containing ids, spreads and pds of 
 ## seven different CDSs
@@ -18,11 +18,11 @@ test_that("test for implied recovery rate", {
                 as.Date("2019-06-20"))   
   df <- data.frame(ids, pd, spread, date, endDate)
   
-  ## save(df, file = "implied.RR.test.RData")
+  ## save(df, file = "implied_RR.test.RData")
   
   # 3 is the column number for spread and 2 is the column number for pd, 1 for id
   
-  result <- implied.RR(x = df, 
+  result <- implied_RR(x = df, 
                        date.var = "date",
                        spread.var = "spread", 
                        pd.var = "pd", 

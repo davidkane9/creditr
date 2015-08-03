@@ -49,7 +49,7 @@ CS10 <- function(x,
   
   ## check if certain variables are contained in x
   
-  x <- check.inputs(x,
+  x <- check_inputs(x,
                     date.var      = date.var,
                     currency.var  = currency.var,
                     maturity.var  = maturity.var,
@@ -60,17 +60,17 @@ CS10 <- function(x,
                     notional      = notional,
                     recovery.var  = recovery.var,
                     recovery      = recovery)
-
-  x <- add.conventions(add.dates(x))
+  
+  x <- add_conventions(add_dates(x))
   
   CS10 <- rep(NA, nrow(x))
   
   for(i in 1:nrow(x)){
     
     ## extract currency specific interest rate data and date conventions using
-    ## get.rates()
+    ## get_rates()
     
-    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
     CS10[i] <- creditrISDA::call.ISDA(x = x[i,], name = "CS10", rates.info = rates.info)
   }

@@ -1,6 +1,6 @@
 #' LIBOR rates from 2004-01-01 to 2014-08-23
 #' 
-#' This data frame is created by \code{build.rates} in \code{CDS} package to calculate the 
+#' This data frame is created by \code{build_rates} in \code{CDS} package to calculate the 
 #' CDS pricing. It covers three currencies: USD, EUR, and JPY. The interest rates date from 
 #' 2004-01-01 to 2014-08-23. Rates on holidays and weekends are available as well as business 
 #' days. 
@@ -18,13 +18,13 @@
 #' The source of the interest rates in \code{rates.RData} is from 
 #' \url{https://www.markit.com/} and \url{http://research.stlouisfed.org/fred2/}. 
 #' When a user is calculating CDS using the \code{CDS} package, the package calls 
-#' \code{get.rates} to get the needed interest rates; \code{get.rates} then calls the 
+#' \code{get_rates} to get the needed interest rates; \code{get.rates} then calls the 
 #' \code{rates.RData} for these interest rates. If a date is unavailable in \code{rates.RData}, 
 #' then the package calls other functions to get the needed interest rates from the internet. 
 #' The \code{rates.RData} is created and stored in the package for the users' convenience: 
 #' getting interest rates from the Internet may fail due to the internet connection problem 
 #' and may be very slow. Also, the user can build its own updated local \code{rates.RData} by 
-#' using \code{build.rates}. For more explanation on the usage of \code{build.rates}, please 
+#' using \code{build_rates}. For more explanation on the usage of \code{build_rates}, please 
 #' see \bold{See Also}.
 #' 
 #' Also, please notice that in the \code{rates.RData}, the \code{rate} is not the interest 
@@ -77,6 +77,6 @@
 #' @docType data
 #' @name rates
 #' @keywords datasets, interest rates
-#' @seealso \code{\link{download.FRED}} \code{\link{download.markit}} \code{\link{build.rates}}
+#' @seealso \code{\link{download_FRED}} \code{\link{download_markit}} \code{\link{build_rates}}
 NULL
 #> NULL

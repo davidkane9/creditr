@@ -42,7 +42,7 @@ CDS <- function(name = NULL,
     
     ## maturityshouldbe is the correct maturity given the input date and tenor
     
-    maturityshouldbe <- add.dates(data.frame(date = date, tenor = tenor,
+    maturityshouldbe <- add_dates(data.frame(date = date, tenor = tenor,
                                              currency = currency))$endDate
     
     ## check if the input maturity matches the correct should-be maturity
@@ -53,14 +53,14 @@ CDS <- function(name = NULL,
   if ((is.null(spread))) stop("Please input spread")
  
   ## if maturity date is not given we use the tenor and vice-versa, to get dates
-  ## using add.dates function. Results are stored in cdsdates
+  ## using add_dates function. Results are stored in cdsdates
   
   if(is.null(maturity)){
-    cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
+    cdsDates <- add_conventions(add_dates(data.frame(date = as.Date(date),
                                                      tenor = tenor, currency = currency)))
   } else{
     if(is.null(tenor)){
-      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
+      cdsDates <- add_conventions(add_dates(data.frame(date = as.Date(date),
                                                        maturity = as.Date(maturity),
                                                        currency = currency)))
     }
@@ -68,7 +68,7 @@ CDS <- function(name = NULL,
     ## if both are entered, we arbitrarily use one of them
     
     if((!is.null(tenor) & !is.null(maturity))){
-      cdsDates <- add.conventions(add.dates(data.frame(date = as.Date(date),
+      cdsDates <- add_conventions(add_dates(data.frame(date = as.Date(date),
                                                        maturity = as.Date(maturity),
                                                        currency = currency)))
     }
@@ -88,7 +88,7 @@ CDS <- function(name = NULL,
   }
   
   ## if maturity date is NULL, we set maturity date as the endDate, which
-  ## obtained using add.dates.
+  ## obtained using add_dates.
   
   if(is.null(maturity)) maturity = as.Date(cdsDates$endDate)
 
@@ -128,7 +128,7 @@ CDS <- function(name = NULL,
   cds@accrual <- cds@upfront - cds@principal
   
   cds@spread.DV01 <- spread.DV01(df)
-  cds@IR.DV01     <- IR.DV01(df) 
+  cds@IR.DV01     <- IR_DV01(df) 
   cds@rec.risk.01 <- rec.risk.01(df)
   cds@pd          <- spread.to.pd(data.frame(spread = cds@spread,
                                              currency = cds@currency,
