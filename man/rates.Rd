@@ -26,7 +26,7 @@ days.
 The source of the interest rates in \code{rates.RData} is from
 \url{https://www.markit.com/} and \url{http://research.stlouisfed.org/fred2/}.
 When a user is calculating CDS using the \code{CDS} package, the package calls
-\code{get.rates} to get the needed interest rates; \code{get.rates} then calls the
+\code{get_rates} to get the needed interest rates; \code{get.rates} then calls the
 \code{rates.RData} for these interest rates. If a date is unavailable in \code{rates.RData},
 then the package calls other functions to get the needed interest rates from the internet.
 The \code{rates.RData} is created and stored in the package for the users' convenience:
@@ -80,7 +80,7 @@ rates[rates$currency == "JPY",]
 rates[rates$currency == "USD" & rates$date == "2005-10-01",]
 }
 \seealso{
-\code{\link{download_FRED}} \code{\link{download.markit}} \code{\link{build_rates}}
+\code{\link{download_FRED}} \code{\link{download_markit}} \code{\link{build_rates}}
 }
 \keyword{datasets,}
 \keyword{interest}

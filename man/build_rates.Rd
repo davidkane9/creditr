@@ -21,18 +21,18 @@ a data frame that contains the CDS pricing date, the currency, the
 \code{build_rates} can create a data frame of interest rates from a start
 date to an end date, which are specified by the user. The interest rates will
 be later used in CDS pricing. \code{build_rates} also builds the rates.RData
-in the package. \code{build_rates} mainly consists \code{download.markit} and
+in the package. \code{build_rates} mainly consists \code{download_markit} and
 \code{download_FRED}. The two sources are Markit website and FRED website.
 }
 \details{
-since Markit wesite has the interest rates back to th 1990s, download.markit
+since Markit wesite has the interest rates back to th 1990s, download_markit
 is responsible for building up all the USD interest rate data frame; for EUR
 and JPY, markit can only get from 2005-01-05 to now. But the biggest
-advantage of using download.markit is that, since Markit website only lists
-the rate expiries that are actually used for CDS pricing, download.markit can
+advantage of using download_markit is that, since Markit website only lists
+the rate expiries that are actually used for CDS pricing, download_markit can
 get the exact type of expiries of rates needed to price CDS. Also, it has
 expiry over 1Y to 30Y. In contrast, FRED is only complementary to markit
-data. Since download.markit can get any rates for USD, we don't use FRED for
+data. Since download_markit can get any rates for USD, we don't use FRED for
 USD. Then we want to get data for EUR and JPY before 2005-01-04 (the limit of
 markit). FRED has almost all data for any date, which is its biggest
 advantage. But its biggest disadvantage is that it doesn't know which expiry
@@ -43,7 +43,7 @@ below, to combine markit and FRED in the most suitable way.
 Another note is that, the rates on both Markit website and FRED website have
 not been adjusted to the previous business day. In other words, the rates
 from both website is the exact rate on that day, rather than on the previous
-business day. But download.markit and download_FRED have adjusted the days
+business day. But download_markit and download_FRED have adjusted the days
 already for the convenience of CDS pricing, so we don't have to worry here.
 }
 \examples{
@@ -58,6 +58,6 @@ build_rates(start.date = as.Date("2004-01-01"),
   \url{http://research.stlouisfed.org/fred2/categories/33003/downloaddata}
 }
 \seealso{
-\link{download.markit} \link{download_FRED} \link{rates}
+\link{download_markit} \link{download_FRED} \link{rates}
 }
 

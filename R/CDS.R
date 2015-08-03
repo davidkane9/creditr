@@ -128,7 +128,7 @@ CDS <- function(name = NULL,
   cds@accrual <- cds@upfront - cds@principal
   
   cds@spread.DV01 <- spread.DV01(df)
-  cds@IR.DV01     <- IR.DV01(df) 
+  cds@IR.DV01     <- IR_DV01(df) 
   cds@rec.risk.01 <- rec.risk.01(df)
   cds@pd          <- spread.to.pd(data.frame(spread = cds@spread,
                                              currency = cds@currency,
