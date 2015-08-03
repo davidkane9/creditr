@@ -1193,7 +1193,7 @@ Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01'' and it me
 \end{align*}
 
 <<>>=
-spread.DV01(data.frame(date     = as.Date("2014-04-22"),
+spread_DV01(data.frame(date     = as.Date("2014-04-22"),
                        currency = "USD",
                        tenor    = 5,
                        spread   = 160,

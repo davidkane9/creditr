@@ -29,7 +29,7 @@ test_that("test for add_dates", {
   
   ## Test case with CDS from April 15, 2014 (Caesar's Entertainment Corporation)
   
-  load("add_dates.test.RData")
+  load("test_add_dates.RData")
   
   result.1 <- add_dates(data.frame(date = as.Date("2014-04-15"), tenor = 5, currency = "USD"))
   result.2 <- add_dates(data.frame(date = as.Date("2014-04-15"),

@@ -12,7 +12,7 @@ date, spread, maturity, teno, coupon, recovery, currency, notional,
 principal, accrual, pd, price, upfront, spread.DV01, IR.DV01 and rec.risk.01,
 with S4 methods like update, show and summary. It also supports data frame
 input and is able to provide convenient calculation of key CDS statistics
-through functions like \code{CS10}, \code{IR.DV01}, \code{rec.risk.01} and
+through functions like \code{CS10}, \code{IR.DV01}, \code{rec_risk_01} and
 \code{spread_DV01}. Of other major functions, spread.to.upfront and
 upfront.to.spread are designed to compute one of spread and upfront given the
 other; \code{spread_to_pd} and \code{pd_to_spread}, similarly, can calculate
