@@ -1,12 +1,10 @@
-context("Test spread.DV01")
+context("Test spread_DV01")
 
 ## SpreadDV01.test.R using CDS data for Xerox Corp on April 22, 2014
 
-test_that("test for spread.DV01", {
-  ## actual spread for Xerox
+test_that("test for spread_DV01", {
+
    truth.1 <- 4825.49
-  
-  ## save(truth.1, file = "spread.DV01.test.RData")
 
   x <- data.frame(date = as.Date("2014-04-22"),
                   currency = "USD",
@@ -17,7 +15,7 @@ test_that("test for spread.DV01", {
                   notional = 10000000,
                   stringsAsFactors = FALSE)
   
-  result.1 <- spread.DV01(x)
+  result.1 <- spread_DV01(x)
   
   ## test case passes when results are rounded to the nearest whole number
   

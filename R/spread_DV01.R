@@ -1,6 +1,6 @@
 #' Calculate Spread Change
 #' 
-#' \code{spread.DV01} calculates the spread DV01 or change in upfront value when
+#' \code{spread_DV01} calculates the spread DV01 or change in upfront value when
 #' the spread rises by 1 basis point
 #' 
 #' @inheritParams CS10
@@ -17,9 +17,9 @@
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(10000000, 10000000),
 #'                 stringsAsFactors = FALSE)
-#' spread.DV01(x)
+#' spread_DV01(x)
 
-spread.DV01 <- function(x,
+spread_DV01 <- function(x,
                         date.var      = "date",
                         currency.var  = "currency",
                         maturity.var  = "maturity",
