@@ -3,7 +3,7 @@
 \docType{data}
 \name{rates}
 \alias{rates}
-\title{LIBOR rates from 2004-01-01 to 2014-08-23}
+\title{LIBOR rates from 2004-01-01 to 2015-08-03}
 \format{A data frame with 175058 observations on the following 4 variables.
 \itemize{
    \item date = a date (Date object)

@@ -1,6 +1,6 @@
 #' Calculate Recovery Rate Changes
 #' 
-#' \code{rec.risk.01} calculates the amount of change in upfront when there is a 
+#' \code{rec_risk_01} calculates the amount of change in upfront when there is a 
 #' 1% increase in recovery rate for a data frame of CDS contracts.
 #' 
 #' @inheritParams CS10
@@ -17,9 +17,9 @@
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(10000000, 10000000),
 #'                 stringsAsFactors = FALSE)
-#' rec.risk.01(x)
+#' rec_risk_01(x)
 
-rec.risk.01 <- function(x,
+rec_risk_01 <- function(x,
                         date.var      = "date",
                         currency.var  = "currency",
                         maturity.var  = "maturity",

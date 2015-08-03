@@ -1,7 +1,7 @@
-context("Test rec.risk.01")
+context("Test rec_risk_01")
 
-test_that("test for rec.risk.01", {
-  ## comparing rec.risk.01 calculated by our package for Xerox Corp and Electrolux
+test_that("test for rec_risk_01", {
+  ## comparing rec_risk_01 calculated by our package for Xerox Corp and Electrolux
   ## AB on April 22, 2014 with the results on Bloomberg
   
   x <- data.frame(date = c(as.Date("2014-04-22"), as.Date("2014-04-22")),
@@ -13,7 +13,7 @@ test_that("test for rec.risk.01", {
                   notional = c(10000000, 10000000),
                   stringsAsFactors = FALSE)
   
-  result <- rec.risk.01(x)
+  result <- rec_risk_01(x)
   
   truth <- c(-20.85, 3.46)
   

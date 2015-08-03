@@ -1149,7 +1149,7 @@ Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measure
 \end{align*}
 
 <<>>=
-rec.risk.01(data.frame(date     = as.Date("2014-06-24"),
+rec_risk_01(data.frame(date     = as.Date("2014-06-24"),
                        currency = "USD",
                        tenor    = 5,
                        spread   = 160,
