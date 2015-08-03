@@ -37,4 +37,4 @@ associated with these instruments.
 
 Acknowledgements
 --------------------------------------------------------
-Thanks to Jeff Enos for package's name.
+Thanks to Jeff Enos for suggesting the package name.
