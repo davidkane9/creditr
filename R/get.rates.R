@@ -39,11 +39,11 @@ get.rates <- function(date, currency){
   }
   
   ## if the wanted rates are not in rates.RData, then go get rates
-  ## from the Markit website, using download.markit
+  ## from the Markit website, using download_markit
   
   if(nrow(x) == 0){
     
-    x <- download.markit(start = date, end = date, currency = currency)    
+    x <- download_markit(start = date, end = date, currency = currency)    
     x$type <- as.character(substr(x$expiry, start = nchar(x$expiry), 
                                   stop = nchar(x$expiry)))
     ## if maturity is 1Y, it is of type M

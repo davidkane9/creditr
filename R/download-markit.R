@@ -1,6 +1,6 @@
 #' Get rates from Markit
 #' 
-#' \code{download.markit} takes a data frame of dates and returns a data frame 
+#' \code{download_markit} takes a data frame of dates and returns a data frame 
 #' with the yields for different maturities. 
 #' 
 #' @param start date for gathering interest rates. Must be a Date type
@@ -21,11 +21,11 @@
 #'   
 #' @examples
 #' \dontrun{
-#' download.markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"), 
+#' download_markit(start = as.Date("2005-12-31"), end = as.Date("2006-01-04"), 
 #'                 currency = "JPY")
 #' }       
 
-download.markit <- function(start, end, currency = "USD"){
+download_markit <- function(start, end, currency = "USD"){
   
   stopifnot(inherits(start, "Date"))
   stopifnot(inherits(end, "Date"))
