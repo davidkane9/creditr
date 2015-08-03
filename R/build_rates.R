@@ -50,6 +50,11 @@
 
 build_rates <- function(start.date, end.date){
   
+  ## rid NOTE
+  
+  end <- NULL
+  
+  
   stopifnot(inherits(start.date, "Date") & inherits(end.date, "Date"))
   
   ## start date should be earlier than or at least same with end date

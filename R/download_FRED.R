@@ -12,6 +12,7 @@
 #' @return a data frame that contains the rates based on the ISDA pecifications
 #'   
 #' @import zoo
+#' @importFrom utils head tail
 #'   
 #' @seealso \code{\link{download_markit}} \code{\link{build_rates}}
 #'   
@@ -23,7 +24,7 @@
 
 download_FRED <- function(start = as.Date("2004-01-01"), 
                           end = as.Date("2005-01-04"), currency = "JPY"){
-
+  
   ## We make start date and end date go back one day, because we use the 
   ## previous business day's interest rate for trading date pricing. By making
   ## them go back one day and then calculate and then make the output go forward
@@ -76,8 +77,8 @@ download_FRED <- function(start = as.Date("2004-01-01"),
     ## Here we use "xts" package because it is good at manipulating missing 
     ## dates. We define here an empty zoo object for the merge() later.
     
-    empty <- zoo::zoo(order.by = seq.Date(head(zoo::index(raw.data), 1), 
-                                          tail(zoo::index(raw.data), 1), by = "days"))
+    empty <- zoo::zoo(order.by = seq.Date(utils::head(zoo::index(raw.data), 1), 
+                                          utils::tail(zoo::index(raw.data), 1), by = "days"))
     
     ## merge() is a cool command that can merge two zoo objects together. the
     ## raw.data we get has missing rows, for example, 2004-01-03 is absent. So

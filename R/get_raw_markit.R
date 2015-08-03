@@ -6,6 +6,8 @@
 #' @param date Date type, is the CDS pricing date.
 #' @param currency numeric, is the currency that the CDS is traded in.
 #'   
+#' @importFrom utils unzip
+#'   
 #' @return a data frame that contains CDS pricing date, currency, interest
 #'  rate expiry and interest rate. The data frame is created with data
 #'  from Markit website
@@ -64,7 +66,7 @@ get_raw_markit <- function(date, currency){
       ## add suppressWarnings here because otherwise the stop message of Internet
       ## Connection Problem looks confusing.
       
-      files <- suppressWarnings(unzip(tf , exdir = td))
+      files <- suppressWarnings(utils::unzip(tf , exdir = td))
       
       ## the 2nd file of the unzipped directory contains the rates info
       

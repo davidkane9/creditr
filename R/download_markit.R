@@ -16,6 +16,7 @@
 #'   
 #' @import zoo
 #' @import xts
+#' @importFrom utils head tail
 #'   
 #' @seealso \code{\link{download_FRED}} \code{\link{build_rates}}
 #'   
@@ -80,8 +81,8 @@ download_markit <- function(start, end, currency = "USD"){
   ## Here we use "xts" package because it is good at manipulating missing dates.
   ## We define here an empty zoo object for the merge() later.
   
-  empty <- zoo::zoo(order.by = seq.Date(head(zoo::index(x.xts), 1), 
-                                        tail(zoo::index(x.xts), 1), by = "days"))
+  empty <- zoo::zoo(order.by = seq.Date(utils::head(zoo::index(x.xts), 1), 
+                                        utils::tail(zoo::index(x.xts), 1), by = "days"))
   
   ## merge() is a cool command that can merge two zoo objects together. Whenever
   ## merge() finds a missing row of date in raw.data, it will use the previous
