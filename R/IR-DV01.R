@@ -1,6 +1,6 @@
 #' Calculate IR.DV01
 #' 
-#' \code{IR.DV01} calculate the amount of change in upfront when there is a
+#' \code{IR_DV01} calculate the amount of change in upfront when there is a
 #' 1/1e4 increase in interest rate for a data frame of CDS contracts.
 #' 
 #' @inheritParams CS10
@@ -17,9 +17,9 @@
 #'                 recovery = c(0.4, 0.4),
 #'                 notional = c(10000000, 10000000),
 #'                 stringsAsFactors = FALSE)
-#' IR.DV01(x)
+#' IR_DV01(x)
 
-IR.DV01 <- function(x,
+IR_DV01 <- function(x,
                     date.var      = "date",
                     currency.var  = "currency",
                     maturity.var  = "maturity",
