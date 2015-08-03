@@ -21,7 +21,7 @@ spread_to_pd <- function(x,
   stopifnot(is.data.frame(x))
   
   has.maturity.var <- !(is.null(maturity.var) || is.null(x[[maturity.var]]))
-  has.tenor.var <- !(is.null(tenor.var) || is.null(x[[tenor.var]]))
+  has.tenor.var    <- !(is.null(tenor.var)    || is.null(x[[tenor.var]]))
   stopifnot(xor(has.maturity.var, has.tenor.var))
   
   ## stop if the required variables are not contained in the data frame 
@@ -42,8 +42,8 @@ spread_to_pd <- function(x,
   stopifnot(inherits(x[[date.var]], "Date"))
   
   x <- add_dates(x,
-                 date.var = date.var,
-                 tenor.var = tenor.var,
+                 date.var     = date.var,
+                 tenor.var    = tenor.var,
                  maturity.var = maturity.var,
                  currency.var = currency.var)
   
