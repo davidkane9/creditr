@@ -44,7 +44,7 @@ download_markit <- function(start, end, currency = "USD"){
   
   while(end > start){
     
-    ## use get.rates with the end date and keep reducing it by 1 day store this
+    ## use get_rates with the end date and keep reducing it by 1 day store this
     ## data in Rates
     
     Rates <- try(get.raw.markit(date = end, currency=currency))

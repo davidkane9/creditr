@@ -52,9 +52,9 @@ rec.risk.01 <- function(x,
   for(i in 1:nrow(x)){
     
     ## extract currency specific interest rate data and date conventions using
-    ## get.rates()
+    ## get_rates()
     
-    rates.info <- get.rates(date = x$date[i], currency = x$currency[i])
+    rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
     rec.risk.01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
   }

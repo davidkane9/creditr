@@ -1,6 +1,6 @@
 #' Get interest rates from rates.RData or the Markit website
 #' 
-#' \code{get.rates} returns the deposits and swap rates for the day input, along
+#' \code{get_rates} returns the deposits and swap rates for the day input, along
 #' with the date conventions for that specific currency. The day input should be
 #' a weekday. If not, go to the most recent previous weekday.
 #' 
@@ -16,10 +16,10 @@
 #'   
 #' @examples
 #' \dontrun{
-#' get.rates(as.Date("2014-05-07"), currency = "USD")
+#' get_rates(as.Date("2014-05-07"), currency = "USD")
 #' }
 
-get.rates <- function(date, currency){
+get_rates <- function(date, currency){
   
   stopifnot(inherits(date, "Date"))
   stopifnot(currency %in% c( "USD", "EUR", "JPY"))
