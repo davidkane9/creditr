@@ -8,7 +8,7 @@
 #' @return vector containing the probability of default, calculated by using the
 #'   formula for probability of default given in the Bloomberg Manual
 #'   
-#' @seealso \link{pd.to.spread}
+#' @seealso \link{\code{pd_to_spread}}
 
 spread.to.pd <- function(x, 
                          recovery.var = "recovery", 

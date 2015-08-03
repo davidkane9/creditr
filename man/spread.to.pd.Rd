@@ -33,6 +33,6 @@ vector containing the probability of default, calculated by using the
 spread
 }
 \seealso{
-\link{pd.to.spread}
+\link{\code{pd_to_spread}}
 }
 

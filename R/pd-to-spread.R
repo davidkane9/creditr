@@ -1,6 +1,6 @@
 #' Calculate spread with Default Probability
 #' 
-#' \code{pd.to.spread} to calculate spread using the probability of default,
+#' \code{pd_to_spread} to calculate spread using the probability of default,
 #' tenor and recovery rate.
 #' 
 #' @inheritParams CS10
@@ -11,9 +11,9 @@
 #'   inverting the formula for probability of default given in the Bloomberg
 #'   Manual
 #'   
-#' @seealso \link{spread.to.pd}
+#' @seealso \link{\code{spread_to_pd}}
 
-pd.to.spread <- function(x, 
+pd_to_spread <- function(x, 
                          recovery.var = "recovery", 
                          currency.var = "currency",
                          tenor.var    = "tenor", 
