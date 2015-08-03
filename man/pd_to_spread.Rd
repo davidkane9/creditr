@@ -32,6 +32,6 @@ vector containing the spread values in basis points, calculated by
 tenor and recovery rate.
 }
 \seealso{
-\link{\code{spread_to_pd}}
+\code{\link{spread_to_pd}}
 }
 

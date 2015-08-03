@@ -11,7 +11,7 @@
 #'   inverting the formula for probability of default given in the Bloomberg
 #'   Manual
 #'   
-#' @seealso \link{\code{spread_to_pd}}
+#' @seealso \code{\link{spread_to_pd}}
 
 pd_to_spread <- function(x, 
                          recovery.var = "recovery", 
