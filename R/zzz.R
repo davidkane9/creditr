@@ -8,3 +8,7 @@
     devtools::install_github("davidkane9/creditrISDA")
   }
 }
+
+## compress the vignette PDF to fix CMD Check WARNING
+
+Sys.setenv("_R_BUILD_COMPACT_VIGNETTES_" = "--compress-vignettes=gs+qpdf")
