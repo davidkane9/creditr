@@ -16,3 +16,7 @@
 ## The below works and please don't delete this!
 
 Sys.setenv("_R_BUILD_COMPACT_VIGNETTES_" = "--compress-vignettes=gs+qpdf")
+
+## probably setting R_WIN_NO_JUNCTIONS to non-empty value will fix the NOTE??
+
+Sys.setenv("R_WIN_NO_JUNCTIONS" = "repos")
