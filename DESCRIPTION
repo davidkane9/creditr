@@ -27,7 +27,7 @@ Imports:     utils,
              zoo,
              xts
 Suggests:    testthat, creditrISDA
-Maintainer:  Zijie Zhu <zijie.zhu@williams.edu>
+Maintainer:  David Kane <dave.kane@gmail.com>
 License:     MIT + file LICENSE
 Description: The creditr package provides tools for pricing credit default 
              swaps using the open source C code for the ISDA Standard Model. 
