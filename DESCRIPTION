@@ -17,7 +17,8 @@ Author:      c(person("Heidi", "Chen", role = c("aut"),
                 person("Miller Zijie", "Zhu", role = c("aut"),
                 email = "zijie.zhu@williams.com"))
 Depends:     R (>= 2.10)               
-Imports:     quantmod,
+Imports:     utils,
+             quantmod,
              devtools,
              methods,
              Rcpp,
@@ -26,7 +27,7 @@ Imports:     quantmod,
              zoo,
              xts
 Suggests:    testthat, creditrISDA
-Maintainer:  David Kane <dave.kane@gmail.com>
+Maintainer:  Zijie Zhu <zijie.zhu@williams.edu>
 License:     MIT + file LICENSE
 Description: The creditr package provides tools for pricing credit default 
              swaps using the open source C code for the ISDA Standard Model. 

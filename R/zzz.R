@@ -6,6 +6,7 @@
 #' @importFrom utils packageVersion
 
 .onLoad <- function(libname, pkgname) {
+  requireNamespace("utils")
   if(!"creditrISDA" %in% .packages(all.available = TRUE)){
     devtools::install_github("davidkane9/creditrISDA")
   }
