@@ -1,6 +1,6 @@
 Package:     creditr
-Version:     0.4-3
-Date:        2015-08-02
+Version:     0.4-4
+Date:        2015-08-06
 Title:       Credit Default Swaps in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
