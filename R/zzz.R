@@ -5,12 +5,10 @@
 
 #' @importFrom utils packageVersion
 
-.onLoad <- function(libname, pkgname) {
-  requireNamespace("utils")
-  if(!"creditrISDA" %in% .packages(all.available = TRUE)){
-    devtools::install_github("davidkane9/creditrISDA")
-  }
+if(!"creditrISDA" %in% .packages(all.available = TRUE)){
+  devtools::install_github("davidkane9/creditrISDA")
 }
+
 
 ## compress the vignette PDF to fix CMD Check WARNING
 ## The below works and please don't delete this!
@@ -20,3 +18,7 @@ Sys.setenv("_R_BUILD_COMPACT_VIGNETTES_" = "--compress-vignettes=gs+qpdf")
 ## probably setting R_WIN_NO_JUNCTIONS to non-empty value will fix the NOTE??
 
 Sys.setenv("R_WIN_NO_JUNCTIONS" = "repos")
+
+## do not check suggests package (creditrISDA) dependency 
+
+Sys.setenv("_R_CHECK_FORCE_SUGGESTS_" = FALSE)
