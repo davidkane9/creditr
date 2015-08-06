@@ -1,1 +1,1 @@
-local({r <- getOption("repos"); r["CRAN"] <- "https://cran.cnr.Berkeley.edu/";   options(repos = r)})
+options(repos = c(CRAN="http://cran.r-project.org")
