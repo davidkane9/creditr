@@ -1,6 +1,5 @@
 .Rhistory
 .RData
-.Rbuildignore
 *.Rproj*
 .Rproj.user
 vignettes/*.tex
