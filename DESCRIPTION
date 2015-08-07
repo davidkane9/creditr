@@ -26,7 +26,7 @@ Imports:     utils,
              XML,
              zoo,
              xts
-Suggests:    testthat
+Suggests:    testthat, creditrISDA
 Maintainer:  David Kane <dave.kane@gmail.com>
 License:     GPL-3
 Description: The creditr package provides tools for pricing credit default 
