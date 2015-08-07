@@ -72,7 +72,7 @@ CS10 <- function(x,
     
     rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
-    CS10[i] <- creditrISDA::call.ISDA(x = x[i,], name = "CS10", rates.info = rates.info)
+    CS10[i] <- call_ISDA(x = x[i,], name = "CS10", rates.info = rates.info)
   }
   
   return(CS10)

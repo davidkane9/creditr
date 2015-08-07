@@ -56,7 +56,7 @@ rec_risk_01 <- function(x,
     
     rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
-    rec.risk.01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
+    rec.risk.01[i] <- call_ISDA(x = x[i, ], name = "rec.risk.01", rates.info = rates.info)
   }
   
   return(rec.risk.01)

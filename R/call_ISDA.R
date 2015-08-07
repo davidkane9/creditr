@@ -1,15 +1,15 @@
 #' call ISDA c function
 #' 
-#' \code{call.ISDA} call ISDA function
+#' \code{call_ISDA} call ISDA function
 #' 
 #' @param x dataframe which contains relevant dates and convention info
-#' @param name character function name within which call.ISDA is called
+#' @param name character function name within which call_ISDA is called
 #' @param rates.info dataframe which contains relevant rates data
 #'   
 #' @return a numeric value which is the difference between the new upfront and 
 #'   the old one
 
-call.ISDA <- function(x, name, rates.info){
+call_ISDA <- function(x, name, rates.info){
 
   stopifnot(is.data.frame(x))
   stopifnot(c("date", "currency", "spread", "coupon",
@@ -47,7 +47,7 @@ call.ISDA <- function(x, name, rates.info){
   }
   
   upfront.new <- .Call('calcUpfrontTest',
-                       baseDate_input = separate.YMD(x$baseDate),
+                       baseDate_input = separate_YMD(x$baseDate),
                        types = paste(as.character(rates.info$type), collapse = ""),
                        
                        ## If IRDV01 is changed, then rates is changed by adding 1/1e4
@@ -64,12 +64,12 @@ call.ISDA <- function(x, name, rates.info){
                        badDayConvZC = as.character(x$badDayConvention),
                        holidays = "None",
                        
-                       todayDate_input = separate.YMD(x$date),
-                       valueDate_input = separate.YMD(x$valueDate),
-                       benchmarkDate_input = separate.YMD(x$startDate),
-                       startDate_input = separate.YMD(x$startDate),
-                       endDate_input = separate.YMD(x$endDate),
-                       stepinDate_input = separate.YMD(x$stepinDate),
+                       todayDate_input = separate_YMD(x$date),
+                       valueDate_input = separate_YMD(x$valueDate),
+                       benchmarkDate_input = separate_YMD(x$startDate),
+                       startDate_input = separate_YMD(x$startDate),
+                       endDate_input = separate_YMD(x$endDate),
+                       stepinDate_input = separate_YMD(x$stepinDate),
                        
                        dccCDS = "ACT/360",
                        ivlCDS = "1Q",
@@ -100,7 +100,7 @@ call.ISDA <- function(x, name, rates.info){
                        PACKAGE = "creditrISDA")
   
   upfront.orig <- .Call('calcUpfrontTest',
-                        baseDate_input = separate.YMD(x$baseDate),
+                        baseDate_input = separate_YMD(x$baseDate),
                         types = paste(as.character(rates.info$type), collapse = ""),
                         rates = as.numeric(as.character(rates.info$rate)),
                         expiries = as.character(rates.info$expiry),
@@ -113,12 +113,12 @@ call.ISDA <- function(x, name, rates.info){
                         badDayConvZC = as.character(x$badDayConvention),
                         holidays = "None",
                         
-                        todayDate_input = separate.YMD(x$date),
-                        valueDate_input = separate.YMD(x$valueDate),
-                        benchmarkDate_input = separate.YMD(x$startDate),
-                        startDate_input = separate.YMD(x$startDate),
-                        endDate_input = separate.YMD(x$endDate),
-                        stepinDate_input = separate.YMD(x$stepinDate),
+                        todayDate_input = separate_YMD(x$date),
+                        valueDate_input = separate_YMD(x$valueDate),
+                        benchmarkDate_input = separate_YMD(x$startDate),
+                        startDate_input = separate_YMD(x$startDate),
+                        endDate_input = separate_YMD(x$endDate),
+                        stepinDate_input = separate_YMD(x$stepinDate),
                         
                         dccCDS = "ACT/360",
                         ivlCDS = "1Q",

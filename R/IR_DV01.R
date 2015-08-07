@@ -56,7 +56,7 @@ IR_DV01 <- function(x,
     
     rates.info <- get_rates(date = x$date[i], currency = x$currency[i])
     
-    IR.DV01[i] <- creditrISDA::call.ISDA(x = x[i, ], name = "IR.DV01", rates.info = rates.info)
+    IR.DV01[i] <- call_ISDA(x = x[i, ], name = "IR.DV01", rates.info = rates.info)
   }
   
   return(IR.DV01)
