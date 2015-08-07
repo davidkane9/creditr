@@ -66,7 +66,7 @@ spread_to_upfront <- function(x,
   
   for(i in 1:nrow(x)){
     
-    rates.info <- get.rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
+    rates.info <- get_rates(date = as.Date(x[i, date.var]), currency = x[i, currency.var])
       
     
     

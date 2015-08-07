@@ -62,7 +62,7 @@ upfront_to_spread <- function(x,
   
   for(i in 1:nrow(x)){
     
-    rates.info <- get.rates(date = as.Date(x[[date.var]][i]),
+    rates.info <- get_rates(date = as.Date(x[[date.var]][i]),
                            currency = as.character(x[[currency.var]][i]))
     
     spread[i] <- .Call('calcCdsoneSpread',
