@@ -1120,7 +1120,7 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 CS10(x)
 @
 
-\subsubsection{``get.rates'' Function}
+\subsubsection{``get\_rates'' Function}
 \label{sec:get.ratesFunction}
 
 \texttt{get.rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
@@ -1138,9 +1138,9 @@ cds1.rates
 \subsection{Risk Related Functions}
 \label{sec:riskFunctions}
 
-\subsubsection{``rec.risk.01'' Function}
+\subsubsection{``rec\_risk\_01'' Function}
 
-\texttt{rec.risk.01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. 
+\texttt{rec\_risk\_01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. 
 
 Recall that \textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula of calculating Rec Risk (1\%) is given below.
 
@@ -1158,7 +1158,7 @@ rec_risk_01(data.frame(date     = as.Date("2014-06-24"),
                        notional = 10000000))
 @ 
 
-\subsubsection{``IR.DV01'' Function}
+\subsubsection{``IR\_DV01'' Function}
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
@@ -1180,9 +1180,9 @@ IR_DV01(data.frame(date     = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{``spread.DV01'' Function}
+\subsubsection{``spread\_DV01'' Function}
 
-\texttt{spread.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread.DV01 values for each row.
+\texttt{spread\_DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread DV01 values for each row.
 
 Recall that \textbf{Spread DV01} stands for ``Spread Dollar Value 01'' and it measures the risk duration of a CDS trade. Formula of calculting Spread DV01 is given below.
 
