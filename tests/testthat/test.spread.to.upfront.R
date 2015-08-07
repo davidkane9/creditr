@@ -1,10 +1,10 @@
-context("Test spread.to.upfront")
+context("Test spread_to_upfront")
 
 ## Test. In the following test cases we compare the results of 
 ## our upront functions for different data with results from markit.com using
 ## the same data
 
-test_that("test for spread.to.upfront", {
+test_that("test for spread_to_upfront", {
   
   ## test case to see if our function gives the same result as markit.com
   ## all cases use data from Xerox Corporation for 2014-04-22. 
@@ -15,7 +15,7 @@ test_that("test for spread.to.upfront", {
   
   ## truth.1 <- 18624
   
-  result.1 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.1 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            tenor    = 5,
                                            spread   = 105.8,
@@ -38,7 +38,7 @@ test_that("test for spread.to.upfront", {
   ## truth.2 <- -9444
   ## calculated value
   
-  result.2 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.2 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            tenor    = 5,
                                            spread   = 100,
@@ -60,7 +60,7 @@ test_that("test for spread.to.upfront", {
   ## truth.3 <- -474755
   ## calculated value
   
-  result.3 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.3 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            tenor    = 5,
                                            spread   = 105.8,
@@ -81,7 +81,7 @@ test_that("test for spread.to.upfront", {
   ## truth.4 <- 265313
   ## calculated value
   
-  result.4 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.4 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            tenor    = 5,
                                            spread   = 105.8,
@@ -102,7 +102,7 @@ test_that("test for spread.to.upfront", {
   ## truth.5 <- 20718
   ## calculated value
   
-  result.5 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-15"),
+  result.5 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-15"),
                                            currency = "USD",
                                            maturity = as.Date("2019-06-20"),
                                            spread   = 105.8,
@@ -123,7 +123,7 @@ test_that("test for spread.to.upfront", {
   ## truth.6 <- 16582
   #calculated value
   
-  result.6 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-29"),
+  result.6 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-29"),
                                            currency = "USD",
                                            maturity = as.Date("2019-06-20"),
                                            spread   = 105.8,
@@ -143,7 +143,7 @@ test_that("test for spread.to.upfront", {
   ## truth.7 <- 17395
   #calculated value
   
-  result.7 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.7 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            maturity = as.Date("2019-03-20"),
                                            spread   = 105.8,
@@ -162,7 +162,7 @@ test_that("test for spread.to.upfront", {
   ## truth.8 <- 19836
   ## calculated value
   
-  result.8 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.8 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            maturity = as.Date("2019-09-20"),
                                            spread   = 105.8,
@@ -182,7 +182,7 @@ test_that("test for spread.to.upfront", {
   ## truth.9 <- 254985
   ## calculated value
   
-  result.9 <- spread.to.upfront(data.frame(date     = as.Date("2014-04-22"),
+  result.9 <- spread_to_upfront(data.frame(date     = as.Date("2014-04-22"),
                                            currency = "USD",
                                            tenor    = 5,
                                            spread   = 155.8,
@@ -202,7 +202,7 @@ test_that("test for spread.to.upfront", {
   ## truth.10 <- -227912
   ## calculated value
   
-  result.10 <- spread.to.upfront(data.frame(date = as.Date("2014-04-22"),
+  result.10 <- spread_to_upfront(data.frame(date = as.Date("2014-04-22"),
                                             currency = "USD",
                                             tenor = 5,
                                             spread = 55.8,
@@ -224,7 +224,7 @@ test_that("test for spread.to.upfront", {
   ## calculated value
   ## 
   
-  result.11 <- spread.to.upfront(data.frame(date = as.Date("2013-09-20"),
+  result.11 <- spread_to_upfront(data.frame(date = as.Date("2013-09-20"),
                                             currency = "USD",
                                             maturity = as.Date("2013-09-20"),
                                             spread = 105.8,
@@ -248,7 +248,7 @@ test_that("test for spread.to.upfront", {
   
   ## test for different Japanese dates
   
-  result.13 <- spread.to.upfront(data.frame(date = as.Date("2009-03-18"),
+  result.13 <- spread_to_upfront(data.frame(date = as.Date("2009-03-18"),
                                             currency = "JPY",
                                             maturity = as.Date("2014-03-20"),
                                             spread = 105.8,
@@ -276,9 +276,9 @@ test_that("test for spread.to.upfront", {
                     recovery = c(0.4, 0.4),
                     stringsAsFactors = FALSE)
   
-  result.1 <- spread.to.upfront(x = x.1, tenor.var = "tenor")
+  result.1 <- spread_to_upfront(x = x.1, tenor.var = "tenor")
   expect_that(round(result.1, -2), equals(c(4412500, round(-14368, -2))))
   
-  result.2 <- spread.to.upfront(x.2, tenor = "tenor")
+  result.2 <- spread_to_upfront(x.2, tenor = "tenor")
   expect_that(round(result.2, -2), equals(c(4412500, round(-14368, -2))))
 })

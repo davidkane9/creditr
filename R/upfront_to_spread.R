@@ -1,6 +1,6 @@
 #' Calculate Spread with a Given Upfront
 #' 
-#' \code{upfront.to.spread} calculates conventional spread using the upfront 
+#' \code{upfront_to_spread} calculates conventional spread using the upfront 
 #' or ptsUpfront values.
 #' 
 #' @param x data frame, contains all the relevant columns.
@@ -24,7 +24,7 @@
 #' 
 #' @return a numeric indicating the spread.
 
-upfront.to.spread <- function(x, 
+upfront_to_spread <- function(x, 
                    currency.var = "currency", 
                    date.var = "date",
                    coupon.var = "coupon",
@@ -98,7 +98,7 @@ upfront.to.spread <- function(x,
                          upfrontCharge_input = x[[points.var]][i],
                          recoveryRate_input = x[[recovery.var]][i],
                          payAccruedAtStart_input = payAccruedAtStart,
-                         PACKAGE = "creditrISDA")                       
+                         PACKAGE = "creditr")                       
   }
   return(spread)
 }

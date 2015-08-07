@@ -26,16 +26,10 @@ Imports:     utils,
              XML,
              zoo,
              xts
-Suggests:    testthat, creditrISDA
+Suggests:    testthat
 Maintainer:  David Kane <dave.kane@gmail.com>
-License:     GPL-3
+License:     file LICENSE
 Description: The creditr package provides tools for pricing credit default 
              swaps using the open source C code for the ISDA Standard Model. 
              See "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html" for details.
-             The R package "creditrISDA" at "https://github.com/davidkane9/creditrISDA" 
-             is needed because the ISDA C code can not be placed in a CRAN package.
-             Without package "creditrISDA," one cannot use most of the functionality
-             in the "creditr" package. To install "creditrISDA" package, call 
-             devtools::install_github("davidkane9/creditrISDA"), which
-             "creditr" package will automatically do when first installed.
 LazyData:    true

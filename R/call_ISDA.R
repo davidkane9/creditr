@@ -97,7 +97,7 @@ call_ISDA <- function(x, name, rates.info){
                        isPriceClean_input = FALSE,
                        payAccruedOnDefault_input = TRUE,
                        notional = x$notional,
-                       PACKAGE = "creditrISDA")
+                       PACKAGE = "creditr")
   
   upfront.orig <- .Call('calcUpfrontTest',
                         baseDate_input = separate_YMD(x$baseDate),
@@ -132,7 +132,7 @@ call_ISDA <- function(x, name, rates.info){
                         isPriceClean_input = FALSE,
                         payAccruedOnDefault_input = TRUE,
                         notional = x$notional,
-                        PACKAGE = "creditrISDA")
+                        PACKAGE = "creditr")
   
   return(upfront.new - upfront.orig)
 }

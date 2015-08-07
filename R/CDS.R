@@ -118,12 +118,12 @@ CDS <- function(name = NULL,
                    notional         = cds@notional,
                    stringsAsFactors = FALSE)
     
-  cds@principal <- creditrISDA::spread.to.upfront(x = df, notional = cds@notional, 
+  cds@principal <- spread_to_upfront(x = df, notional = cds@notional, 
                                                   isPriceClean = TRUE)
     
   ## dirty upfront
     
-  cds@upfront <- creditrISDA::spread.to.upfront(x = df, notional = cds@notional, isPriceClean = FALSE)
+  cds@upfront <- spread_to_upfront(x = df, notional = cds@notional, isPriceClean = FALSE)
 
   cds@accrual <- cds@upfront - cds@principal
   

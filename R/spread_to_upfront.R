@@ -1,6 +1,6 @@
 #' Calculate Upfront Payments
 #' 
-#' \code{spread.to.upfront} takes a dataframe of variables on CDSs to return 
+#' \code{spread_to_upfront} takes a dataframe of variables on CDSs to return 
 #' a vector of upfront values. Note that all CDS in the data frame must be denominated in 
 #' the same currency.
 #' 
@@ -23,7 +23,7 @@
 #'        
 #' @return vector of upfront values (with accrual) in the same order
 
-spread.to.upfront <- function(x, 
+spread_to_upfront <- function(x, 
                               currency.var = "currency", 
                               notional     = 10000000,
                               date.var     = "date", 
@@ -103,7 +103,7 @@ spread.to.upfront <- function(x,
                         isPriceClean_input = isPriceClean,
                         payAccruedOnDefault_input = TRUE,
                         notional = notional,
-                        PACKAGE = "creditrISDA")
+                        PACKAGE = "creditr")
   } 
   return(results)
 }

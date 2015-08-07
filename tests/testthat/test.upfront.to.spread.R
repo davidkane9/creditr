@@ -1,14 +1,14 @@
-context("Test upfront.to.spread")
+context("Test upfront_to_spread")
 
-## upfront.to.spread() test case with data from Xerox corporation
+## upfront_to_spread() test case with data from Xerox corporation
 
-test_that("test for upfront.to.spread", {
+test_that("test for upfront_to_spread", {
   ## actual spread value from Bloomberg for Xerox Corp.
    truth.1 <- 105.85
   
   load("spread.test.RData")
 
-  result.1 <- upfront.to.spread(x = data.frame(date = as.Date("2014-04-22"),
+  result.1 <- upfront_to_spread(x = data.frame(date = as.Date("2014-04-22"),
                                                currency = "USD",
                                                coupon = 100,
                                                recovery = .4,
@@ -26,7 +26,7 @@ test_that("test for upfront.to.spread", {
   
   ## results when we don't enter the rates manually are less accurate 
    
-  result.2 <- upfront.to.spread(x = data.frame(date = as.Date("2014-04-22"),
+  result.2 <- upfront_to_spread(x = data.frame(date = as.Date("2014-04-22"),
                                                currency = "USD",
                                                coupon = 100,
                                                recovery = .4,
@@ -42,7 +42,7 @@ test_that("test for upfront.to.spread", {
   
   ## test cases to make sure results of the function don't change over time
   
-  truth.2 <- upfront.to.spread(x = data.frame(date = as.Date("2014-01-14"),
+  truth.2 <- upfront_to_spread(x = data.frame(date = as.Date("2014-01-14"),
                                               currency = "USD",
                                               coupon = 100,
                                               recovery = .4,
@@ -53,7 +53,7 @@ test_that("test for upfront.to.spread", {
                                payAccruedAtStart = FALSE,
                                payAccruedOnDefault = TRUE)
   
-  truth.3 <- upfront.to.spread(x = data.frame(date = as.Date("2014-01-14"),
+  truth.3 <- upfront_to_spread(x = data.frame(date = as.Date("2014-01-14"),
                                               currency = "USD",
                                               coupon = 100,
                                               recovery = .4,
@@ -64,7 +64,7 @@ test_that("test for upfront.to.spread", {
                                payAccruedAtStart = TRUE,
                                payAccruedOnDefault = TRUE)
   
-  result.3 <- upfront.to.spread(x = data.frame(date = as.Date("2014-01-14"),
+  result.3 <- upfront_to_spread(x = data.frame(date = as.Date("2014-01-14"),
                                                currency = "USD",
                                                coupon = 100,
                                                recovery = .4,
@@ -78,7 +78,7 @@ test_that("test for upfront.to.spread", {
   stopifnot(all.equal(result.3, truth.2))
   
   
-  result.4 <- upfront.to.spread(x = data.frame(date = as.Date("2014-01-14"),
+  result.4 <- upfront_to_spread(x = data.frame(date = as.Date("2014-01-14"),
                                                currency = "USD",
                                                coupon = 100,
                                                recovery = .4,
