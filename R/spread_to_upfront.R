@@ -56,13 +56,13 @@ spread_to_upfront <- function(x,
   
   results <- rep(NA, nrow(x))
   
-  x <- add.dates(x,
+  x <- add_dates(x,
                  date.var = date.var,
                  maturity.var = maturity.var,
                  tenor.var = tenor.var,
                  currency.var = currency.var)
   
-  x <- add.conventions(x)
+  x <- add_conventions(x)
   
   for(i in 1:nrow(x)){
     

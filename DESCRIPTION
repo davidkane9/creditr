@@ -1,6 +1,6 @@
 Package:     creditr
-Version:     0.4-4
-Date:        2015-08-06
+Version:     0.4-5
+Date:        2015-08-07
 Title:       Credit Default Swaps in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
@@ -26,6 +26,7 @@ Imports:     utils,
              XML,
              zoo,
              xts
+LinkingTo:   Rcpp
 Suggests:    testthat
 Maintainer:  David Kane <dave.kane@gmail.com>
 License:     file LICENSE

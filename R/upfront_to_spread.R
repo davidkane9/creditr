@@ -56,7 +56,7 @@ upfront_to_spread <- function(x,
     payAccruedAtStart <- TRUE
   }
   
-  x <- add.conventions(add.dates(x))
+  x <- add_conventions(add_dates(x))
   
   spread <- rep(NA, nrow(x))
   
