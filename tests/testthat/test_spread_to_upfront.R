@@ -9,7 +9,7 @@ test_that("test for spread_to_upfront", {
   ## test case to see if our function gives the same result as markit.com
   ## all cases use data from Xerox Corporation for 2014-04-22. 
   
-  load("upfront.test.RData")
+  load("test_spread_to_upfront.RData")
   
   ## actual upfront value from markit.com for Xerox Corporation for 2014-04-22.
   

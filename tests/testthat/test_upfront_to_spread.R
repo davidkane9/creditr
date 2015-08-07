@@ -6,7 +6,7 @@ test_that("test for upfront_to_spread", {
   ## actual spread value from Bloomberg for Xerox Corp.
    truth.1 <- 105.85
   
-  load("spread.test.RData")
+  load("test_upfront_to_spread.RData")
 
   result.1 <- upfront_to_spread(x = data.frame(date = as.Date("2014-04-22"),
                                                currency = "USD",
