@@ -5,7 +5,7 @@ Title:       Credit Default Swaps in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
                 person("Yuanchu", "Dang", role = c("aut"),
-                email = "yuanchu.dang@williams.edu"),
+                email = "yuanchu.dang@gmail.com"),
                 person("David", "Kane", role = c("aut"),
                 email = "dave.kane@gmail.com"),
                 person("Yang", "Lu", role = c("aut", "cre"),
@@ -28,7 +28,7 @@ Imports:     utils,
              xts
 LinkingTo:   Rcpp
 Suggests:    testthat
-Maintainer:  David Kane <dave.kane@gmail.com>
+Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
 License:     file LICENSE
 Description: The creditr package provides tools for pricing credit default 
              swaps using the open source C code for the ISDA Standard Model. 
