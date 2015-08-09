@@ -24,13 +24,6 @@ get_rates <- function(date, currency){
   stopifnot(inherits(date, "Date"))
   stopifnot(currency %in% c( "USD", "EUR", "JPY"))
   
-  ## Attempted lUdicrous hack to make the NOTE go away. Something like this 
-  ## ought to work, but I get an error when running check -- related to the
-  ## vignette -- when I try it.
-  
-  ## rates <- NULL
-  ## data(rates)
-  
   ## check rates.RData first, before get rates from the internet.
   
   x <- get("rates")[get("rates")$date == date & get("rates")$currency == currency, ]
