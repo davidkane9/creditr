@@ -34,3 +34,4 @@ Description: The creditr package provides tools for pricing credit default
              swaps using the open source C code for the ISDA Standard Model. 
              See "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html" for details.
 LazyData:    true
+Repository:  CRAN
