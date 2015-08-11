@@ -22,7 +22,6 @@ There was 1 NOTE.
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: 'Yuanchu Dang <yuanchu.dang@gmail.com>'
 New submission
-
 Non-FOSS package license (file LICENSE)
 
 ## Downstream dependencies
