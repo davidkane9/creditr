@@ -1,10 +1,8 @@
 ## Release summary
 
-This is the second submission
+This is the third (re)submission.
 
 Changes are: 
-
-
 
 ---
 
@@ -19,14 +17,11 @@ Changes are:
 
 There were no ERRORs or WARNINGs.
 
-There were two NOTES.
+There was 1 NOTE.
 
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: 'David Kane <dave.kane@gmail.com>'
 New submission
-
-* checking package dependencies ... NOTE
-No repository set, so cyclic dependency check skipped
 
 ## Downstream dependencies
 
