@@ -31,8 +31,12 @@ Suggests:    testthat
 Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
 License:     file LICENSE
 URL:         https://github.com/davidkane9/creditr  
-Description: The creditr package provides tools for pricing credit default 
-             swaps using the open source C code for the ISDA Standard Model. 
-             See "http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html" for details.
+Description: The creditr package provides tools for pricing credit default
+             swaps using C code for the International Swaps and Derivatives
+             Association (ISDA) CDS Standard Model. See
+             <http://www.cdsmodel.com/cdsmodel/documentation.html>
+             for more information about the model and 
+             <http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html>
+             for license details for the C code.
 LazyData:    true
 Repository:  CRAN
