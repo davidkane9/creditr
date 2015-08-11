@@ -8,7 +8,7 @@ Changes are:
 
 ## Test environments
 
-* local Windows 8.1, R 3.2.1
+* local Windows 7/8.1, R 3.2.1
 * Linux (GNU Gnome), R 3.2.0
 * Mac OS X, R 3.0.2
 * win-builder (R-devel and R-release)
