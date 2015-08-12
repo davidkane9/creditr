@@ -16,7 +16,7 @@ Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "kanishkamalik@gmail.com"),
                 person("Miller Zijie", "Zhu", role = c("aut"),
                 email = "zijie.zhu@williams.com"))
-Depends:     R (>= 0.21)               
+Depends:     R (>= 3.1.0)               
 Imports:     utils,
              quantmod,
              devtools,
