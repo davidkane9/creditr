@@ -158,13 +158,13 @@ In other words, $P$ --- the risk neutral probability of property damage --- is n
 \subsubsection{Property Insurance Complications}
 \label{sec:PIComplications}
 
-Unfortunately, the above insurance purchase---although relatively simple---made several assumptions that excluded real aspects of the insurance market. Some of these aspects are parallel to aspects in the CDS market that we will assume and exclude from calculations in all sections of this paper. Below we list such assumptions:
+Unfortunately, the above insurance purchase --- although relatively simple --- made several assumptions that excluded real aspects of the insurance market. Some of these aspects are parallel to aspects of the CDS market that we will ignore and, therefore, exclude from calculations in all sections of this paper. Below we list such assumptions:
 
 \begin{enumerate}
 
 \item We assumed that both the homeowner and the insurance company are risk-neutral when, in reality, both are likely to be risk-averse. This is especially true for individual homeowners. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%. Insurance companies, on the other hand, can diversify some of their risk by selling many policies.
 
-\item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to have a smaller expected cash flow than the insurance company. Conversely, insurance companies need to have higher expected cash flows than their clients (the insurance buyers) because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. Someone has to pay the insurance agents, the claims adjusters and so on. 
+\item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to have a smaller (even negative)  expected cash flow than the insurance company. Conversely, insurance companies need to have postive expected cash flows because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. 
 
 \item We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occured? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage.
 
