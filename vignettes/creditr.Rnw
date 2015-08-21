@@ -195,7 +195,7 @@ We will incorporate these extensions in the sections which follow as we move fro
 
 Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}.
 
-Let's say a portfolio manager at a hedge fund, Citadel, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (Citigroup)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
+Let's say a portfolio manager at a hedge fund, Highbridge, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (Citigroup)\footnote{For ease of reading, we desginate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, the portfolio manager does not own Alcoa bonds. 
 
 Keep the same timeline (January 1 to December 31) and numerical figures from our property insurance example. The interest rate is still 0\%. In exchange for protection on the \$100,000, the portfolio manager agrees to pay a \textbf{coupon} (equivalent to the premium in our property insurance example but using different terminology) of 1\% of the notional amount. The coupon payment of \$1,000 is paid on January 1, the beginning of the coverage period. This side of the CDS is called the \textbf{premium leg}, and the portfolio manager is known as the \textbf{protection buyer}, since she is purchasing protection.
 
@@ -254,7 +254,7 @@ We will call the above CDS example the simple one-period CDS.
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Citadel portfolio manager and Citigroup change from January 1 to December 31, assuming that Alcoa does not default during that year.
+In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Highbridge portfolio manager and Citigroup change from January 1 to December 31, assuming that Alcoa does not default during that year.
 
 We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
 
@@ -269,7 +269,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (Citigroup) \\ 
+Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -279,7 +279,7 @@ Date & Cash flows (Citadel) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-t
 \end{tabular}
 }
 
-\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P\&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Citadel portfolio manager to Citigroup on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P\&L of both parties is 0.} 
+\caption{This table measures how several variables---the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P\&L for each party---change as the simple one-period CDS matures. Since this table considers the case in which the reference entity---Alcoa---does not default, the only cash flow is the \$1,000 coupon payment from the Highbridge portfolio manager to Citigroup on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Please notice that this ``linear'' drop of the risk-neutral $P$ which is proportional to the time remaining the termination of the contract is a simplified model, whose complication we will discuss later in this section. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), the portfolio manager loses. On January 1, the P\&L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
@@ -464,7 +464,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS o
 {\footnotesize
 \begin{tabular}{lllll}
   \hline
-Date & Mark-to-market & P\&L (Citadel) & P\&L (Citigroup) & Accrued Coupon \\ 
+Date & Mark-to-market & P\&L (Highbridge) & P\&L (Citigroup) & Accrued Coupon \\ 
   \hline
   Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
   Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
@@ -733,7 +733,7 @@ Consider what happens to variables such as the cash flows of both parties, the r
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Citadel) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Citadel) & P\&L (Citigroup) \\ 
+Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
