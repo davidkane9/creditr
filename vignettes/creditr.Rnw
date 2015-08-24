@@ -201,31 +201,31 @@ Keep the same timeline (January 1 to December 31) and numerical figures from our
 
 The other side of the CDS agreement is known as the \textbf{protection leg}, since it involves protection payment in case of default, and involves Citigroup, called the \textbf{protection seller}. If Alcoa defaults, Citigroup pays the notional amount of \$100,000 to the portfolio manager on December 31, the end of the coverage period. Alcoa is known as the \textbf{reference entity} in this CDS since the protection buyer desires protection against the risk that Alcoa will default. 
 
-Note that we are using the terms ``premium'' and ``coupon'' synonymously. Premium is commonly used to describe the periodic fee paid by the protection buyer, which is why this side of a CDS is called the premium leg. However, even though the term coupon is commonly used to describe the periodic fee paid to a bondholder, coupon can also be used to describe the periodic fee in a CDS context. For clarity, we will just use coupon in this paper when referring to the periodic fee paid by the protection buyer.
+Note that we are using the terms ``premium'' and ``coupon'' interchangeably. Premium is commonly used to describe the periodic fee paid by the protection buyer, which is why this side of a CDS is called the premium leg. However, even though the term coupon is commonly used to describe the periodic fee paid to a bondholder, coupon can also be used to describe the periodic fee in a CDS context. For clarity, we will just use coupon in this paper when referring to the periodic fee paid by the protection buyer.
+
+%% Should we only use premium going forward or just use them both going forward.
 
 Since the portfolio manager makes money if Alcoa's fiscal health deteriorates, she can be said to be \textbf{short credit}. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since Citigroup loses money if Alcoa collapses, Citigroup can be said to be \textbf{long credit}. In other words, Citigroup's returns are similar to those of a person who owns Alcoa bonds. If Alcoa does well, Citigroup does well, and if Alcoa doesn't, then Citigroup doesn't either.
 
-The expected cash flows for the agreement depend on the probability of default. Since the portfolio manager will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, the portfolio manager's expected cash flows---which represent the premium leg---are as follows. (the below $P$ refers to the portfolio manager’s prediction of probability of default.)
-
-%% Probably need to subscript these P's, just as we did in the insurance example.
+The expected cash flows for the agreement depend on the probability of default. Since the portfolio manager will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, the portfolio manager's expected cash flows---which represent the premium leg---are as follows. 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P \times {\$100,000})}
+   {\rm Highbridge's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ($P_h$ \times {\$100,000})}
     \end{aligned}
     \label{eqn:portfolioECF}
 \end{equation}
 
-Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, Citigroup's expected cash flows---which represent the protection leg---are as follows. (the below $P$ refers to Citigroup’s prediction of probability of default.)
+Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, Citigroup's expected cash flows---which represent the protection leg---are as follows. 
 
 \begin{equation}
  \begin{aligned}
-   {\rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P \times {\$100,000})}
+   {\rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ($P_c$ \times {\$100,000})}
     \end{aligned}
     \label{eqn:CitigroupECF}
 \end{equation}
 
-Note that the portfolio manager's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same.
+Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.   
 
 We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are equal.
 
@@ -233,32 +233,31 @@ Consider that a deal is reached: both parties agree to the CDS. As in the proper
 
 \label{eqn:SimpleOnePeriod}
 \begin{align}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+   \rm Highbridge's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
    \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-   \rm -\hspace{3pt}C + (P \times V)  &= \rm C - (P \times V)
+   \rm -\hspace{3pt}C + ($P_h$ \times V)  &= \rm C - ($P_c$ \times V)
 \end{align}
 
-The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, $C$, but could receive the protection leg of $V$, depending on $P$. The right indicates the converse: Citigroup will receive the coupon payment, $C$, but could potentially have to pay the protection leg of $V$, depending on $P$.
+The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that the portfolio manager has to pay the coupon, $C$, but could receive the protection leg of $V$, depending on $P_h$. The right indicates the converse: Citigroup will receive the coupon payment, $C$, but could potentially have to pay the protection leg of $V$, depending on $P_c$.
 Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + (P \times {\$100,000})  = \$1,000 - (P \times {\$100,000})}
+   {\rm -\hspace{3pt}\$1,000 + ($P_h$ \times {\$100,000})  = \$1,000 - ($P_c$ \times {\$100,000})}
     \end{aligned}
 \end{equation}
 
-Since this is the same equation and the same numerical figures from the property insurance example, we know that $P$ equals 1\%. Note that this 1\% only represents the ``risk-neutral'' value of $P$. Generally speaking, ``risk neutral'' means that one is indifferent regarding the choice between, say, (A) \$100 for sure and (B) an offer of being equally likely to receive \$50 or \$150. In other words, it implies no additional premium for taking on risks, or, equivalently, a Sharpe ratio of $0$. Therefore, it does not indicate the values of $P$ that the two parties believe to be true, nor does it indicate the true value of $P$. Parallel to the property insurance example, we can infer (given both parties have agreed to the CDS) that the portfolio manager's prediction of $P$ must be at least 1\%, and Citigroup's prediction of $P$ must be at most 1\%. In fact, from here on out, when we mention the risk-neutral probability of default for a CDS example, we can take this to mean that the protection buyer's prediction of $P$ is at least the risk-neutral value, and the protection seller's prediction of $P$ is at most that risk-neutral value.
+Since this is the same equation and the same numerical figures from the property insurance example, we know that, if we set $P_h = P_c$ and define this as $P$, then both must equal 1\%. Note that this 1\% only represents the ``risk-neutral'' value of $P$. Generally speaking, ``risk neutral'' means that one is indifferent regarding the choice between, say, (A) \$100 for sure and (B) an offer of being equally likely to receive \$50 or \$150. In other words, it implies no additional premium for taking on risks. Therefore, it does not indicate the values of $P$ that the two parties believe to be true, nor does it indicate the true value of $P$. Parallel to the property insurance example, we can infer (given both parties have agreed to the CDS) that the Highbridge's estimate $P_h$ must be at least 1\%, and Citigroup's estimate of $P_c$ must be at most 1\%. In fact, from here on out, whenever we mention the risk-neutral probability of default for a CDS example, we can take this to mean that the protection buyer's estimate of $P$ is at least the risk-neutral value, and the protection seller's estimate of $P$ is at most that risk-neutral value.
 
-We will call the above CDS example the simple one-period CDS.
 
 \subsubsection{One-Period Case Over Time}
 \label{sec:OnePeriodOverTime}
 
-In order to fully understand the nature of a CDS, we should look at what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Highbridge portfolio manager and Citigroup change from January 1 to December 31, assuming that Alcoa does not default during that year.
+Consider what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Highbridge portfolio manager and Citigroup change from January 1 to December 31, assuming that Alcoa does not default during that year.
 
-We can think of the mark-to-market value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage merits \$500. 
+We can think of the \textbf{mark-to-market} value as the price at which the CDS would sell at any given time over the life of the contract. For example, on June 30, midway through the year, a prospective buyer would pay \$500 to the portfolio manager in order to replace her as the protection buyer. Since the portfolio manager pays the \$1,000 coupon payment on Janaury 1 and would recieve \$500 from the prospective buyer on June 30, both the portfolio manager and prospective buyer pay a net amount of \$500---which makes sense since one year of coverage merits a coupon payment of \$1,000 and thus six months of coverage is worth \$500. 
 
-We can consider the spread to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupon). A different is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
+We can consider the \textbf{spread} to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupons). One difference is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps.
 
 P\&L represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P\&L of, for example, Citigroup in this CDS is to consider the fraction of the coupon payment that Citigroup \emph{earns} each day. We know that Citigroup recieves a coupon payment of \$1,000 on January 1, but Citigroup's P\&L measures what Citigroup earns each day that it provides protection during that year.
 
