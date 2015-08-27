@@ -996,7 +996,7 @@ Together, the discount factor and the survival probability are known as the \tex
 
 \section{Using the creditr Package}
 
-In this section, we demonstrate the use of the \textbf{creditr} package in detail and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
+In this section, we demonstrate the use of the \textbf{creditr} package and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
 
 \subsection{ISDA Standard Model}
 
@@ -1005,6 +1005,7 @@ The ISDA has created the ``Standard Model,'' which allows market participants to
 The Standard Model allows market participants to convert between the par spread and the upfront payment, and compute the cash settlement amount for a standard contract.
 
 The ISDA also standardizes the interest rates used by the Standard Model in valuing a CDS contract. There are two types of rates used in valuing a USD-denominated CDS contract: cash rates and swap rates. Cash rates are of the following maturities: one, two, three, and six month(s), and one year. These refer to the yields of zero-coupon bonds that have a maturity of less than one year; US treasuries with a maturity of one year or less are zero-coupon bonds. They are provided by the British Bankers' Association (BBA). Swap rates, or yields of coupon bond siwht a maturity of over one year, are of maturity 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, and 30 years, and are provided by ICAP \citep{rates}. The Standard Model follows the conventions below for interpolation of the entire USD yield curve:
+
 \begin{itemize}
 \item The day count convention (DCC) for money market instruments and
   the floating legs of the swaps is \textbf{ACT/360}.
