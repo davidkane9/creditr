@@ -1004,10 +1004,10 @@ Together, the discount factor and the survival probability are known as the \tex
     \end{aligned}
 \end{equation}
 
-\section{Using the CDS Package}
+\section{Using the creditr Package}
 \label{CDSpkg}
 
-In this section, we will demonstrate the use of the \textbf{CDS} package in detail and provide a series of examples. The \textbf{CDS} package implements the Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
+In this section, we will demonstrate the use of the \textbf{creditr} package in detail and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
 
 \subsection{ISDA Standard Model}
 \label{sec:ISDAStMod}
@@ -1038,12 +1038,14 @@ The ISDA also standardizes the interest rates used by the Standard Model in valu
 
 
 Currently, a market participant can conduct CDS-related calculations by using the \textbf{CDSW Calculator} on a Bloomberg Terminal or the Markit CDS Calculator\footnote{The Markit CDS Calculator is available
-  at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.}. The \textbf{CDS} package provides tools for valuing a single-name CDS contract. The default setting allows a user to value a USD-denominated CDS contract following the Standard Model as mentioned before. She can also specify her own set of parameters to customize the calculation. 
+  at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.}. The \textbf{creditr} package provides tools for valuing a single-name CDS contract. The default setting allows a user to value a USD-denominated CDS contract following the Standard Model as mentioned before. She can also specify her own set of parameters to customize the calculation. 
 
 \subsection{CDS Class}
 \label{class:CDS}
 
-In the \textbf{CDS} package, we call the function \texttt{CDS} to construct an object of a class \texttt{CDS}. Below we show an example of how to construct a CDS contract in the package.
+In the \textbf{creditr} package, we call the function \texttt{CDS} to construct an object of a class \texttt{CDS}. 
+
+%% How can I get this to format as single spaced?
 
 <<>>=
 library(creditr)
@@ -1056,19 +1058,13 @@ cds1 <- CDS(name     = "Alcoa",
             spread   = 160)
 @
 
-Here the user enters the CDS contract with ``Alcoa'' as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{CDS} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
+Here the user enters the CDS contract with ``Alcoa'' as the underlying entity and sets the spread at 160 bps and the coupon at 100 bps. However, the valuation of a CDS contract requires neither the Reference Entity nor the RED Code. She does not have to know that information to use the \textbf{creditr} package. As shown below, as long as she inputs the same \texttt{date}, \texttt{spread}, and \texttt{maturity} information, the valuation of the contract will be the same.
 
 <<>>=
 cds2 <- CDS(date     = as.Date("2014-06-24"),
             maturity = as.Date("2019-06-20"),
             spread   = 160)
 @
-
-\subsection{Generic Methods}
-\label{sec:GenericMethods}
-
-\subsubsection{summary Method}
-\label{sec:SummaryFunction}
 
 A user can call \texttt{summary} on a \texttt{cds1} to view essential information on the contract.
 
