@@ -1110,13 +1110,13 @@ CS10(x)
 \subsubsection{get\_rates}
 
 
-\texttt{get_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
+\texttt{get\_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 <<>>=
 cds1.rates <- get_rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the \texttt{get_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get_rates} downloads the data from Federal Reserve website).
+The output from the \texttt{get\_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a data frame included in the package, \texttt{rates}, or, if the requested date is not available, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get\_rates} downloads the data from Federal Reserve website).
 
 <<>>=
 cds1.rates
@@ -1191,7 +1191,7 @@ spread_DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \subsubsection{spread\_to\_pd}
 
-\texttt{spread_to_pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
+\texttt{spread\_to\_pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
  
 \begin{equation}
   \text{Probability of Default} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
