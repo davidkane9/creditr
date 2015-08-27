@@ -93,7 +93,6 @@
 \SweaveOpts{concordance = FALSE}
 
 \section{Introduction}
-\label{sec:Introduction}
 
 %% Introduction should have three paragraphs, mimicing the three sentences above that give the first, second, and third goal of the paper. Each paragraph expands the details for that sentence. It is here that we mention, at least once, the 5 to 10 key bolded terms like spread, upfront, risk-neutral and so on.
 
@@ -106,12 +105,8 @@ The next section focuses on real world data from Bloomberg and Markit, the two s
 Finally, we introduce the \textbf{creditr} package, which allows users to calculate information regarding a particular CDS in \textbf{R}. The creditr package uses the same ISDA Standard Model that Bloomberg and the Markit CDS Calculator use, and provides generic methods to show the calculation results in a way that is similar to Bloomberg and Markit.
 
 \section{CDS Basics}
-\label{sec:CDSBasics}
 
 \subsection{An Example: Property Insurance}
-\label{sec:PropInsurance}
-
-%% No need to have labels unless those labels are used.
 
 Consider a simpler form of purchasing protection: property insurance. 
 
@@ -156,7 +151,6 @@ The risk-neutral probability of property damage is 1\%. Based on this calculatio
 In other words, $P$ --- the risk neutral probability of property damage --- is not necessarily the \emph{true} probability of property damage, nor is it either party's estimate of the  probability of damage. The value of $P$ is that which makes the expected cash flows equal for both sides. It is a mathematical construct with no nessary connection to the real world.
 
 \subsubsection{Property Insurance Complications}
-\label{sec:PIComplications}
 
 Unfortunately, the above insurance purchase --- although relatively simple --- made several assumptions that excluded real aspects of the insurance market. Some of these aspects are parallel to aspects of the CDS market that we will ignore and, therefore, exclude from calculations in all sections of this paper. Below we list such assumptions:
 
@@ -287,7 +281,6 @@ As we can see in Table \ref{table.1}, the risk-neutral $P$ decreases from 1\% on
 In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. We can observe in Table \ref{table.1} that the spread decreases from 100 bps to 0 bps over the year---a reflection of the fact that, at the end of the contract, Citigroup has earned and been paid the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
 
 \subsubsection{Simple One-Period Case Complications}
-\label{OnePeriodComp}
 
 Similar to the property insurance example, we made several assumptions in our simple one-period CDS that are not consistent with the CDS market. 
 
@@ -300,7 +293,6 @@ Similar to the property insurance example, we made several assumptions in our si
 Because we made many more assumptions and failed to address many aspects of a CDS, we have split up the following simple one-period CDs complications into five separate sections that address interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment. 
 
 \subsubsection{Interest Rates}
-\label{sec:InterestRate}
 
 Up until now, we have assumed that the interest rate is 0\% in the simple one-period CDS. The \textbf{interest rate} is a benchmark rate that participants in the CDS market use to discount cash flows. How might the cash flows in the CDS agreement change if the interest rate was \emph{not} 0\%?
 
@@ -333,7 +325,6 @@ How might a discounted credit loss affect $P$, the risk-neutral probability of d
 Solving for $P$, we get 1.1\%. Since both parties agreed to this CDS in an environment where the interest rate is 10\%, we can say that Highbridge's prediction for the probability of default is at least 1.1\%, and Citigroup's prediction for the probability of default is at most 1.1\%. 
 
 \subsubsection{Recovery Rate}
-\label{sec:recovery}
 
 Recall that in our property insurance example, we mentioned that some cases---such as a house fire that burns half of a house---may not merit a full payment equal to the notional amount (in that case, \$100,000). Similarly, when a company defaults, an \textbf{auction} occurs in which some of the company's bondholders come to sell their bonds, and prospective buyers come to buy the bonds at, usually, lower prices. We note this because the price at which bonds can be sold after default affects the protection leg payment in a CDS contract.
 
@@ -377,7 +368,6 @@ After combining like terms, dividing both sides by 2 and simplifying, we get:
 Therefore, $P$ is 1.8\% (rounded to the nearest tenth) in this scenario where the recovery rate is 55\%.
 
 \subsubsection{In the Case of a Default}
-\label{sec:SettlementType}
 
 When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
 
@@ -484,7 +474,6 @@ There is also another related but different concept called accrued payment, whic
 Both these ``accrued'' amounts serve as necessary adjustment to the payment of CDS transactions.
 
 \subsubsection{Non-standard Coupon and Big Bang Protocol}
-\label{sec:nonStandardCoupon}
 
 In all of our CDS examples, we have assumed a coupon of 1\%. We have done so because we have been working with the same basic numerical figures: a risk-neutral probability of default of 1\% and a notional amount of \$100,000:
 
@@ -600,7 +589,6 @@ Note that in Equation \ref{eqn:Upfront}, $C$ and $V$ are known or pre-determined
 Also, it is important to distinguish between two upfront payments: the \textbf{dirty upfront} and \textbf{clean upfront}. However, the the difference of the two upfront payments involves the concept of \textbf{accrued interest rates} which will be introduced in the N-period CDS example. For readeres who are familiar with this concept, dirty upfront payment takes accrued interest rates into account, while clean upfront payment does not. Therefore, dirty upfront payment is the actual upfront payment that one party pays to the other.
 
 \subsubsection{One-Period Summary}
-\label{sec:Sum}
 
 We have introduced a simple one-period CDS between a portfolio manager and Citigroup, and we have explored five complications that affect the expected cash flows: interest rate, recovery rate, accrued coupon, non-standard coupon and upfront payment.
 
@@ -621,7 +609,6 @@ $$U - 1000 + \frac{1.5\% \times 100000\times (1 - 0.55)}{(1 + 0.1)} = - U + 1000
 Solving the equation, we get $U = 386.37$. \\
 
 \subsection{Two-Period Case}
-\label{sec:TwoPeriod}
 
 %% In the simple two-period case section, explore scenarios in which “P??? changes from one year to the next, and in which “i??? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
 
@@ -1119,7 +1106,7 @@ CS10(x)
 @
 
 \subsubsection{get\_rates}
-\label{sec:get_ratesFunction}
+
 
 \texttt{get_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
@@ -1134,9 +1121,8 @@ cds1.rates
 @ 
 
 \subsection{Risk Related Functions}
-\label{sec:riskFunctions}
 
-\subsubsection{``rec\_risk\_01'' Function}
+\subsubsection{rec\_risk\_01}
 
 \texttt{rec\_risk\_01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row. 
 
@@ -1156,7 +1142,7 @@ rec_risk_01(data.frame(date     = as.Date("2014-06-24"),
                        notional = 10000000))
 @ 
 
-\subsubsection{``IR\_DV01'' Function}
+\subsubsection{IR\_DV01}
 
 \texttt{IR.DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the IR.DV01 values for each row.
 
@@ -1178,7 +1164,7 @@ IR_DV01(data.frame(date     = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{``spread\_DV01'' Function}
+\subsubsection{spread\_DV01}
 
 \texttt{spread\_DV01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the spread DV01 values for each row.
 
@@ -1201,9 +1187,9 @@ spread_DV01(data.frame(date     = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{``spread.to.pd'' Function}
+\subsubsection{spread_to_pd}
 
-\texttt{spread.to.pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
+\texttt{spread_to_pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
  
 \begin{equation}
   \text{Probability of Default} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
