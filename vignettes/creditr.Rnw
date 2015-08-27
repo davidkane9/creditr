@@ -795,23 +795,28 @@ For conclusion, we point out that this buyer-seller equality has direct applicat
 
 $$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
 
-Notice that all these calculus complications in the N-period case are simply provided for the interest of more serious readers, which are neither necessary nor required for the comprehension of latter sections.
+All these calculus complications in the N-period case are simply provided for reference.
+None are necessary nor for the understanding of latter sections.
 
 
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
 
-In this section, we will explain CDS contract with Bloomberg Terminal and Markit CDS Calculator, the two frequently used CDS calculator. Bloomberg L.P. is a global financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. The Bloomberg Terminal is a tool to monitor and analyze real-time market data for many financial products, and the service charges a subscription fee.
-
-Markit Ltd. is also a global financial company, and it specializes in credit derivative pricing. Moreover, it was founded in 2003 to actually provide credit default swap pricing. The online Markit CDS Calculator is free and can be accessed at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.
+In this section, we will explore CDS pricing with the Bloomberg Terminal and the Markit CDS Calculator\footnote{Available at http://www.markit.com/markit.jsp?jsppage=pv.jsp}, the two most frequently used tools for CDS calculations. Bloomberg L.P. is a global financial software and data company, and one of their key products is the Bloomberg Professional Service, also known as Bloomberg Terminal. The Bloomberg Terminal is a tool to monitor and analyze real-time market data for many financial products, and the service charges a substantial subscription fee. Markit is also a global financial company, and it specializes in credit derivative products. 
 
 \subsection{Overview  of CDS in Bloomberg Terminal}
 \label{subsec:Bloomberg}
 
+%% Needs an introductory paragraph 
+
+%% KEY POINT: I should be able to read this section, without looking at any of the figure captions, and it should make sense. Conversely, I should be able to read the figure captions only (and not the main text) and have it also make sense. Of course, the text will probably be more detailed than the captions, but there will also, obviously, be a lot of repition. And that is OK!
+
+%% Note how poorly most things in this section are written.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction on Alcoa Inc priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
+\caption{This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction in Alcoa, priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
 \label{AlcoaIncCDS}
 \end{figure}
 
@@ -862,7 +867,7 @@ Now let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery
 \subsubsection{PV01}
 \label{sec:PV01}
 
-\textbf{PV01} stands for ``Present Value 01'', which is the present value of a stream of 1 basis points of payments. We can also use the formula below to calculate the principal amount (clean upfront payment) with PV01:
+\textbf{PV01} stands for ``Present Value 01'', which is the present value of a stream of 1 basis point payments. We can also use the formula below to calculate the principal amount (clean upfront payment) with PV01:
 
 \begin{equation}
  \begin{aligned}
@@ -927,13 +932,17 @@ Default Exposure refers to the expoure to default of a CDS contract. It can be c
   - \text{Principal}. \nonumber
 \end{equation} 
 
+
+%% Please standardize the writing. Note that ``Market'' is in quotes in this caption, but Calculation in the previous caption is not! Pick one approach and stick with it! And don't hard code "Figure 2."
+
 \subsection{Market Section}
 \label{Market section}
 \begin{figure}[H]
 \centering
 \includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-This figure is the ``Market'' section cropped from Figure 2. Market section is another field where traders views information of market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS (see below for important clarifications). \textbf{Recovery rate} is the percent of a equity's value that can be recovered. \textbf{Points upfront} refers to the upfront payment as a percentage of the notional amount. \textbf{Spread} is the coupon rate we \textit{would} have traded at before Big Bang Protocol standardized coupon rate. \textbf{Default probability} (or probability of default) is the risk-neutral probability of default that makes equal the potential cash flows from both buy and sell side of the CDS.}
+This figure is the ``Market'' section cropped from Figure 2. It shows
+information about market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS. \textbf{Recovery rate} is the percent of a equity's value that can be recovered. \textbf{Points upfront} refers to the upfront payment as a percentage of the notional amount. \textbf{Spread} is the coupon rate we \textit{would} have traded at before Big Bang Protocol standardized coupon rate. \textbf{Default probability} (or probability of default) is the risk-neutral probability of default that makes equal the potential cash flows from both buy and sell side of the CDS.}
 
 \label{AlcoaIncCDSMarket}
 \end{figure}
@@ -974,6 +983,8 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 \subsection{Overview of Markit CDS Calculator}
 \label{Markit}
 
+%% Need an intro paragraph.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=4.8in]{images/MarkitCDSAlcoa.jpg}
@@ -1007,7 +1018,7 @@ Together, the discount factor and the survival probability are known as the \tex
 \section{Using the creditr Package}
 \label{CDSpkg}
 
-In this section, we will demonstrate the use of the \textbf{creditr} package in detail and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
+In this section, we demonstrate the use of the \textbf{creditr} package in detail and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
 
 \subsection{ISDA Standard Model}
 \label{sec:ISDAStMod}
@@ -1093,7 +1104,7 @@ cds1
 \subsubsection{CS10}
 \label{sec:CS10}
 
-\texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a dataframe. 
+\texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a data frame. 
 
 <<>>=
 x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -1107,16 +1118,16 @@ x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
 CS10(x)
 @
 
-\subsubsection{``get\_rates'' Function}
-\label{sec:get.ratesFunction}
+\subsubsection{get\_rates}
+\label{sec:get_ratesFunction}
 
-\texttt{get.rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
+\texttt{get_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 <<>>=
 cds1.rates <- get_rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the \texttt{get.rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get.rates} downloads the data from Federal Reserve website).
+The output from the \texttt{get_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a local data frame called \texttt{rates.RData}, or, if the requested date is not available in \texttt{rates.RData}, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get_rates} downloads the data from Federal Reserve website).
 
 <<>>=
 cds1.rates
