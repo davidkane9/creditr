@@ -56,27 +56,17 @@
 
 %% The address of (at least) one author should be given
 %% in the following format:
-\Address{
 
-  David Kane\\
-  IQSS\\
-  Harvard University\\
-  E-mail: \email{dave.kane@gmail.com}
-
-  Yuanchu Dang\\
-  Department of Mathematics and Statistics\\
-  Williams College\\
-  1136 Paresky Center, Williamstown, MA 01267, USA\\
-  Telephone: +1/413/346-7821
-  E-mail: \email{Yuanchu.Dang@williams.edu} \\
-  
-  Zijie Zhu\\
-  Department of Computer Science and Statistics\\
-  Williams College\\
-  3162 Paresky Center, Williamstown, MA 01267, USA\\
-  Telephone: +1/413/329-9960
-  E-mail: \email{Zijie.Zhu@williams.edu}
+\address{David Kane\\
+Harvard University \\   
+IQSS\\
+1737 Cambridge Street\\
+CGIS Knafel Building, Room 350\\
+Cambridge, MA 02138\\
+United States \\
+\email{dave.kane@gmail.com}
 }
+
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:
 %% Telephone: +43/512/507-7103
