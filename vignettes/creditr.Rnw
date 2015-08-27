@@ -995,12 +995,10 @@ Together, the discount factor and the survival probability are known as the \tex
 \end{equation}
 
 \section{Using the creditr Package}
-\label{CDSpkg}
 
 In this section, we demonstrate the use of the \textbf{creditr} package in detail and provide a series of examples. The \textbf{creditr} package implements the ISDA Standard Model, allowing users to value credit default swaps and calculate various risk measures associated with these instruments. 
 
 \subsection{ISDA Standard Model}
-\label{sec:ISDAStMod}
 
 The ISDA has created the ``Standard Model,'' which allows market participants to calculate cash settlement from conventional spread quotations, convert between conventional spread and upfront payments, and build the spread curve of a CDS. 
 
@@ -1031,7 +1029,7 @@ Currently, a market participant can conduct CDS-related calculations by using th
   at \url{http://www.markit.com/markit.jsp?jsppage=pv.jsp}.}. The \textbf{creditr} package provides tools for valuing a single-name CDS contract. The default setting allows a user to value a USD-denominated CDS contract following the Standard Model as mentioned before. She can also specify her own set of parameters to customize the calculation. 
 
 \subsection{CDS Class}
-\label{class:CDS}
+
 
 In the \textbf{creditr} package, we call the function \texttt{CDS} to construct an object of a class \texttt{CDS}. 
 
@@ -1069,7 +1067,6 @@ The remaining three items from the \texttt{summary} output  are \texttt{Spread D
 Besides calling the \texttt{summary} method, one can type in the name of the \texttt{CDS} class object in the current \textbf{R} Session and obtain a full description of the CDS contract.
 
 \subsubsection{Show Method}
-\label{sec:showMethod}
 
 %% add description here for show method later
 
@@ -1078,10 +1075,12 @@ cds1
 @
 
 \subsection{CDS Pricing Related Functions}
-\label{sec:CDSpricingFunctions}
+
+%% Needs a transition paragraph. Something about how looking at inividual CDS is interesting but that the real work happens when we need to work with a universe of CDS. For that we need helper functions. 
+
 
 \subsubsection{CS10}
-\label{sec:CS10}
+
 
 \texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a data frame. 
 
@@ -1181,7 +1180,7 @@ spread_DV01(data.frame(date     = as.Date("2014-04-22"),
 
 \subsubsection{spread\_to\_pd}
 
-\texttt{spread\_to\_pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
+\texttt{spread\_to\_pd} takes a data frame of spreads and calculates the probability of default using the ISDA Standard Model. Recall that assuming that non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed:
  
 \begin{equation}
   \text{Probability of Default} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
@@ -1214,6 +1213,13 @@ In Section \ref{sec:BloombergMarkit}: Bloomberg and Markit, we have reviewed two
 After introducing CDS window in Bloomberg Terminal, we start to present Markit CDS Calculator. Recall again that Markit Calculator is free while Bloomberg Terminal charges a monthly fee. The Calculator is divided into four parts,  Contract section, Credit Curve section, Calculation section, and Yield Curve section. Contract section is basically the same as Deal section in Bloomberg Terminal; Credit Curve section is just the term structure in a table; Calculator section is highly similar to Bloomberg Calculator section; Yield Curve section is similar to Market section in Bloomberg. Then we move on to introduce some terminology differences, discount factors, and CDS indices.
 
 \newpage
+
+%% This bibliography is a mess. We can't just cite things here. Anything we want to cite needs to be cited in the text itself somewhere. The Bibliography will just build from that. Nor do we need to cite all these things. We should only cite things we actually use and/or want to point readers toward.
+
+%% Maybe cite the new credule R package. Other R packages? This could go in the Conclusion or Introduction.
+
+%% Also need to cite the key R packages we use, at least Rcpp. See how walkr does this, and other things.
+
 \bibliography{creditr}
 \cite{barclays}
 \cite{bloomberg}
