@@ -402,6 +402,8 @@ Note that we are dividing 90 by 360 instead of 365 in the above calculation. Thi
     \end{aligned}
 \end{equation}
 
+%% This should be in LaTex list form.
+
 Exceptions:
 
 1. If $D_1$ is 31, assume that $D_1$ is 30.
@@ -1187,7 +1189,7 @@ spread_DV01(data.frame(date     = as.Date("2014-04-22"),
 @
 
 
-\subsubsection{spread_to_pd}
+\subsubsection{spread\_to\_pd}
 
 \texttt{spread_to_pd} is a function that takes a data frame of spread as input and calculates the probability of default using the ISDA Standard Model. Recalls that assuming the non-default probability decays exponentially, the default probability is non-constant but can be mathematically expressed as below:
  
