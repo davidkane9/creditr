@@ -57,13 +57,12 @@
 %% The address of (at least) one author should be given
 %% in the following format:
 
-\address{David Kane\\
-Harvard University \\   
-IQSS\\
-1737 Cambridge Street\\
-CGIS Knafel Building, Room 350\\
-Cambridge, MA 02138\\
-United States \\
+\address{David Kane
+Harvard University   
+IQSS
+1737 Cambridge Street
+Cambridge, MA 02138
+United States
 \email{dave.kane@gmail.com}
 }
 
