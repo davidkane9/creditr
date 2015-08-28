@@ -79,6 +79,7 @@ United States\\
 
 \begin{document}
 
+
 \SweaveOpts{concordance = FALSE}
 
 \section{Introduction}
@@ -192,20 +193,22 @@ Since Highbridge makes money if Alcoa's fiscal health deteriorates, she can be s
 
 The expected cash flows for the agreement depend on the probability of default. Since Highbridge will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, Highbridge's expected cash flows---which represent the premium leg---are as follows. 
 
+%%%%%%%%%%%%%%
+
 \begin{equation}
  \begin{aligned}
-   {\rm Highbridge's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = -\hspace{3pt}\$1,000 + ($P_h$ \times {\$100,000})}
+   {\rm Highbridge's\hspace{3pt}expected \hspace{3pt}cash \hspace{3pt}flows = -\hspace{3pt}\$1,000 + (P_h \times {\$100,000})}
     \end{aligned}
     \label{eqn:portfolioECF}
 \end{equation}
 
 Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, Citigroup's expected cash flows---which represent the protection leg---are as follows. 
 
+\label{eqn:CitigroupECF}
 \begin{equation}
  \begin{aligned}
-   {\rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - ($P_c$ \times {\$100,000})}
+   {\rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows = \hspace{3pt}\$1,000 - (P_c \times {\$100,000})}
     \end{aligned}
-    \label{eqn:CitigroupECF}
 \end{equation}
 
 Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.   
@@ -218,7 +221,7 @@ Consider that a deal is reached: both parties agree to the CDS. As in the proper
 \begin{align}
    \rm Highbridge's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
    \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-   \rm -\hspace{3pt}C + ($P_h$ \times V)  &= \rm C - ($P_c$ \times V)
+   \rm -\hspace{3pt}C + (P_h \times V)  &= \rm C - (P_c \times V)
 \end{align}
 
 The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but could receive the protection leg of $V$, depending on $P_h$. The right indicates the converse: Citigroup will receive the coupon payment, $C$, but could potentially have to pay the protection leg of $V$, depending on $P_c$.
@@ -226,7 +229,7 @@ Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
 
 \begin{equation}
  \begin{aligned}
-   {\rm -\hspace{3pt}\$1,000 + ($P_h$ \times {\$100,000})  = \$1,000 - ($P_c$ \times {\$100,000})}
+   {\rm -\hspace{3pt}\$1,000 + (P_h \times {\$100,000})  = \$1,000 - (P_c \times {\$100,000})}
     \end{aligned}
 \end{equation}
 
@@ -992,6 +995,8 @@ Together, the discount factor and the survival probability are known as the \tex
    \displaystyle\sum_{i=1}^{n}|Coupon - Spread| \times (1-q(t)) \times D(0, t(i))
     \end{aligned}
 \end{equation}
+
+
 
 \section{Using the creditr Package}
 
