@@ -18,6 +18,12 @@
 %\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
 %\VignetteIndexEntry{Credit Default Swaps with R}
 
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{xleftmargin=0em}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=0em}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=0em}
+\fvset{listparameters={\setlength{\topsep}{0pt}}}
+\renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
