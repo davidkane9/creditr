@@ -257,7 +257,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
+Date & CF (Highbridge) & CF (Citigroup) & Risk-neutral $P$ & MTM & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -267,7 +267,7 @@ Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mar
 \end{tabular}
 }
 
-\caption{This table measures how several variables --- the cash flows for each party, the risk-neutral value of $P$, the mark-to-market value of the contract, the spread, and the P\&L for each party --- change as the simple one-period CDS matures. Since this table considers the case in which the reference entity (Alcoa) does not default, the only cash flow is the \$1,000 coupon payment from Highbridge to Citigroup on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Note that this ``linear'' drop off in the risk-neutral $P$ is proportional to the time remaining untill the termination of the contract. For more realistic contracts, the relationship is non-linear. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), Highbridge loses. On January 1, the P\&L of both parties is 0.} 
+\caption{This table measures how several variables --- the cash flows (CF) for each party, the risk-neutral value of $P$, the mark-to-market (MTM) value of the contract, the spread, and the profit and loss (P\&L) for each party --- change as the simple one-period CDS matures. Since this table considers the case in which the reference entity (Alcoa) does not default, the only cash flow is the \$1,000 coupon payment from Highbridge to Citigroup on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Note that this ``linear'' drop off in the risk-neutral $P$ is proportional to the time remaining untill the termination of the contract. For more realistic contracts, the relationship is non-linear. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), Highbridge loses. On January 1, the P\&L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
