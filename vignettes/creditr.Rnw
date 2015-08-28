@@ -15,6 +15,7 @@
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
 \usepackage{tabularx}
+%\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
 %\VignetteIndexEntry{Credit Default Swaps with R}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,9 +77,7 @@ United States\\
 
 %% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{document}
-
 
 \SweaveOpts{concordance = FALSE}
 
@@ -192,8 +191,6 @@ Note that we are using the terms ``premium'' and ``coupon'' interchangeably. Pre
 Since Highbridge makes money if Alcoa's fiscal health deteriorates, she can be said to be \textbf{short credit}. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since Citigroup loses money if Alcoa collapses, Citigroup can be said to be \textbf{long credit}. In other words, Citigroup's returns are similar to those of a person who owns Alcoa bonds. If Alcoa does well, Citigroup does well, and if Alcoa doesn't, then Citigroup doesn't either.
 
 The expected cash flows for the agreement depend on the probability of default. Since Highbridge will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, Highbridge's expected cash flows---which represent the premium leg---are as follows. 
-
-%%%%%%%%%%%%%%
 
 \begin{equation}
  \begin{aligned}
@@ -995,8 +992,6 @@ Together, the discount factor and the survival probability are known as the \tex
    \displaystyle\sum_{i=1}^{n}|Coupon - Spread| \times (1-q(t)) \times D(0, t(i))
     \end{aligned}
 \end{equation}
-
-
 
 \section{Using the creditr Package}
 
