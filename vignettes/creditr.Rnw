@@ -716,7 +716,7 @@ Consider what happens to variables such as the cash flows of both parties, the r
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mark-to-market & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
+Date & CF (Highbridge) & CF (Citi) & Risk-neutral $P$ & MTM & Spread & P\&L (Highbridge) & P\&L (Citi) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
@@ -728,7 +728,7 @@ Date & Cash flows (Highbridge) & Cash flows (Citigroup) & Risk-neutral $P$ & Mar
    \hline
 \end{tabular}
 }
-\caption{This table displays how several variables---the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
+\caption{This table displays how several variables---the cash flows (CF) of both parties, the risk-neutral $P$, the mark-to-market (MTM) value, the spread, and the profit and loss (P\&L) of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
 \end{table}
 
 Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the Highbridge and Citigroup have to trade at 100 bps because of CDS market conventions. On January 1, Highbridge pays an upfront payment to Citigroup that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what Citigroup earns every day. In return for providing protection each day, Citigroup earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
