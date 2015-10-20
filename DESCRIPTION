@@ -1,6 +1,6 @@
 Package:     creditr
-Version:     0.6.1.9001
-Date:        2015-08-12
+Version:     0.6.1.9002
+Date:        2015-10-20
 Title:       Credit Default Swaps in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
@@ -32,7 +32,7 @@ Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
 License:     file LICENSE
 URL:         https://github.com/davidkane9/creditr
 Description: Provides tools for pricing credit default swaps using
-             C code for the International Swaps and Derivatives
+             C code from the International Swaps and Derivatives
              Association (ISDA) CDS Standard Model. See
              <http://www.cdsmodel.com/cdsmodel/documentation.html>
              for more information about the model and 
