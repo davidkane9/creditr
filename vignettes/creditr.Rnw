@@ -265,7 +265,7 @@ Here is a table that considers what happens to the above-mentioned variables as 
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & CF (Highbridge) & CF (Citigroup) & Risk-neutral $P$ & MTM & Spread & P\&L (Highbridge) & P\&L (Citigroup) \\ 
+Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & $P\&L_C$ \\ 
   \hline
   Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
   Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
@@ -458,7 +458,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS o
 {\footnotesize
 \begin{tabular}{lllll}
   \hline
-Date & Mark-to-market & P\&L (Highbridge) & P\&L (Citigroup) & Accrued Coupon \\ 
+Date & Mark-to-market & $P\&L_H$ & $P\&L_C$ & Accrued Coupon \\ 
   \hline
   Jan 1 & \$1,000 & \$0 & \$0 & \$0\\ 
   Mar 31 & \$750 & -\$250 & \$250 & \$250\\ 
@@ -558,7 +558,7 @@ In Section \ref{sec:OnePeriodOverTime}, we measured different aspects of a CDS s
 {\footnotesize
 \begin{tabular}{llll}
   \hline
-Date & Risk-neutral $P$ & Mark-to-market & Upfront Payment \\ 
+Date & $P$ & Mark-to-market & Upfront Payment \\ 
   \hline
   Jan 1 & 3\% & \$1,000 & \$2,000  \\ 
   Mar 31 & 2.25\% & \$750 & \$1,500 \\ 
@@ -724,7 +724,7 @@ Consider what happens to variables such as the cash flows of both parties, the r
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & CF (Highbridge) & CF (Citi) & Risk-neutral $P$ & MTM & Spread & P\&L (Highbridge) & P\&L (Citi) \\ 
+Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & P\&L (Citi) \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
