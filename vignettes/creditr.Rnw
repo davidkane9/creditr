@@ -156,11 +156,13 @@ Unfortunately, the above insurance purchase --- although relatively simple --- m
 
 \item We assumed that both the homeowner and the insurance company are risk-neutral when, in reality, both are likely to be risk-averse. This is especially true for individual homeowners. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%. Insurance companies, on the other hand, can diversify some of their risk by selling many policies.
 
-\item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to have a smaller (even negative)  expected cash flow than the insurance company. Conversely, insurance companies need to have positive expected cash flows because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. 
+\item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to accept negative expected cash flow. Conversely, insurance companies need to have positive expected cash flows because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. 
 
 \item We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occurred? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage.
 
 \end{enumerate}
+
+%% Is there a pithy way to restate these assumptions?
 
 We maintain these assumptions throughout the paper, as does most of the academic literature on CDS. Other assumptions, listed below, will be relaxed in the sections that follow.
 
@@ -187,7 +189,7 @@ We will incorporate these extensions in the sections which follow as we move fro
 
 Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}.
 
-Let's say a portfolio manager at a hedge fund, Highbridge, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she believes that Alcoa will \textbf{default} on its bonds---not pay them back. She enters a one-year CDS agreement with an investment bank---say, J.P. Morgan (Citigroup)\footnote{For ease of reading, we designate the buyers of protection in our examples as female and the sellers of protection as male.}---in which she purchases protection of \$100,000, an amount known as the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, Highbridge does not own Alcoa bonds. 
+Let's say a portfolio manager at a hedge fund, Highbridge, believes that Alcoa, isn't likely to return the money that its bondholders have lent it. In other words, she\footnote{For ease of reading, we designate the buyers of protection in our examples as female and the sellers of protection as male.} believes that Alcoa will \textbf{default} on its bonds. She enters a one-year CDS agreement with an investment bank --- say, Citigroup --- in which she purchases protection of \$100,000, the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, Highbridge does not own Alcoa bonds. 
 
 Keep the same timeline (January 1 to December 31) and numerical figures from our property insurance example. The interest rate is still 0\%. In exchange for protection on the \$100,000, Highbridge agrees to pay a \textbf{coupon} (equivalent to the premium in our property insurance example but using different terminology) of 1\% of the notional amount. The coupon payment of \$1,000 is paid on January 1, the beginning of the coverage period. This side of the CDS is called the \textbf{premium leg}, and Highbridge is known as the \textbf{protection buyer}, since she is purchasing protection.
 
@@ -195,11 +197,11 @@ The other side of the CDS agreement is known as the \textbf{protection leg}, sin
 
 Note that we are using the terms ``premium'' and ``coupon'' interchangeably. Premium is commonly used to describe the periodic fee paid by the protection buyer, which is why this side of a CDS is called the premium leg. However, even though the term coupon is commonly used to describe the periodic fee paid to a bondholder, coupon can also be used to describe the periodic fee in a CDS context. For clarity, we will just use coupon in this paper when referring to the periodic fee paid by the protection buyer.
 
-%% Should we only use premium going forward or just use them both going forward.
+%% Should we only use premium going forward or just use them both going forward?
 
-Since Highbridge makes money if Alcoa's fiscal health deteriorates, she can be said to be \textbf{short credit}. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since Citigroup loses money if Alcoa collapses, Citigroup can be said to be \textbf{long credit}. In other words, Citigroup's returns are similar to those of a person who owns Alcoa bonds. If Alcoa does well, Citigroup does well, and if Alcoa doesn't, then Citigroup doesn't either.
+Since the Highbridge portfolio manager makes money if Alcoa's fiscal health deteriorates, she can be said to be \textbf{short credit}. Shorting is generally a method of profiting from the deterioration of a security, such as a bond. Alternatively, since Citigroup loses money if Alcoa collapses, Citigroup is \textbf{long credit}. In other words, Citigroup's returns are similar to (or, at least, have the same sign as) the returns of a person who owns Alcoa bonds. If Alcoa does well, Citigroup does well, and if Alcoa doesn't, then Citigroup doesn't either.
 
-The expected cash flows for the agreement depend on the probability of default. Since Highbridge will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, Highbridge's expected cash flows---which represent the premium leg---are as follows. 
+The expected cash flows from the agreement depend on the probability of default. Since Highbridge will pay the \$1,000 premium and will receive \$100,000 if Alcoa defaults, Highbridge's expected cash flows --- which represent the ``premium leg'' ---are as follows. 
 
 \begin{equation}
  \begin{aligned}
@@ -208,7 +210,7 @@ The expected cash flows for the agreement depend on the probability of default. 
     \label{eqn:portfolioECF}
 \end{equation}
 
-Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, Citigroup's expected cash flows---which represent the protection leg---are as follows. 
+Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,000 if Alcoa defaults, Citigroup's expected cash flows --- which represent the ``protection leg'' --- are as follows. 
 
 \label{eqn:CitigroupECF}
 \begin{equation}
@@ -219,9 +221,9 @@ Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,
 
 Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.   
 
-We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are equal.
+We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are greater than or equal to zero.
 
-Consider that a deal is reached: both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of $P$ implied by the deal. Note that an alternate definition of this probability is the value of $P$ at which the premium leg equals the protection leg:
+Assume that a deal is reached; both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of $P$ implied by the deal. Note that an alternate definition of this probability is the value of $P$ at which the premium leg equals the protection leg:
 
 \label{eqn:SimpleOnePeriod}
 \begin{align}
@@ -230,7 +232,10 @@ Consider that a deal is reached: both parties agree to the CDS. As in the proper
    \rm -\hspace{3pt}C + (P_h \times V)  &= \rm C - (P_c \times V)
 \end{align}
 
-The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but could receive the protection leg of $V$, depending on $P_h$. The right indicates the converse: Citigroup will receive the coupon payment, $C$, but could potentially have to pay the protection leg of $V$, depending on $P_c$.
+%% Heidi: Why doesn't this equation reference work?
+
+The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but might receive the notional amount $V$, in the case of default. The right side shows the inverse: Citigroup will receive the coupon payment, $C$, but could potentially pay the notional amount of $V$. The estimated probabilities of default, $P_h$ and $P_c$ are not necessarily the same, nor does either necessarily correspond to the true probability of default, $P_true$.
+
 Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
 
 \begin{equation}
@@ -239,7 +244,7 @@ Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
     \end{aligned}
 \end{equation}
 
-Since this is the same equation and the same numerical figures from the property insurance example, we know that, if we set $P_h = P_c$ and define this as $P$, then both must equal 1\%. Note that this 1\% only represents the ``risk-neutral'' value of $P$. Generally speaking, ``risk neutral'' means that one is indifferent regarding the choice between, say, (A) \$100 for sure and (B) an offer of being equally likely to receive \$50 or \$150. In other words, it implies no additional premium for taking on risks. Therefore, it does not indicate the values of $P$ that the two parties believe to be true, nor does it indicate the true value of $P$. Parallel to the property insurance example, we can infer (given both parties have agreed to the CDS) that the Highbridge's estimate $P_h$ must be at least 1\%, and Citigroup's estimate of $P_c$ must be at most 1\%. In fact, from here on out, whenever we mention the risk-neutral probability of default for a CDS example, we can take this to mean that the protection buyer's estimate of $P$ is at least the risk-neutral value, and the protection seller's estimate of $P$ is at most that risk-neutral value.
+Since this is the same equation and the same numerical figures from the property insurance example, we know that, if we set $P_h = P_c$, then both must equal 1\%. Recall that this 1\% represents the ``risk-neutral'' value of $P$. Parallel to the property insurance example, we can infer (given that both parties have agreed to the CDS) that Highbridge's estimate $P_h$ must be at least 1\%, and Citigroup's estimate of $P_c$ must be at most 1\%. Going forward, we will ignore $P_h$ and $P_c$ and just focus in $P$, the risk-neutral probability of default.
 
 
 \subsubsection{One-Period Case Over Time}
