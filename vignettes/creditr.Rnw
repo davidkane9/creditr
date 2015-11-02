@@ -234,7 +234,7 @@ Assume that a deal is reached; both parties agree to the CDS. As in the property
 
 %% Heidi: Why doesn't this equation reference work?
 
-The left side of Equation \ref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but might receive the notional amount $V$, in the case of default. The right side shows the inverse: Citigroup will receive the coupon payment, $C$, but could potentially pay the notional amount of $V$. The estimated probabilities of default, $P_h$ and $P_c$ are not necessarily the same, nor does either necessarily correspond to the true probability of default, $P_true$.
+The left side of Equation \eqref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but might receive the notional amount $V$, in the case of default. The right side shows the inverse: Citigroup will receive the coupon payment, $C$, but could potentially pay the notional amount of $V$. The estimated probabilities of default, $P_h$ and $P_c$ are not necessarily the same, nor does either necessarily correspond to the true probability of default, $P_true$.
 
 Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
 
@@ -343,7 +343,7 @@ So, we need to factor the recovery rate into our calculation of expected cash fl
   \rm - C + (P \times V \times (1 - RR)) &= C - (P \times V \times (1 - RR))
 \end{align}
 
-Note that the above equation is an extension of Equation \ref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled $V$ by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just $RR$). Another term for this amount is the loss given default (LGD):
+Note that the above equation is an extension of Equation \eqref{eqn:SimpleOnePeriod}, the only difference being that we mupltipled $V$ by (1 - RR) to account for the change in the protection leg. The protection seller only has to pay the fraction of the notional amount that the recovery rate does \emph{not} account for (hence (1 - RR) instead of just $RR$). Another term for this amount is the loss given default (LGD):
 
 \begin{equation}
  \begin{aligned}
@@ -573,10 +573,10 @@ Date & $P$ & Mark-to-market & Upfront Payment \\
 
 Earlier, we calculated the upfront payment using the following equation:
 
-\label{eqn:Upfront}
 \begin{align}
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
   \rm -\hspace{3pt}U - C + (P \times V) &= \rm U + C - (P \times V)
+  \label{eqn:Upfront}
 \end{align}
 
 We can verify that the upfront payment values in Table \ref{tbl:upfrontValue} are correct by inputting the risk-neutral probability of default as $P$ and by inputting the mark-to-market value as $C$. For example, take June 30 (where, according to Table \ref{tbl:upfrontValue}, the risk-neutral $P$ is 1.5\% and the mark-to-market value is \$500.)
@@ -589,7 +589,7 @@ We can verify that the upfront payment values in Table \ref{tbl:upfrontValue} ar
 
 As such, on June 30, the value of the upfront payment is \$1,000---which is what Table \ref{tbl:upfrontValue} indicates, as well.
 
-Note that in Equation \ref{eqn:Upfront}, $C$ and $V$ are known or pre-determined values, since $C$ is standardized by the ISDA and $V$ is agreed upon by the protection buyer and seller. As such, $P$ and $U$ can be considered the unknown variables; one needs to know the value of $P$ to determine the value of $U$, and vice versa.
+Note that in Equation \eqref{eqn:Upfront}, $C$ and $V$ are known or pre-determined values, since $C$ is standardized by the ISDA and $V$ is agreed upon by the protection buyer and seller. As such, $P$ and $U$ can be considered the unknown variables; one needs to know the value of $P$ to determine the value of $U$, and vice versa.
 
 Also, it is important to distinguish between two upfront payments: the \textbf{dirty upfront} and \textbf{clean upfront}. However, the the difference of the two upfront payments involves the concept of \textbf{accrued interest rates} which will be introduced in the N-period CDS example. For readeres who are familiar with this concept, dirty upfront payment takes accrued interest rates into account, while clean upfront payment does not. Therefore, dirty upfront payment is the actual upfront payment that one party pays to the other.
 
@@ -599,7 +599,7 @@ We have introduced a simple one-period CDS between a portfolio manager and Citig
 
 In a real-world scenario, we'd have to look at \emph{all} these factors at the same time, and come up with a way to model cash flows that take all factors into account.
 
-Combining Equations \ref{eqn:InterestRate}, \ref{eqn:recovery} and \ref{eqn:Upfront}, we get a master equation that accounts for interest rate ($i$), recovery rate ($RR$), and upfront payment ($U$). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, $C$ stands for the coupon payment, $P$ for the probability of default, and $V$ for the notional value.)
+Combining Equations \eqref{eqn:InterestRate}, \eqref{eqn:recovery} and \eqref{eqn:Upfront}, we get a master equation that accounts for interest rate ($i$), recovery rate ($RR$), and upfront payment ($U$). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, $C$ stands for the coupon payment, $P$ for the probability of default, and $V$ for the notional value.)
 
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
@@ -696,7 +696,7 @@ Now consider the expected cash flows for year two (where $P$ = 0\%):
 
 Clearly, the expected cash flows for Highbridge and Citigroup during year one are not equal, and the expected cash flows for Highbridge and Citigroup during year two are not equal, either.
 
-However, note that in year one, Citigroup's expected cash flows are \$1,000 greater than that of Citigroup, and in year two, Citigroup's expected cash flows are \$1,000 less than that of Citigroup. As such, the overall expected cash flows (which are the same as Equation \ref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
+However, note that in year one, Citigroup's expected cash flows are \$1,000 greater than that of Citigroup, and in year two, Citigroup's expected cash flows are \$1,000 less than that of Citigroup. As such, the overall expected cash flows (which are the same as Equation \eqref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
 
 %% Need to finish this section: Non-constant Interest Rate
 
