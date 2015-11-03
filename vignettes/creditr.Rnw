@@ -15,6 +15,7 @@
 \usepackage{float} 
 \usepackage[nottoc]{tocbibind}
 \usepackage{tabularx}
+\usepackage[font = scriptsize]{caption}
 %\renewenvironment{knitrout}{\begin{singlespace}}{\end{singlespace}}
 %\VignetteIndexEntry{Credit Default Swaps with R}
 
