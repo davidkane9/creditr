@@ -814,7 +814,7 @@ In this section, we will explore CDS pricing with the Bloomberg Terminal and the
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDS.jpg}
-\caption{This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction in Alcoa, priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This include \textbf{recovery rate} and \textbf{default probability}.}
+\caption{\label{fig:bbScreenShot}This is a Bloomberg Terminal screenshot that shows the details of an actual CDS transaction in Alcoa, priced on June 24, 2014 with 5 years of maturity. The screenshot consists of three sections: the Deal section (upperleft), Calculator section (bottomleft), and Market section (right side). The Deal section is where traders mostly input detailed information of the trade, such as \textbf{trade date} and \textbf{coupon}. The Calculator section shows the calculation results of the CDS contract after the trader has entered the trade information in the Deal section. Traders rely on these calculation results to make decisions on trades. The Market section shows information of the relevant market rates (such as LIBOR) that we concern as discount factors. This section also includes \textbf{recovery rate} and \textbf{default probability}.}
 \label{AlcoaIncCDS}
 \end{figure}
 
@@ -823,11 +823,11 @@ In this section, we will explore CDS pricing with the Bloomberg Terminal and the
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDSDeal.jpg}
-\caption{This is a figure of Deal section cropped from Figure 2. Traders enter most of the CDS trade information in Deal section, and Calculation section and Market section rely heavily on information provided in ``Deal'' section. Familiar terms are \textbf{notional amount}, \textbf{trade date},\textbf{trade spread}, and \textbf{coupon}. Recall that trade spread is the coupon traders \textit{would} have traded at before Big Bang Protocol standardized the coupon rate. \textbf{Maturity} means how long the protection contract lasts and when the coverage finishes. Here, the first slot ``5Y'' means the contract lasts 5 years, and second slot means that the contract will end on Sept. 20, 2019.}
+\caption{\label{fig:bbDealSection}This is a figure of the Deal section cropped from Figure \ref{fig:bbScreenShot}. Traders enter most of the CDS trade information in the Deal section, and Calculation section and Market section rely heavily on information provided in ``Deal'' section. Familiar terms are \textbf{notional amount}, \textbf{trade date}, \textbf{trade spread}, and \textbf{coupon}. Recall that trade spread is the coupon traders \textit{would} have traded at before Big Bang Protocol standardized the coupon rate. \textbf{Maturity} means how long the protection contract lasts and when the coverage finishes. Here, the first slot ``5Y'' means the contract lasts 5 years, and second slot means that the contract will end on Sept. 20, 2019.}
 \label{deal}
 \end{figure}
 
-In Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code, and a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input ``014B98'' is the six-digit RED Pair Code for ``Alcoa''. The label \textbf{Debt type}, marked as ``Senior,'' refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. The label \textbf{Restructuring} refers to which term of debt restructuring we agree on: For example, U.S. traders usually do not accept debt restructuring as CDS payment, and debt restructuring is often considered as bankcrupcy. Therefore, when trading CDS in U.S., we usually specify Restructuring to ``NR,'' which stands for ``No Restructuring.'' In Europe, however, traders usually consider certain types of debt restructuring acceptable and different from bankcrupcy, so European traders usually specify Restructuring to ``MMR'' which stands for Modified ``Modified Restructuring''. 
+In the Deal section, \textbf{REF Entity} (Reference Entity) refers to the name of the company (Alcoa, in this case) and \textbf{RED Pair Code} is a Markit product that stands for Reference Entity Database. Each entity/seniority pair has a unique six-digit RED Pair Code that matches the first six digits of the nine-digit RED Pair Code, and a ``preferred reference obligation,'' which is the default reference obligation for CDS  trades. A user can input either the six-digit RED Pair Code or the nine-digit RED Pair Code. The input ``014B98'' is the six-digit RED Pair Code for ``Alcoa''. The label \textbf{Debt type}, marked as ``Senior,'' refers to the seniority of the debt. The \textbf{REF Obligation} (Reference Obligation) refers to the bond involved in the CDS, and it matches the ISIN. The label \textbf{Restructuring} refers to which term of debt restructuring we agree on: For example, U.S. traders usually do not accept debt restructuring as CDS payment, and debt restructuring is often considered as bankcrupcy. Therefore, when trading CDS in U.S., we usually specify Restructuring to ``NR,'' which stands for ``No Restructuring.'' In Europe, however, traders usually consider certain types of debt restructuring acceptable and different from bankcrupcy, so European traders usually specify Restructuring to ``MMR'', which stands for Modified ``Modified Restructuring''. 
 
 At the top left, we see the CDS contract type is \textbf{SNAC} (\textbf{Standard North American Contract}), which is a convention that specifies how North American single-name CDS are supposed to trade. In European markets, CDS belong to the \textbf{STEC} category, or Standard European Contract.
 
@@ -837,7 +837,7 @@ On the right side, \textbf{Trd Sprd (bp)} is just \textbf{spread}. Recall that s
 
 At the lower left, \textbf{Recovery Rate} is set to 0.40 and we use \textbf{Curve Recovery Rate} by default. On the bottom right, \textbf{trading conventions} are listed. For example, \textbf{Day Convention} (``Day Cnt'') denotes what type of convention of dates we follow in this trading. Here, ACT/360 means that we assume there are 360 days in a year. 
 
-On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment are paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
+On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date; \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment is paid. This is the first roll date adjusted for weekdays after our trade date. \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
 
 \newpage
 \subsection{Calculator Section}
@@ -846,21 +846,21 @@ On the left, \textbf{Trade Date} is the date when we trade CDS; \textbf{First Ac
 \centering
 \includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the Calculation section cropped from Figure 2. We can see here that we are using ISDA Standard Upfront Model for the CDS pricing, and the valuation is done on the trade date while cash settlement date is three days after. Calculation section takes in the information entered by traders in Deal section and calculate some important results,  such as \textbf{CDS price}, \textbf{principle amount}, and \textbf{cash amount}. Here, cash amount is the same as \textbf{upfront payment} ($U$). Traders use these calculation results to make trading decisions and risk management.}
+This figure is the Calculation section cropped from Figure \ref{fig:bbDealSection}. We can see here that we are using ISDA Standard Upfront Model for the CDS pricing, and the valuation is done on the trade date while cash settlement date is three days after. Calculation section takes in the information entered by traders in Deal section and calculate some important results,  such as \textbf{CDS price}, \textbf{principle amount}, and \textbf{cash amount}. Here, cash amount is the same as \textbf{upfront payment} ($U$). Traders use these calculation results to make trading decisions and risk management.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
-At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286069. 
+At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS pricing. \textbf{Principal}, or the mark-to-market value, of this contract is \$287,458. This amount is the sum of the expected present value of each coupon payment. If we account for the accrued amount which the protection buyer does not have to pay, the upfront value is \$286,069. 
 
 The ISDA protocol, since April 2009, specifies that all premium payments, by default, start on the roll date before the Trade Date. So if the Trade Date is June 24, 2014, the \textbf{Accrual Begin Date} is, by default, June 20, 2014. Now if the Accrual Begin Date is 4 days before the Trade Date, protection buyers would not want (and are not obligated) to pay interest for the 5 days they have not received protection for. \textbf{Accrued interest} can be calculated using the equation below:
 
 \begin{equation}
  \begin{aligned}
-  {\rm Accrued = \frac{5}{360} \times \frac{1}{100} \times \$10000000 = \$1,389}
+  {\rm Accrued = \frac{5}{360} \times \frac{1}{100} \times \$10,000,000 = \$1,389}
     \end{aligned}
 \end{equation}
 
-Now let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. These four parameters indicate the change of upfront if small adjustments are made to the trade. For example, Spread DV01 measures how much upfront payment would change if spread was set a little higher. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
+Now let's focus on the labels at the lower right: Spread DV01, IR DV01, Recovery Risk (1\%), and Default Exposure. These four parameters indicate the change in upfront if small adjustments are made to the trade. For example, Spread DV01 measures how much upfront payment would change if spread was set a little higher. However, to understand these four concepts, we have to introduce \textbf{PV01} first.
 
 \subsubsection{PV01}
 \label{sec:PV01}
@@ -889,7 +889,7 @@ PV01 =  \sum_tDf(t_i)S(t_i)B(t_i), \nonumber\\
 \subsubsection{Spread DV01}
 \label{sec:spread.DV.01}
 
-\textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for ``Spread Dollar Value 01.'' It measures the change of upfront payment if spread increases by 1, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
+\textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for ``Spread Dollar Value 01.'' It measures the change of upfront payment if spread increases by 1 bp, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
 
 DV01 should always be positive for a protection buyer since she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
 
@@ -939,8 +939,7 @@ Default Exposure refers to the expoure to default of a CDS contract. It can be c
 \centering
 \includegraphics[width=3in, height=4.5in]{images/AlcoaIncCDSMarket.jpg}
 \caption{
-This figure is the ``Market'' section cropped from Figure 2. It shows
-information about market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS. \textbf{Recovery rate} is the percent of a equity's value that can be recovered. \textbf{Points upfront} refers to the upfront payment as a percentage of the notional amount. \textbf{Spread} is the coupon rate we \textit{would} have traded at before Big Bang Protocol standardized coupon rate. \textbf{Default probability} (or probability of default) is the risk-neutral probability of default that makes equal the potential cash flows from both buy and sell side of the CDS.}
+This figure is the Market section cropped from Figure \ref{fig:bbDealSection}. It shows information about market curve rates and CDS term structure. \textbf{Curve Date} is the date of LIBOR rates we use to price CDS. \textbf{Recovery rate} is the percent of a equity's value that can be recovered. \textbf{Points upfront} refers to the upfront payment as a percentage of the notional amount. \textbf{Spread} is the coupon rate we \textit{would} have traded at before Big Bang Protocol standardized coupon rate. \textbf{Default probability} (or probability of default) is the risk-neutral probability of default that makes equal the potential cash flows from both buy and sell side of the CDS.}
 
 \label{AlcoaIncCDSMarket}
 \end{figure}
@@ -967,7 +966,7 @@ Here on the screenshot, the ``prob'' label refers to \textbf{default probability
 where $r$ is the spread, $t$ is the time to maturity, and $RR$ is the recovery rate. So the default probability at time $t$ is:
 
 \begin{equation}
-  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-RR}}, \nonumber
+  \text{Default Probability} \approx 1 - e ^ {\frac{rt}{1-RR}}. \nonumber
 \end{equation}
 
 
@@ -983,10 +982,11 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 
 %% Need an intro paragraph.
 
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.3in, height=4.8in]{images/MarkitCDSAlcoa.jpg}
-\caption{
+\caption{\label{fig:AlcoaRates}
 This is a screenshot of the online Markit CDS Calculator. It shows the same trade as the above Bloomberg screenshot: a purhcase of senior debt protection of Alcoa Inc with a tenor of five years on Jun. 24, 2014. The layout is divided into four sections: Contract section (left), Credit Curve section (center up), Calculation section (center down), and Yield Curve section (right). In Contract section, the fields are similar to those in Deal section in Bloomberg, except that we have to manually set holiday code (in Bloomberg this is automatically set according to users' input). Credit Curve section shows the term structure in a table, while in Bloomberg term structure is shown in a graph. Notice that we have the advantage of viewing default probabilities at different maturities in Markit, but advantage of viewing different spread levels in Bloomberg. our contract choice is highlighted in blue. The Calculation section is very similar to that in Bloomberg, with small differences explained below. The Yield Curve section shows the LIBOR rates (discount factor) we use, and notice that curve date is adjusted here.
 }
 \end{figure}
