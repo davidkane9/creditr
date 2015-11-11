@@ -98,7 +98,7 @@ This paper explains the mechanics of credit default swaps (CDS), a type of \text
   
 The next section focuses on real world data from Bloomberg and Markit, the two sources most often used by professional investors. For Bloomberg, we will dive into the specifics of the Deal Section, Calculator Section and Market Section to see how theoretical CDS concepts are used in practice. We then explore the Markit CDS Calculator, with an emphasis on the terminology differences from Bloomberg.
 
-Finally, we introduce the \textbf{creditr} package, which allows users to calculate information regarding a particular CDS in \textbf{R}. The creditr package uses the same ISDA Standard Model that Bloomberg and the Markit CDS Calculator use, and provides generic methods to show the calculation results in a way that is similar to Bloomberg and Markit.
+Finally, we introduce the \textbf{creditr} package, which allows users to calculate information regarding a particular CDS in \textbf{R}. The creditr package uses the same ISDA Standard Model that Bloomberg and the Markit CDS Calculator use, and provides generic methods to output the calculation results in a way that is similar to Bloomberg and Markit.
 
 \section{CDS Basics}
 
@@ -159,6 +159,7 @@ Unfortunately, the above insurance purchase --- although relatively simple --- m
 
 \item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to accept negative expected cash flow. Conversely, insurance companies need to have positive expected cash flows because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. 
 
+ %% what is the cds association/equivalence here?
 \item We discussed the insurance agreement in a way that assumed we knew if there had been damage. How does the insurance company determine that there has been, for example, a house fire when the homeowner claims that one occurred? The insurance company would probably want some form of proof, and the company might even have someone visit the house and confirm the damage.
 
 \end{enumerate}
@@ -226,14 +227,11 @@ We will again assume that both parties in the CDS are risk-neutral and that both
 
 Assume that a deal is reached; both parties agree to the CDS. As in the property insurance example, we can equate the cash flows to find the \textbf{risk-neutral probability of default}, which is the value of $P$ implied by the deal. Note that an alternate definition of this probability is the value of $P$ at which the premium leg equals the protection leg:
 
-\label{eqn:SimpleOnePeriod}
 \begin{align}
    \rm Highbridge's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3  pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
    \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg \\
-   \rm -\hspace{3pt}C + (P_h \times V)  &= \rm C - (P_c \times V)
+   \rm -\hspace{3pt}C + (P_h \times V)  &= \rm C - (P_c \times V) \label{eqn:SimpleOnePeriod}
 \end{align}
-
-%% Heidi: Why doesn't this equation reference work?
 
 The left side of Equation \eqref{eqn:SimpleOnePeriod} indicates that Highbridge has to pay the coupon, $C$, but might receive the notional amount $V$, in the case of default. The right side shows the inverse: Citigroup will receive the coupon payment, $C$, but could potentially pay the notional amount of $V$. The estimated probabilities of default, $P_h$ and $P_c$ are not necessarily the same, nor does either necessarily correspond to the true probability of default, $P_true$.
 
@@ -288,9 +286,12 @@ In our simple one-period case, we say that the coupon is 1\% and the spread is 1
 
 Similar to the property insurance example, we made several assumptions in our simple one-period CDS that are not consistent with the CDS market. 
 
-1. Similar to the property insurance example, we assumed that the protection buyer was risk-neutral, when she could very well be risk-adverse. She may be willing to pay a coupon larger than 1\% even if she predicts the probability of default to be 1\% because she strongly desires to have protection on Alcoa.
+1. We assumed that the protection buyer was risk-neutral, when she could very well be risk-adverse. She may be willing to pay a coupon larger than 1\% even if she predicts the probability of default to be 1\% because she strongly desires to have protection on Alcoa.
 
-2. Also like the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were equal. This could very well not be the case if, for example, Citigroup is selling protection in many CDS agreements and needs or wants to make a profit.
+%% 2. Also as in the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were equal.
+%% the connection between equal cash flow and no profit is not very clear. need to mention somewhere in the section above that in a deal cash flows between two counterparties sum to zero.
+
+2. Also as in the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were both equal to zero. This could very well not be the case if, for example, Citigroup is selling protection in many CDS agreements and needs or wants to make a profit.
 
 3. In the simple one-period CDS, we assumed that the protection leg would only be paid out in the case of default and bankruptcy. However, depending on the particular CDS, the protection leg could be paid out even if the reference entity defaults and doesn't go bankrupt. In fact, there are several scenarios that can be considered \textbf{credit events}---occurrences that merit the payout of the protection leg in a CDS. Besides default and bankruptcy, common credit events include failure to return money to bondholders within a certain amount of time, a credit rating downgrade (explained in Section \ref{sec:BloombergMarkit}) and the confiscation of assets, among other events.
 
@@ -308,6 +309,7 @@ First, look at our CDS agreement: Highbridge pays the premium on January 1 and C
     \end{aligned}
 \end{equation}
 
+%% need to decide whether we want to focus on PV or FV
 Not just the coupon grows at the interest rate. A similar discounting effect applies to the potential credit loss as well. If a credit event triggers a loss in the future, then we must discount the loss amount by an interest rate $i$ to get the present value, before we can set up the equality and solve for the risk-neutral $P$.
 
 Here are the expected cash flows for a generic case. ($P$ refers to the risk-neutral probability of default; $V$ represents the notional value; $i$ stands for the interest rate; and $C$ is the coupon payment).
@@ -371,6 +373,7 @@ After combining like terms, dividing both sides by 2 and simplifying, we get:
 
 Therefore, $P$ is 1.8\% (rounded to the nearest tenth) in this scenario where the recovery rate is 55\%.
 
+%% why are we having a separate section on this?
 \subsubsection{In the Case of a Default}
 
 When a default does occur, the protection seller would owe the protection buyer the notional amount minus any money recovered from the company. It must be noted that the protection is effective for the credit events that have taken place since 60 days \textit{before} the trade date; this date is known as the \textbf{backstop date}. Before the ``Big Bang Protocol'' in April 2009, this date used to be one day \textit{after} the trade date. If there is a delay in awareness about a credit event, the new system allows sufficient time for the two dealers to discover and process the information. 
@@ -382,11 +385,11 @@ The alternative to a physical settlement is a \textbf{cash settlement}, in which
 \subsubsection{Accrued Coupon}
 \label{sec:AccruedCoupon}
 
-Back to our simple one-period CDS example---0\% interest rate, 0\% recovery rate. For this scenario, both the premium leg and the protection leg are paid on December 31. We have so far assumed that our CDS agreement between Highbridge and Citigroup begins on January 1 and ends on December 31 of the same year. However, what if this agreement wasn't made exactly on January 1? What if it was made on March 31, one quarter through the year? Using our simple one-period CDS example, this implies that Highbridge would have to pay the same coupon of $1\% \times (\$1,000)$ on December 31 for only receiving nine months (instead of one year) of protection coverage.
+Back to our simple one-period CDS example---0\% interest rate, 0\% recovery rate. For this scenario, both the premium leg and the protection leg are paid on December 31. We have so far assumed that our CDS agreement between Highbridge and Citigroup begins on January 1 and ends on December 31 of the same year. However, what if this agreement wasn't made exactly on January 1? What if it was made on March 31, one quarter through the year? Using our simple one-period CDS example, this implies that Highbridge would have to pay the same coupon of $1\% \times (\$1,000)$ on March 31 for only receiving nine months (instead of one year) of protection coverage.
 
 Assume that both parties agreed to a deal under these conditions. 
 
-Since the risk-neutral probability of default decreases as the contract duration decreases (see \ref{table.1}), the risk-neutral probability that Alcoa will default in nine months is less than the risk-neutral probability that it will default in twelve. As such, the expected cash flows are no longer equal and therefore the two parties must have accounted for this discrepancy---otherwise Highbridge would not have agreed to the above CDS. In other words, given that the agreement was made, Citigroup must have paid an additional sum to Highbridge to compensate for the fact that she is paying the coupon for one-year coverage and is only receiving nine months.
+Since the risk-neutral probability of default decreases as the contract duration decreases (see Table \ref{table.1}), the risk-neutral probability that Alcoa will default in nine months is less than the risk-neutral probability that it will default in twelve. As such, the expected cash flows are no longer equal and therefore the two parties must have accounted for this discrepancy---otherwise Highbridge would not have agreed to the above CDS. In other words, given that the agreement was made, Citigroup must have paid an additional sum to Highbridge to compensate for the fact that she is paying the coupon for one-year coverage and is only receiving nine months.
 
 In order to determine this sum, we need to calculate the fraction of the coupon she is unfairly paying, or the fraction of the coupon that accounts for the first three months of the year (January 1 to March 31). This fraction of the coupon payment is known as the \textbf{accrued coupon}.
 
@@ -479,6 +482,7 @@ There is also another related but different concept called accrued payment, whic
 
 Both these ``accrued'' amounts serve as necessary adjustment to the payment of CDS transactions.
 
+%% consider renaming it ``standard coupon'' instead of ``non-standar''?
 \subsubsection{Non-standard Coupon and Big Bang Protocol}
 
 In all of our CDS examples, we have assumed a coupon of 1\%. We have done so because we have been working with the same basic numerical figures: a risk-neutral probability of default of 1\% and a notional amount of \$100,000:
@@ -600,6 +604,7 @@ We have introduced a simple one-period CDS between a portfolio manager and Citig
 
 In a real-world scenario, we'd have to look at \emph{all} these factors at the same time, and come up with a way to model cash flows that take all factors into account.
 
+%% add accrued coupon to the equation? otherwise the upfront calculated using this equaiton will be the dirty upfront
 Combining Equations \eqref{eqn:InterestRate}, \eqref{eqn:recovery} and \eqref{eqn:Upfront}, we get a master equation that accounts for interest rate ($i$), recovery rate ($RR$), and upfront payment ($U$). Accrued coupon can be calculated separately based on the date the CDS was initiated. (As before, $C$ stands for the coupon payment, $P$ for the probability of default, and $V$ for the notional value.)
 
 \begin{align}
@@ -623,7 +628,7 @@ two coupon payments: one on January 1 of year one and one on January 1 of year t
 
 Consider that both parties agree to this deal. 
 
-The risk-neutral probability of default---the default that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows for year one of the CDS contract:
+The risk-neutral probability of default---the default probability that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows for year one of the CDS contract:
 
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + (P \times {\$100,000}) \\
@@ -653,9 +658,8 @@ Now that we have considered the expected cash flows and risk-neutral probability
 
 In order to find the risk-neutral probability of default for both years combined, we need to equate the two expected cash flows:
 
-\label{eqn:twoPeriod}
 \begin{align}
-  \rm - (\$1,000 + \$1,000) + (P \times \$100,000) &= \rm (\$1,000 + \$1,000) - (P \times \$100,000) \\
+  \rm - (\$1,000 + \$1,000) + (P \times \$100,000) &= \rm (\$1,000 + \$1,000) - (P \times \$100,000) \label{eqn:twoPeriod}\\
   \rm P \times {\$100,000}  &= \rm \$2,000
 \end{align}
 
@@ -704,15 +708,15 @@ However, note that in year one, Citigroup's expected cash flows are \$1,000 grea
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
 
-First, let us give an example of a CDS which assumes a constant interest rate. Suppose the annual continuous risk-free rate is $r = 0.1$ (such that the annual effective rate is $e^{0.1}$). For simplicity purpose, further assume that the probable credit event can only take place at the end of the second year. Then redoing the two period case described by equation (50), we end up having:
+First, let us give an example of a CDS which assumes a constant interest rate. Suppose the annual continuous risk-free rate is $r = 0.1$ (such that the annual effective rate is $e^{0.1}$). For simplicity purpose, further assume that the probable credit event can only take place at the end of the second year. Then redoing the two period case described by Equation \eqref{eqn:twoPeriod}, we end up having:
 
-$$-\$1000 - \frac{\$ 1000}{e^{0.1}} + \frac{P \times 100000}{e^{2\times 0.1}} = \$1000 + \frac{\$ 1000}{e^{0.1}} - \frac{P \times 100000}{e^{2\times 0.1}}$$
+$$-\$1,000 - \frac{\$ 1,000}{e^{0.1}} + \frac{P \times 100,000}{e^{2\times 0.1}} = \$1,000 + \frac{\$ 1,000}{e^{0.1}} - \frac{P \times 100,000}{e^{2\times 0.1}}$$
 
 Solving for $P$, we can get a risk-neutral $P = 0.0232$.
 
-Further complication involves a non-constant interest rate. Now suppose the continuous risk-free rate takes a linear drop from $0.1$ to $0.05$ through the two years. In other words, let $r = 0.1 - 0.025t$ where $t \in [0, 2]$. Then,  equation (50) needs to be rewritten as:
+Further complication involves a non-constant interest rate. Now suppose the continuous risk-free rate takes a linear drop from $0.1$ to $0.05$ through the two years. In other words, let $r = 0.1 - 0.025t$ where $t \in [0, 2]$. Then,  Equation \eqref{eqn:twoPeriod} needs to be rewritten as:
 
-$$-\$1000 - \frac{\$ 1000}{e^{\int_0^1 0.1 - 0.025t dt}} + \frac{P \times 100000}{e^{\int_0^2 0.1 - 0.025t dt}} = \$1000 + \frac{\$ 1000}{e^{\int_0^1 0.1 - 0.025t dt}} - \frac{P \times 100000}{e^{\int_0^2 0.1 - 0.025t dt}}$$
+$$-\$1,000 - \frac{\$ 1,000}{e^{\int_0^1 0.1 - 0.025t dt}} + \frac{P \times 100,000}{e^{\int_0^2 0.1 - 0.025t dt}} = \$1,000 + \frac{\$ 1,000}{e^{\int_0^1 0.1 - 0.025t dt}} - \frac{P \times 100,000}{e^{\int_0^2 0.1 - 0.025t dt}}$$
 
 Solving for $P$, we can get a new $P = 0.0206$, which is smaller than the risk-neutral probability in the constant interest rate example. Note again that as in previous cases, this risk-neutral probability is purely a mathematical concept which has nothing to do with the real probability of a credit event.
 
@@ -725,7 +729,7 @@ Consider what happens to variables such as the cash flows of both parties, the r
 {\footnotesize
 \begin{tabular}{llllllll}
   \hline
-Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & P\&L (Citi) \\ 
+Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & $P\&L_C$ \\ 
   \hline
   Jan 1, $Y_a$ & -\$1,000 & \$1,000 & 2\% & \$1,000 & 200 bps & \$0 & \$0 \\ 
   Mar 31, $Y_a$ & \$0 & \$0 & 1.75\% & \$750 & 175 bps & -\$250 & \$250 \\ 
@@ -740,14 +744,15 @@ Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & P\&L (Citi) \\
 \caption{This table displays how several variables---the cash flows (CF) of both parties, the risk-neutral $P$, the mark-to-market (MTM) value, the spread, and the profit and loss (P\&L) of both parties---change as the two year contract matures. $Y_a$ stands for year one and $Y_b$ stands for year two. Note that this table shows these changes in the case that the reference entity---Alcoa--does not default. As such, the only cash flows are the two \$1,000 coupon payments on January 1 of each year. The risk-neutral probability of default decreases from 2\% to 0\% over the life of the contract, and the spread decreases from 200 bps to 0 bps. Note that the mark-to-market value, however, goes from \$1,000 to \$0 over the first year, and \$1,000 to \$0 over the second year.}
 \end{table}
 
-Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and the Highbridge and Citigroup have to trade at 100 bps because of CDS market conventions. On January 1, Highbridge pays an upfront payment to Citigroup that takes into account the extra 60 bps she doesn't have to pay as part of the coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what Citigroup earns every day. In return for providing protection each day, Citigroup earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce a one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
+%% more work on this paragraph
+Suppose that the spread (a.k.a. the coupon) is 160 bps (equivalent to 1.60\%), and Highbridge and Citigroup have to trade at 100 bps because of CDS market conventions. On January 1, Highbridge pays an upfront payment to Citigroup that takes into account the extra 60 bps she doesn't have to pay as part of the standard coupon. Even though this payment happens once during the year, we can think about the value of this payment by considering what Citigroup earns every day. In return for providing protection each day, Citigroup earns a fraction of the total upfront payment. In other words, as the year progresses, the protection seller slowly makes money and the protection buyer slowly loses money. By the end of the year, both the upfront and the coupon payments have been made, effectively canceling each other out to produce one cash flow: a coupon payment of 1\% from the protection buyer to seller. Thus, by the end of the year, the value of the upfront payment goes to zero since by the end of the year, since the cash flows cancel out as if there was never any upfront payment at all. 
 
 The way in which the value of the upfront payment drops over the life of the CDS contract can be called the \textbf{pull to par}.
 
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from Citigroup a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after five years, the CDS protection ends (or \textbf(matures)) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we pick the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
+Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from Citigroup a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after five years, the CDS protection ends (or \textbf{matures}) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we pick the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
 
 Since there are four payment dates in one year and the tenor is five years, this is a 20-period example of CDS.
 Although the number of periods has increased dramatically from two to twenty, the central mathematics remains unchanged:
