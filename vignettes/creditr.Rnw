@@ -155,7 +155,7 @@ Unfortunately, the above insurance purchase --- although relatively simple --- m
 
 \begin{enumerate}
 
-\item We assumed that both the homeowner and the insurance company are risk-neutral when, in reality, both are likely to be risk-averse. This is especially true for individual homeowners. Taking our example, if the homeowner is risk-adverse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%. Insurance companies, on the other hand, can diversify some of their risk by selling many policies.
+\item We assumed that both the homeowner and the insurance company are risk-neutral when, in reality, both are likely to be risk-averse, or reluctant to take risks. This is especially true for individual homeowners. They will pay a larger premium because they cannot afford the much higher price of repairing damage, and they need insurance to fully cover the possibility of damage. Taking our example, if the homeowner is risk-averse and believes the probability of damage to be 1.5\%, she would be willing to pay a coupon of more than 1.5\%. Insurance companies, on the other hand, can diversify some of their risk by selling many policies.
 
 \item We assumed that both parties would only agree to the insurance agreement if the expected cash flows were equal. As the above assumption described, an insurance buyer is generally willing to accept negative expected cash flow. Conversely, insurance companies need to have positive expected cash flows because they aim to \emph{profit} from selling insurance; if they charge as much as they expect to pay, then they can't expect to make any money as a company, or to pay any of the overhead associated with selling insurance. 
 
@@ -174,7 +174,7 @@ We maintain these assumptions throughout the paper, as does most of the academic
 
 \begin{enumerate}
 
-\item The agreement considered only two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes we need to account for. What if only half of the house was damaged? 
+\item The agreement considered only two cases: either the entire house was damaged (and the insurance company paid \$100,000), or the house was not damaged (and the insurance company paid \$0). However, there are other likely outcomes for which we must account. For example, what if only half of the house was damaged? 
 
 \item Interest rates are rarely zero, nor are they constant. 
 
