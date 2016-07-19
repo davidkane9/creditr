@@ -223,7 +223,7 @@ Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,
 
 Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.
 
-Additionally, it is important to notice that Highbridge's cash flows and Citigroup's cash flows sum to 0. This is because a CDS is a bilateral agreement. The loss of one party is nullified by the gain of the other. Since the net cash flow is 0, if Highbridge and Citigroup have equal cashflows, their individual cash flows must be 0. 
+Additionally, it is important to notice that Highbridge's cash flows and Citigroup's cash flows sum to 0. This is because a CDS is a bilateral agreement. The loss of one party is nullified by the gain of the other. Since the net cash flow is 0, if Highbridge and Citigroup have equal cashflows, their individual cash flows must be 0. Neither party makes a profit when the cash flows are equal. 
 
 We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are greater than or equal to zero.
 
@@ -289,9 +289,6 @@ In our simple one-period case, we say that the coupon is 1\% and the spread is 1
 Similar to the property insurance example, we made several assumptions in our simple one-period CDS that are not consistent with the CDS market. 
 
 1. We assumed that the protection buyer was risk-neutral, when she could very well be risk-adverse. She may be willing to pay a coupon larger than 1\% even if she predicts the probability of default to be 1\% because she strongly desires to have protection on Alcoa.
-
-%% 2. Also as in the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were equal.
-%% the connection between equal cash flow and no profit is not very clear. need to mention somewhere in the section above that in a deal cash flows between two counterparties sum to zero.
 
 2. Also as in the property insurance example, we assumed that both parties would only agree to the deal if the expected cash flows were both equal to zero. This could very well not be the case if, for example, Citigroup is selling protection in many CDS agreements and needs or wants to make a profit.
 
@@ -807,7 +804,7 @@ In this section, we will explore CDS pricing with the Bloomberg Terminal and the
 \subsection{Overview  of CDS in Bloomberg Terminal}
 \label{subsec:Bloomberg}
 
-%% Needs an introductory paragraph 
+Bloomberg Terminal provides a function called the CDSW calculator. If an investor wants to evaluate a specific CDS contract, she can enter information about the CDS into the CDSW calculator. The calculator compares Bloomberg's wealth of constantly updated market data with data entered by the investor in a process called "marking to market". Recall that the mark-to-market value is the current price of a CDS. The results allow the investor to evaluate any current CDS contract which she may want to enter. Therefore, Bloomberg Terminal is very helpful to investors who want to know how much they should pay for a CDS. Below, we have a screenshot of Bloomberg Terminal, whose sections we will break down and explain in depth.
 
 %% KEY POINT: I should be able to read this section, without looking at any of the figure captions, and it should make sense. Conversely, I should be able to read the figure captions only (and not the main text) and have it also make sense. Of course, the text will probably be more detailed than the captions, but there will also, obviously, be a lot of repition. And that is OK!
 
