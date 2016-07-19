@@ -221,7 +221,9 @@ Since Citigroup will receive the \$1,000 premium and will potentially pay \$100,
     \end{aligned}
 \end{equation}
 
-Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.   
+Note that Highbridge's expected cash flows are the same as that of the homeowner in the property insurance example, and Citigroup's expected cash flows are the same as that of the insurance company. This shouldn't be too surprising, though, since the numerical figures in both examples are the same. Also, note that the probability estimates serve exactly the same roles as before: $P_h$ and $P_c$ are the default probability estimates for the homeowner/Highbridge and for the insurance company/Citigroup.
+
+Additionally, it is important to notice that Highbridge's cash flows and Citigroup's cash flows sum to 0. This is because a CDS is a bilateral agreement. The loss of one party is nullified by the gain of the other. Since the net cash flow is 0, if Highbridge and Citigroup have equal cashflows, their individual cash flows must be 0. 
 
 We will again assume that both parties in the CDS are risk-neutral and that both parties will only enter deals in which the expected cash flows are greater than or equal to zero.
 
