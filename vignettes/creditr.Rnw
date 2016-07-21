@@ -189,7 +189,7 @@ We will incorporate these extensions in the sections which follow as we move fro
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. Rating agencies such as Moody's, S&P, and Fitch grade companies on their likelihood to repay bondholders. A company's \textbf{credit worthiness}, determined by these agencies' credit ratings, helps investors determine price and yield of investments. (see Toublan 2014 for more information about the effect of credit rating on the spread of a CDS)
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. Rating agencies such as Moody's, S\&P, and Fitch grade companies on their likelihood to repay bondholders. A company's \textbf{credit worthiness}, determined by these agencies' credit ratings, helps investors determine price and yield of investments. (see Toublan 2014 for more information about the effect of credit rating on the spread of a CDS)
 
 Let's say a portfolio manager at a hedge fund, Highbridge, believes that Alcoa, has a high credit risk and isn't likely to return the money that its bondholders have lent. In other words, she\footnote{For ease of reading, we designate the buyers of protection in our examples as female and the sellers of protection as male.} believes that Alcoa will \textbf{default} on its bonds. She enters a one-year CDS agreement with an investment bank --- say, Citigroup --- in which she purchases protection on \$100,000, the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, Highbridge does not own Alcoa bonds. 
 
@@ -824,7 +824,7 @@ Bloomberg Terminal provides useful tools that allow traders to calculate CDS pri
 \centering
 %\includegraphics[width=6.3in, height=3.8in]{images/AlcoaIncCDSDeal.jpg}
 \includegraphics{images/AlcoaIncCDSDeal.jpg}
-\caption{\label{fig:bbDealSection}This is a figure of the Deal section cropped from Figure \ref{fig:bbScreenShot}. Traders enter most of the CDS trade information in the Deal section, and Calculation section and Market section rely heavily on information provided in ``Deal'' section. Familiar terms are \textbf{notional amount}, \textbf{trade date}, \textbf{trade spread}, and \textbf{coupon}. Recall that trade spread is the coupon traders \textit{would} have traded at before Big Bang Protocol standardized the coupon rate. \textbf{Maturity} means how long the protection contract lasts and when the coverage finishes. Here, the first slot ``5Y'' means the contract lasts 5 years, and second slot means that the contract will end on Sept. 20, 2019.}
+\caption{\label{fig:bbDealSection}This is a figure of the Deal section of a Bloomberg CDS screen cropped from Figure \ref{fig:bbScreenShot}. This section contains identification of the company and bond debt on which the CDS buyer is purchasing protection, the timeline of a CDS contract, the dates and amounts of the CDS payments, and contract conventions. Much of this information is entered by the investor. Bloomberg relies on this data when creating the Calculator and Market sections.
 \label{deal}
 \end{figure}
 
@@ -858,7 +858,8 @@ On the bottom right, \textbf{trading conventions} are listed. This information i
 On the left, \textbf{Trade Date} is the date when we trade CDS.
 \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date;
 \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment is paid. This is the first roll date adjusted for weekdays after our trade date.
-\textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second to last date coupon payment date. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
+\textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second to last date coupon payment date. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for business days. In other words, maturity dates can be on non-business days, but other dates cannot.
+%Clarify these definitions with dave
 
 \newpage
 \subsection{Calculator Section}
