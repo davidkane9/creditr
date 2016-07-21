@@ -858,7 +858,7 @@ On the bottom right, \textbf{trading conventions} are listed. This information i
 On the left, \textbf{Trade Date} is the date when we trade CDS.
 \textbf{First Accrual Start Date} (``1st Accr Start'') is the previous \textbf{roll date} adjusted for weekdays before the Trade Date;
 \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when first coupon payment is paid. This is the first roll date adjusted for weekdays after our trade date.
-\textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second last date when we pay our coupon payment. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
+\textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second to last date coupon payment date. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date must \textbf{not} be adjusted, while other dates must be adjusted for businessdays. In other words, maturity dates can be on non-business days, but other dates cannot.
 
 \newpage
 \subsection{Calculator Section}
