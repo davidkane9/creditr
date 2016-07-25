@@ -707,13 +707,32 @@ However, note that in year one, Citigroup's expected cash flows are \$1,000 grea
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
 
-First, let us give an example of a CDS which assumes a constant interest rate. Suppose the annual continuous risk-free rate is $r = 0.1$ (such that the annual effective rate is $e^{0.1}$). For simplicity purpose, further assume that the probable credit event can only take place at the end of the second year. Then redoing the two period case described by Equation \eqref{eqn:twoPeriod}, we end up having:
+First, let us give an example of a CDS which assumes a constant interest rate. Suppose the annual continuous \textbf{risk-free rate} is $r = 0.1$ (such that the annual effective interest rate is $e^{0.1}$). The risk free rate is the expected return rate on an investment that carries no risk of loss for the investor. Therefore, the risk-free rate is the lowest possible return that an investor would accept, because he could always beat a lower return rate without any chance of losing money. However, no entity in the real world is free from risk, so the risk-free rate is just considered the safest possible investment. In the US, the risk free rate is the interest on a US treasury bill because the country is much bigger and has a much lower likelihood of going bankrupt than any company in the US. The annual effective rate takes interest compounding into account. Compounding has to do with the frequency of interest calculation. If interest is broken down into smaller peices so that it is added more often, the interest builds on itself and the end result is greater than if the interest was compounded less often and did not build on itself as much. The equation for annual effective rate is as follows, where i is the stated interest rate and n is the number of times that the interest is compounded per year:
+
+\begin{equation}
+ \begin{aligned}
+{\rm Annual\hspace{3pt}Effective\hspace{3pt}Interest\hspace{3pt}Rate=\left( 1 + \frac{i}{n} \right) ^n -1}
+    \end{aligned}
+    \label{eqn:anneff}
+\end{equation}
+However, when interest is compounded infinitely throughout the year instead of monthly or weekly, the above equation can be simplified to the following:
+\begin{equation}
+ \begin{aligned}
+{\rm Annual\hspace{3pt}Effective\hspace{3pt}Interest\hspace{3pt}Rate= e^i -1}
+    \end{aligned}
+    \label{eqn:contcomp}
+\end{equation}
+
+
+If we combine this new knowledge of interest with the two period case information from Equation \eqref{eqn:twoPeriod}, we end up with the equation below. For simplicity purpose, further assume that the probable credit event can only take place at the end of the second year.
 
 $$-\$1,000 - \frac{\$ 1,000}{e^{0.1}} + \frac{P \times 100,000}{e^{2\times 0.1}} = \$1,000 + \frac{\$ 1,000}{e^{0.1}} - \frac{P \times 100,000}{e^{2\times 0.1}}$$
 
 Solving for $P$, we can get a risk-neutral $P = 0.0232$.
 
-Further complication involves a non-constant interest rate. Now suppose the continuous risk-free rate takes a linear drop from $0.1$ to $0.05$ through the two years. In other words, let $r = 0.1 - 0.025t$ where $t \in [0, 2]$. Then,  Equation \eqref{eqn:twoPeriod} needs to be rewritten as:
+The portfolio manager's first \$1,000 payment does not have interest because it was paid at the start of year one, while her second payment has $e^0.1$ interest on it because it was paid after year one. Since the credit event can only happen at the end of year two, it would have $e^0.2$ interest if a default occured.
+
+Further complication involves a non-constant interest rate. Now suppose the continuous risk-free rate takes a linear drop from $0.1$ to $0.05$ through the two years. In other words, let $r = 0.1 - 0.025t$ where $t \in [0, 2]$. The area under this function, or the function's integral, is the cumulative interest. By changing the bounds of the integral, we specify the amount of time for which we want to total the interest. When the integral goes from 0 to 1, we get the accumulated interest for year one, and when the integral goes from 0 to 2, we get the accumulated interest for both years. If the integral went from 1 to 2, we would have the interest for the second year only. With this information in mind,  Equation \eqref{eqn:twoPeriod} needs to be rewritten as:
 
 $$-\$1,000 - \frac{\$ 1,000}{e^{\int_0^1 0.1 - 0.025t dt}} + \frac{P \times 100,000}{e^{\int_0^2 0.1 - 0.025t dt}} = \$1,000 + \frac{\$ 1,000}{e^{\int_0^1 0.1 - 0.025t dt}} - \frac{P \times 100,000}{e^{\int_0^2 0.1 - 0.025t dt}}$$
 
