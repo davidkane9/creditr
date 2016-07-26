@@ -740,7 +740,7 @@ Solving for $P$, we can get a new $P = 0.0206$, which is smaller than the risk-n
 
 \subsubsection{Two-Period Case Over Time}
 
-Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties as the two-year contract matures.
+Consider what happens to variables such as the cash flows of both parties, the risk-neutral $P$, the mark-to-market value, the spread, and the P\&L of both parties as the two-year contract matures. Let's forget about interest for a second, but otherwise use the same contract as the previous section. The amount for which the investor is purchasing protection, known as the notional amount, is still \$100,000, and the investor still pays a \$1,000 coupon at the start of both years of the two-year agreement.
 
 \begin{table}[H]
 \centering
