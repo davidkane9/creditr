@@ -1021,8 +1021,7 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 \subsection{Overview of Markit CDS Calculator}
 \label{Markit}
 
-%% Need an intro paragraph.
-
+Founded in 2003, Markit is a newer and smaller company than Bloomberg. They offer financial products in three categories: information, products, and services. Like Bloomberg, Markit offers its own tool to evaluate CDS contracts. The Markit CDS calculator determines CDS prices through a combination of user input and market data. One major difference between the two evaluation tools is that the Markit CDS Calculator is free and available to anyone with a computer and internet connection. The Bloomberg terminal, however, costs thousands of dollars per year. Markit also dominates the CDS indices industry, offering the two main families of CDS indices: CDX and iTraxx. In this section, we will discuss some differences between the Bloomberg and Markit CDS calculators so that you can feel comfortable with both tools. We will then go over both of the main corporate CDS indices.
 
 \begin{figure}[H]
 \centering
