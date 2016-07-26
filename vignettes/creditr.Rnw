@@ -1021,7 +1021,7 @@ A CDS term structure is similar to the interest rate curve in that it has the fa
 \subsection{Overview of Markit CDS Calculator}
 \label{Markit}
 
-Founded in 2003, Markit is a newer and smaller company than Bloomberg. They offer financial products in three categories: information, products, and services. Like Bloomberg, Markit offers its own tool to evaluate CDS contracts. The Markit CDS calculator determines CDS prices through a combination of user input and market data. One major difference between the two evaluation tools is that the Markit CDS Calculator is free and available to anyone with a computer and internet connection. The Bloomberg terminal, however, costs thousands of dollars per year. Markit also dominates the CDS indices industry, offering the two main families of CDS indices: CDX and iTraxx. In this section, we will discuss some differences between the Bloomberg and Markit CDS calculators so that you can feel comfortable with both tools. We will then go over both of the main corporate CDS indices.
+Founded in 2003, Markit is a newer and smaller company than Bloomberg. They offer financial products in three categories: information, products, and services. Like Bloomberg, Markit offers its own tool to evaluate CDS contracts. The Markit CDS calculator determines CDS prices through a combination of user input and market data. One major difference between the two evaluation tools is that the Markit CDS Calculator is free and available to anyone with a computer and internet connection. Markit also offers a freely available CDS calculator user's guide which can be found in the references section. The Bloomberg terminal, however, costs thousands of dollars per year. Markit also dominates the CDS indices industry, offering the two main families of CDS indices: CDX and iTraxx. In this section, we will discuss some differences between the Bloomberg and Markit CDS calculators so that you can feel comfortable with both tools. We will then go over both of the main corporate CDS indices.
 
 \begin{figure}[H]
 \centering
@@ -1033,9 +1033,19 @@ This is a screenshot of the online Markit CDS Calculator. It shows the same trad
 \end{figure}
 
 \subsubsection{Terminology Differences}
-On the upper left, \textbf{Trade Level} means the same as \textbf{spread}. We can present spread in either basis points (``bp'') or percentages. In ``CDS Contract Terms,'' \textbf{Running Cpn} just means \textbf{coupon}. In ``Advanced Terms,'' \textbf{Holiday Code} refers to the holiday convention we are using. As we recall, CDS trading in JPY follows a different holiday convention than in other currencies. Therefore, we can select either ``none'' or ``JPY'' for ``Holiday Code.''
+The \textbf{Ticker/Company} field is the same as the reference entity (Alcoa or AA in our example). This company has borrowed money and must repay its bondholders. The protection buyer and protection seller of the CDS in question are betting on the reference entity's ability to repay the bonds or default.
 
-In ``Calculation Results,'' \textbf{Cash Settlement} is the same as \textbf{Cash Amount} in Bloomberg, \textbf{Clean Price} is same as \textbf{Price}, the \textbf{Accured Amount} in Markit and Bloomberg has different signs (one is positive while the other negative), and \textbf{Credit DV01} is the same as \textbf{Spread DV01}.
+On the upper left, \textbf{Trade Level} means the same as \textbf{spread}. We can present spread in either basis points (``bp'') or percentages of the overall notional amount. This is the rate at which the CDS would be traded before the Big Bang Protocol of 2009. Part of the trade level is the coupon, determined by ISDA conventions, and the difference between the trade level and the coupon is the upfront payment. The upfront payment ensures that CDS contracts are traded at fair prices while still meeting ISDA standards. In percentages, the upfront plus the recovery rate cannot be grater than 100\%.
+
+In ``CDS Contract Terms,'' \textbf{Running Cpn} just means \textbf{coupon}. In the US, the running coupon will either be 100 bps or 500 bps, whichever is closest to the trade level. The coupon is the yearly cost of protection against default of the reference entity. Market fills in the running coupon for you based on the Ticker you select. However, investors are free to alter this field.
+
+The \textbf{tier} is the same as debt type in Bloomberg. Recall that the debt type represents the order and priority that debt is repaid. Additionally, the debt type can be secured or unsecured, revealing whether the debt can be repaid in property or if it is not backed by collateral.
+
+In ``Advanced Terms,'' \textbf{Holiday Code} refers to the holiday calendar we are using. The SNAC convention says that all weekdays are non-holidays, but CDS trading in Japan (JPY) follows a different holiday convention than in other currencies. Therefore, we can select either ``none'' or ``JPY'' for ``Holiday Code.''
+
+In ``Calculation Results,'' \textbf{Cash Settlement} is the same as \textbf{Cash Amount} in Bloomberg, \textbf{Clean Price} is same as \textbf{Price}.The \textbf{Accrued Amount} in Markit and Bloomberg has different signs (one is positive while the other negative), and \textbf{Credit DV01} is the same as \textbf{Spread DV01}.
+
+For more information about Markit terminology, visit (Markit Group Limited, 2010)
 
 \subsubsection{Yield Curve Section and Discount Factor}
 
