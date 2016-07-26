@@ -702,8 +702,6 @@ Clearly, the expected cash flows for Highbridge and Citigroup during year one ar
 
 However, note that in year one, Citigroup's expected cash flows are \$1,000 greater than that of Citigroup, and in year two, Citigroup's expected cash flows are \$1,000 less than that of Citigroup. As such, the overall expected cash flows (which are the same as Equation \eqref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
 
-%% Need to finish this section: Non-constant Interest Rate
-
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
 
@@ -773,23 +771,24 @@ The way in which the value of the upfront payment drops over the life of the CDS
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
 
-Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from Citigroup a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after five years, the CDS protection ends (or \textbf{matures}) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we pick the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
+Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from Citigroup a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. ISDA specified these four roll dates as trading conventions. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after the five year tenor, the CDS protection ends (or \textbf{matures}) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we picked the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
 
 Since there are four payment dates in one year and the tenor is five years, this is a 20-period example of CDS.
-Although the number of periods has increased dramatically from two to twenty, the central mathematics remains unchanged:
+Although the number of periods has increased dramatically from two to twenty, the central mathematics from our simpler examples remains unchanged:
+
 
 \begin{align}
   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg
 \end{align}
 
-Assume a constant interest rate. A simple 20-period CDS will then have the below mathematic expression:
+Assume a constant interest rate. A simple 20-period CDS will then have the below mathematic expression.This equation was built off of Equation \eqref{eqn:twoPeriod} and our rewrites of that equation in section \ref{sec:nonConstantInterestRate}:
 
 \begin{align}
   \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + \frac{P \times V \times (1 - RR)}{e^{5r}}  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - \frac{P \times V \times (1 - RR)}{e^{5r}} 
 \end{align}
 
-where $r$ stands for the constant continuous interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. Notice that we have assumed that the probable credit event can only happen at the end of five years, and hence the discount factor $e^{-5r}$ for $P \times V \times (1 - RR)$. However, in reality, the probability of default is not constant over different periods. In fact, the default probability changes from time to time, so using a single factor to discount the protection leg is not accurate. For better modeling, we need to have a function, call it $Q(t)$, to represent the event probability at time $t$. Note that $Q(t)$ is a cumulative distribution function whose density can be denoted as $q(t)$. With this, the buyer-seller equality can be improved as follows:
+where $r$ stands for the constant continuous interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. Remember that recovery rate is amount of interest on the CDS that can be retained in the event of default. In this equation, we have $(1 - RR)$, which is known as the Loss Given Default. We use a new symbol in this equation, a sigma, to cleanly express the summation of all 20 coupon payments over the course of the contract. Recall that the exponentiated interest means that this interest is compounded continuously. The rate of $e^0.25tr$ on the coupon payment means that the interest builds up on every roll date until it ultimately reaches $e^5r$ by the time the contract matures. Notice that we have assumed that the probable credit event can only happen at the end of five years, and hence the discount of $e^{-5r}$ for $P \times V \times (1 - RR)$. However, in reality, the probability of default is not constant over different periods. In fact, the default probability changes from time to time, so using a single factor to discount the protection leg is not accurate. For better modeling, we need to have a function, call it $Q(t)$, to represent the event probability at time $t$. Note that $Q(t)$ is a cumulative distribution function whose density can be denoted as $q(t)$. With this, the buyer-seller equality can be improved as follows:
 
 \begin{align}
   \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + V \times (1 - RR) \times \int_0^5 e^{-rt}dQ(t)  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - V \times (1 - RR) \times \int_0^5 e^{-rt}dQ(t) 
