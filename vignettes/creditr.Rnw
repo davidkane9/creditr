@@ -189,7 +189,7 @@ We will incorporate these extensions in the sections which follow as we move fro
 \subsection{Simple One-Period CDS}
 \label{sec:OnePeriod}
 
-Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. Rating agencies such as Moody's, S\&P, and Fitch grade companies on their likelihood to repay bondholders. A company's \textbf{credit worthiness}, determined by these agencies' credit ratings, helps investors determine price and yield of investments. (see Toublan 2014 for more information about the effect of credit rating on the spread of a CDS)
+Instead of buying insurance against property damage, consider buying insurance against a company's inability to pay back its bondholders. The risk of a company being unable to meet its debt obligations is known as \textbf{credit risk}. 
 
 Let's say a portfolio manager at a hedge fund, Highbridge, believes that Alcoa, has a high credit risk and isn't likely to return the money that its bondholders have lent. In other words, she\footnote{For ease of reading, we designate the buyers of protection in our examples as female and the sellers of protection as male.} believes that Alcoa will \textbf{default} on its bonds. She enters a one-year CDS agreement with an investment bank --- say, Citigroup --- in which she purchases protection on \$100,000, the \textbf{notional amount} of the CDS. Note that bondholders can purchase protection on their bonds (i.e. an Alcoa bondholder can enter a CDS in which she purchases protection against Alcoa's default), but this does not have to be the case. In our example, Highbridge does not own Alcoa bonds. 
 
@@ -1062,6 +1062,27 @@ Together, the discount factor and the survival probability are known as the \tex
    \displaystyle\sum_{i=1}^{n}|Coupon - Spread| \times (1-q(t)) \times D(0, t(i))
     \end{aligned}
 \end{equation}
+
+\subsection{CDS Indices}
+
+A \textbf{credit default swap index} is a type of credit derivative, or a security to hedge against reference entities' risks of default. The first CDS index was created in 2002 as credit default swaps rose in popularity. Since then, the industry has expanded to include new indices and these contracts are traded across the world.
+
+Think of a CDS index as a bundle of multiple credit default swaps. The purpose of CDS indices is to gain \textbf{credit exposure} to many companies at the same time without having to trade CDS on each firm individually. However, indices give investors the same default exposure as they would get from trading each of the underlying CDS contracts individually. Credit exposure is the amount of credit that a lender gives to a borrower. Each CDS within and index carries equal weight, meaning investor's get equal exposure to each underlying firm. CDS Indices have fixed maturities and portfolios, but every six months, new indices are released with new maturities and slightly altered portfolios. These new contracts are known as "on-the-run" indices. CDS indices are usually priced based on the credit risk of its underlying assets. In other words, their prices often relfect the reference entity's ability to repay bondholders for the many CDS within an index. J.P. Morgan calls CDS indices, "the most liquid credit instruments" meaning they can be quickly converted into cash.
+
+You may be wondering how different CDS are grouped into an index. First of all, there are two main families of indices: CDX (more common in the US) and iTraxx (more common internationally). Both families are controlled by Markit. Other families of indices include ABX, LCDX, and CMBX. The ABX contains asset-backed securities. The LCDX contains a single-name, loan-only CDS known as leveraged loans. The CMBX contains commercial mortgage-backed securities.
+Secondly, indices can be grouped by location. The three main regions are the North America, Europe, Asia, and Emerging Markets. An emerging market economy is a fast-growing economy in a country has a low to medium average income, and a history of a smaller and weaker economy. However, the nation must be focusing on devoloping and reforming its economy. An important part of emergence is moving from a closed economy to an open-market economy that interacts with other nations across the globe.
+Third, CDS are grouped by credit risk. The various risk categories are Investment Grade (IG), crossover (XO), high yield (HY), high volatility (HVOL), and emerging market (EM). We will soon discuss the credit ratings that determine the risk category of CDS indices.
+
+Now, let's go over a couple of real world examples of CDS indices. CDX.NA.IG is an index from the CDX family and contains collection of CDS from North American companies. The contracts contained in this index offer protection on Investment Grade Bonds only. iTraxx HighVol is an index of high volatility contracts from an unspecified region. iTraxx Australia is a group of Australian CDS contracts with unspecified risk. Below, find the real trading history of some common CDS indices from J.P. Morgan's Credit Derivatives Workshop: 
+
+\includegraphics[width=\textwidth]{images/indextradehist.png}
+\caption{\label{fig:jpmindices}This is a trading history of the spread of CDX indices from April 2014 to April 2016. We can see that these indices have recently traded from anywhere between 40 bps to 130 bps.}
+%Need to work on this caption
+
+\subsubsection{Credit Ratings}
+
+Rating agencies such as Moody's, S\&P, and Fitch grade companies on their likelihood to repay bondholders. A company's \textbf{credit worthiness}, determined by these agencies' credit ratings, helps investors determine the price and yield of investments. Moody's rates companies from Aaa to C while S\&P, and Fitch grade companies from AAA (lowest risk of default) to D (in default). Investment Grade bonds are very credit worthy (low risk), and recieve ratings of BBB- and above from S\&P, and Fitch and recieve Baa3 and higher from Moody's. Crossover bonds are rated Investment Grade by one rating agency and below investment grade by another. High yield bonds are less credit worthy, with ratings of BBB or lower from S\&P, and Fitch and Baa from Moody's. In general, less credit worthy investments have higher yields to compensate for their elevated risks. (see Toublan 2014 for more information about the effect of credit rating on the spread of a CDS)
+
 
 \section{Using the creditr Package}
 
