@@ -1075,9 +1075,12 @@ Third, CDS are grouped by credit risk. The various risk categories are Investmen
 
 Now, let's go over a couple of real world examples of CDS indices. CDX.NA.IG is an index from the CDX family and contains collection of CDS from North American companies. The contracts contained in this index offer protection on Investment Grade Bonds only. iTraxx HighVol is an index of high volatility contracts from an unspecified region. iTraxx Australia is a group of Australian CDS contracts with unspecified risk. Below, find the real trading history of some common CDS indices from J.P. Morgan's Credit Derivatives Workshop: 
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=\textwidth]{images/indextradehist.png}
 \caption{\label{fig:jpmindices}This is a trading history of the spread of CDX indices from April 2014 to April 2016. We can see that these indices have recently traded from anywhere between 40 bps to 130 bps.}
 %Need to work on this caption
+\end{figure}
 
 \subsubsection{Credit Ratings}
 
