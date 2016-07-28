@@ -1169,6 +1169,7 @@ Besides calling the \texttt{summary} method, one can type in the name of the \te
 \subsubsection{Show Method}
 
 %% add description here for show method later
+%% ask dave about show method
 
 <<>>=
 cds1
@@ -1178,11 +1179,12 @@ cds1
 
 %% Needs a transition paragraph. Something about how looking at inividual CDS is interesting but that the real work happens when we need to work with a universe of CDS. For that we need helper functions. 
 
+Looking at individual CDS contracts can be interesting, but in the real world we need to work with several CDS at once. Investors can be much more efficient by anylazing many CDS contracts with one function. Perhaps you are seeking protection on a CDS index and want to look at the many underlying contracts. The creditr package contains some helper functions such as CS10 and get_rates, and users can input data frames to get information on many CDS. We will explore these functions in the following pages.
 
 \subsubsection{CS10}
 
 
-\texttt{CS10} is a method which calculates the change in value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a data frame. 
+The \texttt{CS10} method calculates the change in dollar value of the CDS contract when the spread of the contract increases by 10\%. \texttt{CS10} takes in a \texttt{CDS} class object formed by calling the \texttt{CDS} function. The CS10 of \texttt{cds1} is \$25385.2. CS10 can also be calculated by inputing a data frame. 
 
 <<>>=
 x <- data.frame(date = as.Date(c("2014-04-22", "2014-04-22")),
@@ -1199,17 +1201,19 @@ CS10(x)
 \subsubsection{get\_rates}
 
 
-\texttt{get\_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. Recall that the actual curve date we are using is one business day before trade date. 
+\texttt{get\_rates} obtains the LIBOR interest rate curve for a given currency on a given date, along with the day count convention for that currency. LIBOR stands for London Interbank Offered Rate, and it is a benchmark interest rate used for loans. The rate reflects the interest that major banks would charge each other for loans. New LIBOR rates come out every day. LIBOR offers rates for five different currencies and several maturities ranging from 1 month to 30 years. The currencies are the dollar (USD), the yen (JPY), the euro (EUR), the franc (CHF), and the pound (GBP).  While not every company is a big bank, the LIBOR rate provides a great jumping off point when agreeing on interest rates for short-term contracts. The \texttt{get_rates} function helps users agree on a fair interest rate by providing the LIBOR rate curve for a specified date and location. The only input necessary for this function is a date followed by a currency. Recall that the actual curve date we are using is one business day before trade date. 
 
 <<>>=
 cds1.rates <- get_rates(date = as.Date("2014-06-24"), currency = "USD")
 @
 
-The output from the \texttt{get\_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a data frame included in the package, \texttt{rates}, or, if the requested date is not available, obtained from the Markit website based on the specifications \citep{rates} (for foreign LIBOR rates before 2005, \texttt{get\_rates} downloads the data from Federal Reserve website).
+The output from the \texttt{get\_rates} function is a data frame which contains rates of various expiries. They are directly fetched from a data frame included in the package: \texttt{rates}, or, if the requested date is not available, obtained from the Markit website \citep{rates} For foreign LIBOR rates before 2005, \texttt{get\_rates} downloads the data from Federal Reserve website.
 
 <<>>=
 cds1.rates
 @ 
+
+The date column contains the date that the LIBOR curve was published, the expiry column is the tenor, and the rate is the suggested interest.
 
 \subsection{Risk Related Functions}
 
