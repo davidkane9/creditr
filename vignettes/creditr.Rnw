@@ -929,35 +929,12 @@ PV01 can also be used to calculate the cash flows and risk measures of a CDS. It
 
 \textbf{Spread DV01} (also known as \textbf{Sprd DV01}, \textbf{Credit DV01}, \textbf{Spread Delta}, \textbf{DV01}) stands for ``Spread Dollar Value 01.'' It measures the change of upfront payment if spread increases by 1 bp, and reflects the sensitivity of a CDS contract mark-to-market to a parallel shift in the term structure of the par spread. In other words, it reflects the risk duration of a CDS trade. 
 
-DV01 should always be positive for a protection buyer since she is short credit, and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
-
-\begin{align*}
-  PV &= (S - C) \times PV01 \\
-  DV01 &= \frac{\partial PV}{\partial S} \\
-  &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
-\end{align*}
-
-where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread equals the coupon.
 
 \subsubsection{IR DV01}
 \label{sec:IRDV01}
-\textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. Formula given below.
-
-\begin{align*}
-  \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
-\end{align*}
-
-A multiple of $0.0001$ appears in the formula, because we are calculating the change of upfront payment with a 1 bp increase in the interest rate.
-
+\textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
 \subsubsection{Rec Risk (1\%)}
-\textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. Formula given below.
-
-\begin{align*}
-  \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
-\end{align*}
-
-A multiple of $0.01$ appears in the formula, because we are calculating the change of upfront payment with a $1\%$ increase in the recovery rate.
-
+\textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. 
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
 
@@ -1154,9 +1131,38 @@ summary(cds1)
 @
 
 In the summary output, it shows that the type of the CDS contract is ``SNAC''. This means that the CDS contract follows the Standard North American Corporate (SNAC) CDS Contract specifications. These conventions, created by ISDA, specify that coupon payments are made on the 20th of March, June, September, and December of each year. These dates are also known as \textbf{roll dates}. Additionally, all weekdays are considered to be business days. A day count of 360 days in a year is used when calculating accrued interest payments. Coupons must be 100 bps or 500 bps, so the difference between the spread and the coupon must be made with an upfront payment. Contracts also must mature on a roll date, one of the quarterly days explained above. In the event of default between roll dates, some interest will be accrued. This accumulated interest must still be paid if a credit event occurs. If any CDS payment date falls on a non business day, it gets moved forward in the calendar. Most accrual date can also be moved forward in the event of a holiday, with the exception of the maturity date which cannot be moved. (See Chen et. al, 2009 for the specific SNAC contract specification)
-\texttt{Date} refers to the trade date which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is ``Alcoa''. The \texttt{RED} code is ``48EB20'' as specified by the user. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'', ``JPY'' and ``EUR''. \texttt{End Date} is the same as maturity and is the date on which the CDS contract expires. Recall from previous sections that \texttt{End Date} can only fall on one of the four standard dates. In our example, the \texttt{End Date} is ``2019-09-20''. \texttt{spread} shows that the quoted spread for the contract is 160 bps and the coupon is 100 bps as shown in the \texttt{Coupon} field. \texttt{Upfront} indicates the dirty upfront payment in dollars or the cash settlement amount which, in this example, is \$286,069.
 
-The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. Spread DV01 is the increase in the upfront value when the spread increase by one basis point. In \texttt{cds1}, the Spread DV01 is \$4,667. IR DV01 is the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point which, in our example, is \$-75.64. Rec Risk (1 pct) is the increase in the upfront value when the recovery rate increase by one percentage point. In \texttt{cds1}, the Rec Risk (1 pct) is \$-330.19.
+\texttt{Date} refers to the trade date when the CDS contract is made, which, in this example, is June 24, 2014. \texttt{Entity Name} refers to the entity name of the CDS contract which, in this example, is ``Alcoa''. The protection buyer and the protection seller are betting on Alcoa's ability to repay bondholders. The \texttt{RED} code is ``48EB20'' as specified by the user. This alphanumeric code is used to keep track of the reference entity in Markit's ID system. \texttt{currency} (``USD'' in this case) is the currency of the CDS contract with three options of ``USD'' (dollar), ``JPY'' (yen) and ``EUR'' (euro). \texttt{End Date} is the same as maturity and is the date on which the CDS contract expires. After this date, the protection buyer no longer needs to make coupon payments, and the protection seller is no longer covers for the reference entity's default. Recall from previous sections that \texttt{End Date} can only fall on one of the quarterly roll dates, even if this day is a weekend. In our example, the \texttt{End Date} is ``2019-09-20''.
+\texttt{spread} shows the desired trade rate of the CDS: 160 bps. The bases points can be translated into a cash price with the conversion rate $1bp = Notional Amount \times 0.0001$. Due to 2009 "Big Bang Protocol, the coupon is 100 bps or 500 bps as shown in the \texttt{Coupon} field. The coupon is the yearly payment for protection against the reference entity's default. SNAC conventions break the coupon up into quarters and paid at the four roll dates throughout the year. While each coupon payment may be equal in terms of basis points, keep in mind that as the value of money declines, the earlier coupon payments will actually be worth more. (keep in mind that this statement is purely about coupons without taking interest into account)
+\texttt{Upfront} indicates the dirty upfront payment in dollars or the cash settlement amount which, in this example, is \$286,069. This amount makes up for the disparity between spread and coupon in order to make the trade fair for both parties. Before upfront payments, money was not exchanged until the the first roll date roughly 3 months after the start of the CDS contract. This became a problem during the credit crisis of the early 2000's. At this time, many companies were predicted to default in the near future and protection on these companies traded well above 500 bps. In the event of a quick amount, the CDS seller would have to pay a large protection payment while only receiving a fraction of the coupon payment from the protection buyer. To compensate for this issue, contracts with a spread above 500 bps would have a running spread (now referred to as a coupon) of 500 bps to be paid each year. The protection buyer would make 1 payment at the start of the CDS contract to make up for the rest of the desired spread. For a sense of scale on a five year contract, a spread of 1524 bps is a realistic eqivalent to a 500 bps coupon with an upfront payment of 3250 bps. Today, all CDS  without a spread of 100 bps or 500 bps have a coupon (paid yearly on roll dates) and an upfront payment (paid at the start of the contract). Investors can use Bloomberg to calculate fair upfront payments based on the spread of a CDS and the behavior of the market. (see Green, Witschen, 2012 for more information on upfront payments) 
+
+The remaining three items from the \texttt{summary} output  are \texttt{Spread DV01}, \texttt{IR DV01}, and \texttt{Rec Risk (1 pct)}. Spread DV01 is the increase in the upfront value when the spread increases by one basis point. In \texttt{cds1}, the Spread DV01 is \$4,667. Spread DV 01 can tell us about the risk duration of a CDS. DV01 should always be positive for a protection buyer since she is short credit (benefits from the reference entity's downfall), and a rising spread is a sign of credit deterioration. Starting with PV01 and taking the derivative with respect to the spread gives us:
+
+\begin{align*}
+  PV &= (S - C) \times PV01 \\
+  DV01 &= \frac{\partial PV}{\partial S} \\
+  &= PV01 + (S - C) \frac{\partial PV01}{\partial S},
+\end{align*}
+
+where $S$ is the spread of the contract and $C$ is the coupon. Both DV01 and PV01 are measured in dollars and are equal if the spread equals the coupon.
+
+IR (Interest Rate) DV01 is the increase in the upfront value when the interest rate on all maturities of the interest curve increase by a single basis point. In our example, IR DV01 is \$-75.64. Below, see how we can use spread, coupon, and PV01 to calculate IR DV01:
+
+\begin{align*}
+  \text{IR DV01} &= 0.0001 \frac{\partial PV}{\partial r} = 0.0001 (S - C) \times \frac{\partial PV01}{\partial r}
+\end{align*}
+
+A multiple of $0.0001$ appears in the formula, because we are calculating the change of upfront payment with a 1 bp increase in the interest rate.
+
+Rec Risk (1 pct) is the increase in the upfront value when the recovery rate increases by one percentage point. In \texttt{cds1}, the Rec Risk (1 pct) is \$-330.19.
+Formula given below:
+
+\begin{align*}
+  \text{Rec Risk (1\%)} &= 0.01 \frac{\partial PV}{\partial RR} = 0.01 (S - C) \times \frac{\partial PV01}{\partial RR}
+\end{align*}
+
+A multiple of $0.01$ appears in the formula, because we are calculating the change of upfront payment with a $1\%$ increase in the recovery rate.
+
 
 Besides calling the \texttt{summary} method, one can type in the name of the \texttt{CDS} class object in the current \textbf{R} Session and obtain a full description of the CDS contract.
 
