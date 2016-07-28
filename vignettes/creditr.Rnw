@@ -1217,6 +1217,8 @@ The date column contains the date that the LIBOR curve was published, the expiry
 
 \subsection{Risk Related Functions}
 
+%% should I move the info from the creditr summary function section to here?
+
 \subsubsection{rec\_risk\_01}
 
 \texttt{rec\_risk\_01} is a function which takes a data frame of date, currency, tenor (or maturity), spread, coupon, recovery and notional and calculates the rec.risk.01 values for each row.
