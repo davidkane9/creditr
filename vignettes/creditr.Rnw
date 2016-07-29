@@ -978,7 +978,7 @@ In this field, the user can tell Bloomberg where to get the reference entity's c
 \subsubsection{Default Probability}
 \label{sec:DefaultProb}
 
-As we did in the two-period case, we also have to account for the probability of default for each period. The probability of a company defaulting is different across time period, and we assume the probability is constant within a specific time period. The term structure of these probabilities are known as the \textbf{hazard rates} and the hazard rate function is piecewise constant.  
+As in the two-period case, we also have to account for the probability of default for each period. The reference entity's probability of default changes across time periods, but we assume the probability is constant within a specific time period. The term structure of these probabilities are known as the \textbf{hazard rates} and the hazard rate function is piecewise constant (continuous, but comprised of different functions).  
 
 The probability of a company surviving till the end of period \textit{n} is the probability that it survives period \textit{n}, conditional on it having survived the previous \textit{n-1} periods. This is known as the \textbf{survival probability}. The survival probability function can be equated with the \textbf{hazard rates} function or the distribution of the company's risk-neutral probability of default as below,
 
@@ -1001,7 +1001,13 @@ where $r$ is the spread, $t$ is the time to maturity, and $RR$ is the recovery r
 
 \subsubsection{Term Structure}
 
-A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve. \textbf{Term structure} is shown in Market section (X-axis is maturity and Y-axis is spread). The green line with little yellow dots is the ``AA USD Senior Curve'', which means we are buying senior debt protection in USD of Alcoa Inc (stock symbol AA). The big yellow dot is the CDS contract we buy, here at 5-year maturity and 160 basis points of spread.
+A CDS term structure is similar to the interest rate curve in that it has the fair spreads of CDS contracts with different maturities. For liquid (easily converted to cash) reference names, these rates are easily available. If the CDS is not liquid, we can use the underlying bond's price to determine the hazard rates. However, if there are only a couple of maturity dates available, we can assume a flat CDS curve. \textbf{Term structure} is shown in Market section (X-axis is maturity and Y-axis is spread). The green line with little yellow dots is the ``AA USD Senior Curve'', which means we are buying senior debt protection in USD of Alcoa Inc (stock symbol AA). The big yellow dot is the CDS contract we buy, here at 5-year maturity and 160 basis points of spread.
+
+\subsubsection{Reminders}
+
+We are already familiar with some of the terms in the market section. Remember that \textbf{recovery rate} is the value that the reference entity's bonds retain after default. The remaining value of the bonds means that the reference entity can still repay some of its debt. Therefore, the protection seller does not have to pay the entire notional amount if a credit event occurs - he just has to pay what remains after the recovery rate is subtracted.
+Due to the "Big Bang Protocol" in 2009, all CDS must be traded at 100 bps or 500 bps. But the \textbf{spread}, the rate deemed fair by both parties, may not be one of the two convention rates. An upfront payment can be made at the start of the contract can make up for the difference between the spread and the required coupon. Pts Upf represents the \textbf{upfront payment} in the market section.
+The CDS contract matures on the date of the \textbf{term} date.
 
 \newpage
 
@@ -1351,4 +1357,10 @@ After introducing CDS window in Bloomberg Terminal, we start to present Markit C
 \cite{rates}
 \cite{kane:david}
 \cite{creditDerivatives}
+\cite{JPM}
+\cite{debtSecurities}
+\cite{SNAC}
+\cite{stanMod}
+\cite{userGuide}
+
 \end{document}
