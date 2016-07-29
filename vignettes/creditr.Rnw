@@ -882,6 +882,7 @@ There are several dates involved in  CDS agreement. On the left, \textbf{Trade D
 \textbf{First Coupon Payment Date} (``1st Coupon'') is the date when the first coupon payment (a quarter of the total coupon payment)is paid to the protection seller. This is the first roll date adjusted for weekdays after our trade date. The roll dates fall on the 20th of March, June, September, and December.
 \textbf{Penultimate Coupon Payment Date} (``Pen Coupon'') is the second to last coupon payment date. It is the weekday-adjusted roll date before the maturity date. Notice that the maturity date \textbf{cannot} be adjusted, while other dates must be adjusted for business days. In other words, maturity dates can be on non-business days, but other dates cannot.
 
+
 \newpage
 \subsection{Calculator Section}
 \label{Calculator section}
@@ -890,7 +891,7 @@ There are several dates involved in  CDS agreement. On the left, \textbf{Trade D
 %\includegraphics[width=5.5in, height=2.5in]{images/AlcoaIncCDSCalculator.jpg}
 \includegraphics{images/AlcoaIncCDSCalculator.jpg}
 \caption{
-This figure is the Calculation section cropped from Figure \ref{fig:bbDealSection}. We can see here that we are using ISDA Standard Upfront Model for the CDS pricing, and the valuation is done on the trade date while cash settlement date is three days after. Calculation section takes in the information entered by traders in Deal section and calculate some important results,  such as \textbf{CDS price}, \textbf{principle amount}, and \textbf{cash amount}. Here, cash amount is the same as \textbf{upfront payment} ($U$). Traders use these calculation results to make trading decisions and risk management.}
+This figure is the Calculation section cropped from Figure \ref{fig:bbDealSection}. The user input from the deal section and the market data from the market section come together here. This is where Bloomberg displays its determined fair mark-to-market value of the CDS. We can see here that we are using ISDA Standard Upfront Model for the CDS pricing, and the valuation is done on the trade date while cash settlement date is three days after. Calculation section takes in the information entered by traders in Deal section and calculate some important results,  such as \textbf{CDS price}, \textbf{principle amount}, and \textbf{cash amount}. Here, cash amount is the same as \textbf{upfront payment} ($U$). Traders use these calculation results to make trading decisions and risk management.}
 \label{AlcoaIncCDSCalculator}
 \end{figure}
 
@@ -898,7 +899,7 @@ At the top left, we choose \textbf{ISDA Standard Upfront Model} to calculate CDS
 
 The amount of accrued interest on a CDS purchase is measured from the \textbf{valuation date}. Also, when calculating the present value of different aspects of a CDS contract such as coupon payments, we are finding their worth on the valuation date. After the valuation date, all the cashflows of the CDS go into effect.
 
-The \textbf{cash settled on} date usually occurs 3 days after the valuation date.
+The \textbf{cash settled on} date usually occurs 3 days after the valuation date. The upfront payment is delivered on this date to satisfy the CDS contract.
 
 The \textbf{principal} is the mark-to-market value, or current worth, of a CDS contract. The principal of our example contract is \$287,458. This amount is the sum of the expected present value of each coupon payment. Since money loses value as time goes on, Bloomberg must use its market data to estimate how much less the future coupon payments would be worth at the time they are paid than when the CDS us bought. Additionally, if the CDS is bought between payment dates, then the protection buyer does not need to pay for the time before she was protected against the reference entity's default. This accrued amount is therefore subtracted from the principal. The mark-to-market value of this difference at the cash settled on date, and you're left with the \textbf{cash amount}, in this case \$286,069. 
 
@@ -935,7 +936,7 @@ PV01 can also be used to calculate the cash flows and risk measures of a CDS. It
 \label{sec:IRDV01}
 \textbf{IR DV01} stands for ``Interest Rate Dollar Value 01.'' It measures the change in value of a CDS contract for a 1 bp parallel increase in the interest rate curve. IR DV01 is, typically, a much smaller dollar value than Spread DV01 because moves in overall interest rates have a much smaller effect on the value of a CDS contract than does a move in the CDS spread itself. 
 \subsubsection{Rec Risk (1\%)}
-\textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery risk increases by 1\%. 
+\textbf{Rec Risk (1\%)} stands for ``Recovery Risk 1\%.'' It measures the change of upfront payment if the recovery rate increases by 1\%. 
 \subsubsection{Default Exposure}
 \label{sec:DefaultExpo}
 
@@ -1010,6 +1011,7 @@ We are already familiar with some of the terms in the market section. Remember t
 Due to the "Big Bang Protocol" in 2009, all CDS must be traded at 100 bps or 500 bps. But the \textbf{spread}, the rate deemed fair by both parties, may not be one of the two convention rates. An upfront payment can be made at the start of the contract can make up for the difference between the spread and the required coupon. Pts Upf represents the \textbf{upfront payment} in the market section.
 The CDS contract matures on the date of the \textbf{term} date.
 
+(to read more about Bloomberg, see Green, Witschen 2012)
 \newpage
 
 \subsection{Overview of Markit CDS Calculator}
