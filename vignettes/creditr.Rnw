@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%
+%To Do List
+%%%%%%%%%%%%%%%%%%%%%
+%find out what \cite{}d means for citing the package
+%%%%%%%%%%%%%%%%%%%%%
 \documentclass{jss}
 \linespread{1.5}
 \usepackage[round]{natbib}
