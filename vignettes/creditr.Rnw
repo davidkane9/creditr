@@ -243,7 +243,7 @@ Plugging in known values ($C$ = \$1,000 and $V$ = \$100,000), we get:
     \end{aligned}
 \end{equation}
 
-Since this is the same equation and the same numerical figures from the property insurance example, we know that, if we set $P_h = P_c$, then both must equal 1\%. Recall that this 1\% represents the ``risk-neutral'' value of $P$. Parallel to the property insurance example, we can infer (given that both parties have agreed to the CDS) that Highbridge's estimate $P_h$ must be at least 1\%, and Citigroup's estimate of $P_c$ must be at most 1\%. Going forward, we will ignore $P_h$ and $P_c$ and just focus in $P$, the risk-neutral probability of default.
+Since this is the same equation and the same numerical figures from the property insurance example, we know that, if we set $P_h = P_c$, then both must equal 1\%. Recall that this 1\% represents the ``risk-neutral'' value of $P$. Parallel to the property insurance example, we can infer (given that both parties have agreed to the CDS) that Highbridge's estimate $P_h$ must be at least 1\%, and Citigroup's estimate of $P_c$ must be at most 1\%. Going forward, we will ignore $P_h$ and $P_c$ and just focus on $P$, the risk-neutral probability of default.
 
 
 \subsubsection{One-Period Case Over Time}
