@@ -648,27 +648,53 @@ Since this is a simplified example, we have excluded aspects of the CDS market t
 
 \subsubsection{Non-constant Probability of Default}
 
-In the simple two-period CDS, the overall probability of default is 2\%. Since we conveniently assumed that the probability of default was constant over the two-year contract, each year had a probability of default of 1\%. What if the overall probability of default was still 2\%, but the probability of default is not constant---what if it's 2\% the first year and 0\% the second year?
-
-In such a case, the expected cash flows for year one (where $P$ = 2\%) are as follows:
+In the simple two-period CDS and in \ref{table.4}, we assumed that the overall risk-neutral  probability of default remained the same throughout the entire life of the CDS. $P$ was conveniently 2\%, meaning each year had a probability of default of 1\%. Yet in reality, the fiscal health of a reference entity is always changing, and that company has different sized bond payments due each year. For example, in our two-period CDS situation, if Alcoa had \$10,000 bond due in the first period and a \$1,000,000 bond due in the second period, they would have a higher probability of default in period two. Let $P_1$ an $P_2$ be the probabilities of default in the first and second periods respectively. Our overall risk-neutral $P$ occurs when $P_1$ and $P_2$ are equal. However, the protection buyer and the protection seller can each have different estimates of $P_1$ and $P_2$ and come to a deal if the estimates fit within the same overall $P$. The cashflow equations below relate $P_1$ and $P_2$ for a two period CDS with a different probability of default for each period. We will stick with the \$100,000 notional amount and \$1,000 coupon from previous examples. In order to ensure that Alcoa does not default in the second period if they defaulted in the first period, we multiply the protection payment by $(1-P_1)$.
 
 \begin{align}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 2\%) \times {\$100,000}) \\
-    \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 2\%) \times {\$100,000})
+   \rm Highbridge\hspace{3pt}PM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
+    \rm -\$2,000 + (1-P_1)(\$100,000\times P_2) + P_1\times \$100,000 &= \rm \hspace{3pt}\$2,000 - (1-P_1)(\$100,000\times P_2) - P_1\times \$100,000\\
+    %% This equation is a little long and goes into the margin is that ok?
+    \rm -2 + (1-P_1)(100\times P_2) + P_1\times 100 &= \rm \hspace{3pt}2 - (1-P_1)(100\times P_2) - P_1 \times 100\\
+    \rm (1-P_1)(200\times P_2) + (P_1\times 200)&= \rm \hspace{3pt}4 \\
+    \rm (1-P_1)(P_2) + P_1 &= \rm \hspace{3pt}\frac{4}{200} \\
+    \rm (1-P_1)(P_2) + P_1 &= \rm \hspace{3pt}2\%
 \end{align}
 
-Note that these expected cash flows are \emph{not} equal. We will address this fact soon.
+Therefore, $P_1 = 2\%$, $P_2 = 0\%$ and $P_1 = 0\%$, $P_2 = 2\%$ are both examples of probability pairs that that would equate Citigroup and Highbridge's cashflows. For example, the two parties could still come to a deal even if the Highbridge PM thought that Alcoa had a 2\% chance of default in the first period and a 0\% chance of default in the second. She could still reach a deal with Citigroup if Citigroup thought that Alcoa had a 0\% chance of default in the first half of the contract and a 2\% chance of default in the second.
+However, the example above still too simple because the probability of default can change within a period. Recall \ref{table.4}. Let's look at the effect of non-constant probability of on the spread of the CDS. Remeber that the annual probability of default, $P$, represents the overall proability of default for on year. The cumulative probability of default, $P_{cum}$, displays the total probability of default from a given date until the end of the contract. For the following table, we are disregarding the effects of interest and recovery rate.
 
-Now consider the expected cash flows for year two (where $P$ = 0\%):
+\begin{table}[H]
+\centering
+{\footnotesize
+\begin{tabular}{llll}
+  \hline
+Date & $P$ & $P_{cum}$ & Spread \\ 
+  \hline
+  Jan 1,  1\% & 6\% & 600 bps \\ 
+  Mar 31, 1\% & 5.75\% & 575 bps \\ 
+  Jun 30, 1\% & 5.50\% & 550 bps \\ 
+  Jan 1,  5\% & 5\% & 500 bps \\ 
+  Mar 31, 5\% & 3.75\% & 375 bps \\ 
+  Jun 30, 5\% & 2.50\% & 250 bps \\ 
+  Dec 31, 5\% & 0\% & 0 bps\\
+   \hline
+\end{tabular}
+}
+\caption{This table shows a CDS contract with a non-constant probability of default. The table also portrays the effect of probability on spread over the life of of this two year, two period CDS. The annual probability of default is 1\% for year one and 5\% year two. The cumulative probability of default decreases linearly by the year as we get closer to the realization that Alcoa will not default. The spread matches up with $P_{cum}$ because the spread is the total worth of the protection from a specific date at the end. Remember that the spread is the most common way that investors compare CDS and the spread is rate at which CDS would be traded in the abscence of fixed coupon rates.}
+\label{table.nonconstprob}
+\end{table}
+
+\ref{table.nonconstprob} shows a two period CDS over a two year duration. The contract has an annual probability of default is 1\% for year one and 5\% year two. These two numbers result an initial cumulative probability of default of 6\%. $P_{cum}$ decreases linearly by the respective annual probability of default for each year. The spread, or desired payment for protection, aligns with $P_{cum}$. Recall that portfolio managers and investment banks most frequesntly compare CDS using spread.
+If we do not have all the information in this table the following two equations can be used to calculate annual probability of default, $P$, or the spread, $S$ (which can easily lead us to $P_{cum}$). Let $RR$ be recovery rate and let $t$ be the time in years until maturity. Note that these two equations are the inverses of each other:
 
 \begin{align}
-   \rm Portfolio\hspace{3pt}manager's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm -\hspace{3pt}\$1,000 + ((P = 0\%) \times {\$100,000}) \\
-    \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm \hspace{3pt}\$1,000 - ((P = 0\%) \times {\$100,000}) 
+    \rm P &= \rm \hspace{3pt}1 - e^(-S * frac{t}{1-RR}) \\
+    \rm S &= \rm \hspace{3pt}ln(1-P)\times \frac{R-1}{t}
 \end{align}
 
-Clearly, the expected cash flows for Highbridge and Citigroup during year one are not equal, and the expected cash flows for Highbridge and Citigroup during year two are not equal, either.
+These equations allow us to find to more types of probability of default: the constant probability of default and the ISDA probability of default. When we have multiple probabilities of default for multiple periods in a CDS contract, $P_{constant}$ is the risk neutral value where all of the underlying probabilities are equal. If we know the spread, duration, and recovery rate, we can plug in these values to get $P_{constant}$. The ISDA default recovery rate is 40\%. So by plugging in 0.40 for RR, we can find $P_{ISDA}$.
 
-However, note that in year one, Citigroup's expected cash flows are \$1,000 greater than that of Citigroup, and in year two, Citigroup's expected cash flows are \$1,000 less than that of Citigroup. As such, the overall expected cash flows (which are the same as Equation \eqref{eqn:twoPeriod} because the overall risk-neutral probability of default is the same) are equal.
+%% Add a table of constant and ISDA once I work out the errors in those calculations.
 
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
