@@ -256,9 +256,11 @@ Since this is the same equation and the same numerical figures from the property
 
 Consider what happens to the simple one-period CDS over the life of its contract---specifically, how the risk-neutral probability of default (or risk-neutral $P$), the \textbf{mark-to-market} value, the \textbf{spread}, and the \textbf{profits and losses} (P\&L) of the Highbridge portfolio manager and Citigroup change from January 1 to December 31, assuming that Alcoa does not default during that year. Table 1 shows the evolution of these values.
 
+The risk-neutral probability of default is the probability of default which equates the cash flows of the protection buyer and the protection seller in a CDS agreement. $P$ does not necessarily match up with the true probability default nor either party's estimate of the probability of default. Risk-neutral $P$ is simply a mathematical concept. In this subsection, we will discuss two different types of risk-neutral probabilitis of default: $P$ and $P_{cum}$. $P$ represents the annualised probability of default, or the overall probability of default during one period of the CDS contract. Right now, since we only have one period in our entire contract, $P$ will remain constant. However as we get into CDS with more periods, $P$ can potentially be different for each period. $P_{cum}$ is the cumulative risk-neutral probability of default. In other words, it is the risk that the reference entity will be unable to repay bondholders between a specific date and the end of the contract.   
+
 We can think of the \textbf{mark-to-market} value as the price at which the CDS would sell at any given time over the life of the contract. Investors often trade CDS in between the start and end dates of the contract, so the mark-to-market value determines changing the price of the CDS as time goes on. The mark-to-market changes throughout the life of a CDS because, as time progresses, the financial health of the company changes. Also, the closer we get to the end of the CDS, the less time the reference entity has to default. According to the table, on January 1st, the Highbridge investor pays \$1,000 to Citigroup for protection. She and Citigroup agree that \$1,000 is an appropriate price for a year of protection against Alcoa's default. Let's say that on March 31st, a second investor wants to purchase the contract from Highbridge. Yet since Alcoa's financial health remains just as good as in January and Alcoa has less time to default, they have a lower probability of default. With a smaller likelihood of receiving the protection payment then Highbridge had, the second investor demands a lower price than \$1,000. Highbridge and the second investor conclude that the contract is worth \$750 (the mark-to-market value) because only 75\% of the time in the contract is left.  
 
-We can consider the \textbf{spread} to be equal to the coupon in this particular CDS (we will discuss the spread in more detail in the section regarding non-standard coupons). Think of the spread as the cost of protection written as a portion of the notional amount (the amount on which the buyer purchases protection). Like the mark-to-market value, the spread reflects the likelihood of the reference entity's default. In Table 1, note that as the probability of default decreases, the spread decreases and it costs less to purchase protection. One difference between coupons and spreads is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps. In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. When talking about the worth of a CDS contract, investors most frequently talk in terms of spread rather than dollar values or percentages. People prefer to use spreads because basis point make it easier to compare CDS contracts with different reference entities and notional amounts. For example, an investor could pay \$1,000 for protection on \$10,000 of one reference entity and also pay \$1,000 for protection on \$1,000,000 of a different reference entity. If he discussed these two contracts in terms of the coupon in dollars, the contracts would appear to be equal. Yet speaking in terms of basis points, we can see that, the first reference entity actually has a much higher risk of defaulting on its bonds than the second reference entity. Basis points are also more convenient for discussing CDS with coupons less than 1\% because basis points are smaller. We can observe in Table \ref{table.1} that the spread decreases from 100 bps to 0 bps over the year---a reflection of the fact that, at the end of the contract, Citigroup has earned and been paid the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
+We can consider the \textbf{spread} to be equal to the coupon in this particular CDS. Think of the spread as the cost of protection written as a portion of the notional amount (the amount on which the buyer purchases protection). Like the mark-to-market value, the spread reflects the likelihood of the reference entity's default. In Table 1, note that as the probability of default decreases, the spread decreases and it costs less to purchase protection. One difference between coupons and spreads is that we refer to coupons in percentages---in this case, 1\%---and we refer to spreads in basis points (bps). 1\% is equal to 100 bps. In our simple one-period case, we say that the coupon is 1\% and the spread is 100 bps. When talking about the worth of a CDS contract, investors most frequently talk in terms of spread rather than dollar values or percentages. People prefer to use spreads because basis point make it easier to compare CDS contracts with different reference entities and notional amounts. For example, an investor could pay \$1,000 for protection on \$10,000 of one reference entity and also pay \$1,000 for protection on \$1,000,000 of a different reference entity. If he discussed these two contracts in terms of the coupon in dollars, the contracts would appear to be equal. Yet speaking in terms of basis points, we can see that, the first reference entity actually has a much higher risk of defaulting on its bonds than the second reference entity. Basis points are also more convenient for discussing CDS with coupons less than 1\% because basis points are smaller. However, we will soon learn that the real-world CDS must be traded at coupons 1\% or 5\%. Therefore, the spread represents what the CDS would be traded at in the abscence of a fixed coupon. The spread it the rate that both parties agree on as a fair price for protection. We can observe in Table \ref{table.1} that the spread decreases from 100 bps to 0 bps over the year---a reflection of the fact that, at the end of the contract, Citigroup has earned and been paid the full \$1,000 coupon payment by providing a full year of coverage. This process---the spread drop over the duration of the contract---is known as \textbf{rolling down the curve}. 
 
 P\&L, or \textbf{Profits \& Losses}, represents the change in market value of the CDS contract on, in this case, a day to day basis. A good way of thinking about the P\&L of, for example, Citigroup in this CDS is to consider the fraction of the coupon payment that Citigroup \emph{earns} each day. We know that Citigroup receives a coupon payment of \$1,000 on January 1, but Citigroup's P\&L measures what Citigroup earns each day that it provides protection against Alcoa's default during that year. Citigroup can only be certain that they have made the \$1,000 on December 31st because by that point they know that Alcoa did not default during the contract and they will not have to make the protection payment. On June 30, for example, they know for sure that they have gained half of the coupon because half of the CDS duration has passed with Alcoa's default.
 
@@ -267,19 +269,19 @@ Table 1 displays the evolution of the above-mentioned variables as the contract 
 \begin{table}[H]
 \centering
 {\footnotesize
-\begin{tabular}{llllllll}
+\begin{tabular}{lllllllll}
   \hline
-Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & $P\&L_C$ \\ 
+Date & $CF_H$ & $CF_C$ & $P$ & $P_{cum}$ & MTM & Spread & $P\&L_H$ & $P\&L_C$ \\ 
   \hline
-  Jan 1 & -\$1,000 & \$1,000 & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
-  Mar 31 & \$0 & \$0 & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
-  Jun 30 & \$0 & \$0 & .50\% & \$500 & 50 bps & -\$500 & \$500 \\ 
-  Dec 31 & \$0 & \$0 & 0\% & \$0 & 0 bps & -\$1,000 & \$1,000 \\
+  Jan 1 & -\$1,000 & \$1,000 & 1\% & 1\% & \$1,000 & 100 bps & \$0 & \$0 \\ 
+  Mar 31 & \$0 & \$0 & 1\% & .75\% & \$750 & 75 bps & -\$250 & \$250 \\ 
+  Jun 30 & \$0 & \$0 & 1\% & .50\% & \$500 & 50 bps & -\$500 & \$500 \\ 
+  Dec 31 & \$0 & \$0 & 1\% & 0\% & \$0 & 0 bps & -\$1,000 & \$1,000 \\
    \hline
 \end{tabular}
 }
 
-\caption{This table measures how several variables --- the cash flows (CF) for each party, the risk-neutral value of $P$, the mark-to-market (MTM) value of the contract, the spread, and the profit and loss (P\&L) for each party --- change as the simple one-period CDS matures. Since the reference entity (Alcoa) does not default, the only cash flow is the \$1,000 coupon payment from Highbridge to Citigroup on January 1. The risk-neutral value of $P$ decreases from 1\% to 0\% as the contract matures. Note that this ``linear'' drop off in the risk-neutral $P$ is proportional to the time remaining until the termination of the contract. For more realistic contracts, the relationship is non-linear. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), Highbridge loses. On January 1, the P\&L of both parties is 0.} 
+\caption{This table measures how several variables --- the cash flows (CF) for each party, the risk-neutral value of $P$ and $P_{cum}$, the mark-to-market (MTM) value of the contract, the spread, and the profit and loss (P\&L) for each party --- change as the simple one-period CDS matures. Since the reference entity (Alcoa) does not default, the only cash flow is the \$1,000 coupon payment from Highbridge to Citigroup on January 1. The risk-neutral value of $P_{cum}$ decreases from 1\% to 0\% as the contract matures. Note that this ``linear'' drop off in the risk-neutral $P_{cum}$ is proportional to the time remaining until the termination of the contract. For more realistic contracts, the relationship is non-linear. $P$ remains constant at 1\% because it is the overall risk-neutral probability of default for one period of CDS coverage. The mark-to-market value decreases from \$1,000 to \$0 from January 1 to December 31 and the spread decreases from 100 bps to 0 bps. Note that as Citigroup profits from providing protection coverage (gains \$1,000 by Dec 31), Highbridge loses. On January 1, the P\&L of both parties is 0.} 
 \label{table.1}
 \end{table}
 
@@ -483,7 +485,7 @@ Both these ``accrued'' amounts serve as necessary adjustment to the payment of C
 \subsubsection{Upfront Payment}
 \label{sec:Upfront}
 
-Modern credit default swaps are written with standardized coupons of either 1\% or 5\%. An \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1)---compensates for the difference between the spread that both parties \emph{want} to trade at and the standardized coupon that they \emph{have} to trade at. Suppose that, like in the previous example, both parties want to trade at a coupon of 3\%. Clearly, they have to trade at a coupon of 1\% or 5\%---assume they choose 1\%. They will only make a deal that acts \emph{as if} they traded at a coupon of 3\%. 
+Modern credit default swaps are written with standardized coupons of either 1\% or 5\%. Therefore, CDS contracts cannot always be traded at the desired spread of both parties. An \textbf{upfront payment}---a payment made from one party to the other at the beginning of a contract (in this case, January 1)---compensates for the difference between the spread that both parties \emph{want} to trade at and the standardized coupon that they \emph{have} to trade at. Suppose that, like in the previous example, both parties want to trade at a coupon of 3\%. Clearly, they have to trade at a coupon of 1\% or 5\%---assume they choose 1\%. They will only make a deal that acts \emph{as if} they traded at a coupon of 3\%. 
 
 Consider that both parties agree to the deal. How do we determine the value of the upfront payment?
 
@@ -581,7 +583,7 @@ Combining Equations \eqref{eqn:InterestRate}, \eqref{eqn:recovery} and \eqref{eq
   \rm U -\hspace{3pt}C + \frac{P \times V \times (1 - RR)}{(1 + i)}  &= \rm -\hspace{3pt}U + C - \frac{P \times V \times (1 - RR)}{(1 + i)}
 \end{align}
 
-Note that for any standard CDS contract, the two unknown variables are $P$ and $U$, since $C$ and $RR$ are fixed by the International Swaps and Derivatives Association (ISDA)\footnote{Note, ISDA does not set standard recovery rates for all reference entities.} (discussed in the next section), and $V$ is agreed upon by the two parties (essentially fixed). As such, if we know $P$, we can calculate $U$ and vice versa. At last, we will conclude this subsection with a numeric example. For instance, if we choose a standardized coupon of $\$1000$ and agree upon an effective interest rate of $0.1$, a risk-neutral $P$ of $1.5\%$ and a recovery rate of $0.55$, we can apply formula (42) to calculate the necessary upfront payment. \\
+Note that for any standard CDS contract, the two unknown variables are $P$ and $U$. $C$, the coupon rate, is fixed. The notional amount is agreed upon by the two parties. When using the ISDA Standard Model, the recovery rate, $RR$, is fixed at \%40. This leaves two unknown variables: $P$ and $U$, If we know $P$, we can calculate $U$ and vice versa. Assume a coupon of $1\%$, an effective interest rate of $0.1$, a risk-neutral $P$ of $1.5\%$, and a recovery rate of $0.55$: \\
 
 $$U - 1000 + \frac{1.5\% \times 100000\times (1 - 0.55)}{(1 + 0.1)} = - U + 1000 - \frac{1.5\%\times100000\times(1 - 0.55)}{(1 + 0.1)}$$
 
@@ -591,8 +593,7 @@ Solving the equation, we get $U = 386.37$. \\
 
 %% In the simple two-period case section, explore scenarios in which “P??? changes from one year to the next, and in which “i??? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
 
-Thus far, we have described a simple one-period CDS with one coupon payment. In reality, CDS have four coupon payments each year. These quarterly dates fall on March 20th, June 20th, September 20th, and December 20th, and they are known as \textbf{IMM dates or roll dates}. Before we get into the exact mechanics of a four-period or more case, consider a simple two-period CDS that has a duration of two years and 
-two coupon payments: one on January 1 of year one and one on January 1 of year two. The interest rate is 0\%, and the probability of default is constant for both years of the contract. Like the simple one-period CDS, the notional amount is \$100,000 and the coupon is 1\%. Note that the term ''coupon'' refers to the protection buyer's \emph{annual} payment. So, the buyer will make two \$1,000 coupon payments, thus paying a total of \$2,000 over the two years. The protection buyer is still Highbridge and the protection seller is still Citigroup. Assume that both parties agree to this deal. 
+Thus far, we have described a simple one-period CDS with one coupon payment. In reality, CDS have four coupon payments each year. These quarterly dates fall on March 20th, June 20th, September 20th, and December 20th, and they are known as \textbf{IMM dates or roll dates}. Before we get into the exact mechanics of a four-period or more case, consider a simple two-period CDS that has a duration of two years and two coupon payments: one on January 1 of year one and one on January 1 of year two. The interest rate is 0\%, and the probability of default is constant for both years of the contract. Like the simple one-period CDS, the notional amount is \$100,000 and the coupon is 1\%. Note that the term ''coupon'' refers to the protection buyer's \emph{annual} payment. So, the buyer will make two \$1,000 coupon payments, thus paying a total of \$2,000 over the two years. The protection buyer is still Highbridge and the protection seller is still Citigroup. Assume that both parties agree to this deal. 
 
 The risk-neutral probability of default---the default probability that the deal implies both parties were willing to compromise on---can be calculated by equating the expected cash flows. Consider the expected cash flows of the CDS contract.
 
@@ -636,17 +637,8 @@ Date & $CF_H$ & $CF_C$ & $P$ & MTM & Spread & $P\&L_H$ & $P\&L_C$ \\
 \end{table}
 Since the contract spans 2 year, we can see that Highbridge makes the coupon payment at the end of each year to get protection for both years. Since Alcoa does not default, Highbridge has a net cashflow of -\$2,000 while Citigroup makes a total of \$2,000. The probability of default decreases linearly from \%2 to \%0. This declining risk occurs because Alcoa has fewer days to default and investors have less uncertainty about Alcoa's financial health as we approach December 31 of the second year. The mark-to-market value declines for the first year because as we get more confident that Alcoa will not default, the CDS contract loses worth. For example, if a portfolio manager from AQR wanted to buy the CDS from Highbridge on March 31 of the first year, AQR would pay \$750 (three-quarters of the coupon payment) to Highbridge for the contract since three-quarters of the year remains. Since Highbridge paid \$1,000 for the contract and only made \$750, they have a net profit of -\$250, which matches the mark-to-market for the day they sold contract to AQR. The spread column displays the total amount that a portfolio manager would have to pay for protection if she owned that CDS from a specific date until the end of the contract. For example, if AQR bought the CDS from Highbridge on JUne 30th of the first year, AQR would have to pay 150 bps: 50 bps for protection for half of the first year plus the full coupon of 100 bps for protection for the second year. The Profits \& Losses columns divide the cashflows proportionately throughout the year to show how much of the coupon each company has gained or lost on a day to day basis.
 
-\subsubsection{Simple Two-Period Case Complications}
-
-Since this is a simplified example, we have excluded aspects of the CDS market that are worth noting.
-
-1. We again assumed that both parties are risk-neutral, whereas this may not be the actual case. In reality, portfolio managers are prone to be more risk-averse and would be willing to pay a higher premium than entailed by the risk neutral assumption, while insurance providers can make a profit from this risk aversion.
-
-2. In this example, we essentially assumed that we can just add probabilities: a probability of default of 1\% during year one and a probability of default of 1\% during year two equals a probability of default of 2\% over the two years. But in real life, the probability of default over a big period may not just be a simple summation of different probabilities in separate small periods. For example, what is the probability of default of the two-year period if the probabilities of default in the first and second year are different?
-
-3. In this example, we also assume that the interest rate is zero over the two years. But in real life, interest rates should always be taken into consideration. For example, the CDS pricing will change if there's a constant interest rate of 2\% over the two years. Moreover, it might well be the case that the interest rate is not constant at all. In real life, the interest rates we use for CDS pricing often change over the period, so we should take that into consideration and apply different discount factors accordingly.
-
 \subsubsection{Non-constant Probability of Default}
+\label{sec:nonconstprob}
 
 In the simple two-period CDS and in \ref{table.4}, we assumed that the overall risk-neutral  probability of default remained the same throughout the entire life of the CDS. $P$ was conveniently 2\%, meaning each year had a probability of default of 1\%. Yet in reality, the fiscal health of a reference entity is always changing, and that company has different sized bond payments due each year. For example, in our two-period CDS situation, if Alcoa had \$10,000 bond due in the first period and a \$1,000,000 bond due in the second period, they would have a higher probability of default in period two. Let $P_1$ an $P_2$ be the probabilities of default in the first and second periods respectively. Our overall risk-neutral $P$ occurs when $P_1$ and $P_2$ are equal. However, the protection buyer and the protection seller can each have different estimates of $P_1$ and $P_2$ and come to a deal if the estimates fit within the same overall $P$. The cashflow equations below relate $P_1$ and $P_2$ for a two period CDS with a different probability of default for each period. We will stick with the \$100,000 notional amount and \$1,000 coupon from previous examples. In order to ensure that Alcoa does not default in the second period if they defaulted in the first period, we multiply the protection payment by $(1-P_1)$.
 
@@ -685,16 +677,59 @@ Date & $P$ & $P_{cum}$ & Spread \\
 \end{table}
 
 \ref{table.nonconstprob} shows a two period CDS over a two year duration. The contract has an annual probability of default is 1\% for year one and 5\% year two. These two numbers result an initial cumulative probability of default of 6\%. $P_{cum}$ decreases linearly by the respective annual probability of default for each year. The spread, or desired payment for protection, aligns with $P_{cum}$. Recall that portfolio managers and investment banks most frequesntly compare CDS using spread.
-If we do not have all the information in this table the following two equations can be used to calculate annual probability of default, $P$, or the spread, $S$ (which can easily lead us to $P_{cum}$). Let $RR$ be recovery rate and let $t$ be the time in years until maturity. Note that these two equations are the inverses of each other:
+
+\subsubsection{More Default Probabilities}
+\label{sec:PconstantandPisda}
+If we do not have all the information \ref{table.nonconstprob} the following two equations can be used to calculate annual probability of default, $P$, or the spread, $S$ (which can easily lead us to $P_{cum}$). Let $RR$ be recovery rate and let $t$ be the time in years until maturity. Note that these two equations are the inverses of each other:
 
 \begin{align}
-    \rm P &= \rm \hspace{3pt}1 - e^(-S * frac{t}{1-RR}) \\
+    \rm P &= \rm \hspace{3pt}1 - e^{-S \times \frac{t}{1-RR}} \\
     \rm S &= \rm \hspace{3pt}ln(1-P)\times \frac{R-1}{t}
 \end{align}
 
-These equations allow us to find to more types of probability of default: the constant probability of default and the ISDA probability of default. When we have multiple probabilities of default for multiple periods in a CDS contract, $P_{constant}$ is the risk neutral value where all of the underlying probabilities are equal. If we know the spread, duration, and recovery rate, we can plug in these values to get $P_{constant}$. The ISDA default recovery rate is 40\%. So by plugging in 0.40 for RR, we can find $P_{ISDA}$.
+These equations allow us to find to more types of probability of default: the constant probability of default and the ISDA probability of default.
+Imagine a CDS agreement with multiple probabilities of default for multiple periods. If we know the spread, duration, and recovery rate of a CDS we can plug in these values to the above equations and get $P_{constant}$. \textbf{$P_{constant}$} is the risk neutral probability (the cashflows must be equal) where all of the underlying probabilities are equal. For example, if the protection buyer believed $P$ to be 2\% for the first of two periods of a CDS contract and 0\% for the second period, $P_{constant}$ would be 1\%. The following example uses the same coupon and notional as \ref{sec:nonconstprob}:
 
-%% Add a table of constant and ISDA once I work out the errors in those calculations.
+\begin{align}
+      \rm -\$2,000 + (1-P_1)(\$100,000\times P_2) + P_1\times \$100,000 &= \\
+      \rm \hspace{3pt}-\$2,000 + (1-P_{constant})(\$100,000\times P_{constant}) + P_{constant}\times \$100,000\\
+      \rm -\$2,000 + (1-.02)(\$100,000\times 0) + .02\times \$100,000 &= \\
+      \rm \hspace{3pt}-\$2,000 + (1-.01)(\$100,000\times .01) + .01\times \$100,000
+\end{align}
+
+The equations in this section can also be used to find the ISDA standard model estimated probability of default. The automatically selected ISDA recovery rate is 40\%. Recall that recovery rate means that the reference entity can still retain value after default. Therefore, the protection seller can eliminate the recovered assests from the notional and have a smaller protection payout. When the protection payment decreases, the risk neutral probability of default increases because the protection buyer does not want to take as big a risk when it is more likely that they will lose money. Consequently, the ISDA probability of default will be greater than probabilities that do not take recovery rate into account. By plugging in 0.40 for RR, we can find \textbf{$P_{ISDA}$}. Let's use a familiar example from the previous section with a spread of 600 bps and a time frame of 1 year:
+
+\begin{align}
+    \rm P_{ISDA} &= \rm \hspace{3pt}1 - e^{-S \times \frac{t}{1-RR}} \\
+    \rm P_{ISDA} &= \rm \hspace{3pt}1 - e^{-600 \times \frac{1}{1 - 0.40}}\\
+    \rm P_{ISDA} &= \rm \hspace{3pt}1 - .90484 \\
+    \rm P_{ISDA} &= \rm \hspace{3pt}.09516
+\end{align}
+
+Now that we are familiar with $P_{constant}$ and $P_{ISDA}$, let's see how they compare to other types of risk-neutral probabilities of default. The table below shows the annual, cumulative, constant, and ISDA probabilities of default for the same sample CDS contract used in \ref{sec:nonconstprob} and \ref{table.nonconstprob}:
+
+\begin{table}[H]
+\centering
+{\footnotesize
+\begin{tabular}{llllll}
+  \hline
+Date & $P$ & $P_{cum}$ & $P_{constant}$ & $P_{ISDA}$ \\ 
+  \hline
+  Jan 1,  1\% & 6\% & 5.8\% & 9.5\% \\ 
+  Mar 31, 1\% & 5.75\% & 4.2\% & 6.9\% \\ 
+  Jun 30, 1\% & 5.50\% & 2.7\% & 4.4\%\\ 
+  Jan 1,  5\% & 5\% & 4.8\% & 7.9\% \\ 
+  Mar 31, 5\% & 3.75\% & 2.7\% & 4.5\% \\ 
+  Jun 30, 5\% & 2.50\% & 1.2\% & 2.0\% \\ 
+  Dec 31, 5\% & 0\% & 0\% & 0\% \\
+   \hline
+\end{tabular}
+}
+\caption{This table shows the evolution of the annual, cumulative, constant, and ISDA probabilities of default over a two year period. $P$ changes on January 1 and remains constant for each year because it is the overall probability for one year at a time. $P_{cum}$ decreases proportionately to $P$ for each year. It is the fraction of $P$ that remains for each year, added up. $P_{constant}$ is the single risk-neutral probability that would equate the buyer and seller's cash flows for the remainder of the contract. $P_{ISDA}$ is higher than some of the other probabilities because it accounts for the common ISDA recovery rate of 40\%. The recovery rate lowers the protection payment by eliminating the reference entity's retained assets. A higher probability of default compensates for the reduced notional.}
+\label{table.allprob}
+\end{table}
+
+We can see that the annual $P$ stays the same within each year because it is the overall risk-neutral probabilty for a year at a time. $P_{cum}$ decreases towards 0 as it becomes clearer that the reference entity will not default during the contract. It is the sum of the remaining portions of each period. The constant probability of default is what the the probability of default would be if $P_1$ and $P_2$ were equal. Because $P_{ISDA}$ accounts for recovery rate, the protection buyer receives less money if a credit event occurs. Therefore, the ISDA probability tends to be higher than other probabilities.
 
 \subsubsection{Non-constant interest rate}
 \label{sec:nonConstantInterestRate}
@@ -765,11 +800,11 @@ The way in which the value of the upfront payment drops over the life of the CDS
 
 \subsection{N-period Case}
 \label{sec:nPeriodCase}
-
-Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys from Citigroup a CDS with duration of 5 years. Here, the duration of CDS is also called \textbf{tenor}, so we can say the contract has a tenor of five years in this case. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates}. ISDA specified these four roll dates as trading conventions. So assume the protection buyer buys the CDS on Jun. 20, 2014, then after the five year tenor, the CDS protection ends (or \textbf{matures}) on Jun. 20, 2019. The date on which a CDS matures is called \textbf{maturity date} or \textbf{end date}. Here, we picked the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
+%%Eliminating calculus and focusing on concepts
+Having understood the basics of CDS, we can now consider the N-period case, which is more realistic than one- and two-period cases. Suppose the protection buyer now buys a CDS from Citigroup with duration of 5 years. Here, the duration of CDS is also called the \textbf{tenor}, so we can say the contract has a tenor of five years. And there are still four payment dates in one year, but different from the four dates assumed in Section \ref{sec:OnePeriod}. In reality, the four payment dates are Mar. 20, Jun. 20, Sept. 20, and Dec. 20. These dates can be also called \textbf{roll dates} or \textbf{IMM dates}. ISDA specified these four roll dates as trading conventions. Assume the protection buyer buys the CDS on Jun. 20, 2014. After the five year tenor, the CDS protection ends (or \textbf{matures}) on Jun. 20, 2019. The date on which CDS protection ends is known as the \textbf{maturity date} or the \textbf{end date}. Here, we picked the CDS trading date to be Jun. 20 to avoid complications such as upfront payments and \textbf{accrual amount}, which we will talk more about later.
 
 Since there are four payment dates in one year and the tenor is five years, this is a 20-period example of CDS.
-Although the number of periods has increased dramatically from two to twenty, the central mathematics from our simpler examples remains unchanged:
+Although the number of periods has increased dramatically from two to twenty, the central mathematics from our simpler examples remain unchanged:
 
 
 \begin{align}
@@ -777,40 +812,29 @@ Although the number of periods has increased dramatically from two to twenty, th
   \rm Premium\hspace{3pt}leg &= \rm Protection\hspace{3pt}leg
 \end{align}
 
-Assume a constant interest rate. A simple 20-period CDS will then have the below mathematic expression.This equation was built off of Equation \eqref{eqn:twoPeriod} and our rewrites of that equation in section \ref{sec:nonConstantInterestRate}:
+The first part of the cashflows consist of the coupon payments. The coupons are added up for each period of the CDS, so we would add up 20 coupon payments for a 20-period CDS. But these payments are all made at different times, so they are not worth the same amount. As the market changes, interest rates change and the coupon payments get discounted. With many coupon payments, we must continually compound the interest. This means that successive interest rates build on each other. For example, imagine that the third coupon payment gets discounted from \$1,000 to \$800. due to interest. The interest rate for the fourth coupon payment would be taken away from the previous coupon's worth of \$800 and not the coupon's intial value of \$1,000. This compounding of interest applies to N-period CDS contracts whether the interest rate is constant or non-constant. Remember real-world interest rates are always changing. The process of discounting future payments to find their worth on day one of the CDS is known as finding the \textbf{present value}. It is also important to note that in the event of default, the protection buyer no longer has to make coupon payments. If the reference entity defaults in between roll dates, the protection buyer will just have to pay an accrued amount for the time that has passed from the previous roll date until the default.
+The next part of a CDS cashflow equation is the protection leg. To estimate the protection payment, we must multiply the notional amount by the risk-neutral probability of default. Recall that this probability is a mathematical construct used for estimating CDS payments in cash flow equations. It highly unlikely and not necessary for the risk neutral $P$ to match up with the true probability of default. In fact, since investors cannot see into the reference entity's future it is impossible to know the true probability of default at any given time during the CDS. The risk neutral $P$ also does not need to have any correlation with either party's estimate of $P$. The notional amount is the amount on which the CDS buyer is purchasing protection. The notional represents what the buyer would recieve in the event of default if recovery rates did not exist. However, a reference entity does not lose everything when it is unable to repay bondholder. The assets that the reference entity retains after default are known as the recovery rate. The assumed recovery rate by the ISDA Standard Model is 40\%. Our cashflows must take recovery rate into account. Therefore, we must multiply the product of the notional amount and the probability of default by $1 - RR$. This value is known as the Loss Given Default, or LGD, and it represents the amount that the reference entity loses after defaulting on its bonds. Additionally, we must remember that the protection payment is most frequently made sometime in the middle of the CDS contract. Therefore, the final step in determining the protection payment is discounting the product of the notional amount, the probability of default, and the LGD by the interest rate at the time of the reference entity's default.
+The following table shows an N-period CDS with a coupon of 1\% and a notional amount of \$100,000. A default occurs in the second year. This example builds off of \ref{table.4} and \ref{table.nonconstprob}, but includes some new aspects such roll dates, default, and accrued coupon:
 
-\begin{align}
-  \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + \frac{P \times V \times (1 - RR)}{e^{5r}}  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - \frac{P \times V \times (1 - RR)}{e^{5r}} 
-\end{align}
-
-where $r$ stands for the constant continuous interest rate, $V$ stands for notional value, $RR$ stands for recovery rate, and C stands for coupon payment. Remember that recovery rate is amount of interest on the CDS that can be retained in the event of default. In this equation, we have $(1 - RR)$, which is known as the Loss Given Default. We use a new symbol in this equation, a sigma, to cleanly express the summation of all 20 coupon payments over the course of the contract. Recall that the exponentiated interest means that this interest is compounded continuously. The rate of $e^0.25tr$ on the coupon payment means that the interest builds up on every roll date until it ultimately reaches $e^5r$ by the time the contract matures. Notice that we have assumed that the probable credit event can only happen at the end of five years, and hence the discount of $e^{-5r}$ for $P \times V \times (1 - RR)$. However, in reality, the probability of default is not constant over different periods. In fact, the default probability changes from time to time, so using a single factor to discount the protection leg is not accurate. For better modeling, we need to have a function, call it $Q(t)$, to represent the event probability at time $t$. Note that $Q(t)$ is a cumulative distribution function whose density can be denoted as $q(t)$. With this, the buyer-seller equality can be improved as follows:
-
-\begin{align}
-  \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + V \times (1 - RR) \times \int_0^5 e^{-rt}dQ(t)  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - V \times (1 - RR) \times \int_0^5 e^{-rt}dQ(t) 
-\end{align}
-
-Or:
-
-\begin{align}
-  \rm \hspace{3pt}- \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} + V \times (1 - RR) \times \int_0^5 e^{-rt}q(t)dt  &= \rm \hspace{3pt} \sum_{t = 0}^{19} \frac{C}{e^{0.25tr}} - V \times (1 - RR) \times \int_0^5 e^{-rt}q(t)dt 
-\end{align}
-
-Further complications arise when we relax the assumption of a constant interest rate. So instead of using $e^{-rt}$ to discount cash flow at time $t$, we will assume a more generic function, $Df(t)$, as our risk-free discount factor until time $t$. Moreover, since the protection buyer no longer has to pay coupons after a credit event, survival probability factors are needed to adjust the stream of coupon payments. Therefore, our final equality should be written as:
-
-\begin{align}
-  \rm \hspace{3pt}- \sum_{t = 0}^{19} C\times Df(0.25t) \times S(0.25t) + V \times (1 - RR) \times \int_0^5 Df(t)dQ(t)  \\
-  = \rm \hspace{3pt} \sum_{t = 0}^{19} C\times Df(0.25t) \times S(0.25t)  - V \times (1 - RR) \times \int_0^5 Df(t)dQ(t) 
-\end{align}
-
-where $S(t) = 1 - Q(t)$ is the survival probability until time $t$. This is our final version of buyer-seller equality for this section. Notice that other minor adjustment such as money market basis can still be made for finer modeling and will be introduced in the next section.
-
-For conclusion, we point out that this buyer-seller equality has direct application in the pricing of CDS contract. The value of a CDS is just the difference in present value between the credit event leg and the premium leg, which can be expressed by the following formula:
-
-$$PV(CDS) = PV(def) - PV(prem) = C\sum_{t_i}Df(t_i)S(t_i) - V\times(1 - RR)\int_0^T Df(t)dQ(t)$$
-
-All these calculus complications in the N-period case are simply provided for reference.
-None are necessary nor for the understanding of latter sections.
-
+\begin{table}[H]
+\centering
+{\footnotesize
+\begin{tabular}{llllllll}
+  \hline
+Date & $CF_H$ & $CF_C$ & $P$ & $P_{cum}$ & Spread & $RR$ & $Accrued$ \\ 
+  \hline
+  Jun 20, 2014 & -\$1,000 & \$1,000 & 1\% & 6\% & 600 bps & 40\% & \$0 \\ 
+  Sep 20, 2014 & -\$1,000 & \$1,000 & 1.\% & 5.75\% & 575 bps & 40\% & \$0 \\ 
+  Dec 20, 2014 & -\$1,000 & \$1,000 & 1\% & 5.50\% & 550 bps & 40\% & \$0 \\ 
+  Mar 20, 2015 & -\$1,000 & \$1,000 & 1\% & 5.25\% & 525 bps & 40\% & \$0 \\ 
+  Jun 20, 2015 & -\$1,000 & \$1,000 & 5\% & 5\%& 500 bps & 40\% & \$0 \\ 
+  Jul 20, 2015 & \$99,667 & -\$99,667 & 3.75\% & -\$500 & 375 bps & 40\% & \$333 \\
+   \hline
+\end{tabular}
+}
+\caption{}
+\label{table.nper}
+\end{table}
 
 \section{Bloomberg and Markit}
 \label{sec:BloombergMarkit}
