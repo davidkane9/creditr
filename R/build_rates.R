@@ -52,7 +52,8 @@ build_rates <- function(start.date, end.date){
   
   ## rid NOTE
   
-  end <- NULL
+  ## I don't see why this is necessary, as we never assign to it.
+  ##end <- NULL
   
   
   stopifnot(inherits(start.date, "Date") & inherits(end.date, "Date"))
@@ -109,7 +110,7 @@ build_rates <- function(start.date, end.date){
   ## If start date  and end date are before 2005-01-05, then we have to use
   ## markit for USD and only FRED for EUR and JPY
   
-  else if(end < as.Date("2005-01-05")){
+  else if(end.date < as.Date("2005-01-05")){
     x.markit.USD <- download_markit(start = start.date, end = end.date, 
                                     currency = "USD")
     x.FRED.EUR   <- download_FRED(start = start.date, end = end.date, 
