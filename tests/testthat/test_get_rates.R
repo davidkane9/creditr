@@ -10,5 +10,5 @@ test_that("test for get_rates",{
   
   rates <- get_rates(date = as.Date("2014-04-15"), currency = "USD")$rate
  
-  stopifnot(all.equal(truth.1, rates))
+  expect_true(all.equal(truth.1, rates))
 })

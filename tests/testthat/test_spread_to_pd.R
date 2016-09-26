@@ -17,6 +17,6 @@ test_that("spread_to_pd.test.R", {
   ## currently the test case cannot be matched for 100%, so we need rounding
   ## here
   
-  stopifnot(all.equal(round(result, 3), round(truth, 3)))
+  expect_true(all.equal(round(result, 3), round(truth, 3)))
   
 })
