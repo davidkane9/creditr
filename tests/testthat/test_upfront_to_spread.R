@@ -21,7 +21,7 @@ test_that("test for upfront_to_spread", {
   
   ## test passes when results are rounded off to the second decimal place
   
-  stopifnot(all.equal(round(result.1, 2), round(truth.1, 1)))
+  expect_true(all.equal(round(result.1, 2), round(truth.1, 1)))
   
   
   ## results when we don't enter the rates manually are less accurate 
@@ -37,7 +37,7 @@ test_that("test for upfront_to_spread", {
                                 payAccruedAtStart = FALSE,
                                 payAccruedOnDefault = TRUE)
   
-  stopifnot(all.equal(round(result.2), round(truth.1)))
+  expect_true(all.equal(round(result.2), round(truth.1)))
   
   
   ## test cases to make sure results of the function don't change over time
@@ -75,7 +75,7 @@ test_that("test for upfront_to_spread", {
                                 payAccruedAtStart = FALSE,
                                 payAccruedOnDefault = TRUE)
   
-  stopifnot(all.equal(result.3, truth.2))
+  expect_true(all.equal(result.3, truth.2))
   
   
   result.4 <- upfront_to_spread(x = data.frame(date = as.Date("2014-01-14"),
@@ -89,6 +89,6 @@ test_that("test for upfront_to_spread", {
                                 payAccruedAtStart = TRUE,
                                 payAccruedOnDefault = TRUE)
   
-  stopifnot(all.equal(result.4, truth.3))
+  expect_true(all.equal(result.4, truth.3))
   
 })
