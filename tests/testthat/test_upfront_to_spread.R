@@ -4,7 +4,7 @@ context("Test upfront_to_spread")
 
 test_that("test for upfront_to_spread", {
   ## actual spread value from Bloomberg for Xerox Corp.
-   truth.1 <- 105.85
+  truth.1 <- 105.85
   
   load("test_upfront_to_spread.RData")
 
