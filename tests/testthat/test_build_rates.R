@@ -29,7 +29,3 @@ test_that("build_rates will fail if either input is a vector", {
                            end.date = c(as.Date("2005-02-01"), as.Date("2005-03-01"))))
   
 })
-
-
-# build_rates(as.Date("2004-01-01"), as.Date("2004-02-01"))
-# Returns this error: Error in if (end < as.Date("2005-01-05")) { : argument is of length zero
