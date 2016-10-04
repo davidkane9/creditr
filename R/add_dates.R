@@ -169,13 +169,24 @@ add_dates <- function(x,
     ## firstCouponDate is June 20, 2014, the endDate will be June 20, 2019.
     
     ## maturity date (endDate) does not need to be a weekday. It has to be on
-    ## one of the four roll dates.
+    ## one of the roll dates.
+    ## Note: As of Dec. 21, 2015, ISDA has changed the roll dates to be semi-annual,
+    ## restricting them to March 20 and Sept 20.
+    ## http://www2.isda.org/asset-classes/credit-derivatives/single-name-cds-roll/
     
     if (has.tenor.var) {
       length       <- x[[tenor.var]][i]
       endDate      <- date.first
-      endDate$year <- date.first$year + length
-      endDate$mon  <- endDate$mon + 3
+      
+      ## Handling both the year/multi-year CDS and the 6 month CDS
+      if (length >= 1) {
+        endDate$year <- date.first$year + length
+        endDate$mon <- ifelse(endDate$mon %in% c(2, 5), 5, 11)
+      } else {
+        endDate$mon <- ifelse(endDate$mon %in% c(2, 5), 11, 5)
+        endDate$year <- date.first$year + ((endDate$mon + length * 12) / 12)
+      }
+      
       endDate      <- as.Date(endDate)
     }
     else{
