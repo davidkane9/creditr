@@ -25,7 +25,8 @@ Imports:     utils,
              RCurl,
              XML,
              zoo,
-             xts
+             xts,
+             timeDate
 LinkingTo:   Rcpp
 Suggests:    testthat
 Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
