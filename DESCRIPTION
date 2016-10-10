@@ -1,43 +1,47 @@
-Package:     creditr
-Version:     0.6.1.9002
-Date:        2015-10-20
-Title:       Credit Default Swaps in R
-Author:      c(person("Heidi", "Chen", role = c("aut"),
-                email = "s.heidi.chen@gmail.com"),
-                person("Yuanchu", "Dang", role = c("aut"),
-                email = "yuanchu.dang@gmail.com"),
-                person("David", "Kane", role = c("aut"),
-                email = "dave.kane@gmail.com"),
-                person("Yang", "Lu", role = c("aut", "cre"),
-                email = "yang.lu2014@gmail.com"),
-                person("Skylar", "Smith", role = c("aut"),
-                email = "sws2@williams.edu"),
-                person("Kanishka", "Malik", role = c("aut"),
-                email = "kanishkamalik@gmail.com"),
-                person("Miller Zijie", "Zhu", role = c("aut"),
-                email = "zijie.zhu@williams.com"))
-Depends:     R (>= 3.1.0)               
-Imports:     utils,
-             quantmod,
-             devtools,
-             methods,
-             Rcpp (>= 0.10.6),
-             RCurl,
-             XML,
-             zoo,
-             xts,
-             timeDate
-LinkingTo:   Rcpp
-Suggests:    testthat
-Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
-License:     file LICENSE
-URL:         https://github.com/davidkane9/creditr
+Package: creditr
+Version: 0.6.1.9002
+Date: 2015-10-20
+Title: Credit Default Swaps in R
+Author: c(person("Heidi", "Chen", role = c("aut"),
+    email = "s.heidi.chen@gmail.com"),
+    person("Yuanchu", "Dang", role = c("aut"),
+    email = "yuanchu.dang@gmail.com"),
+    person("David", "Kane", role = c("aut"),
+    email = "dave.kane@gmail.com"),
+    person("Yang", "Lu", role = c("aut", "cre"),
+    email = "yang.lu2014@gmail.com"),
+    person("Skylar", "Smith", role = c("aut"),
+    email = "sws2@williams.edu"),
+    person("Kanishka", "Malik", role = c("aut"),
+    email = "kanishkamalik@gmail.com"),
+    person("Miller Zijie", "Zhu", role = c("aut"),
+    email = "zijie.zhu@williams.com"))
+Depends:
+    R (>= 3.1.0)
+Imports:
+    utils,
+    quantmod,
+    devtools,
+    methods,
+    Rcpp (>= 0.10.6),
+    RCurl,
+    XML,
+    zoo,
+    xts,
+    timeDate
+LinkingTo: Rcpp
+Suggests:
+    testthat
+Maintainer: Yuanchu Dang <yuanchu.dang@gmail.com>
+License: file LICENSE
+URL: https://github.com/davidkane9/creditr
 Description: Provides tools for pricing credit default swaps using
-             C code from the International Swaps and Derivatives
-             Association (ISDA) CDS Standard Model. See
-             <http://www.cdsmodel.com/cdsmodel/documentation.html>
-             for more information about the model and 
-             <http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html>
-             for license details for the C code.
-LazyData:    true
-Repository:  CRAN
+    C code from the International Swaps and Derivatives
+    Association (ISDA) CDS Standard Model. See
+    <http://www.cdsmodel.com/cdsmodel/documentation.html>
+    for more information about the model and
+    <http://www.cdsmodel.com/cdsmodel/cds-disclaimer.html>
+    for license details for the C code.
+LazyData: true
+Repository: CRAN
+RoxygenNote: 5.0.1
