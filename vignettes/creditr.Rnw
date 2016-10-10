@@ -603,9 +603,13 @@ Since the contract spans 2 year, we can see that Highbridge makes the coupon pay
 In the simple two-period CDS and in \ref{table.4}, we assumed that the overall risk-neutral  probability of default remained the same throughout the entire life of the CDS. $P$ was conveniently 2\%, meaning each year had a probability of default of 1\%. Yet in reality, the fiscal health of a reference entity is always changing, and that company has different sized bond payments due each year. For example, in our two-period CDS situation, if Alcoa had \$10,000 bond due in the first period and a \$1,000,000 bond due in the second period, they would have a higher probability of default in period two. Let $P_1$ an $P_2$ be the probabilities of default in the first and second periods respectively. Our overall risk-neutral $P$ occurs when $P_1$ and $P_2$ are equal. However, the protection buyer and the protection seller can each have different estimates of $P_1$ and $P_2$ and come to a deal if the estimates fit within the same overall $P$. The cashflow equations below relate $P_1$ and $P_2$ for a two period CDS with a different probability of default for each period. We will stick with the \$100,000 notional amount and \$1,000 coupon from previous examples. In order to ensure that Alcoa does not default in the second period if they defaulted in the first period, we multiply the protection payment by $(1-P_1)$.
 
 \begin{align}
-   \rm Highbridge\hspace{3pt}PM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows \\
-    \rm -\$2,000 + (1-P_1)(\$100,000\times P_2) + P_1\times \$100,000 &= \rm \hspace{3pt}\$2,000 - (1-P_1)(\$100,000\times P_2) - P_1\times \$100,000\\
-    %% This equation is a little long and goes into the margin is that ok?
+   \rm Highbridge\hspace{3pt}PM's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= -\$2,000 + (1-P_1)(\$100,000\times P_2) + P_1\times \$100,000\\
+   \rm Citigroup's\hspace{3pt}expected\hspace{3pt}cash\hspace{3pt}flows &= \hspace{3pt}\$2,000 - (1-P_1)(\$100,000\times P_2) - P_1\times \$100,000
+\end{align}
+
+We now simplify and examine $P_1$ and $P_2$:
+
+\begin{align}
     \rm -2 + (1-P_1)(100\times P_2) + P_1\times 100 &= \rm \hspace{3pt}2 - (1-P_1)(100\times P_2) - P_1 \times 100\\
     \rm (1-P_1)(200\times P_2) + (P_1\times 200)&= \rm \hspace{3pt}4 \\
     \rm (1-P_1)(P_2) + P_1 &= \rm \hspace{3pt}\frac{4}{200} \\
