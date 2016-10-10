@@ -35,7 +35,7 @@ test_that("Error occurs when maturity input is not of type Date", {
   
 })
 
-test_that("test for add_dates", {
+test_that("add_dates assigns correct information for a test case", {
   
   ## different dates for a CDS with a 10-year maturity
   
@@ -46,10 +46,30 @@ test_that("test for add_dates", {
   result.1 <- add_dates(data.frame(date = as.Date("2014-04-15"), tenor = 5, currency = "USD"))
   result.2 <- add_dates(data.frame(date = as.Date("2014-04-15"),
                                    maturity = as.Date("2019-06-20"),
-                                   currency = "USD")) 
+                                   currency = "USD"))
   
-  ## expect_that(result.1, is_identical_to(truth.1))
-  ## expect_that(result.2, is_identical_to(truth.1))
+  # Truth data frame does not contain all columns in add_dates output.
+  
+  truth.columns <- c("date", 
+                     "stepinDate", 
+                     "valueDate", 
+                     "startDate", 
+                     "firstcouponDate", 
+                     "pencouponDate",
+                     "endDate",
+                     "backstopDate")
+  
+  result.1 <- result.1[, names(result.1) %in% truth.columns]
+  result.2 <- result.2[, names(result.2) %in% truth.columns]
+  
+  expect_that(result.1, is_identical_to(truth))
+  expect_that(result.2, is_identical_to(truth))
+  
+})
+
+test_that("test for add_dates", {
+  
+  
   
   ## if the trade date is right after roll date, then the endDate 
   ## should go to next roll date
