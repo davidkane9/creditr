@@ -5,11 +5,15 @@ context("Test add_dates")
 
 library(creditr)
 
-test_that("test for add_dates", {
+test_that("Error occurs when no tenor or maturity date is given", {
   
   ## Should return an error when no tenor or maturity date is given
   
   expect_error(add_dates(data.frame(date = as.Date("2014-04-15"), currency = "USD")))
+  
+})
+
+test_that("Error occurs when both tenor and maturity date are given", {
   
   ## Should return an error when both tenor and maturity date are given; only one
   ## should be entered
@@ -19,11 +23,19 @@ test_that("test for add_dates", {
                                     maturity = as.Date("2016-06-20"),
                                     currency = "USD")))
   
+})
+
+test_that("Error occurs when maturity input is not of type Date", {
+  
   ## Should return an error when maturity is not of type date
   
   expect_error(add_dates(data.frame(date = as.Date("2014-04-15"),
                                     maturity = "not a date",
                                     currency = "JPY")))
+  
+})
+
+test_that("test for add_dates", {
   
   ## different dates for a CDS with a 10-year maturity
   
