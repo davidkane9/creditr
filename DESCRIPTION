@@ -28,7 +28,7 @@ Imports:     utils,
              xts
 LinkingTo:   Rcpp
 Suggests:    testthat
-Maintainer:  Yuanchu Dang <yuanchu.dang@gmail.com>
+Maintainer:  David Kane <dave.kane@gmail.com>
 License:     file LICENSE
 URL:         https://github.com/davidkane9/creditr
 Description: Provides tools for pricing credit default swaps using
