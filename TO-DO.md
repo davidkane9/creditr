@@ -9,3 +9,4 @@ Items on the TO-DO List
 7. Update the included data, especially the rates information, through August 31, 2017. I am not sure if we should target The R       Journal or the Journal of Statistical Software.
 8. Get the vignette into publishable form. This is the hardest item on the list. Feel free to cut as well as to add.
 9. Review the code base. Some of it is solid, but some is not.
+10. Should there be a PDF version of the article somewhere in this repo? I forget what the recommended approach is.
