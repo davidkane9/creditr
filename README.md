@@ -21,6 +21,8 @@ skylar.smith at williams.edu
 Zijie Zhu
 zijie.zhu at williams.edu
 
+Nam Nguyen
+nam.nguyen at williams.edu
 About
 --------------------------------------------------------
 A Credit Default Swap (CDS) is a financial swap agreement between two
