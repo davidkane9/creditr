@@ -3,6 +3,9 @@ Authors
 Heidi Chen 
 s.heidi.chen at gmail.com
 
+Ben Czekanski
+bmczekanski at gmail.com
+
 Yuanchu Dang
 yuanchu.dang at williams.edu
 
@@ -15,14 +18,14 @@ yang.lu2014 at gmail.com
 Kanishka Malik
 kanishkamalik at gmail.com
 
+Nam Nguyen
+nam.nguyen at williams.edu
+
 Skylar Smith
 skylar.smith at williams.edu
 
 Zijie Zhu
 zijie.zhu at williams.edu
-
-Nam Nguyen
-nam.nguyen at williams.edu
 
 About
 --------------------------------------------------------
