@@ -4,6 +4,8 @@ Date:        2015-10-20
 Title:       Credit Default Swaps in R
 Author:      c(person("Heidi", "Chen", role = c("aut"),
                 email = "s.heidi.chen@gmail.com"),
+                person("Ben", "Czekanski", role = c("ctb"),
+                email = "bmczekanski@gmail.com"),
                 person("Yuanchu", "Dang", role = c("aut"),
                 email = "yuanchu.dang@gmail.com"),
                 person("David", "Kane", role = c("aut"),
