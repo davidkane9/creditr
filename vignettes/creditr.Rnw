@@ -38,7 +38,9 @@
 \\ 
 \fontsize{12pt}{14.4} \textbf{Kanishka Malik} \hspace{10pt} 
 \fontsize{12pt}{14.4} \textbf{Skylar Smith} \hspace{10pt} 
-\fontsize{12pt}{14.4} \textbf{Zijie Zhu} \hspace{10pt} }
+\fontsize{12pt}{14.4} \textbf{Zijie Zhu} \hspace{10pt}
+\fontsize{12pt}{14.4} \textbf{Nam Nguyen} \hspace{10pt}
+\fontsize{12pt}{14.4} \textbf{Ben Czenkanski} \hspace{10pt} }
 \title{Credit Default Swaps with R}
 
 %% for pretty printing and a nice hypersummary also set:
@@ -621,7 +623,7 @@ Solving the equation, we get $U = 386.37$. \\
 
 \subsection{Two-Period Case}
 
-%% In the simple two-period case section, explore scenarios in which “P??? changes from one year to the next, and in which “i??? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
+%% In the simple two-period case section, explore scenarios in which b P??? changes from one year to the next, and in which b i??? changes from one year to the next. Then, explain the relevance of the swap curve (and ISDA assumption of a constant probability of default).
 
 Thus far, we have described a simple one-period CDS with one coupon payment on January 1. However, as mentioned in Section \ref{sec:AccruedCoupon}, CDS have four coupon payments each year. Before we get into the exact mechanics of a four-period or more case, consider a simple two-period CDS that has a duration of two years and 
 two coupon payments: one on January 1 of year one and one on January 1 of year two. The interest rate is 0\%, and the probability of default is constant for both years of the contract. Like the simple one-period CDS, the notional amount is \$100,000 and the coupon is 1\%. Note that the term "coupon" refers to the protection buyer's \emph{annual} payment. So, the buyer will make two \$1,000 coupon payments, thus paying a total of \$2,000 over the two years. The protection buyer is still Highbridge and the protection seller is still Citigroup. 
