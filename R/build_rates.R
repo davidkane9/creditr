@@ -50,12 +50,11 @@
 
 build_rates <- function(start.date, end.date){
   
-  ## rid NOTE
+  ## If a vector is passed in for start.dates and end.dates, R experiences a fatal crash.
   
-  end <- NULL
+  stopifnot((length(start.date) == 1) && (length(end.date) == 1))
   
-  
-  stopifnot(inherits(start.date, "Date") & inherits(end.date, "Date"))
+  stopifnot(inherits(start.date, "Date") && inherits(end.date, "Date"))
   
   ## start date should be earlier than or at least same with end date
   
@@ -65,7 +64,7 @@ build_rates <- function(start.date, end.date){
   ## then we have to use markit for USD, and both markit and FRED for
   ## JPY and EUR
   
-  if(start.date < as.Date("2005-01-05") & end.date >= as.Date("2005-01-05")){
+  if(start.date < as.Date("2005-01-05") && end.date >= as.Date("2005-01-05")){
     
     ## First, markit gets USD rates.
     
@@ -109,7 +108,7 @@ build_rates <- function(start.date, end.date){
   ## If start date  and end date are before 2005-01-05, then we have to use
   ## markit for USD and only FRED for EUR and JPY
   
-  else if(end < as.Date("2005-01-05")){
+  else if(end.date < as.Date("2005-01-05")){
     x.markit.USD <- download_markit(start = start.date, end = end.date, 
                                     currency = "USD")
     x.FRED.EUR   <- download_FRED(start = start.date, end = end.date, 

@@ -18,5 +18,5 @@ test_that("test for IR_DV01", {
   
   truth <- c(-7.36, 1.29)
   
-  stopifnot(all.equal(round(result), round(truth)))
+  expect_true(all.equal(round(result), round(truth)))
 })
